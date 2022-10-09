@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div class="aside-content" id="aside-content" th:fragment="aside">
+    <div class="card-widget card-info">
+        <!-- 描述信息 -->
+        <!--<div class="card-content">-->
+        <!--    <div class="card-info-avatar is-center">-->
+        <!--        <div class="author-info__sayhi" id="author-info__sayhi" th:text="${theme.config.aside.subtitle}">-->
+        <!--            你好啊！我是-->
+        <!--        </div>-->
+        <!--        <div class="author-info__name" th:text="${theme.config.aside.title}">Liu ZhiHang</div>-->
+        <!--        <div class="author-info__description" th:utext="${theme.config.aside.description}">-->
+        <!--            这里可以写一些<b>公告信息</b>或者<b>个人介绍</b>。-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</div>-->
+
+        <!-- 跳转信息 -->
+        <!--<div class="banner-button-group">-->
+        <!--    <a class="banner-button" th:href="${theme.config.aside.button_link}">-->
+        <!--        <i class="fas fa-circle-arrow-up-right"></i>-->
+        <!--        <span class="banner-button-text" th:text="${theme.config.aside.button_text}">了解更多</span>-->
+        <!--    </a>-->
+        <!--</div>-->
+
+        <!--<div class="card-info-social-icons is-center">-->
+        <!--    <a class="social-icon" th:href="${theme.config.aside.github}" rel="external nofollow" target="_blank"-->
+        <!--       title="Github">-->
+        <!--        <i class="ri-github-line"></i>-->
+        <!--    </a>-->
+        <!--    <a class="social-icon" th:href="${theme.config.aside.mail}" rel="external nofollow" target="_blank"-->
+        <!--       title="Mail">-->
+        <!--        <i class="ri-mail-line"></i>-->
+        <!--    </a>-->
+        <!--</div>-->
+    </div>
+
+    <!-- 微信公众号 -->
+    <div class="card-widget heo-right-widget" id="card-wechat" onclick='window.open("/wechat/")'>
+        <div id="flip-wrapper">
+            <div id="flip-content">
+                <div class="face"></div>
+                <div class="back face"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sticky_layout">
+        <div class="card-widget card-tags card-archives card-webinfo card-allinfo">
+            <div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div>
+            <div class="card-tag-cloud">
+                <a href="tags/AfterEffects/index.html"
+                   style="font-size:1em;color:#d3d3d3">AfterEffects<sup>11</sup></a> <a
+                    href="tags/Chrome/index.html" style="font-size:1em;color:#d3d3d3">Chrome<sup>10</sup></a> <a
+                    href="tags/Docker/index.html" style="font-size:1em;color:#d3d3d3">Docker<sup>1</sup></a> <a
+                    href="tags/Dribbble/index.html" style="font-size:1em;color:#d3d3d3">Dribbble<sup>9</sup></a>
+                <a href="tags/FinalCutPro/index.html"
+                   style="font-size:1em;color:#d3d3d3">FinalCutPro<sup>5</sup></a> <a
+                    href="tags/Heocan/index.html"
+                    style="font-size:1em;color:#d3d3d3">Heocan<sup>21</sup></a> <a
+                    href="tags/Heomagic/index.html" style="font-size:1em;color:#d3d3d3">Heomagic<sup>5</sup></a>
+            </div>
+            <hr>
+            <div class="item-headline"><i class="fas fa-chart-line"></i><span>统计</span></div>
+            <div class="webinfo">
+                <div class="webinfo-item">
+                    <div class="webinfo-item-title"><i class="item-icon fas fa-file-alt"></i>
+                        <div class="item-name">文章总数 :</div>
+                    </div>
+                    <div class="item-count">649</div>
+                </div>
+                <div class="webinfo-item">
+                    <div class="webinfo-item-title"><i class="item-icon fas fa-stopwatch"></i>
+                        <div class="item-name">建站天数 :</div>
+                    </div>
+                    <div class="item-count" data-publishdate="2019-10-27T16:00:00.000Z" id="runtimeshow"></div>
+                </div>
+                <div class="webinfo-item">
+                    <div class="webinfo-item-title"><i class="item-icon fas fa-font"></i>
+                        <div class="item-name">全站字数 :</div>
+                    </div>
+                    <div class="item-count">606.7k</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

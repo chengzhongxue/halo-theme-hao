@@ -1,0 +1,239 @@
+apiVersion: v1alpha1
+kind: Setting
+metadata:
+  name: theme-hao-setting
+spec:
+  forms:
+    - group: layout
+      label: 布局
+      formSchema:
+        - $formkit: select
+          name: post_list_layout
+          label: 文章列表布局
+          value: grid_3
+          options:
+            - label: 网格（一行三列）
+              value: grid_3
+            - label: 网格（一行两列）
+              value: grid_2
+            - label: 单条
+              value: single
+          help: "选择单条时，文章卡片的图片将位于左侧"
+        - $formkit: select
+          name: header_widget
+          label: 首页顶部模块
+          value: none
+          options:
+            - label: 无
+              value: none
+            - label: 最新一篇文章
+              value: latest_post
+            - label: 文章网格（最新五篇文章）
+              value: latest_post_grid
+            - label: 轮播图
+              value: carousel
+            - label: 站点标题
+              value: site_title
+        - $formkit: select
+          name: header_background_type
+          label: 首页顶部背景
+          value: manual
+          options:
+            - label: 手动设置
+              value: manual
+            - label: 图片
+              value: image
+        - $formkit: text
+          name: header_background
+          label: 首页顶部背景
+        - $formkit: text
+          name: header_background_image
+          label: 首页顶部背景图片
+        - $formkit: radio
+          name: content_header
+          label: 文章页顶部
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
+
+    - group: sidebar
+      label: 侧边栏
+      formSchema:
+        - $formkit: textarea
+          name: widgets
+          label: 小部件
+          value: "profile,popular-posts,latest-comments,categories,tags"
+          help: "目前提供的小部件有：profile（站点资料）, popular-posts（热门文章）, latest-comments（最新评论）, categories（文章分类）, tags（文章标签）。你可以随意组合或排序，以逗号隔开。"
+    - group: content
+      label: 内容设置
+      formSchema:
+        - $formkit: radio
+          name: enable_lightgallery
+          label: 图片放大
+          value: false
+          options:
+            - label: 开启
+              value: true
+            - label: 关闭
+              value: false
+        - $formkit: radio
+          name: enable_code_highlight
+          label: 代码块高亮
+          value: false
+          options:
+            - label: 开启
+              value: true
+            - label: 关闭
+              value: false
+        - $formkit: textarea
+          name: code_highlight_extra_languages
+          label: 代码块额外高亮语言
+          help: "默认已经包含：php,diff,java,css,bash,json,perl,swift,plaintext,ruby,yaml,sql,vbnet,ini,scss,less,cpp,typescript,csharp,rust,python,python-repl,objectivec,r,shell,makefile,go,xml,markdown,lua,javascript,php-template,kotlin,c 如果需要添加其他语言，请按照相同格式添加。"
+        - $formkit: select
+          name: code_highlight_style
+          label: 代码块高亮主题
+          value: "default.min.css"
+          options:
+            - value: "a11y-dark.min.css"
+              label: "a11y-dark.min.css"
+            - value: "a11y-light.min.css"
+              label: "a11y-light.min.css"
+            - value: "agate.min.css"
+              label: "agate.min.css"
+            - value: "an-old-hope.min.css"
+              label: "an-old-hope.min.css"
+            - value: "androidstudio.min.css"
+              label: "androidstudio.min.css"
+            - value: "arduino-light.min.css"
+              label: "arduino-light.min.css"
+            - value: "arta.min.css"
+              label: "arta.min.css"
+            - value: "ascetic.min.css"
+              label: "ascetic.min.css"
+            - value: "atom-one-dark-reasonable.min.css"
+              label: "atom-one-dark-reasonable.min.css"
+            - value: "atom-one-dark.min.css"
+              label: "atom-one-dark.min.css"
+            - value: "atom-one-light.min.css"
+              label: "atom-one-light.min.css"
+            - value: "brown-paper.min.css"
+              label: "brown-paper.min.css"
+            - value: "codepen-embed.min.css"
+              label: "codepen-embed.min.css"
+            - value: "color-brewer.min.css"
+              label: "color-brewer.min.css"
+            - value: "dark.min.css"
+              label: "dark.min.css"
+            - value: "default.min.css"
+              label: "default.min.css"
+            - value: "devibeans.min.css"
+              label: "devibeans.min.css"
+            - value: "docco.min.css"
+              label: "docco.min.css"
+            - value: "far.min.css"
+              label: "far.min.css"
+            - value: "felipec.min.css"
+              label: "felipec.min.css"
+            - value: "foundation.min.css"
+              label: "foundation.min.css"
+            - value: "github-dark-dimmed.min.css"
+              label: "github-dark-dimmed.min.css"
+            - value: "github-dark.min.css"
+              label: "github-dark.min.css"
+            - value: "github.min.css"
+              label: "github.min.css"
+            - value: "gml.min.css"
+              label: "gml.min.css"
+            - value: "googlecode.min.css"
+              label: "googlecode.min.css"
+            - value: "gradient-dark.min.css"
+              label: "gradient-dark.min.css"
+            - value: "gradient-light.min.css"
+              label: "gradient-light.min.css"
+            - value: "grayscale.min.css"
+              label: "grayscale.min.css"
+            - value: "hybrid.min.css"
+              label: "hybrid.min.css"
+            - value: "idea.min.css"
+              label: "idea.min.css"
+            - value: "intellij-light.min.css"
+              label: "intellij-light.min.css"
+            - value: "ir-black.min.css"
+              label: "ir-black.min.css"
+            - value: "isbl-editor-dark.min.css"
+              label: "isbl-editor-dark.min.css"
+            - value: "isbl-editor-light.min.css"
+              label: "isbl-editor-light.min.css"
+            - value: "kimbie-dark.min.css"
+              label: "kimbie-dark.min.css"
+            - value: "kimbie-light.min.css"
+              label: "kimbie-light.min.css"
+            - value: "lightfair.min.css"
+              label: "lightfair.min.css"
+            - value: "lioshi.min.css"
+              label: "lioshi.min.css"
+            - value: "magula.min.css"
+              label: "magula.min.css"
+            - value: "mono-blue.min.css"
+              label: "mono-blue.min.css"
+            - value: "monokai-sublime.min.css"
+              label: "monokai-sublime.min.css"
+            - value: "monokai.min.css"
+              label: "monokai.min.css"
+            - value: "night-owl.min.css"
+              label: "night-owl.min.css"
+            - value: "nnfx-dark.min.css"
+              label: "nnfx-dark.min.css"
+            - value: "nnfx-light.min.css"
+              label: "nnfx-light.min.css"
+            - value: "nord.min.css"
+              label: "nord.min.css"
+            - value: "obsidian.min.css"
+              label: "obsidian.min.css"
+            - value: "paraiso-dark.min.css"
+              label: "paraiso-dark.min.css"
+            - value: "paraiso-light.min.css"
+              label: "paraiso-light.min.css"
+            - value: "pojoaque.min.css"
+              label: "pojoaque.min.css"
+            - value: "purebasic.min.css"
+              label: "purebasic.min.css"
+            - value: "qtcreator-dark.min.css"
+              label: "qtcreator-dark.min.css"
+            - value: "qtcreator-light.min.css"
+              label: "qtcreator-light.min.css"
+            - value: "rainbow.min.css"
+              label: "rainbow.min.css"
+            - value: "routeros.min.css"
+              label: "routeros.min.css"
+            - value: "school-book.min.css"
+              label: "school-book.min.css"
+            - value: "shades-of-purple.min.css"
+              label: "shades-of-purple.min.css"
+            - value: "srcery.min.css"
+              label: "srcery.min.css"
+            - value: "stackoverflow-dark.min.css"
+              label: "stackoverflow-dark.min.css"
+            - value: "stackoverflow-light.min.css"
+              label: "stackoverflow-light.min.css"
+            - value: "sunburst.min.css"
+              label: "sunburst.min.css"
+            - value: "tokyo-night-dark.min.css"
+              label: "tokyo-night-dark.min.css"
+            - value: "tokyo-night-light.min.css"
+              label: "tokyo-night-light.min.css"
+            - value: "tomorrow-night-blue.min.css"
+              label: "tomorrow-night-blue.min.css"
+            - value: "tomorrow-night-bright.min.css"
+              label: "tomorrow-night-bright.min.css"
+            - value: "vs.min.css"
+              label: "vs.min.css"
+            - value: "vs2015.min.css"
+              label: "vs2015.min.css"
+            - value: "xcode.min.css"
+              label: "xcode.min.css"
+            - value: "xt256.min.css"
+              label: "xt256.min.css"

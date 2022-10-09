@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<header class="not-top-img" id="page-header" th:fragment="header">
+    <nav id="nav">
+        <div id="nav-group">
+            <div id="blog_name">
+                <div class="back-home-button" tabindex="-1">
+                    <i class="back-home-button-icon fas fa-grip-vertical"></i>
+                    <div class="back-menu-list-groups">
+                        <div class="back-menu-list-group">
+                            <div class="back-menu-list-title">标题</div>
+                            <div class="back-menu-list">
+                                <a class="back-menu-item" href="https://zhheo.com/"
+                                   rel="external nofollow" target="_blank"
+                                   title="这是标题">
+                                    <img class="back-menu-item-icon"
+                                         src="https://cdn.zhheo.com/Guli/img/www-mini.png"><span
+                                        class="back-menu-item-text">主页</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 返回主页 -->
+                <a href="index.html" id="site-name" title="返回博客主页">
+                    <!-- 返回主页的 icon 可以使用文字代替-->
+                    <i class="iconfont icon-heo"></i>
+                </a>
+            </div>
+            <div id="page-name-mask">
+                <div id="page-name"><a id="page-name-text" onclick="btf.scrollToDest(0,500)"></a></div>
+            </div>
+            <!-- 菜单 -->
+            <div id="menus">
+                <div class="menus_items">
+                    <div class="menus_item"><a class="site-page" href="javascript:void(0);"
+                                               rel="external nofollow"><span>文库</span><i
+                            class="fas fa-chevron-down expand"></i></a>
+                        <ul class="menus_item_child">
+                            <li><a class="site-page child" href="archives/index.html"><i
+                                    class="fa-fw fa-duotone fa-list-timeline"></i> <span>文章列表</span></a></li>
+                            <li><a class="site-page child" href="categories/index.html"><i
+                                    class="fa-fw fa-duotone fa-list-tree"></i> <span>全部分类</span></a></li>
+                            <li><a class="site-page child" href="tags/index.html"><i
+                                    class="fa-fw fa-duotone fa-tags"></i> <span>全部标签</span></a></li>
+                            <li><a class="site-page child" href="essay/index.html"><i
+                                    class="fa-fw fa-duotone fa-rectangles-mixed"></i> <span>即刻短文</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="menus_item"><a class="site-page" href="javascript:void(0);"
+                                               rel="external nofollow"><span>专栏</span><i
+                            class="fas fa-chevron-down expand"></i></a>
+                        <ul class="menus_item_child">
+                            <li><a class="site-page child"
+                                   href="tags/%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/index.html"><i
+                                    class="fa-fw fa-duotone fa-swatchbook"></i> <span>设计报告</span></a></li>
+                            <li><a class="site-page child" href="tags/Heocan/index.html"><i
+                                    class="fa-fw fa-duotone fa-pen-paintbrush"></i> <span>设计分享</span></a></li>
+                            <li><a class="site-page child" href="tags/Sketch/index.html"><i
+                                    class="fa-fw fa-duotone fa-palette"></i> <span>设计工具</span></a></li>
+                            <li><a class="site-page child" href="tags/%E6%B7%B7%E5%89%AA/index.html"><i
+                                    class="fa-fw fa-duotone fa-scissors"></i> <span>视频混剪</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="menus_item"><a class="site-page" href="javascript:void(0);"
+                                               rel="external nofollow"><span>友链</span><i
+                            class="fas fa-chevron-down expand"></i></a>
+                        <ul class="menus_item_child">
+                            <li><a class="site-page child" href="moments/index.html"><i
+                                    class="fa-fw fa-duotone fa-fish-fins"></i> <span>友链鱼塘</span></a></li>
+                            <li><a class="site-page child" href="link/index.html"><i
+                                    class="fa-fw fa-duotone fa-user-group"></i> <span>友情链接</span></a></li>
+                            <li><a class="site-page child" href="javascript:travelling()" rel="external nofollow"><i
+                                    class="fa-fw fa-duotone fa-treasure-chest"></i> <span>宝藏博主</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="menus_item"><a class="site-page" href="javascript:void(0);"
+                                               rel="external nofollow"><span>我的</span><i
+                            class="fas fa-chevron-down expand"></i></a>
+                        <ul class="menus_item_child">
+                            <li><a class="site-page child" href="tlink/index.html"><i
+                                    class="fa-fw fa-duotone fa-screwdriver-wrench"></i> <span>在线工具</span></a>
+                            </li>
+                            <li><a class="site-page child" href="movies/index.html"><i
+                                    class="fa-fw fa-duotone fa-film-simple"></i> <span>电影推荐</span></a></li>
+                            <li><a class="site-page child" href="about/index.html"><i
+                                    class="fa-fw fa-duotone fa-face-awesome"></i> <span>关于本站</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="nav-right">
+                <div class="nav-button only-home" id="travellings_button"><a class="site-page"
+                                                                             href="javascript:void(0);"
+                                                                             onclick="totraveling()"
+                                                                             rel="external nofollow"
+                                                                             title="随机前往一个开往项目网站"><i
+                        class="fa-duotone fa-train-subway" style="font-size:1rem"></i></a></div>
+                <div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()"
+                                                                  title="随机前往一个文章"><i
+                        class="fa-duotone fa-dice" style="font-size:1rem"></i></a></div>
+                <div class="nav-button" id="search-button"><a class="site-page social-icon search"
+                                                              href="javascript:void(0);"
+                                                              rel="external nofollow" title="站内搜索"><i
+                        class="fas fa-magnifying-glass" style="font-size:1rem"></i></a></div>
+                <div class="nav-button"><a class="console_switchbutton" href="javascript:void(0);"
+                                           onclick="heo.showConsole()" rel="external nofollow" title="显示中控台"><i
+                        class="fa-duotone fa-gear" style="font-size:1rem"></i></a></div>
+                <div class="nav-button" id="nav-totop" onclick="btf.scrollToDest(0,500)"><a class="totopbtn"><i
+                        class="fas fa-arrow-up"></i><span id="percent">0</span></a></div>
+                <div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+</html>

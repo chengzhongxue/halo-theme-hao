@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="bbTimeList container" id="bbTimeList" th:fragment="time-list">
+    <i class="bber-logo iconfont icon-bblogo"
+       onclick="pjax.loadUrl(&quot;/essay/&quot;)"
+       style="font-size:2rem" title="说说"></i>
+    <div class="swiper-container swiper-no-swiping" id="bbtalk" tabindex="-1">
+        <div class="swiper-wrapper" id="bber-talk" onclick="pjax.loadUrl(&quot;/essay/&quot;)">
+            <div class="li-style swiper-slide">
+                日志模块
+            </div>
+        </div>
+    </div>
+    <i class="bber-gotobb fas fa-arrow-circle-right" onclick="pjax.loadUrl(&quot;/essay/&quot;)"
+       title="查看全文"></i></div>
+<style>.topGroup .todayCard::after {
+    box-shadow: 0 -109px 133px -9px #201e1d inset
+}</style>
+</html>
