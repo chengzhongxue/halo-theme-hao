@@ -18,5 +18,9 @@ halo 的主题路径下看到刚才上传的主题。
 > 路径为
 > ~/halo-next/theme
 
- 
+### 参考主题
+
+> 可以参考相关主题的用法
+
+官方默认主题：https://github.com/halo-sigs/theme-default
  
