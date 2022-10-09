@@ -22,5 +22,7 @@ halo 的主题路径下看到刚才上传的主题。
 
 > 可以参考相关主题的用法
 
-官方默认主题：https://github.com/halo-sigs/theme-default
+Halo 官方默认主题：https://github.com/halo-sigs/theme-default
+
+Hexo-Butterfly 主题：https://github.com/jerryc127/hexo-theme-butterfly
  
