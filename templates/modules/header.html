@@ -1,28 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<header class="not-top-img" id="page-header" th:fragment="header" th:with="menu = ${menuFinder.getDefault()}">
+<header class="not-top-img" id="page-header" th:fragment="header">
     <nav id="nav">
         <div id="nav-group">
 
-            <!-- 菜单栏左侧 从 settings 文件读取配置-->
+            <!-- 菜单栏左侧，需要在 console 配置一个叫 Hao 的菜单 -->
             <div id="blog_name">
-                <div class="back-home-button" tabindex="-1">
+
+                <!-- 当前需要使用 metadata 的 Name 获取，如果后续 API 没有变动，可以将 name 获取后配置在 settings 中 -->
+                <!-- 没有这个菜单时，则不展示 -->
+                <div class="back-home-button" tabindex="-1"
+                     th:if="${not #lists.isEmpty(menuFinder.getByName('4ee910a4-b726-4ca1-826a-27e6468c717f'))}">
                     <i class="back-home-button-icon fas fa-grip-vertical"></i>
                     <div class="back-menu-list-groups">
-                        <div class="back-menu-list-group">
-                            <div class="back-menu-list-title">标题</div>
-                            <div class="back-menu-list">
-                                <a class="back-menu-item" href="https://zhheo.com/"
-                                   rel="external nofollow" target="_blank"
-                                   title="这是标题">
-                                    <img class="back-menu-item-icon"
-                                         src="https://cdn.zhheo.com/Guli/img/www-mini.png"><span
-                                        class="back-menu-item-text">主页</span>
-                                </a>
-                            </div>
+                        <div class="back-menu-list-group"
+                             th:each="menuItem : ${menuFinder.getByName('4ee910a4-b726-4ca1-826a-27e6468c717f').menuItems}">
+
+                            <!-- 菜单必须有子项才会展示 -->
+                            <th:block th:if="${not #lists.isEmpty(menuItem.children)}">
+                                <div class="back-menu-list-title" th:text="${menuItem.status.displayName}"></div>
+                                <div class="back-menu-list">
+                                    <th:block th:each="childMenu : ${menuItem.children}">
+                                        <a class="back-menu-item" rel="external nofollow"
+                                           target="_blank" th:href="${childMenu.status.href}">
+                                            <!-- icon 预留 -->
+                                            <!--<img class="back-menu-item-icon" th:src="@{图片地址}">-->
+                                            <span class="back-menu-item-text" th:text="${childMenu.status.displayName}">
+                                            </span>
+                                        </a>
+                                    </th:block>
+                                </div>
+                            </th:block>
+
                         </div>
                     </div>
                 </div>
+
                 <!-- 返回主页 -->
                 <a href="/" id="site-name" title="返回博客主页">
                     <!-- 返回主页的 icon 可以使用文字代替-->
@@ -36,7 +49,7 @@
             <div id="menus">
                 <div class="menus_items">
 
-                    <div class="menus_item" th:each="menuItem : ${menu.menuItems}">
+                    <div class="menus_item" th:each="menuItem : ${menuFinder.getDefault().menuItems}">
                         <a class="site-page" href="javascript:void(0);" rel="external nofollow">
                             <span th:text="${menuItem.status.displayName}"></span>
                             <i class="fas fa-chevron-down expand"></i>
