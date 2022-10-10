@@ -10,6 +10,12 @@
 
 `-e SPRING_PROFILES_ACTIVE=dev` 则可以打开 swagger-ui。
 
+访问地址：[http://localhost:8090](http://localhost:8090)
+
+后台地址：[http://localhost:8090/console](http://localhost:8090/console)
+
+文档地址：[http://localhost:8090/swagger-ui.html](http://localhost:8090/swagger-ui.html)
+
 ```
 docker run \
   -it -d \
