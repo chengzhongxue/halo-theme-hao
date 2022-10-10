@@ -1,0 +1,150 @@
+### 删除 settings 配置， Cookit 可以从 Console 后台 F12 获取
+DELETE http://localhost:8090/api/v1alpha1/settings/theme-hao-setting
+Content-Type: application/json
+Cookie: Idea-b3bcefb1=28a94d07-f033-473f-aaff-bce5a96ae38b; Hm_lvt_828db1fd637f3717a876af84bf0678bd=1664877624,1664884710; mozi-assist={"show":false,"audio":false,"speed":"middle","zomm":1,"cursor":false,"pointer":false,"bigtext":false,"overead":false}; Hm_lpvt_828db1fd637f3717a876af84bf0678bd=1665275924; XSRF-TOKEN=54b8f604-bde6-4977-8ba2-1ba66a1c334f; SESSION=25179b0d-8abb-4638-ab64-54eb277d7b5e
+
+
+### 设置 settings 的配置，将 settings 的配置文件先使用 yaml 转 json 转换后放在下面即可
+
+POST http://localhost:8090/api/v1alpha1/settings
+Content-Type: application/json
+Cookie: Idea-b3bcefb1=28a94d07-f033-473f-aaff-bce5a96ae38b; Hm_lvt_828db1fd637f3717a876af84bf0678bd=1664877624,1664884710; mozi-assist={"show":false,"audio":false,"speed":"middle","zomm":1,"cursor":false,"pointer":false,"bigtext":false,"overead":false}; Hm_lpvt_828db1fd637f3717a876af84bf0678bd=1665275924; XSRF-TOKEN=54b8f604-bde6-4977-8ba2-1ba66a1c334f; SESSION=25179b0d-8abb-4638-ab64-54eb277d7b5e
+
+{
+  "apiVersion": "v1alpha1",
+  "kind": "Setting",
+  "metadata": {
+    "name": "theme-hao-setting"
+  },
+  "spec": {
+    "forms": [
+      {
+        "group": "layout",
+        "label": "布局",
+        "formSchema": [
+          {
+            "$formkit": "select",
+            "name": "post_list_layout",
+            "label": "文章列表布局",
+            "value": "grid_3",
+            "options": [
+              {
+                "label": "网格（一行三列）",
+                "value": "grid_3"
+              },
+              {
+                "label": "网格（一行两列）",
+                "value": "grid_2"
+              },
+              {
+                "label": "单条",
+                "value": "single"
+              }
+            ],
+            "help": "选择单条时，文章卡片的图片将位于左侧"
+          },
+          {
+            "$formkit": "select",
+            "name": "header_widget",
+            "label": "首页顶部模块",
+            "value": "none",
+            "options": [
+              {
+                "label": "无",
+                "value": "none"
+              },
+              {
+                "label": "最新一篇文章",
+                "value": "latest_post"
+              },
+              {
+                "label": "文章网格（最新五篇文章）",
+                "value": "latest_post_grid"
+              },
+              {
+                "label": "轮播图",
+                "value": "carousel"
+              },
+              {
+                "label": "站点标题",
+                "value": "site_title"
+              }
+            ]
+          },
+          {
+            "$formkit": "select",
+            "name": "header_background_type",
+            "label": "首页顶部背景",
+            "value": "manual",
+            "options": [
+              {
+                "label": "手动设置",
+                "value": "manual"
+              },
+              {
+                "label": "图片",
+                "value": "image"
+              }
+            ]
+          },
+          {
+            "$formkit": "text",
+            "name": "header_background",
+            "label": "首页顶部背景"
+          },
+          {
+            "$formkit": "text",
+            "name": "header_background_image",
+            "label": "首页顶部背景图片"
+          },
+          {
+            "$formkit": "radio",
+            "name": "content_header",
+            "label": "文章页顶部",
+            "value": true,
+            "options": [
+              {
+                "label": "显示",
+                "value": true
+              },
+              {
+                "label": "隐藏",
+                "value": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "group": "sidebar",
+        "label": "侧边栏",
+        "formSchema": [
+          {
+            "$formkit": "textarea",
+            "name": "widgets",
+            "label": "小部件",
+            "value": "profile,popular-posts,latest-comments,categories,tags",
+            "help": "目前提供的小部件有：profile（站点资料）, popular-posts（热门文章）, latest-comments（最新评论）, categories（文章分类）, tags（文章标签）。你可以随意组合或排序，以逗号隔开。"
+          },
+          {
+            "$formkit": "group",
+            "name": "profile",
+            "label": "信息卡片",
+            "children": [
+              {
+                "$formkit": "text",
+                "name": "name",
+                "placeholder": "请输入名称"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+
+
+
+###
