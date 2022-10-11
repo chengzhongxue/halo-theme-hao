@@ -1,0 +1,15 @@
+### cookie 修改 http-client.env.json 配置文件中的即可
+### 删除 theme 配置， Cookit 可以从 Console 后台 F12 获取，删除后，在后台将看不到主题
+DELETE http://localhost:8090/apis/theme.halo.run/v1alpha1/themes/theme-hao-setting
+Content-Type: application/json
+Cookie: {{cookie}}
+
+
+### 设置主题, body 即为 theme.yaml 的内容转 json
+
+POST http://localhost:8090/apis/theme.halo.run/v1alpha1/themes
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+}

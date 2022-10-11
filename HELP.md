@@ -28,19 +28,41 @@ docker run \
   -e SPRING_PROFILES_ACTIVE=dev \
   halohub/halo-dev:2.0.0-alpha.1 
 ```
+
 > windows 电脑下cmd无法识别 \ ，所以需要在wsl2窗口下执行
-### 下载主题
 
-下载[halo-theme-hao](https://github.com/liuzhihang/halo-theme-hao)主题，并压缩为 zip 包，然后在 halo console 控制台上传主题，此时可以在
-halo 的主题路径下看到刚才上传的主题。
+### 热部署
 
-> 路径为
-> ~/halo-next/theme
-> 如果是windows系统，那么主题文件是在wsl2的系统里面的，可以通过vscode或者idea直接打开wsl2里面对应的主题文件夹
-> ![img.png](img.png)
+下载[halo-theme-hao](https://github.com/liuzhihang/halo-theme-hao)主题
+
+#### 方式一
+
+压缩为 zip 包，然后在 halo console 控制台上传主题，此时可以在 halo 的主题路径下看到刚才上传的主题，名称为 `theme-hao`。
+
+halo 的主题路径：
+
+1. mac 默认在 ~/halo-next/theme
+2. windows 默认在 wsl2 中
+
+![img_1.png](images/mac.png)
+
+![img.png](images/windows.png)s
+
+可以通过 IDEA 或者 vscode 直接打开主题文件夹，进行操作开发，这里会实时生效。
+
+#### 方式二
+
+1. 直接在主题目录(~/halo-next/theme)下 git pull 代码，然后重命名为 `theme-hao`。 此时打开 console 控制台是看不到这个主题的，（halo
+   后面会添加扫描主题功能）
+2. 通过 http 接口，将 theme.yaml 的配置提交，接口可以参考 swagger-ui
+3. 可以参考 http/theme.http 内的脚本
+
 ### 如何动态更新配置
 
-参考 HTTP.http 文件
+通过以上过程，在修改前端代码时，已经可以实时看到效果，但是当修改了 settings.yaml 配置后，发现在前端并不能直接通过 thymeleaf
+获取到字段值，这里就需要调用接口修改 console 后台的配置。
+
+参考 http/settings.http 文件
 
 1. 在 console 后台获取到 cookie
 2. 调用删除 settings 接口
