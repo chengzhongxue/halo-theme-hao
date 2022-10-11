@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<header class="not-top-img" id="page-header" th:fragment="header">
+<header class="not-top-img" id="page-header" th:fragment="header"
+        th:with="leftMenu = ${theme.config.menu.header_left_menu}">
     <nav id="nav">
         <div id="nav-group">
 
@@ -9,33 +10,37 @@
 
                 <!-- 当前需要使用 metadata 的 Name 获取，如果后续 API 没有变动，可以将 name 获取后配置在 settings 中 -->
                 <!-- 没有这个菜单时，则不展示 -->
-                <div class="back-home-button" tabindex="-1"
-                     th:if="${not #lists.isEmpty(menuFinder.getByName('4ee910a4-b726-4ca1-826a-27e6468c717f'))}">
-                    <i class="back-home-button-icon fas fa-grip-vertical"></i>
-                    <div class="back-menu-list-groups">
-                        <div class="back-menu-list-group"
-                             th:each="menuItem : ${menuFinder.getByName('4ee910a4-b726-4ca1-826a-27e6468c717f').menuItems}">
 
-                            <!-- 菜单必须有子项才会展示 -->
-                            <th:block th:if="${not #lists.isEmpty(menuItem.children)}">
-                                <div class="back-menu-list-title" th:text="${menuItem.status.displayName}"></div>
-                                <div class="back-menu-list">
-                                    <th:block th:each="childMenu : ${menuItem.children}">
-                                        <a class="back-menu-item" rel="external nofollow"
-                                           target="_blank" th:href="${childMenu.status.href}">
-                                            <!-- icon 预留 -->
-                                            <!--<img class="back-menu-item-icon" th:src="@{图片地址}">-->
-                                            <span class="back-menu-item-text" th:text="${childMenu.status.displayName}">
+                <th:block
+                        th:if="${not #strings.isEmpty(leftMenu)} and ${not #lists.isEmpty(menuFinder.getByName(leftMenu))}">
+
+                    <div class="back-home-button" tabindex="-1">
+                        <i class="back-home-button-icon fas fa-grip-vertical"></i>
+                        <div class="back-menu-list-groups">
+                            <div class="back-menu-list-group"
+                                 th:each="menuItem : ${menuFinder.getByName(leftMenu).menuItems}">
+
+                                <!-- 菜单必须有子项才会展示 -->
+                                <th:block th:if="${not #lists.isEmpty(menuItem.children)}">
+                                    <div class="back-menu-list-title" th:text="${menuItem.status.displayName}"></div>
+                                    <div class="back-menu-list">
+                                        <th:block th:each="childMenu : ${menuItem.children}">
+                                            <a class="back-menu-item" rel="external nofollow"
+                                               target="_blank" th:href="${childMenu.status.href}">
+                                                <!-- icon 预留 -->
+                                                <!--<img class="back-menu-item-icon" th:src="@{图片地址}">-->
+                                                <span class="back-menu-item-text"
+                                                      th:text="${childMenu.status.displayName}">
                                             </span>
-                                        </a>
-                                    </th:block>
-                                </div>
-                            </th:block>
+                                            </a>
+                                        </th:block>
+                                    </div>
+                                </th:block>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                </th:block>
                 <!-- 返回主页 -->
                 <a href="/" id="site-name" title="返回博客主页">
                     <!-- 返回主页的 icon 可以使用文字代替-->

@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 页脚模块 -->
-<footer id="footer" th:fragment="foot">
-    <div id="footer_deal"><a class="deal_link" href="mailto:zh@zhheo.com" rel="external nofollow" title="mail"><i
-            class="fa-regular fa-envelope"></i></a><a class="deal_link" target="_blank"
-                                                      href="https://weibo.com/zhheo" title="微博"
-                                                      rel="noopener external nofollow noreferrer noopener"><i
-            class="ri-weibo-line" style="font-size:1.1rem"></i></a><a class="deal_link" target="_blank"
-                                                                      href="https://www.facebook.com/zhheo/"
-                                                                      rel="noopener external nofollow noreferrer noopener"
-                                                                      title="facebook"><i
-            class="ri-facebook-circle-line" style="font-size:1.2rem"></i></a><a class="deal_link" target="_blank"
-                                                                                href="https://dribbble.com/zhheo/"
-                                                                                rel="noopener external nofollow noreferrer noopener"
-                                                                                title="dribbble"><i
-            class="ri-dribbble-line" style="font-size:1.2rem"></i></a><img class="footer_mini_logo"
-                                                                           src="../img.zhheo.com/i/2022/08/31/630ef3b505ef5.webp"
-                                                                           title="返回顶部"
-                                                                           onclick="btf.scrollToDest(0,500)"><a
-            class="deal_link" target="_blank" href="https://github.com/zhheo/"
-            rel="noopener external nofollow noreferrer noopener" title="github"><i class="ri-github-line"
-                                                                                   style="font-size:1.1rem"></i></a><a
-            class="deal_link" target="_blank" href="https://www.pinterest.com/zhheocom/_created/" title="pinterest"
-            rel="noopener external nofollow noreferrer noopener"><i class="ri-pinterest-line"
-                                                                    style="font-size:1.2rem"></i></a><a
-            class="deal_link" target="_blank" href="https://space.bilibili.com/4218173/"
-            rel="noopener external nofollow noreferrer noopener" title="bilibili"><i class="ri-bilibili-fill"
-                                                                                     style="font-size:1.1rem"></i></a><a
-            class="deal_link" target="_blank" href="https://v.douyin.com/6SMbLRQ/"
-            rel="noopener external nofollow noreferrer noopener" title="Tiktok"><i class="fa-brands fa-tiktok"></i></a>
+<footer id="footer" th:fragment="footer" th:with="leftMenu = ${theme.config.menu.footer_menu}">
+
+    <!-- 社交链接 -->
+    <div id="footer_deal">
+        <a class="deal_link" href="mailto:zh@zhheo.com" rel="external nofollow" title="mail">
+            <i class="fa-regular fa-envelope"></i></a>
+        <a class="deal_link" href="https://weibo.com/zhheo" rel="noopener external nofollow noreferrer noopener"
+           target="_blank"
+           title="微博">
+            <i class="ri-weibo-line" style="font-size:1.1rem"></i></a>
+        <a class="deal_link" href="https://www.facebook.com/zhheo/"
+           rel="noopener external nofollow noreferrer noopener"
+           target="_blank"
+           title="facebook"><i
+                class="ri-facebook-circle-line" style="font-size:1.2rem"></i></a>
+        <a class="deal_link" href="https://dribbble.com/zhheo/"
+           rel="noopener external nofollow noreferrer noopener"
+           target="_blank"
+           title="dribbble"><i class="ri-dribbble-line" style="font-size:1.2rem"></i></a>
+        <img class="footer_mini_logo" onclick="btf.scrollToDest(0,500)"
+             src="../img.zhheo.com/i/2022/08/31/630ef3b505ef5.webp"
+             title="返回顶部">
+        <a class="deal_link" href="https://github.com/zhheo/" rel="noopener external nofollow noreferrer noopener"
+           target="_blank" title="github"><i class="ri-github-line" style="font-size:1.1rem"></i></a>
+        <a class="deal_link" href="https://www.pinterest.com/zhheocom/_created/"
+           rel="noopener external nofollow noreferrer noopener" target="_blank"
+           title="pinterest"><i class="ri-pinterest-line"
+                                style="font-size:1.2rem"></i></a>
+        <a class="deal_link" href="https://space.bilibili.com/4218173/"
+           rel="noopener external nofollow noreferrer noopener"
+           target="_blank" title="bilibili"><i class="ri-bilibili-fill"
+                                               style="font-size:1.1rem"></i></a>
+        <a class="deal_link" href="https://v.douyin.com/6SMbLRQ/" rel="noopener external nofollow noreferrer noopener"
+           target="_blank" title="Tiktok"><i class="fa-brands fa-tiktok"></i></a>
     </div>
+
+
+    <!-- 相关地址 -->
     <div id="heo-footer">
         <div class="footer-group"><h3 class="footer-title">软件</h3>
             <div class="footer-links"><a class="footer-item" href="p/4db484b3.html">轻节食</a><a class="footer-item"
@@ -67,13 +76,13 @@
         </div>
         <div class="footer-group"><h3 class="footer-title">服务</h3>
             <div class="footer-links"><a class="footer-item" href="https://invite.51.la/1NzKqTeb?target=V6"
-                                         target="_blank" rel="noopener nofollow">51la统计</a><a class="footer-item"
+                                         rel="noopener nofollow" target="_blank">51la统计</a><a class="footer-item"
                                                                                                 href="https://bf.zzxworld.com/s/612"
-                                                                                                target="_blank"
-                                                                                                rel="noopener nofollow">BlogFinder</a><a
-                    class="footer-item" href="https://www.foreverblog.cn/blog/2050.html" target="_blank"
-                    rel="noopener nofollow">十年之约</a><a class="footer-item" href="https://wangzhan.qianxin.com/"
-                                                           target="_blank" rel="noopener nofollow">奇安信</a></div>
+                                                                                                rel="noopener nofollow"
+                                                                                                target="_blank">BlogFinder</a><a
+                    class="footer-item" href="https://www.foreverblog.cn/blog/2050.html" rel="noopener nofollow"
+                    target="_blank">十年之约</a><a class="footer-item" href="https://wangzhan.qianxin.com/"
+                                                   rel="noopener nofollow" target="_blank">奇安信</a></div>
         </div>
         <div class="footer-group"><h3 class="footer-title">协议</h3>
             <div class="footer-links"><a class="footer-item" href="privacy/index.html">隐私协议</a><a
@@ -89,6 +98,9 @@
                     class="footer-item" href="link/index.html">随机生成中..</a></div>
         </div>
     </div>
+
+    <!-- 底部 banner -->
+
     <div id="footer-banner">
         <div class="footer-banner-links">
             <div class="footer-banner-left">
@@ -99,8 +111,9 @@
             <div class="footer-banner-right"><a class="footer-banner-link" href="/rss/">订阅</a><a
                     class="footer-banner-link" href="/update/">主题</a><a class="footer-banner-link"
                                                                           href="/about/">关于</a><a
-                    class="footer-banner-link" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index"
-                    rel="noopener external nofollow noreferrer noopener">京ICP备19051325号</a><a
+                    class="footer-banner-link" href="https://beian.miit.gov.cn/#/Integrated/index"
+                    rel="noopener external nofollow noreferrer noopener"
+                    target="_blank">京ICP备19051325号</a><a
                     class="footer-banner-link cc" href="/cc/" title="cc协议"><i class="iconfont icon-occ"></i><i
                     class="iconfont icon-occ-by"></i><i class="iconfont icon-onc"></i><i
                     class="iconfont icon-ond"></i></a></div>

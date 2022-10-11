@@ -75,3 +75,16 @@ spec:
           name: profile_desc
           placeholder: 请填写个人卡片描述信息
           help: "支持使用 HTML 标签"
+    - group: menu
+      label: 菜单映射
+      formSchema:
+        - $formkit: text
+          name: header_left_menu
+          label: 菜单栏左侧相关链接
+          placeholder: 请填写 metadata name
+          help: "需要通过开发者模式获取菜单对应的 metadata name"
+        - $formkit: text
+          name: footer_menu
+          label: 底部相关链接
+          placeholder: 请填写 metadata name
+          help: "需要通过开发者模式获取菜单对应的 metadata name"

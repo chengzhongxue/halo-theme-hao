@@ -46,7 +46,7 @@ halo 的主题路径：
 
 ![img_1.png](images/mac.png)
 
-![img.png](images/windows.png)s
+![img.png](images/windows.png)
 
 可以通过 IDEA 或者 vscode 直接打开主题文件夹，进行操作开发，这里会实时生效。
 
