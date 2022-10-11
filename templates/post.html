@@ -844,39 +844,6 @@
             return content
         }
 
-        const getComment = () => {
-            const runTwikoo = () => {
-                twikoo.getRecentComments({
-                    envId: 'https://twikoo.zhheo.com',
-                    region: '',
-                    pageSize: 6,
-                    includeReply: true
-                }).then(function (res) {
-                    const twikooArray = res.map(e => {
-                        return {
-                            'content': changeContent(e.comment),
-                            'avatar': e.avatar,
-                            'nick': e.nick,
-                            'url': e.url + '#' + e.id,
-                            'date': new Date(e.created).toISOString()
-                        }
-                    })
-
-                    saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10 / (60 * 24))
-                    generateHtml(twikooArray)
-                }).catch(function (err) {
-                    const $dom = document.querySelector('#card-newest-comments .aside-list')
-                    $dom.innerHTML = "无法获取评论，请确认相关配置是否正确"
-                })
-            }
-
-            if (typeof twikoo === 'object') {
-                runTwikoo()
-            } else {
-                getScript('https://cdn2.tianli0.top/npm/twikoo@1.6.5/dist/twikoo.all.min.js').then(runTwikoo)
-            }
-        }
-
         const generateHtml = array => {
             let result = ''
 
