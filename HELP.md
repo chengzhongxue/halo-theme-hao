@@ -28,7 +28,7 @@ docker run \
   -e SPRING_PROFILES_ACTIVE=dev \
   halohub/halo-dev:2.0.0-alpha.1 
 ```
-
+> windows 电脑下cmd无法识别 \ ，所以需要在wsl2窗口下执行
 ### 下载主题
 
 下载[halo-theme-hao](https://github.com/liuzhihang/halo-theme-hao)主题，并压缩为 zip 包，然后在 halo console 控制台上传主题，此时可以在
@@ -36,7 +36,8 @@ halo 的主题路径下看到刚才上传的主题。
 
 > 路径为
 > ~/halo-next/theme
-
+> 如果是windows系统，那么主题文件是在wsl2的系统里面的，可以通过vscode或者idea直接打开wsl2里面对应的主题文件夹
+> ![img.png](img.png)
 ### 如何动态更新配置
 
 参考 HTTP.http 文件
@@ -52,4 +53,3 @@ halo 的主题路径下看到刚才上传的主题。
 Halo 官方默认主题：https://github.com/halo-sigs/theme-default
 
 Hexo-Butterfly 主题：https://github.com/jerryc127/hexo-theme-butterfly
- 
