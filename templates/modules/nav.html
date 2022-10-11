@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<nav id="nav" th:fragment="nav">
+    <div id="nav-group">
+
+        <!-- 菜单栏左侧，需要在 console 配置一个叫 Hao 的菜单 -->
+        <div id="blog_name">
+
+            <!-- 当前需要使用 metadata 的 Name 获取，如果后续 API 没有变动，可以将 name 获取后配置在 settings 中 -->
+            <!-- 没有这个菜单时，则不展示 -->
+
+            <th:block
+                    th:if="${not #strings.isEmpty(leftMenu)} and ${not #lists.isEmpty(menuFinder.getByName(leftMenu))}">
+
+                <div class="back-home-button" tabindex="-1">
+                    <i class="back-home-button-icon fas fa-grip-vertical"></i>
+                    <div class="back-menu-list-groups">
+                        <div class="back-menu-list-group"
+                             th:each="menuItem : ${menuFinder.getByName(leftMenu).menuItems}">
+
+                            <!-- 菜单必须有子项才会展示 -->
+                            <th:block th:if="${not #lists.isEmpty(menuItem.children)}">
+                                <div class="back-menu-list-title" th:text="${menuItem.status.displayName}"></div>
+                                <div class="back-menu-list">
+                                    <th:block th:each="childMenu : ${menuItem.children}">
+                                        <a class="back-menu-item" rel="external nofollow"
+                                           target="_blank" th:href="${childMenu.status.href}">
+                                            <!-- icon 预留 -->
+                                            <!--<img class="back-menu-item-icon" th:src="@{图片地址}">-->
+                                            <span class="back-menu-item-text"
+                                                  th:text="${childMenu.status.displayName}">
+                                            </span>
+                                        </a>
+                                    </th:block>
+                                </div>
+                            </th:block>
+
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+            <!-- 返回主页 -->
+            <a href="/" id="site-name" title="返回博客主页">
+                <!-- 返回主页的 icon 可以使用文字代替-->
+                <i class="iconfont icon-heo"></i>
+            </a>
+        </div>
+        <div id="page-name-mask">
+            <div id="page-name"><a id="page-name-text" onclick="btf.scrollToDest(0,500)"></a></div>
+        </div>
+        <!-- 中间菜单栏 -->
+        <div id="menus">
+            <div class="menus_items">
+
+                <div class="menus_item" th:each="menuItem : ${menuFinder.getDefault().menuItems}">
+                    <a class="site-page" href="javascript:void(0);" rel="external nofollow">
+                        <span th:text="${menuItem.status.displayName}"></span>
+                        <i class="fas fa-chevron-down expand"></i>
+                    </a>
+
+                    <ul class="menus_item_child">
+
+                        <li th:each="childMenu : ${menuItem.children}">
+                            <a class="site-page child" th:href="${childMenu.status.href}">
+                                <!-- 这里应该有一个 icon 暂时还不支持 -->
+                                <!--<i class="fa-fw fa-duotone fa-list-timeline"></i>-->
+                                <span th:text="${menuItem.status.displayName}"></span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="nav-button only-home" id="travellings_button"><a class="site-page"
+                                                                         href="javascript:void(0);"
+                                                                         onclick="totraveling()"
+                                                                         rel="external nofollow"
+                                                                         title="随机前往一个开往项目网站"><i
+                    class="fa-duotone fa-train-subway" style="font-size:1rem"></i></a></div>
+            <div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()"
+                                                              title="随机前往一个文章"><i
+                    class="fa-duotone fa-dice" style="font-size:1rem"></i></a></div>
+            <div class="nav-button" id="search-button"><a class="site-page social-icon search"
+                                                          href="javascript:void(0);"
+                                                          rel="external nofollow" title="站内搜索"><i
+                    class="fas fa-magnifying-glass" style="font-size:1rem"></i></a></div>
+            <div class="nav-button"><a class="console_switchbutton" href="javascript:void(0);"
+                                       onclick="heo.showConsole()" rel="external nofollow" title="显示中控台"><i
+                    class="fa-duotone fa-gear" style="font-size:1rem"></i></a></div>
+            <div class="nav-button" id="nav-totop" onclick="btf.scrollToDest(0,500)"><a class="totopbtn"><i
+                    class="fas fa-arrow-up"></i><span id="percent">0</span></a></div>
+            <div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div>
+        </div>
+    </div>
+</nav>
+
+</html>
