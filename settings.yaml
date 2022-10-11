@@ -58,7 +58,6 @@ spec:
               value: true
             - label: 隐藏
               value: false
-
     - group: sidebar
       label: 侧边栏
       formSchema:
@@ -67,10 +66,12 @@ spec:
           label: 小部件
           value: "profile,popular-posts,latest-comments,categories,tags"
           help: "目前提供的小部件有：profile（站点资料）, popular-posts（热门文章）, latest-comments（最新评论）, categories（文章分类）, tags（文章标签）。你可以随意组合或排序，以逗号隔开。"
-        - $formkit: group
-          name: profile
-          label: 信息卡片
-          children:
-            - $formkit: text
-              name: name
-              placeholder: 请输入名称
+        - $formkit: text
+          name: profile_name
+          label: 个人卡片名称
+          placeholder: 请填写个人卡片名称
+          help: "不填写默认为站点则名称"
+        - $formkit: textarea
+          name: profile_desc
+          placeholder: 请填写个人卡片描述信息
+          help: "支持使用 HTML 标签"

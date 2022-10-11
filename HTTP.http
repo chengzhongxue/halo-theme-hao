@@ -1,14 +1,15 @@
+### cookie 修改 http-client.env.json 配置文件中的即可
 ### 删除 settings 配置， Cookit 可以从 Console 后台 F12 获取
 DELETE http://localhost:8090/api/v1alpha1/settings/theme-hao-setting
 Content-Type: application/json
-Cookie: Idea-b3bcefb1=28a94d07-f033-473f-aaff-bce5a96ae38b; Hm_lvt_828db1fd637f3717a876af84bf0678bd=1664877624,1664884710; mozi-assist={"show":false,"audio":false,"speed":"middle","zomm":1,"cursor":false,"pointer":false,"bigtext":false,"overead":false}; Hm_lpvt_828db1fd637f3717a876af84bf0678bd=1665275924; XSRF-TOKEN=54b8f604-bde6-4977-8ba2-1ba66a1c334f; SESSION=25179b0d-8abb-4638-ab64-54eb277d7b5e
+Cookie: {{cookie}}
 
 
 ### 设置 settings 的配置，将 settings 的配置文件先使用 yaml 转 json 转换后放在下面即可
 
 POST http://localhost:8090/api/v1alpha1/settings
 Content-Type: application/json
-Cookie: Idea-b3bcefb1=28a94d07-f033-473f-aaff-bce5a96ae38b; Hm_lvt_828db1fd637f3717a876af84bf0678bd=1664877624,1664884710; mozi-assist={"show":false,"audio":false,"speed":"middle","zomm":1,"cursor":false,"pointer":false,"bigtext":false,"overead":false}; Hm_lpvt_828db1fd637f3717a876af84bf0678bd=1665275924; XSRF-TOKEN=54b8f604-bde6-4977-8ba2-1ba66a1c334f; SESSION=25179b0d-8abb-4638-ab64-54eb277d7b5e
+Cookie: {{cookie}}
 
 {
   "apiVersion": "v1alpha1",
@@ -127,23 +128,24 @@ Cookie: Idea-b3bcefb1=28a94d07-f033-473f-aaff-bce5a96ae38b; Hm_lvt_828db1fd637f3
             "help": "目前提供的小部件有：profile（站点资料）, popular-posts（热门文章）, latest-comments（最新评论）, categories（文章分类）, tags（文章标签）。你可以随意组合或排序，以逗号隔开。"
           },
           {
-            "$formkit": "group",
-            "name": "profile",
-            "label": "信息卡片",
-            "children": [
-              {
-                "$formkit": "text",
-                "name": "name",
-                "placeholder": "请输入名称"
-              }
-            ]
+            "$formkit": "text",
+            "name": "profile_name",
+            "label": "个人卡片名称",
+            "placeholder": "请填写个人卡片名称",
+            "help": "不填写默认为站点则名称"
+          },
+          {
+            "$formkit": "textarea",
+            "name": "profile_desc",
+            "label": "个人卡片描述信息",
+            "placeholder": "请填写个人卡片描述信息",
+            "help": "支持使用 HTML 标签"
           }
         ]
       }
     ]
   }
 }
-
 
 
 

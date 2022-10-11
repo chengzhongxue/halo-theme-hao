@@ -7,9 +7,14 @@
     <div class="card-content">
         <div class="card-info-avatar is-center">
             <div class="author-info__sayhi" id="author-info__sayhi">你好啊！我是</div>
-            <div class="author-info__name" th:text="${site.title}">Liu ZhiHang</div>
-            <div class="author-info__description" th:utext="${theme.config.aside.description}">
-                这里可以写一些<b>公告信息</b>或者<b>个人介绍</b>。
+            <div class="author-info__name"
+                 th:if="${#strings.isEmpty(theme.config.sidebar.profile_name)}"
+                 th:text="${site.title}"></div>
+            <div class="author-info__name"
+                 th:if="${not #strings.isEmpty(theme.config.sidebar.profile_name)}"
+                 th:text="${theme.config.sidebar.profile_name}"></div>
+            <div class="author-info__description" th:utext="${theme.config.sidebar.profile_desc}">
+
             </div>
         </div>
     </div>

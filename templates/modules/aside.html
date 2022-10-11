@@ -2,39 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <div class="aside-content" id="aside-content" th:fragment="aside">
-    <div class="card-widget card-info">
-        <!-- 描述信息 -->
-        <!--<div class="card-content">-->
-        <!--    <div class="card-info-avatar is-center">-->
-        <!--        <div class="author-info__sayhi" id="author-info__sayhi" th:text="${theme.config.aside.subtitle}">-->
-        <!--            你好啊！我是-->
-        <!--        </div>-->
-        <!--        <div class="author-info__name" th:text="${theme.config.aside.title}">Liu ZhiHang</div>-->
-        <!--        <div class="author-info__description" th:utext="${theme.config.aside.description}">-->
-        <!--            这里可以写一些<b>公告信息</b>或者<b>个人介绍</b>。-->
-        <!--        </div>-->
-        <!--    </div>-->
-        <!--</div>-->
 
-        <!-- 跳转信息 -->
-        <!--<div class="banner-button-group">-->
-        <!--    <a class="banner-button" th:href="${theme.config.aside.button_link}">-->
-        <!--        <i class="fas fa-circle-arrow-up-right"></i>-->
-        <!--        <span class="banner-button-text" th:text="${theme.config.aside.button_text}">了解更多</span>-->
-        <!--    </a>-->
-        <!--</div>-->
-
-        <!--<div class="card-info-social-icons is-center">-->
-        <!--    <a class="social-icon" th:href="${theme.config.aside.github}" rel="external nofollow" target="_blank"-->
-        <!--       title="Github">-->
-        <!--        <i class="ri-github-line"></i>-->
-        <!--    </a>-->
-        <!--    <a class="social-icon" th:href="${theme.config.aside.mail}" rel="external nofollow" target="_blank"-->
-        <!--       title="Mail">-->
-        <!--        <i class="ri-mail-line"></i>-->
-        <!--    </a>-->
-        <!--</div>-->
-    </div>
+    <!-- 个人信息卡片 -->
+    <div th:replace="modules/widgets/profile :: profile"></div>
 
     <!-- 微信公众号 -->
     <div class="card-widget heo-right-widget" id="card-wechat" onclick='window.open("/wechat/")'>
