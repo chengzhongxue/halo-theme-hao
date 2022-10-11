@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 页脚模块 -->
-<footer id="footer" th:fragment="footer" th:with="leftMenu = ${theme.config.menu.footer_menu}">
+<footer id="footer" th:fragment="footer" th:with="footMenu = ${theme.config.menu.footer_menu}">
 
     <!-- 社交链接 -->
     <div id="footer_deal">
@@ -39,66 +39,18 @@
 
 
     <!-- 相关地址 -->
-    <div id="heo-footer">
-        <div class="footer-group"><h3 class="footer-title">软件</h3>
-            <div class="footer-links"><a class="footer-item" href="p/4db484b3.html">轻节食</a><a class="footer-item"
-                                                                                                 href="p/a170ac02.html">DelSpace3</a><a
-                    class="footer-item" href="p/9df485ea.html">比例计</a></div>
-        </div>
-        <div class="footer-group"><h3 class="footer-title">产品</h3>
-            <div class="footer-links"><a class="footer-item"
-                                         href="tags/%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/index.html">设计报告</a><a
-                    class="footer-item" href="tags/%E4%BA%A7%E5%93%81/index.html">优质报告</a></div>
-        </div>
-        <div class="footer-group"><h3 class="footer-title">设计</h3>
-            <div class="footer-links"><a class="footer-item" href="tags/Heocan/index.html">Heocan</a><a
-                    class="footer-item" href="tags/Sketch/index.html">Sketch</a><a class="footer-item"
-                                                                                   href="tags/%E4%BC%98%E8%B4%A8%E6%8A%A5%E5%91%8A/index.html">设计报告</a><a
-                    class="footer-item" href="tags/Photoshop/index.html">Photoshop</a></div>
-        </div>
-        <div class="footer-group"><h3 class="footer-title">开发</h3>
-            <div class="footer-links"><a class="footer-item" href="tags/Hexo/index.html">Hexo魔改</a><a
-                    class="footer-item" href="tags/Swift/index.html">Swift开发</a><a class="footer-item"
-                                                                                     href="tags/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF/index.html">网页前端</a>
+    <th:block th:if="${not #strings.isEmpty(footMenu)} and ${not #lists.isEmpty(menuFinder.getByName(footMenu))}">
+        <div id="heo-footer">
+            <div class="footer-group" th:each="menuItem : ${menuFinder.getByName(footMenu).menuItems}">
+                <h3 class="footer-title" th:text="${menuItem.status.displayName}">软件</h3>
+                <div class="footer-links">
+                    <a class="footer-item" th:each="childMenu : ${menuItem.children}" th:href="${childMenu.status.href}"
+                       th:text="${childMenu.status.displayName}"></a>
+                </div>
             </div>
         </div>
-        <div class="footer-group"><h3 class="footer-title">生活</h3>
-            <div class="footer-links"><a class="footer-item" href="musiclist/index.html">音乐榜单</a><a
-                    class="footer-item" href="movies/index.html">我的电影</a><a class="footer-item"
-                                                                                href="tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.html">读书笔记</a><a
-                    class="footer-item" href="tags/%E6%B7%B7%E5%89%AA/index.html">视频剪辑</a></div>
-        </div>
-        <div class="footer-group"><h3 class="footer-title">导航</h3>
-            <div class="footer-links"><a class="footer-item" href="essay/index.html">即刻短文</a><a
-                    class="footer-item" href="tlink/index.html">在线工具</a><a class="footer-item"
-                                                                               href="link/index.html#%E5%8F%8B%E9%93%BE%E6%96%87%E7%AB%A0">友链文章</a><a
-                    class="footer-item" href="moments/index.html">鱼塘</a></div>
-        </div>
-        <div class="footer-group"><h3 class="footer-title">服务</h3>
-            <div class="footer-links"><a class="footer-item" href="https://invite.51.la/1NzKqTeb?target=V6"
-                                         rel="noopener nofollow" target="_blank">51la统计</a><a class="footer-item"
-                                                                                                href="https://bf.zzxworld.com/s/612"
-                                                                                                rel="noopener nofollow"
-                                                                                                target="_blank">BlogFinder</a><a
-                    class="footer-item" href="https://www.foreverblog.cn/blog/2050.html" rel="noopener nofollow"
-                    target="_blank">十年之约</a><a class="footer-item" href="https://wangzhan.qianxin.com/"
-                                                   rel="noopener nofollow" target="_blank">奇安信</a></div>
-        </div>
-        <div class="footer-group"><h3 class="footer-title">协议</h3>
-            <div class="footer-links"><a class="footer-item" href="privacy/index.html">隐私协议</a><a
-                    class="footer-item" href="cookies/index.html">Cookies</a><a class="footer-item"
-                                                                                href="cc/index.html">版权协议</a>
-            </div>
-        </div>
-        <div class="footer-group"><h3 class="footer-title">友链</h3>
-            <div class="footer-links" id="friend-links-in-footer"><a class="footer-item"
-                                                                     href="link/index.html">随机生成中..</a><a
-                    class="footer-item" href="link/index.html">随机生成中..</a><a class="footer-item"
-                                                                                  href="link/index.html">随机生成中..</a><a
-                    class="footer-item" href="link/index.html">随机生成中..</a></div>
-        </div>
-    </div>
 
+    </th:block>
     <!-- 底部 banner -->
 
     <div id="footer-banner">
