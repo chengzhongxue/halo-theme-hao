@@ -49,12 +49,16 @@ halo 的主题路径：
 ![img.png](images/windows.png)
 
 可以通过 IDEA 或者 vscode 直接打开主题文件夹，进行操作开发，这里会实时生效。
-
+> windows系统推荐使用vscode打开，因为IDEA目前对于wsl2的支持并不好
 #### 方式二
 
-1. 直接在主题目录(~/halo-next/theme)下 git pull 代码，然后重命名为 `theme-hao`。 此时打开 console 控制台是看不到这个主题的，（halo
+1. 直接在主题目录(~/halo-next/)下，执行  mkdir -p theme/theme-hao
+    > windows系统目录是在 wsl2 里面的  /home/用户/halo-next
+2. git pull 代码。此时打开 console 控制台是看不到这个主题的，（halo
    后面会添加扫描主题功能）
+      > windows系统推荐使用ssh的方式连接github，然后再拉取代码
 2. 通过 http 接口，将 theme.yaml 的配置提交，接口可以参考 swagger-ui
+    > 也可以直接通过swagger来执行对应的接口
 3. 可以参考 http/theme.http 内的脚本
 
 ### 如何动态更新配置
