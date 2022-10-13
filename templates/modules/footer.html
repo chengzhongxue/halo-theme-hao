@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!-- 页脚模块 th:with="footMenu = ${theme.config.menu.footer_menu}“-->
-<footer id="footer" th:fragment="footer" >
+<!-- 页脚模块 -->
+<footer id="footer" th:fragment="footer" th:with="footMenu = ${theme.config.menu.footer_menu}">
 
     <!-- 社交链接 -->
     <div id="footer_deal">
