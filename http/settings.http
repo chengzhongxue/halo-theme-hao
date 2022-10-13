@@ -3,7 +3,7 @@
 DELETE http://localhost:8090/api/v1alpha1/settings/theme-hao-setting
 Content-Type: application/json
 Sec-Fetch-Mode: cors
-X-XSRF-TOKEN: {{$uuid}}
+X-XSRF-TOKEN: {{token}}
 Cookie: {{cookie}}
 
 
@@ -13,7 +13,7 @@ POST http://localhost:8090/api/v1alpha1/settings
 Content-Type: application/json
 Sec-Fetch-Mode: cors
 Cookie: {{cookie}}
-X-XSRF-TOKEN: {{$uuid}}
+X-XSRF-TOKEN: {{token}}
 
 {
   "apiVersion": "v1alpha1",
@@ -167,12 +167,12 @@ X-XSRF-TOKEN: {{$uuid}}
         ]
       },
       {
-        "group": "menu",
+        "group": "footer",
         "label": "菜单映射",
         "formSchema": [
           {
             "$formkit": "text",
-            "name": "footer_menu",
+            "name": "menu",
             "label": "底部相关链接",
             "placeholder": "请填写 metadata name",
             "help": "需要通过开发者模式获取菜单对应的 metadata name"

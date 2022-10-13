@@ -89,7 +89,7 @@ spec:
           placeholder: 请填写个人卡片描述信息
           help: "支持使用 HTML 标签"
     - group: footer
-      label: 菜单映射
+      label: 页脚
       formSchema:
         - $formkit: text
           name: menu

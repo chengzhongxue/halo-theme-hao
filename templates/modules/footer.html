@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 页脚模块 -->
-<footer id="footer" th:fragment="footer" th:with="footMenu = ${theme.config.menu.footer_menu}">
+<footer id="footer" th:fragment="footer">
 
     <!-- 社交链接 -->
     <div id="footer_deal">
@@ -38,9 +38,10 @@
     </div>
 
 
-    <!-- 相关地址 -->
-    <th:block th:if="${not #strings.isEmpty(footMenu)} and ${not #lists.isEmpty(menuFinder.getByName(footMenu))}">
-        <div id="heo-footer">
+    <!-- 相关地址  -->
+    <th:block th:with="footMenu = ${theme.config.footer.menu}">
+        <div id="heo-footer"
+             th:if="${not #strings.isEmpty(footMenu)} and ${not #lists.isEmpty(menuFinder.getByName(footMenu))}">
             <div class="footer-group" th:each="menuItem : ${menuFinder.getByName(footMenu).menuItems}">
                 <h3 class="footer-title" th:text="${menuItem.status.displayName}">软件</h3>
                 <div class="footer-links">
