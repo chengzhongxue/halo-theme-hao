@@ -2652,7 +2652,7 @@ blockquote footer cite::before {
 }
 
 #page-header.nav-fixed #nav #site-name:hover, #page-header.nav-fixed #nav #toggle-menu:hover, #page-header.nav-fixed #nav a:hover {
-    color: #307af6
+    color: #307af6;
 }
 
 #page-header.nav-visible #nav {
@@ -6668,11 +6668,11 @@ a.console_switchbutton {
 
 #nav #site-name {
     color: var(--heo-fontcolor);
-    padding: 0;
+    padding: 0px 5px;
     transition: .3s;
     display: flex;
     height: 35px;
-    width: 75px;
+    /*width: 75px;*/
     justify-content: center;
     align-items: center;
     text-shadow: none;

@@ -2,6 +2,8 @@
 ### 删除 settings 配置， Cookit 可以从 Console 后台 F12 获取
 DELETE http://localhost:8090/api/v1alpha1/settings/theme-hao-setting
 Content-Type: application/json
+Sec-Fetch-Mode: cors
+X-XSRF-TOKEN: {{$uuid}}
 Cookie: {{cookie}}
 
 
@@ -9,7 +11,9 @@ Cookie: {{cookie}}
 
 POST http://localhost:8090/api/v1alpha1/settings
 Content-Type: application/json
+Sec-Fetch-Mode: cors
 Cookie: {{cookie}}
+X-XSRF-TOKEN: {{$uuid}}
 
 {
   "apiVersion": "v1alpha1",
@@ -19,6 +23,26 @@ Cookie: {{cookie}}
   },
   "spec": {
     "forms": [
+      {
+        "group": "nav",
+        "label": "导航栏",
+        "formSchema": [
+          {
+            "$formkit": "text",
+            "name": "left_menu",
+            "label": "导航栏左侧相关链接",
+            "placeholder": "请填写 metadata name",
+            "help": "需要通过开发者模式获取菜单对应的 metadata name"
+          },
+          {
+            "$formkit": "text",
+            "name": "site_title",
+            "label": "标题",
+            "placeholder": "请输入标题",
+            "help": "支持 HTML 语法，比如 <span id=\"site-name-icon\">Hao</span>，默认为站点名称"
+          }
+        ]
+      },
       {
         "group": "layout",
         "label": "布局",
@@ -146,13 +170,6 @@ Cookie: {{cookie}}
         "group": "menu",
         "label": "菜单映射",
         "formSchema": [
-          {
-            "$formkit": "text",
-            "name": "header_left_menu",
-            "label": "菜单栏左侧相关链接",
-            "placeholder": "请填写 metadata name",
-            "help": "需要通过开发者模式获取菜单对应的 metadata name"
-          },
           {
             "$formkit": "text",
             "name": "footer_menu",

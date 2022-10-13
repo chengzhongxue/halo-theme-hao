@@ -473,7 +473,7 @@
                     <div class="comment-tips" id="comment-tips"><span>你无需删除空行，直接评论以获取最佳展示效果</span>
                     </div>
                 </div>
-                这里放着评论模块
+                <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}"/>
             </div>
             <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.10/clipboard.min.js"></script>
             <script>var clipboard = new ClipboardJS(".copybtn")</script>
