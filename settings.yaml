@@ -12,6 +12,15 @@ spec:
           label: 导航栏左侧相关链接
           placeholder: 请填写 metadata name
           help: "需要通过开发者模式获取菜单对应的 metadata name"
+        - $formkit: radio
+          name: right_menu
+          label: 右侧四个按钮
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
         - $formkit: text
           name: site_title
           label: 标题

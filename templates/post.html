@@ -8,7 +8,43 @@
     <meta content="telephone=no" name="format-detection">
     <meta content="var(--heo-main)" name="theme-color">
     <script th:src="@{/assets/js/heo.js}"></script>
+        <link rel="stylesheet"      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+        <script script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.5.0/tocbot.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.5.0/tocbot.css">
+        <script>
+            //目录使用tocbot来生成
+            window.addEventListener('load', () => {
+                var headerEl = 'h1,h2,h3,h4,h5,h6', // headers
+                    content = '.post-content', // 文章容器
+                    idArr = {};
+                $(content).children(headerEl).each(function () { // 去除空格以及多余标点
+                    var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
 
+                    headerId = headerId.toLowerCase();
+                    if (idArr[headerId]) { // id已经存在
+                        $(this).attr('id', headerId + '-' + idArr[headerId]);
+                        idArr[headerId]++;
+                    } else { // id未存在
+                        idArr[headerId] = 1;
+                        $(this).attr('id', headerId);
+                    }
+                });
+                tocbot.init({
+                    // 添加到哪里 
+                    tocSelector: '.toc-item toc-level',
+                    // 针对那个id标签
+                    contentSelector: content,
+                    // 滚动跟随
+                    positionFixedClass: 'is-position-fixed',
+                    positionFixedSelector: '.toc',
+                    // 需要解析的标题
+                    headingSelector: headerEl
+
+                });
+            }
+            </script>
     <link rel="stylesheet" th:href="@{/assets/zhheo/zhheoblog.css}">
     <!-- fontawesome-pro https://github.com/duyplus/fontawesome-pro -->
     <link href="https://cdn.jsdelivr.net/gh/duyplus/fontawesome-pro/css/all.min.css"
@@ -838,5 +874,7 @@
         heo.initThemeColor()
     </script>
 </div>
+<!-- 代码高亮highlight.js  -->
+<script>hljs.highlightAll();</script>
 </body>
 </html>

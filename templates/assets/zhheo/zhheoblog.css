@@ -732,9 +732,9 @@ table td, table th {
     vertical-align: middle
 }
 
+/* 选中内容的颜色 */
 ::selection {
-    background: #0079ff;
-    color: #f7f7f7
+    color: #b5b8ef
 }
 
 button {
@@ -10392,7 +10392,6 @@ b, strong {
 }
 
 #article-container.post-content h1, #article-container.post-content h2, #article-container.post-content h3, #article-container.post-content h4 {
-    display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: row-reverse
