@@ -39,7 +39,8 @@
 
 
     <!-- 相关地址  -->
-    <th:block th:with="footMenu = ${theme.config.footer.menu}">
+    <th:block th:if="${not #strings.isEmpty(theme.config.footer.menu)}"
+              th:with="footMenu = ${theme.config.footer.menu}">
         <div id="heo-footer"
              th:if="${not #strings.isEmpty(footMenu)} and ${not #lists.isEmpty(menuFinder.getByName(footMenu))}">
             <div class="footer-group" th:each="menuItem : ${menuFinder.getByName(footMenu).menuItems}">

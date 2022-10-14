@@ -5,8 +5,12 @@
     <!-- banners -->
     <div id="banners">
         <div class="banners-title">
-            <div class="banners-title-big" th:utext="${theme.config.top.banners_title_big}"></div>
-            <div class="banners-title-small" th:utext="${theme.config.top.banners_title_small}"></div>
+            <div class="banners-title-big"
+                 th:if="${not #strings.isEmpty(theme.config.top.banners_title_big)}"
+                 th:utext="${theme.config.top.banners_title_big}"></div>
+            <div class="banners-title-small"
+                 th:if="${not #strings.isEmpty(theme.config.top.banners_title_small)}"
+                 th:utext="${theme.config.top.banners_title_small}"></div>
         </div>
         <div class="tags-group-all">
             <div class="tags-group-wrapper">

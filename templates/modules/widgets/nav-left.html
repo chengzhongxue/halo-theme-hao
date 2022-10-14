@@ -2,7 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <!-- 导航栏左侧 -->
-<div id="blog_name" th:fragment="nav-left" th:with="leftMenu = ${theme.config.nav.left_menu}">
+<div id="blog_name" th:fragment="nav-left"
+     th:if="${not #strings.isEmpty(theme.config.nav.left_menu)}"
+     th:with="leftMenu = ${theme.config.nav.left_menu}">
 
     <!-- 菜单栏左侧按钮，没有配置时，则不展示-->
     <div class="back-home-button" tabindex="-1"
