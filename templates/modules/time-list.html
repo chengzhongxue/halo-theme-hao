@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div class="bbTimeList container" id="bbTimeList" th:fragment="time-list">
+<div class="bbTimeList container" id="bbTimeList" th:fragment="time-list"
+ th:if="${theme.config.top.time_list}"     >
     <i class="bber-logo iconfont icon-bblogo"
        onclick="pjax.loadUrl(&quot;/essay/&quot;)"
        style="font-size:2rem" title="说说"></i>

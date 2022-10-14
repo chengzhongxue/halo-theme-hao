@@ -29,6 +29,15 @@ spec:
               value: true
             - label: 隐藏
               value: false
+        - $formkit: radio
+          name: time_list
+          label: 日志模块
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
         - $formkit: text
           name: banners_title_big
           label: Banners 大标题
