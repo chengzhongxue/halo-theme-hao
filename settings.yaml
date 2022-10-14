@@ -21,7 +21,7 @@ spec:
       label: 顶部
       formSchema:
         - $formkit: radio
-          name: content_header
+          name: recent_top
           label: 首页顶部
           value: true
           options:
