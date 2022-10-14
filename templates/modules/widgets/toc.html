@@ -4,17 +4,20 @@
 
 <th:block th:fragment="toc">
     <div class="card-widget" id="card-toc">
-        <div class="item-headline"><i class="fas fa-bars"></i><span>文章目录</span></div>
-        <div class="toc-content">
-            <ol class="toc">
-                <li class="toc-item toc-level-2">
-                    <a class="toc-link" href="#"><span class="toc-text">通过转换为灰度来进行去色</span></a>
-                </li>
-            </ol>
+        <div class="item-headline">
+            <i class="fas fa-bars"></i>
+            <span>文章目录</span>
         </div>
+        <!-- 目录容器 -->
+        <div class="toc-content"></div>
+    </div>
+
+    <!-- tocbot 用来生成目录 -->
+    <div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css" rel="stylesheet">
     </div>
     <script>
-
         // 给标签添加 id
         var headerEl = 'h1,h2,h3,h4,h5,h6', // headers
             content = '.post-content', // 文章容器
