@@ -8,43 +8,44 @@
     <meta content="telephone=no" name="format-detection">
     <meta content="var(--heo-main)" name="theme-color">
     <script th:src="@{/assets/js/heo.js}"></script>
-        <link rel="stylesheet"      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
-        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
-        <script script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.5.0/tocbot.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.5.0/tocbot.css">
-        <script>
-            //目录使用tocbot来生成
-            window.addEventListener('load', () => {
-                var headerEl = 'h1,h2,h3,h4,h5,h6', // headers
-                    content = '.post-content', // 文章容器
-                    idArr = {};
-                $(content).children(headerEl).each(function () { // 去除空格以及多余标点
-                    var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+    <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css" rel="stylesheet">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.5.0/tocbot.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.5.0/tocbot.css" rel="stylesheet">
+    <script>
+        //目录使用tocbot来生成
+        window.addEventListener('load', () => {
+            var headerEl = 'h1,h2,h3,h4,h5,h6', // headers
+                content = '.post-content', // 文章容器
+                idArr = {};
+            $(content).children(headerEl).each(function () { // 去除空格以及多余标点
+                var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
 
-                    headerId = headerId.toLowerCase();
-                    if (idArr[headerId]) { // id已经存在
-                        $(this).attr('id', headerId + '-' + idArr[headerId]);
-                        idArr[headerId]++;
-                    } else { // id未存在
-                        idArr[headerId] = 1;
-                        $(this).attr('id', headerId);
-                    }
-                });
-                tocbot.init({
-                    // 添加到哪里 
-                    tocSelector: '.toc-item toc-level',
-                    // 针对那个id标签
-                    contentSelector: content,
-                    // 滚动跟随
-                    positionFixedClass: 'is-position-fixed',
-                    positionFixedSelector: '.toc',
-                    // 需要解析的标题
-                    headingSelector: headerEl
+                headerId = headerId.toLowerCase();
+                if (idArr[headerId]) { // id已经存在
+                    $(this).attr('id', headerId + '-' + idArr[headerId]);
+                    idArr[headerId]++;
+                } else { // id未存在
+                    idArr[headerId] = 1;
+                    $(this).attr('id', headerId);
+                }
+            });
+            tocbot.init({
+                // 添加到哪里
+                tocSelector: '.toc-item toc-level',
+                // 针对那个id标签
+                contentSelector: content,
+                // 滚动跟随
+                positionFixedClass: 'is-position-fixed',
+                positionFixedSelector: '.toc',
+                // 需要解析的标题
+                headingSelector: headerEl
 
-                });
-            }
-            </script>
+            });
+        });
+    </script>
     <link rel="stylesheet" th:href="@{/assets/zhheo/zhheoblog.css}">
     <!-- fontawesome-pro https://github.com/duyplus/fontawesome-pro -->
     <link href="https://cdn.jsdelivr.net/gh/duyplus/fontawesome-pro/css/all.min.css"
@@ -437,7 +438,8 @@
                         <div class="post-meta__tag-list">
                             <a class="post-meta__tags" th:each="tag : ${post.tags}" th:href="${tag.status.permalink}">
                                 <span class="tags-punctuation">#</span>
-                                <th:block th:title="${tag.spec.displayName}"></th:block>
+                                <th:block th:title="${tag.spec.displayName}"
+                                          th:text="${tag.spec.displayName}"></th:block>
                                 <span class="tagsPageCount" th:text="${tag.status.postCount}"></span>
                             </a>
                         </div>
@@ -445,23 +447,28 @@
                 </div>
             </div>
 
-            <!-- 版权生命 -->
+            <!-- 版权声明 -->
             <div class="post-copyright">
                 <div class="post-copyright__author">
                     <!-- 版权页 以及版权描述文字 -->
-                    <a class="post-copyright__original" href="../cc/index.html"
+                    <a class="post-copyright__original" th:href="@{/cc}"
                        title="该文章为原创文章，注意版权协议">原创</a>
                     <a class="post-copyright-title" href="#"><span th:text="${post.spec.title}"></span></a>
                 </div>
-                <div class="post-copyright__type"><span class="post-copyright-info" id="post-copyright-url"><a
-                        href="1abe0c7.html">https://blog.zhheo.com/p/1abe0c7.html</a></span>
-                    <button class="post-copyright-copybtn" onclick="rm.copyPageUrl()"><i
-                            class="fas fa-paste copy-btn"></i></button>
+                <div class="post-copyright__type">
+                    <span class="post-copyright-info" id="post-copyright-url">
+                    <a href="javascript:window.location.href;">
+                        text
+                    </a>
+                </span>
+                    <button class="post-copyright-copybtn" onclick="rm.copyPageUrl()">
+                        <i class="fas fa-paste copy-btn"></i>
+                    </button>
                 </div>
                 <div class="post-copyright__notice">
                     <span class="post-copyright-info">
-                        本文是原创文章，采用 <a href="../cc/index.html" target="_blank">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a
-                            href="../index.html" target="_blank" th:text="${site.title}"></a>
+                        本文是原创文章，采用 <a th:href="@{/cc}" target="_blank">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a
+                            href="/" target="_blank" th:text="${site.title}"></a>
                     </span>
                 </div>
             </div>
@@ -831,12 +838,6 @@
 
         typeof chatBtnFn === 'function' && chatBtnFn()
         typeof panguInit === 'function' && panguInit()
-
-
-        // Analytics
-        if (false) {
-            MtaH5.pgv()
-        }
 
         // prismjs
         typeof Prism === 'object' && Prism.highlightAll()
