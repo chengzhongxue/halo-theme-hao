@@ -17,6 +17,28 @@ spec:
           label: 标题
           placeholder: 请输入标题
           help: 支持 HTML 语法，比如 <span id="site-name-icon">Hao</span>，默认为站点名称
+    - group: top
+      label: 顶部
+      formSchema:
+        - $formkit: radio
+          name: content_header
+          label: 首页顶部
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
+        - $formkit: text
+          name: banners_title_big
+          label: Banners 大标题
+          placeholder: 请输入大标题
+          help: 支持 HTML 语法
+        - $formkit: text
+          name: banners_title_small
+          label: Banners 小标题
+          placeholder: 请输入小标题
+          help: 支持 HTML 语法
     - group: layout
       label: 布局
       formSchema:
