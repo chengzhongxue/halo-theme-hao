@@ -2242,7 +2242,7 @@ blockquote footer cite::before {
     }
 }
 
-#aside-content #card-toc .toc-content .toc-item.active .toc-child {
+#aside-content #card-toc .toc-content .toc-list-item.active .toc-child {
     display: block
 }
 
@@ -9031,11 +9031,11 @@ a.article-meta__categories:hover {
     font-size: 20px
 }
 
-[data-theme=dark].toc .toc-item.active .toc-link .toc-text {
+[data-theme=dark].toc-list .toc-list-item.active .toc-link .toc-text {
     color: var(--heo-white)
 }
 
-#aside-content #card-toc .toc-content .toc-item.active .toc-link {
+#aside-content #card-toc .toc-content .toc-list-item.active .toc-link {
     opacity: 1;
     border-radius: 8px
 }

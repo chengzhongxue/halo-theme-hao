@@ -12,40 +12,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
     <script crossorigin="anonymous" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
             script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.5.0/tocbot.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.5.0/tocbot.css" rel="stylesheet">
-    <script>
-        //目录使用tocbot来生成
-        window.addEventListener('load', () => {
-            var headerEl = 'h1,h2,h3,h4,h5,h6', // headers
-                content = '.post-content', // 文章容器
-                idArr = {};
-            $(content).children(headerEl).each(function () { // 去除空格以及多余标点
-                var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css" rel="stylesheet">
 
-                headerId = headerId.toLowerCase();
-                if (idArr[headerId]) { // id已经存在
-                    $(this).attr('id', headerId + '-' + idArr[headerId]);
-                    idArr[headerId]++;
-                } else { // id未存在
-                    idArr[headerId] = 1;
-                    $(this).attr('id', headerId);
-                }
-            });
-            tocbot.init({
-                // 添加到哪里
-                tocSelector: '.toc-item toc-level',
-                // 针对那个id标签
-                contentSelector: content,
-                // 滚动跟随
-                positionFixedClass: 'is-position-fixed',
-                positionFixedSelector: '.toc',
-                // 需要解析的标题
-                headingSelector: headerEl
-
-            });
-        });
-    </script>
     <link rel="stylesheet" th:href="@{/assets/zhheo/zhheoblog.css}">
     <!-- fontawesome-pro https://github.com/duyplus/fontawesome-pro -->
     <link href="https://cdn.jsdelivr.net/gh/duyplus/fontawesome-pro/css/all.min.css"
@@ -230,87 +199,6 @@
 
 <!-- 控制台 -->
 <div th:replace="modules/widgets/console :: console"></div>
-<div id="sidebar">
-    <div id="menu-mask"></div>
-    <div id="sidebar-menus">
-        <div class="author-avatar"></div>
-        <div class="site-data">
-            <div class="data-item is-center">
-                <div class="data-item-link"><a href="../archives/index.html">
-                    <div class="headline">文章</div>
-                    <div class="length-num">649</div>
-                </a></div>
-            </div>
-            <div class="data-item is-center">
-                <div class="data-item-link"><a href="../tags/index.html">
-                    <div class="headline">标签</div>
-                    <div class="length-num">47</div>
-                </a></div>
-            </div>
-            <div class="data-item is-center">
-                <div class="data-item-link"><a href="../categories/index.html">
-                    <div class="headline">分类</div>
-                    <div class="length-num">11</div>
-                </a></div>
-            </div>
-        </div>
-        <hr>
-        <div class="menus_items">
-            <div class="menus_item"><a class="site-page" href="javascript:void(0);"
-                                       rel="external nofollow"><span>文库</span><i
-                    class="fas fa-chevron-down expand"></i></a>
-                <ul class="menus_item_child">
-                    <li><a class="site-page child" href="../archives/index.html"><i
-                            class="fa-fw fa-duotone fa-list-timeline"></i> <span>文章列表</span></a></li>
-                    <li><a class="site-page child" href="../categories/index.html"><i
-                            class="fa-fw fa-duotone fa-list-tree"></i> <span>全部分类</span></a></li>
-                    <li><a class="site-page child" href="../tags/index.html"><i class="fa-fw fa-duotone fa-tags"></i>
-                        <span>全部标签</span></a></li>
-                    <li><a class="site-page child" href="../essay/index.html"><i
-                            class="fa-fw fa-duotone fa-rectangles-mixed"></i> <span>即刻短文</span></a></li>
-                </ul>
-            </div>
-            <div class="menus_item"><a class="site-page" href="javascript:void(0);"
-                                       rel="external nofollow"><span>专栏</span><i
-                    class="fas fa-chevron-down expand"></i></a>
-                <ul class="menus_item_child">
-                    <li><a class="site-page child" href="../tags/%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/index.html"><i
-                            class="fa-fw fa-duotone fa-swatchbook"></i> <span>设计报告</span></a></li>
-                    <li><a class="site-page child" href="../tags/Heocan/index.html"><i
-                            class="fa-fw fa-duotone fa-pen-paintbrush"></i> <span>设计分享</span></a></li>
-                    <li><a class="site-page child" href="../tags/Sketch/index.html"><i
-                            class="fa-fw fa-duotone fa-palette"></i> <span>设计工具</span></a></li>
-                    <li><a class="site-page child" href="../tags/%E6%B7%B7%E5%89%AA/index.html"><i
-                            class="fa-fw fa-duotone fa-scissors"></i> <span>视频混剪</span></a></li>
-                </ul>
-            </div>
-            <div class="menus_item"><a class="site-page" href="javascript:void(0);"
-                                       rel="external nofollow"><span>友链</span><i
-                    class="fas fa-chevron-down expand"></i></a>
-                <ul class="menus_item_child">
-                    <li><a class="site-page child" href="../moments/index.html"><i
-                            class="fa-fw fa-duotone fa-fish-fins"></i> <span>友链鱼塘</span></a></li>
-                    <li><a class="site-page child" href="../link/index.html"><i
-                            class="fa-fw fa-duotone fa-user-group"></i> <span>友情链接</span></a></li>
-                    <li><a class="site-page child" href="javascript:travelling()" rel="external nofollow"><i
-                            class="fa-fw fa-duotone fa-treasure-chest"></i> <span>宝藏博主</span></a></li>
-                </ul>
-            </div>
-            <div class="menus_item"><a class="site-page" href="javascript:void(0);"
-                                       rel="external nofollow"><span>我的</span><i
-                    class="fas fa-chevron-down expand"></i></a>
-                <ul class="menus_item_child">
-                    <li><a class="site-page child" href="../tlink/index.html"><i
-                            class="fa-fw fa-duotone fa-screwdriver-wrench"></i> <span>在线工具</span></a></li>
-                    <li><a class="site-page child" href="../movies/index.html"><i
-                            class="fa-fw fa-duotone fa-film-simple"></i> <span>电影推荐</span></a></li>
-                    <li><a class="site-page child" href="../about/index.html"><i
-                            class="fa-fw fa-duotone fa-face-awesome"></i> <span>关于本站</span></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="post" id="body-wrap">
     <header class="post-bg" id="page-header" th:style="'background-image:url(' + ${post.spec.cover} + ')'">
         <nav th:replace="modules/nav :: nav"></nav>
@@ -322,7 +210,7 @@
             <div id="post-firstinfo">
                 <div class="meta-firstline">
                     <!-- 这里要跳转到版权页 -->
-                    <a class="post-meta-original" href="../cc/index.html" title="该文章为原创文章，注意版权协议">原创</a>
+                    <a class="post-meta-original" th:href="@{/cc}" title="该文章为原创文章，注意版权协议">原创</a>
                     <span class="post-meta-categories">
                         <a class="post-meta-categories"
                            th:each="category : ${post.categories}"
@@ -438,8 +326,8 @@
                         <div class="post-meta__tag-list">
                             <a class="post-meta__tags" th:each="tag : ${post.tags}" th:href="${tag.status.permalink}">
                                 <span class="tags-punctuation">#</span>
-                                <th:block th:title="${tag.spec.displayName}"
-                                          th:text="${tag.spec.displayName}"></th:block>
+                                <th:block th:text="${tag.spec.displayName}"
+                                          th:title="${tag.spec.displayName}"></th:block>
                                 <span class="tagsPageCount" th:text="${tag.status.postCount}"></span>
                             </a>
                         </div>
@@ -467,7 +355,7 @@
                 </div>
                 <div class="post-copyright__notice">
                     <span class="post-copyright-info">
-                        本文是原创文章，采用 <a th:href="@{/cc}" target="_blank">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a
+                        本文是原创文章，采用 <a target="_blank" th:href="@{/cc}">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a
                             href="/" target="_blank" th:text="${site.title}"></a>
                     </span>
                 </div>
@@ -531,16 +419,18 @@
 
             <div class="sticky_layout">
                 <!-- 目录 -->
-                <div class="card-widget" id="card-toc">
-                    <div class="item-headline"><i class="fas fa-bars"></i><span>文章目录</span></div>
-                    <div class="toc-content">
-                        <ol class="toc">
-                            <li class="toc-item toc-level-2">
-                                <a class="toc-link" href="#"><span class="toc-text">通过转换为灰度来进行去色</span></a>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
+                <div th:replace="modules/widgets/toc :: toc"></div>
+
+                <!--<div class="card-widget" id="card-toc">-->
+                <!--    <div class="item-headline"><i class="fas fa-bars"></i><span>文章目录</span></div>-->
+                <!--    <div class="toc-content">-->
+                <!--        <ol class="toc">-->
+                <!--            <li class="toc-item toc-level-2">-->
+                <!--                <a class="toc-link" href="#"><span class="toc-text">通过转换为灰度来进行去色</span></a>-->
+                <!--            </li>-->
+                <!--        </ol>-->
+                <!--    </div>-->
+                <!--</div>-->
 
                 <!-- 微信卡片 -->
                 <div class="card-widget heo-right-widget" id="card-wechat" onclick='window.open("/wechat/")'>

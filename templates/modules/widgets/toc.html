@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 目录 -->
+
+<th:block th:fragment="toc">
+    <div class="card-widget" id="card-toc">
+        <div class="item-headline"><i class="fas fa-bars"></i><span>文章目录</span></div>
+        <div class="toc-content">
+            <ol class="toc">
+                <li class="toc-item toc-level-2">
+                    <a class="toc-link" href="#"><span class="toc-text">通过转换为灰度来进行去色</span></a>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <script>
+
+        // 给标签添加 id
+        var headerEl = 'h1,h2,h3,h4,h5,h6', // headers
+            content = '.post-content', // 文章容器
+            idArr = {};
+        $(content).children(headerEl).each(function () {
+
+            // 去除空格以及多余标点
+            var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+            headerId = headerId.toLowerCase();
+            if (idArr[headerId]) {
+                // id已经存在
+                $(this).attr('id', headerId + '-' + idArr[headerId]);
+                idArr[headerId]++;
+            } else {
+                // id未存在
+                idArr[headerId] = 1;
+                $(this).attr('id', headerId);
+            }
+        });
+        tocbot.init({
+            // Where to render the table of contents.
+            tocSelector: '.toc-content',
+            // Where to grab the headings to build the table of contents.
+            contentSelector: '.post-content',
+            // Which headings to grab inside of the contentSelector element.
+            headingSelector: headerEl,
+            // For headings inside relative or absolute positioned containers within content.
+            hasInnerContainers: true,
+
+        });
+    </script>
+</th:block>
+</html>
