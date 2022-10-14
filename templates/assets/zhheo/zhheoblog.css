@@ -817,7 +817,7 @@ img:not([src]), img[src=""] {
 }
 
 :root {
-    --hl-color: #eff;
+    --hl-color: rgba(1, 14, 14, 0.899);
     --hl-bg: #212121;
     --hltools-bg: #1c1c1c;
     --hltools-color: rgba(238, 255, 255, 0.8);
