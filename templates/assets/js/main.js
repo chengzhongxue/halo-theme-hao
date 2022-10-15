@@ -45,46 +45,46 @@ document.addEventListener("DOMContentLoaded", function () {
         n ? e.classList.add("hide-menu") : e.classList.remove("hide-menu")
     }
 
-    function E() {
-        var t, e, n, c, r, o, s, l, d, u, i, f, m, a = GLOBAL_CONFIG.highlight;
-
-        function h(t, e, n) {
-            var o, i, a = document.createDocumentFragment();
-            r && ((o = document.createElement("div")).className = "highlight-tools ".concat(u), o.innerHTML = l + t + d, o.addEventListener("click", f), a.appendChild(o)), c && e.offsetHeight > c + 30 && ((i = document.createElement("div")).className = "code-expand-btn", i.innerHTML = '<i class="fas fa-angle-double-down"></i>', i.addEventListener("click", m), a.appendChild(i)), "hl" === n ? e.insertBefore(a, e.firstChild) : e.parentNode.insertBefore(a, e)
-        }
-
-        a && (t = a.highlightCopy, e = a.highlightLang, n = GLOBAL_CONFIG_SITE.isHighlightShrink, c = a.highlightHeightLimit, r = t || e || void 0 !== n, o = "highlighjs" === a.plugin ? document.querySelectorAll("figure.highlight") : document.querySelectorAll('pre[class*="language-"]'), (r || c) && o.length && (s = "prismjs" === a.plugin, u = !(d = l = "") === n ? "closed" : "", void 0 !== n && (l = '<i class="fas fa-angle-down expand '.concat(u, '"></i>')), t && (d = '<div class="copy-notice"></div><i class="fas fa-paste copy-button"></i>'), i = function (t) {
-            var e = t.parentNode;
-            e.classList.add("copy-true");
-            var n = window.getSelection(), o = document.createRange();
-            s ? o.selectNodeContents(e.querySelectorAll("pre code")[0]) : o.selectNodeContents(e.querySelectorAll("table .code pre")[0]), n.removeAllRanges(), n.addRange(o);
-            var i, a;
-            n.toString();
-            i = t.lastChild, document.queryCommandSupported && document.queryCommandSupported("copy") ? (document.execCommand("copy"), void 0 !== GLOBAL_CONFIG.Snackbar ? btf.snackbarShow(GLOBAL_CONFIG.copy.success) : ((a = i.previousElementSibling).innerText = GLOBAL_CONFIG.copy.success, a.style.opacity = 1, setTimeout(function () {
-                a.style.opacity = 0
-            }, 700))) : void 0 !== GLOBAL_CONFIG.Snackbar ? btf.snackbarShow(GLOBAL_CONFIG.copy.noSupport) : i.previousElementSibling.innerText = GLOBAL_CONFIG.copy.noSupport, n.removeAllRanges(), e.classList.remove("copy-true")
-        }, f = function (t) {
-            var e, n, o = t.target.classList;
-            o.contains("expand") ? (n = _toConsumableArray((e = this).parentNode.children).slice(1), e.firstChild.classList.toggle("closed"), btf.isHidden(n[n.length - 1]) ? n.forEach(function (t) {
-                t.style.display = "block"
-            }) : n.forEach(function (t) {
-                t.style.display = "none"
-            })) : o.contains("copy-button") && i(this)
-        }, m = function () {
-            this.classList.toggle("expand-done")
-        }, e ? s ? o.forEach(function (t) {
-            var e = t.getAttribute("data-language") ? t.getAttribute("data-language") : "Code",
-                n = '<div class="code-lang">'.concat(e, "</div>");
-            btf.wrap(t, "figure", "", "highlight"), h(n, t)
-        }) : o.forEach(function (t) {
-            var e = t.getAttribute("class").split(" ")[1];
-            "plain" !== e && void 0 !== e || (e = "Code"), h('<div class="code-lang">'.concat(e, "</div>"), t, "hl")
-        }) : s ? o.forEach(function (t) {
-            btf.wrap(t, "figure", "", "highlight"), h("", t)
-        }) : o.forEach(function (t) {
-            h("", t, "hl")
-        })))
-    }
+    // function E() {
+    //     var t, e, n, c, r, o, s, l, d, u, i, f, m, a = GLOBAL_CONFIG.highlight;
+    //
+    //     function h(t, e, n) {
+    //         var o, i, a = document.createDocumentFragment();
+    //         r && ((o = document.createElement("div")).className = "highlight-tools ".concat(u), o.innerHTML = l + t + d, o.addEventListener("click", f), a.appendChild(o)), c && e.offsetHeight > c + 30 && ((i = document.createElement("div")).className = "code-expand-btn", i.innerHTML = '<i class="fas fa-angle-double-down"></i>', i.addEventListener("click", m), a.appendChild(i)), "hl" === n ? e.insertBefore(a, e.firstChild) : e.parentNode.insertBefore(a, e)
+    //     }
+    //     //  todo 这块是不是要移除掉
+    //     a && (t = a.highlightCopy, e = a.highlightLang, n = GLOBAL_CONFIG_SITE.isHighlightShrink, c = a.highlightHeightLimit, r = t || e || void 0 !== n, o = "highlighjs" === a.plugin ? document.querySelectorAll("figure.highlight") : document.querySelectorAll('pre[class*="language-"]'), (r || c) && o.length && (s = "prismjs" === a.plugin, u = !(d = l = "") === n ? "closed" : "", void 0 !== n && (l = '<i class="fas fa-angle-down expand '.concat(u, '"></i>')), t && (d = '<div class="copy-notice"></div><i class="fas fa-paste copy-button"></i>'), i = function (t) {
+    //         var e = t.parentNode;
+    //         e.classList.add("copy-true");
+    //         var n = window.getSelection(), o = document.createRange();
+    //         s ? o.selectNodeContents(e.querySelectorAll("pre code")[0]) : o.selectNodeContents(e.querySelectorAll("table .code pre")[0]), n.removeAllRanges(), n.addRange(o);
+    //         var i, a;
+    //         n.toString();
+    //         i = t.lastChild, document.queryCommandSupported && document.queryCommandSupported("copy") ? (document.execCommand("copy"), void 0 !== GLOBAL_CONFIG.Snackbar ? btf.snackbarShow(GLOBAL_CONFIG.copy.success) : ((a = i.previousElementSibling).innerText = GLOBAL_CONFIG.copy.success, a.style.opacity = 1, setTimeout(function () {
+    //             a.style.opacity = 0
+    //         }, 700))) : void 0 !== GLOBAL_CONFIG.Snackbar ? btf.snackbarShow(GLOBAL_CONFIG.copy.noSupport) : i.previousElementSibling.innerText = GLOBAL_CONFIG.copy.noSupport, n.removeAllRanges(), e.classList.remove("copy-true")
+    //     }, f = function (t) {
+    //         var e, n, o = t.target.classList;
+    //         o.contains("expand") ? (n = _toConsumableArray((e = this).parentNode.children).slice(1), e.firstChild.classList.toggle("closed"), btf.isHidden(n[n.length - 1]) ? n.forEach(function (t) {
+    //             t.style.display = "block"
+    //         }) : n.forEach(function (t) {
+    //             t.style.display = "none"
+    //         })) : o.contains("copy-button") && i(this)
+    //     }, m = function () {
+    //         this.classList.toggle("expand-done")
+    //     }, e ? s ? o.forEach(function (t) {
+    //         var e = t.getAttribute("data-language") ? t.getAttribute("data-language") : "Code",
+    //             n = '<div class="code-lang">'.concat(e, "</div>");
+    //         btf.wrap(t, "figure", "", "highlight"), h(n, t)
+    //     }) : o.forEach(function (t) {
+    //         var e = t.getAttribute("class").split(" ")[1];
+    //         "plain" !== e && void 0 !== e || (e = "Code"), h('<div class="code-lang">'.concat(e, "</div>"), t, "hl")
+    //     }) : s ? o.forEach(function (t) {
+    //         btf.wrap(t, "figure", "", "highlight"), h("", t)
+    //     }) : o.forEach(function (t) {
+    //         h("", t, "hl")
+    //     })))
+    // }
 
     var o = document.getElementById("site-name"), i = o && o.offsetWidth,
         a = document.querySelector("#menus .menus_items"), c = a && a.offsetWidth,
