@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<!-- 目录条 -->
 <div id="category-bar" th:fragment="category-bar">
     <div class="category-bar-items" id="category-bar-items">
-        <div class="category-bar-item select" id="category-bar-home"><a href="index.html">首页</a></div>
-        <div class="category-bar-item" id="我的项目"><a
-                href="categories/%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE/index.html">我的项目</a></div>
+        <div class="category-bar-item select" id="category-bar-home">
+            <a href="/">首页</a>
+        </div>
+
+        <th:block th:with="categories = ${categoryFinder.listAll()}">
+
+            <div class="category-bar-item"
+                 th:id="${categoryItem.spec.displayName}"
+                 th:each="categoryItem : ${categories}">
+                <a href="javascript:void(0);" th:text="${categoryItem.spec.displayName}"></a>
+            </div>
+
+        </th:block>
+
     </div>
-    <a class="category-bar-more" href="categories/index.html">更多</a>
+    <a class="category-bar-more" href="categories/default">更多</a>
 </div>
 
 </html>
