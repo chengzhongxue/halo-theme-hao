@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<html lang="en" th:fragment="layout(content)" xmlns:th="http://www.thymeleaf.org">
 
 <!-- head 中自定义的  -->
 <head th:replace="modules/head :: head(metas = null,links = null, scripts = null)"></head>
@@ -9,7 +9,7 @@
 <!-- loading 页面 -->
 <div th:replace="modules/loading-box :: loading-box"></div>
 
-<!-- todo 还不知道干啥用的 -->
+<!-- todo 暂时不知道用处 -->
 <div id="web_bg"></div>
 
 <!-- 控制台 -->
@@ -18,6 +18,7 @@
 <!-- 内容 -->
 <th:block th:replace="${content}"></th:block>
 
+<!-- todo 暂时不知道用处 -->
 <div id="rightside">
     <div id="rightside-config-hide">
         <button id="translateLink" title="简繁转换" type="button">简</button>
@@ -36,93 +37,132 @@
     <script th:src="@{/assets/js/utils.js}"></script>
     <script th:src="@{/assets/js/main.js}"></script>
     <script charset="utf-8" data-pjax="" th:src="@{/assets/zhheo/blogex.js}"></script>
-    <script src="https://cdn.zhheo.com/JS-Heo/translate/tw_cn.js"></script>
-    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js"
-            type="module"></script>
-    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script>
+
+    <!-- 繁简翻译 js -->
+    <!-- 改成可配置 -->
+    <script th:src="@{/assets/translate/tw_cn.js}"></script>
+
+    <!-- https://instant.page/ 网站预加载， 放在 </body> 之前 -->
+    <script th:src="@{/assets/instantpage/instantpage.min.js}" type="module"></script>
+
+    <!-- https://www.andreaverlicchi.eu/vanilla-lazyload/ 懒加载-->
+    <!-- todo 图片懒加载，并且可自定义懒加载图片 -->
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js"></script>
+
+    <!-- 右下角通知 https://www.polonel.com/snackbar/ -->
+    <!-- todo head 中有它的 css，应该可以写一块，并改成后台可配置的功能，代码中应该还有他的 js -->
     <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script>
-    <script defer src="https://cdn.zhheo.com/public/algolia/algolia.js"></script>
-    <script>var preloader = {
-        endLoading: () => {
-            //- document.body.style.overflow = 'auto';
-            document.getElementById('loading-box').classList.add("loaded")
-        },
-        initLoading: () => {
-            //- document.body.style.overflow = '';
-            document.getElementById('loading-box').classList.remove("loaded")
-        }
-    }
-    window.addEventListener('load', preloader.endLoading())
-    setTimeout(function () {
-        preloader.endLoading();
-    }, 3000)</script>
-    <div class="js-pjax"></div>
-    <script>window.addEventListener('load', () => {
-        const changeContent = (content) => {
-            if (content === '') return content
 
-            content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
-            content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
-            content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
-            content = content.replace(/<[^>]+>/g, "") // remove html tag
-
-            if (content.length > 150) {
-                content = content.substring(0, 150) + '...'
+    <script>
+        <!-- todo 暂时不知道用处 -->
+        var preloader = {
+            endLoading: () => {
+                //- document.body.style.overflow = 'auto';
+                document.getElementById('loading-box').classList.add("loaded")
+            },
+            initLoading: () => {
+                //- document.body.style.overflow = '';
+                document.getElementById('loading-box').classList.remove("loaded")
             }
-            return content
         }
+        window.addEventListener('load', preloader.endLoading())
+        setTimeout(function () {
+            preloader.endLoading();
+        }, 3000)
+    </script>
 
-        const generateHtml = array => {
-            let result = ''
+    <!-- todo 暂时不知道用处 -->
+    <div class="js-pjax"></div>
+    <script>
+        // todo 暂时不知道用处
+        //  看着像评论模块，如果是的话，则可以删除掉了，评论使用评论插件
+        window.addEventListener('load', () => {
+            const changeContent = (content) => {
+                if (content === '') return content
 
-            if (array.length) {
-                for (let i = 0; i < array.length; i++) {
-                    result += '<div class=\'aside-list-item\'>'
+                content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+                content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+                content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+                content = content.replace(/<[^>]+>/g, "") // remove html tag
 
-                    if (true) {
-                        const name = 'data-lazy-src'
-                        result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick}</span></div></a>`
-                    }
+                if (content.length > 150) {
+                    content = content.substring(0, 150) + '...'
+                }
+                return content
+            }
 
-                    result += `<div class='content'>
+            const generateHtml = array => {
+                let result = ''
+
+                if (array.length) {
+                    for (let i = 0; i < array.length; i++) {
+                        result += '<div class=\'aside-list-item\'>'
+
+                        if (true) {
+                            const name = 'data-lazy-src'
+                            result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick}</span></div></a>`
+                        }
+
+                        result += `<div class='content'>
         <a class='comment' href='${array[i].url}'>${array[i].content}</a>
         <time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
         </div>`
-                }
-            } else {
-                result += '没有评论'
-            }
-
-            let $dom = document.querySelector('#card-newest-comments .aside-list')
-            $dom.innerHTML = result
-            window.lazyLoadInstance && window.lazyLoadInstance.update()
-            window.pjax && window.pjax.refresh($dom)
-        }
-
-        const newestCommentInit = () => {
-            if (document.querySelector('#card-newest-comments .aside-list')) {
-                const data = saveToLocal.get('twikoo-newest-comments')
-                if (data) {
-                    generateHtml(JSON.parse(data))
+                    }
                 } else {
-                    getComment()
+                    result += '没有评论'
+                }
+
+                let $dom = document.querySelector('#card-newest-comments .aside-list')
+                $dom.innerHTML = result
+                window.lazyLoadInstance && window.lazyLoadInstance.update()
+                window.pjax && window.pjax.refresh($dom)
+            }
+
+            const newestCommentInit = () => {
+                if (document.querySelector('#card-newest-comments .aside-list')) {
+                    const data = saveToLocal.get('twikoo-newest-comments')
+                    if (data) {
+                        generateHtml(JSON.parse(data))
+                    } else {
+                        getComment()
+                    }
                 }
             }
-        }
 
-        newestCommentInit()
-        document.addEventListener('pjax:complete', newestCommentInit)
-    })</script>
+            newestCommentInit()
+            document.addEventListener('pjax:complete', newestCommentInit)
+        })
+    </script>
+
+    <!-- https://davidshimjs.github.io/qrcodejs/ 生成二维码 -->
+    <!-- 应该是文章页分享使用 -->
     <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <!-- todo -->
     <script data-pjax=""
             src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/6.6.2/swiper-bundle.min.js"></script>
+
+    <!-- todo 不知道是否可以抽到 right-menu.html 中，做到后台可配置 -->
     <script th:src="@{/assets/zhheo/rightmenu.js}"></script>
+
+    <!-- todo 随机跳转功能，应该是随机友链和随机文章，应该也可以抽走 -->
     <script th:src="@{/assets/zhheo/random.js}"></script>
     <script data-pjax th:src="@{/zhheo/commentBarrage.js}"></script>
+
+    <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
     <script src="https://cdn.zhheo.com/public/waterfall/waterfall.min.js"></script>
+
+    <!-- 无障碍功能 https://github.com/duheng/assist 无用就可以删除了 -->
+
     <script src="https://cdn.zhheo.com/public/assist/assist-entry.min.js"></script>
+
+    <!-- 音乐播放器，应该还有相关 js 可以一并移除，或者抽出公共模块，最好是使用 halo2.0 插件 -->
     <script src="https://cdn.zhheo.com/public/aplayer/Meting2.min.js"></script>
+
+    <!-- 不知道对要不要 -->
     <script src="https://cdn.zhheo.com/public/pjax/pjax.min.js"></script>
+
+    <!-- 不知道干啥的 -->
     <script>let pjaxSelectors = [
         'title',
         '#config-diff',
@@ -194,6 +234,7 @@
         }
     })</script>
 </div>
+<!-- 不知道干啥的 -->
 <div class="js-pjax">
     <script>
         coverColor(),

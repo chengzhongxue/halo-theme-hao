@@ -25,6 +25,7 @@
           rel="stylesheet"
     />
     <!-- 全局配置 -->
+    <!-- todo 不知是否可以移除，或者抽走 -->
     <script>var GLOBAL_CONFIG = {
         root: "/",
         localSearch: void 0,
@@ -169,10 +170,17 @@
         }
     })(window)</script>
     <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
-    <link href="https://at.alicdn.com/t/font_1891866_47sukspu18q.css" rel="stylesheet">
+
+    <!--  todo 不知道是否有用 https://remixicon.com/  -->
     <link href="https://cdn2.tianli0.top/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- todo 应该是日志模块用的 https://blog.zhheo.com/p/a6947667.html -->
     <link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- 不知道是否可替代 -->
     <link rel="stylesheet" th:href="@{/assets/zhheo/commentBarrage.css}">
+
+    <!-- todo 动态加载条，换成可配置 -->
     <script data-pace-options='{ "restartOnRequestAfter":false,"eventLag":false}'
             src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/pace/1.2.4/pace.min.js"></script>
 
