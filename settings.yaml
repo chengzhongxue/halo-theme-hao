@@ -180,7 +180,7 @@ spec:
         - $formkit: radio
           name: enable_code_highlight
           label: 代码块高亮
-          value: false
+          value: true
           options:
             - label: 开启
               value: true
