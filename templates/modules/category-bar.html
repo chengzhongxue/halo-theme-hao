@@ -10,13 +10,12 @@
         <th:block th:with="categories = ${categoryFinder.listAll()}">
 
             <div class="category-bar-item"
-                 th:id="${categoryItem.spec.displayName}"
-                 th:each="categoryItem : ${categories}">
-                <a href="javascript:void(0);" th:text="${categoryItem.spec.displayName}"></a>
+                 th:each="categoryItem : ${categories}"
+                 th:id="${categoryItem.spec.displayName}">
+                <a th:href="${categoryItem.status.permalink}" th:text="${categoryItem.spec.displayName}"></a>
             </div>
 
         </th:block>
-
     </div>
     <a class="category-bar-more" href="categories/default">更多</a>
 </div>

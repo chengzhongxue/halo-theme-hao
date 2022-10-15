@@ -25,12 +25,13 @@
 
                         </div>
                         <!-- 跳转到分类页 -->
-                        <a class="category-bar-more" href="#">更多</a></div>
+                        <!--<a class="category-bar-more" href="#">更多</a>-->
+                    </div>
                 </div>
                 <div class="article-sort-title" th:text="${category.spec.displayName}"></div>
                 <div class="article-sort">
-                    <!-- 按照年份分组 -->
-                    <div class="article-sort-item year">等待halo提供数据</div>
+                    <!-- TODO 按照年份分组 需要 halo 提供归档数据-->
+                    <!--<div class="article-sort-item year">2022</div>-->
                     <div class="article-sort-item" th:each="post : ${posts.items}">
                         <a class="article-sort-item-img" th:href="${post.status.permalink}"
                            th:title="${post.spec.title}">
@@ -51,7 +52,7 @@
                                 <a class="article-meta__tags" event.cancelbubble onclick="window.event.cancelBubble=!0"
                                    th:each="tag : ${post.tags}" th:href="${tag.status.permalink}">
                                     <span class="tags-punctuation">#</span>
-                                    <th:block th:title="${tag.spec.displayName}"></th:block>
+                                    [[${tag.spec.displayName}]]
                                 </a>
                                 <span class="article-meta__link">•</span>
                             </div>
