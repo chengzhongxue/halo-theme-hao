@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- loading 页面 -->
+<div id="loading-box" onclick="heo.hideLoading()"
+     th:fragment="loading-box"
+     th:if="${theme.config.loading.switch} and not ${#strings.isEmpty(theme.config.loading.img)}">
+    <div class="loading-bg">
+        <img class="loading-img" th:src="${theme.config.loading.img}">
+    </div>
+</div>
+
+</html>

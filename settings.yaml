@@ -136,3 +136,32 @@ spec:
           label: 底部相关链接
           placeholder: 请填写 metadata name
           help: "需要通过开发者模式获取菜单对应的 metadata name"
+    - group: loading
+      label: 加载页
+      formSchema:
+        - $formkit: radio
+          name: switch
+          label: 开关
+          value: true
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
+        - $formkit: url
+          name: img
+          validation: "url"
+          label: 加载页图片 URL
+          placeholder: 请输入图片 url
+    - group: right_menu
+      label: 右键菜单
+      formSchema:
+        - $formkit: radio
+          name: switch
+          label: 开关
+          value: true
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false

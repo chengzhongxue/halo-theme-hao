@@ -1,6 +1,224 @@
 <!DOCTYPE html>
-<!-- 文章布局模版 -->
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
 
+<!-- head 中自定义的  -->
+<head th:replace="modules/head :: head(metas = null,links = null, scripts = null)"></head>
+
+<body>
+
+<!-- loading 页面 -->
+<div th:replace="modules/loading-box :: loading-box"></div>
+
+<!-- todo 还不知道干啥用的 -->
+<div id="web_bg"></div>
+
+<!-- 控制台 -->
+<div th:replace="modules/widgets/console :: console"></div>
+
+<!-- 内容 -->
+<th:block th:replace="${content}"></th:block>
+
+<div id="rightside">
+    <div id="rightside-config-hide">
+        <button id="translateLink" title="简繁转换" type="button">简</button>
+        <button id="darkmode" title="浅色和深色模式转换" type="button"><i class="fas fa-adjust"></i></button>
+        <button id="hide-aside-btn" title="单栏和双栏切换" type="button"><i class="fas fa-arrows-alt-h"></i></button>
+    </div>
+    <div id="rightside-config-show">
+        <button id="rightside_config" title="设置" type="button"><i class="fas fa-cog fa-spin"></i></button>
+        <button id="go-up" title="回到顶部" type="button"><i class="fas fa-arrow-up"></i></button>
+    </div>
+</div>
+
+<div th:replace="modules/right-menu :: right-menu"></div>
+
+<div>
+    <script th:src="@{/assets/js/utils.js}"></script>
+    <script th:src="@{/assets/js/main.js}"></script>
+    <script charset="utf-8" data-pjax="" th:src="@{/assets/zhheo/blogex.js}"></script>
+    <script src="https://cdn.zhheo.com/JS-Heo/translate/tw_cn.js"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js"
+            type="module"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script>
+    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script>
+    <script defer src="https://cdn.zhheo.com/public/algolia/algolia.js"></script>
+    <script>var preloader = {
+        endLoading: () => {
+            //- document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        },
+        initLoading: () => {
+            //- document.body.style.overflow = '';
+            document.getElementById('loading-box').classList.remove("loaded")
+        }
+    }
+    window.addEventListener('load', preloader.endLoading())
+    setTimeout(function () {
+        preloader.endLoading();
+    }, 3000)</script>
+    <div class="js-pjax"></div>
+    <script>window.addEventListener('load', () => {
+        const changeContent = (content) => {
+            if (content === '') return content
+
+            content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+            content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+            content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+            content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+            if (content.length > 150) {
+                content = content.substring(0, 150) + '...'
+            }
+            return content
+        }
+
+        const generateHtml = array => {
+            let result = ''
+
+            if (array.length) {
+                for (let i = 0; i < array.length; i++) {
+                    result += '<div class=\'aside-list-item\'>'
+
+                    if (true) {
+                        const name = 'data-lazy-src'
+                        result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick}</span></div></a>`
+                    }
+
+                    result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div>`
+                }
+            } else {
+                result += '没有评论'
+            }
+
+            let $dom = document.querySelector('#card-newest-comments .aside-list')
+            $dom.innerHTML = result
+            window.lazyLoadInstance && window.lazyLoadInstance.update()
+            window.pjax && window.pjax.refresh($dom)
+        }
+
+        const newestCommentInit = () => {
+            if (document.querySelector('#card-newest-comments .aside-list')) {
+                const data = saveToLocal.get('twikoo-newest-comments')
+                if (data) {
+                    generateHtml(JSON.parse(data))
+                } else {
+                    getComment()
+                }
+            }
+        }
+
+        newestCommentInit()
+        document.addEventListener('pjax:complete', newestCommentInit)
+    })</script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script data-pjax=""
+            src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/6.6.2/swiper-bundle.min.js"></script>
+    <script th:src="@{/assets/zhheo/rightmenu.js}"></script>
+    <script th:src="@{/assets/zhheo/random.js}"></script>
+    <script data-pjax th:src="@{/zhheo/commentBarrage.js}"></script>
+    <script src="https://cdn.zhheo.com/public/waterfall/waterfall.min.js"></script>
+    <script src="https://cdn.zhheo.com/public/assist/assist-entry.min.js"></script>
+    <script src="https://cdn.zhheo.com/public/aplayer/Meting2.min.js"></script>
+    <script src="https://cdn.zhheo.com/public/pjax/pjax.min.js"></script>
+    <script>let pjaxSelectors = [
+        'title',
+        '#config-diff',
+        '#body-wrap',
+        '#rightside-config-hide',
+        '#rightside-config-show',
+        '.js-pjax'
+    ]
+
+    if (false) {
+        pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+    }
+
+    var pjax = new Pjax({
+        elements: 'a:not([target="_blank"])',
+        selectors: pjaxSelectors,
+        cacheBust: false,
+        analytics: false,
+        scrollRestoration: false
+    })
+
+    document.addEventListener('pjax:send', function () {
+
+        // removeEventListener toc scroll
+        window.removeEventListener('scroll', window.tocScrollFn)
+
+        typeof preloader === 'object' && preloader.initLoading()
+
+        if (window.aplayers) {
+            for (let i = 0; i < window.aplayers.length; i++) {
+                if (!window.aplayers[i].options.fixed) {
+                    window.aplayers[i].destroy()
+                }
+            }
+        }
+
+        typeof typed === 'object' && typed.destroy()
+
+        //reset readmode
+        const $bodyClassList = document.body.classList
+        $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+    })
+
+    document.addEventListener('pjax:complete', function () {
+        window.refreshFn()
+
+        document.querySelectorAll('script[data-pjax]').forEach(item => {
+            const newScript = document.createElement('script')
+            const content = item.text || item.textContent || item.innerHTML || ""
+            Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+            newScript.appendChild(document.createTextNode(content))
+            item.parentNode.replaceChild(newScript, item)
+        })
+
+        GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+        typeof chatBtnFn === 'function' && chatBtnFn()
+        typeof panguInit === 'function' && panguInit()
+
+        // prismjs
+        typeof Prism === 'object' && Prism.highlightAll()
+
+        typeof preloader === 'object' && preloader.endLoading()
+    })
+
+    document.addEventListener('pjax:error', (e) => {
+        if (e.request.status === 404) {
+            pjax.loadUrl('/404.html')
+        }
+    })</script>
+</div>
+<div class="js-pjax">
+    <script>
+        coverColor(),
+            removeLoading(),
+            addRightMenuClickEvent(),
+            navTitle(),
+            heo.topPostScroll(),
+            heo.topCategoriesBarScroll(),
+            heo.sayhi(),
+            heo.addTag(),
+            heo.stopImgRightDrag(),
+            heo.addFriendLinksInFooter(),
+            heo.qrcodeCreate(),
+            heo.hidecookie(),
+            heo.onlyHome(),
+            heo.addNavBackgroundInit(),
+            heo.initIndexEssay(),
+            heo.changeTimeInEssay(),
+            heo.reflashEssayWaterFall(),
+            heo.addMediumInEssay(),
+            heo.darkModeStatus(),
+            heo.categoriesBarActive(),
+            heo.initThemeColor()
+    </script>
+</div>
+</body>
 </html>
 
