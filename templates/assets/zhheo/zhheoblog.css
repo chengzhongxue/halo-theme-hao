@@ -943,10 +943,10 @@ blockquote footer cite::before {
     content: "—"
 }
 
-/*#article-container code, #article-container pre {*/
-/*    font-size: var(--global-font-size);*/
-/*    font-family: consolas, Menlo, "PingFang SC", "Microsoft YaHei", sans-serif !important*/
-/*}*/
+/* 代码块增加边框 */
+#article-container pre {
+    border: var(--style-border-always);
+}
 
 /*#article-container code {*/
 /*    padding: .1rem .2rem;*/

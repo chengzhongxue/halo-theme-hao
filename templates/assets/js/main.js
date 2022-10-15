@@ -45,6 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
         n ? e.classList.add("hide-menu") : e.classList.remove("hide-menu")
     }
 
+    // todo 没啥影响就删除
+    // 应该和 代码高亮有关，先注释掉
     // function E() {
     //     var t, e, n, c, r, o, s, l, d, u, i, f, m, a = GLOBAL_CONFIG.highlight;
     //
@@ -52,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
     //         var o, i, a = document.createDocumentFragment();
     //         r && ((o = document.createElement("div")).className = "highlight-tools ".concat(u), o.innerHTML = l + t + d, o.addEventListener("click", f), a.appendChild(o)), c && e.offsetHeight > c + 30 && ((i = document.createElement("div")).className = "code-expand-btn", i.innerHTML = '<i class="fas fa-angle-double-down"></i>', i.addEventListener("click", m), a.appendChild(i)), "hl" === n ? e.insertBefore(a, e.firstChild) : e.parentNode.insertBefore(a, e)
     //     }
-    //     //  todo 这块是不是要移除掉
     //     a && (t = a.highlightCopy, e = a.highlightLang, n = GLOBAL_CONFIG_SITE.isHighlightShrink, c = a.highlightHeightLimit, r = t || e || void 0 !== n, o = "highlighjs" === a.plugin ? document.querySelectorAll("figure.highlight") : document.querySelectorAll('pre[class*="language-"]'), (r || c) && o.length && (s = "prismjs" === a.plugin, u = !(d = l = "") === n ? "closed" : "", void 0 !== n && (l = '<i class="fas fa-angle-down expand '.concat(u, '"></i>')), t && (d = '<div class="copy-notice"></div><i class="fas fa-paste copy-button"></i>'), i = function (t) {
     //         var e = t.parentNode;
     //         e.classList.add("copy-true");
