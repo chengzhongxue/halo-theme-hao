@@ -169,15 +169,6 @@ spec:
       label: 内容设置
       formSchema:
         - $formkit: radio
-          name: enable_lightgallery
-          label: 图片放大
-          value: false
-          options:
-            - label: 开启
-              value: true
-            - label: 关闭
-              value: false
-        - $formkit: radio
           name: enable_code_highlight
           label: 代码块高亮
           value: true
@@ -186,13 +177,122 @@ spec:
               value: true
             - label: 关闭
               value: false
+        - $formkit: select
+          name: switch_highlight
+          label: 代码块高亮工具
+          value: "prism.js"
+          options:
+            - value: "prism"
+              label: "prism.js"
+            - value: "highlight"
+              label: "highlight.js"
+        - $formkit: url
+          name: custom_prism_css
+          validation: "url"
+          label: 自定义的 prism css
+          placeholder: 请输入自定义 prism.css 地址
+        - $formkit: select
+          name: prism_css
+          label: prism 代码块高亮主题
+          value: "prism-default.css"
+          options:
+            - value: "prism-default.css"
+              label: "prism-default.css"
+            - value: "prism-a11y-dark.css"
+              label: "prism-a11y-dark.css"
+            - value: "prism-atom-dark.css"
+              label: "prism-atom-dark.css"
+            - value: "prism-base16-ateliersulphurpool.light.css"
+              label: "prism-base16-ateliersulphurpool.light.css"
+            - value: "prism-cb.css"
+              label: "prism-cb.css"
+            - value: "prism-coldark-cold.css"
+              label: "prism-coldark-cold.css"
+            - value: "prism-coldark-dark.css"
+              label: "prism-coldark-dark.css"
+            - value: "prism-coy.css"
+              label: "prism-coy.css"
+            - value: "prism-coy-without-shadows.css"
+              label: "prism-coy-without-shadows.css"
+            - value: "prism-dark.css"
+              label: "prism-dark.css"
+            - value: "prism-darcula.css"
+              label: "prism-darcula.css"
+            - value: "prism-dracula.css"
+              label: "prism-dracula.css"
+            - value: "prism-duotone-dark.css"
+              label: "prism-duotone-dark.css"
+            - value: "prism-duotone-earth.css"
+              label: "prism-duotone-earth.css"
+            - value: "prism-duotone-forest.css"
+              label: "prism-duotone-forest.css"
+            - value: "prism-duotone-light.css"
+              label: "prism-duotone-light.css"
+            - value: "prism-duotone-sea.css"
+              label: "prism-duotone-sea.css"
+            - value: "prism-duotone-space.css"
+              label: "prism-duotone-space.css"
+            - value: "prism-funcky.css"
+              label: "prism-funcky.css"
+            - value: "prism-ghcolors.css"
+              label: "prism-ghcolors.css"
+            - value: "prism-gruvbox-dark.css"
+              label: "prism-gruvbox-dark.css"
+            - value: "prism-gruvbox-light.css"
+              label: "prism-gruvbox-light.css"
+            - value: "prism-holi-theme.css"
+              label: "prism-holi-theme.css"
+            - value: "prism-hopscotch.css"
+              label: "prism-hopscotch.css"
+            - value: "prism-laserwave.css"
+              label: "prism-laserwave.css"
+            - value: "prism-lucario.css"
+              label: "prism-lucario.css"
+            - value: "prism-material-dark.css"
+              label: "prism-material-dark.css"
+            - value: "prism-material-light.css"
+              label: "prism-material-light.css"
+            - value: "prism-material-oceanic.css"
+              label: "prism-material-oceanic.css"
+            - value: "prism-night-owl.css"
+              label: "prism-night-owl.css"
+            - value: "prism-nord.css"
+              label: "prism-nord.css"
+            - value: "prism-one-dark.css"
+              label: "prism-one-dark.css"
+            - value: "prism-one-light.css"
+              label: "prism-one-light.css"
+            - value: "prism-okaidia.css"
+              label: "prism-okaidia.css"
+            - value: "prism-pojoaque.css"
+              label: "prism-pojoaque.css"
+            - value: "prism-shades-of-purple.css"
+              label: "prism-shades-of-purple.css"
+            - value: "prism-solarized-light.css"
+              label: "prism-solarized-light.css"
+            - value: "prism-solarized-dark-atom.css"
+              label: "prism-solarized-dark-atom.css"
+            - value: "prism-synthwave84.css"
+              label: "prism-synthwave84.css"
+            - value: "prism-tomorrow-night.css"
+              label: "prism-tomorrow-night.css"
+            - value: "prism-twilight.css"
+              label: "prism-twilight.css"
+            - value: "prism-vs.css"
+              label: "prism-vs.css"
+            - value: "prism-vsc-dark-plus.css"
+              label: "prism-vsc-dark-plus.css"
+            - value: "prism-xonokai.css"
+              label: "prism-xonokai.css"
+            - value: "prism-z-touch.css"
+              label: "prism-z-touch.css"
         - $formkit: textarea
           name: code_highlight_extra_languages
-          label: 代码块额外高亮语言
+          label: highlight 代码块额外高亮语言
           help: "默认已经包含：php,diff,java,css,bash,json,perl,swift,plaintext,ruby,yaml,sql,vbnet,ini,scss,less,cpp,typescript,csharp,rust,python,python-repl,objectivec,r,shell,makefile,go,xml,markdown,lua,javascript,php-template,kotlin,c 如果需要添加其他语言，请按照相同格式添加。"
         - $formkit: select
           name: code_highlight_style
-          label: 代码块高亮主题
+          label: highlight 代码块高亮主题
           value: "default.min.css"
           options:
             - value: "a11y-dark.min.css"

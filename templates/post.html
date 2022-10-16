@@ -261,9 +261,9 @@
 
     <!-- 在最后加上代码高亮 -->
     <th:block th:if="${theme.config.content.enable_code_highlight}">
-        <th:block th:include="modules/libs/code-highlight :: import"></th:block>
-        <th:block th:include="modules/libs/code-highlight :: script"></th:block>
+        <th:block th:include="modules/code-highlight :: code-highlight"></th:block>
     </th:block>
+
 </th:block>
 
 </html>

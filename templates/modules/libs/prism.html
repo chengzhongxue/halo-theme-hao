@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="import">
+
+    <th:block th:if="${#strings.isEmpty(theme.config.content.custom_prism_css)}">
+        <link rel="stylesheet" th:href="@{/assets/libs/prism/themes/{theme}(theme=${theme.config.content.prism_css})}"/>
+    </th:block>
+
+    <th:block th:if="${not #strings.isEmpty(theme.config.content.custom_prism_css)}">
+        <link rel="stylesheet" th:href="@{${theme.config.content.custom_prism_css}}"/>
+    </th:block>
+
+    <script th:src="@{/assets/libs/prism/prism.js}"></script>
+</th:block>
+
+<th:block th:fragment="script">
+    <script>
+
+    </script>
+
+
+</th:block>
+</html>
