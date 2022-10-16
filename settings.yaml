@@ -189,12 +189,13 @@ spec:
         - $formkit: url
           name: custom_prism_css
           validation: "url"
-          label: 自定义的 prism css
+          label: 自定义 prism 主题
           placeholder: 请输入自定义 prism.css 地址
         - $formkit: select
           name: prism_css
           label: prism 代码块高亮主题
           value: "prism-default.css"
+          help: "prism 支持自定义主题 css，当配置自定义主题时，内置主题将不会生效"
           options:
             - value: "prism-default.css"
               label: "prism-default.css"
