@@ -13,12 +13,13 @@
                     <div class="category-in-bar-tips">分类</div>
                     <div id="category-bar">
                         <div class="category-bar-items" id="category-bar-items">
-                            <div class="category-bar-item select" id="category-bar-home">
+                            <div class="category-bar-item" id="category-bar-home">
                                 <a href="/">首页</a>
                             </div>
                             <div class="category-bar-item"
                                  th:each="categoryItem : ${categoryFinder.listAll()}"
-                                 th:id="${categoryItem.spec.displayName}">
+                                 th:id="${categoryItem.spec.displayName}"
+                                 th:classappend="${category.metadata.name == categoryItem.metadata.name} ? 'select'">
                                 <a th:href="${categoryItem.status.permalink}"
                                    th:text="${categoryItem.spec.displayName}"></a>
                             </div>

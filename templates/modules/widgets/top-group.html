@@ -1,108 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<div class="topGroup" th:fragment="top-group">
-    <div class="recent-post-item">
-        <div class="post_cover left_radius"><a href="p/1b0d95ef.html"
-                                               title="摸鱼 for Mac - 系统更新界面模拟器，高仿苹果macOS系统升级黑屏界面"><span
-                class="recent-post-top-text"
-                onclick="pjax.loadUrl(&quot;/p/1b0d95ef.html&quot;)">荐</span> <img
-                alt="摸鱼 for Mac - 系统更新界面模拟器，高仿苹果macOS系统升级黑屏界面"
-                class="post_bg"
-                data-lazy-src="https://p.zhheo.com/eHesos21190681656557411689.png!cover"
-                onerror='this.onerror=null,this.src="https://img.zhheo.com/i/2022/08/31/630efd3d82799.webp"'></a>
+<!-- 这里应该改为 6 篇置顶文章 -->
+<div class="topGroup" th:fragment="top-group" th:with="posts = ${postFinder.list(1,6)}">
+    <div class="recent-post-item" th:each="post : ${posts}">
+        <div class="post_cover">
+            <a th:href="${post.status.permalink}" th:title="${post.spec.title}">
+                <span class="recent-post-top-text">荐</span>
+                <img class="post_bg" th:alt="${post.spec.title}" th:src="${post.spec.cover}">
+            </a>
         </div>
-        <div class="recent-post-info" onclick="pjax.loadUrl(&quot;/p/1b0d95ef.html&quot;)"><a
-                class="article-title" href="p/1b0d95ef.html"
-                title="摸鱼 for Mac - 系统更新界面模拟器，高仿苹果macOS系统升级黑屏界面">摸鱼 for Mac -
-            系统更新界面模拟器，高仿苹果macOS系统升级黑屏界面</a></div>
-    </div>
-    <div class="recent-post-item">
-        <div class="post_cover right_radius"><a href="p/5115d869.html" title="微信表情：熊猫二憨已上线！"><span
-                class="recent-post-top-text"
-                onclick="pjax.loadUrl(&quot;/p/5115d869.html&quot;)">荐</span> <img
-                alt="微信表情：熊猫二憨已上线！"
-                class="post_bg"
-                data-lazy-src="https://p.zhheo.com/PvbpiY20190381646706601470.png!cover"
-                onerror='this.onerror=null,this.src="https://img.zhheo.com/i/2022/08/31/630efd3d82799.webp"'></a>
-        </div>
-        <div class="recent-post-info" onclick="pjax.loadUrl(&quot;/p/5115d869.html&quot;)"><a
-                class="article-title" href="p/5115d869.html"
-                title="微信表情：熊猫二憨已上线！">微信表情：熊猫二憨已上线！</a>
+        <div class="recent-post-info">
+            <a class="article-title"
+               th:href="${post.status.permalink}"
+               th:text="${post.spec.title}"
+               th:title="${post.spec.title}">
+            </a>
         </div>
     </div>
-    <div class="recent-post-item">
-        <div class="post_cover left_radius"><a href="p/9df485ea.html"
-                                               title="比例计 for Mac - 设计师的比例计算工具｜比例计算 尺寸计算 常用比例 比例计算器"><span
-                class="recent-post-top-text"
-                onclick="pjax.loadUrl(&quot;/p/9df485ea.html&quot;)">荐</span> <img
-                alt="比例计 for Mac - 设计师的比例计算工具｜比例计算 尺寸计算 常用比例 比例计算器"
-                class="post_bg"
-                data-lazy-src="https://p.zhheo.com/BDDRvO24291281640141622573.png!cover"
-                onerror='this.onerror=null,this.src="https://img.zhheo.com/i/2022/08/31/630efd3d82799.webp"'></a>
-        </div>
-        <div class="recent-post-info" onclick="pjax.loadUrl(&quot;/p/9df485ea.html&quot;)"><a
-                class="article-title" href="p/9df485ea.html"
-                title="比例计 for Mac - 设计师的比例计算工具｜比例计算 尺寸计算 常用比例 比例计算器">比例计
-            for Mac - 设计师的比例计算工具｜比例计算 尺寸计算 常用比例 比例计算器</a></div>
-    </div>
-    <div class="recent-post-item">
-        <div class="post_cover right_radius"><a href="p/a170ac02.html"
-                                                title="DelSpace3 for Mac - 文本处理工具|去空行 去空格 正则表达式替换"><span
-                class="recent-post-top-text"
-                onclick="pjax.loadUrl(&quot;/p/a170ac02.html&quot;)">荐</span> <img
-                alt="DelSpace3 for Mac - 文本处理工具|去空行 去空格 正则表达式替换"
-                class="post_bg"
-                data-lazy-src="https://p.zhheo.com/rcVHOw24491281640158664890.png!cover"
-                onerror='this.onerror=null,this.src="https://img.zhheo.com/i/2022/08/31/630efd3d82799.webp"'></a>
-        </div>
-        <div class="recent-post-info" onclick="pjax.loadUrl(&quot;/p/a170ac02.html&quot;)"><a
-                class="article-title" href="p/a170ac02.html"
-                title="DelSpace3 for Mac - 文本处理工具|去空行 去空格 正则表达式替换">DelSpace3 for Mac
-            - 文本处理工具|去空行 去空格 正则表达式替换</a></div>
-    </div>
-    <div class="recent-post-item">
-        <div class="post_cover left_radius"><a href="p/4db484b3.html"
-                                               title="轻节食APP正式上线！快速减肥可以从今天开始，定个小目标，坚持一个月！"><span
-                class="recent-post-top-text"
-                onclick="pjax.loadUrl(&quot;/p/4db484b3.html&quot;)">荐</span> <img
-                alt="轻节食APP正式上线！快速减肥可以从今天开始，定个小目标，坚持一个月！"
-                class="post_bg"
-                data-lazy-src="https://p.zhheo.com/7rZ69c20991281640144589173.png!cover"
-                onerror='this.onerror=null,this.src="https://img.zhheo.com/i/2022/08/31/630efd3d82799.webp"'></a>
-        </div>
-        <div class="recent-post-info" onclick="pjax.loadUrl(&quot;/p/4db484b3.html&quot;)"><a
-                class="article-title" href="p/4db484b3.html"
-                title="轻节食APP正式上线！快速减肥可以从今天开始，定个小目标，坚持一个月！">轻节食APP正式上线！快速减肥可以从今天开始，定个小目标，坚持一个月！</a>
-        </div>
-    </div>
-    <div class="recent-post-item">
-        <div class="post_cover right_radius"><a href="p/2daa6a7b.html"
-                                                title="Sticker-Heo表情发布：个人博客的基础表情系列"><span
-                class="recent-post-top-text"
-                onclick="pjax.loadUrl(&quot;/p/2daa6a7b.html&quot;)">荐</span> <img
-                alt="Sticker-Heo表情发布：个人博客的基础表情系列"
-                class="post_bg"
-                data-lazy-src="https://p.zhheo.com/Kjhrny22490581621235364737.png!cover"
-                onerror='this.onerror=null,this.src="https://img.zhheo.com/i/2022/08/31/630efd3d82799.webp"'></a>
-        </div>
-        <div class="recent-post-info" onclick="pjax.loadUrl(&quot;/p/2daa6a7b.html&quot;)"><a
-                class="article-title" href="p/2daa6a7b.html"
-                title="Sticker-Heo表情发布：个人博客的基础表情系列">Sticker-Heo表情发布：个人博客的基础表情系列</a>
-        </div>
-    </div>
-    <div class="todayCard" id="todayCard"
-         onclick='window.open("https://www.bilibili.com/video/BV1A841147Ef/")'>
-        <div class="todayCard-info">
-            <div class="todayCard-tips">音乐推荐</div>
-            <div class="todayCard-title">逐星</div>
-        </div>
-        <div class="todayCard-cover"
-             style="background:url(https://img.zhheo.com/i/2022/09/23/632d1625aa0d7.webp) no-repeat center/cover"></div>
-        <div class="banner-button-group"><a class="banner-button"
-                                            onclick="window.event.cancelBubble=!0,heo.hideTodayCard()"><i
-                class="fas fa-circle-plus"></i><span class="banner-button-text">更多推荐</span></a>
-        </div>
-    </div>
+
+    <!-- 这块功能依赖后台配置 -->
+    <!--<div class="todayCard" id="todayCard" onclick='window.open("https://www.bilibili.com/video/BV1A841147Ef/")'>-->
+    <!--    <div class="todayCard-info">-->
+    <!--        <div class="todayCard-tips">音乐推荐</div>-->
+    <!--        <div class="todayCard-title">逐星</div>-->
+    <!--    </div>-->
+    <!--    <div class="todayCard-cover"-->
+    <!--         style="background:url(https://img.zhheo.com/i/2022/09/23/632d1625aa0d7.webp) no-repeat center/cover"></div>-->
+    <!--    <div class="banner-button-group"><a class="banner-button"-->
+    <!--                                        onclick="window.event.cancelBubble=!0,heo.hideTodayCard()"><i-->
+    <!--            class="fas fa-circle-plus"></i><span class="banner-button-text">更多推荐</span></a>-->
+    <!--    </div>-->
+    <!--</div>-->
 </div>
 </html>
