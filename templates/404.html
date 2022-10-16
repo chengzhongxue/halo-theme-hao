@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="modules/layouts/layout :: layout(~{::content})" xmlns:th="http://www.thymeleaf.org">
+
+
+<body>
+
+<!-- loading 页面 -->
+<div th:replace="modules/loading-box :: loading-box"></div>
+
+<!-- todo 暂时不知道用处 -->
+<div id="web_bg"></div>
+<div class="error" id="body-wrap">
+    <div id="error-wrap">
+        <div class="error-content">
+            <div class="error-img"
+                 style="background-image:url(https://img.zhheo.com/i/2022/08/31/630f027eae815.gif)"></div>
+            <div class="error-info"><h1 class="error_title">404</h1>
+                <div class="error_subtitle">请尝试站内搜索寻找文章</div>
+                <a class="button--animated" href="index.html"><i class="fas fa-rocket"></i>回到主页</a></div>
+        </div>
+    </div>
+    <div class="aside-list">
+        <div class="aside-list-group">
+
+            <!-- 最新文章，用户可以自定义展示数量 -->
+            <div class="aside-list-item" th:each="post : ${posts}">
+                <a class="thumbnail" th:href="${post.status.permalink}" th:title="${post.spec.title}">
+                    <img th:alt="${post.spec.title}" th:src="${post.spec.cover}">
+                </a>
+                <div class="content">
+                    <a class="title" th:href="${post.status.permalink}" th:text="${post.spec.title}"
+                       th:title="${post.spec.title}"></a>
+                    <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm:ss')}"
+                          th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}"
+                          th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">
+                    </time>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="modules/right-menu :: right-menu"></div>
+
+<div>
+    <script th:src="@{/assets/js/utils.js}"></script>
+    <script th:src="@{/assets/js/main.js}"></script>
+    <script charset="utf-8" data-pjax="" th:src="@{/assets/zhheo/blogex.js}"></script>
+
+    <!-- 繁简翻译 js -->
+    <!-- 改成可配置 -->
+    <script th:src="@{/assets/translate/tw_cn.js}"></script>
+
+    <!-- https://instant.page/ 网站预加载， 放在 </body> 之前 -->
+    <script th:src="@{/assets/instantpage/instantpage.min.js}" type="module"></script>
+
+    <!-- https://www.andreaverlicchi.eu/vanilla-lazyload/ 懒加载-->
+    <!-- todo 图片懒加载，并且可自定义懒加载图片 -->
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js"></script>
+
+    <!-- 右下角通知 https://www.polonel.com/snackbar/ -->
+    <!-- todo head 中有它的 css，应该可以写一块，并改成后台可配置的功能，代码中应该还有他的 js -->
+    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script>
+
+    <script>
+        <!-- todo 暂时不知道用处 -->
+        var preloader = {
+            endLoading: () => {
+                //- document.body.style.overflow = 'auto';
+                document.getElementById('loading-box').classList.add("loaded")
+            },
+            initLoading: () => {
+                //- document.body.style.overflow = '';
+                document.getElementById('loading-box').classList.remove("loaded")
+            }
+        }
+        window.addEventListener('load', preloader.endLoading())
+        setTimeout(function () {
+            preloader.endLoading();
+        }, 3000)
+    </script>
+
+    <!-- todo 暂时不知道用处 -->
+    <div class="js-pjax"></div>
+    <script>
+        // todo 暂时不知道用处
+        //  看着像评论模块，如果是的话，则可以删除掉了，评论使用评论插件
+        window.addEventListener('load', () => {
+            const changeContent = (content) => {
+                if (content === '') return content
+
+                content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+                content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+                content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+                content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+                if (content.length > 150) {
+                    content = content.substring(0, 150) + '...'
+                }
+                return content
+            }
+
+            const generateHtml = array => {
+                let result = ''
+
+                if (array.length) {
+                    for (let i = 0; i < array.length; i++) {
+                        result += '<div class=\'aside-list-item\'>'
+
+                        if (true) {
+                            const name = 'data-lazy-src'
+                            result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick}</span></div></a>`
+                        }
+
+                        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div>`
+                    }
+                } else {
+                    result += '没有评论'
+                }
+
+                let $dom = document.querySelector('#card-newest-comments .aside-list')
+                $dom.innerHTML = result
+                window.lazyLoadInstance && window.lazyLoadInstance.update()
+                window.pjax && window.pjax.refresh($dom)
+            }
+
+            const newestCommentInit = () => {
+                if (document.querySelector('#card-newest-comments .aside-list')) {
+                    const data = saveToLocal.get('twikoo-newest-comments')
+                    if (data) {
+                        generateHtml(JSON.parse(data))
+                    } else {
+                        getComment()
+                    }
+                }
+            }
+
+            newestCommentInit()
+            document.addEventListener('pjax:complete', newestCommentInit)
+        })
+    </script>
+
+    <!-- https://davidshimjs.github.io/qrcodejs/ 生成二维码 -->
+    <!-- 应该是文章页分享使用 -->
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <!-- todo -->
+    <script data-pjax=""
+            src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/6.6.2/swiper-bundle.min.js"></script>
+
+    <!-- todo 不知道是否可以抽到 right-menu.html 中，做到后台可配置 -->
+    <script th:src="@{/assets/zhheo/rightmenu.js}"></script>
+
+    <!-- todo 随机跳转功能，应该是随机友链和随机文章，应该也可以抽走 -->
+    <script th:src="@{/assets/zhheo/random.js}"></script>
+    <script data-pjax th:src="@{/assets/zhheo/commentBarrage.js}"></script>
+
+    <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
+    <script src="https://cdn.zhheo.com/public/waterfall/waterfall.min.js"></script>
+
+    <!-- 无障碍功能 https://github.com/duheng/assist 无用就可以删除了 -->
+
+    <script src="https://cdn.zhheo.com/public/assist/assist-entry.min.js"></script>
+
+    <!-- 音乐播放器，应该还有相关 js 可以一并移除，或者抽出公共模块，最好是使用 halo2.0 插件 -->
+    <script src="https://cdn.zhheo.com/public/aplayer/Meting2.min.js"></script>
+
+    <!-- 不知道对要不要 -->
+    <script src="https://cdn.zhheo.com/public/pjax/pjax.min.js"></script>
+
+    <!-- 不知道干啥的 -->
+    <script>let pjaxSelectors = [
+        'title',
+        '#config-diff',
+        '#body-wrap',
+        '#rightside-config-hide',
+        '#rightside-config-show',
+        '.js-pjax'
+    ]
+
+    if (false) {
+        pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+    }
+
+    var pjax = new Pjax({
+        elements: 'a:not([target="_blank"])',
+        selectors: pjaxSelectors,
+        cacheBust: false,
+        analytics: false,
+        scrollRestoration: false
+    })
+
+    document.addEventListener('pjax:send', function () {
+
+        // removeEventListener toc scroll
+        window.removeEventListener('scroll', window.tocScrollFn)
+
+        typeof preloader === 'object' && preloader.initLoading()
+
+        if (window.aplayers) {
+            for (let i = 0; i < window.aplayers.length; i++) {
+                if (!window.aplayers[i].options.fixed) {
+                    window.aplayers[i].destroy()
+                }
+            }
+        }
+
+        typeof typed === 'object' && typed.destroy()
+
+        //reset readmode
+        const $bodyClassList = document.body.classList
+        $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+    })
+
+    document.addEventListener('pjax:complete', function () {
+        window.refreshFn()
+
+        document.querySelectorAll('script[data-pjax]').forEach(item => {
+            const newScript = document.createElement('script')
+            const content = item.text || item.textContent || item.innerHTML || ""
+            Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+            newScript.appendChild(document.createTextNode(content))
+            item.parentNode.replaceChild(newScript, item)
+        })
+
+        GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+        typeof chatBtnFn === 'function' && chatBtnFn()
+        typeof panguInit === 'function' && panguInit()
+
+        typeof preloader === 'object' && preloader.endLoading()
+    })
+
+    document.addEventListener('pjax:error', (e) => {
+        if (e.request.status === 404) {
+            pjax.loadUrl('/404.html')
+        }
+    })</script>
+</div>
+<!-- 不知道干啥的 -->
+<div class="js-pjax">
+    <script>
+        coverColor(),
+            removeLoading(),
+            addRightMenuClickEvent(),
+            navTitle(),
+            heo.topPostScroll(),
+            heo.topCategoriesBarScroll(),
+            heo.sayhi(),
+            heo.addTag(),
+            heo.stopImgRightDrag(),
+            heo.addFriendLinksInFooter(),
+            heo.qrcodeCreate(),
+            heo.hidecookie(),
+            heo.onlyHome(),
+            heo.addNavBackgroundInit(),
+            heo.initIndexEssay(),
+            heo.changeTimeInEssay(),
+            heo.reflashEssayWaterFall(),
+            heo.addMediumInEssay(),
+            heo.darkModeStatus(),
+            heo.categoriesBarActive(),
+            heo.initThemeColor()
+    </script>
+</div>
+</body>
+</html>
