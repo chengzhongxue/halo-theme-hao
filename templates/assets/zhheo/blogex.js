@@ -61,6 +61,9 @@ function _typeof(e) {
 function checkOpen() {
 }
 
+// https://blog.zhheo.com/p/c86d8f1f.html
+// ?imageAve 使用 七牛云获取图片主色调，阿里云 oss 则是 @imageAve
+// TODO 可以切换为使用本地 JS 获取色调
 function coverColor() {
     var _document$getElementB,
         path = null === (_document$getElementB = document.getElementById("post-cover")) || void 0 === _document$getElementB ? void 0 : _document$getElementB.src,

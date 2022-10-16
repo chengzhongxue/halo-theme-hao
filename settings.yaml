@@ -446,3 +446,11 @@ spec:
               value: true
             - label: 关闭
               value: false
+    - group: test
+      label: 测试集合属性
+      formSchema:
+        - $formkit: list
+          name: 集合
+          label: 集合
+          children:
+
