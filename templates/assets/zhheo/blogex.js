@@ -123,13 +123,6 @@ function navTitle() {
     document.getElementById("page-name-text").innerHTML = e
 }
 
-function showcopy() {
-    var e;
-    void 0 !== GLOBAL_CONFIG.Snackbar ? btf.snackbarShow(GLOBAL_CONFIG.copy.success) : ((e = ctx.previousElementSibling).innerText = GLOBAL_CONFIG.copy.success, e.style.opacity = 1, setTimeout(function () {
-        e.style.opacity = 0
-    }, 700))
-}
-
 checkOpen.toString = function () {
     this.opened = !0
 }, window.onload = function () {
@@ -176,11 +169,7 @@ function travelling() {
         var t = e.name, o = e.link,
             n = "点击前往按钮进入随机一个友链，不保证跳转网站的安全性和可用性。本次随机到的是本站友链：「" + t + "」";
         document.styleSheets[0].addRule(":root", "--heo-snackbar-time:8000ms!important"), Snackbar.show({
-            text: n,
-            duration: 1e4,
-            pos: "top-center",
-            actionText: "前往",
-            onActionClick: function (e) {
+            text: n, duration: 1e4, pos: "top-center", actionText: "前往", onActionClick: function (e) {
                 $(e).css("opacity", 0), window.open(o, "_blank")
             }
         })

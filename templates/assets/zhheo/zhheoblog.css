@@ -10060,7 +10060,7 @@ span.post-meta-position {
     margin: 0 .4rem
 }
 
-.post-meta-pv-cv #busuanzi_value_page_pv {
+.post-meta-pv-cv #visit {
     font-weight: 800
 }
 
@@ -10103,7 +10103,7 @@ span.post-meta-position {
     opacity: .6
 }
 
-#twikoo-count {
+#comment-count {
     font-weight: 800;
     color: var(--heo-white)
 }

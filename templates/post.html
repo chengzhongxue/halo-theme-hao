@@ -36,29 +36,39 @@
                 <h1 class="post-title" th:text="${post.spec.title}"></h1>
                 <div id="post-meta">
                     <div class="meta-secondline">
-                    <span class="post-meta-wordcount">
-                    <i class="fas fa-file-word fa-fw post-meta-icon" title="字数"></i>
-                    <span class="post-meta-label">字数:</span><span class="word-count">xxx</span>
-                    <span class="post-meta-separator"></span>
-                    <i class="fas fa-clock post-meta-icon" title="阅读耗时"></i>
-                    <span class="post-meta-label">阅读耗时:</span><span>xxx 分钟</span></span>
+
+                        <span class="post-meta-wordcount"
+                              th:with="wordCount = ${#strings.length(post.content.content)}">
+                            <i class="fas fa-file-word fa-fw post-meta-icon" title="字数"></i>
+                            <span class="post-meta-label">字数:</span>
+                            <span class="word-count" th:text="${{wordCount}}"></span>
+                            <span class="post-meta-separator"></span>
+                            <i class="fas fa-clock post-meta-icon" title="阅读耗时"></i>
+                            <span class="post-meta-label">阅读耗时:</span><span>[[${wordCount / 400}]] 分钟</span>
+                        </span>
                         <span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-calendar"></i>
-                        <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm:ss')}"
-                              th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}"
-                              th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">
-                        </time>
-                    </span>
-                        <span class="post-meta-wechat" title="该文章已在公众号中更新"><i
-                                class="fab fa-weixin post-meta-icon"></i>公众号同步</span>
-                        <span class="post-meta-position" title="作者IP属地为北京"><i
-                                class="fas fa-location-dot post-meta-icon"></i>北京</span>
-                        <span class="post-meta-pv" data-flag-title="热度"><i
-                                class="fab fa-hotjar fa-fw post-meta-icon"></i>
-                        <span class="post-meta-label">热度:</span>
-                        <span id="busuanzi_value_page_pv"><div class="fa fa-spinner fa-spin"></div></span></span>
-                        <span class="post-meta-commentcount" title="评论数"><i class="fa-solid fa-message"></i>
-                        <span class="post-meta-label">评论:</span><a href="#post-comment">
-                            <span id="twikoo-count"><i class="fa fa-spinner fa-spin"></i></span></a></span>
+                            <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm:ss')}"
+                                  th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}"
+                                  th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">
+                            </time>
+                        </span>
+                        <!--<span class="post-meta-wechat" title="该文章已在公众号中更新"><i-->
+                        <!--        class="fab fa-weixin post-meta-icon"></i>公众号同步</span>-->
+                        <!--<span class="post-meta-position" title="作者IP属地为北京"><i-->
+                        <!--        class="fas fa-location-dot post-meta-icon"></i>北京</span>-->
+                        <span class="post-meta-pv" data-flag-title="热度">
+                            <i class="fab fa-hotjar fa-fw post-meta-icon"></i>
+                            <span class="post-meta-label">热度:</span>
+                            <span id="visit" th:text="${post.stats.visit}"></span>
+                        </span>
+                        <span class="post-meta-commentcount" title="评论数"><i class="fa-solid fa-message">
+
+                            </i>
+                            <span class="post-meta-label">评论:</span>
+                            <a href="#post-comment">
+                                <span id="comment-count" th:text="${post.stats.comment}"></span>
+                            </a>
+                            </span>
                     </div>
                 </div>
             </div>
