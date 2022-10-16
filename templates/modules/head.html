@@ -181,7 +181,9 @@
 
     <!-- todo 动态加载条，换成可配置 -->
     <script data-pace-options='{ "restartOnRequestAfter":false,"eventLag":false}'
-            src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/pace/1.2.4/pace.min.js"></script>
+            src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/pace/1.2.4/pace.min.js"
+            th:if="${theme.config.other.load_progress_bar}">
+    </script>
 
     <!-- 复制 -->
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js"></script>

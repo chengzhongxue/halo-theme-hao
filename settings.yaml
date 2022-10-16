@@ -136,23 +136,6 @@ spec:
           label: 底部相关链接
           placeholder: 请填写 metadata name
           help: "需要通过开发者模式获取菜单对应的 metadata name"
-    - group: loading
-      label: 加载页
-      formSchema:
-        - $formkit: radio
-          name: switch
-          label: 开关
-          value: true
-          options:
-            - label: 打开
-              value: true
-            - label: 关闭
-              value: false
-        - $formkit: url
-          name: img
-          validation: "url"
-          label: 加载页图片 URL
-          placeholder: 请输入图片 url
     - group: right_menu
       label: 右键菜单
       formSchema:
@@ -436,3 +419,30 @@ spec:
               label: "xcode.min.css"
             - value: "xt256.min.css"
               label: "xt256.min.css"
+    - group: other
+      label: 其他设置
+      formSchema:
+        - $formkit: radio
+          name: loading_box
+          label: 开关
+          value: true
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
+        - $formkit: url
+          name: loading_box_img
+          validation: "url"
+          label: 加载页图片 URL
+          placeholder: 请输入图片 url
+        - $formkit: radio
+          name: load_progress_bar
+          label: 页面加载进度条
+          value: true
+          help: 了解更多：https://codebyzach.github.io/pace/
+          options:
+            - label: 开启
+              value: true
+            - label: 关闭
+              value: false
