@@ -37,7 +37,8 @@
     <script th:src="@{/assets/js/utils.js}"></script>
     <script th:src="@{/assets/js/main.js}"></script>
     <script charset="utf-8" data-pjax="" th:src="@{/assets/zhheo/blogex.js}"></script>
-
+    <link rel="stylesheet" src="../../assets/libs/prism/template/plugin-line-numbers.css"/>
+    
     <!-- 繁简翻译 js -->
     <!-- 改成可配置 -->
     <script th:src="@{/assets/translate/tw_cn.js}"></script>
@@ -133,7 +134,10 @@
             document.addEventListener('pjax:complete', newestCommentInit)
         })
     </script>
-
+    <!-- line-numbers可以显示行号，后面的css是为了自动换行的-->
+<script type="text/javascript">
+  document.getElementsByTagName("pre").addClass("line-numbers").css("white-space", "pre-wrap");
+</script>
     <!-- https://davidshimjs.github.io/qrcodejs/ 生成二维码 -->
     <!-- 应该是文章页分享使用 -->
     <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
