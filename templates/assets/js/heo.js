@@ -83,8 +83,6 @@ var heo_cookiesTime = null, heo_musicPlaying = !1, heo_keyboard = !0, heo = {
                 o.download = c || "photo", o.href = t, o.dispatchEvent(n)
             }, a.src = e, btf.snackbarShow("图片已添加盲水印，请遵守版权协议"), rm.downloadimging = !1
         }, "10000")) : btf.snackbarShow("有正在进行中的下载，请稍后再试")
-    }, switchCommentBarrage: function () {
-        document.querySelector(".comment-barrage") && ($(".comment-barrage").is(":visible") ? ($(".comment-barrage").hide(), $(".menu-commentBarrage-text").text("显示热评"), document.querySelector("#consoleCommentBarrage").classList.remove("on"), localStorage.setItem("commentBarrageSwitch", "false")) : $(".comment-barrage").is(":hidden") && ($(".comment-barrage").show(), $(".menu-commentBarrage-text").text("关闭热评"), document.querySelector("#consoleCommentBarrage").classList.add("on"), localStorage.removeItem("commentBarrageSwitch"))), rm.hideRightMenu()
     }, hidecookie: function () {
         heo_cookiesTime = setTimeout(function () {
             document.getElementById("cookies-window").classList.add("cw-hide"), setTimeout(function () {

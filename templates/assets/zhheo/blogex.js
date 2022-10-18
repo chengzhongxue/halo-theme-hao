@@ -161,53 +161,10 @@ function RemoveRewardMask() {
     $(".reward-main").attr("style", "display: none"), $("#quit-box").attr("style", "display: none")
 }
 
-function AddRewardMask() {
-    $(".reward-main").attr("style", "display: flex")
-}
-
-function travelling() {
-    fetch("https://moments.zhheo.com/randomfriend").then(function (e) {
-        return e.json()
-    }).then(function (e) {
-        var t = e.name, o = e.link,
-            n = "点击前往按钮进入随机一个友链，不保证跳转网站的安全性和可用性。本次随机到的是本站友链：「" + t + "」";
-        document.styleSheets[0].addRule(":root", "--heo-snackbar-time:8000ms!important"), Snackbar.show({
-            text: n, duration: 1e4, pos: "top-center", actionText: "前往", onActionClick: function (e) {
-                $(e).css("opacity", 0), window.open(o, "_blank")
-            }
-        })
-    })
-}
-
-function toforeverblog() {
-    Snackbar.show({
-        text: "点击前往按钮进入「十年之约」项目中的成员博客，不保证跳转网站的安全性和可用性",
-        duration: 8e3,
-        pos: "top-center",
-        actionText: "前往",
-        onActionClick: function (e) {
-            $(e).css("opacity", 0), window.open(link, "https://www.foreverblog.cn/go.html")
-        }
-    })
-}
-
-function totraveling() {
-    btf.snackbarShow("即将跳转到「开往」项目的成员博客，不保证跳转网站的安全性和可用性", !1, 5e3), setTimeout(function () {
-        window.open("https://travellings.link/")
-    }, "5000")
-}
-
 function removeLoading() {
     setTimeout(function () {
         preloader.endLoading()
     }, 3e3)
-}
-
-function addFriendLink() {
-    var e = document.getElementsByClassName("el-textarea__inner")[0], t = document.createEvent("HTMLEvents");
-    t.initEvent("input", !0, !0), e.value = "昵称：\n网站地址：\n头像图片url：\n描述：\n", e.dispatchEvent(t);
-    var o = document.querySelector("#post-comment").offsetTop;
-    window.scrollTo(0, o - 80), e.focus(), e.setSelectionRange(-1, -1)
 }
 
 function getArrayItems(e, t) {
@@ -273,9 +230,7 @@ document.addEventListener("touchstart", function (e) {
     document.querySelector("#waterfall") && heo.reflashEssayWaterFall()
 }), $(".topGroup").hover(function () {
     console.log("卡片悬浮")
-}, function () {
-    hoverOnCommentBarrage = !1, document.getElementById("todayCard").classList.remove("hide"), document.getElementById("todayCard").style.zIndex = 1, console.log("卡片停止悬浮")
-}), document.getElementById("post-comment") && owoBig(), document.addEventListener("scroll", btf.throttle(function () {
+}, document.getElementById("post-comment") && owoBig(), document.addEventListener("scroll", btf.throttle(function () {
     var e, t = window.scrollY + document.documentElement.clientHeight,
         o = (window.scrollY, document.getElementById("pagination")), n = document.getElementById("post-tools");
     n && o && (e = n.offsetTop + n.offsetHeight / 2, 1300 < document.body.clientWidth && (e < t ? o.classList.add("show-window") : o.classList.remove("show-window")))

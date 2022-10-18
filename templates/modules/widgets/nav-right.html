@@ -2,20 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <!-- 导航栏菜单栏 -->
-<div id="nav-right" th:fragment="nav-right" th:if="${theme.config.nav.right_menu}"  >
+<div id="nav-right" th:fragment="nav-right" th:if="${theme.config.nav.right_menu}">
 
     <!-- 功能都需要添加开关 -->
 
+    <!-- 随机友链 -->
     <div class="nav-button only-home" id="travellings_button">
-        <a class="site-page" href="javascript:void(0);" onclick="totraveling()" rel="external nofollow"
-           title="随机前往一个开往项目网站">
+        <a class="site-page" href="javascript:void(0);" rel="external nofollow"
+           title="友链">
             <i class="fa-duotone fa-train-subway" style="font-size:1rem"></i>
         </a>
     </div>
 
-    <div class="nav-button" id="randomPost_button">
-        <a class="site-page" onclick="toRandomPost()" title="随机前往一个文章"><i
-                class="fa-duotone fa-dice" style="font-size:1rem"></i>
+    <div class="nav-button">
+        <a class="site-page" href="javascript:void(0);" title="随机文章">
+            <i class="fa-duotone fa-dice" style="font-size:1rem"></i>
         </a>
     </div>
 
@@ -26,9 +27,10 @@
         </a>
     </div>
 
+    <!-- 控制台 -->
     <div class="nav-button">
         <a class="console_switchbutton" href="javascript:void(0);" onclick="heo.showConsole()" rel="external nofollow"
-           title="显示中控台">
+           title="控制台">
             <i class="fa-duotone fa-gear" style="font-size:1rem"></i>
         </a>
     </div>

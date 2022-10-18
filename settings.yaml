@@ -136,6 +136,16 @@ spec:
           label: 底部相关链接
           placeholder: 请填写 metadata name
           help: "需要通过开发者模式获取菜单对应的 metadata name"
+        - $formkit: text
+          name: copyright_start
+          label: 开始时间
+          placeholder: 建站时间
+          help: "copyright 开始时间"
+        - $formkit: text
+          name: icp
+          label: ICP 备案
+          placeholder: 请输入 ICP 备案号
+          help: "京ICP备xxxxxxxx号"
     - group: right_menu
       label: 右键菜单
       formSchema:

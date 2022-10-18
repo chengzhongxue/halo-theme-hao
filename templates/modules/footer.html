@@ -56,27 +56,37 @@
         <div class="footer-banner-links">
             <div class="footer-banner-left">
                 <div id="footer-banner-tips">
-                    <div class="copyright">©2019 - 2022 By 张洪Heo</div>
+                    <div class="copyright">©[[${theme.config.footer.copyright_start}]] - [[${#dates.format(new
+                        java.util.Date(), 'yyyy')}]] By [[${site.title}]]
+                    </div>
                 </div>
             </div>
-            <div class="footer-banner-right"><a class="footer-banner-link" href="/rss/">订阅</a><a
-                    class="footer-banner-link" href="/update/">主题</a><a class="footer-banner-link"
-                                                                          href="/about/">关于</a><a
-                    class="footer-banner-link" href="https://beian.miit.gov.cn/#/Integrated/index"
-                    rel="noopener external nofollow noreferrer noopener"
-                    target="_blank">京ICP备19051325号</a><a
-                    class="footer-banner-link cc" href="/cc/" title="cc协议"><i class="iconfont icon-occ"></i><i
-                    class="iconfont icon-occ-by"></i><i class="iconfont icon-onc"></i><i
-                    class="iconfont icon-ond"></i></a></div>
+            <div class="footer-banner-right">
+                <a class="footer-banner-link" href="/rss/">订阅</a>
+                <a class="footer-banner-link" href="https://github.com/liuzhihang/halo-theme-hao">主题</a>
+                <a class="footer-banner-link" href="/about">关于</a>
+                <a class="footer-banner-link" href="https://beian.miit.gov.cn/#/Integrated/index"
+                   rel="noopener external nofollow noreferrer noopener" target="_blank">[[${theme.config.footer.icp}]]
+                </a>
+                <a class="footer-banner-link cc" href="/cc" title="cc协议">
+                    <i class="iconfont icon-occ"></i>
+                    <i class="iconfont icon-occ-by"></i>
+                    <i class="iconfont icon-onc"></i>
+                    <i class="iconfont icon-ond"></i>
+                </a>
+            </div>
         </div>
     </div>
-    <div id="cookies-window">
-        <div class="cookies-window-title">协议提醒助手</div>
-        <div class="cookies-window-content"><span class="cookies-tip">查看本站为你的个人隐私做出的努力</span><a
-                class="cookies-link" href="privacy/index.html" title="本站如何保护你的隐私"><i
-                class="fas fa-arrow-circle-right"></i></a></div>
-    </div>
+    <!-- 暂时不需要弹窗 -->
+    <!--<div id="cookies-window">-->
+    <!--    <div class="cookies-window-title">协议提醒助手</div>-->
+    <!--    <div class="cookies-window-content">-->
+    <!--        <span class="cookies-tip">查看本站为你的个人隐私做出的努力</span>-->
+    <!--        <a class="cookies-link" href="privacy/index.html" title="本站如何保护你的隐私">-->
+    <!--            <i class="fas fa-arrow-circle-right"></i>-->
+    <!--        </a>-->
+    <!--    </div>-->
+    <!--</div>-->
     <div id="quit-box" onclick="RemoveRewardMask()"></div>
-    <div class="comment-barrage"></div>
 </footer>
 </html>

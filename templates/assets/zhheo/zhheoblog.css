@@ -12651,23 +12651,6 @@ figure.gallery-group:hover .gallery-group-name::after {
     margin-top: 8px
 }
 
-.random-friends-post {
-    text-decoration: none;
-    border-bottom: 2px solid var(--heo-lighttext);
-    color: var(--heo-fontcolor);
-    font-weight: 700;
-    padding: 0 4px
-}
-
-.random-friends-post:hover {
-    text-decoration: none;
-    border-bottom: 2px solid var(--heo-none);
-    color: var(--heo-white);
-    background: var(--heo-main);
-    border-radius: 4px;
-    box-shadow: var(--heo-shadow-main)
-}
-
 .random-post-start {
     transition-duration: .3s
 }
@@ -14957,10 +14940,6 @@ span.hexo-douban-pagenum {
     }
 
     #consoleMusic {
-        display: none
-    }
-
-    #consoleCommentBarrage {
         display: none
     }
 }
