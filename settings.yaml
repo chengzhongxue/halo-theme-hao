@@ -160,6 +160,15 @@ spec:
               value: true
             - label: 关闭
               value: false
+        - $formkit: radio
+          name: enable_code_lineNumber
+          label: 代码块显示行号
+          value: true
+          options:
+            - label: 开启
+              value: true
+            - label: 关闭
+              value: false
         - $formkit: select
           name: switch_highlight
           label: 代码块高亮工具
