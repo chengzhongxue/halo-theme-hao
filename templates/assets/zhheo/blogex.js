@@ -134,6 +134,7 @@ checkOpen.toString = function () {
     });
     heo.initThemeColor()
 };
+
 var getTimeState = function () {
     var e = (new Date).getHours(), t = "";
     return 0 <= e && e <= 5 ? t = "晚安" : 5 < e && e <= 10 ? t = "早上好" : 10 < e && e <= 14 ? t = "中午好" : 14 < e && e <= 18 ? t = "下午好" : 18 < e && e <= 24 && (t = "晚上好"), t
@@ -160,7 +161,7 @@ var navFn = {
 function RemoveRewardMask() {
     $(".reward-main").attr("style", "display: none"), $("#quit-box").attr("style", "display: none")
 }
-
+// 移除加载动画
 function removeLoading() {
     setTimeout(function () {
         preloader.endLoading()
@@ -205,11 +206,17 @@ function percent() {
 
 document.addEventListener("touchstart", function (e) {
     RemoveRewardMask()
-}, !1), $(document).unbind("keydown").bind("keydown", function (e) {
+}, !1);
+
+$(document).unbind("keydown").bind("keydown", function (e) {
     if ((e.ctrlKey || e.metaKey) && 67 == e.keyCode && "" != selectTextNow) return btf.snackbarShow("复制成功，复制和转载请标注本文地址"), rm.rightmenuCopyText(selectTextNow), !1
-}), document.addEventListener("scroll", btf.throttle(function () {
+});
+
+document.addEventListener("scroll", btf.throttle(function () {
     heo.initThemeColor()
-}, 200)), navigator.serviceWorker.getRegistrations().then(function (e) {
+}, 200));
+
+navigator.serviceWorker.getRegistrations().then(function (e) {
     var t, o = _createForOfIteratorHelper(e);
     try {
         for (o.s(); !(t = o.n()).done;) {
@@ -220,17 +227,26 @@ document.addEventListener("touchstart", function (e) {
     } finally {
         o.f()
     }
-}), window.onkeydown = function (e) {
+});
+
+window.onkeydown = function (e) {
     123 === e.keyCode && btf.snackbarShow("开发者模式已打开，请遵循GPL协议", !1, 3e3)
-}, document.querySelector("#algolia-search").addEventListener("wheel", function (e) {
+};
+
+document.querySelector("#console").addEventListener("wheel", function (e) {
     e.preventDefault()
-}), document.querySelector("#console").addEventListener("wheel", function (e) {
-    e.preventDefault()
-}), window.addEventListener("resize", function () {
+});
+
+window.addEventListener("resize", function () {
     document.querySelector("#waterfall") && heo.reflashEssayWaterFall()
-}), $(".topGroup").hover(function () {
+});
+
+$(".topGroup").hover(function () {
     console.log("卡片悬浮")
-}, document.getElementById("post-comment") && owoBig(), document.addEventListener("scroll", btf.throttle(function () {
+});
+
+
+document.getElementById("post-comment") && owoBig(), document.addEventListener("scroll", btf.throttle(function () {
     var e, t = window.scrollY + document.documentElement.clientHeight,
         o = (window.scrollY, document.getElementById("pagination")), n = document.getElementById("post-tools");
     n && o && (e = n.offsetTop + n.offsetHeight / 2, 1300 < document.body.clientWidth && (e < t ? o.classList.add("show-window") : o.classList.remove("show-window")))
@@ -244,10 +260,29 @@ document.addEventListener("touchstart", function (e) {
         if (68 == e.keyCode) return rm.switchDarkMode(), !1;
         if (70 == e.keyCode) return pjax.loadUrl("/moments/"), !1
     }
-}), $(window).on("keyup", function (e) {
+});
+
+$(window).on("keyup", function (e) {
     16 == e.keyCode && document.querySelector("#keyboard-tips").classList.remove("show")
-}), document.addEventListener("pjax:send", function () {
+});
+
+document.addEventListener("pjax:send", function () {
     heo.showLoading()
-}), document.addEventListener("pjax:complete", function () {
-    heo.categoriesBarActive(), heo.tagPageActive(), heo.onlyHome(), heo.addNavBackgroundInit(), heo.initIndexEssay(), heo.changeTimeInEssay(), heo.reflashEssayWaterFall(), heo.darkModeStatus(), heo.initThemeColor(), percent(), window.onscroll = percent, heo.hideLoading()
-}), heo.initThemeColor(), percent(), window.onscroll = percent;
+});
+
+document.addEventListener("pjax:complete", function () {
+    heo.categoriesBarActive();
+    heo.tagPageActive();
+    heo.onlyHome();
+    heo.addNavBackgroundInit();
+    heo.reflashEssayWaterFall();
+    heo.darkModeStatus();
+    heo.initThemeColor();
+    percent();
+    window.onscroll = percent;
+    heo.hideLoading();
+});
+heo.initThemeColor();
+percent();
+window.onscroll = percent();
+
