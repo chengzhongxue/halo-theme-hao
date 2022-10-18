@@ -6,17 +6,40 @@
         <link rel="stylesheet" th:href="@{/assets/libs/prism/themes/{theme}(theme=${theme.config.content.prism_css})}"/>
     </th:block>
 
+
+    <!-- 行号控制 css -->
+    <th:block th:if="${theme.config.content.enable_code_lineNumber}">
+        <link rel="stylesheet" th:href="@{/assets/libs/prism/plugins/line-numbers/prism-line-numbers.min.css}"/>
+    </th:block>
+
+    <!-- 工具栏 css -->
+    <link rel="stylesheet" th:href="@{/assets/libs/prism/plugins/toolbar/prism-toolbar.min.css}"/>
+
+    <!-- 自定义 css -->
     <th:block th:if="${not #strings.isEmpty(theme.config.content.custom_prism_css)}">
         <link rel="stylesheet" th:href="@{${theme.config.content.custom_prism_css}}"/>
     </th:block>
 
-    <script th:src="@{/assets/libs/prism/prism.js}"></script>
 </th:block>
 
 <th:block th:fragment="script">
-    <script>
 
-    </script>
+    <script th:src="@{/assets/libs/prism/prism.js}"></script>
+
+
+    <!-- 行号控制 js -->
+    <th:block th:if="${theme.config.content.enable_code_lineNumber}">
+        <script th:src="@{/assets/libs/prism/plugins/line-numbers/prism-line-numbers.min.js}"></script>
+    </th:block>
+
+    <!-- 控制 toolbar -->
+    <script th:src="@{/assets/libs/prism/plugins/toolbar/prism-toolbar.min.js}"></script>
+
+    <!-- 显示语言 -->
+    <script th:src="@{/assets/libs/prism/plugins/show-language/prism-show-language.min.js}"></script>
+
+    <!-- 复制到剪贴板 -->
+    <script th:src="@{/assets/libs/prism/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js}"></script>
 
 
 </th:block>

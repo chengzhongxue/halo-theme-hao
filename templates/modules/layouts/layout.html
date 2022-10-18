@@ -3,13 +3,8 @@
 
 <!-- head 中自定义的  -->
 <head th:replace="modules/head :: head(metas = null,links = null, scripts = null)"></head>
-<th:block th:if="${theme.config.content.enable_code_lineNumber}">
-  <link rel="stylesheet" th:href="@{/assets/libs/prism/template/plugin-line-numbers.css}"/>
-</th:block>
-<link rel="stylesheet" th:href="@{/assets/libs/prism/template/plugin-toolbar.css}"/>
-<script th:src="@{/assets/libs/prism.js}"></script>
 
-<body class="line-numbers">
+<body>
 
 <!-- loading 页面 -->
 <div th:replace="modules/loading-box :: loading-box"></div>
