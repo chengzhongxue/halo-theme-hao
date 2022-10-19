@@ -61,16 +61,16 @@ spec:
       label: 布局
       formSchema:
         - $formkit: select
-          name: post_list_layout
+          name: columns
           label: 文章列表布局
-          value: grid_3
+          value: 2
           options:
             - label: 网格（一行三列）
-              value: grid_3
+              value: 3
             - label: 网格（一行两列）
-              value: grid_2
+              value: 2
             - label: 单条
-              value: single
+              value: 1
           help: "选择单条时，文章卡片的图片将位于左侧"
         - $formkit: select
           name: header_widget
