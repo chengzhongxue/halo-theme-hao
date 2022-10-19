@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<th:block th:fragment="post-list" th:with="postItems=${posts.items}">
+<th:block th:fragment="post-list"
+          th:with="postItems=${posts.items},totalPages = ${(posts.total - 1) / posts.size + 1}, pageIndex = ${posts.page}">
 
     <!-- card，需要添加在没有图片时使用随机图片 -->
     <div class="recent-post-item lastestpost-item" th:each="post : ${postItems}">
         <div class="post_cover left_radius">
-            <a th:attr="title=${post.spec.title}" th:href="${post.status.permalink}" data-pjax-state>
+            <a data-pjax-state th:attr="title=${post.spec.title}" th:href="${post.status.permalink}">
                 <img class="post_bg entered loaded"
                      th:alt="${post.status.excerpt}"
                      th:attr="data-lazy-src=${post.spec.cover}"
@@ -37,55 +38,66 @@
             <div class="article-meta-wrap">
                 <!-- tag -->
                 <th:block th:if="${not #lists.isEmpty(post.tags)}">
-                                    <span class="article-meta tags">
-                                        <a class="article-meta__tags" event.cancelbubble
-                                           onclick="window.event.cancelBubble=!0"
-                                           th:each="tag : ${post.tags}"
-                                           th:href="${tag.status.permalink}"
-                                           th:text="${tag.spec.displayName}"
-                                           th:title="${tag.spec.displayName}">
-                                            <span class="tags-punctuation">#</span>
-                                        </a>
-                                    </span>
+                    <span class="article-meta tags">
+                        <a class="article-meta__tags" event.cancelbubble
+                           onclick="window.event.cancelBubble=!0"
+                           th:each="tag : ${post.tags}"
+                           th:href="${tag.status.permalink}"
+                           th:text="${tag.spec.displayName}"
+                           th:title="${tag.spec.displayName}">
+                            <span class="tags-punctuation">#</span>
+                        </a>
+                    </span>
                 </th:block>
                 <!-- 创建时间 -->
                 <span class="post-meta-date">
-                                        <i class="far fa-calendar-alt"></i>
-                                        <span class="article-meta-label">创建</span>
-                                        <time th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
-                                              th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
-                                        </time>
-                                    </span>
+                    <i class="far fa-calendar-alt"></i>
+                    <span class="article-meta-label">创建</span>
+                    <time th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
+                          th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
+                    </time>
+                </span>
             </div>
 
 
         </div>
     </div>
 
-    <div th:if="${posts.hasPrevious() || posts.hasNext()}">
+    <nav id="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}">
 
+        <!-- 页面小于 7 -->
+        <div class="pagination" th:if="${(totalPages le 7) && (totalPages gt 0)}">
 
-        <div class="pagination">
+            <!--<li th:if="${pageIndex eq 1}" class="page-item disabled">-->
+            <!--    <a class="page-link" href="#">上一页</a>-->
+            <!--</li>-->
 
-            <!-- 上一页 -->
-            <a class="extend prev" data-pjax-state="" rel="prev" th:href="${posts.prevUrl}"
-               th:if="${posts.hasPrevious()}">
-                <i class="fas fa-chevron-left fa-fw"></i>
-                <div class="pagination_tips_prev">上页</div>
-            </a>
+            <!--<li th:if="${pageIndex gt 1}" class="page-item">-->
+            <!--    <a class="page-link" th:href="${posts.prevUrl}">上一页</a>-->
+            <!--</li>-->
 
-            <span class="text-sm" th:text="${posts.page} +'/'+ ${posts.total}"></span>
+            <!--<li th:each="index:${#numbers.sequence(1,totalPages)}" th:classappend="${index eq pageIndex}?'active'" class="page-item">-->
+            <!--    <a th:href="@{/users(pageIndex=${index},size=${size})}" class="page-link"  th:text="${index}"></a>-->
+            <!--</li>-->
 
-            <!-- 下一页 -->
-            <a class="extend next" data-pjax-state="" rel="next"
-               th:href="${posts.nextUrl}"
-               th:if="${posts.hasNext()}">
+            <!--<li th:if="${pageIndex eq totalPages}" class="page-item disabled"><a class="page-link" href="#">下一页</a></li>-->
+            <!--<li th:if="${pageIndex lt totalPages}" class="page-item">-->
+            <!--    <a class="page-link" th:href="${posts.nextUrl}">下一页</a>-->
+            <!--</li>-->
+
+            <span class="page-number current">1</span>
+            <a class="page-number" href="page/2/index.html">2</a>
+            <a class="page-number" href="page/3/index.html">3</a>
+            <span class="space">&hellip;</span>
+            <a class="page-number" href="page/33/index.html">33</a>
+            <a class="extend next" rel="next" th:href="${posts.nextUrl}" th:if="${posts.hasNext()}">
                 <div class="pagination_tips_next">下页</div>
                 <i class="fas fa-chevron-right fa-fw"></i>
             </a>
-        </div>
 
-    </div>
+        </div>
+    </nav>
 
 </th:block>
+
 </html>
