@@ -76,17 +76,19 @@ spec:
       label: 布局
       formSchema:
         - $formkit: select
-          name: columns
-          label: 文章列表布局
-          value: 2
+          name: cols
+          label: 文章列表布局（无效）
+          value: col1
           options:
-            - label: 网格（一行三列）
-              value: 3
-            - label: 网格（一行两列）
-              value: 2
-            - label: 单条
-              value: 1
-          help: "选择单条时，文章卡片的图片将位于左侧"
+            - label: 单列
+              value: col1
+            - label: 两列
+              value: col2
+            - label: 三列
+              value: col3
+            - label: 四列
+              value: col4
+          help: "选择单列时，文章卡片的图片将位于左侧"
         - $formkit: select
           name: header_widget
           label: 首页顶部模块

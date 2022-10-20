@@ -1594,7 +1594,7 @@ blockquote footer cite::before {
     color: #ff5722
 }
 
-#recent-posts > .recent-post-item:not(:first-child) {
+#recent-posts > .recent-post-item {
     margin-top: 1rem
 }
 
@@ -8279,7 +8279,7 @@ span.recent-post-top-text {
     transition: all .3s ease 0s
 }
 
-#recent-posts > .recent-post-item:not(:first-child) {
+#recent-posts > .recent-post-item {
     margin-top: .5rem;
     margin-bottom: 1rem;
     position: relative;
@@ -8287,19 +8287,33 @@ span.recent-post-top-text {
 }
 
 @media screen and (min-width: 1300px) {
-    #recent-posts > .recent-post-item {
-        flex-direction: column
-    }
 
-    #recent-posts > .recent-post-item:not(:first-child) {
+    #recent-posts > .recent-post-item {
         width: calc(100% / 2 - .5rem);
+        flex-direction: column;
         margin-top: .25rem;
         margin-bottom: .75rem;
         box-shadow: var(--heo-shadow-border);
         clip-path: inset(0 0 0 0 round 12px)
     }
 
-    #recent-posts > .recent-post-item:not(:first-child):active {
+    /*!* 1 列 *!*/
+    /*#recent-posts > .recent-post-item.col1 {*/
+    /*    width: calc(100% - .5rem);*/
+    /*}*/
+    /*!* 2 列 *!*/
+    /*#recent-posts > .recent-post-item.col2 {*/
+    /*    width: calc(100% / 2 - .5rem);*/
+    /*}*/
+    /*!* 3 列 *!*/
+    /*#recent-posts > .recent-post-item.col3{*/
+    /*    width: calc(100% / 3 - .5rem);*/
+    /*}*/
+    /*!* 4 列 *!*/
+    /*#recent-posts > .recent-post-item.col4 {*/
+    /*    width: calc(100% / 4 - .5rem);*/
+    /*}*/
+    #recent-posts > .recent-post-item:active {
         transform: scale(.97)
     }
 
@@ -8322,7 +8336,7 @@ span.recent-post-top-text {
         border-radius: 0
     }
 
-    #recent-posts > .recent-post-item:not(:first-child) {
+    #recent-posts > .recent-post-item {
         margin: 1.5rem 1rem;
         border-radius: 12px;
         margin-top: .5rem;
@@ -9339,7 +9353,7 @@ span.post-meta-categories {
     transition: .3s
 }
 
-span.post-meta-categories:not(:first-child) {
+span.post-meta-categories {
     margin-left: 8px
 }
 
