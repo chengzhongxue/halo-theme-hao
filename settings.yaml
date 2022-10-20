@@ -57,6 +57,21 @@ spec:
           label: Banners 小标题
           placeholder: 请输入小标题
           help: 支持 HTML 语法
+        - $formkit: url
+          name: bikan
+          label: 必看精选
+          placeholder: 请输入地址
+          validation: "url"
+        - $formkit: url
+          name: remen
+          label: 必看精选
+          placeholder: 请输入地址
+          validation: "url"
+        - $formkit: url
+          name: shiyong
+          label: 必看精选
+          placeholder: 请输入地址
+          validation: "url"
     - group: layout
       label: 布局
       formSchema:

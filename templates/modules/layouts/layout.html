@@ -47,7 +47,7 @@
 
     <!-- https://www.andreaverlicchi.eu/vanilla-lazyload/ 懒加载-->
     <!-- todo 图片懒加载，并且可自定义懒加载图片 -->
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js"></script>
+    <script th:src="@{/assets/lazyload/lazyload.min.js}"></script>
 
     <!-- 右下角通知 https://www.polonel.com/snackbar/ -->
     <!-- todo head 中有它的 css，应该可以写一块，并改成后台可配置的功能，代码中应该还有他的 js -->
@@ -61,24 +61,16 @@
     <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <!-- todo -->
-    <script data-pjax=""
-            src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/6.6.2/swiper-bundle.min.js"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/6.6.2/swiper-bundle.min.js"></script>
 
     <!-- todo 不知道是否可以抽到 right-menu.html 中，做到后台可配置 -->
     <script th:src="@{/assets/zhheo/rightmenu.js}"></script>
 
     <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
-    <script src="https://cdn.zhheo.com/public/waterfall/waterfall.min.js"></script>
+    <script th:src="@{/assets/waterfall/waterfall.min.js}"></script>
 
-    <!-- 无障碍功能 https://github.com/duheng/assist 无用就可以删除了 -->
-
-    <script src="https://cdn.zhheo.com/public/assist/assist-entry.min.js"></script>
-
-    <!-- 音乐播放器，应该还有相关 js 可以一并移除，或者抽出公共模块，最好是使用 halo2.0 插件 -->
-    <script src="https://cdn.zhheo.com/public/aplayer/Meting2.min.js"></script>
-
-    <!-- 不知道对要不要 -->
-    <script src="https://cdn.zhheo.com/public/pjax/pjax.min.js"></script>
+    <!-- https://github.com/MoOx/pjax -->
+    <script th:src="@{/assets/pjax/pjax.min.js}"></script>
 
     <!-- 不知道干啥的 -->
     <script>let pjaxSelectors = [
@@ -151,10 +143,14 @@
 </div>
 <!-- 不知道干啥的 -->
 <div class="js-pjax">
-    <script>
+    <script th:inline="javascript">
         coverColor();
-        // 移除加载动画
-        removeLoading();
+
+        if ([[${theme.config.other.loading_box} and not ${#strings.isEmpty(theme.config.other.loading_box_img)}]]) {
+            // 移除加载动画
+            removeLoading();
+        }
+
         addRightMenuClickEvent();
         navTitle();
         heo.topPostScroll();

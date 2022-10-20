@@ -12,195 +12,150 @@
                  th:if="${not #strings.isEmpty(theme.config.top.banners_title_small)}"
                  th:utext="${theme.config.top.banners_title_small}"></div>
         </div>
+
+        <!--  改成后台动态可配置-->
         <div class="tags-group-all">
             <div class="tags-group-wrapper">
                 <div class="tags-group-icon-pair">
                     <div class="tags-group-icon" style="background:#989bf8">
-                        <img 
-                             src="../../../images/6302f0748a83b.png"
-                             title="AfterEffect">
+                        <img th:src="@{/assets/images/icons/AfterEffect.png}" title="AfterEffect">
                     </div>
-                    <div class="tags-group-icon" style="background:#fff"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/63030a85d6458.png"
-                            title="Sketch">
+                    <div class="tags-group-icon" style="background:#fff">
+                        <img th:src="@{/assets/images/icons/Sketch.png}" title="Sketch">
                     </div>
                 </div>
                 <div class="tags-group-icon-pair">
-                    <div class="tags-group-icon" style="background:#57b6e6"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/6303102c049d1.png"
-                            title="Docker">
+                    <div class="tags-group-icon" style="background:#57b6e6">
+                        <img th:src="@{/assets/images/icons/Docker.png}" title="Docker">
                     </div>
-                    <div class="tags-group-icon" style="background:#4082c3"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/63030fe730a69.png"
-                            title="Photoshop">
+                    <div class="tags-group-icon" style="background:#4082c3">
+                        <img th:src="@{/assets/images/icons/Photoshop.png}" title="Photoshop">
                     </div>
                 </div>
                 <div class="tags-group-icon-pair">
-                    <div class="tags-group-icon" style="background:#fff"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/630310dea00f5.png"
-                            title="FinalCutPro">
+                    <div class="tags-group-icon" style="background:#fff">
+                        <img th:src="@{/assets/images/icons/FinalCutPro.png}" title="FinalCutPro">
                     </div>
-                    <div class="tags-group-icon" style="background:#fff"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/63031127e8e2b.png"
-                            title="Python">
+                    <div class="tags-group-icon" style="background:#fff">
+                        <img th:src="@{/assets/images/icons/Python.png}" title="Python">
                     </div>
                 </div>
                 <div class="tags-group-icon-pair">
-                    <div class="tags-group-icon" style="background:#eb6840"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/630311760ca04.png"
-                            title="Swift">
+                    <div class="tags-group-icon" style="background:#eb6840">
+                        <img th:src="@{/assets/images/icons/Swift.png}" title="Swift">
                     </div>
-                    <div class="tags-group-icon" style="background:#8f55ba"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/630311cf9dded.png"
-                            title="Principle">
+                    <div class="tags-group-icon" style="background:#8f55ba">
+                        <img th:src="@{/assets/images/icons/Principle.png}" title="Principle">
                     </div>
                 </div>
                 <div class="tags-group-icon-pair">
-                    <div class="tags-group-icon" style="background:#f29e39"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/6303121db0410.png"
-                            title="illustrator">
+                    <div class="tags-group-icon" style="background:#f29e39">
+                        <img th:src="@{/assets/images/icons/illustrator.png}" title="illustrator">
                     </div>
-                    <div class="tags-group-icon" style="background:#2c51db"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/630312c06cdc5.png"
-                            title="CSS3">
+                    <div class="tags-group-icon" style="background:#2c51db">
+                        <img th:src="@{/assets/images/icons/CSS3.png}" title="CSS3">
                     </div>
                 </div>
                 <div class="tags-group-icon-pair">
-                    <div class="tags-group-icon" style="background:#f7cb4f"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/630312f898a1c.png"
-                            title="JS">
+                    <div class="tags-group-icon" style="background:#f7cb4f">
+                        <img th:src="@{/assets/images/icons/JS.png}" title="JS">
                     </div>
-                    <div class="tags-group-icon" style="background:#e9572b"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/6303132113bbb.png"
-                            title="HTML">
+                    <div class="tags-group-icon" style="background:#e9572b">
+                        <img th:src="@{/assets/images/icons/HTML.png}" title="HTML">
                     </div>
                 </div>
                 <div class="tags-group-icon-pair">
-                    <div class="tags-group-icon" style="background:#df5b40"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/632d2d33b1e1b.webp"
-                            title="Git">
+                    <div class="tags-group-icon" style="background:#df5b40">
+                        <img th:src="@{/assets/images/icons/Git.webp}" title="Git">
                     </div>
-                    <div class="tags-group-icon" style="background:#e65164"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/632d2e083fc9b.webp"
-                            title="Apifox">
+                    <div class="tags-group-icon" style="background:#e65164">
+                        <img th:src="@{/assets/images/icons/Apifox.webp}" title="Apifox">
                     </div>
                 </div>
                 <div class="tags-group-icon-pair">
-                    <div class="tags-group-icon" style="background:#989bf8"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/6302f0748a83b.png"
-                            title="AfterEffect">
+                    <div class="tags-group-icon" style="background:#989bf8">
+                        <img th:src="@{/assets/images/icons/AfterEffect.png}" title="AfterEffect">
                     </div>
-                    <div class="tags-group-icon" style="background:#fff"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/63030a85d6458.png"
-                            title="Sketch">
+                    <div class="tags-group-icon" style="background:#fff">
+                        <img th:src="@{/assets/images/icons/Sketch.png}" title="Sketch">
                     </div>
                 </div>
                 <div class="tags-group-icon-pair">
-                    <div class="tags-group-icon" style="background:#57b6e6"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/6303102c049d1.png"
-                            title="Docker">
+                    <div class="tags-group-icon" style="background:#57b6e6">
+                        <img th:src="@{/assets/images/icons/Docker.png}" title="Docker">
                     </div>
-                    <div class="tags-group-icon" style="background:#4082c3"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/63030fe730a69.png"
-                            title="Photoshop">
+                    <div class="tags-group-icon" style="background:#4082c3">
+                        <img th:src="@{/assets/images/icons/Photoshop.png}" title="Photoshop">
                     </div>
                 </div>
                 <div class="tags-group-icon-pair">
-                    <div class="tags-group-icon" style="background:#fff"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/630310dea00f5.png"
-                            title="FinalCutPro">
+                    <div class="tags-group-icon" style="background:#fff">
+                        <img th:src="@{/assets/images/icons/FinalCutPro.png}" title="FinalCutPro">
                     </div>
-                    <div class="tags-group-icon" style="background:#fff"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/63031127e8e2b.png"
-                            title="Python">
+                    <div class="tags-group-icon" style="background:#fff">
+                        <img th:src="@{/assets/images/icons/Python.png}" title="Python">
                     </div>
                 </div>
                 <div class="tags-group-icon-pair">
-                    <div class="tags-group-icon" style="background:#eb6840"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/630311760ca04.png"
-                            title="Swift">
+                    <div class="tags-group-icon" style="background:#eb6840">
+                        <img th:src="@{/assets/images/icons/Swift.png}" title="Swift">
                     </div>
-                    <div class="tags-group-icon" style="background:#8f55ba"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/630311cf9dded.png"
-                            title="Principle">
+                    <div class="tags-group-icon" style="background:#8f55ba">
+                        <img th:src="@{/assets/images/icons/Principle.png}" title="Principle">
                     </div>
                 </div>
                 <div class="tags-group-icon-pair">
-                    <div class="tags-group-icon" style="background:#f29e39"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/6303121db0410.png"
-                            title="illustrator">
+                    <div class="tags-group-icon" style="background:#f29e39">
+                        <img th:src="@{/assets/images/icons/illustrator.png}" title="illustrator">
                     </div>
-                    <div class="tags-group-icon" style="background:#2c51db"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/630312c06cdc5.png"
-                            title="CSS3">
+                    <div class="tags-group-icon" style="background:#2c51db">
+                        <img th:src="@{/assets/images/icons/CSS3.png}" title="CSS3">
                     </div>
                 </div>
                 <div class="tags-group-icon-pair">
-                    <div class="tags-group-icon" style="background:#f7cb4f"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/630312f898a1c.png"
-                            title="JS">
+                    <div class="tags-group-icon" style="background:#f7cb4f">
+                        <img th:src="@{/assets/images/icons/JS.png}" title="JS">
                     </div>
-                    <div class="tags-group-icon" style="background:#e9572b"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/6303132113bbb.png"
-                            title="HTML">
+                    <div class="tags-group-icon" style="background:#e9572b">
+                        <img th:src="@{/assets/images/icons/HTML.png}" title="HTML">
                     </div>
                 </div>
                 <div class="tags-group-icon-pair">
-                    <div class="tags-group-icon" style="background:#df5b40"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/632d2d33b1e1b.webp"
-                            title="Git">
+                    <div class="tags-group-icon" style="background:#df5b40">
+                        <img th:src="@{/assets/images/icons/Git.webp}" title="Git">
                     </div>
-                    <div class="tags-group-icon" style="background:#e65164"><img
-                            onerror='this.onerror=null,this.src="https://cdn.zhheo.com/Guli/others/imgerror.png"'
-                            src="../../../images/632d2e083fc9b.webp"
-                            title="Apifox">
+                    <div class="tags-group-icon" style="background:#e65164">
+                        <img th:src="@{/assets/images/icons/Apifox.webp}" title="Apifox">
                     </div>
                 </div>
             </div>
         </div>
         <!-- 随机前往一篇文章 -->
-        <a id="banner-hover" onclick="randomPost()"><span class="bannerText">随便逛逛</span><i
-                class="fas fa-arrow-right banner-righticon"></i></a></div>
+        <a id="banner-hover" onclick="randomPost()">
+            <span class="bannerText">随便逛逛</span>
+            <i class="fas fa-arrow-right banner-righticon"></i>
+        </a>
+    </div>
 
     <!-- category -->
     <div class="categoryGroup">
         <div class="categoryItem" style="box-shadow:var(--heo-shadow-blue)">
-            <a class="categoryButton CB1 bikan" href="tags/%E5%BF%85%E7%9C%8B/index.html">
-                <span class="categoryButtonText">必看精选</span><i class="fas fa-dove"></i></a>
+            <a class="categoryButton CB1 bikan"
+               th:href="${#strings.isEmpty(theme.config.top.bikan)? theme.config.top.bikan : 'javascript:void(0);'}">
+                <span class="categoryButtonText">必看精选</span><i class="fas fa-dove"></i>
+            </a>
         </div>
         <div class="categoryItem" style="box-shadow:var(--heo-shadow-red)">
-            <a class="categoryButton remen" href="tags/%E7%83%AD%E9%97%A8/index.html">
-                <span class="categoryButtonText">热门文章</span><i class="fas fa-burn"></i></a>
+            <a class="categoryButton remen"
+               th:href="${#strings.isEmpty(theme.config.top.remen)? theme.config.top.remen : 'javascript:void(0);'}">
+                <span class="categoryButtonText">热门文章</span><i class="fas fa-burn"></i>
+            </a>
         </div>
         <div class="categoryItem" style="box-shadow:var(--heo-shadow-green)">
-            <a class="categoryButton shiyong" href="tags/%E6%95%99%E7%A8%8B/index.html">
-                <span class="categoryButtonText">实用教程</span><i class="fas fa-book"></i></a>
+            <a class="categoryButton shiyong"
+               th:href="${#strings.isEmpty(theme.config.top.shiyong)? theme.config.top.shiyong : 'javascript:void(0);'}">
+                <span class="categoryButtonText">实用教程</span><i class="fas fa-book"></i>
+            </a>
         </div>
     </div>
 

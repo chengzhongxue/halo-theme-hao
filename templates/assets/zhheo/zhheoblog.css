@@ -6892,13 +6892,14 @@ span.fund_name {
     transform: rotateY(180deg)
 }
 
+/* 公众号推广 图片忽略 */
 .face {
     position: absolute;
     width: 100%;
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    background: url(../../../images/630efc6e3e794.png) center center no-repeat;
+    /*background: url() center center no-repeat;*/
     background-size: 100%
 }
 
@@ -6907,7 +6908,7 @@ span.fund_name {
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
     box-sizing: border-box;
-    background: url(../../../images/630efca2abb02.png) center center no-repeat;
+    /*background: url() center center no-repeat;*/
     background-size: 100%
 }
 

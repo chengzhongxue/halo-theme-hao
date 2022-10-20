@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" th:href="@{/assets/zhheo/zhheoblog.css}">
     <!-- fontawesome-pro https://github.com/duyplus/fontawesome-pro -->
-    <link href="https://cdn.jsdelivr.net/gh/duyplus/fontawesome-pro/css/all.min.css"
+    <link th:href="@{/assets/fontawesome-pro/v6.2.0/css/all.min.css}"
           media="print"
           onload='this.media="all"'
           rel="stylesheet"
@@ -182,8 +182,8 @@
             th:if="${theme.config.other.load_progress_bar}">
     </script>
 
-    <!-- 复制 -->
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js"></script>
+    <!-- 复制 https://github.com/zenorocha/clipboard.js -->
+    <script th:src="@{/assets/clipboard/clipboard.min.js}"></script>
 
     <!-- 补充部分 -->
     <th:block th:if="${metas != null}">
