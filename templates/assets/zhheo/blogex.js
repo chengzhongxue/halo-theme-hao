@@ -122,7 +122,7 @@ function getContrastYIQ(e) {
 }
 
 function navTitle() {
-    var e = document.title.replace(" | 张洪Heo", "");
+    var e = document.title.replace(" | halo", "");
     document.getElementById("page-name-text").innerHTML = e
 }
 
