@@ -64,15 +64,15 @@ function checkOpen() {
 // https://blog.zhheo.com/p/c86d8f1f.html
 // ?imageAve 使用 七牛云获取图片主色调，阿里云 oss 则是 @imageAve
 // TODO 可以切换为使用本地 JS 获取色调
-function coverColor() {
-    var _document$getElementB,
-        path = null === (_document$getElementB = document.getElementById("post-cover")) || void 0 === _document$getElementB ? void 0 : _document$getElementB.src,
-        httpRequest;
-    void 0 !== path ? (httpRequest = new XMLHttpRequest, httpRequest.open("GET", path + "?imageAve", !0), httpRequest.send(), httpRequest.onreadystatechange = function () {
-        var json, obj, value, value;
-        4 == httpRequest.readyState && 200 == httpRequest.status && (json = httpRequest.responseText, obj = eval("(" + json + ")"), value = obj.RGB, value = "#" + value.slice(2), "light" == getContrastYIQ(value) && (value = LightenDarkenColor(colorHex(value), -40)), document.styleSheets[0].addRule(":root", "--heo-main:" + value + "!important"), document.styleSheets[0].addRule(":root", "--heo-main-op:" + value + "23!important"), document.styleSheets[0].addRule(":root", "--heo-main-none:" + value + "00!important"), heo.initThemeColor(), document.getElementById("coverdiv").classList.add("loaded"))
-    }) : (document.styleSheets[0].addRule(":root", "--heo-main: var(--heo-theme)!important"), document.styleSheets[0].addRule(":root", "--heo-main-op: var(--heo-theme-op)!important"), document.styleSheets[0].addRule(":root", "--heo-main-none: var(--heo-theme-none)!important"), heo.initThemeColor())
-}
+// function coverColor() {
+//     var _document$getElementB,
+//         path = null === (_document$getElementB = document.getElementById("post-cover")) || void 0 === _document$getElementB ? void 0 : _document$getElementB.src,
+//         httpRequest;
+//     void 0 !== path ? (httpRequest = new XMLHttpRequest, httpRequest.open("GET", path + "?imageAve", !0), httpRequest.send(), httpRequest.onreadystatechange = function () {
+//         var json, obj, value, value;
+//         4 == httpRequest.readyState && 200 == httpRequest.status && (json = httpRequest.responseText, obj = eval("(" + json + ")"), value = obj.RGB, value = "#" + value.slice(2), "light" == getContrastYIQ(value) && (value = LightenDarkenColor(colorHex(value), -40)), document.styleSheets[0].addRule(":root", "--heo-main:" + value + "!important"), document.styleSheets[0].addRule(":root", "--heo-main-op:" + value + "23!important"), document.styleSheets[0].addRule(":root", "--heo-main-none:" + value + "00!important"), heo.initThemeColor(), document.getElementById("coverdiv").classList.add("loaded"))
+//     }) : (document.styleSheets[0].addRule(":root", "--heo-main: var(--heo-theme)!important"), document.styleSheets[0].addRule(":root", "--heo-main-op: var(--heo-theme-op)!important"), document.styleSheets[0].addRule(":root", "--heo-main-none: var(--heo-theme-none)!important"), heo.initThemeColor())
+// }
 
 function colorHex(e) {
     var t = e;

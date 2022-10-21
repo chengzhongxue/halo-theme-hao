@@ -104,23 +104,23 @@ var heo_keyboard = !0, heo = {
     },
 
 
-    showLoading: function () {
-        document.querySelector("#loading-box").classList.remove("loaded")
-    },
+    // showLoading: function () {
+    //     document.querySelector("#loading-box").classList.remove("loaded")
+    // },
 
-    hideLoading: function () {
-        document.querySelector("#loading-box").classList.add("loaded")
-    },
+    // hideLoading: function () {
+    //     document.querySelector("#loading-box").classList.add("loaded")
+    // },
 
-    showConsole: function () {
-        document.querySelector("#console").classList.add("show")
-    },
+    // showConsole: function () {
+    //     document.querySelector("#console").classList.add("show")
+    // },
 
-    hideConsole: function () {
-        document.querySelector("#console").classList.remove("show")
-    },
+    // hideConsole: function () {
+    //     document.querySelector("#console").classList.remove("show")
+    // },
 
-    keyboardToggle: function () {
-        heo_keyboard ? (heo_keyboard = !1, document.querySelector("#consoleKeyboard").classList.remove("on"), localStorage.setItem("keyboardToggle", "false")) : (heo_keyboard = !0, document.querySelector("#consoleKeyboard").classList.add("on"), localStorage.setItem("keyboardToggle", "true"))
-    }
+    // keyboardToggle: function () {
+    //     heo_keyboard ? (heo_keyboard = !1, document.querySelector("#consoleKeyboard").classList.remove("on"), localStorage.setItem("keyboardToggle", "false")) : (heo_keyboard = !0, document.querySelector("#consoleKeyboard").classList.add("on"), localStorage.setItem("keyboardToggle", "true"))
+    // }
 };
