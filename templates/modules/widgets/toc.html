@@ -22,34 +22,37 @@
         var headerEl = 'h1,h2,h3,h4,h5,h6', // headers
             content = '.post-content', // 文章容器
             idArr = {};
-        $(content).children(headerEl).each(function () {
+        var headers = $(content).children(headerEl);
 
-            // 去除空格以及多余标点
-            var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+        // 没有 toc 目录，则直接移除
+        if (headers.empty()) {
+            document.getElementById("card-toc").remove();
+        } else {
+            headers.each(function () {
 
-            headerId = headerId.toLowerCase();
-            if (idArr[headerId]) {
-                // id已经存在
-                $(this).attr('id', headerId + '-' + idArr[headerId]);
-                idArr[headerId]++;
-            } else {
-                // id未存在
-                idArr[headerId] = 1;
-                $(this).attr('id', headerId);
-            }
-        });
-        // TODO 可以没有目录
-        tocbot.init({
-            // Where to render the table of contents.
-            tocSelector: '.toc-content',
-            // Where to grab the headings to build the table of contents.
-            contentSelector: '.post-content',
-            // Which headings to grab inside of the contentSelector element.
-            headingSelector: headerEl,
-            // For headings inside relative or absolute positioned containers within content.
-            hasInnerContainers: true,
+                // 去除空格以及多余标点
+                var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
 
-        });
+                headerId = headerId.toLowerCase();
+                if (idArr[headerId]) {
+                    // id已经存在
+                    $(this).attr('id', headerId + '-' + idArr[headerId]);
+                    idArr[headerId]++;
+                } else {
+                    // id未存在
+                    idArr[headerId] = 1;
+                    $(this).attr('id', headerId);
+                }
+            });
+            tocbot.init({
+                tocSelector: '.toc-content',
+                contentSelector: '.post-content',
+                headingSelector: headerEl,
+                hasInnerContainers: true,
+
+            });
+        }
+
     </script>
 </th:block>
 </html>

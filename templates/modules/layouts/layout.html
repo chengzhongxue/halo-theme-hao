@@ -9,7 +9,7 @@
 <!-- loading 页面 -->
 <div th:replace="modules/loading-box :: loading-box"></div>
 
-<!-- todo 暂时不知道用处 -->
+<!-- 网站背景 -->
 <div id="web_bg"></div>
 
 <!-- 控制台 -->
@@ -18,18 +18,6 @@
 <!-- 内容 -->
 <th:block th:replace="${content}"></th:block>
 
-<!-- todo 暂时不知道用处 -->
-<div id="rightside">
-    <div id="rightside-config-hide">
-        <button id="translateLink" title="简繁转换" type="button">简</button>
-        <button id="darkmode" title="浅色和深色模式转换" type="button"><i class="fas fa-adjust"></i></button>
-        <button id="hide-aside-btn" title="单栏和双栏切换" type="button"><i class="fas fa-arrows-alt-h"></i></button>
-    </div>
-    <div id="rightside-config-show">
-        <button id="rightside_config" title="设置" type="button"><i class="fas fa-cog fa-spin"></i></button>
-        <button id="go-up" title="回到顶部" type="button"><i class="fas fa-arrow-up"></i></button>
-    </div>
-</div>
 
 <div th:replace="modules/right-menu :: right-menu"></div>
 
@@ -40,109 +28,28 @@
 
     <!-- 繁简翻译 js -->
     <!-- 改成可配置 -->
-    <script th:src="@{/assets/translate/tw_cn.js}"></script>
+    <script th:src="@{/assets/libs/translate/tw_cn.js}"></script>
 
     <!-- https://instant.page/ 网站预加载， 放在 </body> 之前 -->
-    <script th:src="@{/assets/instantpage/instantpage.min.js}" type="module"></script>
-
-    <!-- https://www.andreaverlicchi.eu/vanilla-lazyload/ 懒加载-->
-    <!-- todo 图片懒加载，并且可自定义懒加载图片 -->
-    <script th:src="@{/assets/lazyload/lazyload.min.js}"></script>
+    <script th:src="@{/assets/libs/instantpage/instantpage.min.js}" type="module"></script>
 
     <!-- 右下角通知 https://www.polonel.com/snackbar/ -->
     <!-- todo head 中有它的 css，应该可以写一块，并改成后台可配置的功能，代码中应该还有他的 js -->
     <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script>
 
-    <!-- todo 暂时不知道用处 -->
-    <div class="js-pjax"></div>
-
     <!-- https://davidshimjs.github.io/qrcodejs/ 生成二维码 -->
     <!-- 应该是文章页分享使用 -->
     <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-    <!-- todo -->
-    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/6.6.2/swiper-bundle.min.js"></script>
 
     <!-- todo 不知道是否可以抽到 right-menu.html 中，做到后台可配置 -->
     <script th:src="@{/assets/zhheo/rightmenu.js}"></script>
 
     <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
-    <script th:src="@{/assets/waterfall/waterfall.min.js}"></script>
-
-    <!-- https://github.com/MoOx/pjax -->
-    <script th:src="@{/assets/pjax/pjax.min.js}"></script>
-
-    <!-- 不知道干啥的 -->
-    <script>let pjaxSelectors = [
-        'title',
-        '#config-diff',
-        '#body-wrap',
-        '#rightside-config-hide',
-        '#rightside-config-show',
-        '.js-pjax'
-    ]
-
-    if (false) {
-        pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
-    }
-
-    var pjax = new Pjax({
-        elements: 'a:not([target="_blank"])',
-        selectors: pjaxSelectors,
-        cacheBust: false,
-        analytics: false,
-        scrollRestoration: false
-    })
-
-    document.addEventListener('pjax:send', function () {
-
-        // removeEventListener toc scroll
-        window.removeEventListener('scroll', window.tocScrollFn)
-
-        typeof preloader === 'object' && preloader.initLoading()
-
-        if (window.aplayers) {
-            for (let i = 0; i < window.aplayers.length; i++) {
-                if (!window.aplayers[i].options.fixed) {
-                    window.aplayers[i].destroy()
-                }
-            }
-        }
-
-        typeof typed === 'object' && typed.destroy()
-
-        //reset readmode
-        const $bodyClassList = document.body.classList
-        $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
-    })
-
-    document.addEventListener('pjax:complete', function () {
-        window.refreshFn()
-
-        document.querySelectorAll('script[data-pjax]').forEach(item => {
-            const newScript = document.createElement('script')
-            const content = item.text || item.textContent || item.innerHTML || ""
-            Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-            newScript.appendChild(document.createTextNode(content))
-            item.parentNode.replaceChild(newScript, item)
-        })
-
-        GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
-
-        typeof chatBtnFn === 'function' && chatBtnFn()
-        typeof panguInit === 'function' && panguInit()
-
-        typeof preloader === 'object' && preloader.endLoading()
-    })
-
-    document.addEventListener('pjax:error', (e) => {
-        if (e.request.status === 404) {
-            pjax.loadUrl('/404.html')
-        }
-    })</script>
+    <script th:src="@{/assets/libs/waterfall/waterfall.min.js}"></script>
 </div>
 <!-- 不知道干啥的 -->
-<div class="js-pjax">
+
+<div>
     <script th:inline="javascript">
         //coverColor();
 
