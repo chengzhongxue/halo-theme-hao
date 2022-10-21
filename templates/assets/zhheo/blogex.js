@@ -263,7 +263,7 @@ $(window).on("keyup", function (e) {
 });
 
 document.addEventListener("pjax:send", function () {
-    heo.showLoading()
+    //heo.showLoading()
 });
 
 document.addEventListener("load", function () {

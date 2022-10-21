@@ -82,13 +82,13 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
 
-    // function A() {
-    //     var a, c, r, s, l, d, u = document.getElementById("rightside"), f = window.innerHeight + 56;
-    //     document.body.scrollHeight <= f ? u.style.cssText = "opacity: 1; transform: translateX(-38px)" : (c = !(a = 0), r = document.getElementById("page-header"), document.getElementById("guli_top"), s = document.getElementById("cookies-window"), l = "function" == typeof chatBtnHide, d = "function" == typeof chatBtnShow, window.addEventListener("scroll", btf.throttle(function (t) {
-    //         var e, n, o = window.scrollY || document.documentElement.scrollTop, i = (n = a < (e = o), a = e, n);
-    //         56 < o ? (i ? (r.classList.contains("nav-visible") && r.classList.remove("nav-visible"), d && !0 === c && (chatBtnHide(), c = !1)) : (r.classList.contains("nav-visible") || r.classList.add("nav-visible"), l && !1 === c && (chatBtnShow(), c = !0)), r.classList.add("nav-fixed"), s.classList.add("cw-hide"), "0" === window.getComputedStyle(u).getPropertyValue("opacity") && (u.style.cssText = "opacity: 1; transform: translateX(-38px)")) : (0 === o && r.classList.remove("nav-fixed", "nav-visible"), u.style.cssText = "opacity: ''; transform: ''"), document.body.scrollHeight <= f && (u.style.cssText = "opacity: 1; transform: translateX(-38px)")
-    //     }, 200)))
-    // }
+    function A() {
+        var a, c, r, s, l, d, u = document.getElementById("rightside"), f = window.innerHeight + 56;
+        document.body.scrollHeight <= f ? u.style.cssText = "opacity: 1; transform: translateX(-38px)" : (c = !(a = 0), r = document.getElementById("page-header"), document.getElementById("guli_top"), s = document.getElementById("cookies-window"), l = "function" == typeof chatBtnHide, d = "function" == typeof chatBtnShow, window.addEventListener("scroll", btf.throttle(function (t) {
+            var e, n, o = window.scrollY || document.documentElement.scrollTop, i = (n = a < (e = o), a = e, n);
+            56 < o ? (i ? (r.classList.contains("nav-visible") && r.classList.remove("nav-visible"), d && !0 === c && (chatBtnHide(), c = !1)) : (r.classList.contains("nav-visible") || r.classList.add("nav-visible"), l && !1 === c && (chatBtnShow(), c = !0)), r.classList.add("nav-fixed"),"0" === window.getComputedStyle(u).getPropertyValue("opacity") && (u.style.cssText = "opacity: 1; transform: translateX(-38px)")) : (0 === o && r.classList.remove("nav-fixed", "nav-visible"), u.style.cssText = "opacity: ''; transform: ''"), document.body.scrollHeight <= f && (u.style.cssText = "opacity: 1; transform: translateX(-38px)")
+        }, 200)))
+    }
 
     function S() {
         var t = document.getElementById("card-toc"), r = t.getElementsByClassName("toc-content")[0],
@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })), l = document.getElementById("toggle-menu"), d = document.getElementById("sidebar-menus"), u = document.getElementById("menu-mask"), f = document.body, l.addEventListener("click", function () {
             btf.sidebarPaddingR(), f.style.overflow = "hidden", btf.fadeIn(u, .5), d.classList.add("open")
         }), window.addEventListener("resize", function (t) {
-            btf.isHidden(l) && d.classList.contains("open") && v()
+            btf.isHidden(l) && v()
         }), GLOBAL_CONFIG.isPhotoFigcaption && document.querySelectorAll("#article-container img").forEach(function (t) {
             var e, n = t.parentNode;
             n.parentNode.classList.contains("justified-gallery") || ((e = document.createElement("div")).className = "img-alt is-center", e.textContent = t.getAttribute("alt"), n.insertBefore(e, t.nextSibling))
