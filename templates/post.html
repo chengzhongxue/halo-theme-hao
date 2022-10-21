@@ -6,7 +6,7 @@
         <header class="post-bg" id="page-header" th:style="'background-image:url(' + ${post.spec.cover} + ')'">
             <nav th:replace="modules/nav :: nav"></nav>
             <div class="coverdiv" id="coverdiv">
-                <img alt="cover" id="post-cover" th:src="${post.spec.cover}">
+                <img loading="lazy" alt="cover" id="post-cover" th:src="${post.spec.cover}">
             </div>
 
             <div id="post-info">
@@ -202,7 +202,7 @@
                         <!-- 建议阅读，这里可以自定义文章数量，然后遍历展示 -->
                         <div>
                             <a href="#" title="相关推荐文章">
-                                <img alt="cover" class="cover"
+                                <img loading="lazy" alt="cover" class="cover"
                                      src="https://t7.baidu.com/it/u=91673060,7145840&fm=193&f=GIF">
                                 <div class="content is-center">
                                     <div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-28</div>

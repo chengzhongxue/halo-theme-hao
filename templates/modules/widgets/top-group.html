@@ -7,7 +7,7 @@
         <div class="post_cover">
             <a th:href="${post.status.permalink}" th:title="${post.spec.title}">
                 <span class="recent-post-top-text">荐</span>
-                <img class="post_bg" th:alt="${post.spec.title}" th:src="${post.spec.cover}">
+                <img loading="lazy" class="post_bg" th:alt="${post.spec.title}" th:src="${post.spec.cover}">
             </a>
         </div>
         <div class="recent-post-info">

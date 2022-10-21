@@ -24,7 +24,7 @@
                     <div class="article-sort-item" th:each="post : ${postItems}">
                         <a class="article-sort-item-img" th:href="${post.status.permalink}"
                            th:title="${post.spec.title}">
-                            <img th:alt="${post.status.excerpt}" th:src="@{${post.spec.cover}}">
+                            <img loading="lazy" th:alt="${post.status.excerpt}" th:src="@{${post.spec.cover}}">
                         </a>
                         <div class="article-sort-item-info">
                             <div class="article-sort-item-time"><i class="far fa-calendar-alt"></i>

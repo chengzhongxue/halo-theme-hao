@@ -5299,7 +5299,7 @@ html {
     }
 
     #nav #site-name::after {
-        background: url("https://img.zhheo.com/i/2022/08/31/630efbc7e1ca6.webp") 50% 50% no-repeat;
+        background: url(../images/home.webp) 50% 50% no-repeat;
         opacity: 0;
         position: absolute;
         display: flex;
@@ -6950,20 +6950,21 @@ span.fund_name {
     transform: rotateY(180deg);
 }
 
-.face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    background: url("https://img.zhheo.com/i/2022/08/31/630efc6e3e794.png") center center / 100% no-repeat;
-}
+/* 公众号推广部分 */
+/*.face {*/
+/*    position: absolute;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    backface-visibility: hidden;*/
+/*    background: url(../images/404.gif) center center / 100% no-repeat;*/
+/*}*/
 
-.back.face {
-    display: block;
-    transform: rotateY(180deg);
-    box-sizing: border-box;
-    background: url("https://img.zhheo.com/i/2022/08/31/630efca2abb02.png") center center / 100% no-repeat;
-}
+/*.back.face {*/
+/*    display: block;*/
+/*    transform: rotateY(180deg);*/
+/*    box-sizing: border-box;*/
+/*    background: url(../images/404.gif) center center / 100% no-repeat;*/
+/*}*/
 
 #card-vip-designweekly.card-widget {
     padding: 0px;
@@ -7609,7 +7610,7 @@ div#banners {
     height: 24px;
     width: 44px;
     content: "";
-    background: url("https://img.zhheo.com/i/2022/08/31/630efd0bc1115.png") 0% 0% / 38px 24px no-repeat;
+    background: url(../images/top.png) 0% 0% / 38px 24px no-repeat;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -10020,7 +10021,7 @@ blockquote p {
 }
 
 #article-container img.error {
-    content: url("https://img.zhheo.com/i/2022/08/31/630efd3d82799.webp");
+    content: url(../images/404.gif);
 }
 
 .doge-inner-player {
@@ -10083,7 +10084,7 @@ blockquote p {
     left: 0px;
     width: 100%;
     height: 100%;
-    background: url("https://img.zhheo.com/i/2022/08/31/630efd3d82799.webp") 0% 0% / 100% 100%;
+    background: url(../images/404.gif) 0% 0% / 100% 100%;
 }
 
 .relatedPosts > .relatedPosts-list a {
@@ -10397,7 +10398,7 @@ a.reward-main-btn {
 
 a.reward-main-btn:hover {
     color: var(--heo-white);
-    background-image: url("https://p.zhheo.com/JgNrST23690481619450556342.gif!cover");
+    background-image: url(../images/404.gif);
     box-shadow: var(--heo-shadow-red);
 }
 
@@ -13122,7 +13123,7 @@ span.hexo-douban-pagenum {
 }
 
 .author-content-item.map {
-    background: url("https://img.zhheo.com/i/2022/08/31/630ef8e827401.webp") center center / 100% no-repeat;
+    background: url(../images/404.gif) center center / 100% no-repeat;
     min-height: 160px;
     max-height: 400px;
     position: relative;
@@ -13133,7 +13134,7 @@ span.hexo-douban-pagenum {
 }
 
 [data-theme="dark"] .author-content-item.map {
-    background: url("https://img.zhheo.com/i/2022/08/31/630ef8db0fefe.webp") center center / 100% no-repeat;
+    background: url(../images/404.gif) center center / 100% no-repeat;
 }
 
 .author-content-item.map:hover {
@@ -13515,7 +13516,7 @@ span.hexo-douban-pagenum {
 #about-page .about-statistic {
     min-height: 380px;
     width: 39%;
-    background: url("https://img.zhheo.com/i/2022/09/23/632d5d8f37e90.webp") center top / cover no-repeat;
+    background: url(../images/404.gif) center top / cover no-repeat;
     color: var(--heo-white);
     overflow: hidden;
 }
@@ -13693,7 +13694,7 @@ span.hexo-douban-pagenum {
 }
 
 .author-content-item.game-lol {
-    background: url("https://img.zhheo.com/i/2022/08/31/630efa7ae39fe.webp") center top / cover no-repeat;
+    background: url(../images/404.gif) center top / cover no-repeat;
     min-height: 300px;
     overflow: hidden;
     color: var(--heo-white);
@@ -13747,16 +13748,16 @@ span.hexo-douban-pagenum {
 }
 
 .icon-pos-sup {
-    background: url("https://img.zhheo.com/i/2022/08/25/63074b68d9f4c.png");
+    background: url(../images/404.gif);
 }
 
 .icon-pos-mid {
-    background: url("https://img.zhheo.com/i/2022/08/25/63074b54d2731.png");
+    background: url(../images/404.gif);
 }
 
 .author-content-item.game-wolf {
     width: 39%;
-    background: url("https://img.zhheo.com/i/2022/08/31/630efa916a851.webp") center top / cover no-repeat;
+    background: url(../images/404.gif) center top / cover no-repeat;
     min-height: 300px;
     overflow: hidden;
     color: var(--heo-white);
@@ -13773,13 +13774,13 @@ span.hexo-douban-pagenum {
 }
 
 .author-content-item.like-technology {
-    background: url("https://img.zhheo.com/i/2022/08/31/630efac3ecef3.webp") 0% 0% / cover no-repeat;
+    background: url(../images/404.gif) 0% 0% / cover no-repeat;
     min-height: 230px;
     color: var(--heo-white);
 }
 
 .author-content-item.like-music {
-    background: url("https://img.zhheo.com/i/2022/08/31/630efae141e9a.webp") center top / cover no-repeat;
+    background: url(../images/404.gif) center top / cover no-repeat;
     min-height: 400px;
     color: var(--heo-white);
     overflow: hidden;
@@ -13855,7 +13856,7 @@ span.hexo-douban-pagenum {
 
 .author-content-item.single.like-movie {
     height: 19rem;
-    background: url("https://img.zhheo.com/i/2022/09/27/633289920d1c7.webp") center top / cover no-repeat;
+    background: url(../images/404.gif) center top / cover no-repeat;
     color: var(--heo-white);
     overflow: hidden;
 }
@@ -13917,7 +13918,7 @@ span.hexo-douban-pagenum {
 
 .author-content.author-content-item.toolPage {
     height: 19rem;
-    background: url("https://img.zhheo.com/i/2022/08/26/6308d5778ba3c.jpg") center top / cover no-repeat;
+    background: url(../images/404.gif) center top / cover no-repeat;
     color: var(--heo-white);
     overflow: hidden;
     margin-top: 0px;
@@ -13925,7 +13926,7 @@ span.hexo-douban-pagenum {
 
 .author-content.author-content-item.momentsPage {
     height: 19rem;
-    background: url("https://img.zhheo.com/i/2022/08/26/6308d5b137881.jpg") center top / cover no-repeat;
+    background: url(../images/404.gif) center top / cover no-repeat;
     color: var(--heo-white);
     overflow: hidden;
     margin-top: 0px;
@@ -13933,7 +13934,7 @@ span.hexo-douban-pagenum {
 
 .author-content.author-content-item.essayPage {
     height: 19rem;
-    background: url("https://img.zhheo.com/i/2022/08/27/6309587509a02.jpg") center center / cover no-repeat;
+    background: url(../images/404.gif) center center / cover no-repeat;
     color: var(--heo-white);
     overflow: hidden;
     margin-top: 0px;
