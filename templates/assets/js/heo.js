@@ -15,7 +15,7 @@ var heo_keyboard = !0, heo = {
 
     addNavBackgroundInit: function () {
         var e, t = 0, o = 0;
-        document.body && (t = document.body.scrollTop), document.documentElement && (o = document.documentElement.scrollTop), e = 0 < t - o ? t : o, console.log("滚动高度" + e), 0 != e && (document.getElementById("page-header").classList.add("nav-fixed"), document.getElementById("page-header").classList.add("nav-visible"), $("#cookies-window").hide(), console.log("已添加class"))
+        document.body && (t = document.body.scrollTop), document.documentElement && (o = document.documentElement.scrollTop), e = 0 < t - o ? t : o, 0 != e && (document.getElementById("page-header").classList.add("nav-fixed"), document.getElementById("page-header").classList.add("nav-visible"), $("#cookies-window").hide(), console.log("已添加class"))
     },
 
     tagPageActive: function () {
@@ -28,7 +28,7 @@ var heo_keyboard = !0, heo = {
     categoriesBarActive: function () {
         document.querySelector("#category-bar") && $(".category-bar-item").removeClass("select");
         var e, t = window.location.pathname, t = decodeURIComponent(t);
-        console.log(t), "/" == t ? document.querySelector("#category-bar") && document.getElementById("category-bar-home").classList.add("select") : /\/categories\/.*?\//.test(t) && (e = t.split("/")[2], document.querySelector("#category-bar") && document.getElementById(e).classList.add("select"))
+        "/" == t ? document.querySelector("#category-bar") && document.getElementById("category-bar-home").classList.add("select") : /\/categories\/.*?\//.test(t) && (e = t.split("/")[2], document.querySelector("#category-bar") && document.getElementById(e).classList.add("select"))
     },
 
     stopImgRightDrag: function () {

@@ -241,10 +241,6 @@ window.addEventListener("resize", function () {
     document.querySelector("#waterfall") && heo.reflashEssayWaterFall()
 });
 
-$(".topGroup").hover(function () {
-    console.log("卡片悬浮")
-});
-
 
 document.getElementById("post-comment") && owoBig(), document.addEventListener("scroll", btf.throttle(function () {
     var e, t = window.scrollY + document.documentElement.clientHeight,
