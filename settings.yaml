@@ -114,13 +114,13 @@ spec:
         - $formkit: select
           name: location
           label: 侧边栏位置
-          value: "right"
+          value: "right-aside"
           options:
-            - value: "hide"
+            - value: "hide-aside"
               label: "隐藏"
-            - value: "right"
+            - value: "right-aside"
               label: "右侧"
-            - value: "left"
+            - value: "left-aside"
               label: "左侧"
         - $formkit: textarea
           name: widgets

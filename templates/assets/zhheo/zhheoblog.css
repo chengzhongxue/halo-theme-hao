@@ -1250,20 +1250,6 @@ blockquote footer cite::before {
     }
 }
 
-.layout.hide-aside {
-    max-width: 1000px;
-}
-
-@media screen and (min-width: 2000px) {
-    .layout.hide-aside {
-        max-width: 1300px;
-    }
-}
-
-.layout.hide-aside > div {
-    width: 100% !important;
-}
-
 #recent-posts > .recent-post-item:not(:first-child) {
     margin-top: 1rem;
 }
@@ -1956,21 +1942,6 @@ blockquote footer cite::before {
 
 #aside-content .card-more-btn:hover {
     animation: 1s ease 0s infinite normal none running more-btn-move;
-}
-
-@media screen and (min-width: 900px) {
-    html.hide-aside .layout {
-        -webkit-box-pack: center;
-        justify-content: center;
-    }
-
-    html.hide-aside .layout > .aside-content {
-        display: none;
-    }
-
-    html.hide-aside .layout > div:first-child {
-        width: 80%;
-    }
 }
 
 .page .sticky_layout {
@@ -3284,48 +3255,6 @@ ul {
     padding-top: 0.4rem;
     width: 130px;
     color: rgb(133, 133, 133);
-}
-
-#rightside #rightside-config-hide {
-    transition: transform 0.4s ease 0s;
-    transform: translate(35px, 0px);
-}
-
-#rightside #rightside-config-hide.show {
-    transform: translate(0px, 0px) !important;
-}
-
-#rightside > div > a,
-#rightside > div > button {
-    display: block;
-    margin-bottom: 2px;
-    width: 30px;
-    height: 30px;
-    background-color: var(--btn-bg);
-    color: var(--btn-color);
-    text-align: center;
-    font-size: 16px;
-}
-
-#rightside > div > a:hover,
-#rightside > div > button:hover {
-    background-color: var(--btn-hover-color);
-}
-
-#rightside #mobile-toc-button {
-    display: none;
-}
-
-@media screen and (max-width: 900px) {
-    #rightside #mobile-toc-button {
-        display: block;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    #rightside #hide-aside-btn {
-        display: none;
-    }
 }
 
 #sidebar #menu-mask {
@@ -4669,10 +4598,6 @@ blockquote.pullquote.right {
 
 html {
     overflow-y: overlay;
-}
-
-.layout.hide-aside {
-    max-width: 1400px;
 }
 
 [data-theme="dark"] img {
@@ -6305,32 +6230,6 @@ a.console_switchbutton {
     display: none;
 }
 
-#rightside {
-    display: none;
-    padding-right: 8px;
-    position: fixed;
-    right: -38px;
-    bottom: 40px;
-    z-index: 100;
-    opacity: 0;
-    transition: all 0.5s ease 0s;
-}
-
-#rightside > div > a,
-#rightside > div > button {
-    margin-bottom: 8px;
-    transition: all 0.3s ease 0s;
-}
-
-#rightside > div > a:hover,
-#rightside > div > button {
-    transition: all 0.3s ease 0s;
-}
-
-#rightside #rightside-config-hide {
-    transform: translate(42px, 0px);
-}
-
 #footer {
     background: linear-gradient(180deg, var(--heo-card-bg-none) 0, var(--heo-card-bg) 25%);
     margin-top: 1rem;
@@ -7168,12 +7067,12 @@ span.fund_name {
 }
 
 /* 当隐藏边栏时，显示 100% */
-.layout.hide > div:first-child {
-    width: 100%;
+.layout.hide-aside > div:first-child {
+    width: 100% !important;
 }
 
 /* 侧边栏在左侧时，显示 100% */
-.layout.left > div:first-child {
+.layout.left-aside > div:first-child {
     -webkit-box-ordinal-group: 2;
     -moz-box-ordinal-group: 2;
     -o-box-ordinal-group: 2;
@@ -7183,7 +7082,7 @@ span.fund_name {
 }
 
 /* 侧栏在左侧时，关闭左边距，打开右边距 */
-.layout.left .aside-content {
+.layout.left-aside .aside-content {
     padding-right: 15px;
     padding-left: 0px !important;
 }
@@ -8408,9 +8307,6 @@ span.recent-post-top-text {
         right: 0px;
     }
 
-    #rightside {
-        display: none;
-    }
 
     #web_bg {
         background: 0px 0px !important;

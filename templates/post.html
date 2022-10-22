@@ -74,7 +74,7 @@
                 </div>
             </div>
         </header>
-        <main class="layout" id="content-inner">
+        <main class="layout" id="content-inner" th:classappend="${theme.config.sidebar.location}">
             <div id="post">
                 <!-- 文章内容 -->
                 <article class="post-content line-numbers" id="article-container"
@@ -229,7 +229,7 @@
 
             <!-- 侧栏 -->
 
-            <div class="aside-content" id="aside-content">
+            <div class="aside-content" id="aside-content" th:if="${theme.config.sidebar.location != 'hide-aside'}">
 
                 <!-- 个人信息卡片 -->
                 <div th:replace="modules/widgets/profile :: profile"></div>
