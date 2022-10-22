@@ -8297,19 +8297,20 @@ span.recent-post-top-text {
 }
 
 /* 图片在左侧 */
-#recent-posts > .recent-post-item.left {
+#recent-posts > .recent-post-item.left, .recent-post-item.alternate.odd {
     flex-direction: row !important;
 }
-#recent-posts > .recent-post-item.left .cover_radius {
+
+#recent-posts > .recent-post-item.left .cover_radius, .recent-post-item.alternate.odd .cover_radius {
     border-radius: 12px 0px 0px 12px !important;
 }
 
 /* 图片在右侧 */
-#recent-posts > .recent-post-item.right {
+#recent-posts > .recent-post-item.right, .recent-post-item.alternate.even {
     flex-direction: row-reverse !important;
 }
 
-#recent-posts > .recent-post-item.right .cover_radius {
+#recent-posts > .recent-post-item.right .cover_radius, .recent-post-item.alternate.even .cover_radius{
     border-radius: 0px 12px 12px 0px !important;
 }
 

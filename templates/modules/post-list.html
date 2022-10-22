@@ -6,8 +6,9 @@
           totalPages = ${(posts.total - 1) / posts.size + 1}, pageIndex = ${posts.page}">
 
     <!-- card，需要添加在没有图片时使用随机图片 -->
-    <div class="recent-post-item" th:classappend="${theme.config.layout.cols} + ' ' + ${theme.config.layout.post_location}"
-         th:each="post : ${postItems}">
+    <div class="recent-post-item"
+         th:classappend="${theme.config.layout.cols} + ' ' + ${theme.config.layout.post_location} + ' ' + (${iStat.even} ? 'even' : 'odd')"
+         th:each="post,iStat : ${postItems}">
 
         <div class="post_cover cover_radius">
             <a th:attr="title=${post.spec.title}" th:href="${post.status.permalink}">

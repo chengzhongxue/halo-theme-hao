@@ -100,6 +100,8 @@ spec:
               value: left
             - label: 右侧
               value: right
+            - label: 交替
+              value: alternate
         - $formkit: url
           name: post_random_img
           label: 博客封面随机 API
