@@ -89,45 +89,12 @@ spec:
             - label: 四列
               value: col4
           help: "选择单列时，文章卡片的图片将位于左侧"
-        - $formkit: select
-          name: header_widget
-          label: 首页顶部模块
-          value: none
-          options:
-            - label: 无
-              value: none
-            - label: 最新一篇文章
-              value: latest_post
-            - label: 文章网格（最新五篇文章）
-              value: latest_post_grid
-            - label: 轮播图
-              value: carousel
-            - label: 站点标题
-              value: site_title
-        - $formkit: select
-          name: header_background_type
-          label: 首页顶部背景
-          value: manual
-          options:
-            - label: 手动设置
-              value: manual
-            - label: 图片
-              value: image
-        - $formkit: text
-          name: header_background
-          label: 首页顶部背景
-        - $formkit: text
-          name: header_background_image
-          label: 首页顶部背景图片
-        - $formkit: radio
-          name: content_header
-          label: 文章页顶部
-          value: true
-          options:
-            - label: 显示
-              value: true
-            - label: 隐藏
-              value: false
+        - $formkit: url
+          name: post_random_img
+          label: 博客封面随机 API
+          validation: "url"
+          value: "https://source.unsplash.com/random/600x400/?blog,scenery,night,desert,sea"
+          help: 默认随机封面图 url 不能保证一直可用
     - group: sidebar
       label: 侧边栏
       formSchema:

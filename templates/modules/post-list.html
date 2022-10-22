@@ -7,12 +7,12 @@
 
     <!-- card，需要添加在没有图片时使用随机图片 -->
     <div class="recent-post-item" th:each="post : ${postItems}" th:classappend="${theme.config.layout.cols}">
+
         <div class="post_cover left_radius">
             <a th:attr="title=${post.spec.title}" th:href="${post.status.permalink}">
-                <img class="post_bg entered loaded"
+                <img class="post_bg entered loaded" loading="lazy"
                      th:alt="${post.status.excerpt}"
-                     th:attr="data-lazy-src=${post.spec.cover}"
-                     th:src="${post.spec.cover}">
+                     th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
             </a>
         </div>
         <!-- 类别非空时 -->
@@ -63,6 +63,7 @@
 
         </div>
     </div>
+
 
     <nav id="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}">
 
