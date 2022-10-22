@@ -10119,6 +10119,7 @@ blockquote p {
     padding: 1rem 1.3rem;
     overflow: hidden;
     border-width: 1px;
+    border: var(--style-border);
     transition: all 0.3s ease 0s;
 }
 

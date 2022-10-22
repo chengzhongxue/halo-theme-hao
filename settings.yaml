@@ -125,8 +125,8 @@ spec:
         - $formkit: textarea
           name: widgets
           label: 小部件（无效）
-          value: "profile,popular-posts,latest-comments,categories,tags"
-          help: "目前提供的小部件有：profile（站点资料）, popular-posts（热门文章）, latest-comments（最新评论）, categories（文章分类）, tags（文章标签）。你可以随意组合或排序，以逗号隔开。"
+          value: "profile,recent-posts,latest-comments,categories,tags"
+          help: "目前提供的小部件有：profile（站点资料）, recent-posts（近期文章）, latest-comments（最新评论）, categories（文章分类）, tags（文章标签）。你可以随意组合或排序，以逗号隔开。"
         - $formkit: text
           name: profile_name
           label: 个人卡片名称

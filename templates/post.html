@@ -15,15 +15,15 @@
                     <div class="meta-firstline">
                         <!-- 这里要跳转到版权页 -->
                         <a class="post-meta-original" th:href="@{/cc}" title="该文章为原创文章，注意版权协议">原创</a>
-                        <span class="post-meta-categories">
-                        <a class="post-meta-categories"
-                           th:each="category : ${post.categories}"
-                           th:href="${category.status.permalink}"
-                           th:text="${category.spec.displayName}"
-                           th:title="${category.spec.displayName}">
-                        </a>
-                    </span>
-                        <div class="tag_share">
+                        <span class="post-meta-categories" th:if="${not #lists.isEmpty(post.categories)}">
+                            <a class="post-meta-categories"
+                               th:each="category : ${post.categories}"
+                               th:href="${category.status.permalink}"
+                               th:text="${category.spec.displayName}"
+                               th:title="${category.spec.displayName}">
+                            </a>
+                        </span>
+                        <div class="tag_share" th:if="${not #lists.isEmpty(post.tags)}">
                             <div class="post-meta__tag-list">
                                 <a class="post-meta__tags"
                                    th:each="tag : ${post.tags}"
@@ -232,11 +232,11 @@
             <div class="aside-content" id="aside-content" th:if="${theme.config.sidebar.location != 'hide-aside'}">
 
                 <!-- 个人信息卡片 -->
-                <div th:replace="modules/widgets/profile :: profile"></div>
+                <div th:replace="modules/widgets/aside/profile :: profile"></div>
 
                 <div class="sticky_layout">
                     <!-- 目录 -->
-                    <div th:replace="modules/widgets/toc :: toc"></div>
+                    <div th:replace="modules/widgets/aside/toc :: toc"></div>
 
                     <!--<div class="card-widget" id="card-toc">-->
                     <!--    <div class="item-headline"><i class="fas fa-bars"></i><span>文章目录</span></div>-->
@@ -259,7 +259,7 @@
                         </div>
                     </div>
                     <!-- 近期文章 -->
-                    <div th:replace="modules/widgets/recent-posts :: recent-posts"></div>
+                    <div th:replace="modules/widgets/aside/recent-posts :: recent-posts"></div>
                 </div>
             </div>
         </main>
