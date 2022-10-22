@@ -25,7 +25,7 @@
         var headers = $(content).children(headerEl);
 
         // 没有 toc 目录，则直接移除
-        if (headers.empty()) {
+        if (headers.length === 0) {
             document.getElementById("card-toc").remove();
         } else {
             headers.each(function () {

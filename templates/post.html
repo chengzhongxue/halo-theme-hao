@@ -15,9 +15,10 @@
                     <div class="meta-firstline">
                         <!-- 这里要跳转到版权页 -->
                         <a class="post-meta-original" th:href="@{/cc}" title="该文章为原创文章，注意版权协议">原创</a>
-                        <span class="post-meta-categories" th:if="${not #lists.isEmpty(post.categories)}">
+                        <span class="post-meta-categories"
+                              th:each="category : ${post.categories}"
+                              th:if="${not #lists.isEmpty(post.categories)}">
                             <a class="post-meta-categories"
-                               th:each="category : ${post.categories}"
                                th:href="${category.status.permalink}"
                                th:text="${category.spec.displayName}"
                                th:title="${category.spec.displayName}">
@@ -238,26 +239,15 @@
                     <!-- 目录 -->
                     <div th:replace="modules/widgets/aside/toc :: toc"></div>
 
-                    <!--<div class="card-widget" id="card-toc">-->
-                    <!--    <div class="item-headline"><i class="fas fa-bars"></i><span>文章目录</span></div>-->
-                    <!--    <div class="toc-content">-->
-                    <!--        <ol class="toc">-->
-                    <!--            <li class="toc-item toc-level-2">-->
-                    <!--                <a class="toc-link" href="#"><span class="toc-text">通过转换为灰度来进行去色</span></a>-->
-                    <!--            </li>-->
-                    <!--        </ol>-->
+                    <!-- 微信卡片 -->
+                    <!--<div class="card-widget heo-right-widget" id="card-wechat" onclick='window.open("/wechat/")'>-->
+                    <!--    <div id="flip-wrapper">-->
+                    <!--        <div id="flip-content">-->
+                    <!--            <div class="face"></div>-->
+                    <!--            <div class="back face"></div>-->
+                    <!--        </div>-->
                     <!--    </div>-->
                     <!--</div>-->
-
-                    <!-- 微信卡片 -->
-                    <div class="card-widget heo-right-widget" id="card-wechat" onclick='window.open("/wechat/")'>
-                        <div id="flip-wrapper">
-                            <div id="flip-content">
-                                <div class="face"></div>
-                                <div class="back face"></div>
-                            </div>
-                        </div>
-                    </div>
                     <!-- 近期文章 -->
                     <div th:replace="modules/widgets/aside/recent-posts :: recent-posts"></div>
                 </div>
