@@ -133,7 +133,7 @@ spec:
       formSchema:
         - $formkit: textarea
           name: widgets
-          label: 小部件
+          label: 小部件（无效）
           value: "profile,popular-posts,latest-comments,categories,tags"
           help: "目前提供的小部件有：profile（站点资料）, popular-posts（热门文章）, latest-comments（最新评论）, categories（文章分类）, tags（文章标签）。你可以随意组合或排序，以逗号隔开。"
         - $formkit: text
@@ -148,6 +148,11 @@ spec:
     - group: footer
       label: 页脚
       formSchema:
+        - $formkit: textarea
+          name: social
+          label: 社交链接（无效）
+          placeholder: 暂时不支持配置
+          help: "当前版本不支持配置"
         - $formkit: text
           name: menu
           label: 底部相关链接

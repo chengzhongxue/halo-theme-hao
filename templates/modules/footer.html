@@ -3,35 +3,11 @@
 <!-- 页脚模块 -->
 <footer id="footer" th:fragment="footer">
 
-    <!-- 社交链接 -->
-    <div id="footer_deal">
-        <a class="deal_link" href="mailto:zh@zhheo.com" rel="external nofollow" title="mail">
-            <i class="fa-regular fa-envelope"></i></a>
-        <a class="deal_link" href="https://weibo.com/zhheo" rel="noopener external nofollow noreferrer noopener"
-           target="_blank"
-           title="微博">
-            <i class="ri-weibo-line" style="font-size:1.1rem"></i></a>
-        <a class="deal_link" href="https://www.facebook.com/zhheo/"
-           rel="noopener external nofollow noreferrer noopener"
-           target="_blank"
-           title="facebook"><i
-                class="ri-facebook-circle-line" style="font-size:1.2rem"></i></a>
-        <a class="deal_link" href="https://dribbble.com/zhheo/"
-           rel="noopener external nofollow noreferrer noopener"
-           target="_blank"
-           title="dribbble"><i class="ri-dribbble-line" style="font-size:1.2rem"></i></a>
-        <a class="deal_link" href="https://github.com/zhheo/" rel="noopener external nofollow noreferrer noopener"
-           target="_blank" title="github"><i class="ri-github-line" style="font-size:1.1rem"></i></a>
-        <a class="deal_link" href="https://www.pinterest.com/zhheocom/_created/"
-           rel="noopener external nofollow noreferrer noopener" target="_blank"
-           title="pinterest"><i class="ri-pinterest-line"
-                                style="font-size:1.2rem"></i></a>
-        <a class="deal_link" href="https://space.bilibili.com/4218173/"
-           rel="noopener external nofollow noreferrer noopener"
-           target="_blank" title="bilibili"><i class="ri-bilibili-fill"
-                                               style="font-size:1.1rem"></i></a>
-        <a class="deal_link" href="https://v.douyin.com/6SMbLRQ/" rel="noopener external nofollow noreferrer noopener"
-           target="_blank" title="Tiktok"><i class="fa-brands fa-tiktok"></i></a>
+    <!-- 社交链接，需要填入 href class title -->
+    <div id="footer_deal" th:if="${not #strings.isEmpty(theme.config.footer.social)}">
+        <a class="deal_link" href="/" rel="external nofollow" title="mail">
+            <i class="fa-regular fa-envelope"></i>
+        </a>
     </div>
 
 
@@ -57,8 +33,13 @@
             <div class="footer-banner-left">
                 <div id="footer-banner-tips">
                     <div class="copyright">©[[${theme.config.footer.copyright_start}]] - [[${#dates.format(new
-                        java.util.Date(), 'yyyy')}]] By [[${site.title}]]
+                        java.util.Date(), 'yyyy')}]] [[${site.title}]].
                     </div>
+                </div>
+                <br>
+                <div>
+                    &nbsp;
+                    Powered by <a href="https://halo.run" class="hover:underline" target="_blank">Halo</a>.
                 </div>
             </div>
             <div class="footer-banner-right">
