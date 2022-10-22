@@ -1295,7 +1295,7 @@ blockquote footer cite::before {
     transform: scale(1.1);
 }
 
-#recent-posts > .recent-post-item .left_radius {
+#recent-posts > .recent-post-item .cover_radius {
     border-radius: 5px 0px 0px 8px;
 }
 
@@ -8019,7 +8019,7 @@ ul {
 
 @media screen and (max-width: 1300px) {
 
-    #recent-posts > .recent-post-item .left_radius,
+    #recent-posts > .recent-post-item .cover_radius,
     #recent-posts > .recent-post-item .right_radius {
         border-radius: 12px 0px 0px 12px;
         width: 75%;
@@ -8065,7 +8065,7 @@ ul {
 
 @media screen and (min-width: 1300px) {
 
-    #recent-posts > .recent-post-item .left_radius,
+    #recent-posts > .recent-post-item .cover_radius,
     #recent-posts > .recent-post-item .right_radius {
         border-radius: 12px 12px 0px 0px;
         width: 100%;
@@ -8073,7 +8073,7 @@ ul {
     }
 }
 
-#recent-posts > .recent-post-item .left_radius a,
+#recent-posts > .recent-post-item .cover_radius a,
 #recent-posts > .recent-post-item .right_radius a {
     min-height: 100%;
     min-width: 100%;
@@ -8296,6 +8296,24 @@ span.recent-post-top-text {
     overflow: hidden;
 }
 
+/* 图片在左侧 */
+#recent-posts > .recent-post-item.left {
+    flex-direction: row !important;
+}
+#recent-posts > .recent-post-item.left .cover_radius {
+    border-radius: 12px 0px 0px 12px !important;
+}
+
+/* 图片在右侧 */
+#recent-posts > .recent-post-item.right {
+    flex-direction: row-reverse !important;
+}
+
+#recent-posts > .recent-post-item.right .cover_radius {
+    border-radius: 0px 12px 12px 0px !important;
+}
+
+
 @media screen and (min-width: 1300px) {
     #recent-posts > .recent-post-item {
         flex-direction: column;
@@ -8317,7 +8335,7 @@ span.recent-post-top-text {
     /* 1 列：左右排列 */
     #recent-posts > .recent-post-item.col1 {
         width: calc(100% - .5rem);
-        flex-direction: row;
+
     }
 
     /* 2 列 */
@@ -8334,7 +8352,6 @@ span.recent-post-top-text {
     #recent-posts > .recent-post-item.col4 {
         width: calc(100% / 4 - .5rem);
     }
-
 
     #category-bar {
         margin-bottom: 0.75rem;

@@ -89,6 +89,17 @@ spec:
             - label: 四列
               value: col4
           help: "选择单列时，文章卡片的图片将位于左侧"
+        - $formkit: select
+          name: post_location
+          label: 封面位置
+          value: top
+          options:
+            - label: 上方
+              value: top
+            - label: 左侧
+              value: left
+            - label: 右侧
+              value: right
         - $formkit: url
           name: post_random_img
           label: 博客封面随机 API
