@@ -77,7 +77,7 @@ spec:
       formSchema:
         - $formkit: select
           name: cols
-          label: 文章列表布局（无效）
+          label: 文章列表布局
           value: col1
           options:
             - label: 单列

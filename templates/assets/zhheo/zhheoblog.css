@@ -8280,7 +8280,7 @@ span.recent-post-top-text {
     }
 
     #recent-posts > .recent-post-item:not(:first-child) {
-        width: calc(50% - 0.5rem);
+        /*width: calc(50% - 0.5rem);*/
         margin-top: 0.25rem;
         margin-bottom: 0.75rem;
         box-shadow: var(--heo-shadow-border);
@@ -8290,6 +8290,29 @@ span.recent-post-top-text {
     #recent-posts > .recent-post-item:not(:first-child):active {
         transform: scale(0.97);
     }
+
+    /* 设置分列 */
+    /* 1 列：左右排列 */
+    #recent-posts > .recent-post-item.col1 {
+        width: calc(100% - .5rem);
+        flex-direction: row;
+    }
+
+    /* 2 列 */
+    #recent-posts > .recent-post-item.col2 {
+        width: calc(100% / 2 - .5rem);
+    }
+
+    /* 3 列 */
+    #recent-posts > .recent-post-item.col3 {
+        width: calc(100% / 3 - .5rem);
+    }
+
+    /* 4 列 */
+    #recent-posts > .recent-post-item.col4 {
+        width: calc(100% / 4 - .5rem);
+    }
+
 
     #category-bar {
         margin-bottom: 0.75rem;
