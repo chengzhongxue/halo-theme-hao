@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<div class="aside-content" id="aside-content" th:fragment="aside">
+<div class="aside-content" id="aside-content" th:fragment="aside" th:if="${theme.config.sidebar.location != 'hide'}">
 
     <!-- 个人信息卡片 -->
     <div th:replace="modules/widgets/profile :: profile"></div>

@@ -15,7 +15,7 @@
             <!-- 置顶内容 -->
             <div th:replace="modules/recent-top :: recent-top"></div>
         </div>
-        <main class="layout" id="content-inner">
+        <main class="layout" id="content-inner" th:classappend="${theme.config.sidebar.location}">
             <div class="recent-posts" id="recent-posts">
 
                 <!-- 分类导航栏 -->

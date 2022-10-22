@@ -7167,6 +7167,28 @@ span.fund_name {
     width: calc(100% - 300px);
 }
 
+/* 当隐藏边栏时，显示 100% */
+.layout.hide > div:first-child {
+    width: 100%;
+}
+
+/* 侧边栏在左侧时，显示 100% */
+.layout.left > div:first-child {
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -o-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    -webkit-order: 2;
+    order: 2;
+}
+
+/* 侧栏在左侧时，关闭左边距，打开右边距 */
+.layout.left .aside-content {
+    padding-right: 15px;
+    padding-left: 0px !important;
+}
+
+
 div#categoryList {
     display: flex;
     width: 100%;

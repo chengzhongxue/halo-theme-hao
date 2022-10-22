@@ -131,6 +131,17 @@ spec:
     - group: sidebar
       label: 侧边栏
       formSchema:
+        - $formkit: select
+          name: location
+          label: 侧边栏位置
+          value: "right"
+          options:
+            - value: "hide"
+              label: "隐藏"
+            - value: "right"
+              label: "右侧"
+            - value: "left"
+              label: "左侧"
         - $formkit: textarea
           name: widgets
           label: 小部件（无效）
