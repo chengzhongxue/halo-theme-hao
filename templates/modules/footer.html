@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 页脚模块 -->
+<footer id="footer" th:fragment="footer">
+
+    <!-- 社交链接，需要填入 href class title -->
+    <div id="footer_deal" th:if="${not #strings.isEmpty(theme.config.footer.social)}">
+        <a class="deal_link" href="/" rel="external nofollow" title="mail">
+            <i class="fa-regular fa-envelope"></i>
+        </a>
+    </div>
+
+
+    <!-- 相关地址  -->
+    <th:block th:if="${not #strings.isEmpty(theme.config.footer.menu)}"
+              th:with="footMenu = ${theme.config.footer.menu}">
+        <div id="heo-footer"
+             th:if="${not #strings.isEmpty(footMenu)} and ${not #lists.isEmpty(menuFinder.getByName(footMenu))}">
+            <div class="footer-group" th:each="menuItem : ${menuFinder.getByName(footMenu).menuItems}">
+                <h3 class="footer-title" th:text="${menuItem.status.displayName}">软件</h3>
+                <div class="footer-links">
+                    <a class="footer-item" th:each="childMenu : ${menuItem.children}" th:href="${childMenu.status.href}"
+                       th:text="${childMenu.status.displayName}"></a>
+                </div>
+            </div>
+        </div>
+
+    </th:block>
+    <!-- 底部 banner -->
+
+    <div id="footer-banner">
+        <div class="footer-banner-links">
+            <div class="footer-banner-left">
+                <div id="footer-banner-tips">
+                    <div class="copyright">©[[${theme.config.footer.copyright_start}]] - [[${#dates.format(new
+                        java.util.Date(), 'yyyy')}]] [[${site.title}]].
+                    </div>
+                </div>
+                <br>
+                <div>
+                    &nbsp;
+                    Powered by <a class="hover:underline" href="https://halo.run" target="_blank">Halo</a>.
+                </div>
+            </div>
+            <div class="footer-banner-right">
+                <a class="footer-banner-link" href="/rss">订阅</a>
+                <a class="footer-banner-link" href="https://github.com/liuzhihang/halo-theme-hao">主题</a>
+                <a class="footer-banner-link" href="/about">关于</a>
+                <a class="footer-banner-link" href="https://beian.miit.gov.cn/#/Integrated/index"
+                   rel="noopener external nofollow noreferrer noopener" target="_blank">[[${theme.config.footer.icp}]]
+                </a>
+                <a class="footer-banner-link cc" href="/cc" title="cc协议">
+                    <i class="iconfont icon-occ"></i>
+                    <i class="iconfont icon-occ-by"></i>
+                    <i class="iconfont icon-onc"></i>
+                    <i class="iconfont icon-ond"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- 暂时不需要弹窗 -->
+    <!--<div id="cookies-window">-->
+    <!--    <div class="cookies-window-title">协议提醒助手</div>-->
+    <!--    <div class="cookies-window-content">-->
+    <!--        <span class="cookies-tip">查看本站为你的个人隐私做出的努力</span>-->
+    <!--        <a class="cookies-link" href="privacy/index.html" title="本站如何保护你的隐私">-->
+    <!--            <i class="fas fa-arrow-circle-right"></i>-->
+    <!--        </a>-->
+    <!--    </div>-->
+    <!--</div>-->
+    <div id="quit-box" onclick="RemoveRewardMask()"></div>
+</footer>
+</html>

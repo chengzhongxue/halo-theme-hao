@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="post-list"
+          th:with="postItems=${posts.items},
+          totalPages = ${(posts.total - 1) / posts.size + 1}, pageIndex = ${posts.page}">
+
+    <!-- card，需要添加在没有图片时使用随机图片 -->
+    <div class="recent-post-item"
+         th:classappend="${theme.config.layout.cols} + ' ' + ${theme.config.layout.post_location} + ' ' + (${iStat.even} ? 'even' : 'odd')"
+         th:each="post,iStat : ${postItems}">
+
+        <div class="post_cover cover_radius">
+            <a th:attr="title=${post.spec.title}" th:href="${post.status.permalink}">
+                <img class="post_bg entered loaded" loading="lazy"
+                     th:alt="${post.status.excerpt}"
+                     th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
+            </a>
+        </div>
+        <!-- 类别非空时 -->
+        <th:block th:if="${not #lists.isEmpty(post.categories)}">
+            <a class="article-meta__categories"
+               th:each="category : ${post.categories}"
+               th:href="${category.status.permalink}"
+               th:text="${category.spec.displayName}"
+               th:title="${category.spec.displayName}">
+            </a>
+        </th:block>
+        <div class="recent-post-info">
+            <div class="recent-post-info-top">
+                <span class="lastestpost">最新文章</span>
+                <a class="article-title"
+                   th:attr="title=${post.spec.title}"
+                   th:href="${post.status.permalink}"
+                   th:text="${post.spec.title}">
+                </a>
+                <div class="content" th:text="${post.status.excerpt}"></div>
+            </div>
+
+
+            <div class="article-meta-wrap">
+                <!-- tag -->
+                <th:block th:if="${not #lists.isEmpty(post.tags)}">
+                    <span class="article-meta tags">
+                        <a class="article-meta__tags" event.cancelbubble
+                           onclick="window.event.cancelBubble=!0"
+                           th:each="tag : ${post.tags}"
+                           th:href="${tag.status.permalink}"
+                           th:text="${tag.spec.displayName}"
+                           th:title="${tag.spec.displayName}">
+                            <span class="tags-punctuation">#</span>
+                        </a>
+                    </span>
+                </th:block>
+                <!-- 创建时间 -->
+                <span class="post-meta-date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span class="article-meta-label">创建</span>
+                    <time th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
+                          th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
+                    </time>
+                </span>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <nav id="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}">
+
+        <!-- 页面小于 7 -->
+        <div class="pagination" th:if="${(totalPages le 7) && (totalPages gt 0)}">
+
+            <!-- 上一页 -->
+            <a class="extend prev" rel="prev" th:href="${posts.prevUrl}" th:if="${posts.hasPrevious()}">
+                <i class="fas fa-chevron-left fa-fw"></i>
+                <div class="pagination_tips_prev">上页</div>
+            </a>
+
+            <!-- th:href="${PostFinder.list(index, posts.size)}" -->
+            <a class="page-number"
+               th:classappend="${index eq pageIndex} ? 'current'"
+               th:each="index : ${#numbers.sequence(1, totalPages)}"
+               th:text="${index}">
+            </a>
+
+            <!-- 下一页 -->
+            <a class="extend next" rel="next" th:href="${posts.nextUrl}" th:if="${posts.hasNext()}">
+                <div class="pagination_tips_next">下页</div>
+                <i class="fas fa-chevron-right fa-fw"></i>
+            </a>
+
+        </div>
+
+
+        <!-- 页面大于 7 -->
+        <!-- https://blog.csdn.net/lizc_lizc/article/details/80215147 -->
+        <div class="pagination" th:if="${totalPages gt 7}">
+
+            <!-- 上一页 -->
+            <a class="extend prev" rel="prev" th:href="${posts.prevUrl}" th:if="${posts.hasPrevious()}">
+                <i class="fas fa-chevron-left fa-fw"></i>
+                <div class="pagination_tips_prev">上页</div>
+            </a>
+
+            <!-- 首页 -->
+            <a class="page-number" href="/">1</a>
+
+
+            <!-- 当前页面小于等于4 -->
+            <!-- TODO 需要添加 th:href 跳转地址 -->
+            <a class="page-number"
+               th:classappend="${index eq pageIndex} ? 'current'"
+               th:each="index:${#numbers.sequence(2,5)}"
+               th:if="${pageIndex le 4}"
+               th:text="${index}">
+            </a>
+            <!-- TODO 需要添加 th:href 跳转地址 -->
+            <a class="page-number" th:if="${pageIndex le 4}">...</a>
+
+
+            <!-- 最后一页与当前页面之差小于等于3 -->
+            <!-- 需要添加 th:href 跳转地址 -->
+            <a class="page-number" th:if="${totalPages - pageIndex le 3}">...</a>
+            <!-- 需要添加 th:href 跳转地址 -->
+            <a class="page-number"
+               th:classappend="${index eq pageIndex} ? 'current'"
+               th:each="index : ${#numbers.sequence(totalPages - 4, totalPages - 1)}"
+               th:if="${totalPages - pageIndex le 3}"
+               th:text="${index}">
+            </a>
+
+
+            <!-- 最后一页与当前页面之差大于3 且当前页面大于4 -->
+            <!-- 需要添加 th:href 跳转地址 -->
+            <a class="page-number" th:if="${(pageIndex gt 4) && (totalPages - pageIndex gt 3)}">...</a>
+            <!-- 需要添加 th:href 跳转地址 -->
+            <a class="page-number"
+               th:each="index : ${#numbers.sequence(pageIndex - 1,pageIndex + 1)}"
+               th:if="${(pageIndex gt 4) && (totalPages - pageIndex gt 3)}"
+               th:text="${index}">
+            </a>
+            <!-- 需要添加 th:href 跳转地址 -->
+            <a class="page-number" th:if="${(pageIndex gt 4) && (totalPages - pageIndex gt 3)}">...</a>
+
+            <!-- 尾页 -->
+            <!-- 需要添加 th:href 跳转地址 -->
+            <a class="page-number"
+               th:classappend="${index eq pageIndex} ? 'current'"
+               th:text="${totalPages}">
+            </a>
+
+            <!-- 下一页 -->
+            <a class="extend next" rel="next" th:href="${posts.nextUrl}" th:if="${posts.hasNext()}">
+                <div class="pagination_tips_next">下页</div>
+                <i class="fas fa-chevron-right fa-fw"></i>
+            </a>
+
+        </div>
+
+    </nav>
+
+</th:block>
+
+</html>

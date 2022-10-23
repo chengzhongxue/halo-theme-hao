@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<nav id="nav" th:fragment="nav">
+    <div id="nav-group">
+
+        <!-- 导航栏左侧 -->
+        <div th:replace="modules/widgets/nav-left :: nav-left"></div>
+
+        <div id="page-name-mask">
+            <div id="page-name"><a id="page-name-text" onclick="btf.scrollToDest(0,500)"></a></div>
+        </div>
+
+        <!-- 导航栏中间 -->
+        <div th:replace="modules/widgets/nav-menu :: nav-menu"></div>
+
+        <!-- 导航栏右侧 -->
+        <div th:replace="modules/widgets/nav-right :: nav-right"></div>
+
+    </div>
+</nav>
+
+</html>

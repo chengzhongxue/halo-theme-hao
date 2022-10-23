@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 置顶的文章-->
+<div class="recent-top-post-group" id="recent-top-post-group"
+     th:fragment="recent-top"
+     th:if="${theme.config.top.recent_top}">
+
+    <div class="recent-post-top" id="recent-post-top">
+        <!-- banner -->
+        <div th:replace="modules/widgets/banner-group :: banner-group"></div>
+        <!-- top -->
+        <div th:replace="modules/widgets/top-group :: top-group"></div>
+
+    </div>
+</div>
+
+</html>

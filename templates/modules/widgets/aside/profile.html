@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 侧边栏自我介绍 -->
+
+<div class="card-widget card-info" th:fragment="profile">
+    <!-- 描述信息 -->
+    <div class="card-content">
+        <div class="card-info-avatar is-center">
+            <div class="author-info__sayhi" id="author-info__sayhi">你好啊！我是</div>
+            <div class="author-info__name"
+                 th:if="${#strings.isEmpty(theme.config.sidebar.profile_name)}"
+                 th:text="${site.title}"></div>
+            <div class="author-info__name"
+                 th:if="${not #strings.isEmpty(theme.config.sidebar.profile_name)}"
+                 th:text="${theme.config.sidebar.profile_name}"></div>
+            <div class="author-info__description" th:utext="${theme.config.sidebar.profile_desc}">
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 跳转信息 -->
+    <div class="banner-button-group">
+        <a class="banner-button" href="/about">
+            <i class="fas fa-circle-arrow-up-right"></i>
+            <span class="banner-button-text">了解更多</span>
+        </a>
+    </div>
+
+    <div class="card-info-social-icons is-center">
+        <a class="social-icon" href="#" rel="external nofollow" target="_blank"
+           title="Github">
+            <i class="ri-github-line"></i>
+        </a>
+        <a class="social-icon" href="#" rel="external nofollow" target="_blank"
+           title="Mail">
+            <i class="ri-mail-line"></i>
+        </a>
+    </div>
+</div>
+
+</html>

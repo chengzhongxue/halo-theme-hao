@@ -1,0 +1,485 @@
+apiVersion: v1alpha1
+kind: Setting
+metadata:
+  name: theme-hao-setting
+spec:
+  forms:
+    - group: nav
+      label: 导航栏
+      formSchema:
+        - $formkit: text
+          name: left_menu
+          label: 导航栏左侧相关链接
+          placeholder: 请填写 metadata name
+          help: "需要通过开发者模式获取菜单对应的 metadata name"
+        - $formkit: radio
+          name: right_menu
+          label: 右侧四个按钮
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
+        - $formkit: text
+          name: site_title
+          label: 标题
+          placeholder: 请输入标题
+          help: 支持 HTML 语法，比如 <span id="site-name-icon">Hao</span>，默认为站点名称
+    - group: top
+      label: 顶部
+      formSchema:
+        - $formkit: radio
+          name: recent_top
+          label: 首页顶部
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
+        - $formkit: radio
+          name: time_list
+          label: 日志模块
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
+        - $formkit: text
+          name: banners_title_big
+          label: Banners 大标题
+          placeholder: 请输入大标题
+          help: 支持 HTML 语法
+        - $formkit: text
+          name: banners_title_small
+          label: Banners 小标题
+          placeholder: 请输入小标题
+          help: 支持 HTML 语法
+        - $formkit: url
+          name: bikan
+          label: 必看精选
+          placeholder: 请输入地址
+          validation: "url"
+        - $formkit: url
+          name: remen
+          label: 必看精选
+          placeholder: 请输入地址
+          validation: "url"
+        - $formkit: url
+          name: shiyong
+          label: 必看精选
+          placeholder: 请输入地址
+          validation: "url"
+    - group: layout
+      label: 布局
+      formSchema:
+        - $formkit: select
+          name: cols
+          label: 文章列表布局
+          value: col1
+          options:
+            - label: 单列
+              value: col1
+            - label: 两列
+              value: col2
+            - label: 三列
+              value: col3
+            - label: 四列
+              value: col4
+          help: "选择单列时，文章卡片的图片将位于左侧"
+        - $formkit: select
+          name: post_location
+          label: 封面位置
+          value: top
+          options:
+            - label: 上方
+              value: top
+            - label: 左侧
+              value: left
+            - label: 右侧
+              value: right
+            - label: 交替
+              value: alternate
+        - $formkit: url
+          name: post_random_img
+          label: 博客封面随机 API
+          validation: "url"
+          value: "https://source.unsplash.com/random/600x400/?blog,scenery,night,desert,sea"
+          help: 默认随机封面图 url 不能保证一直可用
+    - group: sidebar
+      label: 侧边栏
+      formSchema:
+        - $formkit: select
+          name: location
+          label: 侧边栏位置
+          value: "right-aside"
+          options:
+            - value: "hide-aside"
+              label: "隐藏"
+            - value: "right-aside"
+              label: "右侧"
+            - value: "left-aside"
+              label: "左侧"
+        - $formkit: textarea
+          name: widgets
+          label: 小部件（无效）
+          value: "profile,recent-posts,latest-comments,categories,tags"
+          help: "目前提供的小部件有：profile（站点资料）, recent-posts（近期文章）, latest-comments（最新评论）, categories（文章分类）, tags（文章标签）。你可以随意组合或排序，以逗号隔开。"
+        - $formkit: text
+          name: profile_name
+          label: 个人卡片名称
+          placeholder: 请填写个人卡片名称
+          help: "不填写默认为站点则名称"
+        - $formkit: textarea
+          name: profile_desc
+          placeholder: 请填写个人卡片描述信息
+          help: "支持使用 HTML 标签"
+    - group: footer
+      label: 页脚
+      formSchema:
+        - $formkit: textarea
+          name: social
+          label: 社交链接（无效）
+          placeholder: 暂时不支持配置
+          help: "当前版本不支持配置"
+        - $formkit: text
+          name: menu
+          label: 底部相关链接
+          placeholder: 请填写 metadata name
+          help: "需要通过开发者模式获取菜单对应的 metadata name"
+        - $formkit: text
+          name: copyright_start
+          label: 开始时间
+          placeholder: 建站时间
+          help: "copyright 开始时间"
+        - $formkit: text
+          name: icp
+          label: ICP 备案
+          placeholder: 请输入 ICP 备案号
+          help: "京ICP备xxxxxxxx号"
+    - group: right_menu
+      label: 右键菜单
+      formSchema:
+        - $formkit: radio
+          name: switch
+          label: 开关
+          value: true
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
+    - group: content
+      label: 内容设置
+      formSchema:
+        - $formkit: radio
+          name: enable_code_highlight
+          label: 代码块高亮
+          value: true
+          options:
+            - label: 开启
+              value: true
+            - label: 关闭
+              value: false
+        - $formkit: radio
+          name: enable_code_lineNumber
+          label: 代码块显示行号
+          value: true
+          options:
+            - label: 开启
+              value: true
+            - label: 关闭
+              value: false
+        - $formkit: select
+          name: switch_highlight
+          label: 代码块高亮工具
+          value: "prism.js"
+          options:
+            - value: "prism"
+              label: "prism.js"
+            - value: "highlight"
+              label: "highlight.js"
+        - $formkit: url
+          name: custom_prism_css
+          validation: "url"
+          label: 自定义 prism 主题
+          placeholder: 请输入自定义 prism.css 地址
+        - $formkit: select
+          name: prism_css
+          label: prism 代码块高亮主题
+          value: "prism-default.css"
+          help: "prism 支持自定义主题 css，当配置自定义主题时，内置主题将不会生效"
+          options:
+            - value: "prism-default.css"
+              label: "prism-default.css"
+            - value: "prism-a11y-dark.css"
+              label: "prism-a11y-dark.css"
+            - value: "prism-atom-dark.css"
+              label: "prism-atom-dark.css"
+            - value: "prism-base16-ateliersulphurpool.light.css"
+              label: "prism-base16-ateliersulphurpool.light.css"
+            - value: "prism-cb.css"
+              label: "prism-cb.css"
+            - value: "prism-coldark-cold.css"
+              label: "prism-coldark-cold.css"
+            - value: "prism-coldark-dark.css"
+              label: "prism-coldark-dark.css"
+            - value: "prism-coy.css"
+              label: "prism-coy.css"
+            - value: "prism-coy-without-shadows.css"
+              label: "prism-coy-without-shadows.css"
+            - value: "prism-dark.css"
+              label: "prism-dark.css"
+            - value: "prism-darcula.css"
+              label: "prism-darcula.css"
+            - value: "prism-dracula.css"
+              label: "prism-dracula.css"
+            - value: "prism-duotone-dark.css"
+              label: "prism-duotone-dark.css"
+            - value: "prism-duotone-earth.css"
+              label: "prism-duotone-earth.css"
+            - value: "prism-duotone-forest.css"
+              label: "prism-duotone-forest.css"
+            - value: "prism-duotone-light.css"
+              label: "prism-duotone-light.css"
+            - value: "prism-duotone-sea.css"
+              label: "prism-duotone-sea.css"
+            - value: "prism-duotone-space.css"
+              label: "prism-duotone-space.css"
+            - value: "prism-funcky.css"
+              label: "prism-funcky.css"
+            - value: "prism-ghcolors.css"
+              label: "prism-ghcolors.css"
+            - value: "prism-gruvbox-dark.css"
+              label: "prism-gruvbox-dark.css"
+            - value: "prism-gruvbox-light.css"
+              label: "prism-gruvbox-light.css"
+            - value: "prism-holi-theme.css"
+              label: "prism-holi-theme.css"
+            - value: "prism-hopscotch.css"
+              label: "prism-hopscotch.css"
+            - value: "prism-laserwave.css"
+              label: "prism-laserwave.css"
+            - value: "prism-lucario.css"
+              label: "prism-lucario.css"
+            - value: "prism-material-dark.css"
+              label: "prism-material-dark.css"
+            - value: "prism-material-light.css"
+              label: "prism-material-light.css"
+            - value: "prism-material-oceanic.css"
+              label: "prism-material-oceanic.css"
+            - value: "prism-night-owl.css"
+              label: "prism-night-owl.css"
+            - value: "prism-nord.css"
+              label: "prism-nord.css"
+            - value: "prism-one-dark.css"
+              label: "prism-one-dark.css"
+            - value: "prism-one-light.css"
+              label: "prism-one-light.css"
+            - value: "prism-okaidia.css"
+              label: "prism-okaidia.css"
+            - value: "prism-pojoaque.css"
+              label: "prism-pojoaque.css"
+            - value: "prism-shades-of-purple.css"
+              label: "prism-shades-of-purple.css"
+            - value: "prism-solarized-light.css"
+              label: "prism-solarized-light.css"
+            - value: "prism-solarized-dark-atom.css"
+              label: "prism-solarized-dark-atom.css"
+            - value: "prism-synthwave84.css"
+              label: "prism-synthwave84.css"
+            - value: "prism-tomorrow-night.css"
+              label: "prism-tomorrow-night.css"
+            - value: "prism-twilight.css"
+              label: "prism-twilight.css"
+            - value: "prism-vs.css"
+              label: "prism-vs.css"
+            - value: "prism-vsc-dark-plus.css"
+              label: "prism-vsc-dark-plus.css"
+            - value: "prism-xonokai.css"
+              label: "prism-xonokai.css"
+            - value: "prism-z-touch.css"
+              label: "prism-z-touch.css"
+        - $formkit: textarea
+          name: code_highlight_extra_languages
+          label: highlight 代码块额外高亮语言
+          help: "默认已经包含：php,diff,java,css,bash,json,perl,swift,plaintext,ruby,yaml,sql,vbnet,ini,scss,less,cpp,typescript,csharp,rust,python,python-repl,objectivec,r,shell,makefile,go,xml,markdown,lua,javascript,php-template,kotlin,c 如果需要添加其他语言，请按照相同格式添加。"
+        - $formkit: select
+          name: code_highlight_style
+          label: highlight 代码块高亮主题
+          value: "default.min.css"
+          options:
+            - value: "a11y-dark.min.css"
+              label: "a11y-dark.min.css"
+            - value: "a11y-light.min.css"
+              label: "a11y-light.min.css"
+            - value: "agate.min.css"
+              label: "agate.min.css"
+            - value: "an-old-hope.min.css"
+              label: "an-old-hope.min.css"
+            - value: "androidstudio.min.css"
+              label: "androidstudio.min.css"
+            - value: "arduino-light.min.css"
+              label: "arduino-light.min.css"
+            - value: "arta.min.css"
+              label: "arta.min.css"
+            - value: "ascetic.min.css"
+              label: "ascetic.min.css"
+            - value: "atom-one-dark-reasonable.min.css"
+              label: "atom-one-dark-reasonable.min.css"
+            - value: "atom-one-dark.min.css"
+              label: "atom-one-dark.min.css"
+            - value: "atom-one-light.min.css"
+              label: "atom-one-light.min.css"
+            - value: "brown-paper.min.css"
+              label: "brown-paper.min.css"
+            - value: "codepen-embed.min.css"
+              label: "codepen-embed.min.css"
+            - value: "color-brewer.min.css"
+              label: "color-brewer.min.css"
+            - value: "dark.min.css"
+              label: "dark.min.css"
+            - value: "default.min.css"
+              label: "default.min.css"
+            - value: "devibeans.min.css"
+              label: "devibeans.min.css"
+            - value: "docco.min.css"
+              label: "docco.min.css"
+            - value: "far.min.css"
+              label: "far.min.css"
+            - value: "felipec.min.css"
+              label: "felipec.min.css"
+            - value: "foundation.min.css"
+              label: "foundation.min.css"
+            - value: "github-dark-dimmed.min.css"
+              label: "github-dark-dimmed.min.css"
+            - value: "github-dark.min.css"
+              label: "github-dark.min.css"
+            - value: "github.min.css"
+              label: "github.min.css"
+            - value: "gml.min.css"
+              label: "gml.min.css"
+            - value: "googlecode.min.css"
+              label: "googlecode.min.css"
+            - value: "gradient-dark.min.css"
+              label: "gradient-dark.min.css"
+            - value: "gradient-light.min.css"
+              label: "gradient-light.min.css"
+            - value: "grayscale.min.css"
+              label: "grayscale.min.css"
+            - value: "hybrid.min.css"
+              label: "hybrid.min.css"
+            - value: "idea.min.css"
+              label: "idea.min.css"
+            - value: "intellij-light.min.css"
+              label: "intellij-light.min.css"
+            - value: "ir-black.min.css"
+              label: "ir-black.min.css"
+            - value: "isbl-editor-dark.min.css"
+              label: "isbl-editor-dark.min.css"
+            - value: "isbl-editor-light.min.css"
+              label: "isbl-editor-light.min.css"
+            - value: "kimbie-dark.min.css"
+              label: "kimbie-dark.min.css"
+            - value: "kimbie-light.min.css"
+              label: "kimbie-light.min.css"
+            - value: "lightfair.min.css"
+              label: "lightfair.min.css"
+            - value: "lioshi.min.css"
+              label: "lioshi.min.css"
+            - value: "magula.min.css"
+              label: "magula.min.css"
+            - value: "mono-blue.min.css"
+              label: "mono-blue.min.css"
+            - value: "monokai-sublime.min.css"
+              label: "monokai-sublime.min.css"
+            - value: "monokai.min.css"
+              label: "monokai.min.css"
+            - value: "night-owl.min.css"
+              label: "night-owl.min.css"
+            - value: "nnfx-dark.min.css"
+              label: "nnfx-dark.min.css"
+            - value: "nnfx-light.min.css"
+              label: "nnfx-light.min.css"
+            - value: "nord.min.css"
+              label: "nord.min.css"
+            - value: "obsidian.min.css"
+              label: "obsidian.min.css"
+            - value: "paraiso-dark.min.css"
+              label: "paraiso-dark.min.css"
+            - value: "paraiso-light.min.css"
+              label: "paraiso-light.min.css"
+            - value: "pojoaque.min.css"
+              label: "pojoaque.min.css"
+            - value: "purebasic.min.css"
+              label: "purebasic.min.css"
+            - value: "qtcreator-dark.min.css"
+              label: "qtcreator-dark.min.css"
+            - value: "qtcreator-light.min.css"
+              label: "qtcreator-light.min.css"
+            - value: "rainbow.min.css"
+              label: "rainbow.min.css"
+            - value: "routeros.min.css"
+              label: "routeros.min.css"
+            - value: "school-book.min.css"
+              label: "school-book.min.css"
+            - value: "shades-of-purple.min.css"
+              label: "shades-of-purple.min.css"
+            - value: "srcery.min.css"
+              label: "srcery.min.css"
+            - value: "stackoverflow-dark.min.css"
+              label: "stackoverflow-dark.min.css"
+            - value: "stackoverflow-light.min.css"
+              label: "stackoverflow-light.min.css"
+            - value: "sunburst.min.css"
+              label: "sunburst.min.css"
+            - value: "tokyo-night-dark.min.css"
+              label: "tokyo-night-dark.min.css"
+            - value: "tokyo-night-light.min.css"
+              label: "tokyo-night-light.min.css"
+            - value: "tomorrow-night-blue.min.css"
+              label: "tomorrow-night-blue.min.css"
+            - value: "tomorrow-night-bright.min.css"
+              label: "tomorrow-night-bright.min.css"
+            - value: "vs.min.css"
+              label: "vs.min.css"
+            - value: "vs2015.min.css"
+              label: "vs2015.min.css"
+            - value: "xcode.min.css"
+              label: "xcode.min.css"
+            - value: "xt256.min.css"
+              label: "xt256.min.css"
+    - group: other
+      label: 其他设置
+      formSchema:
+        - $formkit: radio
+          name: loading_box
+          label: 开关
+          value: true
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
+        - $formkit: url
+          name: loading_box_img
+          validation: "url"
+          label: 加载页图片 URL
+          placeholder: 请输入图片 url
+        - $formkit: radio
+          name: load_progress_bar
+          label: 页面加载进度条
+          value: true
+          help: 了解更多：https://codebyzach.github.io/pace/
+          options:
+            - label: 开启
+              value: true
+            - label: 关闭
+              value: false
+        - $formkit: url
+          name: img_error
+          label: 图片加载失败图
+          help: 图片加载失败时显示的图片
+          placeholder: 请输入图片 url

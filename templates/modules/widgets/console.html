@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- 控制台，右上角点击的时候会显示 -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div id="console" th:fragment="console">
+    <div class="close-btn" href="javascript:void(0);" onclick="heo.hideConsole()">
+        <i class="fas fa-circle-xmark"></i>
+    </div>
+    <div class="console-card-group">
+        <!-- 评论，需要使用评论插件，获取最近评论 -->
+        <div class="console-card-group-left">
+            <div class="console-card" id="card-newest-comments" onclick="heo.hideConsole()">
+                <div class="card-content">
+                    <div class="author-content-item-tips">互动</div>
+                    <span class="author-content-item-title">最近评论</span></div>
+                <div class="aside-list">
+                    <span>最近评论内容 TODO</span>
+                </div>
+            </div>
+        </div>
+        <!-- 右侧展示 tag -->
+        <div class="console-card-group-right">
+            <div class="console-card tags" onclick="heo.hideConsole()">
+                <div class="card-content">
+                    <div class="author-content-item-tips">标签</div>
+                    <span class="author-content-item-title">寻找感兴趣的领域</span></div>
+                <div class="card-tag-cloud" th:with="tags = ${tagFinder.listAll()}">
+                    <a style="font-size:1em;color:#d3d3d3"
+                       th:each="tag : ${tags}"
+                       th:href="${tag.status.permalink}"
+                       th:text="${tag.spec.displayName}">
+                        <sup th:text="${tag.status.postCount}"> </sup>
+                    </a>
+                </div>
+            </div>
+            <!-- 底部展示时间归档 -->
+            <!--<div class="console-card history" onclick="heo.hideConsole()">-->
+            <!--    <div class="item-headline"><i class="fas fa-archive"></i><span>文章</span></div>-->
+            <!--    <ul class="card-archive-list">-->
+            <!--        <li class="card-archive-list-item" th:each="categoryItem : ${categoryFinder.listAll()}">-->
+            <!--            <a class="card-archive-list-link" th:href="${categoryItem.status.permalink}">-->
+            <!--                <span class="card-archive-list-date" th:text="">2022</span>-->
+            <!--                <div class="card-archive-list-count-group">-->
+            <!--                    <span class="card-archive-list-count" th:text="${category.status.postCount}"></span>-->
+            <!--                    <span class="card-archive-list-count-unit">篇</span>-->
+            <!--                </div>-->
+            <!--            </a>-->
+            <!--        </li>-->
+            <!--    </ul>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="button-group">
+        <div class="console-btn-item"><a class="darkmode_switchbutton" href="javascript:void(0);"
+                                         onclick="rm.switchDarkMode()" rel="external nofollow" title="显示模式切换"><i
+                class="fa-duotone fa-moon" style="font-size:1rem"></i></a>
+        </div>
+        <div class="console-btn-item" id="consoleKeyboard" onclick="heo.keyboardToggle()" title="快捷键开关"><a
+                class="keyboard-switch"><i class="fa-duotone fa-keyboard"></i></a>
+        </div>
+        <div class="console-btn-item" id="assist-open" onclick="heo.hideConsole()" title="无障碍工具栏"><a
+                class="assist-btn"><i class="fa-duotone fa-wheelchair"></i></a>
+        </div>
+        <div class="console-btn-item" id="consoleMusic" onclick="heo.musicToggle()" title="音乐开关"><a
+                class="music-switch"><i class="fa-duotone fa-music"></i></a>
+        </div>
+    </div>
+    <div class="console-mask" href="javascript:void(0);" onclick="heo.hideConsole()" rel="external nofollow">
+    </div>
+</div>
+</html>

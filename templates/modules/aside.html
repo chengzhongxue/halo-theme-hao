@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div class="aside-content" id="aside-content" th:fragment="aside(widgets)"
+     th:if="${theme.config.sidebar.location != 'hide-aside' && not #strings.isEmpty(widgets)}">
+
+    <!-- 侧栏部件不确定都有什么 -->
+    <th:block th:each="widget : ${#strings.listSplit(widgets, ',')}">
+        <th:block th:replace="'modules/widgets/aside/'+ ${widget}"/>
+    </th:block>
+
+
+</div>
+</html>

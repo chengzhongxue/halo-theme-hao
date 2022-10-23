@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="modules/layouts/layout :: layout(~{::content})" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="content">
+
+    <div class="page" id="body-wrap">
+        <header class="not-top-img" id="page-header">
+            <nav th:replace="modules/nav :: nav"></nav>
+        </header>
+        <main class="layout" id="content-inner">
+            <div id="category">
+                <div class="category-in-bar">
+                    <div class="category-in-bar-tips">分类</div>
+                    <div id="category-bar">
+                        <div class="category-bar-items" id="category-bar-items">
+                            <div class="category-bar-item" id="category-bar-home">
+                                <a href="/">首页</a>
+                            </div>
+                            <div class="category-bar-item"
+                                 th:classappend="${category.metadata.name == categoryItem.metadata.name} ? 'select'"
+                                 th:each="categoryItem : ${categoryFinder.listAll()}"
+                                 th:id="${categoryItem.spec.displayName}">
+                                <a th:href="${categoryItem.status.permalink}"
+                                   th:text="${categoryItem.spec.displayName}"></a>
+                            </div>
+
+                        </div>
+                        <!-- 跳转到分类页 -->
+                        <!--<a class="category-bar-more" href="#">更多</a>-->
+                    </div>
+                </div>
+                <div class="article-sort-title" th:text="${category.spec.displayName}"></div>
+                <div class="article-sort">
+                    <!-- TODO 按照年份分组 需要 halo 提供归档数据-->
+                    <!--<div class="article-sort-item year">2022</div>-->
+                    <div class="article-sort-item" th:each="post : ${posts.items}">
+                        <a class="article-sort-item-img" th:href="${post.status.permalink}"
+                           th:title="${post.spec.title}">
+                            <img th:alt="${post.spec.title}"
+                                 th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
+                        </a>
+                        <div class="article-sort-item-info">
+                            <div class="article-sort-item-time"><i class="far fa-calendar-alt"></i>
+                                <time class="post-meta-date-created"
+                                      th:attr="datetime=${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}"
+                                      th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
+                                      th:title="'创建于' + ${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">
+                                </time>
+                            </div>
+                            <a class="article-sort-item-title" onclick="window.event.cancelBubble=!0"
+                               th:href="${post.status.permalink}" th:text="${post.spec.title}"
+                               th:title="${post.spec.title}"></a>
+                            <div class="article-sort-item-tags">
+                                <a class="article-meta__tags"
+                                   th:each="tag : ${post.tags}" th:href="${tag.status.permalink}">
+                                    <span class="tags-punctuation">#</span>
+                                    [[${tag.spec.displayName}]]
+                                </a>
+                                <span class="article-meta__link">•</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 分页 -->
+                <nav id="pagination">
+                    <div class="pagination"><span class="page-number current">1</span></div>
+                </nav>
+            </div>
+            <div th:replace="modules/aside :: aside('profile,recent-posts,tags-stat')"></div>
+        </main>
+
+        <!-- 底部 -->
+        <footer th:replace="modules/footer :: footer"></footer>
+    </div>
+
+</th:block>
+
+</html>

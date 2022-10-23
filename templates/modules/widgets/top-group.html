@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- 这里应该改为 6 篇置顶文章 -->
+<div class="topGroup" th:fragment="top-group" th:with="posts = ${postFinder.list(1,6)}">
+    <div class="recent-post-item" th:each="post : ${posts}">
+        <div class="post_cover">
+            <a th:href="${post.status.permalink}" th:title="${post.spec.title}">
+                <span class="recent-post-top-text">荐</span>
+                <img class="post_bg" loading="lazy"
+                     th:alt="${post.spec.title}"
+                     th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
+            </a>
+        </div>
+        <div class="recent-post-info">
+            <a class="article-title"
+               th:href="${post.status.permalink}"
+               th:text="${post.spec.title}"
+               th:title="${post.spec.title}">
+            </a>
+        </div>
+    </div>
+
+    <!-- 这块功能依赖后台配置 -->
+    <!--<div class="todayCard" id="todayCard" onclick='window.open("https://www.bilibili.com/video/BV1A841147Ef/")'>-->
+    <!--    <div class="todayCard-info">-->
+    <!--        <div class="todayCard-tips">音乐推荐</div>-->
+    <!--        <div class="todayCard-title">逐星</div>-->
+    <!--    </div>-->
+    <!--    <div class="todayCard-cover"-->
+    <!--         style="background:url(https://img.zhheo.com/i/2022/09/23/632d1625aa0d7.webp) no-repeat center/cover"></div>-->
+    <!--    <div class="banner-button-group"><a class="banner-button"-->
+    <!--                                        onclick="window.event.cancelBubble=!0,heo.hideTodayCard()"><i-->
+    <!--            class="fas fa-circle-plus"></i><span class="banner-button-text">更多推荐</span></a>-->
+    <!--    </div>-->
+    <!--</div>-->
+</div>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="modules/layouts/layout :: layout(~{::content})" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="content">
+
+    <div class="page" id="body-wrap">
+
+        <!-- 头部导航栏 -->
+        <header class="not-top-img" id="page-header">
+            <nav th:replace="modules/nav :: nav"></nav>
+        </header>
+        <main class="layout hide-aside" id="content-inner">
+            <div id="page">
+                <div id="article-container line-numbers" th:utext="${singlePage.content.content}"></div>
+            </div>
+        </main>
+        <!-- 底部 -->
+        <footer th:replace="modules/footer :: footer"></footer>
+    </div>
+
+</th:block>
+
+</html>
+

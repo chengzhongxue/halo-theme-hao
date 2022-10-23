@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 侧边栏站点信息统计 -->
+
+<th:block th:fragment="stat">
+
+    <!-- 这里还需要换成动态的 -->
+    <div class="item-headline"><i class="fas fa-chart-line"></i><span>统计</span></div>
+    <div class="webinfo">
+        <div class="webinfo-item">
+            <div class="webinfo-item-title"><i class="item-icon fas fa-file-alt"></i>
+                <div class="item-name">文章总数 :</div>
+            </div>
+            <div class="item-count">649</div>
+        </div>
+        <div class="webinfo-item">
+            <div class="webinfo-item-title"><i class="item-icon fas fa-stopwatch"></i>
+                <div class="item-name">建站天数 :</div>
+            </div>
+            <div class="item-count" data-publishdate="2019-10-27T16:00:00.000Z" id="runtimeshow"></div>
+        </div>
+        <div class="webinfo-item">
+            <div class="webinfo-item-title"><i class="item-icon fas fa-font"></i>
+                <div class="item-name">全站字数 :</div>
+            </div>
+            <div class="item-count">606.7k</div>
+        </div>
+    </div>
+</th:block>
+
+</html>

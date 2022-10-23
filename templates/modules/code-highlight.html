@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 代码高亮模块 -->
+<th:block th:fragment="code-highlight">
+
+    <th:block th:if="${theme.config.content.switch_highlight == 'highlight'}">
+        <!-- hightlight 代码高亮 -->
+        <th:block th:include="modules/libs/highlight :: import"></th:block>
+        <th:block th:include="modules/libs/highlight :: script"></th:block>
+    </th:block>
+
+    <!-- prism -->
+    <th:block th:if="${theme.config.content.switch_highlight == 'prism'}">
+        <th:block th:include="modules/libs/prism :: import"></th:block>
+        <th:block th:include="modules/libs/prism :: script"></th:block>
+    </th:block>
+</th:block>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="layout(content)" xmlns:th="http://www.thymeleaf.org">
+
+<!-- head 中自定义的  -->
+<head th:replace="modules/head :: head(metas = null,links = null, scripts = null)"></head>
+
+<body>
+
+<!-- loading 页面 -->
+<div th:replace="modules/loading-box :: loading-box"></div>
+
+<!-- 网站背景 -->
+<div id="web_bg"></div>
+
+<!-- 控制台 -->
+<div th:replace="modules/widgets/console :: console"></div>
+
+<!-- 内容 -->
+<th:block th:replace="${content}"></th:block>
+
+
+<div th:replace="modules/right-menu :: right-menu"></div>
+
+<div>
+    <script th:src="@{/assets/js/utils.js}"></script>
+    <script th:src="@{/assets/js/main.js}"></script>
+    <script charset="utf-8" data-pjax="" th:src="@{/assets/zhheo/blogex.js}"></script>
+
+    <!-- 繁简翻译 js -->
+    <!-- 改成可配置 -->
+    <script th:src="@{/assets/libs/translate/tw_cn.js}"></script>
+
+    <!-- https://instant.page/ 网站预加载， 放在 </body> 之前 -->
+    <script th:src="@{/assets/libs/instantpage/instantpage.min.js}" type="module"></script>
+
+    <!-- 右下角通知 https://www.polonel.com/snackbar/ -->
+    <!-- todo head 中有它的 css，应该可以写一块，并改成后台可配置的功能，代码中应该还有他的 js -->
+    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script>
+
+    <!-- https://davidshimjs.github.io/qrcodejs/ 生成二维码 -->
+    <!-- 应该是文章页分享使用 -->
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <!-- todo 不知道是否可以抽到 right-menu.html 中，做到后台可配置 -->
+    <script th:src="@{/assets/zhheo/rightmenu.js}"></script>
+
+    <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
+    <script th:src="@{/assets/libs/waterfall/waterfall.min.js}"></script>
+</div>
+
+<div>
+    <script th:inline="javascript">
+        //coverColor();
+
+        if ([[${theme.config.other.loading_box} and not ${#strings.isEmpty(theme.config.other.loading_box_img)}]]) {
+            // 移除加载动画
+            removeLoading();
+        }
+        addRightMenuClickEvent();
+        navTitle();
+        heo.topPostScroll();
+        heo.topCategoriesBarScroll();
+        heo.sayhi();
+        heo.addTag();
+        heo.stopImgRightDrag();
+        heo.qrcodeCreate();
+        heo.onlyHome();
+        heo.addNavBackgroundInit();
+        heo.reflashEssayWaterFall();
+        heo.addMediumInEssay();
+        heo.darkModeStatus();
+        heo.categoriesBarActive();
+        heo.initThemeColor();
+
+        if ([[not ${#strings.isEmpty(theme.config.other.img_error)}]]) {
+            imgError([[${theme.config.other.img_error}]]);
+        } else {
+            imgError(/*[[@{/assets/images/404.gif}]]*/)
+        }
+
+    </script>
+</div>
+</body>
+</html>
+

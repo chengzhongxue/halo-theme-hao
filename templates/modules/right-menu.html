@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 右键菜单 -->
+<div th:fragment="right-menu">
+    <div id="rightMenu">
+        <div class="rightMenu-group rightMenu-small">
+            <div class="rightMenu-item" id="menu-backward"><i class="fa-solid fa-arrow-left"></i></div>
+            <div class="rightMenu-item" id="menu-forward"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="rightMenu-item" id="menu-refresh"><i class="fa-solid fa-arrow-rotate-right"></i></div>
+            <div class="rightMenu-item" id="menu-top"><i class="fa-solid fa-arrow-up"></i></div>
+        </div>
+        <div class="rightMenu-group rightMenu-line rightMenuPlugin">
+            <div class="rightMenu-item" id="menu-copytext"><i class="fa-duotone fa-copy"></i><span>复制选中文本</span>
+            </div>
+            <div class="rightMenu-item" id="menu-pastetext"><i class="fa-duotone fa-paste"></i><span>粘贴文本</span>
+            </div>
+            <a class="rightMenu-item" id="menu-commenttext"><i
+                    class="fa-duotone fa-comment-medical"></i><span>引用到评论</span></a>
+            <div class="rightMenu-item" id="menu-newwindow"><i
+                    class="fa-duotone fa-window-restore"></i><span>新窗口打开</span></div>
+            <div class="rightMenu-item" id="menu-copylink"><i
+                    class="fa-duotone fa-link-horizontal"></i><span>复制链接地址</span></div>
+            <div class="rightMenu-item" id="menu-copyimg"><i class="fa-duotone fa-images"></i><span>复制此图片</span>
+            </div>
+            <div class="rightMenu-item" id="menu-downloadimg"><i
+                    class="fa-duotone fa-download"></i><span>下载此图片</span></div>
+            <div class="rightMenu-item" id="menu-search"><i
+                    class="fa-solid fa-magnifying-glass"></i><span>站内搜索</span></div>
+            <div class="rightMenu-item" id="menu-searchBaidu"><i
+                    class="fa-solid fa-magnifying-glass"></i><span>百度搜索</span></div>
+            <div class="rightMenu-item" id="menu-music-toggle"><i class="fas fa-play"></i><span>播放音乐</span></div>
+            <div class="rightMenu-item" id="menu-music-back"><i
+                    class="fa-duotone fa-backward"></i><span>切换到上一首</span></div>
+            <div class="rightMenu-item" id="menu-music-forward"><i
+                    class="fa-duotone fa-forward"></i><span>切换到下一首</span></div>
+            <div class="rightMenu-item" id="menu-music-playlist"
+                 onclick='window.open("https://music.163.com/#/playlist?app_version=8.8.36&amp;id=5197802668","_blank")'>
+                <i class="fa-duotone fa-list-music"></i><span>查看所有歌曲</span></div>
+            <div class="rightMenu-item" id="menu-music-copyMusicName"><i class="fa-duotone fa-copy"></i>
+                <span>复制歌名</span></div>
+        </div>
+        <div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link"
+                                                                      id="menu-randomPost"><i
+                class="fa-duotone fa-dice"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link"
+                                                                           href="categories/index.html"><i
+                class="fa-duotone fa-list-tree"></i><span>博客分类</span></a><a class="rightMenu-item menu-link"
+                                                                                href="tags/index.html"><i
+                class="fa-duotone fa-tags"></i><span>文章标签</span></a></div>
+        <div class="rightMenu-group rightMenu-line"><a class="rightMenu-item menu-link" href="cc/index.html"><i
+                class="fa-solid fa-hand"></i><span>隐私协议</span></a><a class="rightMenu-item menu-link"
+                                                                         href="cc/index.html"><i
+                class="fa-solid fa-closed-captioning"></i><span>版权协议</span></a></div>
+        <div class="rightMenu-group rightMenu-line rightMenuOther">
+            <div class="rightMenu-item" id="menu-copy">
+                <i class="fa-duotone fa-link-horizontal"></i><span>复制地址</span>
+            </div>
+            <div class="rightMenu-item" id="menu-darkmode">
+                <i class="fa-solid fa-moon"></i><span class="menu-darkmode-text">显示模式</span>
+            </div>
+            <div class="rightMenu-item" id="menu-translate">
+                <i class="fa-duotone fa-language"></i><span>轉為繁體</span>
+            </div>
+        </div>
+    </div>
+    <div id="rightmenu-mask"></div>
+</div>
+</html>

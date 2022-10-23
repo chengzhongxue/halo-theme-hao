@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="modules/layouts/layout :: layout(~{::content})" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="content">
+    <div class="post" id="body-wrap">
+
+        <header class="post-bg" id="page-header" th:style="'background-image:url(' + (${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}) + ')'">
+            <nav th:replace="modules/nav :: nav"></nav>
+            <div class="coverdiv" id="coverdiv">
+                <img alt="cover" id="post-cover" loading="lazy"
+                     th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
+            </div>
+
+            <div id="post-info">
+                <div id="post-firstinfo">
+                    <div class="meta-firstline">
+                        <!-- 这里要跳转到版权页 -->
+                        <a class="post-meta-original" th:href="@{/cc}" title="该文章为原创文章，注意版权协议">原创</a>
+                        <span class="post-meta-categories"
+                              th:each="category : ${post.categories}"
+                              th:if="${not #lists.isEmpty(post.categories)}">
+                            <a class="post-meta-categories"
+                               th:href="${category.status.permalink}"
+                               th:text="${category.spec.displayName}"
+                               th:title="${category.spec.displayName}">
+                            </a>
+                        </span>
+                        <div class="tag_share" th:if="${not #lists.isEmpty(post.tags)}">
+                            <div class="post-meta__tag-list">
+                                <a class="post-meta__tags"
+                                   th:each="tag : ${post.tags}"
+                                   th:href="${tag.status.permalink}"
+                                   th:text="'#'+${tag.spec.displayName}"
+                                   th:title="${tag.spec.displayName}"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="post-title" th:text="${post.spec.title}"></h1>
+                <div id="post-meta">
+                    <div class="meta-secondline">
+
+                        <span class="post-meta-wordcount"
+                              th:with="wordCount = ${#strings.length(post.content.content)}">
+                            <i class="fas fa-file-word fa-fw post-meta-icon" title="字数"></i>
+                            <span class="post-meta-label">字数:</span>
+                            <span class="word-count" th:text="${{wordCount}}"></span>
+                            <span class="post-meta-separator"></span>
+                            <i class="fas fa-clock post-meta-icon" title="阅读耗时"></i>
+                            <span class="post-meta-label">阅读耗时:</span><span>[[${wordCount / 400}]] 分钟</span>
+                        </span>
+                        <span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-calendar"></i>
+                            <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm:ss')}"
+                                  th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}"
+                                  th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">
+                            </time>
+                        </span>
+                        <!--<span class="post-meta-wechat" title="该文章已在公众号中更新"><i-->
+                        <!--        class="fab fa-weixin post-meta-icon"></i>公众号同步</span>-->
+                        <!--<span class="post-meta-position" title="作者IP属地为北京"><i-->
+                        <!--        class="fas fa-location-dot post-meta-icon"></i>北京</span>-->
+                        <span class="post-meta-pv" data-flag-title="热度">
+                            <i class="fab fa-hotjar fa-fw post-meta-icon"></i>
+                            <span class="post-meta-label">热度:</span>
+                            <span id="visit" th:text="${post.stats.visit}"></span>
+                        </span>
+                        <span class="post-meta-commentcount" title="评论数"><i class="fa-solid fa-message">
+
+                            </i>
+                            <span class="post-meta-label">评论:</span>
+                            <a href="#post-comment">
+                                <span id="comment-count" th:text="${post.stats.comment}"></span>
+                            </a>
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="layout" id="content-inner" th:classappend="${theme.config.sidebar.location}">
+            <div id="post">
+                <!-- 文章内容 -->
+                <article class="post-content line-numbers" id="article-container"
+                         th:utext="${post.content.content}"></article>
+
+
+                <div class="post-tools" id="post-tools">
+                    <div class="post-tools-left">
+
+                        <!-- 打赏 -->
+                        <!--<div class="post-reward" onclick="AddRewardMask()">-->
+                        <!--    <div class="reward-button button&#45;&#45;animated" title="赞赏作者"><i class="fas fa-hamburger"></i>-->
+                        <!--        打赏作者-->
+                        <!--    </div>-->
+                        <!--    <div class="reward-main">-->
+                        <!--        <ul class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span>-->
+                        <!--            <ul class="reward-group">-->
+                        <!--                <li class="reward-item"><a href="../img/wechat.png" target="_blank"><img-->
+                        <!--                        alt="微信" class="post-qr-code-img" data-lazy-src="/img/wechat.png"></a>-->
+                        <!--                    <div class="post-qr-code-desc">微信</div>-->
+                        <!--                </li>-->
+                        <!--                <li class="reward-item"><a href="../img/alipay.png" target="_blank"><img-->
+                        <!--                        alt="支付宝" class="post-qr-code-img" data-lazy-src="/img/alipay.png"></a>-->
+                        <!--                    <div class="post-qr-code-desc">支付宝</div>-->
+                        <!--                </li>-->
+                        <!--            </ul>-->
+                        <!--            <a class="reward-main-btn" href="../about/index.html" target="_blank">-->
+                        <!--                <div class="reward-text">赞赏者名单</div>-->
+                        <!--                <div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div>-->
+                        <!--            </a></ul>-->
+                        <!--    </div>-->
+                        <!--</div>-->
+
+                        <!-- 说明 -->
+                        <!--<div class="reward-link mode"><a class="reward-link-button" href="../wechat/index.html">-->
+                        <!--    <i class="fas fa-seedling"></i>运营模式与责任</a>-->
+                        <!--</div>-->
+
+                        <!-- 分享 -->
+                        <div class="share-link mobile">
+                            <div class="share-qrcode">
+                                <div class="share-button" title="使用手机访问这篇文章"><i class="fas fa-qrcode"></i>
+                                </div>
+                                <div class="share-main">
+                                    <div class="share-main-all">
+                                        <div id="qrcode"></div>
+                                        <div class="reward-dec">使用手机访问这篇文章</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="share-link weibo">
+                            <a class="share-button"
+                               rel="noopener external nofollow noreferrer noopener"
+                               target="_blank"
+                               th:href="'https://service.weibo.com/share/share.php?title=' + ${post.spec.title}"
+                               title="分享到微博">
+                                <i class="fab fa-weibo" style="font-size:22px"></i></a></div>
+                        <div class="share-link copyurl">
+                            <div class="share-button" id="post-share-url" onclick="rm.copyPageUrl()" title="复制链接"><i
+                                    class="fas fa-link"></i></div>
+                        </div>
+                    </div>
+                    <div class="post-tools-right">
+                        <div class="tag_share">
+                            <div class="post-meta__tag-list">
+                                <a class="post-meta__tags" th:each="tag : ${post.tags}"
+                                   th:href="${tag.status.permalink}">
+                                    <span class="tags-punctuation">#</span>
+                                    <th:block th:text="${tag.spec.displayName}"
+                                              th:title="${tag.spec.displayName}"></th:block>
+                                    <span class="tagsPageCount" th:text="${tag.status.postCount}"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 版权声明 -->
+                <div class="post-copyright">
+                    <div class="post-copyright__author">
+                        <!-- 版权页 以及版权描述文字 -->
+                        <a class="post-copyright__original" th:href="@{/cc}"
+                           title="该文章为原创文章，注意版权协议">原创</a>
+                        <a class="post-copyright-title" href="#"><span th:text="${post.spec.title}"></span></a>
+                    </div>
+                    <div class="post-copyright__type">
+                    <span class="post-copyright-info" id="post-copyright-url">
+                    <a href="javascript:window.location.href;">
+                        text
+                    </a>
+                </span>
+                        <button class="post-copyright-copybtn" onclick="rm.copyPageUrl()">
+                            <i class="fas fa-paste copy-btn"></i>
+                        </button>
+                    </div>
+                    <div class="post-copyright__notice">
+                    <span class="post-copyright-info">
+                        本文是原创文章，采用 <a target="_blank" th:href="@{/cc}">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a
+                            href="/" target="_blank" th:text="${site.title}"></a>
+                    </span>
+                    </div>
+                </div>
+
+                <nav class="pagination-post" id="pagination">
+                    <div class="prev-post pull-left">
+                        <a href="#">
+                            <div class="pagination-info">
+                                <div class="label">上一篇</div>
+                                <div class="prev_info">上一篇文章的标题</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="next-post pull-right">
+                        <a href="#">
+                            <div class="pagination-info">
+                                <div class="label">下一篇</div>
+                                <div class="next_info">下一篇文章的标题</div>
+                            </div>
+                        </a>
+                    </div>
+                </nav>
+                <div class="relatedPosts">
+                    <div class="headline"><i class="fas fa-robot fa-fw"></i> <span>阅读建议</span></div>
+                    <div class="relatedPosts-list">
+                        <!-- 建议阅读，这里可以自定义文章数量，然后遍历展示 -->
+                        <div>
+                            <a href="#" title="相关推荐文章">
+                                <img alt="cover" class="cover" loading="lazy"
+                                     src="https://t7.baidu.com/it/u=91673060,7145840&fm=193&f=GIF">
+                                <div class="content is-center">
+                                    <div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-28</div>
+                                    <div class="title">这是一篇相关推荐文章</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- 评论模块，使用评论插件 -->
+                <div id="post-comment">
+                    <div class="comment-head">
+                        <div class="comment-headline"><i class="fas fa-message fa-fw"></i> <span>评论</span></div>
+                        <div class="comment-privacy"><a href="#">隐私政策</a></div>
+                        <div class="comment-tips" id="comment-tips">
+                            <span>你无需删除空行，直接评论以获取最佳展示效果</span>
+                        </div>
+                    </div>
+                    <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}"/>
+                </div>
+            </div>
+
+            <!-- 侧栏 -->
+            <div th:replace="modules/aside :: aside('profile,toc,recent-posts,tags-stat')"></div>
+        </main>
+
+        <!-- 底部 -->
+        <footer th:replace="modules/footer :: footer"></footer>
+
+    </div>
+
+    <!-- 在最后加上代码高亮 -->
+    <th:block th:if="${theme.config.content.enable_code_highlight}">
+        <th:block th:include="modules/code-highlight :: code-highlight"></th:block>
+    </th:block>
+
+</th:block>
+
+</html>
+
