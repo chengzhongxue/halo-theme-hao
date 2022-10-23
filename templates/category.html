@@ -17,9 +17,9 @@
                                 <a href="/">首页</a>
                             </div>
                             <div class="category-bar-item"
+                                 th:classappend="${category.metadata.name == categoryItem.metadata.name} ? 'select'"
                                  th:each="categoryItem : ${categoryFinder.listAll()}"
-                                 th:id="${categoryItem.spec.displayName}"
-                                 th:classappend="${category.metadata.name == categoryItem.metadata.name} ? 'select'">
+                                 th:id="${categoryItem.spec.displayName}">
                                 <a th:href="${categoryItem.status.permalink}"
                                    th:text="${categoryItem.spec.displayName}"></a>
                             </div>
@@ -36,7 +36,8 @@
                     <div class="article-sort-item" th:each="post : ${posts.items}">
                         <a class="article-sort-item-img" th:href="${post.status.permalink}"
                            th:title="${post.spec.title}">
-                            <img th:alt="${post.spec.title}" th:src="${post.spec.cover}">
+                            <img th:alt="${post.spec.title}"
+                                 th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
                         </a>
                         <div class="article-sort-item-info">
                             <div class="article-sort-item-time"><i class="far fa-calendar-alt"></i>
@@ -50,7 +51,7 @@
                                th:href="${post.status.permalink}" th:text="${post.spec.title}"
                                th:title="${post.spec.title}"></a>
                             <div class="article-sort-item-tags">
-                                <a class="article-meta__tags" event.cancelbubble onclick="window.event.cancelBubble=!0"
+                                <a class="article-meta__tags"
                                    th:each="tag : ${post.tags}" th:href="${tag.status.permalink}">
                                     <span class="tags-punctuation">#</span>
                                     [[${tag.spec.displayName}]]
@@ -65,28 +66,7 @@
                     <div class="pagination"><span class="page-number current">1</span></div>
                 </nav>
             </div>
-            <div class="aside-content" id="aside-content">
-
-                <div th:replace="modules/widgets/aside/profile :: profile"></div>
-
-                <div class="card-widget heo-right-widget" id="card-wechat" onclick='window.open("/wechat/")'>
-                    <div id="flip-wrapper">
-                        <div id="flip-content">
-                            <div class="face"></div>
-                            <div class="back face"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="sticky_layout">
-                    <div class="card-widget card-tags card-archives card-webinfo card-allinfo">
-                        <th:block th:replace="modules/widgets/aside/tags :: tags"></th:block>
-
-                        <hr>
-
-                        <th:block th:replace="modules/widgets/aside/stat :: stat"></th:block>
-                    </div>
-                </div>
-            </div>
+            <div th:replace="modules/aside :: aside('profile,recent-posts,tags-stat')"></div>
         </main>
 
         <!-- 底部 -->

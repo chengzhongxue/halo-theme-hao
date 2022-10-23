@@ -478,3 +478,8 @@ spec:
               value: true
             - label: 关闭
               value: false
+        - $formkit: url
+          name: img_error
+          label: 图片加载失败图
+          help: 图片加载失败时显示的图片
+          placeholder: 请输入图片 url

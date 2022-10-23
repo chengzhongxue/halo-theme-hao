@@ -3,7 +3,8 @@
 
 <th:block th:fragment="content">
     <div class="post" id="body-wrap">
-        <header class="post-bg" id="page-header" th:style="'background-image:url(' + ${post.spec.cover} + ')'">
+
+        <header class="post-bg" id="page-header" th:style="'background-image:url(' + (${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}) + ')'">
             <nav th:replace="modules/nav :: nav"></nav>
             <div class="coverdiv" id="coverdiv">
                 <img alt="cover" id="post-cover" loading="lazy"
@@ -229,29 +230,7 @@
             </div>
 
             <!-- 侧栏 -->
-
-            <div class="aside-content" id="aside-content" th:if="${theme.config.sidebar.location != 'hide-aside'}">
-
-                <!-- 个人信息卡片 -->
-                <div th:replace="modules/widgets/aside/profile :: profile"></div>
-
-                <div class="sticky_layout">
-                    <!-- 目录 -->
-                    <div th:replace="modules/widgets/aside/toc :: toc"></div>
-
-                    <!-- 微信卡片 -->
-                    <!--<div class="card-widget heo-right-widget" id="card-wechat" onclick='window.open("/wechat/")'>-->
-                    <!--    <div id="flip-wrapper">-->
-                    <!--        <div id="flip-content">-->
-                    <!--            <div class="face"></div>-->
-                    <!--            <div class="back face"></div>-->
-                    <!--        </div>-->
-                    <!--    </div>-->
-                    <!--</div>-->
-                    <!-- 近期文章 -->
-                    <div th:replace="modules/widgets/aside/recent-posts :: recent-posts"></div>
-                </div>
-            </div>
+            <div th:replace="modules/aside :: aside('profile,toc,recent-posts,tags-stat')"></div>
         </main>
 
         <!-- 底部 -->

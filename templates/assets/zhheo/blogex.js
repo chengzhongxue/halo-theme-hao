@@ -282,3 +282,12 @@ window.onscroll = function () {
     percent();
 };
 
+
+<!-- 图片 404 -->
+function imgError(url) {
+    $("img").on("error", function () {
+        $(this).attr("src", url);
+    });
+}
+
+
