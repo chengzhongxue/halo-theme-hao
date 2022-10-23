@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "shy-share",
+      "name": "sunheyi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50973219?v=4",
+      "profile": "https://shyblog.world/",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "halo-theme-hao",
+  "projectOwner": "liuzhihang"
+}
