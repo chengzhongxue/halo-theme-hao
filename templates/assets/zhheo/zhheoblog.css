@@ -6808,7 +6808,7 @@ span.fund_name {
 }
 
 #aside-content .card-widget#card-wechat {
-    background: rgb(87, 189, 106);
+    background: rgb(7, 193, 96);
     display: flex;
     place-content: center;
     padding: 0px;
@@ -6850,20 +6850,18 @@ span.fund_name {
 }
 
 /* 公众号推广部分 */
-/*.face {*/
-/*    position: absolute;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    backface-visibility: hidden;*/
-/*    background: url(../images/404.gif) center center / 100% no-repeat;*/
-/*}*/
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
 
-/*.back.face {*/
-/*    display: block;*/
-/*    transform: rotateY(180deg);*/
-/*    box-sizing: border-box;*/
-/*    background: url(../images/404.gif) center center / 100% no-repeat;*/
-/*}*/
+.back.face {
+    display: block;
+    transform: rotateY(180deg);
+    box-sizing: border-box;
+}
 
 #card-vip-designweekly.card-widget {
     padding: 0px;

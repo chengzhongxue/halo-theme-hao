@@ -136,6 +136,15 @@ spec:
           name: profile_desc
           placeholder: 请填写个人卡片描述信息
           help: "支持使用 HTML 标签"
+        - $formkit: url
+          name: wechat_img_face
+          placeholder: 微信正面图
+          validation: "url"
+        - $formkit: url
+          name: wechat_img_back
+          placeholder: 微信背面图
+          validation: "url"
+          help: 图片可以从公众号后台下载物料或者自制
     - group: footer
       label: 页脚
       formSchema:
@@ -456,7 +465,7 @@ spec:
       formSchema:
         - $formkit: radio
           name: loading_box
-          label: 开关
+          label: 加载页
           value: true
           options:
             - label: 打开
