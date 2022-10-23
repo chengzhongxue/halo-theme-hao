@@ -46,9 +46,8 @@
                            onclick="window.event.cancelBubble=!0"
                            th:each="tag : ${post.tags}"
                            th:href="${tag.status.permalink}"
-                           th:text="${tag.spec.displayName}"
                            th:title="${tag.spec.displayName}">
-                            <span class="tags-punctuation">#</span>
+                            <span class="tags-punctuation">#[[${tag.spec.displayName}]]</span>
                         </a>
                     </span>
                 </th:block>
