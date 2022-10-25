@@ -39,48 +39,69 @@ function _arrayLikeToArray(t, e) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    function L(t) {
-        0 < arguments.length && void 0 !== t && t && (i = o && o.offsetWidth, c = a && a.offsetWidth, s = r && r.offsetWidth);
-        var e = document.getElementById("nav"), n = window.innerWidth < 768 || i + c + s > e.offsetWidth - 120;
-        n ? e.classList.add("hide-menu") : e.classList.remove("hide-menu")
-    }
 
-    var o = document.getElementById("site-name"), i = o && o.offsetWidth,
-        a = document.querySelector("#menus .menus_items"), c = a && a.offsetWidth,
-        r = document.querySelector("#search-button"), s = r && r.offsetWidth;
+    let blogNameWidth, menusWidth, searchWidth, $nav;
 
-    function l(t) {
-        function e(t) {
-            t.each(function (t, e) {
-                var n = $(e), o = n.attr("data-lazy-src") || n.attr("src"), i = o + "_1600w", a = n.attr("alt") || "";
-                -1 != o.indexOf("!blogimg") ? n.wrap('<a href="'.concat(o, '" data-fancybox="images" data-caption="').concat(a, '" class="fancybox" data-srcset="').concat(i, ' 1600w"></a>')) : n.wrap('<a href="'.concat(o, '" data-fancybox="images" data-caption="').concat(a, '" class="fancybox" data-srcset="').concat(o, ' 1600w"></a>'))
-            }), $().fancybox({
-                selector: "[data-fancybox]",
-                loop: !0,
-                transitionEffect: "slide",
-                protect: !0,
-                buttons: ["slideShow", "fullScreen", "thumbs", "close"],
-                hash: !1
-            })
+    // 调整菜单
+    function adjustMenu(init) {
+
+        if (init) {
+            blogNameWidth = document.getElementById("site-name").offsetWidth;
+            const $menusEle = document.querySelectorAll("#menus .menus_item");
+            menusWidth = 0;
+            $menusEle.length && $menusEle.forEach((i) => {
+                menusWidth += i.offsetWidth;
+            });
+            const $searchEle = document.querySelector("#search-button");
+            searchWidth = $searchEle ? $searchEle.offsetWidth : 0;
+            $nav = document.getElementById("nav");
+        }
+        let hideMenuIndex;
+        if (window.innerWidth <= 768) {
+            hideMenuIndex = true;
+        } else {
+            hideMenuIndex = blogNameWidth + menusWidth + searchWidth > $nav.offsetWidth - 120;
         }
 
-        void 0 === $.fancybox ? ($("head").append('<link rel="stylesheet" type="text/css" href="'.concat(GLOBAL_CONFIG.source.fancybox.css, '">')), $.getScript("".concat(GLOBAL_CONFIG.source.fancybox.js), function () {
-            e($(t))
-        })) : e($(t))
+        if (hideMenuIndex) {
+            $nav.classList.add("hide-menu");
+        } else {
+            $nav.classList.remove("hide-menu");
+        }
     }
 
-    function w() {
-        var n = "fancybox" === GLOBAL_CONFIG.lightbox ? document.querySelectorAll("#article-container :not(a):not(.gallery-group) > img, #article-container > img,.bber-content-img > img") : [],
-            o = 0 < n.length, i = document.querySelectorAll("#article-container .justified-gallery"), a = 0 < i.length;
-        (a || o) && btf.isJqueryLoad(function () {
-            var t, e;
-            a && (t = $(i), (e = t.find("img")).unwrap(), e.length && e.each(function (t, e) {
-                $(e).attr("data-lazy-src") && $(e).attr("src", $(e).attr("data-lazy-src")), $(e).wrap("<div></div>")
-            }), d ? btf.initJustifiedGallery(t) : ($("head").append('<link rel="stylesheet" type="text/css" href="'.concat(GLOBAL_CONFIG.source.justifiedGallery.css, '">')), $.getScript("".concat(GLOBAL_CONFIG.source.justifiedGallery.js), function () {
-                btf.initJustifiedGallery(t)
-            }), d = !0)), o && l(n)
-        })
-    }
+    // function l(t) {
+    //     function e(t) {
+    //         t.each(function (t, e) {
+    //             var n = $(e), o = n.attr("data-lazy-src") || n.attr("src"), i = o + "_1600w", a = n.attr("alt") || "";
+    //             -1 != o.indexOf("!blogimg") ? n.wrap('<a href="'.concat(o, '" data-fancybox="images" data-caption="').concat(a, '" class="fancybox" data-srcset="').concat(i, ' 1600w"></a>')) : n.wrap('<a href="'.concat(o, '" data-fancybox="images" data-caption="').concat(a, '" class="fancybox" data-srcset="').concat(o, ' 1600w"></a>'))
+    //         }), $().fancybox({
+    //             selector: "[data-fancybox]",
+    //             loop: !0,
+    //             transitionEffect: "slide",
+    //             protect: !0,
+    //             buttons: ["slideShow", "fullScreen", "thumbs", "close"],
+    //             hash: !1
+    //         })
+    //     }
+    //
+    //     void 0 === $.fancybox ? ($("head").append('<link rel="stylesheet" type="text/css" href="'.concat(GLOBAL_CONFIG.source.fancybox.css, '">')), $.getScript("".concat(GLOBAL_CONFIG.source.fancybox.js), function () {
+    //         e($(t))
+    //     })) : e($(t))
+    // }
+    //
+    // function w() {
+    //     var n = "fancybox" === GLOBAL_CONFIG.lightbox ? document.querySelectorAll("#article-container :not(a):not(.gallery-group) > img, #article-container > img,.bber-content-img > img") : [],
+    //         o = 0 < n.length, i = document.querySelectorAll("#article-container .justified-gallery"), a = 0 < i.length;
+    //     (a || o) && btf.isJqueryLoad(function () {
+    //         var t, e;
+    //         a && (t = $(i), (e = t.find("img")).unwrap(), e.length && e.each(function (t, e) {
+    //             $(e).attr("data-lazy-src") && $(e).attr("src", $(e).attr("data-lazy-src")), $(e).wrap("<div></div>")
+    //         }), d ? btf.initJustifiedGallery(t) : ($("head").append('<link rel="stylesheet" type="text/css" href="'.concat(GLOBAL_CONFIG.source.justifiedGallery.css, '">')), $.getScript("".concat(GLOBAL_CONFIG.source.justifiedGallery.js), function () {
+    //             btf.initJustifiedGallery(t)
+    //         }), d = !0)), o && l(n)
+    //     })
+    // }
 
     function S() {
         var t = document.getElementById("card-toc"), r = t.getElementsByClassName("toc-content")[0],
@@ -168,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
             f.style.overflow = "", f.style.paddingRight = "", btf.fadeOut(u, .5), d.classList.remove("open")
         }
 
-        L(), document.getElementById("nav").classList.add("show"), GLOBAL_CONFIG_SITE.isPost ? (GLOBAL_CONFIG_SITE.isToc && S(), void 0 !== GLOBAL_CONFIG.noticeOutdate && (r = GLOBAL_CONFIG.noticeOutdate, (s = btf.diffDate(GLOBAL_CONFIG_SITE.postUpdate)) >= r.limitDay && ((a = document.createElement("div")).className = "post-outdate-notice", a.textContent = r.messagePrev + " " + s + " " + r.messageNext, c = document.getElementById("article-container"), "top" === r.position ? c.insertBefore(a, c.firstChild) : c.appendChild(a))), GLOBAL_CONFIG.relativeDate.post && I(document.querySelectorAll("#post-meta time"))) : (GLOBAL_CONFIG.relativeDate.homepage && I(document.querySelectorAll("#recent-posts time")), !GLOBAL_CONFIG.runtime || (i = document.getElementById("runtimeshow")) && (o = i.getAttribute("data-publishDate"), i.innerText = btf.diffDate(o) + " " + GLOBAL_CONFIG.runtime), (n = document.getElementById("last-push-date")) && (e = n.getAttribute("data-lastPushDate"), n.innerText = btf.diffDate(e, !0)), (t = document.querySelectorAll("#aside-cat-list .card-category-list-item.parent i")).length && t.forEach(function (t) {
+        adjustMenu(), document.getElementById("nav").classList.add("show"), GLOBAL_CONFIG_SITE.isPost ? (GLOBAL_CONFIG_SITE.isToc && S(), void 0 !== GLOBAL_CONFIG.noticeOutdate && (r = GLOBAL_CONFIG.noticeOutdate, (s = btf.diffDate(GLOBAL_CONFIG_SITE.postUpdate)) >= r.limitDay && ((a = document.createElement("div")).className = "post-outdate-notice", a.textContent = r.messagePrev + " " + s + " " + r.messageNext, c = document.getElementById("article-container"), "top" === r.position ? c.insertBefore(a, c.firstChild) : c.appendChild(a))), GLOBAL_CONFIG.relativeDate.post && I(document.querySelectorAll("#post-meta time"))) : (GLOBAL_CONFIG.relativeDate.homepage && I(document.querySelectorAll("#recent-posts time")), !GLOBAL_CONFIG.runtime || (i = document.getElementById("runtimeshow")) && (o = i.getAttribute("data-publishDate"), i.innerText = btf.diffDate(o) + " " + GLOBAL_CONFIG.runtime), (n = document.getElementById("last-push-date")) && (e = n.getAttribute("data-lastPushDate"), n.innerText = btf.diffDate(e, !0)), (t = document.querySelectorAll("#aside-cat-list .card-category-list-item.parent i")).length && t.forEach(function (t) {
             t.addEventListener("click", function (t) {
                 t.preventDefault();
                 this.classList.toggle("expand");
@@ -212,9 +233,9 @@ document.addEventListener("DOMContentLoaded", function () {
     refreshFn();
 
 
-    window.addEventListener("resize", L);
+    window.addEventListener("resize", adjustMenu);
     window.addEventListener("orientationchange", function () {
-        setTimeout(L(!0), 100)
+        setTimeout(adjustMenu(!0), 100)
     });
 
     document.querySelectorAll("#sidebar-menus .expand").forEach(function (t) {
