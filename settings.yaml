@@ -78,7 +78,7 @@ spec:
         - $formkit: select
           name: cols
           label: 文章列表布局
-          value: col1
+          value: col2
           options:
             - label: 单列
               value: col1
@@ -88,7 +88,7 @@ spec:
               value: col3
             - label: 四列
               value: col4
-          help: "选择单列时，文章卡片的图片将位于左侧"
+          help: "建议单列时，将图片放在左右"
         - $formkit: select
           name: post_location
           label: 封面位置
