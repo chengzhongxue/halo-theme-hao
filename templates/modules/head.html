@@ -28,76 +28,7 @@
           onload='this.media="all"'
           rel="stylesheet"
     />
-    <!-- 全局配置 -->
-    <!-- todo 不知是否可以移除，或者抽走 -->
-    <script>
-        var GLOBAL_CONFIG = {
-            root: "/",
-            localSearch: void 0,
-            translate: {
-                defaultEncoding: 2,
-                translateDelay: 0,
-                msgToTraditionalChinese: "简",
-                msgToSimplifiedChinese: "繁"
-            },
-            noticeOutdate: void 0,
-            copy: {success: "复制成功", error: "复制错误", noSupport: "浏览器不支持"},
-            relativeDate: {homepage: !0, post: !1},
-            runtime: "天",
-            date_suffix: {just: "刚刚", min: "分钟前", hour: "小时前", day: "天前", month: "个月前"},
-            lightbox: "fancybox",
-            Snackbar: {
-                chs_to_cht: "你已切换为繁体",
-                cht_to_chs: "你已切换为简体",
-                day_to_night: "你已切换为深色模式",
-                night_to_day: "你已切换为浅色模式",
-                bgLight: "#49b1f5",
-                bgDark: "#121212",
-                position: "top-center"
-            },
-            // source: {
-            //     jQuery: "https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js",
-            //     justifiedGallery: {
-            //         js: "https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js",
-            //         css: "https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/justifiedGallery/3.8.1/css/justifiedGallery.min.css"
-            //     },
-            //     fancybox: {
-            //         //  https://fancyapps.com/docs/ui/installation
-            //         js: "https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js",
-            //         css: "https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css"
-            //     }
-            // },
-        }</script>
 
-    <!-- 站点配置, 这里和 JS 有联动，需要抽走-->
-    <script id="config-diff" th:inline="javascript">
-
-        let post = [[${post == null}]];
-
-        var GLOBAL_CONFIG_SITE = {
-            title: post ? [[${site.title}]] : '',
-            isPost: post,
-            isHome: !post,
-            isToc: !1,
-            postUpdate: "2022-09-30 12:24:38"
-        }
-
-    </script>
-    <noscript>
-        <style>
-            #nav {
-                opacity: 1
-            }
-
-            .justified-gallery img {
-                opacity: 1
-            }
-
-            #post-meta time, #recent-posts time {
-                display: inline !important
-            }
-        </style>
-    </noscript>
     <script>
         (win => {
             win.saveToLocal = {
