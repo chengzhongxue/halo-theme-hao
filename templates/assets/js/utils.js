@@ -73,20 +73,21 @@ const btf = {
         })
     },
 
-    initJustifiedGallery: function (selector) {
-        selector.forEach(function (i) {
-            if (!btf.isHidden(i)) {
-                fjGallery(i, {
-                    itemSelector: '.fj-gallery-item',
-                    rowHeight: 220,
-                    gutter: 4,
-                    onJustify: function () {
-                        this.$container.style.opacity = '1'
-                    }
-                })
-            }
-        })
-    },
+    // 图库排版
+    // initJustifiedGallery: function (selector) {
+    //     selector.forEach(function (i) {
+    //         if (!btf.isHidden(i)) {
+    //             fjGallery(i, {
+    //                 itemSelector: '.fj-gallery-item',
+    //                 rowHeight: 220,
+    //                 gutter: 4,
+    //                 onJustify: function () {
+    //                     this.$container.style.opacity = '1'
+    //                 }
+    //             })
+    //         }
+    //     })
+    // },
 
     scrollToDest: (pos, time = 500) => {
         const currentPos = window.pageYOffset

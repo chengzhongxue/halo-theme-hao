@@ -29,6 +29,53 @@ document.addEventListener("DOMContentLoaded", function () {
         $nav.classList.add("show");
     };
 
+    // 滚动处理
+    function scrollFn() {
+        let a;
+        let c;
+        let r;
+        let s;
+        let l;
+        let d;
+        const $rightside = document.getElementById("rightside");
+        const innerHeight = window.innerHeight + 56;
+        document.body.scrollHeight <= innerHeight
+            ? ($rightside.style.cssText = "opacity: 1; transform: translateX(-38px)")
+            : ((c = !(a = 0)),
+                (r = document.getElementById("page-header")),
+                document.getElementById("guli_top"),
+                (s = document.getElementById("cookies-window")),
+                (l = "function" == typeof chatBtnHide),
+                (d = "function" == typeof chatBtnShow),
+                window.addEventListener(
+                    "scroll",
+                    btf.throttle(function (t) {
+                        var e,
+                            n,
+                            o = window.scrollY || document.documentElement.scrollTop,
+                            i = ((n = a < (e = o)), (a = e), n);
+                        56 < o
+                            ? (i
+                                ? (r.classList.contains("nav-visible") &&
+                                r.classList.remove("nav-visible"),
+                                d && !0 === c && (chatBtnHide(), (c = !1)))
+                                : (r.classList.contains("nav-visible") ||
+                                r.classList.add("nav-visible"),
+                                l && !1 === c && (chatBtnShow(), (c = !0))),
+                                r.classList.add("nav-fixed"),
+                                s.classList.add("cw-hide"),
+                            "0" ===
+                            window.getComputedStyle($rightside).getPropertyValue("opacity") &&
+                            ($rightside.style.cssText =
+                                "opacity: 1; transform: translateX(-38px)"))
+                            : (0 === o && r.classList.remove("nav-fixed", "nav-visible"),
+                                ($rightside.style.cssText = "opacity: ''; transform: ''")),
+                        document.body.scrollHeight <= innerHeight &&
+                        ($rightside.style.cssText = "opacity: 1; transform: translateX(-38px)");
+                    }, 200)
+                ));
+    }
+
     function scrollFnToDo() {
         const $cardTocLayout = document.getElementById("card-toc");
         const $cardToc = $cardTocLayout.getElementsByClassName("toc-content")[0];
@@ -135,51 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    function scrollFn() {
-        var a,
-            c,
-            r,
-            s,
-            l,
-            d,
-            u = document.getElementById("rightside"),
-            f = window.innerHeight + 56;
-        document.body.scrollHeight <= f
-            ? (u.style.cssText = "opacity: 1; transform: translateX(-38px)")
-            : ((c = !(a = 0)),
-                (r = document.getElementById("page-header")),
-                document.getElementById("guli_top"),
-                (s = document.getElementById("cookies-window")),
-                (l = "function" == typeof chatBtnHide),
-                (d = "function" == typeof chatBtnShow),
-                window.addEventListener(
-                    "scroll",
-                    btf.throttle(function (t) {
-                        var e,
-                            n,
-                            o = window.scrollY || document.documentElement.scrollTop,
-                            i = ((n = a < (e = o)), (a = e), n);
-                        56 < o
-                            ? (i
-                                ? (r.classList.contains("nav-visible") &&
-                                r.classList.remove("nav-visible"),
-                                d && !0 === c && (chatBtnHide(), (c = !1)))
-                                : (r.classList.contains("nav-visible") ||
-                                r.classList.add("nav-visible"),
-                                l && !1 === c && (chatBtnShow(), (c = !0))),
-                                r.classList.add("nav-fixed"),
-                                s.classList.add("cw-hide"),
-                            "0" ===
-                            window.getComputedStyle(u).getPropertyValue("opacity") &&
-                            (u.style.cssText =
-                                "opacity: 1; transform: translateX(-38px)"))
-                            : (0 === o && r.classList.remove("nav-fixed", "nav-visible"),
-                                (u.style.cssText = "opacity: ''; transform: ''")),
-                        document.body.scrollHeight <= f &&
-                        (u.style.cssText = "opacity: 1; transform: translateX(-38px)");
-                    }, 200)
-                ));
-    }
+
 
     window.refreshFn = function () {
         initAdjust();
