@@ -199,7 +199,7 @@ function percent() {
     var e = document.documentElement.scrollTop || window.pageYOffset,
         t = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight) - document.documentElement.clientHeight,
         o = Math.round(e / t * 100), n = document.querySelector("#percent"),
-      r = window.scrollY + document.documentElement.clientHeight,
+        r = window.scrollY + document.documentElement.clientHeight,
         a = document.getElementById("post-tools") || document.getElementById("footer");
     a.offsetTop + a.offsetHeight / 2 < r || 90 < o ? (document.querySelector("#nav-totop").classList.add("long"), n.innerHTML = "返回顶部") : (document.querySelector("#nav-totop").classList.remove("long"), n.innerHTML = o)
 }
@@ -263,7 +263,7 @@ $(window).on("keyup", function (e) {
 });
 
 document.addEventListener("pjax:send", function () {
-    //heo.showLoading()
+    heo.showLoading()
 });
 
 document.addEventListener("load", function () {
@@ -281,13 +281,5 @@ heo.initThemeColor();
 window.onscroll = function () {
     percent();
 };
-
-
-<!-- 图片 404 -->
-function imgError(url) {
-    $("img").on("error", function () {
-        $(this).attr("src", url);
-    });
-}
 
 
