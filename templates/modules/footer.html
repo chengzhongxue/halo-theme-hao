@@ -13,14 +13,15 @@
 
     <!-- 相关地址  -->
     <th:block th:if="${not #strings.isEmpty(theme.config.footer.menu)}"
-              th:with="footMenu = ${theme.config.footer.menu}">
-        <div id="heo-footer"
-             th:if="${not #strings.isEmpty(footMenu)} and ${not #lists.isEmpty(menuFinder.getByName(footMenu))}">
-            <div class="footer-group" th:each="menuItem : ${menuFinder.getByName(footMenu).menuItems}">
-                <h3 class="footer-title" th:text="${menuItem.status.displayName}">软件</h3>
+              th:with="footMenu = ${menuFinder.getByName(theme.config.footer.menu)}">
+        <div id="heo-footer" th:if="${not #lists.isEmpty(footMenu)}">
+            <div class="footer-group" th:each="menuItem : ${footMenu.menuItems}">
+                <h3 class="footer-title" th:text="${menuItem.status.displayName}"></h3>
                 <div class="footer-links">
-                    <a class="footer-item" th:each="childMenu : ${menuItem.children}" th:href="${childMenu.status.href}"
-                       th:text="${childMenu.status.displayName}"></a>
+                    <a class="footer-item" th:each="childMenu : ${menuItem.children}"
+                       th:href="${childMenu.status.href}"
+                       th:text="${childMenu.status.displayName}">
+                    </a>
                 </div>
             </div>
         </div>

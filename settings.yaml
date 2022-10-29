@@ -7,11 +7,9 @@ spec:
     - group: nav
       label: 导航栏
       formSchema:
-        - $formkit: text
+        - $formkit: menuRadio
           name: left_menu
           label: 导航栏左侧相关链接
-          placeholder: 请填写 metadata name
-          help: "需要通过开发者模式获取菜单对应的 metadata name"
         - $formkit: radio
           name: right_menu
           label: 右侧四个按钮
@@ -153,11 +151,9 @@ spec:
           label: 社交链接（无效）
           placeholder: 暂时不支持配置
           help: "当前版本不支持配置"
-        - $formkit: text
+        - $formkit: menuRadio
           name: menu
           label: 底部相关链接
-          placeholder: 请填写 metadata name
-          help: "需要通过开发者模式获取菜单对应的 metadata name"
         - $formkit: text
           name: copyright_start
           label: 开始时间

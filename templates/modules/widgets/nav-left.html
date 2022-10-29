@@ -5,14 +5,14 @@
 <div id="blog_name" th:fragment="nav-left">
 
     <th:block th:if="${not #strings.isEmpty(theme.config.nav.left_menu)}"
-              th:with="leftMenu = ${theme.config.nav.left_menu}">
+              th:with="leftMenu = ${menuFinder.getByName(theme.config.nav.left_menu)}">
         <!-- 菜单栏左侧按钮，没有配置时，则不展示-->
         <div class="back-home-button" tabindex="-1"
-             th:if="${not #strings.isEmpty(leftMenu)} and ${not #lists.isEmpty(menuFinder.getByName(leftMenu))}">
+             th:if="${not #lists.isEmpty(leftMenu)}">
 
             <i class="back-home-button-icon fas fa-grip-vertical"></i>
             <div class="back-menu-list-groups">
-                <div class="back-menu-list-group" th:each="menuItem : ${menuFinder.getByName(leftMenu).menuItems}">
+                <div class="back-menu-list-group" th:each="menuItem : ${leftMenu.menuItems}">
                     <!-- 菜单必须有子项才会展示 -->
                     <th:block th:if="${not #lists.isEmpty(menuItem.children)}">
                         <div class="back-menu-list-title" th:text="${menuItem.status.displayName}"></div>
