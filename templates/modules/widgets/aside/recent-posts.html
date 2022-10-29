@@ -9,8 +9,7 @@
                 <img loading="lazy" th:alt="${post.spec.title}" th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
             </a>
             <div class="content">
-                <a class="title" th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"
-                   th:title="${post.spec.title}"></a>
+                <a class="title" th:href="@{${post.status.permalink}}" th:text="${post.spec.title}" th:title="${post.spec.title}"></a>
                 <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm:ss')}"
                       th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}"
                       th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">
