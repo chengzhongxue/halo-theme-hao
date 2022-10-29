@@ -13,6 +13,10 @@
             <div id="page">
                 <div id="article-container line-numbers" th:utext="${singlePage.content.content}"></div>
             </div>
+
+            <!-- 侧栏 -->
+            <div th:replace="modules/aside :: aside(${theme.config.sidebar.page_widgets})"></div>
+
         </main>
         <!-- 底部 -->
         <footer th:replace="modules/footer :: footer"></footer>

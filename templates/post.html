@@ -230,7 +230,7 @@
             </div>
 
             <!-- 侧栏 -->
-            <div th:replace="modules/aside :: aside('profile,toc,recent-posts,tags-stat')"></div>
+            <div th:replace="modules/aside :: aside(${theme.config.sidebar.post_widgets})"></div>
         </main>
 
         <!-- 底部 -->

@@ -122,9 +122,26 @@ spec:
               label: "左侧"
         - $formkit: textarea
           name: widgets
-          label: 小部件（无效）
-          value: "profile,recent-posts,latest-comments,categories,tags"
-          help: "目前提供的小部件有：profile（站点资料）, recent-posts（近期文章）, latest-comments（最新评论）, categories（文章分类）, tags（文章标签）。你可以随意组合或排序，以逗号隔开。"
+          label: 小部件
+          value: "profile,wechat,comments,recent-posts,categories,tags-stat"
+          help: "目前提供的小部件有：profile（站点资料）, wechat（微信）, recent-posts（近期文章）, comments（最新评论）, categories（文章分类）, tags（文章标签）, stat（统计）, tags-stat（标签&统计）。你可以随意组合或排序，以逗号隔开。"
+        - $formkit: textarea
+          name: post_widgets
+          label: 文章页面小部件
+          value: "profile,wechat,toc,comments,recent-posts,categories,tags-stat"
+          help: "post 可以支持设置 toc "
+        - $formkit: textarea
+          name: tag_widgets
+          label: 标签页面小部件
+          value: "profile,wechat,comments,recent-posts,categories,tags-stat"
+        - $formkit: textarea
+          name: category_widgets
+          label: 分类页面小部件
+          value: "profile,wechat,comments,recent-posts,categories,tags-stat"
+        - $formkit: textarea
+          name: page_widgets
+          label: 自定义页面小部件
+          value: ""
         - $formkit: text
           name: profile_name
           label: 个人卡片名称

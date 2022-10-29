@@ -66,7 +66,7 @@
                     <div class="pagination"><span class="page-number current">1</span></div>
                 </nav>
             </div>
-            <div th:replace="modules/aside :: aside('profile,recent-posts,tags-stat')"></div>
+            <div th:replace="modules/aside :: aside(${theme.config.sidebar.category_widgets})"></div>
         </main>
 
         <!-- 底部 -->
