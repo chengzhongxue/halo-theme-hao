@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let initTop = 0;
         let $header = document.getElementById("page-header");
-        let $cookies = document.getElementById("cookies-window");
 
         window.scrollCollect = btf.throttle(function () {
 
@@ -66,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 }
                 $header.classList.add("nav-fixed")
-                $cookies.classList.add("cw-hide")
             } else {
                 if (0 === currentTop) {
                     $header.classList.remove("nav-fixed", "nav-visible")
@@ -80,30 +78,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // 滚动处理
     const scrollFnToDo = function () {
         let $cardTocLayout = document.getElementById("card-toc");
-        let $cardToc = $cardTocLayout.getElementsByClassName("toc-content")[0];
-        let $tocLink = $cardToc.querySelectorAll(".toc-link");
+        // let $cardToc = $cardTocLayout.getElementsByClassName("toc-content")[0];
+        // let $tocLink = $cardToc.querySelectorAll(".toc-link");
         let $article = document.getElementById("article-container");
 
-
-        const scrollPercent = function (currentTop) {
-            const docHeight = $article.clientHeight;
-            const winHeight = document.documentElement.clientHeight;
-            const headerHeight = $article.offsetTop;
-            const contentMath = (docHeight > winHeight) ? (docHeight - winHeight) : (document.documentElement.scrollHeight - winHeight)
-            const scrollPercent = (currentTop - headerHeight) / (contentMath);
-            const scrollPercentRounded = Math.round(100 * scrollPercent);
-            const percentage = 100 < scrollPercentRounded ? 100 : scrollPercentRounded <= 0 ? 0 : scrollPercentRounded;
-            $cardToc.setAttribute("progress-percentage", percentage);
-        }
-
-        document.getElementById("mobile-toc-button")
-            .addEventListener("click", function () {
-                if ("0" === window.getComputedStyle($cardTocLayout).getPropertyValue("opacity")) {
-                    window.mobileToc.open();
-                } else {
-                    window.mobileToc.close();
-                }
-            });
+        // let scrollPercent;
+        // if (GLOBAL_CONFIG.htmlType === 'post') {
+        //     scrollPercent = function (currentTop) {
+        //         const docHeight = $article.clientHeight;
+        //         const winHeight = document.documentElement.clientHeight;
+        //         const headerHeight = $article.offsetTop;
+        //         const contentMath = (docHeight > winHeight) ? (docHeight - winHeight) : (document.documentElement.scrollHeight - winHeight)
+        //         const scrollPercent = (currentTop - headerHeight) / (contentMath);
+        //         const scrollPercentRounded = Math.round(100 * scrollPercent);
+        //         const percentage = 100 < scrollPercentRounded ? 100 : scrollPercentRounded <= 0 ? 0 : scrollPercentRounded;
+        //         $cardToc.setAttribute("progress-percentage", percentage);
+        //     };
+        // }
 
         window.mobileToc = {
             open: () => {
@@ -119,79 +110,79 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // toc 元素点击
-        $cardToc.addEventListener("click", e => {
-            e.preventDefault();
-            const target = e.target.classList.contains("toc-link") ? e.target : e.target.parentElement;
-
-            btf.scrollToDest(
-                btf.getEleTop(
-                    document.getElementById(
-                        decodeURI(target.getAttribute("href")).replace("#", "")
-                    )
-                ),
-                300
-            );
-            if (window.innerWidth < 900) {
-                window.mobileToc.close();
-            }
-        });
+        // $cardToc.addEventListener("click", e => {
+        //     e.preventDefault();
+        //     const target = e.target.classList.contains("toc-link") ? e.target : e.target.parentElement;
+        //
+        //     btf.scrollToDest(
+        //         btf.getEleTop(
+        //             document.getElementById(
+        //                 decodeURI(target.getAttribute("href")).replace("#", "")
+        //             )
+        //         ),
+        //         300
+        //     );
+        //     if (window.innerWidth < 900) {
+        //         window.mobileToc.close();
+        //     }
+        // });
 
         // find head position & add active class
-        const list = $article.querySelectorAll("h1,h2,h3,h4,h5,h6");
-        let detectItem = "";
-        const findHeadPosition = function (top) {
+        // const list = $article.querySelectorAll("h1,h2,h3,h4,h5,h6");
+        // let detectItem = "";
+        // const findHeadPosition = function (top) {
+        //
+        //     if (0 === $tocLink.length || 0 === top) {
+        //         return false
+        //     }
+        //
+        //     let currentId = "";
+        //     let currentIndex = "";
+        //
+        //     list.forEach(function (ele, index) {
+        //         if (top > btf.getEleTop(ele) - 80) {
+        //             currentId = "#" + encodeURI(ele.getAttribute("id"));
+        //             currentIndex = index
+        //         }
+        //
+        //     })
+        //     if (detectItem === currentIndex) {
+        //         return
+        //     }
+        //
+        //     detectItem = currentIndex
+        //
+        //     $cardToc.querySelectorAll(".active").forEach(i => {
+        //         i.classList.remove("active")
+        //     })
+        //
+        //     if (currentId === "") {
+        //         return
+        //     }
+        //
+        //     const currentActive = $tocLink[currentIndex]
+        //     currentActive.classList.add("active")
+        //
+        //     setTimeout(() => {
+        //         autoScrollToc(currentActive)
+        //     }, 0)
+        //
+        //     if (isExpand) return
+        //     let parent = currentActive.parentNode
+        //
+        //     for (; !parent.matches(".toc"); parent = parent.parentNode) {
+        //         if (parent.matches("li")) parent.classList.add("active")
+        //     }
+        // }
 
-            if (0 === $tocLink.length || 0 === top) {
-                return false
-            }
-
-            let currentId = "";
-            let currentIndex = "";
-
-            list.forEach(function (ele, index) {
-                if (top > btf.getEleTop(ele) - 80) {
-                    currentId = "#" + encodeURI(ele.getAttribute("id"));
-                    currentIndex = index
-                }
-
-            })
-            if (detectItem === currentIndex) {
-                return
-            }
-
-            detectItem = currentIndex
-
-            $cardToc.querySelectorAll(".active").forEach(i => {
-                i.classList.remove("active")
-            })
-
-            if (currentId === "") {
-                return
-            }
-
-            const currentActive = $tocLink[currentIndex]
-            currentActive.classList.add("active")
-
-            setTimeout(() => {
-                autoScrollToc(currentActive)
-            }, 0)
-
-            if (isExpand) return
-            let parent = currentActive.parentNode
-
-            for (; !parent.matches(".toc"); parent = parent.parentNode) {
-                if (parent.matches("li")) parent.classList.add("active")
-            }
-        }
-
-        window.tocScrollFn = function () {
-            return btf.throttle(function () {
-                let currentTop = window.scrollY || document.documentElement.scrollTop;
-                scrollPercent(currentTop)
-                findHeadPosition(currentTop);
-            }, 100)();
-        };
-        window.addEventListener("scroll", tocScrollFn);
+        // window.tocScrollFn = function () {
+        //     return btf.throttle(function () {
+        //         let currentTop = window.scrollY || document.documentElement.scrollTop;
+        //         // scrollPercent(currentTop)
+        //         findHeadPosition(currentTop);
+        //     }, 100)();
+        // };
+        // window.addEventListener("scroll", tocScrollFn);
     };
 
     const tabsFn = {

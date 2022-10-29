@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="modules/layouts/layout :: layout(~{::content})" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" th:replace="modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'index')" xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
 

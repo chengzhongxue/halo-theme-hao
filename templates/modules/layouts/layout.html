@@ -1,8 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="layout(content)" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" th:fragment="layout(content, htmlType)" xmlns:th="http://www.thymeleaf.org">
 
 <!-- head 中自定义的  -->
-<head th:replace="modules/head :: head(metas = null,links = null, scripts = null)"></head>
+<head th:replace="modules/head :: head(metas = null, links = null, scripts =  ~{::head/script})">
+
+    <!-- 声明一些公共信息 -->
+    <script th:inline="javascript">
+        const GLOBAL_CONFIG = {
+            siteTitle : [[${site.title}]],
+            // 页面类型 index,page,post,tag,category
+            htmlType: [[${htmlType}]],
+            postTitle: [[${htmlType == 'post' ? post.spec.title : ''}]],
+            Snackbar: {
+                chs_to_cht: "你已切换为繁体",
+                cht_to_chs: "你已切换为简体",
+                day_to_night: "你已切换为深色模式",
+                night_to_day: "你已切换为浅色模式",
+                bgLight: "#49b1f5",
+                bgDark: "#121212",
+                position: "top-center",
+            },
+
+        };
+
+        console.log(GLOBAL_CONFIG);
+
+    </script>
+
+</head>
 
 <body>
 
