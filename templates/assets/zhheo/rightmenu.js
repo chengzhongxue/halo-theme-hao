@@ -260,9 +260,6 @@ function addRightMenuClickEvent() {
         $("#rightmenu-mask").contextmenu(function () {
             return rm.hideRightMenu(), !1;
         }),
-        $("#menu-translate").on("click", function () {
-            rm.hideRightMenu(), translateInitialization();
-        }),
         $("#menu-copy").on("click", rm.copyPageUrl),
         $("#menu-pastetext").on("click", rm.pasteText),
         $("#menu-copytext").on("click", function () {

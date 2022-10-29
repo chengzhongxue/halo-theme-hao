@@ -248,7 +248,6 @@ document.getElementById("post-comment") && owoBig(), document.addEventListener("
     n && o && (e = n.offsetTop + n.offsetHeight / 2, 1300 < document.body.clientWidth && (e < t ? o.classList.add("show-window") : o.classList.remove("show-window")))
 }, 200)), "false" !== localStorage.getItem("keyboardToggle") ? document.querySelector("#consoleKeyboard").classList.add("on") : document.querySelector("#consoleKeyboard").classList.remove("on"), $(window).on("keydown", function (e) {
     if (27 == e.keyCode && (heo.hideLoading(), heo.hideConsole(), rm.hideRightMenu()), heo_keyboard && e.shiftKey) {
-        if (16 == e.keyCode && document.querySelector("#keyboard-tips").classList.add("show"), 75 == e.keyCode) return heo.keyboardToggle(), !1;
         if (65 == e.keyCode) return heo.showConsole(), !1;
         if (77 == e.keyCode) return heo.musicToggle(), !1;
         if (82 == e.keyCode) return toRandomPost(), !1;
@@ -256,10 +255,6 @@ document.getElementById("post-comment") && owoBig(), document.addEventListener("
         if (68 == e.keyCode) return rm.switchDarkMode(), !1;
         if (70 == e.keyCode) return pjax.loadUrl("/moments/"), !1
     }
-});
-
-$(window).on("keyup", function (e) {
-    16 == e.keyCode && document.querySelector("#keyboard-tips").classList.remove("show")
 });
 
 document.addEventListener("pjax:send", function () {
