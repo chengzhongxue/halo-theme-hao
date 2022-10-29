@@ -19,7 +19,7 @@
                         <div class="back-menu-list">
                             <th:block th:each="childMenu : ${menuItem.children}">
                                 <a class="back-menu-item" rel="external nofollow"
-                                   target="_blank" th:href="${childMenu.status.href}">
+                                   target="_blank" th:href="@{${childMenu.status.href}}">
                                     <!-- icon 预留 -->
                                     <!--<img class="back-menu-item-icon" th:src="@{图片地址}">-->
                                     <span class="back-menu-item-text" th:text="${childMenu.status.displayName}"></span>

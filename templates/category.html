@@ -20,7 +20,7 @@
                                  th:classappend="${category.metadata.name == categoryItem.metadata.name} ? 'select'"
                                  th:each="categoryItem : ${categoryFinder.listAll()}"
                                  th:id="${categoryItem.spec.displayName}">
-                                <a th:href="${categoryItem.status.permalink}"
+                                <a th:href="@{${categoryItem.status.permalink}}"
                                    th:text="${categoryItem.spec.displayName}"></a>
                             </div>
 
@@ -34,7 +34,7 @@
                     <!-- TODO 按照年份分组 需要 halo 提供归档数据-->
                     <!--<div class="article-sort-item year">2022</div>-->
                     <div class="article-sort-item" th:each="post : ${posts.items}">
-                        <a class="article-sort-item-img" th:href="${post.status.permalink}"
+                        <a class="article-sort-item-img" th:href="@{${post.status.permalink}}"
                            th:title="${post.spec.title}">
                             <img th:alt="${post.spec.title}"
                                  th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
@@ -48,11 +48,11 @@
                                 </time>
                             </div>
                             <a class="article-sort-item-title" onclick="window.event.cancelBubble=!0"
-                               th:href="${post.status.permalink}" th:text="${post.spec.title}"
+                               th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"
                                th:title="${post.spec.title}"></a>
                             <div class="article-sort-item-tags">
                                 <a class="article-meta__tags"
-                                   th:each="tag : ${post.tags}" th:href="${tag.status.permalink}">
+                                   th:each="tag : ${post.tags}" th:href="@{${tag.status.permalink}}">
                                     <span class="tags-punctuation">#</span>
                                     [[${tag.spec.displayName}]]
                                 </a>

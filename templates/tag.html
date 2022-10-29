@@ -12,7 +12,7 @@
                 <div id="tag-page-tags" th:with="tags = ${tagFinder.listAll()}">
                     <a style="font-size:1em;color:#3c228c"
                        th:each="tag : ${tags}"
-                       th:href="${tag.status.permalink}"
+                       th:href="@{${tag.status.permalink}}"
                        th:id="${tag.spec.displayName}">
                         <span class="tags-punctuation">#</span> [[${tag.spec.displayName}]]
                         <span class="tagsPageCount" th:text="${tag.status.postCount}"></span>
@@ -22,7 +22,7 @@
                 <div class="article-sort" th:with="postItems=${posts.items}">
                     <!--<div class="article-sort-item year">2022</div>-->
                     <div class="article-sort-item" th:each="post : ${postItems}">
-                        <a class="article-sort-item-img" th:href="${post.status.permalink}"
+                        <a class="article-sort-item-img" th:href="@{${post.status.permalink}}"
                            th:title="${post.spec.title}">
                             <img loading="lazy" th:alt="${post.status.excerpt}" th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
                         </a>
@@ -33,12 +33,12 @@
                                 </time>
                             </div>
                             <a class="article-sort-item-title" onclick="window.event.cancelBubble=!0"
-                               th:href="${post.status.permalink}"
+                               th:href="@{${post.status.permalink}}"
                                th:text="${post.spec.title}" th:title="${post.spec.title}">
                             </a>
                             <div class="article-sort-item-tags">
                                 <a class="article-meta__tags" event.cancelbubble onclick="window.event.cancelBubble=!0"
-                                   th:each="tag : ${post.tags}" th:href="${tag.status.permalink}">
+                                   th:each="tag : ${post.tags}" th:href="@{${tag.status.permalink}}">
                                     <span class="tags-punctuation">#[[${tag.spec.displayName}]]</span>
                                 </a>
                                 <span class="article-meta__link">•</span>

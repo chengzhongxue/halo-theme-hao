@@ -19,7 +19,7 @@
                 <h3 class="footer-title" th:text="${menuItem.status.displayName}"></h3>
                 <div class="footer-links">
                     <a class="footer-item" th:each="childMenu : ${menuItem.children}"
-                       th:href="${childMenu.status.href}"
+                       th:href="@{${childMenu.status.href}}"
                        th:text="${childMenu.status.displayName}">
                     </a>
                 </div>

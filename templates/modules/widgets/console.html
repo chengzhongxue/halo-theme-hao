@@ -26,7 +26,7 @@
                 <div class="card-tag-cloud" th:with="tags = ${tagFinder.listAll()}">
                     <a style="font-size:1em;color:#d3d3d3"
                        th:each="tag : ${tags}"
-                       th:href="${tag.status.permalink}"
+                       th:href="@{${tag.status.permalink}}"
                        th:text="${tag.spec.displayName}">
                         <sup th:text="${tag.status.postCount}"> </sup>
                     </a>

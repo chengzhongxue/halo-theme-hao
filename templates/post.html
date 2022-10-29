@@ -20,7 +20,7 @@
                               th:each="category : ${post.categories}"
                               th:if="${not #lists.isEmpty(post.categories)}">
                             <a class="post-meta-categories"
-                               th:href="${category.status.permalink}"
+                               th:href="@{${category.status.permalink}}"
                                th:text="${category.spec.displayName}"
                                th:title="${category.spec.displayName}">
                             </a>
@@ -29,7 +29,7 @@
                             <div class="post-meta__tag-list">
                                 <a class="post-meta__tags"
                                    th:each="tag : ${post.tags}"
-                                   th:href="${tag.status.permalink}"
+                                   th:href="@{${tag.status.permalink}}"
                                    th:text="'#'+${tag.spec.displayName}"
                                    th:title="${tag.spec.displayName}"></a>
                             </div>
@@ -144,7 +144,7 @@
                         <div class="tag_share">
                             <div class="post-meta__tag-list">
                                 <a class="post-meta__tags" th:each="tag : ${post.tags}"
-                                   th:href="${tag.status.permalink}">
+                                   th:href="@{${tag.status.permalink}}">
                                     <span class="tags-punctuation">#</span>
                                     <th:block th:text="${tag.spec.displayName}"
                                               th:title="${tag.spec.displayName}"></th:block>
