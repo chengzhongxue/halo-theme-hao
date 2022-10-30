@@ -9,6 +9,12 @@
 
 本主题是根据 [Heo](https://blog.zhheo.com/) 的博客进行开发，其中部分功能暂未支持
 
+部分功能支持需要安装插件：
+- [留言](https://github.com/halo-sigs/plugin-comment-widget)
+- [代码高亮](https://github.com/liuzhihang/plugin-prismjs)
+- [懒加载](https://github.com/liuzhihang/plugin-lazyload)
+- [文章目录](https://github.com/liuzhihang/plugin-tocbot)
+
 ## 预览
 
 ## 支持的功能
