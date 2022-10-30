@@ -77,112 +77,135 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 滚动处理
     const scrollFnToDo = function () {
-        let $cardTocLayout = document.getElementById("card-toc");
-        // let $cardToc = $cardTocLayout.getElementsByClassName("toc-content")[0];
-        // let $tocLink = $cardToc.querySelectorAll(".toc-link");
-        let $article = document.getElementById("article-container");
 
-        // let scrollPercent;
-        // if (GLOBAL_CONFIG.htmlType === 'post') {
-        //     scrollPercent = function (currentTop) {
-        //         const docHeight = $article.clientHeight;
-        //         const winHeight = document.documentElement.clientHeight;
-        //         const headerHeight = $article.offsetTop;
-        //         const contentMath = (docHeight > winHeight) ? (docHeight - winHeight) : (document.documentElement.scrollHeight - winHeight)
-        //         const scrollPercent = (currentTop - headerHeight) / (contentMath);
-        //         const scrollPercentRounded = Math.round(100 * scrollPercent);
-        //         const percentage = 100 < scrollPercentRounded ? 100 : scrollPercentRounded <= 0 ? 0 : scrollPercentRounded;
-        //         $cardToc.setAttribute("progress-percentage", percentage);
-        //     };
-        // }
+        const isToc = GLOBAL_CONFIG.htmlType === 'post';
+        const isAnchor = true;
+        const $article = document.getElementById("article-container");
 
-        window.mobileToc = {
-            open: () => {
-                $cardTocLayout.style.cssText = "animation: toc-open .3s; opacity: 1; right: 45px";
-            },
+        if (!($article && (isToc || isAnchor))) return
 
-            close: () => {
-                $cardTocLayout.style.animation = "toc-close .2s"
-                setTimeout(function () {
-                    $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''";
-                }, 100);
+        let $tocLink, $cardToc, scrollPercent, autoScrollToc, isExpand
+
+        if (isToc) {
+
+            const $cardTocLayout = document.getElementById("card-toc");
+            $cardToc = $cardTocLayout.getElementsByClassName("toc-content")[0];
+            $tocLink = $cardToc.querySelectorAll(".toc-link");
+
+            // const $tocPercentage = $cardTocLayout.querySelector(".toc-percentage");
+            isExpand = $cardToc.classList.contains("is-expand");
+
+            scrollPercent = function (currentTop) {
+                const docHeight = $article.clientHeight;
+                const winHeight = document.documentElement.clientHeight;
+                const headerHeight = $article.offsetTop;
+                const contentMath = (docHeight > winHeight) ? (docHeight - winHeight) : (document.documentElement.scrollHeight - winHeight);
+                const scrollPercent = (currentTop - headerHeight) / (contentMath);
+                const scrollPercentRounded = Math.round(scrollPercent * 100);
+                const percentage = (scrollPercentRounded > 100) ? 100 : (scrollPercentRounded <= 0) ? 0 : scrollPercentRounded;
+                // $tocPercentage.textContent = percentage
+                $cardToc.setAttribute("progress-percentage", percentage);
+            };
+
+
+            window.mobileToc = {
+                open: () => {
+                    $cardTocLayout.style.cssText = "animation: toc-open .3s; opacity: 1; right: 45px";
+                },
+
+                close: () => {
+                    $cardTocLayout.style.animation = "toc-close .2s"
+                    setTimeout(function () {
+                        $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''";
+                    }, 100);
+                }
+            }
+
+            // toc 元素点击
+            $cardToc.addEventListener("click", e => {
+                e.preventDefault();
+                const target = e.target.classList;
+                if (target.contains('toc-content')) return;
+                const $target = e.target.classList.contains("toc-link") ? e.target : e.target.parentElement;
+
+                btf.scrollToDest(btf.getEleTop(document.getElementById(decodeURI($target.getAttribute("href")).replace("#", ""))), 300);
+                if (window.innerWidth < 900) {
+                    window.mobileToc.close()
+                }
+            });
+
+            autoScrollToc = item => {
+                const activePosition = item.getBoundingClientRect().top
+                const sidebarScrollTop = $cardToc.scrollTop
+                if (activePosition > (document.documentElement.clientHeight - 100)) {
+                    $cardToc.scrollTop = sidebarScrollTop + 150
+                }
+                if (activePosition < 100) {
+                    $cardToc.scrollTop = sidebarScrollTop - 150
+                }
+            };
+        }
+        // find head position & add active class
+        const list = $article.querySelectorAll("h1,h2,h3,h4,h5,h6");
+        let detectItem = "";
+        const findHeadPosition = function (top) {
+
+            if (0 === $tocLink.length || 0 === top) {
+                return false
+            }
+
+            let currentId = "";
+            let currentIndex = "";
+
+            list.forEach(function (ele, index) {
+                if (top > btf.getEleTop(ele) - 80) {
+                    const id = ele.id
+                    currentId = id ? "#" + encodeURI(id) : ""
+                    currentIndex = index
+                }
+
+            })
+            if (detectItem === currentIndex) {
+                return
+            }
+
+            if (isAnchor) btf.updateAnchor(currentId);
+
+            detectItem = currentIndex
+
+            if (isToc) {
+                $cardToc.querySelectorAll(".active").forEach(i => {
+                    i.classList.remove("active")
+                });
+                if (currentId === "") {
+                    return;
+                }
+
+                const currentActive = $tocLink[currentIndex];
+
+                currentActive.classList.add("active");
+
+                setTimeout(() => {
+                    autoScrollToc(currentActive)
+                }, 0);
+
+                if (isExpand) return;
+                let parent = currentActive.parentNode;
+
+                for (; !parent.matches(".toc-list"); parent = parent.parentNode) {
+                    if (parent.matches("li")) parent.classList.add("active")
+                }
             }
         }
 
-        // toc 元素点击
-        // $cardToc.addEventListener("click", e => {
-        //     e.preventDefault();
-        //     const target = e.target.classList.contains("toc-link") ? e.target : e.target.parentElement;
-        //
-        //     btf.scrollToDest(
-        //         btf.getEleTop(
-        //             document.getElementById(
-        //                 decodeURI(target.getAttribute("href")).replace("#", "")
-        //             )
-        //         ),
-        //         300
-        //     );
-        //     if (window.innerWidth < 900) {
-        //         window.mobileToc.close();
-        //     }
-        // });
-
-        // find head position & add active class
-        // const list = $article.querySelectorAll("h1,h2,h3,h4,h5,h6");
-        // let detectItem = "";
-        // const findHeadPosition = function (top) {
-        //
-        //     if (0 === $tocLink.length || 0 === top) {
-        //         return false
-        //     }
-        //
-        //     let currentId = "";
-        //     let currentIndex = "";
-        //
-        //     list.forEach(function (ele, index) {
-        //         if (top > btf.getEleTop(ele) - 80) {
-        //             currentId = "#" + encodeURI(ele.getAttribute("id"));
-        //             currentIndex = index
-        //         }
-        //
-        //     })
-        //     if (detectItem === currentIndex) {
-        //         return
-        //     }
-        //
-        //     detectItem = currentIndex
-        //
-        //     $cardToc.querySelectorAll(".active").forEach(i => {
-        //         i.classList.remove("active")
-        //     })
-        //
-        //     if (currentId === "") {
-        //         return
-        //     }
-        //
-        //     const currentActive = $tocLink[currentIndex]
-        //     currentActive.classList.add("active")
-        //
-        //     setTimeout(() => {
-        //         autoScrollToc(currentActive)
-        //     }, 0)
-        //
-        //     if (isExpand) return
-        //     let parent = currentActive.parentNode
-        //
-        //     for (; !parent.matches(".toc"); parent = parent.parentNode) {
-        //         if (parent.matches("li")) parent.classList.add("active")
-        //     }
-        // }
-
-        // window.tocScrollFn = function () {
-        //     return btf.throttle(function () {
-        //         let currentTop = window.scrollY || document.documentElement.scrollTop;
-        //         // scrollPercent(currentTop)
-        //         findHeadPosition(currentTop);
-        //     }, 100)();
-        // };
-        // window.addEventListener("scroll", tocScrollFn);
+        window.tocScrollFn = function () {
+            return btf.throttle(function () {
+                let currentTop = window.scrollY || document.documentElement.scrollTop;
+                scrollPercent(currentTop)
+                findHeadPosition(currentTop);
+            }, 100)();
+        };
+        window.addEventListener("scroll", tocScrollFn);
     };
 
     const tabsFn = {

@@ -179,6 +179,17 @@ const btf = {
         }
 
         return actualTop
+    },
+
+    updateAnchor: (anchor) => {
+        if (anchor !== window.location.hash) {
+            if (!anchor) anchor = location.pathname
+            const title = "123111111111"
+            window.history.replaceState({
+                url: location.href,
+                title: title
+            }, title, anchor)
+        }
     }
 
 };

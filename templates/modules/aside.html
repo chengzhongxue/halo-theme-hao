@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
+<!-- 侧边栏 -->
 <div class="aside-content" id="aside-content" th:fragment="aside(widgets)"
      th:if="${theme.config.sidebar.location != 'hide-aside' && not #strings.isEmpty(widgets)}">
 
-    <!-- 侧栏部件不确定都有什么 -->
-    <th:block th:each="widget : ${#strings.listSplit(widgets, ',')}">
-        <th:block th:replace="'modules/widgets/aside/'+ ${widget}"/>
+    <!-- 侧栏部件，不包含 toc 则直接遍历 -->
+    <th:block th:if="${not #strings.contains(widgets, 'toc')}">
+        <th:block th:each="widget : ${#strings.listSplit(widgets, ',')}">
+            <th:block th:replace="'modules/widgets/aside/'+ ${widget}"/>
+        </th:block>
+    </th:block>
+
+    <!-- 侧栏部件，toc 之后的组件需要被 sticky_layout 包裹 -->
+    <th:block th:if="${#strings.contains(widgets, 'toc')}">
+
+        <th:block th:each="widget : ${#strings.listSplit(#strings.substringBefore(widgets, 'toc'), ',')}">
+
+            <th:block th:replace="'modules/widgets/aside/'+ ${widget}"/>
+        </th:block>
+
+        <!-- toc 之后的组件需要被 sticky_layout 包裹 -->
+        <div class="sticky_layout">
+            <th:block th:replace="modules/widgets/aside/toc :: toc"/>
+
+            <th:block th:each="widget : ${#strings.listSplit(#strings.substringAfter(widgets, 'toc'), ',')}">
+                <th:block th:replace="'modules/widgets/aside/'+ ${widget}"/>
+            </th:block>
+        </div>
     </th:block>
 
 
