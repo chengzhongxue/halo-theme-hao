@@ -4,10 +4,10 @@
 
 <th:block th:fragment="stat" th:with="stats = ${siteStatsFinder.getStats()}">
 
-    <div class="item-headline"><i class="fas fa-chart-line"></i><span>统计</span></div>
+    <div class="item-headline"><i class="iconfont icon-icon-sidebar-scxmtj"></i><span>统计</span></div>
     <div class="webinfo">
         <div class="webinfo-item">
-            <div class="webinfo-item-title"><i class="item-icon fas fa-file-alt"></i>
+            <div class="webinfo-item-title"><i class="iconfont icon-file-alt"></i>
                 <div class="item-name">文章数 :</div>
             </div>
             <div class="item-count" th:text="${stats.post}"></div>

@@ -4,7 +4,7 @@
 
 <th:block th:fragment="tags" th:with="tags = ${tagFinder.listAll()}">
 
-    <div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div>
+    <div class="item-headline"><i class="iconfont icon-tags"></i><span>标签</span></div>
     <div class="card-tag-cloud">
         <a style="font-size:1em;color:#d3d3d3" th:each="tag : ${tags}"
            th:href="@{${tag.status.permalink}}"
