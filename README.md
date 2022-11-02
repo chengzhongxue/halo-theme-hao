@@ -15,6 +15,9 @@
 - [懒加载](https://github.com/liuzhihang/plugin-lazyload)
 - [文章目录](https://github.com/liuzhihang/plugin-tocbot)
 
+图标 icon 来自于 [iconfont](https://www.iconfont.cn/)
+
+
 ## 预览
 
 ## 支持的功能
