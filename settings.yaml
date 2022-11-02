@@ -105,7 +105,7 @@ spec:
           label: 博客封面随机 API
           validation: "url"
           value: "https://source.unsplash.com/random/600x400/?blog,scenery,night,desert,sea"
-          help: 默认随机封面图 url 不能保证一直可用
+          help: 二次元随机图地址：https://www.dmoe.cc/random.php    默认随机封面图 url 不能保证一直可用
     - group: sidebar
       label: 侧边栏
       formSchema:
