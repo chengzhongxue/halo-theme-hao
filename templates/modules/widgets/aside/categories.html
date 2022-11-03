@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 目录 -->
 <div class="card-widget card-categories" th:fragment="categories" th:with="categories = ${categoryFinder.listAll()}">
-    <div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div>
+    <div class="item-headline"><i class="iconfont icon-folder-open"></i><span>分类</span></div>
     <div class="aside-list">
         <ul class="card-category-list">
             <li class="card-category-list-item" th:each="category : ${categories}">

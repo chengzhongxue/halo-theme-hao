@@ -42,14 +42,14 @@
 
                         <span class="post-meta-wordcount"
                               th:with="wordCount = ${#strings.length(post.content.content)}">
-                            <i class="fas fa-file-word fa-fw post-meta-icon" title="字数"></i>
+                            <i class="iconfont icon-file-word post-meta-icon" title="字数"></i>
                             <span class="post-meta-label">字数:</span>
                             <span class="word-count" th:text="${{wordCount}}"></span>
                             <span class="post-meta-separator"></span>
-                            <i class="fas fa-clock post-meta-icon" title="阅读耗时"></i>
+                            <i class="iconfont icon-clock post-meta-icon" title="阅读耗时"></i>
                             <span class="post-meta-label">阅读耗时:</span><span>[[${wordCount / 400}]] 分钟</span>
                         </span>
-                        <span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-calendar"></i>
+                        <span class="post-meta-date"><i class="iconfont icon-calendar-alt post-meta-icon"></i>
                             <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm:ss')}"
                                   th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}"
                                   th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">
@@ -60,7 +60,7 @@
                         <!--<span class="post-meta-position" title="作者IP属地为北京"><i-->
                         <!--        class="fas fa-location-dot post-meta-icon"></i>北京</span>-->
                         <span class="post-meta-pv" data-flag-title="热度">
-                            <i class="fab fa-hotjar fa-fw post-meta-icon"></i>
+                            <i class="iconfont icon-hotjar post-meta-icon"></i>
                             <span class="post-meta-label">热度:</span>
                             <span id="visit" th:text="${post.stats.visit}"></span>
                         </span>
@@ -118,7 +118,7 @@
                         <!-- 分享 -->
                         <div class="share-link mobile">
                             <div class="share-qrcode">
-                                <div class="share-button" title="使用手机访问这篇文章"><i class="fas fa-qrcode"></i>
+                                <div class="share-button" title="使用手机访问这篇文章"><i class="iconfont icon-qrcode"></i>
                                 </div>
                                 <div class="share-main">
                                     <div class="share-main-all">
@@ -134,10 +134,10 @@
                                target="_blank"
                                th:href="'https://service.weibo.com/share/share.php?title=' + ${post.spec.title}"
                                title="分享到微博">
-                                <i class="fab fa-weibo" style="font-size:22px"></i></a></div>
+                                <i class="iconfont icon-weibo" style="font-size:22px"></i></a></div>
                         <div class="share-link copyurl">
                             <div class="share-button" id="post-share-url" onclick="rm.copyPageUrl()" title="复制链接"><i
-                                    class="fas fa-link"></i></div>
+                                    class="iconfont icon-link"></i></div>
                         </div>
                     </div>
                     <div class="post-tools-right">
@@ -166,11 +166,11 @@
                     <div class="post-copyright__type">
                     <span class="post-copyright-info" id="post-copyright-url">
                     <a href="javascript:window.location.href;">
-                        text
+                        [[${post.spec.title}]]
                     </a>
                 </span>
                         <button class="post-copyright-copybtn" onclick="rm.copyPageUrl()">
-                            <i class="fas fa-paste copy-btn"></i>
+                            <i class="iconfont icon-paste"></i>
                         </button>
                     </div>
                     <div class="post-copyright__notice">
@@ -200,7 +200,7 @@
                     </div>
                 </nav>
                 <div class="relatedPosts">
-                    <div class="headline"><i class="fas fa-robot fa-fw"></i> <span>阅读建议</span></div>
+                    <div class="headline"><i class="iconfont icon-robot"></i> <span>阅读建议</span></div>
                     <div class="relatedPosts-list">
                         <!-- 建议阅读，这里可以自定义文章数量，然后遍历展示 -->
                         <div>
@@ -219,7 +219,7 @@
                 <!-- 评论模块，使用评论插件 -->
                 <div id="post-comment">
                     <div class="comment-head">
-                        <div class="comment-headline"><i class="fas fa-message fa-fw"></i> <span>评论</span></div>
+                        <div class="comment-headline"><i class="iconfont icon-comment-alt"></i> <span>评论</span></div>
                         <div class="comment-privacy"><a href="#">隐私政策</a></div>
                         <div class="comment-tips" id="comment-tips">
                             <span>你无需删除空行，直接评论以获取最佳展示效果</span>

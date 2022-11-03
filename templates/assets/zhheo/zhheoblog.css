@@ -4653,7 +4653,8 @@ html {
 .fal,
 .far,
 .fas,
-.fat {
+.fat
+.iconfont {
     line-height: 1;
 }
 
