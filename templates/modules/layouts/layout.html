@@ -67,8 +67,12 @@
 </div>
 
 <div>
+    <!-- 获取主色 https://lokeshdhakar.com/projects/color-thief/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+
     <script th:inline="javascript">
-        //coverColor();
+
+        // coverColor();
 
         if ([[${theme.config.other.loading_box} and not ${#strings.isEmpty(theme.config.other.loading_box_img)}]]) {
             // 移除加载动画
