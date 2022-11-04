@@ -4653,7 +4653,8 @@ html {
 .fal,
 .far,
 .fas,
-.fat {
+.fat
+.iconfont {
     line-height: 1;
 }
 
@@ -13061,47 +13062,6 @@ span.hexo-douban-pagenum {
     transform: rotate(20deg);
 }
 
-#about-page .myInfoAndSayHello {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: var(--heo-white);
-    background: linear-gradient(120deg, rgb(91, 39, 255) 0px, rgb(0, 212, 255) 100%) 0% 0% / 200%;
-    animation: 15s ease 0s infinite normal none running gradient;
-    width: 59%;
-}
-
-#about-page .myInfoAndSayHello .title1 {
-    opacity: 0.8;
-    line-height: 1.3;
-}
-
-#about-page .myInfoAndSayHello .title2 {
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 1.1;
-    margin: 0.5rem 0px;
-}
-
-.author-content-item-group.column.mapAndInfo {
-    width: 59%;
-}
-
-.author-content-item.map {
-    background: url(../images/404.gif) center center / 100% no-repeat;
-    min-height: 160px;
-    max-height: 400px;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 0.5rem;
-    height: 60%;
-    transition: all 1s ease-in-out 0s;
-}
-
-[data-theme="dark"] .author-content-item.map {
-    background: url(../images/404.gif) center center / 100% no-repeat;
-}
-
 .author-content-item.map:hover {
     background-size: 120%;
     transition: all 4s ease-in-out 0s;
@@ -13481,7 +13441,6 @@ span.hexo-douban-pagenum {
 #about-page .about-statistic {
     min-height: 380px;
     width: 39%;
-    background: url(../images/404.gif) center top / cover no-repeat;
     color: var(--heo-white);
     overflow: hidden;
 }
@@ -13658,14 +13617,6 @@ span.hexo-douban-pagenum {
     display: none;
 }
 
-.author-content-item.game-lol {
-    background: url(../images/404.gif) center top / cover no-repeat;
-    min-height: 300px;
-    overflow: hidden;
-    color: var(--heo-white);
-    width: 59%;
-}
-
 .author-content-item .card-content {
     position: absolute;
     width: 100%;
@@ -13684,16 +13635,6 @@ span.hexo-douban-pagenum {
     }
 }
 
-.author-content-item.game-lol::after {
-    box-shadow: rgb(4, 18, 15) 0px -69px 203px 11px inset;
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-}
-
 .author-content-item .content-bottom {
     margin-top: auto;
     display: flex;
@@ -13710,55 +13651,6 @@ span.hexo-douban-pagenum {
     width: 22px;
     height: 18px;
     margin-right: 0.5rem;
-}
-
-.icon-pos-sup {
-    background: url(../images/404.gif);
-}
-
-.icon-pos-mid {
-    background: url(../images/404.gif);
-}
-
-.author-content-item.game-wolf {
-    width: 39%;
-    background: url(../images/404.gif) center top / cover no-repeat;
-    min-height: 300px;
-    overflow: hidden;
-    color: var(--heo-white);
-}
-
-.author-content-item.game-wolf::after {
-    box-shadow: rgb(65, 93, 201) 0px -69px 203px 11px inset;
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-}
-
-.author-content-item.like-technology {
-    background: url(../images/404.gif) 0% 0% / cover no-repeat;
-    min-height: 230px;
-    color: var(--heo-white);
-}
-
-.author-content-item.like-music {
-    background: url(../images/404.gif) center top / cover no-repeat;
-    min-height: 400px;
-    color: var(--heo-white);
-    overflow: hidden;
-}
-
-.author-content-item.like-music::after {
-    box-shadow: rgb(115, 104, 150) 0px -69px 203px 11px inset;
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    left: 0px;
 }
 
 .author-content-item .card-content .author-content-item-title {
@@ -13817,92 +13709,6 @@ span.hexo-douban-pagenum {
     .author-content-item .card-content .banner-button-group .banner-button-text {
         display: none;
     }
-}
-
-.author-content-item.single.like-movie {
-    height: 19rem;
-    background: url(../images/404.gif) center top / cover no-repeat;
-    color: var(--heo-white);
-    overflow: hidden;
-}
-
-.author-content-item.single.like-movie::after {
-    box-shadow: rgb(28, 28, 28) 0px 21px 133px 81px inset;
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-}
-
-#article-container .author-content-item.single.like-movie .banner-button-group .banner-button {
-    padding: 8px 12px;
-    background: var(--heo-white);
-    border-radius: 12px;
-    color: var(--heo-black);
-    display: flex;
-    align-items: center;
-    z-index: 1;
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    border: none;
-}
-
-#article-container .author-content-item.single.like-movie .banner-button-group .banner-button:hover {
-    background: rgb(208, 178, 71);
-    color: var(--heo-white);
-}
-
-#article-container .author-content-item.single.like-movie .banner-button-group .banner-button i {
-    margin-right: 8px;
-    font-size: 1rem;
-}
-
-@media screen and (max-width: 768px) {
-    #article-container .author-content-item.single.like-movie .banner-button-group {
-        right: 1rem;
-        bottom: 1rem;
-    }
-
-    #article-container .author-content-item.single.like-movie .banner-button-group .banner-button {
-        background: 0px 0px;
-        color: var(--heo-white);
-        padding: 0px;
-    }
-
-    #article-container .author-content-item.single.like-movie .banner-button-group .banner-button i {
-        margin-right: 0px;
-        font-size: 1.5rem;
-    }
-
-    #article-container .author-content-item.single.like-movie .banner-button-group .banner-button-text {
-        display: none;
-    }
-}
-
-.author-content.author-content-item.toolPage {
-    height: 19rem;
-    background: url(../images/404.gif) center top / cover no-repeat;
-    color: var(--heo-white);
-    overflow: hidden;
-    margin-top: 0px;
-}
-
-.author-content.author-content-item.momentsPage {
-    height: 19rem;
-    background: url(../images/404.gif) center top / cover no-repeat;
-    color: var(--heo-white);
-    overflow: hidden;
-    margin-top: 0px;
-}
-
-.author-content.author-content-item.essayPage {
-    height: 19rem;
-    background: url(../images/404.gif) center center / cover no-repeat;
-    color: var(--heo-white);
-    overflow: hidden;
-    margin-top: 0px;
 }
 
 #console {

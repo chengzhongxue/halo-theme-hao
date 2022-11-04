@@ -15,12 +15,11 @@
     <script th:src="@{/assets/js/heo.js}"></script>
 
     <link rel="stylesheet" th:href="@{/assets/zhheo/zhheoblog.css}">
-    <!-- fontawesome-pro https://github.com/duyplus/fontawesome-pro  -->
+
     <link media="print"
           onload='this.media="all"'
           rel="stylesheet"
-          href="https://cdn2.tianli0.top/gh/duyplus/fontawesome-pro/css/all.min.css"
-    />
+          th:href="@{/assets/libs/iconfont/iconfont.css}">
 
     <!-- 右下角通知 -->
     <link href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css"
@@ -117,9 +116,6 @@
         })(window)
     </script>
     <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
-
-    <!--  todo 不知道是否有用 https://remixicon.com/  -->
-    <link href="https://cdn2.tianli0.top/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
     <!-- 动态加载条 -->
     <script data-pace-options='{ "restartOnRequestAfter":false,"eventLag":false}'

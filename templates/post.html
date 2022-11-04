@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="modules/layouts/layout :: layout(~{::content})" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" th:replace="modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'post')"
+      xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
     <div class="post" id="body-wrap">
 
-        <header class="post-bg" id="page-header" th:style="'background-image:url(' + (${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}) + ')'">
+        <header class="post-bg" id="page-header"
+                th:style="'background-image:url(' + (${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}) + ')'">
             <nav th:replace="modules/nav :: nav"></nav>
             <div class="coverdiv" id="coverdiv">
-                <img alt="cover" id="post-cover" loading="lazy"
+                <img crossorigin="anonymous" id="post-cover"
                      th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
             </div>
 
@@ -20,7 +22,7 @@
                               th:each="category : ${post.categories}"
                               th:if="${not #lists.isEmpty(post.categories)}">
                             <a class="post-meta-categories"
-                               th:href="${category.status.permalink}"
+                               th:href="@{${category.status.permalink}}"
                                th:text="${category.spec.displayName}"
                                th:title="${category.spec.displayName}">
                             </a>
@@ -29,7 +31,7 @@
                             <div class="post-meta__tag-list">
                                 <a class="post-meta__tags"
                                    th:each="tag : ${post.tags}"
-                                   th:href="${tag.status.permalink}"
+                                   th:href="@{${tag.status.permalink}}"
                                    th:text="'#'+${tag.spec.displayName}"
                                    th:title="${tag.spec.displayName}"></a>
                             </div>
@@ -42,14 +44,14 @@
 
                         <span class="post-meta-wordcount"
                               th:with="wordCount = ${#strings.length(post.content.content)}">
-                            <i class="fas fa-file-word fa-fw post-meta-icon" title="字数"></i>
+                            <i class="iconfont icon-file-word post-meta-icon" title="字数"></i>
                             <span class="post-meta-label">字数:</span>
                             <span class="word-count" th:text="${{wordCount}}"></span>
                             <span class="post-meta-separator"></span>
-                            <i class="fas fa-clock post-meta-icon" title="阅读耗时"></i>
+                            <i class="iconfont icon-clock post-meta-icon" title="阅读耗时"></i>
                             <span class="post-meta-label">阅读耗时:</span><span>[[${wordCount / 400}]] 分钟</span>
                         </span>
-                        <span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-calendar"></i>
+                        <span class="post-meta-date"><i class="iconfont icon-calendar-alt post-meta-icon"></i>
                             <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm:ss')}"
                                   th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}"
                                   th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">
@@ -60,7 +62,7 @@
                         <!--<span class="post-meta-position" title="作者IP属地为北京"><i-->
                         <!--        class="fas fa-location-dot post-meta-icon"></i>北京</span>-->
                         <span class="post-meta-pv" data-flag-title="热度">
-                            <i class="fab fa-hotjar fa-fw post-meta-icon"></i>
+                            <i class="iconfont icon-hotjar post-meta-icon"></i>
                             <span class="post-meta-label">热度:</span>
                             <span id="visit" th:text="${post.stats.visit}"></span>
                         </span>
@@ -118,7 +120,8 @@
                         <!-- 分享 -->
                         <div class="share-link mobile">
                             <div class="share-qrcode">
-                                <div class="share-button" title="使用手机访问这篇文章"><i class="fas fa-qrcode"></i>
+                                <div class="share-button" title="使用手机访问这篇文章"><i
+                                        class="iconfont icon-qrcode"></i>
                                 </div>
                                 <div class="share-main">
                                     <div class="share-main-all">
@@ -134,17 +137,17 @@
                                target="_blank"
                                th:href="'https://service.weibo.com/share/share.php?title=' + ${post.spec.title}"
                                title="分享到微博">
-                                <i class="fab fa-weibo" style="font-size:22px"></i></a></div>
+                                <i class="iconfont icon-weibo" style="font-size:22px"></i></a></div>
                         <div class="share-link copyurl">
                             <div class="share-button" id="post-share-url" onclick="rm.copyPageUrl()" title="复制链接"><i
-                                    class="fas fa-link"></i></div>
+                                    class="iconfont icon-link"></i></div>
                         </div>
                     </div>
                     <div class="post-tools-right">
                         <div class="tag_share">
                             <div class="post-meta__tag-list">
                                 <a class="post-meta__tags" th:each="tag : ${post.tags}"
-                                   th:href="${tag.status.permalink}">
+                                   th:href="@{${tag.status.permalink}}">
                                     <span class="tags-punctuation">#</span>
                                     <th:block th:text="${tag.spec.displayName}"
                                               th:title="${tag.spec.displayName}"></th:block>
@@ -156,51 +159,48 @@
                 </div>
 
                 <!-- 版权声明 -->
-                <div class="post-copyright">
+                <div class="post-copyright" th:if="${theme.config.post.copyright}">
                     <div class="post-copyright__author">
                         <!-- 版权页 以及版权描述文字 -->
-                        <a class="post-copyright__original" th:href="@{/cc}"
-                           title="该文章为原创文章，注意版权协议">原创</a>
+                        <a class="post-copyright__original" th:href="@{${theme.config.post.copyrightAgreement}}" title="该文章为原创文章，注意版权协议">原创</a>
                         <a class="post-copyright-title" href="#"><span th:text="${post.spec.title}"></span></a>
                     </div>
                     <div class="post-copyright__type">
-                    <span class="post-copyright-info" id="post-copyright-url">
-                    <a href="javascript:window.location.href;">
-                        text
-                    </a>
-                </span>
+                        <span class="post-copyright-info" id="post-copyright-url">
+                            <a href="javascript:window.location.href;">[[${post.spec.title}]]</a>
+                        </span>
                         <button class="post-copyright-copybtn" onclick="rm.copyPageUrl()">
-                            <i class="fas fa-paste copy-btn"></i>
+                            <i class="iconfont icon-paste"></i>
                         </button>
                     </div>
                     <div class="post-copyright__notice">
-                    <span class="post-copyright-info">
-                        本文是原创文章，采用 <a target="_blank" th:href="@{/cc}">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a
-                            href="/" target="_blank" th:text="${site.title}"></a>
-                    </span>
+                        <span class="post-copyright-info" th:utext="${theme.config.post.copyrightInfo}"></span>
                     </div>
                 </div>
-
-                <nav class="pagination-post" id="pagination">
-                    <div class="prev-post pull-left">
-                        <a href="#">
+                <nav class="pagination-post" id="pagination"
+                     th:with="postCursor = ${postFinder.cursor(post.metadata.name)}">
+                    <div class="prev-post pull-left" th:if="${postCursor.hasPrevious()}">
+                        <a th:href="@{${postCursor.previous.status.permalink}}">
                             <div class="pagination-info">
                                 <div class="label">上一篇</div>
-                                <div class="prev_info">上一篇文章的标题</div>
+                                <div class="prev_info" th:text="${postCursor.previous.spec.title}"></div>
                             </div>
                         </a>
                     </div>
-                    <div class="next-post pull-right">
-                        <a href="#">
+                    <div class="next-post pull-right" th:if="${postCursor.hasNext()}">
+                        <a th:href="@{${postCursor.next.status.permalink}}">
                             <div class="pagination-info">
                                 <div class="label">下一篇</div>
-                                <div class="next_info">下一篇文章的标题</div>
+                                <div class="next_info" th:text="${postCursor.next.spec.title}"></div>
                             </div>
                         </a>
                     </div>
                 </nav>
                 <div class="relatedPosts">
-                    <div class="headline"><i class="fas fa-robot fa-fw"></i> <span>阅读建议</span></div>
+                    <div class="headline">
+                        <i class="iconfont icon-robot"></i>
+                        <span>阅读建议</span>
+                    </div>
                     <div class="relatedPosts-list">
                         <!-- 建议阅读，这里可以自定义文章数量，然后遍历展示 -->
                         <div>
@@ -219,7 +219,7 @@
                 <!-- 评论模块，使用评论插件 -->
                 <div id="post-comment">
                     <div class="comment-head">
-                        <div class="comment-headline"><i class="fas fa-message fa-fw"></i> <span>评论</span></div>
+                        <div class="comment-headline"><i class="iconfont icon-comment-alt"></i> <span>评论</span></div>
                         <div class="comment-privacy"><a href="#">隐私政策</a></div>
                         <div class="comment-tips" id="comment-tips">
                             <span>你无需删除空行，直接评论以获取最佳展示效果</span>
@@ -230,7 +230,7 @@
             </div>
 
             <!-- 侧栏 -->
-            <div th:replace="modules/aside :: aside('profile,toc,recent-posts,tags-stat')"></div>
+            <div th:replace="modules/aside :: aside(${theme.config.sidebar.post_widgets})"></div>
         </main>
 
         <!-- 底部 -->

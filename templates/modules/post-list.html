@@ -11,7 +11,7 @@
          th:each="post,iStat : ${postItems}">
 
         <div class="post_cover cover_radius">
-            <a th:attr="title=${post.spec.title}" th:href="${post.status.permalink}">
+            <a th:attr="title=${post.spec.title}" th:href="@{${post.status.permalink}}">
                 <img class="post_bg entered loaded" loading="lazy"
                      th:alt="${post.status.excerpt}"
                      th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
@@ -21,7 +21,7 @@
         <th:block th:if="${not #lists.isEmpty(post.categories)}">
             <a class="article-meta__categories"
                th:each="category : ${post.categories}"
-               th:href="${category.status.permalink}"
+               th:href="@{${category.status.permalink}}"
                th:text="${category.spec.displayName}"
                th:title="${category.spec.displayName}">
             </a>
@@ -31,7 +31,7 @@
                 <span class="lastestpost">最新文章</span>
                 <a class="article-title"
                    th:attr="title=${post.spec.title}"
-                   th:href="${post.status.permalink}"
+                   th:href="@{${post.status.permalink}}"
                    th:text="${post.spec.title}">
                 </a>
                 <div class="content" th:text="${post.status.excerpt}"></div>
@@ -45,7 +45,7 @@
                         <a class="article-meta__tags" event.cancelbubble
                            onclick="window.event.cancelBubble=!0"
                            th:each="tag : ${post.tags}"
-                           th:href="${tag.status.permalink}"
+                           th:href="@{${tag.status.permalink}}"
                            th:title="${tag.spec.displayName}">
                             <span class="tags-punctuation">#[[${tag.spec.displayName}]]</span>
                         </a>
@@ -72,8 +72,8 @@
         <div class="pagination" th:if="${(totalPages le 7) && (totalPages gt 0)}">
 
             <!-- 上一页 -->
-            <a class="extend prev" rel="prev" th:href="${posts.prevUrl}" th:if="${posts.hasPrevious()}">
-                <i class="fas fa-chevron-left fa-fw"></i>
+            <a class="extend prev" rel="prev" th:href="@{${posts.prevUrl}}" th:if="${posts.hasPrevious()}">
+                <i class="iconfont icon-chevron-left"></i>
                 <div class="pagination_tips_prev">上页</div>
             </a>
 
@@ -85,9 +85,9 @@
             </a>
 
             <!-- 下一页 -->
-            <a class="extend next" rel="next" th:href="${posts.nextUrl}" th:if="${posts.hasNext()}">
+            <a class="extend next" rel="next" th:href="@{${posts.nextUrl}}" th:if="${posts.hasNext()}">
                 <div class="pagination_tips_next">下页</div>
-                <i class="fas fa-chevron-right fa-fw"></i>
+                <i class="iconfont icon-chevron-right"></i>
             </a>
 
         </div>
@@ -98,8 +98,8 @@
         <div class="pagination" th:if="${totalPages gt 7}">
 
             <!-- 上一页 -->
-            <a class="extend prev" rel="prev" th:href="${posts.prevUrl}" th:if="${posts.hasPrevious()}">
-                <i class="fas fa-chevron-left fa-fw"></i>
+            <a class="extend prev" rel="prev" th:href="@{${posts.prevUrl}}" th:if="${posts.hasPrevious()}">
+                <i class="iconfont icon-chevron-left"></i>
                 <div class="pagination_tips_prev">上页</div>
             </a>
 
@@ -151,9 +151,9 @@
             </a>
 
             <!-- 下一页 -->
-            <a class="extend next" rel="next" th:href="${posts.nextUrl}" th:if="${posts.hasNext()}">
+            <a class="extend next" rel="next" th:href="@{${posts.nextUrl}}" th:if="${posts.hasNext()}">
                 <div class="pagination_tips_next">下页</div>
-                <i class="fas fa-chevron-right fa-fw"></i>
+                <i class="iconfont icon-chevron-right"></i>
             </a>
 
         </div>

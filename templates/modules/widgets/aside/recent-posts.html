@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div class="card-widget card-recent-post" th:fragment="recent-posts" th:with="posts = ${postFinder.list(1,6)}">
-    <div class="item-headline"><i class="fas fa-list-ol"></i><span>最近发布</span></div>
+    <div class="item-headline"><i class="iconfont icon-listol"></i><span>最近发布</span></div>
     <div class="aside-list">
         <!-- 最新文章，用户可以自定义展示数量 -->
         <div class="aside-list-item" th:each="post : ${posts}">
-            <a class="thumbnail" th:href="${post.status.permalink}" th:title="${post.spec.title}">
+            <a class="thumbnail" th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
                 <img loading="lazy" th:alt="${post.spec.title}" th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
             </a>
             <div class="content">
-                <a class="title" th:href="${post.status.permalink}" th:text="${post.spec.title}"
-                   th:title="${post.spec.title}"></a>
+                <a class="title" th:href="@{${post.status.permalink}}" th:text="${post.spec.title}" th:title="${post.spec.title}"></a>
                 <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm:ss')}"
                       th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}"
                       th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">

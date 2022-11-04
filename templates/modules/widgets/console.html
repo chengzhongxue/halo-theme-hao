@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div id="console" th:fragment="console">
     <div class="close-btn" href="javascript:void(0);" onclick="heo.hideConsole()">
-        <i class="fas fa-circle-xmark"></i>
+        <i class="iconfont icon-times-circle"></i>
     </div>
     <div class="console-card-group">
         <!-- 评论，需要使用评论插件，获取最近评论 -->
@@ -26,7 +26,7 @@
                 <div class="card-tag-cloud" th:with="tags = ${tagFinder.listAll()}">
                     <a style="font-size:1em;color:#d3d3d3"
                        th:each="tag : ${tags}"
-                       th:href="${tag.status.permalink}"
+                       th:href="@{${tag.status.permalink}}"
                        th:text="${tag.spec.displayName}">
                         <sup th:text="${tag.status.postCount}"> </sup>
                     </a>

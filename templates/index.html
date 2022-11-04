@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="modules/layouts/layout :: layout(~{::content})" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" th:replace="modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'index')" xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
 
@@ -24,7 +24,7 @@
                 <th:block th:replace="modules/post-list :: post-list"></th:block>
 
             </div>
-            <div th:replace="modules/aside :: aside('profile,wechat,recent-posts,tags-stat')"></div>
+            <div th:replace="modules/aside :: aside(${theme.config.sidebar.widgets})"></div>
         </main>
         <!-- 底部 -->
         <footer th:replace="modules/footer :: footer"></footer>

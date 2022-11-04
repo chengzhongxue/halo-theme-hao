@@ -12,6 +12,17 @@
 
 本主题是根据 [Heo](https://blog.zhheo.com/) 的博客进行开发，其中部分功能暂未支持
 
+部分功能支持需要安装插件：
+- [留言](https://github.com/halo-sigs/plugin-comment-widget)
+- [代码高亮](https://github.com/liuzhihang/plugin-prismjs)
+- [懒加载](https://github.com/liuzhihang/plugin-lazyload)
+- [文章目录](https://github.com/liuzhihang/plugin-tocbot)
+
+图标 icon 来自于 [iconfont](https://www.iconfont.cn/)：
+- [Awesome常用免费开源图标](https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.dc64b3430&cid=11790)
+
+
+
 ## 预览
 
 ## 支持的功能

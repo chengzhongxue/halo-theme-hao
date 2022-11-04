@@ -9,9 +9,8 @@
         <div class="menus_item" th:each="menuItem : ${menuFinder.getDefault().menuItems}">
 
             <!-- javascript:void(0);" -->
-            <a class="site-page" rel="external nofollow" th:href="${menuItem.status.href}">
+            <a class="site-page" rel="external nofollow" th:href="@{${menuItem.status.href}}">
                 <span th:text="${menuItem.status.displayName}"></span>
-                <i class="fas fa-chevron-down expand"></i>
             </a>
 
             <!-- 有子菜单则显示子菜单 -->
@@ -19,7 +18,7 @@
                 <!-- 子菜单 -->
                 <ul class="menus_item_child">
                     <li th:each="childMenu : ${menuItem.children}">
-                        <a class="site-page child" th:href="${childMenu.status.href}">
+                        <a class="site-page child" th:href="@{${childMenu.status.href}}">
                             <!-- 这里应该有一个 icon 暂时还不支持 -->
                             <!--<i class="fa-fw fa-duotone fa-list-timeline"></i>-->
                             <span th:text="${menuItem.status.displayName}"></span>

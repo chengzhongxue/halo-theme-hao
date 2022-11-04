@@ -5,54 +5,12 @@
 <th:block th:fragment="toc">
     <div class="card-widget" id="card-toc">
         <div class="item-headline">
-            <i class="fas fa-bars"></i>
+            <i class="iconfont icon-bars"></i>
             <span>文章目录</span>
+            <span class="toc-percentage"></span>
         </div>
         <!-- 目录容器 -->
         <div class="toc-content"></div>
     </div>
-
-    <!-- tocbot 用来生成目录 -->
-    <div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css" rel="stylesheet">
-    </div>
-    <script>
-        // 给标签添加 id
-        var headerEl = 'h1,h2,h3,h4,h5,h6', // headers
-            content = '.post-content', // 文章容器
-            idArr = {};
-        var headers = $(content).children(headerEl);
-
-        // 没有 toc 目录，则直接移除
-        if (headers.length === 0) {
-            document.getElementById("card-toc").remove();
-        } else {
-            headers.each(function () {
-
-                // 去除空格以及多余标点
-                var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
-
-                headerId = headerId.toLowerCase();
-                if (idArr[headerId]) {
-                    // id已经存在
-                    $(this).attr('id', headerId + '-' + idArr[headerId]);
-                    idArr[headerId]++;
-                } else {
-                    // id未存在
-                    idArr[headerId] = 1;
-                    $(this).attr('id', headerId);
-                }
-            });
-            tocbot.init({
-                tocSelector: '.toc-content',
-                contentSelector: '.post-content',
-                headingSelector: headerEl,
-                hasInnerContainers: true,
-
-            });
-        }
-
-    </script>
 </th:block>
 </html>

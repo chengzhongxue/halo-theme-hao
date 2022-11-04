@@ -5,7 +5,7 @@
 <div class="topGroup" th:fragment="top-group" th:with="posts = ${postFinder.list(1,6)}">
     <div class="recent-post-item" th:each="post : ${posts}">
         <div class="post_cover">
-            <a th:href="${post.status.permalink}" th:title="${post.spec.title}">
+            <a th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
                 <span class="recent-post-top-text">荐</span>
                 <img class="post_bg" loading="lazy"
                      th:alt="${post.spec.title}"
@@ -14,7 +14,7 @@
         </div>
         <div class="recent-post-info">
             <a class="article-title"
-               th:href="${post.status.permalink}"
+               th:href="@{${post.status.permalink}}"
                th:text="${post.spec.title}"
                th:title="${post.spec.title}">
             </a>

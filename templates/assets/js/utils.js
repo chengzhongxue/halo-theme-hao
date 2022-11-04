@@ -167,10 +167,6 @@ const btf = {
         }
     },
 
-    isJqueryLoad: function (e) {
-        "undefined" == typeof jQuery ? getScript(GLOBAL_CONFIG.source.jQuery).then(e) : e()
-    },
-
     isHidden: ele => ele.offsetHeight === 0 && ele.offsetWidth === 0,
 
     getEleTop: ele => {
@@ -185,14 +181,4 @@ const btf = {
         return actualTop
     },
 
-    updateAnchor: (anchor) => {
-        if (anchor !== window.location.hash) {
-            if (!anchor) anchor = location.pathname
-            const title = GLOBAL_CONFIG_SITE.title
-            window.history.replaceState({
-                url: location.href,
-                title: title
-            }, title, anchor)
-        }
-    }
 };

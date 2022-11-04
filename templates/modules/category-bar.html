@@ -12,7 +12,7 @@
             <div class="category-bar-item"
                  th:each="categoryItem : ${categories}"
                  th:id="${categoryItem.spec.displayName}">
-                <a th:href="${categoryItem.status.permalink}" th:text="${categoryItem.spec.displayName}"></a>
+                <a th:href="@{${categoryItem.status.permalink}}" th:text="${categoryItem.spec.displayName}"></a>
             </div>
 
         </th:block>

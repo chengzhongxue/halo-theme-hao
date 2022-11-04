@@ -63,16 +63,59 @@ function checkOpen() {
 
 // https://blog.zhheo.com/p/c86d8f1f.html
 // ?imageAve 使用 七牛云获取图片主色调，阿里云 oss 则是 @imageAve
-// TODO 可以切换为使用本地 JS 获取色调
-// function coverColor() {
-//     var _document$getElementB,
-//         path = null === (_document$getElementB = document.getElementById("post-cover")) || void 0 === _document$getElementB ? void 0 : _document$getElementB.src,
-//         httpRequest;
-//     void 0 !== path ? (httpRequest = new XMLHttpRequest, httpRequest.open("GET", path + "?imageAve", !0), httpRequest.send(), httpRequest.onreadystatechange = function () {
-//         var json, obj, value, value;
-//         4 == httpRequest.readyState && 200 == httpRequest.status && (json = httpRequest.responseText, obj = eval("(" + json + ")"), value = obj.RGB, value = "#" + value.slice(2), "light" == getContrastYIQ(value) && (value = LightenDarkenColor(colorHex(value), -40)), document.styleSheets[0].addRule(":root", "--heo-main:" + value + "!important"), document.styleSheets[0].addRule(":root", "--heo-main-op:" + value + "23!important"), document.styleSheets[0].addRule(":root", "--heo-main-none:" + value + "00!important"), heo.initThemeColor(), document.getElementById("coverdiv").classList.add("loaded"))
-//     }) : (document.styleSheets[0].addRule(":root", "--heo-main: var(--heo-theme)!important"), document.styleSheets[0].addRule(":root", "--heo-main-op: var(--heo-theme-op)!important"), document.styleSheets[0].addRule(":root", "--heo-main-none: var(--heo-theme-none)!important"), heo.initThemeColor())
-// }
+// 效果比较低微，这块应该添加配置项
+// 用户选择是否开启主色调背景
+// 然后选择是使用图床的 API 获取主色还是选择使用 js 获取
+// https://lokeshdhakar.com/projects/color-thief/
+function coverColor() {
+
+    let img = document.getElementById("post-cover");
+    let path = img.src;
+    if (void 0 !== path) {
+
+        const colorThief = new ColorThief();
+
+        // Make sure image is finished loading
+        if (img.complete) {
+            loadColor(colorThief.getColor(img));
+        } else {
+            img.addEventListener('load', function () {
+                loadColor(colorThief.getColor(img));
+            });
+        }
+
+
+        function loadColor(rgbColor) {
+
+            let hexColor = rgbToHex(rgbColor[0], rgbColor[1], rgbColor[2]);
+
+            if ("light" === getContrastYIQ(hexColor)) {
+                hexColor = LightenDarkenColor(colorHex(hexColor), -40);
+                document.styleSheets[0].addRule(":root", "--heo-main:" + hexColor + "!important");
+                document.styleSheets[0].addRule(":root", "--heo-main-op:" + hexColor + "23!important");
+                document.styleSheets[0].addRule(":root", "--heo-main-none:" + hexColor + "00!important");
+                heo.initThemeColor();
+                document.getElementById("coverdiv").classList.add("loaded");
+            }
+
+        }
+
+
+    } else {
+        document.styleSheets[0].addRule(":root", "--heo-main: var(--heo-theme)!important");
+        document.styleSheets[0].addRule(":root", "--heo-main-op: var(--heo-theme-op)!important");
+        document.styleSheets[0].addRule(":root", "--heo-main-none: var(--heo-theme-none)!important");
+        heo.initThemeColor();
+    }
+}
+
+function rgbToHex(r, g, b) {
+    return '#' + [r, g, b].map(x => {
+        const hex = x.toString(16)
+        return hex.length === 1 ? '0' + hex : hex
+    }).join('');
+}
+
 
 function colorHex(e) {
     var t = e;
@@ -161,6 +204,7 @@ var navFn = {
 function RemoveRewardMask() {
     $(".reward-main").attr("style", "display: none"), $("#quit-box").attr("style", "display: none")
 }
+
 // 移除加载动画
 function removeLoading() {
     setTimeout(function () {
@@ -246,21 +290,7 @@ document.getElementById("post-comment") && owoBig(), document.addEventListener("
     var e, t = window.scrollY + document.documentElement.clientHeight,
         o = (window.scrollY, document.getElementById("pagination")), n = document.getElementById("post-tools");
     n && o && (e = n.offsetTop + n.offsetHeight / 2, 1300 < document.body.clientWidth && (e < t ? o.classList.add("show-window") : o.classList.remove("show-window")))
-}, 200)), "false" !== localStorage.getItem("keyboardToggle") ? document.querySelector("#consoleKeyboard").classList.add("on") : document.querySelector("#consoleKeyboard").classList.remove("on"), $(window).on("keydown", function (e) {
-    if (27 == e.keyCode && (heo.hideLoading(), heo.hideConsole(), rm.hideRightMenu()), heo_keyboard && e.shiftKey) {
-        if (16 == e.keyCode && document.querySelector("#keyboard-tips").classList.add("show"), 75 == e.keyCode) return heo.keyboardToggle(), !1;
-        if (65 == e.keyCode) return heo.showConsole(), !1;
-        if (77 == e.keyCode) return heo.musicToggle(), !1;
-        if (82 == e.keyCode) return toRandomPost(), !1;
-        if (66 == e.keyCode) return pjax.loadUrl("/"), !1;
-        if (68 == e.keyCode) return rm.switchDarkMode(), !1;
-        if (70 == e.keyCode) return pjax.loadUrl("/moments/"), !1
-    }
-});
-
-$(window).on("keyup", function (e) {
-    16 == e.keyCode && document.querySelector("#keyboard-tips").classList.remove("show")
-});
+}, 200));
 
 document.addEventListener("pjax:send", function () {
     heo.showLoading()
