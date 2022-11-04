@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'post')" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" th:replace="modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'post')"
+      xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
     <div class="post" id="body-wrap">
 
-        <header class="post-bg" id="page-header" th:style="'background-image:url(' + (${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}) + ')'">
+        <header class="post-bg" id="page-header"
+                th:style="'background-image:url(' + (${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}) + ')'">
             <nav th:replace="modules/nav :: nav"></nav>
             <div class="coverdiv" id="coverdiv">
-                <img id="post-cover" crossorigin="anonymous" th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
+                <img crossorigin="anonymous" id="post-cover"
+                     th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
             </div>
 
             <div id="post-info">
@@ -117,7 +120,8 @@
                         <!-- 分享 -->
                         <div class="share-link mobile">
                             <div class="share-qrcode">
-                                <div class="share-button" title="使用手机访问这篇文章"><i class="iconfont icon-qrcode"></i>
+                                <div class="share-button" title="使用手机访问这篇文章"><i
+                                        class="iconfont icon-qrcode"></i>
                                 </div>
                                 <div class="share-main">
                                     <div class="share-main-all">
@@ -155,51 +159,49 @@
                 </div>
 
                 <!-- 版权声明 -->
-                <div class="post-copyright">
+                <div class="post-copyright" th:if="${theme.config.post.copyright}">
                     <div class="post-copyright__author">
                         <!-- 版权页 以及版权描述文字 -->
-                        <a class="post-copyright__original" th:href="@{/cc}"
-                           title="该文章为原创文章，注意版权协议">原创</a>
+                        <a class="post-copyright__original" th:href="@{${theme.config.post.copyrightAgreement}}" title="该文章为原创文章，注意版权协议">原创</a>
                         <a class="post-copyright-title" href="#"><span th:text="${post.spec.title}"></span></a>
                     </div>
                     <div class="post-copyright__type">
-                    <span class="post-copyright-info" id="post-copyright-url">
-                    <a href="javascript:window.location.href;">
-                        [[${post.spec.title}]]
-                    </a>
-                </span>
+                        <span class="post-copyright-info" id="post-copyright-url">
+                            <a href="javascript:window.location.href;">[[${post.spec.title}]]</a>
+                        </span>
                         <button class="post-copyright-copybtn" onclick="rm.copyPageUrl()">
                             <i class="iconfont icon-paste"></i>
                         </button>
                     </div>
                     <div class="post-copyright__notice">
-                    <span class="post-copyright-info">
-                        本文是原创文章，采用 <a target="_blank" th:href="@{/cc}">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a
-                            href="/" target="_blank" th:text="${site.title}"></a>
-                    </span>
+                        <span class="post-copyright-info" th:utext="${theme.config.post.copyrightInfo}"></span>
                     </div>
                 </div>
-
-                <nav class="pagination-post" id="pagination">
-                    <div class="prev-post pull-left">
-                        <a href="#">
-                            <div class="pagination-info">
-                                <div class="label">上一篇</div>
-                                <div class="prev_info">上一篇文章的标题</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="next-post pull-right">
-                        <a href="#">
-                            <div class="pagination-info">
-                                <div class="label">下一篇</div>
-                                <div class="next_info">下一篇文章的标题</div>
-                            </div>
-                        </a>
-                    </div>
-                </nav>
+                <!-- todo 等 alpha.4 再打开 -->
+                <!--<nav class="pagination-post" id="pagination"-->
+                <!--     th:with="postCursor = ${postFinder.cursor(post.metadata.name)}">-->
+                <!--    <div class="prev-post pull-left" th:if="${postCursor.hasPrevious()}">-->
+                <!--        <a th:href="@{${postCursor.previous.status.permalink}}">-->
+                <!--            <div class="pagination-info">-->
+                <!--                <div class="label">上一篇</div>-->
+                <!--                <div class="prev_info" th:text="${postCursor.previous.spec.title}"></div>-->
+                <!--            </div>-->
+                <!--        </a>-->
+                <!--    </div>-->
+                <!--    <div class="next-post pull-right" th:if="${postCursor.hasNext()}">-->
+                <!--        <a th:href="@{${postCursor.next.status.permalink}}">-->
+                <!--            <div class="pagination-info">-->
+                <!--                <div class="label">下一篇</div>-->
+                <!--                <div class="next_info" th:text="${postCursor.next.spec.title}"></div>-->
+                <!--            </div>-->
+                <!--        </a>-->
+                <!--    </div>-->
+                <!--</nav>-->
                 <div class="relatedPosts">
-                    <div class="headline"><i class="iconfont icon-robot"></i> <span>阅读建议</span></div>
+                    <div class="headline">
+                        <i class="iconfont icon-robot"></i>
+                        <span>阅读建议</span>
+                    </div>
                     <div class="relatedPosts-list">
                         <!-- 建议阅读，这里可以自定义文章数量，然后遍历展示 -->
                         <div>

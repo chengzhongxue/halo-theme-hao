@@ -5,7 +5,7 @@ metadata:
 spec:
   forms:
     - group: nav
-      label: 导航栏
+      label: 导航
       formSchema:
         - $formkit: menuRadio
           name: left_menu
@@ -107,7 +107,7 @@ spec:
           value: "https://source.unsplash.com/random/600x400/?blog,scenery,night,desert,sea"
           help: 二次元随机图地址：https://www.dmoe.cc/random.php    默认随机封面图 url 不能保证一直可用
     - group: sidebar
-      label: 侧边栏
+      label: 侧栏
       formSchema:
         - $formkit: select
           name: location
@@ -181,6 +181,28 @@ spec:
           label: ICP 备案
           placeholder: 请输入 ICP 备案号
           help: "京ICP备xxxxxxxx号"
+    - group: post
+      label: 文章
+      formSchema:
+        - $formkit: radio
+          name: copyright
+          label: 版权声明
+          value: true
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
+          help: "文章底部显示版权声明模块"
+        - $formkit: url
+          name: copyrightAgreement
+          label: 版权协议
+          placeholder: "请输入版权协议地址"
+        - $formkit: textarea
+          name: copyrightInfo
+          label: 版权声明
+          placeholder: '本文是原创文章，采用 <a target="_blank" href="/cc">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a href="/" target="_blank" >程序员小航</a>'
+          help: "版权声明内容，支持填入 HTML 标签"
     - group: right_menu
       label: 右键菜单
       formSchema:
