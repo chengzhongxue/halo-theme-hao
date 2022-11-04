@@ -252,9 +252,9 @@ function addRightMenuClickEvent() {
         $("#menu-home").on("click", function () {
             window.location.href = window.location.origin;
         }),
-        $("#menu-randomPost").on("click", function () {
-            toRandomPost();
-        }),
+        // $("#menu-randomPost").on("click", function () {
+        //     toRandomPost();
+        // }),
         $("#menu-commentBarrage").on("click", heo.switchCommentBarrage),
         $("#rightmenu-mask").on("click", rm.hideRightMenu),
         $("#rightmenu-mask").contextmenu(function () {

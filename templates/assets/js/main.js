@@ -78,11 +78,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // 滚动处理
     const scrollFnToDo = function () {
 
-        const isToc = GLOBAL_CONFIG.htmlType === 'post';
-        const isAnchor = true;
+        const isToc = GLOBAL_CONFIG.htmlType === 'post' && document.getElementById("card-toc");
         const $article = document.getElementById("article-container");
 
-        if (!($article && (isToc || isAnchor))) return
+        if (!($article && isToc)) return
 
         let $tocLink, $cardToc, scrollPercent, autoScrollToc, isExpand
 
@@ -168,8 +167,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (detectItem === currentIndex) {
                 return
             }
-
-            if (isAnchor) btf.updateAnchor(currentId);
 
             detectItem = currentIndex
 

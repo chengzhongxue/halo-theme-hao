@@ -66,6 +66,7 @@ function checkOpen() {
 // 效果比较低微，这块应该添加配置项
 // 用户选择是否开启主色调背景
 // 然后选择是使用图床的 API 获取主色还是选择使用 js 获取
+// https://lokeshdhakar.com/projects/color-thief/
 function coverColor() {
 
     let img = document.getElementById("post-cover");
@@ -74,26 +75,31 @@ function coverColor() {
 
         const colorThief = new ColorThief();
 
-        const img = new Image();
+        // Make sure image is finished loading
+        if (img.complete) {
+            loadColor(colorThief.getColor(img));
+        } else {
+            img.addEventListener('load', function () {
+                loadColor(colorThief.getColor(img));
+            });
+        }
 
-        img.addEventListener('load', function () {
-            let value = colorThief.getColor(img);
 
-            value = rgbToHex(value[0], value[1], value[1]);
+        function loadColor(rgbColor) {
 
-            if ("light" === getContrastYIQ(value)) {
-                value = LightenDarkenColor(colorHex(value), -40);
-                document.styleSheets[0].addRule(":root", "--heo-main:" + value + "!important");
-                document.styleSheets[0].addRule(":root", "--heo-main-op:" + value + "23!important");
-                document.styleSheets[0].addRule(":root", "--heo-main-none:" + value + "00!important");
+            let hexColor = rgbToHex(rgbColor[0], rgbColor[1], rgbColor[2]);
+
+            if ("light" === getContrastYIQ(hexColor)) {
+                hexColor = LightenDarkenColor(colorHex(hexColor), -40);
+                document.styleSheets[0].addRule(":root", "--heo-main:" + hexColor + "!important");
+                document.styleSheets[0].addRule(":root", "--heo-main-op:" + hexColor + "23!important");
+                document.styleSheets[0].addRule(":root", "--heo-main-none:" + hexColor + "00!important");
                 heo.initThemeColor();
                 document.getElementById("coverdiv").classList.add("loaded");
             }
 
-        });
+        }
 
-        img.crossOrigin = 'Anonymous';
-        img.src = path;
 
     } else {
         document.styleSheets[0].addRule(":root", "--heo-main: var(--heo-theme)!important");
@@ -284,16 +290,7 @@ document.getElementById("post-comment") && owoBig(), document.addEventListener("
     var e, t = window.scrollY + document.documentElement.clientHeight,
         o = (window.scrollY, document.getElementById("pagination")), n = document.getElementById("post-tools");
     n && o && (e = n.offsetTop + n.offsetHeight / 2, 1300 < document.body.clientWidth && (e < t ? o.classList.add("show-window") : o.classList.remove("show-window")))
-}, 200)), "false" !== localStorage.getItem("keyboardToggle") ? document.querySelector("#consoleKeyboard").classList.add("on") : document.querySelector("#consoleKeyboard").classList.remove("on"), $(window).on("keydown", function (e) {
-    if (27 == e.keyCode && (heo.hideLoading(), heo.hideConsole(), rm.hideRightMenu()), heo_keyboard && e.shiftKey) {
-        if (65 == e.keyCode) return heo.showConsole(), !1;
-        if (77 == e.keyCode) return heo.musicToggle(), !1;
-        if (82 == e.keyCode) return toRandomPost(), !1;
-        if (66 == e.keyCode) return pjax.loadUrl("/"), !1;
-        if (68 == e.keyCode) return rm.switchDarkMode(), !1;
-        if (70 == e.keyCode) return pjax.loadUrl("/moments/"), !1
-    }
-});
+}, 200));
 
 document.addEventListener("pjax:send", function () {
     heo.showLoading()

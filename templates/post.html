@@ -7,7 +7,7 @@
         <header class="post-bg" id="page-header" th:style="'background-image:url(' + (${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}) + ')'">
             <nav th:replace="modules/nav :: nav"></nav>
             <div class="coverdiv" id="coverdiv">
-                <img id="post-cover" th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
+                <img id="post-cover" crossorigin="anonymous" th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
             </div>
 
             <div id="post-info">
