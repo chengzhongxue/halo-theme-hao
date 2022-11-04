@@ -11,6 +11,12 @@
             // 页面类型 index,page,post,tag,category
             htmlType: [[${htmlType}]],
             postTitle: [[${htmlType == 'post' ? post.spec.title : ''}]],
+            isanchor: true,
+            isPost: [[${htmlType == 'post'}]],
+            isHome: [[${htmlType == 'index'}]],
+            isHighlightShrink: false,
+            isToc: [[${htmlType == 'post'}]] && document.getElementById("card-toc"),
+            postUpdate: '2022-11-04 20:08:15',
             Snackbar: {
                 chs_to_cht: "你已切换为繁体",
                 cht_to_chs: "你已切换为简体",
