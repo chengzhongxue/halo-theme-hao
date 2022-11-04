@@ -73,41 +73,57 @@ function coverColor() {
     let path = img.src;
     if (void 0 !== path) {
 
-        const colorThief = new ColorThief();
+        const fac = new FastAverageColor();
+
+        fac.getColorAsync(path)
+            .then(color => {
+                console.log('Average color', color);
+                loadColor(color);
+            })
+            .catch(e => {
+                console.log(e);
+                defaultColor();
+            });
+
+        // const colorThief = new ColorThief();
 
         // Make sure image is finished loading
-        if (img.complete) {
-            loadColor(colorThief.getColor(img));
-        } else {
-            img.addEventListener('load', function () {
-                loadColor(colorThief.getColor(img));
-            });
-        }
-
-
-        function loadColor(rgbColor) {
-
-            let hexColor = rgbToHex(rgbColor[0], rgbColor[1], rgbColor[2]);
-
-            if ("light" === getContrastYIQ(hexColor)) {
-                hexColor = LightenDarkenColor(colorHex(hexColor), -40);
-                document.styleSheets[0].addRule(":root", "--heo-main:" + hexColor + "!important");
-                document.styleSheets[0].addRule(":root", "--heo-main-op:" + hexColor + "23!important");
-                document.styleSheets[0].addRule(":root", "--heo-main-none:" + hexColor + "00!important");
-                heo.initThemeColor();
-                document.getElementById("coverdiv").classList.add("loaded");
-            }
-
-        }
+        // if (img.complete) {
+        //     loadColor(colorThief.getColor(img));
+        // } else {
+        //     img.addEventListener('load', function () {
+        //         loadColor(colorThief.getColor(img));
+        //     });
+        // }
 
 
     } else {
-        document.styleSheets[0].addRule(":root", "--heo-main: var(--heo-theme)!important");
-        document.styleSheets[0].addRule(":root", "--heo-main-op: var(--heo-theme-op)!important");
-        document.styleSheets[0].addRule(":root", "--heo-main-none: var(--heo-theme-none)!important");
-        heo.initThemeColor();
+        defaultColor();
     }
 }
+
+function defaultColor() {
+    document.styleSheets[0].addRule(":root", "--heo-main: var(--heo-theme)!important");
+    document.styleSheets[0].addRule(":root", "--heo-main-op: var(--heo-theme-op)!important");
+    document.styleSheets[0].addRule(":root", "--heo-main-none: var(--heo-theme-none)!important");
+    heo.initThemeColor();
+}
+
+function loadColor(color) {
+
+    let hexColor = color.hex;
+
+    if ("light" === getContrastYIQ(hexColor)) {
+        hexColor = LightenDarkenColor(colorHex(hexColor), -40);
+        document.styleSheets[0].addRule(":root", "--heo-main:" + hexColor + "!important");
+        document.styleSheets[0].addRule(":root", "--heo-main-op:" + hexColor + "23!important");
+        document.styleSheets[0].addRule(":root", "--heo-main-none:" + hexColor + "00!important");
+        heo.initThemeColor();
+        document.getElementById("coverdiv").classList.add("loaded");
+    }
+
+}
+
 
 function rgbToHex(r, g, b) {
     return '#' + [r, g, b].map(x => {
