@@ -593,9 +593,9 @@ $(window).on('keydown', function (ev) {
     if (heo_keyboard && ev.shiftKey && !heo_intype) {
 
         // 显示快捷键面板 shift键
-        if (ev.keyCode == 16) {
-            document.querySelector("#keyboard-tips").classList.add("show");
-        }
+        // if (ev.keyCode == 16) {
+        //     document.querySelector("#keyboard-tips").classList.add("show");
+        // }
 
         //关闭快捷键 shift+K
         if (ev.keyCode == 75) {
@@ -661,12 +661,12 @@ $(window).on('keydown', function (ev) {
 
 });
 
-$(window).on('keyup', function (ev) {
-    // 显示快捷键面板
-    if (ev.keyCode == 16) {
-        document.querySelector("#keyboard-tips").classList.remove("show");
-    }
-});
+// $(window).on('keyup', function (ev) {
+//     // 显示快捷键面板
+//     if (ev.keyCode == 16) {
+//         document.querySelector("#keyboard-tips").classList.remove("show");
+//     }
+// });
 
 //输入状态检测
 $("input").focus(function () {
@@ -746,9 +746,9 @@ if (getCookie('browsertc') != 1) {
 }
 
 //当前窗口得到焦点 
-window.onfocus = function () {
-    document.querySelector("#keyboard-tips").classList.remove("show");
-};
+// window.onfocus = function () {
+//     document.querySelector("#keyboard-tips").classList.remove("show");
+// };
 
 //注入函数
 document.addEventListener('pjax:send', function () {
@@ -757,7 +757,7 @@ document.addEventListener('pjax:send', function () {
     heo.showLoading();
 })
 
-document.addEventListener('pjax:complete', function () {
+document.addEventListener('load', function () {
     coverColor()
     addRightMenuClickEvent()
     navTitle()
@@ -782,3 +782,6 @@ document.addEventListener('pjax:complete', function () {
     heo.hideLoading()
     heo.tagPageActive()
 })
+window.onscroll = function () {
+    percent();
+};
