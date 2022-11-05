@@ -1,38 +1,46 @@
 # Halo Theme Ha
 
+![master version](https://img.shields.io/github/package-json/v/liuzhihang/halo-theme-hao/master?color=%231ab1ad&label=master)
+![master version](https://img.shields.io/github/package-json/v/liuzhihang/halo-theme-hao/dev?label=dev)
+![license](https://img.shields.io/github/license/liuzhihang/halo-theme-hao?color=FF5531)
+
 ---
 
-> Halo-Theme-Ha 移植于 Hexo 社区 [Hexo-Theme-Butterfly](https://github.com/jerryc127/hexo-theme-butterfly)
-> ，同时参考了 [Heo](https://blog.zhheo.com/) 的魔改
+预览：[程序员小航](https://liuzhihang.com)
+
+文档：[语雀](https://www.yuque.com/liuzhihangs/halo-theme-hao)
+
+> Halo-Theme-Ha 是一款 [Halo2.0](https://github.com/halo-dev/halo) 的博客主题
+> 
+> 移植于 Hexo 社区 [Hexo-Theme-Butterfly](https://github.com/liuzhihang/halo-theme-hao) 主题中 [Heo](https://blog.zhheo.com/) 的魔改
+
+## 安裝
+
+### 下载安装
+在 [Release](https://github.com/liuzhihang/halo-theme-hao/releases) 页面下载最新版本 zip 后，通过 Halo Console 后台主题安装处上传即可。
 
 ## 说明
+> 部分功能是使用插件进行支持
 
-本主题是根据 [Heo](https://blog.zhheo.com/) 的博客进行开发，其中部分功能暂未支持
-
-部分功能支持需要安装插件：
-- [留言](https://github.com/halo-sigs/plugin-comment-widget)
-- [代码高亮](https://github.com/liuzhihang/plugin-prismjs)
-- [懒加载](https://github.com/liuzhihang/plugin-lazyload)
-- [文章目录](https://github.com/liuzhihang/plugin-tocbot)
-
-图标 icon 来自于 [iconfont](https://www.iconfont.cn/)：
-- [Awesome常用免费开源图标](https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.dc64b3430&cid=11790)
-
+- [x] 卡片化设计
+- [x] 多栏设置，支持单栏/双栏/三栏/四栏
+- [x] 自定义封面图位置，上部/左侧/右侧
+- [x] 响应式主题
+- [x] 夜间模式
+- [x] 文章阅读模式
+- [X] [文章目录](https://github.com/liuzhihang/plugin-tocbot)（插件）
+- [X] [代码高亮/语言/复制](https://github.com/liuzhihang/plugin-prismjs)（插件）
+- [ ] 文章搜索
+- [x] 显示字数统计
+- [x] 显示相关文章
+- [x] 文章过期提醒
+- [X] [评论系统](https://github.com/halo-sigs/plugin-comment-widget)
+- [x] [懒加载](https://github.com/liuzhihang/plugin-lazyload)
+- [x] 其他功能
 
 
 ## 预览
 
-## 支持的功能
-
-- [x] 适配 Halo 最新 2.0 版本
-
-## 更新日志
-
-- 2022-10-20 发布
-
-## 安装
-
-从 tag 处直接下载 zip 包，在 Halo2.0 后台上传即可。
 
 ## 许可证
 
