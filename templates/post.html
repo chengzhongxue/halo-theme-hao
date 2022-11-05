@@ -66,14 +66,11 @@
                             <span class="post-meta-label">热度:</span>
                             <span id="visit" th:text="${post.stats.visit}"></span>
                         </span>
-                        <span class="post-meta-commentcount" title="评论数"><i class="fa-solid fa-message">
-
-                            </i>
+                        <span class="post-meta-commentcount" onclick="heo.scrollTo('#post-comment');" title="评论数">
+                            <i class="iconfont icon-comment-alt"></i>
                             <span class="post-meta-label">评论:</span>
-                            <a href="#post-comment">
-                                <span id="comment-count" th:text="${post.stats.comment}"></span>
-                            </a>
-                            </span>
+                            <a href="#post-comment"><span id="comment-count" th:text="${post.stats.comment}"></span></a>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -162,7 +159,8 @@
                 <div class="post-copyright" th:if="${theme.config.post.copyright}">
                     <div class="post-copyright__author">
                         <!-- 版权页 以及版权描述文字 -->
-                        <a class="post-copyright__original" th:href="@{${theme.config.post.copyrightAgreement}}" title="该文章为原创文章，注意版权协议">原创</a>
+                        <a class="post-copyright__original" th:href="@{${theme.config.post.copyrightAgreement}}"
+                           title="该文章为原创文章，注意版权协议">原创</a>
                         <a class="post-copyright-title" href="#"><span th:text="${post.spec.title}"></span></a>
                     </div>
                     <div class="post-copyright__type">
