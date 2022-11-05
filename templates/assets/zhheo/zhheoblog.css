@@ -2862,9 +2862,9 @@ blockquote footer cite::before {
 }
 
 @media screen and (min-width: 768px) {
-    #post-info #post-meta > .meta-secondline > span:first-child {
-        display: none;
-    }
+    /*#post-info #post-meta > .meta-secondline > span:first-child {*/
+    /*    display: none;*/
+    /*}*/
 }
 
 @media screen and (max-width: 768px) {
@@ -10558,9 +10558,9 @@ a.extend.prev {
     }
 }
 
-#post-info #post-meta > .meta-secondline > span:first-child {
-    margin-right: 0.8rem;
-}
+/*#post-info #post-meta > .meta-secondline > span:first-child {*/
+/*    margin-right: 0.8rem;*/
+/*}*/
 
 .meta-secondline span {
     display: flex;
@@ -10811,6 +10811,7 @@ span.post-meta-position {
 /* 文章信息透明度 */
 .post-meta-wordcount {
     opacity: 0.6;
+    margin-right: 0.8rem;
 }
 
 @media screen and (max-width: 768px) {

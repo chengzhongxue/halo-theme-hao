@@ -41,6 +41,13 @@
                 <h1 class="post-title" th:text="${post.spec.title}"></h1>
                 <div id="post-meta">
                     <div class="meta-secondline">
+                        <span class="post-meta-date">
+                            <i class="iconfont icon-calendar-alt post-meta-icon"></i>
+                            <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"
+                                  th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
+                                  th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
+                            </time>
+                        </span>
 
                         <span class="post-meta-wordcount"
                               th:with="wordCount = ${#strings.length(post.content.content)}">
@@ -49,18 +56,12 @@
                             <span class="word-count" th:text="${{wordCount}}"></span>
                             <span class="post-meta-separator"></span>
                             <i class="iconfont icon-clock post-meta-icon" title="阅读耗时"></i>
-                            <span class="post-meta-label">阅读耗时:</span><span>[[${wordCount / 400}]] 分钟</span>
+                            <span class="post-meta-label">阅读耗时:</span>
+                            <span>[[${wordCount / 400}]] 分钟</span>
                         </span>
-                        <span class="post-meta-date"><i class="iconfont icon-calendar-alt post-meta-icon"></i>
-                            <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"
-                                  th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
-                                  th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
-                            </time>
-                        </span>
+
                         <!--<span class="post-meta-wechat" title="该文章已在公众号中更新"><i-->
                         <!--        class="fab fa-weixin post-meta-icon"></i>公众号同步</span>-->
-                        <!--<span class="post-meta-position" title="作者IP属地为北京"><i-->
-                        <!--        class="fas fa-location-dot post-meta-icon"></i>北京</span>-->
                         <span class="post-meta-pv" data-flag-title="热度">
                             <i class="iconfont icon-hotjar post-meta-icon"></i>
                             <span class="post-meta-label">热度:</span>
@@ -72,6 +73,7 @@
                             <a href="#post-comment"><span id="comment-count" th:text="${post.stats.comment}"></span></a>
                         </span>
                     </div>
+
                 </div>
             </div>
         </header>
