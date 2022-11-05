@@ -16,23 +16,24 @@ function coverColor() {
     var path = document.getElementById("post-cover")?.src;
     // console.log(path);
     if (path !== undefined) {
-        var httpRequest = new XMLHttpRequest(); //第一步：建立所需的对象
-        httpRequest.open('GET', path + '?imageAve', true); //第二步：打开连接  将请求参数写在url中  ps:"./Ptest.php?name=test&nameone=testone"
-        httpRequest.send(); //第三步：发送请求  将请求参数写在URL中
-        /**
-         * 获取数据后的处理程序
-         */
-        httpRequest.onreadystatechange = function () {
-            if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-                var json = httpRequest.responseText; //获取到json字符串，还需解析
-                var obj = eval('(' + json + ')');
-                var value = obj.RGB;
-                value = "#" + value.slice(2)
+
+        // 获取颜色 https://github.com/fast-average-color/fast-average-color
+        const fac = new FastAverageColor();
+
+        fac.getColorAsync(path,{
+            // 忽略白色
+            ignoredColor: [255, 255, 255, 255]
+        })
+            .then(color => {
+                /**
+                 * 获取数据后的处理程序
+                 */
+                var value = color.hex;
                 // console.log(value);
-                //   document.getElementById('page-header').style.backgroundColor=value;
+                // document.getElementById('page-header').style.backgroundColor=value;
                 // document.styleSheets[0].addRule('#page-header:before','background: '+ value +'!important');
 
-                if (getContrastYIQ(value) == "light") {
+                if (getContrastYIQ(value) === "light") {
                     value = LightenDarkenColor(colorHex(value), -40)
                 }
 
@@ -42,8 +43,11 @@ function coverColor() {
                 document.styleSheets[0].addRule(':root', '--heo-main-none:' + value + '00!important');
                 heo.initThemeColor()
                 document.getElementById("coverdiv").classList.add("loaded");
-            }
-        };
+            })
+            .catch(e => {
+                console.log(e);
+            });
+
     } else {
         // document.styleSheets[0].addRule('#page-header:before','background: none!important');
         document.styleSheets[0].addRule(':root', '--heo-main: var(--heo-theme)!important');
@@ -161,7 +165,7 @@ function getContrastYIQ(hexcolor) {
 //导航栏文章
 function navTitle() {
     var titlevalue = document.title;
-    var simptitle = titlevalue.replace(' | 张洪Heo', '')
+    var simptitle = titlevalue.replace(' | XXXX', '')
     document.getElementById("page-name-text").innerHTML = simptitle;
 }
 

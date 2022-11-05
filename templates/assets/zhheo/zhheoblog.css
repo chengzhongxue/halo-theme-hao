@@ -323,12 +323,12 @@ template {
 .article-sort-item-title,
 .limit-more-line,
 .relatedPosts > .relatedPosts-list .content .title,
-figure.gallery-group .gallery-group-name,
-figure.gallery-group p {
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-}
+/*figure.gallery-group .gallery-group-name,*/
+/*figure.gallery-group p {*/
+/*    display: -webkit-box;*/
+/*    overflow: hidden;*/
+/*    -webkit-box-orient: vertical;*/
+/*}*/
 
 #article-container h1::before,
 #article-container h2::before,
@@ -11223,7 +11223,7 @@ strong {
 #article-container.post-content h2,
 #article-container.post-content h3,
 #article-container.post-content h4 {
-    display: flex;
+    /*display: flex;*/
     align-items: center;
     justify-content: space-between;
     flex-direction: row-reverse;
