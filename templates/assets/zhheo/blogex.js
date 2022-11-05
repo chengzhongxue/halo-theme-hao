@@ -757,7 +757,7 @@ document.addEventListener('pjax:send', function () {
     heo.showLoading();
 })
 
-document.addEventListener('pjax:complete', function () {
+document.addEventListener('load', function () {
     coverColor()
     addRightMenuClickEvent()
     navTitle()
@@ -782,3 +782,6 @@ document.addEventListener('pjax:complete', function () {
     heo.hideLoading()
     heo.tagPageActive()
 })
+window.onscroll = function () {
+    percent();
+};
