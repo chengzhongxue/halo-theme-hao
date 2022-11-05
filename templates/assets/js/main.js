@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const sidebarFn = () => {
         const $toggleMenu = document.getElementById('toggle-menu')
         const $mobileSidebarMenus = document.getElementById('sidebar-menus')
-        // const $menuMask = document.getElementById('menu-mask')
+        const $menuMask = document.getElementById('menu-mask')
         const $body = document.body
 
         function openMobileSidebar() {
@@ -53,11 +53,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         $toggleMenu.addEventListener('click', openMobileSidebar)
 
-        // $menuMask.addEventListener('click', e => {
-        //     if ($mobileSidebarMenus.classList.contains('open')) {
-        //         closeMobileSidebar()
-        //     }
-        // })
+        $menuMask.addEventListener('click', e => {
+            if ($mobileSidebarMenus.classList.contains('open')) {
+                closeMobileSidebar()
+            }
+        })
 
         window.addEventListener('resize', e => {
             if (btf.isHidden($toggleMenu)) {
