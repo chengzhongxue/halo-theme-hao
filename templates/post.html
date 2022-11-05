@@ -52,9 +52,9 @@
                             <span class="post-meta-label">阅读耗时:</span><span>[[${wordCount / 400}]] 分钟</span>
                         </span>
                         <span class="post-meta-date"><i class="iconfont icon-calendar-alt post-meta-icon"></i>
-                            <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm:ss')}"
-                                  th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}"
-                                  th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">
+                            <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"
+                                  th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
+                                  th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
                             </time>
                         </span>
                         <!--<span class="post-meta-wechat" title="该文章已在公众号中更新"><i-->
