@@ -9548,23 +9548,27 @@ span.recent-post-top-text {
   margin-top: 20px!important;
 } */
 
-/* 自定义的文章分类 */
-a.article-meta__categories {
+.article-meta__categories {
     position: absolute;
-    padding: 1px 6px;
-    background: var(--heo-black-op);
-    border-radius: 8px;
-    margin-left: 0px;
-    font-size: 12px;
-    font-weight: bold;
-    color: var(--heo-white);
     top: 8px;
     left: 8px;
+}
+
+
+/* 自定义的文章分类 */
+a.article-meta__category {
+    padding: 2px 6px;
+    background: var(--heo-black-op);
+    border-radius: 6px;
+    margin: 0 5px 0 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--heo-white);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: blur(20px);
 }
 
-a.article-meta__categories:hover {
+a.article-meta__category:hover {
     background: var(--heo-theme) !important;
     color: var(--heo-white) !important;
     box-shadow: var(--heo-shadow-theme);
@@ -9705,8 +9709,7 @@ a.article-meta__categories:hover {
 
 .article-meta__tags {
     margin-right: 4px;
-    padding: 0 .2rem;
-    padding-left: 0;
+    padding: 0 0.2rem 0 0;
 }
 
 /* 多分类兼容性调整 */
@@ -10811,7 +10814,7 @@ span.post-meta-position {
 /* 文章信息透明度 */
 .post-meta-wordcount {
     opacity: 0.6;
-    margin-right: 0.8rem;
+
 }
 
 @media screen and (max-width: 768px) {

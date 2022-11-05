@@ -19,12 +19,14 @@
         </div>
         <!-- 类别非空时 -->
         <th:block th:if="${not #lists.isEmpty(post.categories)}">
-            <a class="article-meta__categories"
-               th:each="category : ${post.categories}"
-               th:href="@{${category.status.permalink}}"
-               th:text="${category.spec.displayName}"
-               th:title="${category.spec.displayName}">
-            </a>
+            <span class="article-meta__categories">
+                <a class="article-meta__category"
+                   th:each="category : ${post.categories}"
+                   th:href="@{${category.status.permalink}}"
+                   th:text="${category.spec.displayName}"
+                   th:title="${category.spec.displayName}">
+                </a>
+            </span>
         </th:block>
         <div class="recent-post-info">
             <div class="recent-post-info-top">
