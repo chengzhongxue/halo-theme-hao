@@ -323,12 +323,12 @@ template {
 .article-sort-item-title,
 .limit-more-line,
 .relatedPosts > .relatedPosts-list .content .title,
-/*figure.gallery-group .gallery-group-name,*/
-/*figure.gallery-group p {*/
-/*    display: -webkit-box;*/
-/*    overflow: hidden;*/
-/*    -webkit-box-orient: vertical;*/
-/*}*/
+    /*figure.gallery-group .gallery-group-name,*/
+    /*figure.gallery-group p {*/
+    /*    display: -webkit-box;*/
+    /*    overflow: hidden;*/
+    /*    -webkit-box-orient: vertical;*/
+    /*}*/
 
 #article-container h1::before,
 #article-container h2::before,
@@ -10814,7 +10814,7 @@ span.post-meta-position {
 /* 文章信息透明度 */
 .post-meta-wordcount {
     opacity: 0.6;
-
+    margin-right: 0.8rem
 }
 
 @media screen and (max-width: 768px) {
