@@ -209,7 +209,7 @@ spec:
         - $formkit: radio
           name: switch
           label: 开关
-          value: true
+          value: false
           options:
             - label: 打开
               value: true
