@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- 控制台，右上角点击的时候会显示 -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- TODO 控制台功能 -->
 <div id="console" th:fragment="console">
     <div class="close-btn" href="javascript:void(0);" onclick="heo.hideConsole()">
         <i class="iconfont icon-times-circle"></i>
@@ -50,19 +51,21 @@
         </div>
     </div>
     <div class="button-group">
-        <div class="console-btn-item"><a class="darkmode_switchbutton" href="javascript:void(0);"
-                                         onclick="rm.switchDarkMode()" rel="external nofollow" title="显示模式切换"><i
-                class="fa-duotone fa-moon" style="font-size:1rem"></i></a>
+        <div class="console-btn-item">
+            <!-- 用到了 rightmenu.js 的功能，还需要调整 -->
+            <a class="darkmode_switchbutton" href="javascript:void(0);" onclick="rm.switchDarkMode()" rel="external nofollow" title="显示模式切换"><i
+                class="iconfont icon-moon" style="font-size:1rem"></i>
+            </a>
         </div>
-        <div class="console-btn-item" id="consoleKeyboard" onclick="heo.keyboardToggle()" title="快捷键开关"><a
-                class="keyboard-switch"><i class="fa-duotone fa-keyboard"></i></a>
-        </div>
-        <div class="console-btn-item" id="assist-open" onclick="heo.hideConsole()" title="无障碍工具栏"><a
-                class="assist-btn"><i class="fa-duotone fa-wheelchair"></i></a>
-        </div>
-        <div class="console-btn-item" id="consoleMusic" onclick="heo.musicToggle()" title="音乐开关"><a
-                class="music-switch"><i class="fa-duotone fa-music"></i></a>
-        </div>
+        <!--<div class="console-btn-item" id="consoleKeyboard" onclick="heo.keyboardToggle()" title="快捷键开关"><a-->
+        <!--        class="keyboard-switch"><i class="fa-duotone fa-keyboard"></i></a>-->
+        <!--</div>-->
+        <!--<div class="console-btn-item" id="assist-open" onclick="heo.hideConsole()" title="无障碍工具栏"><a-->
+        <!--        class="assist-btn"><i class="fa-duotone fa-wheelchair"></i></a>-->
+        <!--</div>-->
+        <!--<div class="console-btn-item" id="consoleMusic" onclick="heo.musicToggle()" title="音乐开关"><a-->
+        <!--        class="music-switch"><i class="fa-duotone fa-music"></i></a>-->
+        <!--</div>-->
     </div>
     <div class="console-mask" href="javascript:void(0);" onclick="heo.hideConsole()" rel="external nofollow">
     </div>
