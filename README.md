@@ -1,6 +1,6 @@
 # Halo Theme Ha
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ---
@@ -52,6 +52,7 @@ Halo-Theme-Hao 使用 GPL-v3.0 协议开源，请遵守开源协议。
   <tbody>
     <tr>
       <td align="center"><a href="https://shyblog.world/"><img src="https://avatars.githubusercontent.com/u/50973219?v=4?s=100" width="100px;" alt="sunheyi"/><br /><sub><b>sunheyi</b></sub></a><br /><a href="https://github.com/liuzhihang/halo-theme-hao/commits?author=shy-share" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/Joydevelop"><img src="https://avatars.githubusercontent.com/u/79132319?v=4?s=100" width="100px;" alt="Joy"/><br /><sub><b>Joy</b></sub></a><br /><a href="https://github.com/liuzhihang/halo-theme-hao/commits?author=Joydevelop" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
