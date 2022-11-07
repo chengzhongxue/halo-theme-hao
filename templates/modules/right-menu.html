@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 右键菜单 -->
-<div th:fragment="right-menu">
-    <div id="rightMenu">
+<div th:fragment="right-menu" th:if="${theme.config.rightMenu.switch}">
+    <div id="rightMenu" >
         <div class="rightMenu-group rightMenu-small">
             <div class="rightMenu-item" id="menu-backward"><i class="iconfont icon-arrow-left"></i></div>
             <div class="rightMenu-item" id="menu-forward"><i class="iconfont icon-arrow-right"></i></div>

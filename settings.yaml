@@ -12,7 +12,7 @@ spec:
           label: 导航栏左侧相关链接
         - $formkit: radio
           name: right_menu
-          label: 右侧四个按钮
+          label: 右上角四个按钮
           value: true
           options:
             - label: 显示
@@ -203,13 +203,13 @@ spec:
           label: 版权声明
           placeholder: '本文是原创文章，采用 <a target="_blank" href="/cc">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a href="/" target="_blank" >程序员小航</a>'
           help: "版权声明内容，支持填入 HTML 标签"
-    - group: right_menu
+    - group: rightMenu
       label: 右键菜单
       formSchema:
         - $formkit: radio
           name: switch
           label: 开关
-          value: true
+          value: false
           options:
             - label: 打开
               value: true
