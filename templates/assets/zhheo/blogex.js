@@ -470,9 +470,12 @@ $(".topGroup").hover(function () {
     // console.log("卡片悬浮");
 }, function () {
     hoverOnCommentBarrage = false;
-    document.getElementById("todayCard").classList.remove('hide');
-    document.getElementById('todayCard').style.zIndex = 1;
-    // console.log("卡片停止悬浮");
+
+    if (document.getElementById("todayCard")) {
+        document.getElementById("todayCard").classList.remove('hide');
+        document.getElementById('todayCard').style.zIndex = 1;
+        // console.log("卡片停止悬浮");
+    }
 });
 
 //评论增加放大功能
