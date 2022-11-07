@@ -70,6 +70,30 @@ spec:
           label: 必看精选
           placeholder: 请输入地址
           validation: "url"
+        - $formkit: radio
+          name: todayRecommend
+          label: 今日推荐
+          value: false
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
+        - $formkit: url
+          name: todayRecommendUrl
+          label: 今日推荐跳转地址
+          placeholder: 请输入地址
+          validation: "url"
+        - $formkit: text
+          name: todayRecommendTitle
+          label: 今日推荐标题
+          placeholder: 请输入标题
+          value: "今日推荐"
+        - $formkit: url
+          name: todayRecommendCover
+          label: 今日推荐背景图
+          placeholder: 请输入地址
+          validation: "url"
     - group: layout
       label: 布局
       formSchema:
