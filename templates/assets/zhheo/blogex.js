@@ -759,7 +759,6 @@ document.addEventListener('pjax:send', function () {
 
 document.addEventListener('load', function () {
     coverColor()
-    addRightMenuClickEvent()
     navTitle()
     percent()
     heo.topPostScroll()
