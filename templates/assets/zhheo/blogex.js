@@ -577,11 +577,11 @@ function percent() {
 }
 
 //检查是否开启快捷键
-if (localStorage.getItem('keyboardToggle') !== 'false') {
-    document.querySelector("#consoleKeyboard").classList.add("on");
-} else {
-    document.querySelector("#consoleKeyboard").classList.remove("on");
-}
+// if (localStorage.getItem('keyboardToggle') !== 'false') {
+//     document.querySelector("#consoleKeyboard").classList.add("on");
+// } else {
+//     document.querySelector("#consoleKeyboard").classList.remove("on");
+// }
 
 //响应esc键
 $(window).on('keydown', function (ev) {

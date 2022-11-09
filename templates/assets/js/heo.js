@@ -25,14 +25,14 @@ var heo = {
             })
         }
 
-        if (document.querySelector('#bber')) {
-            relativeDate(document.querySelectorAll('#bber time'))
+        if (document.querySelector('#comment')) {
+            relativeDate(document.querySelectorAll('#comment time'))
         }
     },
 
     // 首页bb
     initIndexEssay: function () {
-        if (document.querySelector('#bber-talk')) {
+        if (document.querySelector('#comment-list')) {
             var swiper = new Swiper('.swiper-container', {
                 direction: 'vertical', // 垂直切换选项
                 loop: true,

@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "16440935",
+      "name": "logo-moment",
+      "font_class": "logo-moment",
+      "unicode": "e6af",
+      "unicode_decimal": 59055
+    },
+    {
+      "icon_id": "5634161",
+      "name": "indent",
+      "font_class": "indent",
+      "unicode": "f027",
+      "unicode_decimal": 61479
+    },
+    {
+      "icon_id": "5633834",
+      "name": "bars",
+      "font_class": "bars",
+      "unicode": "ef34",
+      "unicode_decimal": 61236
+    },
+    {
       "icon_id": "20817029",
       "name": "mail-line",
       "font_class": "mail-line",
@@ -326,13 +347,6 @@
       "font_class": "listol",
       "unicode": "e767",
       "unicode_decimal": 59239
-    },
-    {
-      "icon_id": "348268",
-      "name": "bars",
-      "font_class": "bars",
-      "unicode": "e9ee",
-      "unicode_decimal": 59886
     },
     {
       "icon_id": "433860",

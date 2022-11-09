@@ -8769,8 +8769,8 @@ a.categoryButton:hover {
     font-weight: bold;
 }
 
-/* 主页哔哔bb */
-#bber-talk {
+/* 主页瞬间 */
+#comment-list {
     width: 100%;
     height: 25px;
     line-height: 25px;
@@ -8778,7 +8778,7 @@ a.categoryButton:hover {
     flex-direction: column;
 }
 
-#bbtalk {
+#moment {
     overflow: hidden;
     width: 100%;
     overflow: hidden;
@@ -8786,7 +8786,7 @@ a.categoryButton:hover {
     white-space: nowrap;
 }
 
-#bber-talk .li-style {
+#comment-list .li-style {
     width: auto;
     max-width: 100%;
     height: 25px;
@@ -8800,7 +8800,7 @@ a.categoryButton:hover {
     white-space: nowrap;
 }
 
-#bbTimeList .li-style:hover {
+#commentList .li-style:hover {
     color: var(--heo-theme);
     transition: 0.3s;
 }
@@ -8813,7 +8813,7 @@ li {
     padding: 0;
 }
 
-#bbTimeList {
+#commentList {
     background: var(--heo-none);
     color: var(--heo-fontcolor);
     padding: 0.5rem 1rem;
@@ -8827,32 +8827,32 @@ li {
     height: 50px;
 }
 
-#bbTimeList:hover {
+#commentList:hover {
     border: var(--style-border-hover);
     box-shadow: var(--heo-shadow-main);
 }
 
 @media screen and (min-width: 1300px) {
-    #bbTimeList {
+    #commentList {
         margin-bottom: 1rem;
     }
 }
 
 /* 哔哔前往 */
-.bber-gotobb {
+.comment-goto {
     line-height: 25px;
     margin-left: 1rem;
     transition: 0.3s;
     cursor: pointer;
 }
 
-.bber-gotobb:hover {
+.comment-goto:hover {
     opacity: 0.8;
     color: var(--heo-theme);
 }
 
 /* 哔哔标志 */
-.icon-bblogo {
+.icon-logo-moment {
     font-size: 2rem;
     font-size: 2rem;
     line-height: 22px;
@@ -8861,7 +8861,7 @@ li {
     cursor: pointer;
 }
 
-.icon-bblogo:hover {
+.icon-logo-moment:hover {
     opacity: 0.8;
     color: var(--heo-theme);
 }
@@ -9439,7 +9439,7 @@ span.recent-post-top-text {
         width: 100%;
     }
 
-    #bbTimeList {
+    #commentList {
         margin-top: 0;
         border-radius: 0;
         background: var(--heo-background);
@@ -9454,7 +9454,7 @@ span.recent-post-top-text {
         font-size: 12px;
     }
 
-    #bbTimeList {
+    #commentList {
         margin-bottom: 0rem;
     }
 }
@@ -14274,19 +14274,17 @@ figure.gallery-group:hover .gallery-group-name::after {
     display: none;
 }
 
-/* bb哔哔 */
-/* bb样式 */
-
-#bber .timeline #waterfall {
+/* 瞬间 */
+#comment .timeline #waterfall {
     opacity: 0;
     transition: 0.3s;
 }
 
-#bber .timeline #waterfall.show {
+#comment .timeline #waterfall.show {
     opacity: 1;
 }
 
-#bber .timeline ul li.item {
+#comment .timeline ul li.item {
     position: relative;
     width: 32%;
     border: var(--style-border-always);
@@ -14304,7 +14302,7 @@ figure.gallery-group:hover .gallery-group-name::after {
     margin-right: 2%;
 }
 
-#bber .timeline ul li.item hr {
+#comment .timeline ul li.item hr {
     display: flex;
     position: relative;
     margin: 8px 0;
@@ -14313,23 +14311,23 @@ figure.gallery-group:hover .gallery-group-name::after {
 }
 
 @media screen and (max-width: 768px) {
-    #bber .timeline ul li.item {
+    #comment .timeline ul li.item {
         padding: 0;
     }
 }
 
-#bber .timeline ul li.item:hover {
+#comment .timeline ul li.item:hover {
     border: var(--style-border-hover);
 }
 
-#bber ul.list {
+#comment ul.list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-#bber li.item {
+#comment li.item {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -14338,7 +14336,7 @@ figure.gallery-group:hover .gallery-group-name::after {
 
 
 @media screen and (max-width: 1300px) {
-    #bber .timeline ul li.item {
+    #comment .timeline ul li.item {
         width: 49%;
         margin-right: 1%;
     }
@@ -14346,12 +14344,12 @@ figure.gallery-group:hover .gallery-group-name::after {
 
 
 @media screen and (max-width: 768px) {
-    #bber .timeline ul li.item {
+    #comment .timeline ul li.item {
         width: 100%;
         margin-right: 0;
     }
 
-    #bber .timeline ul li.item {
+    #comment .timeline ul li.item {
         padding: 16px 20px;
     }
 }
@@ -14378,13 +14376,13 @@ figure.gallery-group:hover .gallery-group-name::after {
     color: var(--heo-hovertext);
 }
 
-#bber {
+#comment {
     margin-top: 1rem;
     width: 100%;
 }
 
 /* 每条动态 */
-#bber div.bber-content {
+#comment div.bber-content {
     display: flex;
     flex-direction: initial;
     flex-wrap: wrap;
@@ -14393,20 +14391,20 @@ figure.gallery-group:hover .gallery-group-name::after {
     height: 100%;
 }
 
-#bber > section > ul > li.item {
+#comment > section > ul > li.item {
     margin-bottom: 1rem;
 }
 
-#bber .bber-info {
+#comment .bber-info {
     display: flex;
     align-items: center;
 }
 
-#bber .bber-info .fa-rectangles-mixed {
+#comment .bber-info .fa-rectangles-mixed {
     margin-right: 8px;
 }
 
-#bber .bber-content-link {
+#comment .bber-content-link {
     display: flex;
     margin-left: 0.5rem;
     color: var(--heo-secondtext);
@@ -14418,41 +14416,41 @@ figure.gallery-group:hover .gallery-group-name::after {
     border-radius: 20px;
 }
 
-#bber .bber-content-link:hover {
+#comment .bber-content-link:hover {
     background-color: var(--heo-main);
     color: var(--heo-white);
 }
 
-#bber .bber-content-link i {
+#comment .bber-content-link i {
     margin-right: 3px;
 }
 
-#bber .bber-reply {
+#comment .bber-reply {
     cursor: pointer;
     padding: 0 4px;
 }
 
-#bber .bber-bottom {
+#comment .bber-bottom {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-#bber .count {
+#comment .count {
     color: var(--heo-secondtext);
     font-size: 0.8rem;
 }
 
-#bber p {
+#comment p {
     margin: 0;
 }
 
-#bber .datafrom i {
+#comment .datafrom i {
     margin-right: 4px;
 }
 
 /* 音乐 */
-#bber .bber-music {
+#comment .bber-music {
     width: 100%;
     height: 90px;
     margin: 0.5rem 0;
@@ -14462,33 +14460,33 @@ figure.gallery-group:hover .gallery-group-name::after {
     background: var(--heo-secondbg);
 }
 
-#bber .aplayer {
+#comment .aplayer {
     margin: 0;
 }
 
-#bber .aplayer .aplayer-info .aplayer-music .aplayer-title {
+#comment .aplayer .aplayer-info .aplayer-music .aplayer-title {
     font-size: 0.8rem;
     font-weight: bold;
     margin: 0;
     color: var(--heo-black);
 }
 
-#bber .aplayer.aplayer-withlrc .aplayer-pic {
+#comment .aplayer.aplayer-withlrc .aplayer-pic {
     height: 82px;
     width: 82px;
     margin: 4px;
     border-radius: 4px;
 }
 
-#bber .aplayer .aplayer-info .aplayer-music {
+#comment .aplayer .aplayer-info .aplayer-music {
     height: 23px;
 }
 
-#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap {
+#comment .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap {
     padding: 0;
 }
 
-#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar {
+#comment .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar {
     background: var(--heo-gray);
     height: 8px;
     border-radius: 12px;
@@ -14496,38 +14494,38 @@ figure.gallery-group:hover .gallery-group-name::after {
     overflow: hidden;
 }
 
-#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap:hover .aplayer-bar {
+#comment .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap:hover .aplayer-bar {
     height: 12px;
 }
 
-#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played {
+#comment .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played {
     height: 100%;
     border-radius: 12px;
 }
 
-#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded {
+#comment .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded {
     height: 100%;
     border-radius: 12px;
 }
 
-#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb {
+#comment .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb {
     display: none;
 }
 
-#bber .aplayer .aplayer-info .aplayer-controller {
+#comment .aplayer .aplayer-info .aplayer-controller {
     align-items: center;
 }
 
-#bber .aplayer .aplayer-info .aplayer-controller .aplayer-time {
+#comment .aplayer .aplayer-info .aplayer-controller .aplayer-time {
     position: initial;
 }
 
-#bber .bber-music .aplayer-lrc {
+#comment .bber-music .aplayer-lrc {
     display: none;
 }
 
 /* 只能展示30条的提示 */
-#bber-tips {
+#comment-tips {
     font-size: 14px;
     display: flex;
     justify-content: center;
@@ -14536,13 +14534,13 @@ figure.gallery-group:hover .gallery-group-name::after {
 
 /* 图片 */
 
-#bber .bber-content-img img {
+#comment .bber-content-img img {
     object-fit: cover;
     max-height: 100%;
     border-radius: 12px;
 }
 
-#bber .bber-content-img {
+#comment .bber-content-img {
     height: 100px;
     margin: auto;
     margin-top: 0.2rem;
@@ -14556,7 +14554,7 @@ figure.gallery-group:hover .gallery-group-name::after {
 
 /* 时间 */
 
-#bber > section > ul > li > div .bber-info-time {
+#comment > section > ul > li > div .bber-info-time {
     color: var(--heo-fontcolor);
     font-size: 0.7rem;
     background-color: var(--heo-gray-op);
@@ -14567,12 +14565,12 @@ figure.gallery-group:hover .gallery-group-name::after {
     align-items: center;
 }
 
-#bber > section > ul > li > div .bber-info-time i {
+#comment > section > ul > li > div .bber-info-time i {
     margin-right: 8px;
 }
 
 /* 内容 */
-#bber .bber-content .datacont {
+#comment .bber-content .datacont {
     order: 0;
     font-size: 0.8rem;
     font-weight: bold;
@@ -14587,14 +14585,14 @@ figure.gallery-group:hover .gallery-group-name::after {
 }
 
 /* 设备 */
-#bber > section > ul > li > div .datafrom {
+#comment > section > ul > li > div .datafrom {
     order: 2;
     color: var(--heo-secondtext);
     font-size: 0.7rem;
     margin-left: 8px;
 }
 
-#bber > section > ul > li > div .datafrom small {
+#comment > section > ul > li > div .datafrom small {
     font-size: 0.7rem;
 }
 

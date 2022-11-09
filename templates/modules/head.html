@@ -19,7 +19,9 @@
     <link media="print"
           onload='this.media="all"'
           rel="stylesheet"
-          th:href="@{/assets/libs/iconfont/iconfont.css}">
+          href="//at.alicdn.com/t/c/font_3736806_e1bx9q0uqc6.css"
+
+    >
 
     <!-- 右下角通知 -->
     <link href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css"
@@ -125,6 +127,10 @@
 
     <!-- 复制 https://github.com/zenorocha/clipboard.js -->
     <script th:src="@{/assets/libs/clipboard/clipboard.min.js}"></script>
+
+    <!-- swiper 在瞬间滚动时会使用 -->
+    <link rel="stylesheet" th:href="@{/assets/libs/swiper/swiper-bundle.min.css}"/>
+    <script th:src="@{/assets/libs/swiper/swiper-bundle.min.js}"></script>
 
     <!-- 补充部分 -->
     <th:block th:if="${metas != null}">
