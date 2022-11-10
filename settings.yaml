@@ -22,8 +22,9 @@ spec:
         - $formkit: text
           name: site_title
           label: 标题
+          value: '<i class="iconfont icon-logo-hao-pro" style="font-size: 1rem"></i>'
           placeholder: 请输入标题
-          help: 支持 HTML 语法，比如 <span id="site-name-icon">Hao</span>，默认为站点名称
+          help: '支持 HTML 语法，比如 <i class="iconfont icon-logo-hao-pro" style="font-size: 1rem"></i>，留空为站点名称'
     - group: top
       label: 顶部
       formSchema:

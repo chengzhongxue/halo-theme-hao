@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3736806 */
-  src: url('iconfont.woff2?t=1668000992806') format('woff2'),
-       url('iconfont.woff?t=1668000992806') format('woff'),
-       url('iconfont.ttf?t=1668000992806') format('truetype');
+  src: url('iconfont.woff2?t=1668096101462') format('woff2'),
+       url('iconfont.woff?t=1668096101462') format('woff'),
+       url('iconfont.ttf?t=1668096101462') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,14 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-logo-hao-pro:before {
+  content: "\f290";
+}
+
+.icon-logo-hao:before {
+  content: "\e609";
 }
 
 .icon-logo-moment:before {

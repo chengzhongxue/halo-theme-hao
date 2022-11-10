@@ -6013,6 +6013,15 @@ html {
         transition: 0.3s;
     }
 
+    #nav #site-name span {
+        transition: 0.3s;
+    }
+
+    #nav #site-name:hover span {
+        opacity: 0;
+        transition: 0.3s;
+    }
+
     #page-header.nav-fixed #nav #site-name {
         opacity: 1;
         transition: 0.1s;
