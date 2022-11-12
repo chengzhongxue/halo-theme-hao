@@ -216,8 +216,8 @@
                     </div>
                 </div>
                 <hr>
-                <!-- 评论模块，使用评论插件 -->
-                <div id="post-comment">
+                <!-- 评论模块 -->
+                <div id="post-comment" th:if="${pluginFinder.available('PluginCommentWidget')}">
                     <div class="comment-head">
                         <div class="comment-headline"><i class="iconfont icon-comment-alt"></i> <span>评论</span></div>
                         <div class="comment-privacy"><a href="#">隐私政策</a></div>

@@ -10,15 +10,6 @@ spec:
         - $formkit: menuRadio
           name: left_menu
           label: 导航栏左侧相关链接
-        - $formkit: radio
-          name: right_menu
-          label: 右上角四个按钮
-          value: true
-          options:
-            - label: 显示
-              value: true
-            - label: 隐藏
-              value: false
         - $formkit: text
           name: site_title
           label: 标题
