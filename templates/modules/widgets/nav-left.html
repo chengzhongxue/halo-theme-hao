@@ -10,7 +10,7 @@
         <div class="back-home-button" tabindex="-1"
              th:if="${not #lists.isEmpty(leftMenu)}">
 
-            <i class="back-home-button-icon iconfont icon-grip-vertical"></i>
+            <i class="back-home-button-icon iconfont icon-grip-vertical" style="font-size: 1rem"></i>
             <div class="back-menu-list-groups">
                 <div class="back-menu-list-group" th:each="menuItem : ${leftMenu.menuItems}">
                     <!-- 菜单必须有子项才会展示 -->
@@ -34,9 +34,8 @@
     </th:block>
     <!-- 返回主页 -->
     <!-- 这里可以指定使用什么作为图标，默认使用站点名称 -->
-    <a href="/" id="site-name"
-       th:utext="${#strings.isEmpty(theme.config.nav.site_title)} ? ${site.title} : ${theme.config.nav.site_title}"
-       title="返回博客主页">
+    <a href="/" id="site-name" title="返回博客主页">
+        <span th:utext="${#strings.isEmpty(theme.config.nav.site_title)} ? ${site.title} : ${theme.config.nav.site_title}"></span>
     </a>
 </div>
 

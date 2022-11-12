@@ -41,6 +41,13 @@
                 <h1 class="post-title" th:text="${post.spec.title}"></h1>
                 <div id="post-meta">
                     <div class="meta-secondline">
+                        <span class="post-meta-date">
+                            <i class="iconfont icon-calendar-alt post-meta-icon"></i>
+                            <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"
+                                  th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
+                                  th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
+                            </time>
+                        </span>
 
                         <span class="post-meta-wordcount"
                               th:with="wordCount = ${#strings.length(post.content.content)}">
@@ -49,32 +56,24 @@
                             <span class="word-count" th:text="${{wordCount}}"></span>
                             <span class="post-meta-separator"></span>
                             <i class="iconfont icon-clock post-meta-icon" title="阅读耗时"></i>
-                            <span class="post-meta-label">阅读耗时:</span><span>[[${wordCount / 400}]] 分钟</span>
+                            <span class="post-meta-label">阅读耗时:</span>
+                            <span>[[${wordCount / 400}]] 分钟</span>
                         </span>
-                        <span class="post-meta-date"><i class="iconfont icon-calendar-alt post-meta-icon"></i>
-                            <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm:ss')}"
-                                  th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}"
-                                  th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">
-                            </time>
-                        </span>
+
                         <!--<span class="post-meta-wechat" title="该文章已在公众号中更新"><i-->
                         <!--        class="fab fa-weixin post-meta-icon"></i>公众号同步</span>-->
-                        <!--<span class="post-meta-position" title="作者IP属地为北京"><i-->
-                        <!--        class="fas fa-location-dot post-meta-icon"></i>北京</span>-->
                         <span class="post-meta-pv" data-flag-title="热度">
                             <i class="iconfont icon-hotjar post-meta-icon"></i>
                             <span class="post-meta-label">热度:</span>
                             <span id="visit" th:text="${post.stats.visit}"></span>
                         </span>
-                        <span class="post-meta-commentcount" title="评论数"><i class="fa-solid fa-message">
-
-                            </i>
+                        <span class="post-meta-commentcount" onclick="heo.scrollTo('#post-comment');" title="评论数">
+                            <i class="iconfont icon-comment-alt"></i>
                             <span class="post-meta-label">评论:</span>
-                            <a href="#post-comment">
-                                <span id="comment-count" th:text="${post.stats.comment}"></span>
-                            </a>
-                            </span>
+                            <a href="#post-comment"><span id="comment-count" th:text="${post.stats.comment}"></span></a>
+                        </span>
                     </div>
+
                 </div>
             </div>
         </header>
@@ -162,7 +161,8 @@
                 <div class="post-copyright" th:if="${theme.config.post.copyright}">
                     <div class="post-copyright__author">
                         <!-- 版权页 以及版权描述文字 -->
-                        <a class="post-copyright__original" th:href="@{${theme.config.post.copyrightAgreement}}" title="该文章为原创文章，注意版权协议">原创</a>
+                        <a class="post-copyright__original" th:href="@{${theme.config.post.copyrightAgreement}}"
+                           title="该文章为原创文章，注意版权协议">原创</a>
                         <a class="post-copyright-title" href="#"><span th:text="${post.spec.title}"></span></a>
                     </div>
                     <div class="post-copyright__type">
@@ -216,8 +216,8 @@
                     </div>
                 </div>
                 <hr>
-                <!-- 评论模块，使用评论插件 -->
-                <div id="post-comment">
+                <!-- 评论模块 -->
+                <div id="post-comment" th:if="${pluginFinder.available('PluginCommentWidget')}">
                     <div class="comment-head">
                         <div class="comment-headline"><i class="iconfont icon-comment-alt"></i> <span>评论</span></div>
                         <div class="comment-privacy"><a href="#">隐私政策</a></div>

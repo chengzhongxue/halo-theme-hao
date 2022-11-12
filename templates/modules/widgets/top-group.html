@@ -21,18 +21,23 @@
         </div>
     </div>
 
-    <!-- 这块功能依赖后台配置 -->
-    <!--<div class="todayCard" id="todayCard" onclick='window.open("https://www.bilibili.com/video/BV1A841147Ef/")'>-->
-    <!--    <div class="todayCard-info">-->
-    <!--        <div class="todayCard-tips">音乐推荐</div>-->
-    <!--        <div class="todayCard-title">逐星</div>-->
-    <!--    </div>-->
-    <!--    <div class="todayCard-cover"-->
-    <!--         style="background:url(https://img.zhheo.com/i/2022/09/23/632d1625aa0d7.webp) no-repeat center/cover"></div>-->
-    <!--    <div class="banner-button-group"><a class="banner-button"-->
-    <!--                                        onclick="window.event.cancelBubble=!0,heo.hideTodayCard()"><i-->
-    <!--            class="fas fa-circle-plus"></i><span class="banner-button-text">更多推荐</span></a>-->
-    <!--    </div>-->
-    <!--</div>-->
+    <!-- 今日推荐 -->
+    <div class="todayCard" id="todayCard"
+         th:if="${theme.config.top.todayRecommend}"
+         th:onclick="'window.open('+ ${theme.config.top.todayRecommendUrl} +')'">
+        <div class="todayCard-info">
+            <div class="todayCard-tips">今日推荐</div>
+            <div class="todayCard-title" th:text="${theme.config.top.todayRecommendTitle}"></div>
+        </div>
+        <div class="todayCard-cover"
+             th:style="'background:url('+ ${theme.config.top.todayRecommendCover} +') no-repeat center/cover'">
+        </div>
+        <div class="banner-button-group">
+            <a class="banner-button" onclick="window.event.cancelBubble=!0;heo.hideTodayCard()">
+                <i class="fas fa-circle-plus"></i>
+                <span class="banner-button-text">更多推荐</span>
+            </a>
+        </div>
+    </div>
 </div>
 </html>

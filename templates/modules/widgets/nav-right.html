@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <!-- 导航栏菜单栏 -->
-<div id="nav-right" th:fragment="nav-right" th:if="${theme.config.nav.right_menu}">
+<div id="nav-right" th:fragment="nav-right">
 
     <!-- 功能都需要添加开关 -->
 
@@ -21,8 +21,8 @@
     </div>
 
     <!-- 搜索使用搜索插件 -->
-    <div class="nav-button" id="search-button">
-        <a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow" title="站内搜索">
+    <div class="nav-button" id="search-button" th:if="${pluginFinder.available('PluginSearchWidget')}">
+        <a class="site-page social-icon search" href="javascript:SearchWidget.open();" rel="external nofollow" title="站内搜索">
             <i class="iconfont icon-search" style="font-size:1rem"></i>
         </a>
     </div>
@@ -41,11 +41,11 @@
         </a>
     </div>
 
-    <!--<div id="toggle-menu">-->
-    <!--    <a class="site-page">-->
-    <!--        <i class="fas fa-bars fa-fw"></i>-->
-    <!--    </a>-->
-    <!--</div>-->
+    <div id="toggle-menu">
+        <a class="site-page">
+            <i class="iconfont icon-bars"></i>
+        </a>
+    </div>
 </div>
 
 

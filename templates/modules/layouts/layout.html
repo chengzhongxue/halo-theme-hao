@@ -11,6 +11,12 @@
             // 页面类型 index,page,post,tag,category
             htmlType: [[${htmlType}]],
             postTitle: [[${htmlType == 'post' ? post.spec.title : ''}]],
+            isanchor: true,
+            isPost: [[${htmlType == 'post'}]],
+            isHome: [[${htmlType == 'index'}]],
+            isHighlightShrink: false,
+            isToc: [[${htmlType == 'post'}]] && document.getElementById("card-toc"),
+            postUpdate: '2022-11-04 20:08:15',
             Snackbar: {
                 chs_to_cht: "你已切换为繁体",
                 cht_to_chs: "你已切换为简体",
@@ -37,9 +43,23 @@
 <!-- 控制台 -->
 <div th:replace="modules/widgets/console :: console"></div>
 
+<div th:replace="modules/sidebar :: sidebar"></div>
+
 <!-- 内容 -->
 <th:block th:replace="${content}"></th:block>
 
+<!-- todo 暂时没显示，是右下角悬浮操作按钮 -->
+<div id="rightside">
+    <div id="rightside-config-hide">
+        <button id="translateLink" title="简繁转换" type="button">简</button>
+        <button id="darkmode" title="浅色和深色模式转换" type="button"><i class="fas fa-adjust"></i></button>
+        <button id="hide-aside-btn" title="单栏和双栏切换" type="button"><i class="fas fa-arrows-alt-h"></i></button>
+    </div>
+    <div id="rightside-config-show">
+        <button id="rightside_config" title="设置" type="button"><i class="fas fa-cog fa-spin"></i></button>
+        <button id="go-up" title="回到顶部" type="button"><i class="fas fa-arrow-up"></i></button>
+    </div>
+</div>
 
 <div th:replace="modules/right-menu :: right-menu"></div>
 
@@ -59,14 +79,13 @@
     <!-- 应该是文章页分享使用 -->
     <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-    <!-- todo 不知道是否可以抽到 right-menu.html 中，做到后台可配置 -->
-    <script th:src="@{/assets/zhheo/rightmenu.js}"></script>
-
     <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
     <script th:src="@{/assets/libs/waterfall/waterfall.min.js}"></script>
 
     <!-- 获取主色 https://lokeshdhakar.com/projects/color-thief/ -->
-    <script th:src="@{/assets/libs/color-thief/color-thief.umd.js}"></script>
+    <!--<script th:src="@{/assets/libs/color-thief/color-thief.umd.js}"></script>-->
+    <script th:src="@{/assets/libs/fast-average-color/index.browser.min.js}"></script>
+
 </div>
 
 <div>
@@ -79,7 +98,6 @@
             // 移除加载动画
             removeLoading();
         }
-        addRightMenuClickEvent();
         navTitle();
         heo.topPostScroll();
         heo.topCategoriesBarScroll();

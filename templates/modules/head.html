@@ -126,6 +126,10 @@
     <!-- 复制 https://github.com/zenorocha/clipboard.js -->
     <script th:src="@{/assets/libs/clipboard/clipboard.min.js}"></script>
 
+    <!-- swiper 在瞬间滚动时会使用 -->
+    <link rel="stylesheet" th:href="@{/assets/libs/swiper/swiper-bundle.min.css}"/>
+    <script th:src="@{/assets/libs/swiper/swiper-bundle.min.js}"></script>
+
     <!-- 补充部分 -->
     <th:block th:if="${metas != null}">
         <th:block th:replace="${metas}"/>

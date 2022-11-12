@@ -10,20 +10,11 @@ spec:
         - $formkit: menuRadio
           name: left_menu
           label: 导航栏左侧相关链接
-        - $formkit: radio
-          name: right_menu
-          label: 右侧四个按钮
-          value: true
-          options:
-            - label: 显示
-              value: true
-            - label: 隐藏
-              value: false
         - $formkit: text
           name: site_title
           label: 标题
           placeholder: 请输入标题
-          help: 支持 HTML 语法，比如 <span id="site-name-icon">Hao</span>，默认为站点名称
+          help: '支持 HTML 语法，比如 <i class="iconfont icon-logo-hao-pro" style="font-size: 1rem"></i>，留空为站点名称'
     - group: top
       label: 顶部
       formSchema:
@@ -37,8 +28,8 @@ spec:
             - label: 隐藏
               value: false
         - $formkit: radio
-          name: time_list
-          label: 日志模块
+          name: moment
+          label: 说说模块
           value: true
           options:
             - label: 显示
@@ -68,6 +59,30 @@ spec:
         - $formkit: url
           name: shiyong
           label: 必看精选
+          placeholder: 请输入地址
+          validation: "url"
+        - $formkit: radio
+          name: todayRecommend
+          label: 今日推荐
+          value: false
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
+        - $formkit: url
+          name: todayRecommendUrl
+          label: 今日推荐跳转地址
+          placeholder: 请输入地址
+          validation: "url"
+        - $formkit: text
+          name: todayRecommendTitle
+          label: 今日推荐标题
+          placeholder: 请输入标题
+          value: "今日推荐"
+        - $formkit: url
+          name: todayRecommendCover
+          label: 今日推荐背景图
           placeholder: 请输入地址
           validation: "url"
     - group: layout
@@ -203,13 +218,13 @@ spec:
           label: 版权声明
           placeholder: '本文是原创文章，采用 <a target="_blank" href="/cc">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a href="/" target="_blank" >程序员小航</a>'
           help: "版权声明内容，支持填入 HTML 标签"
-    - group: right_menu
+    - group: rightMenu
       label: 右键菜单
       formSchema:
         - $formkit: radio
           name: switch
           label: 开关
-          value: true
+          value: false
           options:
             - label: 打开
               value: true
