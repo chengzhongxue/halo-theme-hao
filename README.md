@@ -33,7 +33,7 @@
 - [x] 文章阅读模式
 - [X] [文章目录](https://github.com/liuzhihang/plugin-tocbot)（插件）
 - [X] [代码高亮/语言/复制](https://github.com/liuzhihang/plugin-prismjs)（插件）
-- [ ] 文章搜索
+- [x] [文章搜索](https://github.com/halo-sigs/plugin-search-widget)
 - [x] 显示字数统计
 - [x] 显示相关文章
 - [x] 文章过期提醒
