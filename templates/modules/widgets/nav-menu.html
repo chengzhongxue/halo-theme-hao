@@ -6,7 +6,7 @@
     <div class="menus_items">
 
         <!-- 第一层仅展示使用，不做跳转 -->
-        <div class="menus_item" th:each="menuItem : ${menuFinder.getDefault().menuItems}">
+        <div class="menus_item" th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
 
             <!-- javascript:void(0);" -->
             <a class="site-page" rel="external nofollow" th:href="@{${menuItem.status.href}}">
