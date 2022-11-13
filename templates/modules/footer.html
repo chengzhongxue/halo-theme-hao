@@ -44,28 +44,33 @@
                 </div>
             </div>
             <div class="footer-banner-right">
-                <a class="footer-banner-link" href="/rss">订阅</a>
+                <!-- 订阅 需要 RSS 插件支持 -->
+                <!--<a class="footer-banner-link" href="/rss">订阅</a>-->
                 <a class="footer-banner-link" href="https://github.com/liuzhihang/halo-theme-hao">主题</a>
                 <a class="footer-banner-link" href="/about">关于</a>
                 <a class="footer-banner-link" href="https://beian.miit.gov.cn/#/Integrated/index"
                    rel="noopener external nofollow noreferrer noopener" target="_blank">[[${theme.config.footer.icp}]]
                 </a>
-                <a class="footer-banner-link cc" href="/cc" title="cc协议">
-                    <i class="iconfont icon-occ"></i>
-                    <i class="iconfont icon-occ-by"></i>
-                    <i class="iconfont icon-onc"></i>
-                    <i class="iconfont icon-ond"></i>
+                <a class="footer-banner-link cc"
+                   th:href="${theme.config.footer.copyrightAgreement}"
+                   th:if="${not #strings.isEmpty(theme.config.post.copyrightAgreement)}"
+                   title="cc协议">
+                    <i class="iconfont icon-cc"></i>
+                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-nc"></i>
+                    <i class="iconfont icon-nd"></i>
                 </a>
             </div>
         </div>
     </div>
     <!-- 暂时不需要弹窗 -->
-    <div id="cookies-window">
-        <div class="cookies-window-title">协议提醒助手</div>
-        <div class="cookies-window-content">
-            <span class="cookies-tip">查看本站为你的个人隐私做出的努力</span>
-            <a class="cookies-link" href="privacy/index.html" title="本站如何保护你的隐私">
-                <i class="fas fa-arrow-circle-right"></i>
+    <div id="introduction-window">
+        <div class="introduction-window-title" th:text="${theme.config.snackbar.introductionTitle}"></div>
+        <div class="introduction-window-content">
+            <span class="introduction-tip" th:text="${theme.config.snackbar.introductionTip}"></span>
+            <a class="introduction-link" target="_blank" title="点击查看"
+               th:href="@{${theme.config.snackbar.introductionUrl}}">
+                <i class="iconfont icon-arrow-circle-right"></i>
             </a>
         </div>
     </div>

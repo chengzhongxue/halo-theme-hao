@@ -7955,7 +7955,7 @@ span.fund_name {
 }
 
 /* cookies */
-#cookies-window {
+#introduction-window {
     min-width: 300px;
     background: var(--heo-maskbgdeep);
     color: var(--heo-fontcolor);
@@ -7975,20 +7975,20 @@ span.fund_name {
     animation: barrageIn 0.6s cubic-bezier(0.42, 0, 0.3, 1.11);
 }
 
-#cookies-window.cw-hide {
+#introduction-window.cw-hide {
     opacity: 0;
     animation: barrageOut 0.6s cubic-bezier(0.42, 0, 0.3, 1.11);
     z-index: -1;
 }
 
-#cookies-window .cookies-window-title {
+#introduction-window .introduction-window-title {
     padding-bottom: 4px;
     border-bottom: var(--style-border);
     font-size: 12px;
     font-weight: bold;
 }
 
-#cookies-window .cookies-window-content {
+#introduction-window .introduction-window-content {
     font-size: 14px;
     display: flex;
     justify-content: space-around;
@@ -8000,13 +8000,13 @@ span.fund_name {
     font-weight: bold;
 }
 
-.cookies-link {
+.introduction-link {
     margin-left: auto;
     font-size: 16px;
 }
 
 @media screen and (max-width: 1300px) {
-    #cookies-window {
+    #introduction-window {
         display: none;
     }
 }

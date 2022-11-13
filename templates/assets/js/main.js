@@ -348,7 +348,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let isChatShow = true
         const $header = document.getElementById('page-header')
         const $gulitop = document.getElementById('guli_top')
-        const $cookies_window = document.getElementById('cookies-window')
+        const $cookies_window = document.getElementById('introduction-window')
         const isChatBtnHide = typeof chatBtnHide === 'function'
         const isChatBtnShow = typeof chatBtnShow === 'function'
         window.addEventListener('scroll', btf.throttle(function (e) {
