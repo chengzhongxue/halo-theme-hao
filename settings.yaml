@@ -196,6 +196,11 @@ spec:
           label: ICP 备案
           placeholder: 请输入 ICP 备案号
           help: "京ICP备xxxxxxxx号"
+        - $formkit: url
+          name: copyrightAgreement
+          label: 版权协议
+          placeholder: "请输入版权协议地址"
+          help: '文章模块声明版权，也会使用此协议'
     - group: post
       label: 文章
       formSchema:
@@ -209,15 +214,47 @@ spec:
             - label: 关闭
               value: false
           help: "文章底部显示版权声明模块"
-        - $formkit: url
-          name: copyrightAgreement
-          label: 版权协议
-          placeholder: "请输入版权协议地址"
         - $formkit: textarea
           name: copyrightInfo
           label: 版权声明
           placeholder: '本文是原创文章，采用 <a target="_blank" href="/cc">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a href="/" target="_blank" >程序员小航</a>'
           help: "版权声明内容，支持填入 HTML 标签"
+    - group: snackbar
+      label: 弹窗
+      help: 右下角 snackbar 弹窗
+      formSchema:
+        - $formkit: radio
+          name: switch
+          label: 开关（WIP）
+          value: true
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
+        - $formkit: radio
+          name: introduction
+          label: 介绍框（WIP）
+          value: true
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
+        - $formkit: text
+          name: introductionTitle
+          label: 介绍框标题
+          value: '欢迎使用主题 Hao'
+        - $formkit: text
+          name: introductionTip
+          label: 介绍框内容
+          value: '⭐️ Star halo-theme-hao，提交主题建议或意见。'
+        - $formkit: url
+          name: introductionUrl
+          validation: "url"
+          value: "https://github.com/liuzhihang/halo-theme-hao"
+          label: 介绍框点击跳转地址
+          placeholder: 请输入跳转 url
     - group: rightMenu
       label: 右键菜单
       formSchema:

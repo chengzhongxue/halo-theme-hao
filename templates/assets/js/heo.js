@@ -82,7 +82,7 @@ var heo = {
         if (scrollTop != 0) {
             document.getElementById("page-header").classList.add("nav-fixed");
             document.getElementById("page-header").classList.add("nav-visible");
-            $('#cookies-window').hide()
+            $('#introduction-window').hide()
             console.log("已添加class")
         }
     },
@@ -301,9 +301,9 @@ var heo = {
     //隐藏cookie窗口
     hidecookie: function () {
         heo_cookiesTime = setTimeout(() => {
-            document.getElementById("cookies-window").classList.add('cw-hide');
+            document.getElementById("introduction-window").classList.add('cw-hide');
             setTimeout(() => {
-                $('#cookies-window').hide()
+                $('#introduction-window').hide()
             }, 1000)
         }, 3000)
     },

@@ -6,6 +6,41 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "12095053",
+      "name": "by",
+      "font_class": "by",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "12095056",
+      "name": "cc",
+      "font_class": "cc",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "12095063",
+      "name": "nc",
+      "font_class": "nc",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "12095066",
+      "name": "nd",
+      "font_class": "nd",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "32816778",
+      "name": "HAO",
+      "font_class": "HAO",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
       "icon_id": "32796142",
       "name": "logo-hao-copy",
       "font_class": "logo-hao-pro",
