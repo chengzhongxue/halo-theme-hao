@@ -8902,19 +8902,19 @@ li {
     -webkit-box-orient: vertical;
 }
 
-.recent-post-item .recent-post-info .recent-post-info-top .lastestpost {
-    display: none;
-}
+/*.recent-post-item .recent-post-info .recent-post-info-top .pinned-post {*/
+/*    display: none;*/
+/*}*/
 
 @media screen and (min-width: 1300px) {
-    #recent-posts > .recent-post-item:nth-child(2) .lastestpost {
+    #recent-posts > .recent-post-item .pinned-post {
         display: flex;
         color: var(--heo-lighttext);
         font-size: 0.5rem;
         position: relative;
     }
 
-    #recent-posts .recent-post-item.lastestpost-item .recent-post-info-top {
+    #recent-posts .recent-post-item.pinned-post-item .recent-post-info-top {
         padding-top: 16px;
     }
 
