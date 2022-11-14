@@ -17,10 +17,10 @@ jobs:
       - name: Compress zip
         run: |
           PACKAGE_VERSION=$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' package.json)
-          PRE_ZIP_FOLDER=theme-anatole-${PACKAGE_VERSION}
+          PRE_ZIP_FOLDER=halo-theme-hao-${PACKAGE_VERSION}
           ARTIFACT_NAME=${PRE_ZIP_FOLDER}.zip
           ARTIFACT_PATHNAME=dist/${ARTIFACT_NAME}
-          echo "theme-anatole version $PACKAGE_VERSION"
+          echo "halo-theme-hao version $PACKAGE_VERSION"
           echo "Artifact name: ${ARTIFACT_NAME}"
           echo "Artifact pathname: ${ARTIFACT_PATHNAME}"
           echo "PACKAGE_VERSION=${PACKAGE_VERSION}" >> $GITHUB_ENV
@@ -53,10 +53,10 @@ jobs:
       - name: Compress zip
         run: |
           PACKAGE_VERSION=$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' package.json)
-          PRE_ZIP_FOLDER=theme-anatole-${PACKAGE_VERSION}
+          PRE_ZIP_FOLDER=halo-theme-hao-${PACKAGE_VERSION}
           ARTIFACT_NAME=${PRE_ZIP_FOLDER}.zip
           ARTIFACT_PATHNAME=dist/${ARTIFACT_NAME}
-          echo "theme-anatole version $PACKAGE_VERSION"
+          echo "halo-theme-hao version $PACKAGE_VERSION"
           echo "Artifact name: ${ARTIFACT_NAME}"
           echo "Artifact pathname: ${ARTIFACT_PATHNAME}"
           echo "PACKAGE_VERSION=${PACKAGE_VERSION}" >> $GITHUB_ENV
@@ -79,7 +79,7 @@ jobs:
             const artifactPathName = process.env.ARTIFACT_PATHNAME
             const artifactName = process.env.ARTIFACT_NAME
             console.log('Releasing', releaseId, artifactPathName, artifactName)
-            await github.repos.uploadReleaseAsset({
+            await octokit.repos.uploadReleaseAsset({
               owner, repo,
               release_id: releaseId,
               name: artifactName,
