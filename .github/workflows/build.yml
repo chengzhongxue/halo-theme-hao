@@ -68,7 +68,7 @@ jobs:
           cp -r theme.yaml settings.yaml templates $PRE_ZIP_FOLDER/
           zip -r $ARTIFACT_PATHNAME $PRE_ZIP_FOLDER
       - name: Upload a release asset
-        uses: actions/github-script@v6
+        uses: actions/github-script@v2
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
@@ -79,7 +79,7 @@ jobs:
             const artifactPathName = process.env.ARTIFACT_PATHNAME
             const artifactName = process.env.ARTIFACT_NAME
             console.log('Releasing', releaseId, artifactPathName, artifactName)
-            await octokit.repos.uploadReleaseAsset({
+            await github.repos.uploadReleaseAsset({
               owner, repo,
               release_id: releaseId,
               name: artifactName,
