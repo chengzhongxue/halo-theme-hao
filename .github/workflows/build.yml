@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Compress zip
         run: |
           PACKAGE_VERSION=$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' package.json)
@@ -34,3 +38,50 @@ jobs:
           path: |
             dist/*.zip
           retention-days: 7
+
+  github-release:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release'
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: false
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Compress zip
+        run: |
+          PACKAGE_VERSION=$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' package.json)
+          PRE_ZIP_FOLDER=theme-anatole-${PACKAGE_VERSION}
+          ARTIFACT_NAME=${PRE_ZIP_FOLDER}.zip
+          ARTIFACT_PATHNAME=dist/${ARTIFACT_NAME}
+          echo "theme-anatole version $PACKAGE_VERSION"
+          echo "Artifact name: ${ARTIFACT_NAME}"
+          echo "Artifact pathname: ${ARTIFACT_PATHNAME}"
+          echo "PACKAGE_VERSION=${PACKAGE_VERSION}" >> $GITHUB_ENV
+          echo "ARTIFACT_NAME=${ARTIFACT_NAME}" >> $GITHUB_ENV
+          echo "ARTIFACT_PATHNAME=${ARTIFACT_PATHNAME}" >> $GITHUB_ENV
+          echo "RELEASE_ID=${{ github.event.release.id }}" >> $GITHUB_ENV
+          mkdir $PRE_ZIP_FOLDER
+          mkdir dist
+          cp -r theme.yaml settings.yaml templates $PRE_ZIP_FOLDER/
+          zip -r $ARTIFACT_PATHNAME $PRE_ZIP_FOLDER
+      - name: Upload a release asset
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const fs = require('fs').promises;
+            const { repo: { owner, repo }, sha } = context;
+            console.log({ owner, repo, sha });
+            const releaseId = process.env.RELEASE_ID
+            const artifactPathName = process.env.ARTIFACT_PATHNAME
+            const artifactName = process.env.ARTIFACT_NAME
+            console.log('Releasing', releaseId, artifactPathName, artifactName)
+            await github.repos.uploadReleaseAsset({
+              owner, repo,
+              release_id: releaseId,
+              name: artifactName,
+              data: await fs.readFile(artifactPathName)
+            });
