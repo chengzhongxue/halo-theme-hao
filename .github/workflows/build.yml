@@ -16,24 +16,21 @@ jobs:
           PRE_ZIP_FOLDER=theme-anatole-${PACKAGE_VERSION}
           ARTIFACT_NAME=${PRE_ZIP_FOLDER}.zip
           ARTIFACT_PATHNAME=dist/${ARTIFACT_NAME}
-
           echo "theme-anatole version $PACKAGE_VERSION"
           echo "Artifact name: ${ARTIFACT_NAME}"
           echo "Artifact pathname: ${ARTIFACT_PATHNAME}"
-
           echo "PACKAGE_VERSION=${PACKAGE_VERSION}" >> $GITHUB_ENV
           echo "ARTIFACT_NAME=${ARTIFACT_NAME}" >> $GITHUB_ENV
           echo "ARTIFACT_PATHNAME=${ARTIFACT_PATHNAME}" >> $GITHUB_ENV
           echo "RELEASE_ID=${{ github.event.release.id }}" >> $GITHUB_ENV
-
           mkdir $PRE_ZIP_FOLDER
           mkdir dist
           cp -r theme.yaml settings.yaml templates $PRE_ZIP_FOLDER/
           zip -r $ARTIFACT_PATHNAME $PRE_ZIP_FOLDER
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
-          name: theme-hao
+          name: halo-theme-hao
           path: |
             dist/*.zip
           retention-days: 7
