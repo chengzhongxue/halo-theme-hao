@@ -23,7 +23,7 @@
 
     <!-- 今日推荐 -->
     <div class="todayCard" id="todayCard"
-         th:if="${theme.config.top.todayRecommend}"
+         th:if="${theme.config.top.todayRecommendSwitch}"
          th:onclick="'window.open('+ ${theme.config.top.todayRecommendUrl} +')'">
         <div class="todayCard-info">
             <div class="todayCard-tips">今日推荐</div>

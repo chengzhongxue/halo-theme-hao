@@ -4,6 +4,22 @@ metadata:
   name: theme-hao-setting
 spec:
   forms:
+    - group: basics
+      label: 基础
+      formSchema:
+        - $formkit: date
+          name: siteStartTime
+          label: 建站时间
+        - $formkit: text
+          name: icp
+          label: ICP 备案
+          placeholder: 请输入 ICP 备案号
+          help: "京ICP备xxxxxxxx号"
+        - $formkit: url
+          name: copyrightAgreement
+          label: 版权协议
+          placeholder: "请输入版权协议地址"
+          help: '文章模块声明版权，也会使用此协议'
     - group: nav
       label: 导航
       formSchema:
@@ -85,6 +101,7 @@ spec:
           label: 今日推荐背景图
           placeholder: 请输入地址
           validation: "url"
+
     - group: layout
       label: 布局
       formSchema:
@@ -186,21 +203,6 @@ spec:
         - $formkit: menuRadio
           name: menu
           label: 底部相关链接
-        - $formkit: text
-          name: copyright_start
-          label: 开始时间
-          placeholder: 建站时间
-          help: "copyright 开始时间"
-        - $formkit: text
-          name: icp
-          label: ICP 备案
-          placeholder: 请输入 ICP 备案号
-          help: "京ICP备xxxxxxxx号"
-        - $formkit: url
-          name: copyrightAgreement
-          label: 版权协议
-          placeholder: "请输入版权协议地址"
-          help: '文章模块声明版权，也会使用此协议'
     - group: post
       label: 文章
       formSchema:
@@ -219,6 +221,32 @@ spec:
           label: 版权声明
           placeholder: '本文是原创文章，采用 <a target="_blank" href="/cc">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a href="/" target="_blank" >程序员小航</a>'
           help: "版权声明内容，支持填入 HTML 标签"
+    - group: style
+      label: 样式（WIP）
+      formSchema:
+        - $formkit: radio
+          name: color_scheme
+          label: 默认配色
+          value: system
+          options:
+            - label: 跟随系统
+              value: system
+            - label: 深色
+              value: dark
+            - label: 浅色
+              value: light
+        - $formkit: checkbox
+          name: enable_change_color_scheme
+          label: 允许访客切换配色
+          value: true
+        - $formkit: textarea
+          name: fontFamily
+          label: 全局字体
+          placeholder: '"PingFang SC", "Hiragino Sans GB", "Microsoft YaHei"'
+        - $formkit: url
+          name: backgroundImg
+          label: 全局背景图
+          placeholder: "请输入图片地址"
     - group: snackbar
       label: 弹窗
       help: 右下角 snackbar 弹窗
