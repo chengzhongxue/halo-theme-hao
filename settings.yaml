@@ -4,22 +4,40 @@ metadata:
   name: theme-hao-setting
 spec:
   forms:
+    - group: basics
+      label: 基础
+      formSchema:
+        - $formkit: date
+          name: siteStartTime
+          label: 建站时间
+        - $formkit: text
+          name: icp
+          label: ICP 备案
+          placeholder: 请输入 ICP 备案号
+          help: "京ICP备xxxxxxxx号"
+        - $formkit: url
+          name: copyrightAgreement
+          label: 版权协议
+          placeholder: "请输入版权协议地址"
+          help: '文章模块声明版权，也会使用此协议'
+
     - group: nav
       label: 导航
       formSchema:
         - $formkit: menuRadio
-          name: left_menu
+          name: leftMenu
           label: 导航栏左侧相关链接
         - $formkit: text
-          name: site_title
+          name: siteTitle
           label: 标题
           placeholder: 请输入标题
           help: '支持 HTML 语法，比如 <i class="iconfont icon-logo-hao-pro" style="font-size: 1rem"></i>，留空为站点名称'
+
     - group: top
       label: 顶部
       formSchema:
         - $formkit: radio
-          name: recent_top
+          name: recentTop
           label: 首页顶部
           value: true
           options:
@@ -37,12 +55,12 @@ spec:
             - label: 隐藏
               value: false
         - $formkit: text
-          name: banners_title_big
+          name: bannersTitleBig
           label: Banners 大标题
           placeholder: 请输入大标题
           help: 支持 HTML 语法
         - $formkit: text
-          name: banners_title_small
+          name: bannersTitleSmall
           label: Banners 小标题
           placeholder: 请输入小标题
           help: 支持 HTML 语法
@@ -85,6 +103,7 @@ spec:
           label: 今日推荐背景图
           placeholder: 请输入地址
           validation: "url"
+
     - group: layout
       label: 布局
       formSchema:
@@ -103,7 +122,7 @@ spec:
               value: col4
           help: "建议单列时，将图片放在左右"
         - $formkit: select
-          name: post_location
+          name: postLocation
           label: 封面位置
           value: top
           options:
@@ -116,11 +135,12 @@ spec:
             - label: 交替
               value: alternate
         - $formkit: url
-          name: post_random_img
+          name: postRandomImg
           label: 博客封面随机 API
           validation: "url"
           value: "https://source.unsplash.com/random/600x400/?blog,scenery,night,desert,sea"
           help: 二次元随机图地址：https://www.dmoe.cc/random.php    默认随机封面图 url 不能保证一直可用
+
     - group: sidebar
       label: 侧栏
       formSchema:
@@ -135,72 +155,278 @@ spec:
               label: "右侧"
             - value: "left-aside"
               label: "左侧"
+
+#        - $formkit: repeater
+#          name: widgets
+#          label: 小部件
+#          value:
+#            - value: profile
+#            - value: wechat
+#            - value: comments
+#            - value: recent-posts
+#            - value: comments
+#            - value: categories
+#            - value: tags
+#            - value: stat
+#            - value: tags-stat
+#          children:
+#            - $formkit: select
+#              name: value
+#              label: 部件
+#              options:
+#                - label: 站点资料
+#                  value: profile
+#                - label: 微信
+#                  value: wechat
+#                - label: 近期文章
+#                  value: recent-posts
+#                - label: 最新评论
+#                  value: comments
+#                - label: 文章分类
+#                  value: categories
+#                - label: 文章标签
+#                  value: tags
+#                - label: 统计
+#                  value: stat
+#                - label: 标签&统计
+#                  value: tags-stat
+
         - $formkit: textarea
           name: widgets
           label: 小部件
           value: "profile,wechat,comments,recent-posts,categories,tags-stat"
           help: "目前提供的小部件有：profile（站点资料）, wechat（微信）, recent-posts（近期文章）, comments（最新评论）, categories（文章分类）, tags（文章标签）, stat（统计）, tags-stat（标签&统计）。你可以随意组合或排序，以逗号隔开。"
         - $formkit: textarea
-          name: post_widgets
+          name: postWidgets
           label: 文章页面小部件
           value: "profile,wechat,toc,comments,recent-posts,categories,tags-stat"
           help: "post 可以支持设置 toc "
         - $formkit: textarea
-          name: tag_widgets
+          name: tagWidgets
           label: 标签页面小部件
           value: "profile,wechat,comments,recent-posts,categories,tags-stat"
         - $formkit: textarea
-          name: category_widgets
+          name: categoryWidgets
           label: 分类页面小部件
           value: "profile,wechat,comments,recent-posts,categories,tags-stat"
         - $formkit: textarea
-          name: page_widgets
+          name: pageWidgets
           label: 自定义页面小部件
           value: ""
-        - $formkit: text
-          name: profile_name
-          label: 个人卡片名称
-          placeholder: 请填写个人卡片名称
-          help: "不填写默认为站点则名称"
-        - $formkit: textarea
-          name: profile_desc
-          placeholder: 请填写个人卡片描述信息
-          help: "支持使用 HTML 标签"
-        - $formkit: url
-          name: wechat_img_face
-          placeholder: 微信正面图
-          validation: "url"
-        - $formkit: url
-          name: wechat_img_back
-          placeholder: 微信背面图
-          validation: "url"
-          help: 图片可以从公众号后台下载物料或者自制
+          help: "自定义页面默认没有侧栏"
+        - $formkit: group
+          name: profile
+          value:
+            profileName:
+            profileDesc:
+            socialMedia:
+          children:
+            - $formkit: text
+              name: profileName
+              label: 个人卡片名称
+              placeholder: 请填写个人卡片名称
+              help: "不填写默认为站点则名称"
+            - $formkit: textarea
+              name: profileDesc
+              placeholder: 请填写个人卡片描述信息
+              help: "支持使用 HTML 标签"
+            - $formkit: repeater
+              name: socialMedia
+              label: 社交媒体
+              help: 侧栏社交媒体建议只设置两个
+              value:
+                - icon:
+                  name:
+                  url:
+                  urlType: normal
+              children:
+                - $formkit: select
+                  name: icon
+                  label: 图标
+                  options:
+                    - label: 电子邮箱
+                      value: icon-mail-line
+                    - label: 微信
+                      value: icon-wechat2
+                    - label: 公众号
+                      value: icon-weixingongzhonghao
+                    - label: 腾讯 QQ
+                      value: icon-qq-line
+                    - label: 新浪微博
+                      value: icon-weibo-line
+                    - label: 知乎
+                      value: icon-zhihu-line
+                    - label: 豆瓣
+                      value: icon-douban-line
+                    - label: 哔哩哔哩
+                      value: icon-bilibili-line
+                    - label: GitHub
+                      value: icon-github-line
+                    - label: GitLab
+                      value: icon-gitlab-line
+                    - label: 百度
+                      value: icon-baidu-line
+                    - label: 掘金
+                      value: icon-juejin
+                    - label: 语雀
+                      value: icon-yuque
+                    - label: 博客园
+                      value: icon-CN_cnblogs
+                    - label: CSDN
+                      value: icon-csdn1
+                    - label: LeetCode
+                      value: icon-leetcode
+                    - label: 头条
+                      value: icon-jinritoutiao
+                    - label: 抖音 / TikTok
+                      value: icon-douyin
+                    - label: Telegram
+                      value: icon-telegram-line
+                    - label: Facebook
+                      value: icon-facebook-box-line
+                    - label: Instagram
+                      value: icon-instagram-line
+                    - label: LinkedIn
+                      value: icon-linkedin-box-line
+                    - label: Twitter
+                      value: icon-twitter-line
+                    - label: Slack
+                      value: icon-slack-line
+                    - label: Discord
+                      value: icon-discord-line
+                    - label: YouTube
+                      value: icon-youtube-line
+                    - label: Steam
+                      value: icon-steam-fill
+                    - label: Dribbble
+                      value: icon-dribbble-line
+                - $formkit: text
+                  name: name
+                  label: 名称
+                - $formkit: text
+                  name: url
+                  label: 链接
+                  validation: "url"
+                - $formkit: radio
+                  name: urlType
+                  label: 链接类型
+                  value: normal
+                  help: "如果选择了图片类型，那么在访客点击之后会使用弹框的形式加载"
+                  options:
+                    - label: 跳转链接
+                      value: normal
+                    - label: 图片
+                      value: image
+        - $formkit: group
+          name: wechat
+          label: 公众号
+          value:
+            wechatImgFace:
+            wechatImgBack:
+          children:
+            - $formkit: url
+              name: wechatImgFace
+              placeholder: 公众号正面图
+              validation: "url"
+            - $formkit: url
+              name: wechatImgBack
+              placeholder: 公众号背面图
+              validation: "url"
+              help: 图片可以从公众号后台下载物料或者自制
+
     - group: footer
       label: 页脚
       formSchema:
-        - $formkit: textarea
-          name: social
-          label: 社交链接（无效）
-          placeholder: 暂时不支持配置
-          help: "当前版本不支持配置"
+        - $formkit: repeater
+          name: socialMedia
+          label: 社交媒体
+          value:
+            - icon:
+              name:
+              url:
+              urlType: normal
+          children:
+            - $formkit: select
+              name: icon
+              label: 图标
+              options:
+                - label: 电子邮箱
+                  value: icon-mail-line
+                - label: 微信
+                  value: icon-wechat2
+                - label: 公众号
+                  value: icon-weixingongzhonghao
+                - label: 腾讯 QQ
+                  value: icon-qq-line
+                - label: 新浪微博
+                  value: icon-weibo-line
+                - label: 知乎
+                  value: icon-zhihu-line
+                - label: 豆瓣
+                  value: icon-douban-line
+                - label: 哔哩哔哩
+                  value: icon-bilibili-line
+                - label: GitHub
+                  value: icon-github-line
+                - label: GitLab
+                  value: icon-gitlab-line
+                - label: 百度
+                  value: icon-baidu-line
+                - label: 掘金
+                  value: icon-juejin
+                - label: 语雀
+                  value: icon-yuque
+                - label: 博客园
+                  value: icon-CN_cnblogs
+                - label: CSDN
+                  value: icon-csdn1
+                - label: LeetCode
+                  value: icon-leetcode
+                - label: 头条
+                  value: icon-jinritoutiao
+                - label: 抖音 / TikTok
+                  value: icon-douyin
+                - label: Telegram
+                  value: icon-telegram-line
+                - label: Facebook
+                  value: icon-facebook-box-line
+                - label: Instagram
+                  value: icon-instagram-line
+                - label: LinkedIn
+                  value: icon-linkedin-box-line
+                - label: Twitter
+                  value: icon-twitter-line
+                - label: Slack
+                  value: icon-slack-line
+                - label: Discord
+                  value: icon-discord-line
+                - label: YouTube
+                  value: icon-youtube-line
+                - label: Steam
+                  value: icon-steam-fill
+                - label: Dribbble
+                  value: icon-dribbble-line
+            - $formkit: text
+              name: name
+              label: 名称
+            - $formkit: text
+              name: url
+              label: 链接
+              validation: "url"
+            - $formkit: radio
+              name: urlType
+              label: 链接类型
+              value: normal
+              help: "如果选择了图片类型，那么在访客点击之后会使用弹框的形式加载"
+              options:
+                - label: 跳转链接
+                  value: normal
+                - label: 图片
+                  value: image
         - $formkit: menuRadio
           name: menu
           label: 底部相关链接
-        - $formkit: text
-          name: copyright_start
-          label: 开始时间
-          placeholder: 建站时间
-          help: "copyright 开始时间"
-        - $formkit: text
-          name: icp
-          label: ICP 备案
-          placeholder: 请输入 ICP 备案号
-          help: "京ICP备xxxxxxxx号"
-        - $formkit: url
-          name: copyrightAgreement
-          label: 版权协议
-          placeholder: "请输入版权协议地址"
-          help: '文章模块声明版权，也会使用此协议'
+
     - group: post
       label: 文章
       formSchema:
@@ -219,6 +445,34 @@ spec:
           label: 版权声明
           placeholder: '本文是原创文章，采用 <a target="_blank" href="/cc">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a href="/" target="_blank" >程序员小航</a>'
           help: "版权声明内容，支持填入 HTML 标签"
+
+    - group: style
+      label: 样式（WIP）
+      formSchema:
+        - $formkit: radio
+          name: colorScheme
+          label: 默认配色
+          value: system
+          options:
+            - label: 跟随系统
+              value: system
+            - label: 深色
+              value: dark
+            - label: 浅色
+              value: light
+        - $formkit: checkbox
+          name: enableChangeColorScheme
+          label: 允许访客切换配色
+          value: true
+        - $formkit: textarea
+          name: fontFamily
+          label: 全局字体
+          placeholder: '"PingFang SC", "Hiragino Sans GB", "Microsoft YaHei"'
+        - $formkit: url
+          name: backgroundImg
+          label: 全局背景图
+          placeholder: "请输入图片地址"
+
     - group: snackbar
       label: 弹窗
       help: 右下角 snackbar 弹窗
@@ -255,6 +509,7 @@ spec:
           value: "https://github.com/liuzhihang/halo-theme-hao"
           label: 介绍框点击跳转地址
           placeholder: 请输入跳转 url
+
     - group: rightMenu
       label: 右键菜单
       formSchema:
@@ -267,11 +522,12 @@ spec:
               value: true
             - label: 关闭
               value: false
+
     - group: other
       label: 其他设置
       formSchema:
         - $formkit: radio
-          name: loading_box
+          name: loadingBox
           label: 加载页
           value: true
           options:
@@ -280,12 +536,12 @@ spec:
             - label: 关闭
               value: false
         - $formkit: url
-          name: loading_box_img
+          name: loadingBoxImg
           validation: "url"
           label: 加载页图片 URL
           placeholder: 请输入图片 url
         - $formkit: radio
-          name: load_progress_bar
+          name: loadProgressBar
           label: 页面加载进度条
           value: true
           help: 了解更多：https://codebyzach.github.io/pace/

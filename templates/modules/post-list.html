@@ -6,14 +6,17 @@
 
     <!-- card，需要添加在没有图片时使用随机图片 -->
     <div class="recent-post-item"
-         th:classappend="${theme.config.layout.cols} + ' ' + ${theme.config.layout.post_location} + ' ' + (${iStat.even} ? 'even' : 'odd')"
+         th:classappend="${theme.config.layout.cols} + ' ' +
+         ${theme.config.layout.postLocation} + ' ' +
+         (${iStat.even} ? 'even' : 'odd') +
+         (${post.spec.pinned} ? 'pinned-post-item' : '')"
          th:each="post,iStat : ${postItems}">
 
         <div class="post_cover cover_radius">
             <a th:attr="title=${post.spec.title}" th:href="@{${post.status.permalink}}">
                 <img class="post_bg entered loaded" loading="lazy"
                      th:alt="${post.status.excerpt}"
-                     th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
+                     th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}">
             </a>
         </div>
         <!-- 类别非空时 -->
@@ -29,7 +32,7 @@
         </th:block>
         <div class="recent-post-info">
             <div class="recent-post-info-top">
-                <span class="lastestpost">最新文章</span>
+                <span class="pinned-post" th:if="${post.spec.pinned}">置顶</span>
                 <a class="article-title"
                    th:attr="title=${post.spec.title}"
                    th:href="@{${post.status.permalink}}"

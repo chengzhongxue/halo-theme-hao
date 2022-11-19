@@ -4,9 +4,9 @@
 <!-- loading 页面，todo 这块都可以不要，后面删除，先精简代码，后续考虑组件添加 -->
 <div id="loading-box" onclick="heo.hideLoading()"
      th:fragment="loading-box"
-     th:if="${theme.config.other.loading_box} and not ${#strings.isEmpty(theme.config.other.loading_box_img)}">
+     th:if="${theme.config.other.loadingBox} and not ${#strings.isEmpty(theme.config.other.loadingBoxImg)}">
     <div class="loading-bg">
-        <img class="loading-img" th:src="${theme.config.other.loading_box_img}">
+        <img class="loading-img" th:src="${theme.config.other.loadingBoxImg}">
     </div>
 
     <script>

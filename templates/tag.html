@@ -24,7 +24,7 @@
                     <div class="article-sort-item" th:each="post : ${postItems}">
                         <a class="article-sort-item-img" th:href="@{${post.status.permalink}}"
                            th:title="${post.spec.title}">
-                            <img loading="lazy" th:alt="${post.status.excerpt}" th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
+                            <img loading="lazy" th:alt="${post.status.excerpt}" th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}">
                         </a>
                         <div class="article-sort-item-info">
                             <div class="article-sort-item-time"><i class="far fa-calendar-alt"></i>
@@ -50,7 +50,7 @@
                     <div class="pagination"><span class="page-number current">1</span></div>
                 </nav>
             </div>
-            <div th:replace="modules/aside :: aside(${theme.config.sidebar.tag_widgets})"></div>
+            <div th:replace="modules/aside :: aside(${theme.config.sidebar.tagWidgets})"></div>
         </main>
 
         <!-- 底部 -->

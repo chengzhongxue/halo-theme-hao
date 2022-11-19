@@ -14,8 +14,8 @@
                 <span>显示模式</span>
             </a>
         </div>
-        <th:block th:if="${not #strings.isEmpty(theme.config.nav.left_menu)}"
-                  th:with="leftMenu = ${menuFinder.getByName(theme.config.nav.left_menu)}">
+        <th:block th:if="${not #strings.isEmpty(theme.config.nav.leftMenu)}"
+                  th:with="leftMenu = ${menuFinder.getByName(theme.config.nav.leftMenu)}">
             <div class="back-menu-list-groups">
                 <div class="back-menu-list-group" th:each="menuItem : ${leftMenu.menuItems}">
 

@@ -8,12 +8,12 @@
         <div class="card-info-avatar is-center">
             <div class="author-info__sayhi" id="author-info__sayhi">你好啊！我是</div>
             <div class="author-info__name"
-                 th:if="${#strings.isEmpty(theme.config.sidebar.profile_name)}"
+                 th:if="${#strings.isEmpty(theme.config.sidebar.profile.profileName)}"
                  th:text="${site.title}"></div>
             <div class="author-info__name"
-                 th:if="${not #strings.isEmpty(theme.config.sidebar.profile_name)}"
-                 th:text="${theme.config.sidebar.profile_name}"></div>
-            <div class="author-info__description" th:utext="${theme.config.sidebar.profile_desc}">
+                 th:if="${not #strings.isEmpty(theme.config.sidebar.profile.profileName)}"
+                 th:text="${theme.config.sidebar.profile.profileName}"></div>
+            <div class="author-info__description" th:utext="${theme.config.sidebar.profile.profileDesc}">
 
             </div>
         </div>
@@ -27,14 +27,15 @@
         </a>
     </div>
 
-    <div class="card-info-social-icons is-center">
-        <a class="social-icon" href="#" rel="external nofollow" target="_blank"
-           title="Github">
-            <i class="iconfont icon-github-line"></i>
-        </a>
-        <a class="social-icon" href="#" rel="external nofollow" target="_blank"
-           title="Mail">
-            <i class="iconfont icon-mail-line"></i>
+    <div class="card-info-social-icons is-center"
+         th:if="${not #lists.isEmpty(theme.config.sidebar.profile.socialMedia)}"
+         th:with="socialMedias = ${theme.config.sidebar.profile.socialMedia}">
+
+        <a class="social-icon" rel="external nofollow" target="_blank"
+           th:each="socialMedia : ${socialMedias}"
+           th:href="${socialMedia.url}"
+           th:title="${socialMedia.name}">
+            <i class="iconfont " th:classappend="${socialMedia.icon}"></i>
         </a>
     </div>
 </div>
