@@ -13,7 +13,7 @@
                  th:utext="${theme.config.top.bannersTitleSmall}"></div>
         </div>
 
-        <!--  改成后台动态可配置-->
+        <!--  后台可配置，未配置时使用默认值-->
         <div class="tags-group-all">
             <div class="tags-group-wrapper" th:if="${#lists.isEmpty(theme.config.top.bannersIconPair)}">
                 <div class="tags-group-icon-pair">

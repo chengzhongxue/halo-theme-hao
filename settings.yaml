@@ -140,6 +140,8 @@ spec:
         - $formkit: radio
           if: "$get(recentTop).value"
           name: todayRecommend
+          id: todayRecommend
+          key: todayRecommend
           label: 今日推荐
           value: false
           options:
@@ -147,24 +149,30 @@ spec:
               value: true
             - label: 隐藏
               value: false
-        - $formkit: url
-          if: "$get(recentTop).value"
-          name: todayRecommendUrl
-          label: 今日推荐跳转地址
-          placeholder: 请输入地址
-          validation: "url"
-        - $formkit: text
-          if: "$get(recentTop).value"
-          name: todayRecommendTitle
-          label: 今日推荐标题
-          placeholder: 请输入标题
-          value: "今日推荐"
-        - $formkit: url
-          if: "$get(recentTop).value"
-          name: todayRecommendCover
-          label: 今日推荐背景图
-          placeholder: 请输入地址
-          validation: "url"
+        - $formkit: group
+          if: "$get(todayRecommend).value"
+          name: todayRecommendContent
+          label: 公众号
+          value:
+            todayRecommendUrl:
+            todayRecommendTitle:
+            todayRecommendCover:
+          children:
+            - $formkit: url
+              name: todayRecommendUrl
+              label: 今日推荐跳转地址
+              placeholder: 请输入地址
+              validation: "url"
+            - $formkit: text
+              name: todayRecommendTitle
+              label: 今日推荐标题
+              placeholder: 请输入标题
+              value: "今日推荐"
+            - $formkit: url
+              name: todayRecommendCover
+              label: 今日推荐背景图
+              placeholder: 请输入地址
+              validation: "url"
 
     - group: layout
       label: 布局
