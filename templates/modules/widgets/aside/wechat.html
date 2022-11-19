@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div class="card-widget heo-right-widget" id="card-wechat" th:fragment="wechat"
-th:with="faceImg = ${theme.config.sidebar.wechat_img_back}, backImg=${theme.config.sidebar.wechat_img_back}">
+th:with="faceImg = ${theme.config.sidebar.wechat.wechatImgFace}, backImg=${theme.config.sidebar.wechat.wechatImgBack}">
     <div id="flip-wrapper">
         <div id="flip-content">
             <div class="face"
                  th:style="'background: url('+ @{${#strings.isEmpty(faceImg) ? '/assets/images/wechat/wechat1.png' : faceImg }} +') center center / 100% no-repeat;'"></div>
             <div class="back face"
-                 th:style="'background: url('+ @{${#strings.isEmpty(faceImg) ? '/assets/images/wechat/wechat2.png' : faceImg }} +') center center / 100% no-repeat;'"></div>
+                 th:style="'background: url('+ @{${#strings.isEmpty(backImg) ? '/assets/images/wechat/wechat2.png' : backImg }} +') center center / 100% no-repeat;'"></div>
         </div>
     </div>
 </div>

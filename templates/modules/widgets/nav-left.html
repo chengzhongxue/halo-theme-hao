@@ -4,8 +4,8 @@
 <!-- 导航栏左侧 -->
 <div id="blog_name" th:fragment="nav-left">
 
-    <th:block th:if="${not #strings.isEmpty(theme.config.nav.left_menu)}"
-              th:with="leftMenu = ${menuFinder.getByName(theme.config.nav.left_menu)}">
+    <th:block th:if="${not #strings.isEmpty(theme.config.nav.leftMenu)}"
+              th:with="leftMenu = ${menuFinder.getByName(theme.config.nav.leftMenu)}">
         <!-- 菜单栏左侧按钮，没有配置时，则不展示-->
         <div class="back-home-button" tabindex="-1"
              th:if="${not #lists.isEmpty(leftMenu)}">
@@ -35,7 +35,7 @@
     <!-- 返回主页 -->
     <!-- 这里可以指定使用什么作为图标，默认使用站点名称 -->
     <a href="/" id="site-name" title="返回博客主页">
-        <span th:utext="${#strings.isEmpty(theme.config.nav.site_title)} ? ${site.title} : ${theme.config.nav.site_title}"></span>
+        <span th:utext="${#strings.isEmpty(theme.config.nav.siteTitle)} ? ${site.title} : ${theme.config.nav.siteTitle}"></span>
     </a>
 </div>
 

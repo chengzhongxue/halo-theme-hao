@@ -13,5 +13,5 @@ spec:
   repo: 'https://github.com/liuzhihang/halo-theme-hao'
   settingName: "theme-hao-setting"
   configMapName: "theme-hao-configMap"
-  version: alpha.5
+  version: beta.1
   require: 2.0.0

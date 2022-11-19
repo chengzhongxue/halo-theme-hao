@@ -6,6 +6,370 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "3506983",
+      "name": "csdn",
+      "font_class": "csdn1",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "2041684",
+      "name": "CN_cnblogs",
+      "font_class": "CN_cnblogs",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "15378535",
+      "name": "leetcode",
+      "font_class": "leetcode",
+      "unicode": "ebf2",
+      "unicode_decimal": 60402
+    },
+    {
+      "icon_id": "18422914",
+      "name": "juejin",
+      "font_class": "juejin",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "18458782",
+      "name": "infoQ",
+      "font_class": "weibiaoti-1",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "829865",
+      "name": "csdn",
+      "font_class": "csdn",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "833511",
+      "name": "博客园",
+      "font_class": "bokeyuan",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "4936975",
+      "name": "yuque",
+      "font_class": "yuque",
+      "unicode": "e880",
+      "unicode_decimal": 59520
+    },
+    {
+      "icon_id": "13743995",
+      "name": "jinritoutiao",
+      "font_class": "jinritoutiao",
+      "unicode": "e68d",
+      "unicode_decimal": 59021
+    },
+    {
+      "icon_id": "28650243",
+      "name": "微信公众号",
+      "font_class": "weixingongzhonghao",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "20818171",
+      "name": "steam-line",
+      "font_class": "steam-line",
+      "unicode": "e75f",
+      "unicode_decimal": 59231
+    },
+    {
+      "icon_id": "20818172",
+      "name": "steam-fill",
+      "font_class": "steam-fill",
+      "unicode": "e763",
+      "unicode_decimal": 59235
+    },
+    {
+      "icon_id": "20818156",
+      "name": "slack-line",
+      "font_class": "slack-line",
+      "unicode": "e75c",
+      "unicode_decimal": 59228
+    },
+    {
+      "icon_id": "20818112",
+      "name": "linkedin-box-line",
+      "font_class": "linkedin-box-line",
+      "unicode": "e750",
+      "unicode_decimal": 59216
+    },
+    {
+      "icon_id": "20818178",
+      "name": "telegram-line",
+      "font_class": "telegram-line",
+      "unicode": "e761",
+      "unicode_decimal": 59233
+    },
+    {
+      "icon_id": "22273028",
+      "name": "douyin",
+      "font_class": "douyin",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    },
+    {
+      "icon_id": "14629289",
+      "name": "wechat2",
+      "font_class": "wechat2",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "20817466",
+      "name": "phone-line",
+      "font_class": "phone-line",
+      "unicode": "e6ac",
+      "unicode_decimal": 59052
+    },
+    {
+      "icon_id": "20818029",
+      "name": "alipay-line",
+      "font_class": "alipay-line",
+      "unicode": "e73c",
+      "unicode_decimal": 59196
+    },
+    {
+      "icon_id": "20818039",
+      "name": "app-store-line",
+      "font_class": "app-store-line",
+      "unicode": "e73e",
+      "unicode_decimal": 59198
+    },
+    {
+      "icon_id": "20818044",
+      "name": "baidu-line",
+      "font_class": "baidu-line",
+      "unicode": "e73f",
+      "unicode_decimal": 59199
+    },
+    {
+      "icon_id": "20818045",
+      "name": "bilibili-line",
+      "font_class": "bilibili-line",
+      "unicode": "e740",
+      "unicode_decimal": 59200
+    },
+    {
+      "icon_id": "20818057",
+      "name": "dingding-line",
+      "font_class": "dingding-line",
+      "unicode": "e743",
+      "unicode_decimal": 59203
+    },
+    {
+      "icon_id": "20818060",
+      "name": "douban-line",
+      "font_class": "douban-line",
+      "unicode": "e744",
+      "unicode_decimal": 59204
+    },
+    {
+      "icon_id": "20818061",
+      "name": "disqus-line",
+      "font_class": "disqus-line",
+      "unicode": "e745",
+      "unicode_decimal": 59205
+    },
+    {
+      "icon_id": "20818062",
+      "name": "discord-line",
+      "font_class": "discord-line",
+      "unicode": "e746",
+      "unicode_decimal": 59206
+    },
+    {
+      "icon_id": "20818064",
+      "name": "dribbble-line",
+      "font_class": "dribbble-line",
+      "unicode": "e747",
+      "unicode_decimal": 59207
+    },
+    {
+      "icon_id": "20818065",
+      "name": "drive-line",
+      "font_class": "drive-line",
+      "unicode": "e748",
+      "unicode_decimal": 59208
+    },
+    {
+      "icon_id": "20818068",
+      "name": "facebook-box-line",
+      "font_class": "facebook-box-line",
+      "unicode": "e749",
+      "unicode_decimal": 59209
+    },
+    {
+      "icon_id": "20818074",
+      "name": "dropbox-line",
+      "font_class": "dropbox-line",
+      "unicode": "e74a",
+      "unicode_decimal": 59210
+    },
+    {
+      "icon_id": "20818085",
+      "name": "evernote-line",
+      "font_class": "evernote-line",
+      "unicode": "e74b",
+      "unicode_decimal": 59211
+    },
+    {
+      "icon_id": "20818088",
+      "name": "gitlab-line",
+      "font_class": "gitlab-line",
+      "unicode": "e74d",
+      "unicode_decimal": 59213
+    },
+    {
+      "icon_id": "20818092",
+      "name": "google-line",
+      "font_class": "google-line",
+      "unicode": "e74e",
+      "unicode_decimal": 59214
+    },
+    {
+      "icon_id": "20818094",
+      "name": "google-play-line",
+      "font_class": "google-play-line",
+      "unicode": "e74f",
+      "unicode_decimal": 59215
+    },
+    {
+      "icon_id": "20818106",
+      "name": "instagram-line",
+      "font_class": "instagram-line",
+      "unicode": "e751",
+      "unicode_decimal": 59217
+    },
+    {
+      "icon_id": "20818121",
+      "name": "line-fill",
+      "font_class": "line-fill",
+      "unicode": "e752",
+      "unicode_decimal": 59218
+    },
+    {
+      "icon_id": "20818138",
+      "name": "paypal-line",
+      "font_class": "paypal-line",
+      "unicode": "e757",
+      "unicode_decimal": 59223
+    },
+    {
+      "icon_id": "20818146",
+      "name": "qq-line",
+      "font_class": "qq-line",
+      "unicode": "e759",
+      "unicode_decimal": 59225
+    },
+    {
+      "icon_id": "20818153",
+      "name": "reddit-line",
+      "font_class": "reddit-line",
+      "unicode": "e75a",
+      "unicode_decimal": 59226
+    },
+    {
+      "icon_id": "20818162",
+      "name": "spotify-line",
+      "font_class": "spotify-line",
+      "unicode": "e75d",
+      "unicode_decimal": 59229
+    },
+    {
+      "icon_id": "20818166",
+      "name": "stack-overflow-line",
+      "font_class": "stack-overflow-line",
+      "unicode": "e75e",
+      "unicode_decimal": 59230
+    },
+    {
+      "icon_id": "20818168",
+      "name": "snapchat-line",
+      "font_class": "snapchat-line",
+      "unicode": "e75b",
+      "unicode_decimal": 59227
+    },
+    {
+      "icon_id": "20818175",
+      "name": "taobao-line",
+      "font_class": "taobao-line",
+      "unicode": "e760",
+      "unicode_decimal": 59232
+    },
+    {
+      "icon_id": "20818181",
+      "name": "twitter-line",
+      "font_class": "twitter-line",
+      "unicode": "e762",
+      "unicode_decimal": 59234
+    },
+    {
+      "icon_id": "20818193",
+      "name": "wechat-2-line",
+      "font_class": "wechat-2-line",
+      "unicode": "e766",
+      "unicode_decimal": 59238
+    },
+    {
+      "icon_id": "20818195",
+      "name": "wechat-fill",
+      "font_class": "wechat-fill",
+      "unicode": "e768",
+      "unicode_decimal": 59240
+    },
+    {
+      "icon_id": "20818198",
+      "name": "wechat-line",
+      "font_class": "wechat-line",
+      "unicode": "e769",
+      "unicode_decimal": 59241
+    },
+    {
+      "icon_id": "20818200",
+      "name": "weibo-line",
+      "font_class": "weibo-line",
+      "unicode": "e76a",
+      "unicode_decimal": 59242
+    },
+    {
+      "icon_id": "20818206",
+      "name": "whatsapp-line",
+      "font_class": "whatsapp-line",
+      "unicode": "e76b",
+      "unicode_decimal": 59243
+    },
+    {
+      "icon_id": "20818213",
+      "name": "youtube-line",
+      "font_class": "youtube-line",
+      "unicode": "e76c",
+      "unicode_decimal": 59244
+    },
+    {
+      "icon_id": "20818220",
+      "name": "zhihu-line",
+      "font_class": "zhihu-line",
+      "unicode": "e76d",
+      "unicode_decimal": 59245
+    },
+    {
+      "icon_id": "20818226",
+      "name": "wechat-2-fill",
+      "font_class": "wechat-2-fill",
+      "unicode": "e76e",
+      "unicode_decimal": 59246
+    },
+    {
       "icon_id": "12095053",
       "name": "by",
       "font_class": "by",

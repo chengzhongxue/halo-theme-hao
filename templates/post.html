@@ -6,11 +6,11 @@
     <div class="post" id="body-wrap">
 
         <header class="post-bg" id="page-header"
-                th:style="'background-image:url(' + (${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}) + ')'">
+                th:style="'background-image:url(' + (${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}) + ')'">
             <nav th:replace="modules/nav :: nav"></nav>
             <div class="coverdiv" id="coverdiv">
                 <img crossorigin="anonymous" id="post-cover"
-                     th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.post_random_img : post.spec.cover}">
+                     th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}">
             </div>
 
             <div id="post-info">
@@ -230,7 +230,7 @@
             </div>
 
             <!-- 侧栏 -->
-            <div th:replace="modules/aside :: aside(${theme.config.sidebar.post_widgets})"></div>
+            <div th:replace="modules/aside :: aside(${theme.config.sidebar.postWidgets})"></div>
         </main>
 
         <!-- 底部 -->
