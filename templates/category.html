@@ -17,7 +17,7 @@
                                 <a href="/">首页</a>
                             </div>
                             <div class="category-bar-item"
-                                 th:classappend="${category.metadata.name == categoryItem.metadata.name} ? 'select'"
+                                 th:classappend="${category.metadata.name == categoryItem.metadata.name} ? ' select'"
                                  th:each="categoryItem : ${categoryFinder.listAll()}"
                                  th:id="${categoryItem.spec.displayName}">
                                 <a th:href="@{${categoryItem.status.permalink}}"

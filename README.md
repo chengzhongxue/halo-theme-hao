@@ -9,7 +9,7 @@
 
 ---
 
-预览：[程序员小航](https://liuzhihang.com)
+预览：[程序员小航](http://hao.liuzhihang.com/)
 
 文档：[语雀](https://www.yuque.com/liuzhihangs/halo-theme-hao)
 

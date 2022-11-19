@@ -11,11 +11,12 @@
             <div id="tag">
                 <div id="tag-page-tags" th:with="tags = ${tagFinder.listAll()}">
                     <a style="font-size:1em;color:#3c228c"
-                       th:each="tag : ${tags}"
-                       th:href="@{${tag.status.permalink}}"
-                       th:id="${tag.spec.displayName}">
-                        <span class="tags-punctuation">#</span> [[${tag.spec.displayName}]]
-                        <span class="tagsPageCount" th:text="${tag.status.postCount}"></span>
+                       th:classappend="${tag.metadata.name == tagItem.metadata.name} ? 'select'"
+                       th:each="tagItem : ${tags}"
+                       th:href="@{${tagItem.status.permalink}}"
+                       th:id="${tagItem.spec.displayName}">
+                        <span class="tags-punctuation">#</span> [[${tagItem.spec.displayName}]]
+                        <span class="tagsPageCount" th:text="${tagItem.status.postCount}"></span>
                     </a>
                 </div>
                 <div class="article-sort-title" th:text="${tag.spec.displayName}"></div>
