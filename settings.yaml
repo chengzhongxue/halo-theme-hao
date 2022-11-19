@@ -337,11 +337,92 @@ spec:
     - group: footer
       label: 页脚
       formSchema:
-        - $formkit: textarea
-          name: social
-          label: 社交链接（无效）
-          placeholder: 暂时不支持配置
-          help: "当前版本不支持配置"
+        - $formkit: repeater
+          name: socialMedia
+          label: 社交媒体
+          value:
+            - icon:
+              name:
+              url:
+              urlType: normal
+          children:
+            - $formkit: select
+              name: icon
+              label: 图标
+              options:
+                - label: 电子邮箱
+                  value: icon-mail-line
+                - label: 微信
+                  value: icon-wechat2
+                - label: 公众号
+                  value: icon-weixingongzhonghao
+                - label: 腾讯 QQ
+                  value: icon-qq-line
+                - label: 新浪微博
+                  value: icon-weibo-line
+                - label: 知乎
+                  value: icon-zhihu-line
+                - label: 豆瓣
+                  value: icon-douban-line
+                - label: 哔哩哔哩
+                  value: icon-bilibili-line
+                - label: GitHub
+                  value: icon-github-line
+                - label: GitLab
+                  value: icon-gitlab-line
+                - label: 百度
+                  value: icon-baidu-line
+                - label: 掘金
+                  value: icon-juejin
+                - label: 语雀
+                  value: icon-yuque
+                - label: 博客园
+                  value: icon-CN_cnblogs
+                - label: CSDN
+                  value: icon-csdn1
+                - label: LeetCode
+                  value: icon-leetcode
+                - label: 头条
+                  value: icon-jinritoutiao
+                - label: 抖音 / TikTok
+                  value: icon-douyin
+                - label: Telegram
+                  value: icon-telegram-line
+                - label: Facebook
+                  value: icon-facebook-box-line
+                - label: Instagram
+                  value: icon-instagram-line
+                - label: LinkedIn
+                  value: icon-linkedin-box-line
+                - label: Twitter
+                  value: icon-twitter-line
+                - label: Slack
+                  value: icon-slack-line
+                - label: Discord
+                  value: icon-discord-line
+                - label: YouTube
+                  value: icon-youtube-line
+                - label: Steam
+                  value: icon-steam-fill
+                - label: Dribbble
+                  value: icon-dribbble-line
+            - $formkit: text
+              name: name
+              label: 名称
+            - $formkit: text
+              name: url
+              label: 链接
+              validation: "url"
+            - $formkit: radio
+              name: urlType
+              label: 链接类型
+              value: normal
+              help: "如果选择了图片类型，那么在访客点击之后会使用弹框的形式加载"
+              options:
+                - label: 跳转链接
+                  value: normal
+                - label: 图片
+                  value: image
         - $formkit: menuRadio
           name: menu
           label: 底部相关链接

@@ -4,12 +4,16 @@
 <footer id="footer" th:fragment="footer">
 
     <!-- 社交链接，需要填入 href class title -->
-    <div id="footer_deal" th:if="${not #strings.isEmpty(theme.config.footer.social)}">
-        <a class="deal_link" href="/" rel="external nofollow" title="mail">
-            <i class="fa-regular fa-envelope"></i>
+    <div id="footer_deal"
+         th:if="${not #lists.isEmpty(theme.config.footer.socialMedia)}"
+         th:with="socialMedias = ${theme.config.sidebar.profile.socialMedia}">
+        <a class="deal_link" rel="external nofollow" target="_blank"
+           th:each="socialMedia : ${socialMedias}"
+           th:href="${socialMedia.url}"
+           th:title="${socialMedia.name}">
+            <i class="iconfont " th:classappend="${socialMedia.icon}"></i>
         </a>
     </div>
-
 
     <!-- 相关地址  -->
     <th:block th:if="${not #strings.isEmpty(theme.config.footer.menu)}"
