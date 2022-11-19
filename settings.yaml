@@ -61,12 +61,14 @@ spec:
           name: bannersTitleBig
           label: Banners 大标题
           placeholder: 请输入大标题
+          value: Halo Theme Hao
           help: 支持 HTML 语法
         - $formkit: text
           if: "$get(recentTop).value"
           name: bannersTitleSmall
           label: Banners 小标题
           placeholder: 请输入小标题
+          value: 更多信息请关注 GitHub
           help: 支持 HTML 语法
         - $formkit: repeater
           if: "$get(recentTop).value"
