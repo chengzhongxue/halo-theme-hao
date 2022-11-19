@@ -15,7 +15,7 @@
 
         <!--  改成后台动态可配置-->
         <div class="tags-group-all">
-            <div class="tags-group-wrapper">
+            <div class="tags-group-wrapper" th:if="${#lists.isEmpty(theme.config.top.bannersIconPair)}">
                 <div class="tags-group-icon-pair">
                     <div class="tags-group-icon" style="background:#989bf8">
                         <img th:src="@{/assets/images/icons/AfterEffect.png}" title="AfterEffect">
@@ -126,6 +126,18 @@
                     </div>
                     <div class="tags-group-icon" style="background:#e65164">
                         <img th:src="@{/assets/images/icons/Apifox.webp}" title="Apifox">
+                    </div>
+                </div>
+            </div>
+            <div class="tags-group-wrapper"
+                 th:if="${not #lists.isEmpty(theme.config.top.bannersIconPair)}"
+                 th:with="iconPairs = ${theme.config.top.bannersIconPair}" >
+                <div class="tags-group-icon-pair" th:each="iconPair : ${iconPairs}">
+                    <div class="tags-group-icon" th:style="'background:' + ${iconPair.top.background}">
+                        <img th:src="@{${iconPair.top.url}}" th:title="${iconPair.top.name}">
+                    </div>
+                    <div class="tags-group-icon" th:style="'background:' + ${iconPair.bottom.background}">
+                        <img th:src="@{${iconPair.bottom.url}}" th:title="${iconPair.bottom.name}">
                     </div>
                 </div>
             </div>

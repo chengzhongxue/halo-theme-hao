@@ -37,15 +37,6 @@ spec:
       label: 顶部
       formSchema:
         - $formkit: radio
-          name: recentTop
-          label: 首页顶部
-          value: true
-          options:
-            - label: 显示
-              value: true
-            - label: 隐藏
-              value: false
-        - $formkit: radio
           name: moment
           label: 说说模块
           value: true
@@ -54,32 +45,98 @@ spec:
               value: true
             - label: 隐藏
               value: false
+        - $formkit: radio
+          name: recentTop
+          id: recentTop
+          key: recentTop
+          label: 首页顶部
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
         - $formkit: text
+          if: "$get(recentTop).value"
           name: bannersTitleBig
           label: Banners 大标题
           placeholder: 请输入大标题
           help: 支持 HTML 语法
         - $formkit: text
+          if: "$get(recentTop).value"
           name: bannersTitleSmall
           label: Banners 小标题
           placeholder: 请输入小标题
           help: 支持 HTML 语法
+        - $formkit: repeater
+          if: "$get(recentTop).value"
+          name: bannersIconPair
+          label: Banner 滚动图标
+          help: 为空时会使用系统内置图标
+          value:
+            - top:
+              bottom:
+          children:
+            - $formkit: group
+              name: top
+              label: 上图标
+              value:
+                url:
+                name:
+                background:
+              children:
+                - $formkit: url
+                  name: url
+                  label: 路径
+                  placeholder: 请输入图标路径
+                  validation: "url"
+                - $formkit: text
+                  name: name
+                  label: 名称
+                  placeholder: 请输入名称
+                - $formkit: color
+                  name: background
+                  label: 背景色
+            - $formkit: group
+              name: bottom
+              label: 下图标
+              value:
+                url:
+                name:
+                background:
+              children:
+                - $formkit: url
+                  name: url
+                  label: 路径
+                  placeholder: 请输入图标路径
+                  validation: "url"
+                - $formkit: text
+                  name: name
+                  label: 名称
+                  placeholder: 请输入名称
+                - $formkit: color
+                  name: background
+                  label: 背景色
         - $formkit: url
+          if: "$get(recentTop).value"
           name: bikan
           label: 必看精选
           placeholder: 请输入地址
           validation: "url"
         - $formkit: url
+          if: "$get(recentTop).value"
           name: remen
           label: 必看精选
           placeholder: 请输入地址
           validation: "url"
         - $formkit: url
+          if: "$get(recentTop).value"
           name: shiyong
           label: 必看精选
           placeholder: 请输入地址
           validation: "url"
         - $formkit: radio
+          if: "$get(recentTop).value"
           name: todayRecommend
           label: 今日推荐
           value: false
@@ -89,16 +146,19 @@ spec:
             - label: 隐藏
               value: false
         - $formkit: url
+          if: "$get(recentTop).value"
           name: todayRecommendUrl
           label: 今日推荐跳转地址
           placeholder: 请输入地址
           validation: "url"
         - $formkit: text
+          if: "$get(recentTop).value"
           name: todayRecommendTitle
           label: 今日推荐标题
           placeholder: 请输入标题
           value: "今日推荐"
         - $formkit: url
+          if: "$get(recentTop).value"
           name: todayRecommendCover
           label: 今日推荐背景图
           placeholder: 请输入地址
@@ -155,42 +215,6 @@ spec:
               label: "右侧"
             - value: "left-aside"
               label: "左侧"
-
-#        - $formkit: repeater
-#          name: widgets
-#          label: 小部件
-#          value:
-#            - value: profile
-#            - value: wechat
-#            - value: comments
-#            - value: recent-posts
-#            - value: comments
-#            - value: categories
-#            - value: tags
-#            - value: stat
-#            - value: tags-stat
-#          children:
-#            - $formkit: select
-#              name: value
-#              label: 部件
-#              options:
-#                - label: 站点资料
-#                  value: profile
-#                - label: 微信
-#                  value: wechat
-#                - label: 近期文章
-#                  value: recent-posts
-#                - label: 最新评论
-#                  value: comments
-#                - label: 文章分类
-#                  value: categories
-#                - label: 文章标签
-#                  value: tags
-#                - label: 统计
-#                  value: stat
-#                - label: 标签&统计
-#                  value: tags-stat
-
         - $formkit: textarea
           name: widgets
           label: 小部件
