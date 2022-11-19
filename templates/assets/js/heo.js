@@ -89,57 +89,57 @@ var heo = {
 
     // 标签页面
     //分类条
-    tagPageActive: function () {
-        var urlinfo = window.location.pathname;
-        urlinfo = decodeURIComponent(urlinfo)
-        // console.log(urlinfo);
-        // 验证是否是分类链接
-        var pattern = /\/tags\/.*?\//;
-        var patbool = pattern.test(urlinfo);
-        // console.log(patbool);
-        // 获取当前的分类
-        if (patbool) {
-            var valuegroup = urlinfo.split("/");
-            // console.log(valuegroup[2]);
-            // 获取当前分类
-            var nowCategorie = valuegroup[2];
-            if (document.querySelector('#tag-page-tags')) {
-                $('a').removeClass('select')
-                document.getElementById(nowCategorie).classList.add("select");
-            }
-        }
-    },
+    // tagPageActive: function () {
+    //     var urlinfo = window.location.pathname;
+    //     urlinfo = decodeURIComponent(urlinfo)
+    //     // console.log(urlinfo);
+    //     // 验证是否是分类链接
+    //     var pattern = /\/tags\/.*?\//;
+    //     var patbool = pattern.test(urlinfo);
+    //     // console.log(patbool);
+    //     // 获取当前的分类
+    //     if (patbool) {
+    //         var valuegroup = urlinfo.split("/");
+    //         // console.log(valuegroup[2]);
+    //         // 获取当前分类
+    //         var nowCategorie = valuegroup[2];
+    //         if (document.querySelector('#tag-page-tags')) {
+    //             $('a').removeClass('select')
+    //             document.getElementById(nowCategorie).classList.add("select");
+    //         }
+    //     }
+    // },
 
     //分类条
-    categoriesBarActive: function () {
-        if (document.querySelector('#category-bar')) {
-            $(".category-bar-item").removeClass("select")
-        }
-        var urlinfo = window.location.pathname;
-        urlinfo = decodeURIComponent(urlinfo);
-        // console.log(urlinfo);
-        //判断是否是首页
-        if (urlinfo == '/') {
-            if (document.querySelector('#category-bar')) {
-                document.getElementById('category-bar-home').classList.add("select");
-            }
-        } else {
-            // 验证是否是分类链接
-            var pattern = /\/categories\/.*?\//;
-            var patbool = pattern.test(urlinfo);
-            // console.log(patbool);
-            // 获取当前的分类
-            if (patbool) {
-                var valuegroup = urlinfo.split("/");
-                // console.log(valuegroup[2]);
-                // 获取当前分类
-                var nowCategorie = valuegroup[2];
-                if (document.querySelector('#category-bar')) {
-                    document.getElementById(nowCategorie).classList.add("select");
-                }
-            }
-        }
-    },
+    // categoriesBarActive: function () {
+    //     if (document.querySelector('#category-bar')) {
+    //         $(".category-bar-item").removeClass("select")
+    //     }
+    //     var urlinfo = window.location.pathname;
+    //     urlinfo = decodeURIComponent(urlinfo);
+    //     // console.log(urlinfo);
+    //     //判断是否是首页
+    //     if (urlinfo == '/') {
+    //         if (document.querySelector('#category-bar')) {
+    //             document.getElementById('category-bar-home').classList.add("select");
+    //         }
+    //     } else {
+    //         // 验证是否是分类链接
+    //         var pattern = /\/categories\/.*?\//;
+    //         var patbool = pattern.test(urlinfo);
+    //         // console.log(patbool);
+    //         // 获取当前的分类
+    //         if (patbool) {
+    //             var valuegroup = urlinfo.split("/");
+    //             // console.log(valuegroup[2]);
+    //             // 获取当前分类
+    //             var nowCategorie = valuegroup[2];
+    //             if (document.querySelector('#category-bar')) {
+    //                 document.getElementById(nowCategorie).classList.add("select");
+    //             }
+    //         }
+    //     }
+    // },
 
     // 页脚友链
     addFriendLinksInFooter: function () {

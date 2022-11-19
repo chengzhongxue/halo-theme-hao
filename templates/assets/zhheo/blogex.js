@@ -779,10 +779,10 @@ document.addEventListener('load', function () {
     heo.reflashEssayWaterFall()
     heo.addMediumInEssay()
     heo.darkModeStatus()
-    heo.categoriesBarActive()
+    // heo.categoriesBarActive()
     heo.initThemeColor()
     heo.hideLoading()
-    heo.tagPageActive()
+    // heo.tagPageActive()
 })
 window.onscroll = function () {
     percent();
