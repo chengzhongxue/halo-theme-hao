@@ -173,6 +173,39 @@ spec:
               label: 今日推荐背景图
               placeholder: 请输入地址
               validation: "url"
+        - $formkit: select
+          if: "$get(recentTop).value"
+          name: recommendPost
+          id: recommendPost
+          key: recommendPost
+          label: 推荐文章
+          value: latest
+          options:
+            - label: 最新文章
+              value: latest
+            - label: 自定义
+              value: custom
+        - $formkit: repeater
+          if: "$get(recommendPost).value === custom"
+          name: recommendPostCustom
+          label: 自定义文章
+          help: "建议设置六篇文章"
+          value:
+            - url:
+              title:
+              cover:
+          children:
+            - $formkit: url
+              name: url
+              label: 链接
+              validation: "url"
+            - $formkit: text
+              name: title
+              label: 标题
+            - $formkit: url
+              name: cover
+              label: 封面地址
+              validation: "url"
 
     - group: layout
       label: 布局
@@ -337,7 +370,7 @@ spec:
                 - $formkit: text
                   name: name
                   label: 名称
-                - $formkit: text
+                - $formkit: url
                   name: url
                   label: 链接
                   validation: "url"
