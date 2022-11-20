@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<!-- 这里应该改为 6 篇置顶文章 -->
-<div class="topGroup" th:fragment="top-group" th:with="posts = ${postFinder.list(1,6)}">
-    <div class="recent-post-item" th:each="post : ${posts}">
+<!-- 可以是最近六篇文章，也可以是自定义的文章 -->
+<div class="topGroup" th:fragment="top-group">
+    <div class="recent-post-item"
+         th:each="post : ${posts}"
+         th:if="${#strings.equals(theme.config.top.recommendPost, 'latest')}"
+         th:with="posts = ${postFinder.list(1,6)}">
         <div class="post_cover">
             <a th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
                 <span class="recent-post-top-text">荐</span>
@@ -20,6 +23,27 @@
             </a>
         </div>
     </div>
+
+    <div class="recent-post-item"
+         th:each="cuscomPost : ${theme.config.top.recommendPostCustom}"
+         th:if="${#strings.equals(theme.config.top.recommendPost, 'custom')}">
+        <div class="post_cover">
+            <a th:href="@{${cuscomPost.url}}" th:title="${cuscomPost.title}">
+                <span class="recent-post-top-text">荐</span>
+                <img class="post_bg" loading="lazy"
+                     th:alt="${cuscomPost.title}"
+                     th:src="${cuscomPost.cover}">
+            </a>
+        </div>
+        <div class="recent-post-info">
+            <a class="article-title"
+               th:href="@{${cuscomPost.url}}"
+               th:text="${cuscomPost.title}"
+               th:title="${cuscomPost.title}">
+            </a>
+        </div>
+    </div>
+
 
     <!-- 今日推荐 -->
     <div class="todayCard" id="todayCard"
