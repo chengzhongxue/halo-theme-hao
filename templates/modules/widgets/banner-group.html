@@ -134,13 +134,12 @@
                  th:if="${not #lists.isEmpty(theme.config.top.bannersIconPair)}"
                  th:with="iconPairs = ${theme.config.top.bannersIconPair}" >
                 <div class="tags-group-icon-pair" th:each="iconPair : ${iconPairs}">
-                    [[${iconPair}]]
-                    <!--<div class="tags-group-icon" th:style="'background:' + ${iconPair.top.background}">-->
-                    <!--    <img th:src="@{${iconPair.top.url}}" th:title="${iconPair.top.name}">-->
-                    <!--</div>-->
-                    <!--<div class="tags-group-icon" th:style="'background:' + ${iconPair.bottom.background}">-->
-                    <!--    <img th:src="@{${iconPair.bottom.url}}" th:title="${iconPair.bottom.name}">-->
-                    <!--</div>-->
+                    <div class="tags-group-icon" th:style="'background:' + ${iconPair.top.background}">
+                        <img th:src="@{${iconPair.top.url}}" th:title="${iconPair.top.name}">
+                    </div>
+                    <div class="tags-group-icon" th:style="'background:' + ${iconPair.bottom.background}">
+                        <img th:src="@{${iconPair.bottom.url}}" th:title="${iconPair.bottom.name}">
+                    </div>
                 </div>
             </div>
         </div>
