@@ -75,9 +75,7 @@ spec:
           name: bannersIconPair
           label: Banner 滚动图标
           help: 为空时会使用系统内置图标
-          value:
-            - top:
-              bottom:
+          value: []
           children:
             - $formkit: group
               name: top
@@ -190,10 +188,7 @@ spec:
           name: recommendPostCustom
           label: 自定义文章
           help: "建议设置六篇文章"
-          value:
-            - url:
-              title:
-              cover:
+          value: []
           children:
             - $formkit: url
               name: url
@@ -301,11 +296,7 @@ spec:
               name: socialMedia
               label: 社交媒体
               help: 侧栏社交媒体建议只设置两个
-              value:
-                - icon:
-                  name:
-                  url:
-                  urlType: normal
+              value: []
               children:
                 - $formkit: select
                   name: icon
@@ -407,11 +398,7 @@ spec:
         - $formkit: repeater
           name: socialMedia
           label: 社交媒体
-          value:
-            - icon:
-              name:
-              url:
-              urlType: normal
+          value: []
           children:
             - $formkit: select
               name: icon

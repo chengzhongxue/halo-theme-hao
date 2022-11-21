@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<!-- 可以是最近六篇文章，也可以是自定义的文章 -->
-<div class="topGroup" th:fragment="top-group">
+<!-- 可以是最近六篇文章 -->
+<div class="topGroup" th:fragment="top-group" th:with="topGroupPosts = ${postFinder.list(1,6)}">
     <div class="recent-post-item"
-         th:each="post : ${posts}"
-         th:if="${#strings.equals(theme.config.top.recommendPost, 'latest')}"
-         th:with="posts = ${postFinder.list(1,6)}">
+         th:each="post : ${topGroupPosts}"
+         th:if="${#strings.equals(theme.config.top.recommendPost, 'latest')}">
+
         <div class="post_cover">
             <a th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
                 <span class="recent-post-top-text">荐</span>
@@ -23,7 +23,7 @@
             </a>
         </div>
     </div>
-
+    <!-- 自定义的文章右上角的推荐文章 -->
     <div class="recent-post-item"
          th:each="cuscomPost : ${theme.config.top.recommendPostCustom}"
          th:if="${#strings.equals(theme.config.top.recommendPost, 'custom')}">

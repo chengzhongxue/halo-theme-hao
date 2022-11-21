@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'category')"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="content">
+
+    <div class="page" id="body-wrap">
+        <header class="not-top-img" id="page-header">
+            <nav th:replace="modules/nav :: nav"></nav>
+        </header>
+        <main class="layout hide-aside" id="content-inner">
+
+            <div id="page">
+                <h1 class="page-title" style="display: inline;">分类</h1>
+                <div class="category-lists">
+                    <div class="category-title is-center">分类 - <span class="category-amount">11</span></div>
+                    <div class="tag-cloud-list is-center">
+                        <a style="font-size: 1em;"
+                           th:each="categoryItem : ${categoryFinder.listAll()}"
+                           th:href="@{${categoryItem.status.permalink}}"
+                           th:id="${categoryItem.spec.displayName}">
+                            <span class="tags-punctuation">#</span>
+                            [[${categoryItem.spec.displayName}]]
+                            <span class="tagsPageCount">[[${categoryItem.postCount}]]</span></a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- 底部 -->
+        <footer th:replace="modules/footer :: footer"></footer>
+    </div>
+
+</th:block>
+
+</html>
