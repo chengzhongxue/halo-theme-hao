@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'tag')"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="content">
+
+    <div class="page" id="body-wrap">
+        <header class="not-top-img" id="page-header">
+            <nav th:replace="modules/nav :: nav"></nav>
+        </header>
+        <main class="layout hide-aside" id="content-inner">
+            <div id="page"><h1 class="page-title" style="display: inline;">标签</h1>
+                <div class="tag-cloud-title is-center">标签 - <span class="tag-cloud-amount">0</span></div>
+                <div class="tag-cloud-list is-center">
+                    <a th:each="tagItem : ${tagFinder.listAll()}"
+                       th:href="@{${tagItem.status.permalink}}"
+                       th:id="${tagItem.spec.displayName}" th:style="'font-size: 1em; color:' + ${tagItem.spec.color} ">
+                        <span class="tags-punctuation">#</span>
+                        [[${tagItem.spec.displayName}]]
+                        <span class="tagsPageCount">[[${tagItem.postCount}]]</span>
+                    </a>
+
+                </div>
+            </div>
+        </main>
+        <!-- 底部 -->
+        <footer th:replace="modules/footer :: footer"></footer>
+    </div>
+
+</th:block>
+
+</html>

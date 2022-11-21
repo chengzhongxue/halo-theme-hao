@@ -75,9 +75,7 @@ spec:
           name: bannersIconPair
           label: Banner 滚动图标
           help: 为空时会使用系统内置图标
-          value:
-            - top:
-              bottom:
+          value: []
           children:
             - $formkit: group
               name: top
@@ -190,10 +188,7 @@ spec:
           name: recommendPostCustom
           label: 自定义文章
           help: "建议设置六篇文章"
-          value:
-            - url:
-              title:
-              cover:
+          value: []
           children:
             - $formkit: url
               name: url
