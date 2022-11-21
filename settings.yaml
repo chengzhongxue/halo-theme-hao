@@ -296,11 +296,7 @@ spec:
               name: socialMedia
               label: 社交媒体
               help: 侧栏社交媒体建议只设置两个
-              value:
-                - icon:
-                  name:
-                  url:
-                  urlType: normal
+              value: []
               children:
                 - $formkit: select
                   name: icon
@@ -402,11 +398,7 @@ spec:
         - $formkit: repeater
           name: socialMedia
           label: 社交媒体
-          value:
-            - icon:
-              name:
-              url:
-              urlType: normal
+          value: []
           children:
             - $formkit: select
               name: icon
