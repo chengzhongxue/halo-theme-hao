@@ -70,53 +70,18 @@ spec:
           placeholder: 请输入小标题
           value: 更多信息请关注 GitHub
           help: 支持 HTML 语法
-        - $formkit: repeater
-          if: "$get(recentTop).value"
-          name: bannersIconPair
-          label: Banner 滚动图标
-          help: 为空时会使用系统内置图标
-          value: []
-          children:
-            - $formkit: group
-              name: top
-              label: 上图标
-              value:
-                url:
-                name:
-                background:
-              children:
-                - $formkit: url
-                  name: url
-                  label: 路径
-                  placeholder: 请输入图标路径
-                  validation: "url"
-                - $formkit: text
-                  name: name
-                  label: 名称
-                  placeholder: 请输入名称
-                - $formkit: color
-                  name: background
-                  label: 背景色
-            - $formkit: group
-              name: bottom
-              label: 下图标
-              value:
-                url:
-                name:
-                background:
-              children:
-                - $formkit: url
-                  name: url
-                  label: 路径
-                  placeholder: 请输入图标路径
-                  validation: "url"
-                - $formkit: text
-                  name: name
-                  label: 名称
-                  placeholder: 请输入名称
-                - $formkit: color
-                  name: background
-                  label: 背景色
+        - $formkit: select
+          name: bannersBackground
+          label: 文章列表布局
+          value: default
+          options:
+            - label: 默认
+              value: default
+            - label: 技术栈
+              value: techStack
+            - label: 图片（WIP）
+              value: img
+          help: "Banner 底部背景，默认使用主题技术栈、自定义技术栈需要在【个人】中配置技术栈"
         - $formkit: url
           if: "$get(recentTop).value"
           name: bikan
@@ -126,13 +91,13 @@ spec:
         - $formkit: url
           if: "$get(recentTop).value"
           name: remen
-          label: 必看精选
+          label: 热门文章
           placeholder: 请输入地址
           validation: "url"
         - $formkit: url
           if: "$get(recentTop).value"
           name: shiyong
-          label: 必看精选
+          label: 实用教程
           placeholder: 请输入地址
           validation: "url"
         - $formkit: radio
@@ -499,6 +464,28 @@ spec:
           label: 版权声明
           placeholder: '本文是原创文章，采用 <a target="_blank" href="/cc">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a href="/" target="_blank" >程序员小航</a>'
           help: "版权声明内容，支持填入 HTML 标签"
+
+    - group: about
+      label: 个人
+      formSchema:
+        - $formkit: repeater
+          name: techStack
+          label: 技术栈
+          help: 个人技术栈
+          value: []
+          children:
+            - $formkit: text
+              name: name
+              label: 名称
+              placeholder: 请输入名称
+            - $formkit: url
+              name: url
+              label: 路径
+              placeholder: 请输入图标路径
+              validation: "url"
+            - $formkit: color
+              name: background
+              label: 背景色
 
     - group: style
       label: 样式（WIP）
