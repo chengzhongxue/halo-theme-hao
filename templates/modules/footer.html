@@ -6,7 +6,7 @@
     <!-- 社交链接，需要填入 href class title -->
     <div id="footer_deal"
          th:if="${not #lists.isEmpty(theme.config.footer.socialMedia)}"
-         th:with="socialMedias = ${theme.config.sidebar.profile.socialMedia}">
+         th:with="socialMedias = ${theme.config.footer.socialMedia}">
         <a class="deal_link" rel="external nofollow" target="_blank"
            th:each="socialMedia : ${socialMedias}"
            th:href="${socialMedia.url}"
