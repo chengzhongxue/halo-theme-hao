@@ -70,7 +70,8 @@
     </div>
 
 
-    <nav id="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}" th:with="totalPages = ${posts.totalPages}, pageIndex = ${posts.page}">
+    <nav id="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}"
+         th:with="totalPages = ${posts.totalPages}, pageIndex = ${posts.page}">
         <!-- 页面小于 7 -->
         <div class="pagination" th:if="${(totalPages le 7) && (totalPages gt 0)}">
 
@@ -80,10 +81,10 @@
                 <div class="pagination_tips_prev">上页</div>
             </a>
 
-            <!-- th:href="${PostFinder.list(index, posts.size)}" -->
             <a class="page-number"
                th:classappend="${index eq pageIndex} ? 'current'"
                th:each="index : ${#numbers.sequence(1, totalPages)}"
+               th:href="@{'/page/' + ${index}}"
                th:text="${index}">
             </a>
 
@@ -111,10 +112,10 @@
 
 
             <!-- 当前页面小于等于4 -->
-            <!-- TODO 需要添加 th:href 跳转地址 -->
             <a class="page-number"
                th:classappend="${index eq pageIndex} ? 'current'"
-               th:each="index:${#numbers.sequence(2,5)}"
+               th:each="index : ${#numbers.sequence(2,5)}"
+               th:href="@{'/page/' + ${index}}"
                th:if="${pageIndex le 4}"
                th:text="${index}">
             </a>
@@ -123,23 +124,21 @@
 
 
             <!-- 最后一页与当前页面之差小于等于3 -->
-            <!-- 需要添加 th:href 跳转地址 -->
             <a class="page-number" th:if="${totalPages - pageIndex le 3}">...</a>
-            <!-- 需要添加 th:href 跳转地址 -->
             <a class="page-number"
                th:classappend="${index eq pageIndex} ? 'current'"
                th:each="index : ${#numbers.sequence(totalPages - 4, totalPages - 1)}"
+               th:href="@{'/page/' + ${index}}"
                th:if="${totalPages - pageIndex le 3}"
                th:text="${index}">
             </a>
 
 
             <!-- 最后一页与当前页面之差大于3 且当前页面大于4 -->
-            <!-- 需要添加 th:href 跳转地址 -->
             <a class="page-number" th:if="${(pageIndex gt 4) && (totalPages - pageIndex gt 3)}">...</a>
-            <!-- 需要添加 th:href 跳转地址 -->
             <a class="page-number"
                th:each="index : ${#numbers.sequence(pageIndex - 1,pageIndex + 1)}"
+               th:href="@{'/page/' + ${index}}"
                th:if="${(pageIndex gt 4) && (totalPages - pageIndex gt 3)}"
                th:text="${index}">
             </a>

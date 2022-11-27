@@ -52,7 +52,7 @@
             </div>
             <div class="footer-banner-right">
                 <!-- 订阅 需要 RSS 插件支持 -->
-                <!--<a class="footer-banner-link" href="/rss">订阅</a>-->
+                <a class="footer-banner-link" href="/sitemap.xml" th:if="${pluginFinder.available('PluginSitemap')}">订阅</a>
                 <a class="footer-banner-link" href="https://github.com/liuzhihang/halo-theme-hao">主题</a>
                 <a class="footer-banner-link" href="/about">关于</a>
                 <a class="footer-banner-link" href="https://beian.miit.gov.cn/#/Integrated/index"
