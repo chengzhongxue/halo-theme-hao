@@ -6,7 +6,7 @@
     <!-- 社交链接，需要填入 href class title -->
     <div id="footer_deal"
          th:if="${not #lists.isEmpty(theme.config.footer.socialMedia)}"
-         th:with="socialMedias = ${theme.config.sidebar.profile.socialMedia}">
+         th:with="socialMedias = ${theme.config.footer.socialMedia}">
         <a class="deal_link" rel="external nofollow" target="_blank"
            th:each="socialMedia : ${socialMedias}"
            th:href="${socialMedia.url}"
@@ -52,7 +52,7 @@
             </div>
             <div class="footer-banner-right">
                 <!-- 订阅 需要 RSS 插件支持 -->
-                <!--<a class="footer-banner-link" href="/rss">订阅</a>-->
+                <a class="footer-banner-link" href="/sitemap.xml" th:if="${pluginFinder.available('PluginSitemap')}">订阅</a>
                 <a class="footer-banner-link" href="https://github.com/liuzhihang/halo-theme-hao">主题</a>
                 <a class="footer-banner-link" href="/about">关于</a>
                 <a class="footer-banner-link" href="https://beian.miit.gov.cn/#/Integrated/index"

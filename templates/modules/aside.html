@@ -7,8 +7,16 @@
 
     <!-- 侧栏部件，不包含 toc 则直接遍历 -->
     <th:block th:if="${not #strings.contains(widgets, 'toc')}">
-        <th:block th:each="widget : ${#strings.listSplit(widgets, ',')}">
-            <th:block th:replace="'modules/widgets/aside/'+ ${widget}"/>
+        <th:block th:each="widget,iterStat : ${#strings.listSplit(widgets, ',')}">
+
+            <th:block th:if="not ${iterStat.last}">
+                <th:block th:replace="'modules/widgets/aside/'+ ${widget}"/>
+            </th:block>
+            <th:block th:if="${iterStat.last}">
+                <div class="sticky_layout">
+                    <th:block th:replace="'modules/widgets/aside/'+ ${widget}"/>
+                </div>
+            </th:block>
         </th:block>
     </th:block>
 

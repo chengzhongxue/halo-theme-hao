@@ -13,9 +13,10 @@
                  th:utext="${theme.config.top.bannersTitleSmall}"></div>
         </div>
 
-        <!--  后台可配置，未配置时使用默认值-->
         <div class="tags-group-all">
-            <div class="tags-group-wrapper" th:if="${#lists.isEmpty(theme.config.top.bannersIconPair)}">
+
+            <!--  banners 使用默认值-->
+            <div class="tags-group-wrapper" th:if="${#strings.equals(theme.config.top.bannersBackground, 'default')}">
                 <div class="tags-group-icon-pair">
                     <div class="tags-group-icon" style="background:#989bf8">
                         <img th:src="@{/assets/images/icons/AfterEffect.png}" title="AfterEffect">
@@ -129,17 +130,26 @@
                     </div>
                 </div>
             </div>
+
+            <!--  banners 使用默认值-->
             <div class="tags-group-wrapper"
-                 th:if="${not #lists.isEmpty(theme.config.top.bannersIconPair)}"
-                 th:with="iconPairs = ${theme.config.top.bannersIconPair}" >
-                <div class="tags-group-icon-pair" th:each="iconPair : ${iconPairs}">
-                    <div class="tags-group-icon" th:style="'background:' + ${iconPair.top.background}">
-                        <img th:src="@{${iconPair.top.url}}" th:title="${iconPair.top.name}">
+                 th:if="${#strings.equals(theme.config.top.bannersBackground, 'techStack')}"
+                 th:with="techs = ${theme.config.about.techStack}">
+                <th:block th:each="tech,iterStat : ${techs}">
+                    <div class="tags-group-icon-pair" th:if="${iterStat.odd}">
+                        <div class="tags-group-icon"
+                             th:style="'background:' + ${techOdd.background}"
+                             th:with="techOdd = ${techs.get(iterStat.index - 1)}">
+                            <img th:src="@{${techOdd.url}}" th:title="${techOdd.name}">
+                        </div>
+
+                        <div class="tags-group-icon"
+                             th:style="'background:' + ${techEven.background}"
+                             th:with="techEven = ${tech}">
+                            <img th:src="@{${techEven.url}}" th:title="${techEven.name}">
+                        </div>
                     </div>
-                    <div class="tags-group-icon" th:style="'background:' + ${iconPair.bottom.background}">
-                        <img th:src="@{${iconPair.bottom.url}}" th:title="${iconPair.bottom.name}">
-                    </div>
-                </div>
+                </th:block>
             </div>
         </div>
         <!-- 随机前往一篇文章 -->
