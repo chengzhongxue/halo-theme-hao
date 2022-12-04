@@ -88,17 +88,20 @@ spec:
           label: 必看精选
           placeholder: 请输入地址
           validation: "url"
+          value: "/"
         - $formkit: url
           if: "$get(recentTop).value"
           name: remen
           label: 热门文章
           placeholder: 请输入地址
+          value: "/"
           validation: "url"
         - $formkit: url
           if: "$get(recentTop).value"
           name: shiyong
           label: 实用教程
           placeholder: 请输入地址
+          value: "/"
           validation: "url"
         - $formkit: radio
           if: "$get(recentTop).value"
