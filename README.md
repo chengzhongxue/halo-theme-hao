@@ -9,7 +9,7 @@
 
 ---
 
-预览：[程序员小航](http://hao.liuzhihang.com/)
+预览：[程序员小航](http://liuzhihang.com/) WIP
 
 文档：[语雀](https://www.yuque.com/liuzhihangs/halo-theme-hao)
 
@@ -70,7 +70,16 @@ Halo-Theme-Hao 使用 GPL-v3.0 协议开源，请遵守开源协议。
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
+## 其他
 
+如果你对主题有什么建议或者意见，欢迎提 PR & issue。
+
+想了解更多信息可以关注 「 程序员小航 」。
+
+- 发送 "hao群" 可以加群 （群验证信息最好是个人网站）
+- 发送"加好友"，可以加我微信，我拉你进群 （群二维码失效时）
+
+> 卖服务器的广告人，就不要加了。
 
 ## Contributors ✨
 
