@@ -163,19 +163,19 @@
     <div class="categoryGroup">
         <div class="categoryItem" style="box-shadow:var(--heo-shadow-blue)">
             <a class="categoryButton CB1 bikan"
-               th:href="@{${#strings.isEmpty(theme.config.top.bikan)? theme.config.top.bikan : 'javascript:void(0);'}}">
+               th:href="@{${theme.config.top.bikan}}">
                 <span class="categoryButtonText">必看精选</span><i class="iconfont icon-book"></i>
             </a>
         </div>
         <div class="categoryItem" style="box-shadow:var(--heo-shadow-red)">
             <a class="categoryButton remen"
-               th:href="@{${#strings.isEmpty(theme.config.top.remen)? theme.config.top.remen : 'javascript:void(0);'}}">
+               th:href="@{${theme.config.top.remen}}">
                 <span class="categoryButtonText">热门文章</span><i class="iconfont icon-burn"></i>
             </a>
         </div>
         <div class="categoryItem" style="box-shadow:var(--heo-shadow-green)">
             <a class="categoryButton shiyong"
-               th:href="@{${#strings.isEmpty(theme.config.top.shiyong)? theme.config.top.shiyong : 'javascript:void(0);'}}">
+               th:href="@{${theme.config.top.shiyong}}">
                 <span class="categoryButtonText">实用教程</span><i class="iconfont icon-book"></i>
             </a>
         </div>
