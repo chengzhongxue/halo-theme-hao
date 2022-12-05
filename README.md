@@ -1,15 +1,13 @@
 # Halo Theme Hao
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-
 ![master version](https://img.shields.io/github/package-json/v/liuzhihang/halo-theme-hao/master?color=%231ab1ad&label=master)
 ![master version](https://img.shields.io/github/package-json/v/liuzhihang/halo-theme-hao/dev?label=dev)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 ![license](https://img.shields.io/github/license/liuzhihang/halo-theme-hao?color=FF5531)
-
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 ---
 
-预览：[程序员小航](http://liuzhihang.com/) WIP
+预览：[程序员小航](http://liuzhihang.com/)
 
 文档：[语雀](https://www.yuque.com/liuzhihangs/halo-theme-hao)
 
