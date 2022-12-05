@@ -23,6 +23,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "JohnNiang",
+      "name": "John Niang",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16865714?v=4",
+      "profile": "https://johnniang.me",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
