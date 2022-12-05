@@ -13,7 +13,7 @@
 
 > Halo-Theme-Hao 是一款 [Halo2.0](https://github.com/halo-dev/halo) 的博客主题
 > 
-> 移植于 Hexo 社区 [Hexo-Theme-Butterfly](https://github.com/liuzhihang/halo-theme-hao) 主题中 [Heo](https://blog.zhheo.com/) 的魔改
+> 移植于 Hexo 社区 [hexo-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly) 主题中 [Heo](https://blog.zhheo.com/) 的魔改
 
 ## 安裝
 
