@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 目录条 -->
+<div id="category-bar" th:fragment="category-bar">
+    <div class="category-bar-items" id="category-bar-items">
+        <div class="category-bar-item select" id="category-bar-home">
+            <a href="/">首页</a>
+        </div>
+
+        <th:block th:with="categoryNames = ${theme.config.layout.navCustomCategory}">
+
+            <div class="category-bar-item"
+                 th:each="categoryName : ${categoryNames}">
+                <!--<a th:href="@{${categoryItem.status.permalink}}" th:text="${categoryItem.spec.displayName}"></a>-->
+                <a th:text="${categoryFinder.getByName(categoryName)}"></a>
+            </div>
+
+        </th:block>
+    </div>
+    <a th:replace="modules/bar/more :: more">更多</a>
+</div>
+
+</html>

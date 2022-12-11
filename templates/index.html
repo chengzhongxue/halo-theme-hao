@@ -19,7 +19,7 @@
             <div class="recent-posts" id="recent-posts">
 
                 <!-- 分类导航栏 -->
-                <div th:replace="modules/category-bar :: category-bar"></div>
+                <div th:replace="'modules/bar/' + ${theme.config.layout.nav}"></div>
 
                 <th:block th:replace="modules/post-list :: post-list"></th:block>
 
