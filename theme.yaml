@@ -8,7 +8,7 @@ spec:
     name: 程序员小航
     website: 'https://liuzhihang.com'
   description: Halo 2.0 Theme base on Thymeleaf, Referring to Butterfly and Heo
-  logo: 'https://liuzhihang.com/logo'
+  logo: 'https://liuzhihang.com/themes/theme-hao/assets/images/hao-logo.jpg'
   website: 'https://liuzhihang.com'
   repo: 'https://github.com/liuzhihang/halo-theme-hao'
   settingName: "theme-hao-setting"

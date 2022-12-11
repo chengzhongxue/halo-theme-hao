@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 目录 -->
-<div class="card-widget card-categories" th:fragment="categories" th:with="categories = ${categoryFinder.listAll()}">
+<div class="card-widget card-categories" th:fragment="categories"
+     th:with="categories = ${categoryFinder.listAll()}, categoryQuantity = ${#conversions.convert(theme.config.sidebar.categoryQuantity, 'java.lang.Integer')}">
     <div class="item-headline"><i class="iconfont icon-folder-open"></i><span>分类</span></div>
     <div class="aside-list">
         <ul class="card-category-list">
-            <li class="card-category-list-item" th:each="category : ${categories}">
-                <a class="card-category-list-link" th:href="@{${category.status.permalink}}">
-                    <span class="card-category-list-name" th:title="${category.spec.displayName}" th:text="${category.spec.displayName}"></span>
+            <li class="card-category-list-item" th:each="category,iterStat : ${categories}">
+                <a class="card-category-list-link" th:href="@{${category.status.permalink}}"
+                   th:if="${categoryQuantity >= 0 && iterStat.index < categoryQuantity}">
+                        <span class="card-category-list-name" th:text="${category.spec.displayName}"
+                              th:title="${category.spec.displayName}"></span>
                     <span class="card-category-list-count" th:text="${category.status.postCount}"></span>
                 </a>
             </li>

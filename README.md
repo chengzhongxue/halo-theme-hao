@@ -11,9 +11,10 @@
 
 文档：[语雀](https://www.yuque.com/liuzhihangs/halo-theme-hao)
 
-> Halo-Theme-Hao 是一款 [Halo2.0](https://github.com/halo-dev/halo) 的博客主题
-> 
-> 移植于 Hexo 社区 [hexo-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly) 主题中 [Heo](https://blog.zhheo.com/) 的魔改
+> halo-theme-hao 是一款 [Halo2.0](https://github.com/halo-dev/halo) 的博客主题
+>
+> 移植于 Hexo 社区 [hexo-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly)
+> 主题中 [Heo](https://blog.zhheo.com/) 的魔改
 
 ## 安裝
 

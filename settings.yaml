@@ -15,6 +15,11 @@ spec:
           label: ICP 备案
           placeholder: 请输入 ICP 备案号
           help: "京ICP备xxxxxxxx号"
+        - $formkit: text
+          name: gongan
+          label: 公安备案
+          placeholder: 请输入公安备案号
+          help: "皖公网安备 xxxxxxxx号"
         - $formkit: url
           name: copyrightAgreement
           label: 版权协议
@@ -56,14 +61,14 @@ spec:
               value: true
             - label: 隐藏
               value: false
-        - $formkit: text
+        - $formkit: textarea
           if: "$get(recentTop).value"
           name: bannersTitleBig
           label: Banners 大标题
           placeholder: 请输入大标题
           value: Halo Theme Hao
           help: 支持 HTML 语法
-        - $formkit: text
+        - $formkit: textarea
           if: "$get(recentTop).value"
           name: bannersTitleSmall
           label: Banners 小标题
@@ -71,6 +76,7 @@ spec:
           value: 更多信息请关注 GitHub
           help: 支持 HTML 语法
         - $formkit: select
+          if: "$get(recentTop).value"
           name: bannersBackground
           label: 文章列表布局
           value: default
@@ -174,8 +180,76 @@ spec:
       label: 布局
       formSchema:
         - $formkit: select
+          name: nav
+          id: nav
+          key: nav
+          label: 文章导航
+          value: category
+          options:
+            - label: 分类
+              value: category
+            - label: 标签
+              value: tag
+            #            - label: 自定义分类
+            #              value: custom-category
+            #            - label: 自定义标签
+            #              value: custom-tag
+            - label: 自定义路径
+              value: custom-url
+        #        - $formkit: repeater
+        #          if: "$get(nav).value === 'custom-category'"
+        #          name: navCustomCategory
+        #          label: 自定义分类
+        #          value: [ ]
+        #          children:
+        #            - $formkit: categorySelect
+        #              name: category
+        #              label: 分类
+        #        - $formkit: repeater
+        #          if: "$get(nav).value === 'custom-tag'"
+        #          name: navCustomTag
+        #          label: 自定义标签
+        #          value: [ ]
+        #          children:
+        #            - $formkit: tagSelect
+        #              name: tag
+        #              label: 标签
+        - $formkit: repeater
+          if: "$get(nav).value === 'custom-url'"
+          name: navCustomUrl
+          label: 自定义路径
+          value: [ ]
+          children:
+            - $formkit: text
+              name: title
+              label: 标题
+            - $formkit: url
+              name: url
+              label: 链接
+        - $formkit: select
+          name: navMore
+          id: navMore
+          key: navMore
+          label: 文章导航更多跳转地址
+          value: hide
+          options:
+            - label: 隐藏
+              value: hide
+            - label: 分类
+              value: categories
+            - label: 标签
+              value: tags
+            - label: 自定义地址
+              value: customUrl
+        - $formkit: url
+          if: "$get(navMore).value === customUrl"
+          name: navMoreCustomUrl
+          label: 文章导航更多跳转路径
+          value:
+
+        - $formkit: select
           name: cols
-          label: 文章列表布局
+          label: 文章布局
           value: col2
           options:
             - label: 单列
@@ -332,7 +406,6 @@ spec:
                 - $formkit: url
                   name: url
                   label: 链接
-                  validation: "url"
                 - $formkit: radio
                   name: urlType
                   label: 链接类型
@@ -359,6 +432,16 @@ spec:
               placeholder: 公众号背面图
               validation: "url"
               help: 图片可以从公众号后台下载物料或者自制
+        - $formkit: number
+          name: tagQuantity
+          label: 标签数量
+          value: -1
+          help: "小于 0 则展示全部标签"
+        - $formkit: number
+          name: categoryQuantity
+          label: 目录数量
+          value: -1
+          help: "小于 0 则展示全部目录"
 
     - group: footer
       label: 页脚
