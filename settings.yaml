@@ -190,30 +190,30 @@ spec:
               value: category
             - label: 标签
               value: tag
-            #            - label: 自定义分类
-            #              value: custom-category
-            #            - label: 自定义标签
-            #              value: custom-tag
+            - label: 自定义分类
+              value: custom-category
+            - label: 自定义标签
+              value: custom-tag
             - label: 自定义路径
               value: custom-url
-        #        - $formkit: repeater
-        #          if: "$get(nav).value === 'custom-category'"
-        #          name: navCustomCategory
-        #          label: 自定义分类
-        #          value: [ ]
-        #          children:
-        #            - $formkit: categorySelect
-        #              name: category
-        #              label: 分类
-        #        - $formkit: repeater
-        #          if: "$get(nav).value === 'custom-tag'"
-        #          name: navCustomTag
-        #          label: 自定义标签
-        #          value: [ ]
-        #          children:
-        #            - $formkit: tagSelect
-        #              name: tag
-        #              label: 标签
+        - $formkit: repeater
+          if: "$get(nav).value === 'custom-category'"
+          name: navCustomCategory
+          label: 自定义分类
+          value: [ ]
+          children:
+            - $formkit: categorySelect
+              name: category
+              label: 分类
+        - $formkit: repeater
+          if: "$get(nav).value === 'custom-tag'"
+          name: navCustomTag
+          label: 自定义标签
+          value: [ ]
+          children:
+            - $formkit: tagSelect
+              name: tag
+              label: 标签
         - $formkit: repeater
           if: "$get(nav).value === 'custom-url'"
           name: navCustomUrl
@@ -439,9 +439,9 @@ spec:
           help: "小于 0 则展示全部标签"
         - $formkit: number
           name: categoryQuantity
-          label: 目录数量
+          label: 分类数量
           value: -1
-          help: "小于 0 则展示全部目录"
+          help: "小于 0 则展示全部分类"
 
     - group: footer
       label: 页脚
