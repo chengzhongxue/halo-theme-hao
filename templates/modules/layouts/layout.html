@@ -92,7 +92,11 @@
 
     <script th:inline="javascript">
 
-        coverColor();
+
+        if ([[${theme.config.post.dynamicBackground}]]) {
+            // 图片主色
+            coverColor();
+        }
 
         if ([[${theme.config.other.loadingBox} and not ${#strings.isEmpty(theme.config.other.loadingBoxImg)}]]) {
             // 移除加载动画

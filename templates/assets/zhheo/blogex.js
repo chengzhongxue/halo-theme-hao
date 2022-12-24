@@ -761,7 +761,7 @@ document.addEventListener('pjax:send', function () {
 })
 
 document.addEventListener('load', function () {
-    coverColor()
+    // coverColor()
     navTitle()
     percent()
     heo.topPostScroll()
