@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'links')"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style type="text/css">#loading-box .loading-bg {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: var(--heo-maskbgdeep);
+    z-index: 1999;
+    opacity: 1;
+    transition: 0.3s;
+    pointer-events: all;
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+#loading-box.loaded .loading-bg {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#loading-box .loading-img {
+    width: 100px;
+    margin: auto;
+    animation-duration: 0.3s;
+    animation-name: loadingAction;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes loadingAction {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.6;
+    }
+}
+</style>
+
+
+<th:block th:fragment="content">
+
+    <div class="page" id="body-wrap">
+        <header class="not-top-img" id="page-header">
+            <nav th:replace="modules/nav :: nav"></nav>
+        </header>
+        <main class="layout hide-aside" id="content-inner">
+            <div id="page">
+                <div class="flink" id="banners">
+                    <div class="banners-title">
+                        <div class="banners-title-small">[[${theme.config.link.smallTitle}]]</div>
+                        <div class="banners-title-big">[[${theme.config.link.bigTitle}]]</div>
+                    </div>
+                    <div class="banner-button-group">
+                        <!--<a class="banner-button secondary" onclick="travelling()">-->
+                        <!--    <i class="fas fa-shuffle"></i>-->
+                        <!--    <span class="banner-button-text">随机访问</span>-->
+                        <!--</a>-->
+                        <a class="banner-button" href="#post-comment" rel="external nofollow">
+                            <i class="fas fa-circle-chevron-right"></i>
+                            <span class="banner-button-text">申请友链</span>
+                        </a>
+                    </div>
+                    <div class="tags-group-all nowrapMove">
+                        <div class="tags-group-wrapper">
+                            <th:block th:each="group : ${groups}">
+                                <th:block th:each="link,iterStat : ${group.links}" th:if="${group.links.size > 2}">
+                                    <div class="tags-group-icon-pair" th:if="${iterStat.even}">
+                                        <a class="tags-group-icon" target="_blank"
+                                           th:href="${linkOdd.spec.url}"
+                                           th:title="${linkOdd.spec.displayName}"
+                                           th:with="linkOdd = ${group.links.get(iterStat.index - 1)}">
+                                            <img th:src="@{${linkOdd.spec.logo}}"
+                                                 th:title="${linkOdd.spec.displayName}">
+                                        </a>
+                                        <a class="tags-group-icon" target="_blank"
+                                           th:href="${linkEven.spec.url}"
+                                           th:title="${linkEven.spec.displayName}"
+                                           th:with="linkEven = ${link}">
+                                            <img th:src="@{${linkEven.spec.logo}}"
+                                                 th:title="${linkEven.spec.displayName}">
+                                        </a>
+                                    </div>
+                                </th:block>
+                            </th:block>
+                        </div>
+                    </div>
+                </div>
+                <div class="flink" id="article-container">
+
+                    <th:block th:each="group,iterStat : ${groups}">
+
+                        <h2>
+                            <a class="headerlink" href="#" th:title="${group.spec.displayName}"></a>
+                            [[${group.spec.displayName}]]
+                        </h2>
+                        <!--<div class="flink-desc">分类描述信息 xxxxx</div>-->
+
+                        <!-- 第一个，使用卡片展示 -->
+                        <div class="site-card-group" th:if="${iterStat.first}">
+                            <div class="site-card" th:each="link : ${group.links}">
+                                <!--<span class="site-card-tag">生活</span>-->
+                                <a class="img" target="_blank" th:href="${link.spec.url}"
+                                   th:title="${link.spec.displayName}">
+                                    <img class="flink-avatar" style="pointer-events: none;"
+                                         th:alt="${link.spec.displayName}" th:src="${link.spec.logo}">
+                                </a>
+                                <a class="info cf-friends-link" target="_blank" th:href="${link.spec.url}"
+                                   th:title="${link.spec.displayName}">
+                                    <div class="site-card-avatar">
+                                        <img class="flink-avatar cf-friends-avatar"
+                                             th:alt="${link.spec.displayName}" th:src="${link.spec.logo}">
+                                    </div>
+                                    <div class="site-card-text">
+                                        <span class="title cf-friends-name" th:text="${link.spec.displayName}"></span>
+                                        <span class="desc" th:text="${link.spec.description}"
+                                              th:title="${link.spec.description}"></span>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                        <div class="flink-list" th:if="${not iterStat.first}">
+                            <div class="flink-list-item" th:each="link : ${group.links}">
+                                <a class="cf-friends-link" rel="external nofollow"
+                                   target="_blank"
+                                   th:href="${link.spec.url}"
+                                   th:title="${link.spec.displayName}">
+                                    <img class="flink-avatar cf-friends-avatar"
+                                         th:alt="${link.spec.displayName}"
+                                         th:src="${link.spec.logo}">
+                                    <div class="flink-item-info">
+                                        <span class="flink-item-name cf-friends-name"
+                                              th:text="${link.spec.displayName}"></span>
+                                        <span class="flink-item-desc" th:text="${link.spec.description}"
+                                              th:title="${link.spec.description}"></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </th:block>
+
+                </div>
+                <hr/>
+                <!-- 评论模块 -->
+                <div id="post-comment" th:if="${pluginFinder.available('PluginCommentWidget')}">
+                    <div class="comment-head">
+                        <div class="comment-headline"><i class="iconfont icon-comment-alt"></i> <span>评论</span></div>
+                        <div class="comment-privacy"><a href="#">隐私政策</a></div>
+                        <div class="comment-tips" id="comment-tips">
+                            <span>你无需删除空行，直接评论以获取最佳展示效果</span>
+                        </div>
+                    </div>
+                    <halo:comment group="content.halo.run" kind="SinglePage"/>
+                </div>
+            </div>
+        </main>
+        <!-- 底部 -->
+        <footer th:replace="modules/footer :: footer"></footer>
+    </div>
+
+</th:block>
+</html>

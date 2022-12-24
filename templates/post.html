@@ -17,7 +17,7 @@
                 <div id="post-firstinfo">
                     <div class="meta-firstline">
                         <!-- 这里要跳转到版权页 -->
-                        <a class="post-meta-original" th:href="@{/cc}" title="该文章为原创文章，注意版权协议">原创</a>
+                        <!--<a class="post-meta-original" th:href="@{/cc}" title="该文章为原创文章，注意版权协议">原创</a>-->
                         <span class="post-meta-categories"
                               th:each="category : ${post.categories}"
                               th:if="${not #lists.isEmpty(post.categories)}">
@@ -196,20 +196,24 @@
                         </a>
                     </div>
                 </nav>
-                <div class="relatedPosts">
+                <div class="relatedPosts" th:if="${not #lists.isEmpty(post.categories)}">
+
                     <div class="headline">
                         <i class="iconfont icon-robot"></i>
                         <span>阅读建议</span>
                     </div>
-                    <div class="relatedPosts-list">
+                    <div class="relatedPosts-list"
+                         th:with="recommandPosts = ${postFinder.listByCategory(1, theme.config.post.recommendQuantity, post.categories.get(0).metadata.name)}">
                         <!-- 建议阅读，这里可以自定义文章数量，然后遍历展示 -->
-                        <div>
-                            <a href="#" title="相关推荐文章">
+                        <div th:each="recommandPost :${recommandPosts}">
+                            <a th:href="@{${recommandPost.status.permalink}}" th:title="${recommandPost.spec.title}">
                                 <img alt="cover" class="cover" loading="lazy"
-                                     src="https://t7.baidu.com/it/u=91673060,7145840&fm=193&f=GIF">
+                                     th:src="${#strings.isEmpty(recommandPost.spec.cover) ? theme.config.layout.postRandomImg : recommandPost.spec.cover}">
                                 <div class="content is-center">
-                                    <div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-28</div>
-                                    <div class="title">这是一篇相关推荐文章</div>
+                                    <div class="date"><i class="far fa-calendar-alt fa-fw"></i>
+                                        [[${#dates.format(recommandPost.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}]]
+                                    </div>
+                                    <div class="title" th:text="${recommandPost.spec.title}"></div>
                                 </div>
                             </a>
                         </div>

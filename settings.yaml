@@ -536,6 +536,21 @@ spec:
       label: 文章
       formSchema:
         - $formkit: radio
+          name: dynamicBackground
+          label: 动态主色
+          value: false
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
+          help: "文章底部显示版权声明模块"
+        - $formkit: number
+          name: recommendQuantity
+          label: 阅读建议
+          value: 4
+          help: "推荐阅读的文章数量"
+        - $formkit: radio
           name: copyright
           label: 版权声明
           value: true
@@ -649,6 +664,18 @@ spec:
               value: true
             - label: 关闭
               value: false
+
+    - group: link
+      label: 友链
+      formSchema:
+        - $formkit: text
+          name: smallTitle
+          label: 小标题
+          value: 友情链接
+        - $formkit: text
+          name: bigTitle
+          label: 大标题
+          value: 我和我的小伙伴们
 
     - group: other
       label: 其他设置
