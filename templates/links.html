@@ -1,46 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" th:replace="modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'links')"
       xmlns:th="http://www.thymeleaf.org">
-
-<style type="text/css">#loading-box .loading-bg {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    background: var(--heo-maskbgdeep);
-    z-index: 1999;
-    opacity: 1;
-    transition: 0.3s;
-    pointer-events: all;
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-
-#loading-box.loaded .loading-bg {
-    opacity: 0;
-    pointer-events: none;
-}
-
-#loading-box .loading-img {
-    width: 100px;
-    margin: auto;
-    animation-duration: 0.3s;
-    animation-name: loadingAction;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-@keyframes loadingAction {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0.6;
-    }
-}
-</style>
-
-
 <th:block th:fragment="content">
 
     <div class="page" id="body-wrap">
