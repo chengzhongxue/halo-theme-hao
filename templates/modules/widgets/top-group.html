@@ -44,11 +44,10 @@
         </div>
     </div>
 
-
     <!-- 今日推荐 -->
     <div class="todayCard" id="todayCard"
-         th:if="${theme.config.top.todayRecommendSwitch}"
-         th:onclick="'window.open('+ ${theme.config.top.todayRecommendContent.todayRecommendUrl} +')'">
+         th:if="${theme.config.top.todayRecommend}"
+         th:attr="onclick='javascript:window.open(\''+ ${theme.config.top.todayRecommendContent.todayRecommendUrl} +'\')'">
         <div class="todayCard-info">
             <div class="todayCard-tips">今日推荐</div>
             <div class="todayCard-title" th:text="${theme.config.top.todayRecommendContent.todayRecommendTitle}"></div>
