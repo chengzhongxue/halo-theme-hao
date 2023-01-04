@@ -124,7 +124,7 @@ spec:
         - $formkit: group
           if: "$get(todayRecommend).value"
           name: todayRecommendContent
-          label: 公众号
+          label: 今日推荐
           value:
             todayRecommendUrl:
             todayRecommendTitle:
