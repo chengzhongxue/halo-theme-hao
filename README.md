@@ -1,9 +1,6 @@
 # Halo Theme Hao
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-![master version](https://img.shields.io/github/package-json/v/liuzhihang/halo-theme-hao/master?color=%231ab1ad&label=master)
-![master version](https://img.shields.io/github/package-json/v/liuzhihang/halo-theme-hao/dev?label=dev)
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
-![license](https://img.shields.io/github/license/liuzhihang/halo-theme-hao?color=FF5531)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ---
 
@@ -61,6 +58,7 @@ Halo-Theme-Hao 使用 GPL-v3.0 协议开源，请遵守开源协议。
       <td align="center"><a href="https://shyblog.world/"><img src="https://avatars.githubusercontent.com/u/50973219?v=4?s=100" width="100px;" alt="sunheyi"/><br /><sub><b>sunheyi</b></sub></a><br /><a href="https://github.com/liuzhihang/halo-theme-hao/commits?author=shy-share" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/Joydevelop"><img src="https://avatars.githubusercontent.com/u/79132319?v=4?s=100" width="100px;" alt="Joy"/><br /><sub><b>Joy</b></sub></a><br /><a href="https://github.com/liuzhihang/halo-theme-hao/commits?author=Joydevelop" title="Code">💻</a></td>
       <td align="center"><a href="https://johnniang.me"><img src="https://avatars.githubusercontent.com/u/16865714?v=4?s=100" width="100px;" alt="John Niang"/><br /><sub><b>John Niang</b></sub></a><br /><a href="https://github.com/liuzhihang/halo-theme-hao/commits?author=JohnNiang" title="Code">💻</a></td>
+      <td align="center"><a href="https://lanbinovo.cn"><img src="https://avatars.githubusercontent.com/u/62149873?v=4?s=100" width="100px;" alt="Lanbin"/><br /><sub><b>Lanbin</b></sub></a><br /><a href="#tutorial-lanbinshijie" title="Tutorials">✅</a></td>
     </tr>
   </tbody>
 </table>
