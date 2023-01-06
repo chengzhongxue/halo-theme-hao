@@ -1,6 +1,6 @@
 # Halo Theme Hao
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ---
 
@@ -59,6 +59,7 @@ Halo-Theme-Hao 使用 GPL-v3.0 协议开源，请遵守开源协议。
       <td align="center"><a href="https://github.com/Joydevelop"><img src="https://avatars.githubusercontent.com/u/79132319?v=4?s=100" width="100px;" alt="Joy"/><br /><sub><b>Joy</b></sub></a><br /><a href="https://github.com/liuzhihang/halo-theme-hao/commits?author=Joydevelop" title="Code">💻</a></td>
       <td align="center"><a href="https://johnniang.me"><img src="https://avatars.githubusercontent.com/u/16865714?v=4?s=100" width="100px;" alt="John Niang"/><br /><sub><b>John Niang</b></sub></a><br /><a href="https://github.com/liuzhihang/halo-theme-hao/commits?author=JohnNiang" title="Code">💻</a></td>
       <td align="center"><a href="https://lanbinovo.cn"><img src="https://avatars.githubusercontent.com/u/62149873?v=4?s=100" width="100px;" alt="Lanbin"/><br /><sub><b>Lanbin</b></sub></a><br /><a href="#tutorial-lanbinshijie" title="Tutorials">✅</a></td>
+      <td align="center"><a href="https://sunguoqi.com/"><img src="https://avatars.githubusercontent.com/u/79169717?v=4?s=100" width="100px;" alt="小孙同学"/><br /><sub><b>小孙同学</b></sub></a><br /><a href="#tutorial-sun0225SUN" title="Tutorials">✅</a></td>
     </tr>
   </tbody>
 </table>
