@@ -32,6 +32,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "lanbinshijie",
+      "name": "Lanbin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62149873?v=4",
+      "profile": "https://lanbinovo.cn",
+      "contributions": [
+        "tutorial"
+      ]
     }
   ],
   "contributorsPerLine": 7,
