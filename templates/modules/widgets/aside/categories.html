@@ -8,7 +8,7 @@
         <ul class="card-category-list">
             <li class="card-category-list-item" th:each="category,iterStat : ${categories}">
                 <a class="card-category-list-link" th:href="@{${category.status.permalink}}"
-                   th:if="${categoryQuantity >= 0 && iterStat.index < categoryQuantity ||  categoryQuantity < 0}">
+                   th:if="${categoryQuantity >= 0 && iterStat.index < categoryQuantity}">
                         <span class="card-category-list-name" th:text="${category.spec.displayName}"
                               th:title="${category.spec.displayName}"></span>
                     <span class="card-category-list-count" th:text="${category.status.postCount}"></span>

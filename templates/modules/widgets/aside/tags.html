@@ -9,7 +9,7 @@
     <div class="card-tag-cloud">
         <a style="font-size:1em;color:#d3d3d3" th:each="tag,iterStat : ${tags}"
            th:href="@{${tag.status.permalink}}"
-           th:if="${tagQuantity >= 0 && iterStat.index < tagQuantity ||  categoryQuantity < 0}"
+           th:if="${tagQuantity >= 0 && iterStat.index < tagQuantity}"
            th:title="${tag.spec.displayName}">
             <!-- 角标 -->
             [[${tag.spec.displayName}]]<sup th:text="${tag.status.postCount}"></sup>
