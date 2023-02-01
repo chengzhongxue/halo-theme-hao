@@ -1,48 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!-- 侧边栏站点信息统计 -->
 
-<th:block th:fragment="stat" th:with="stats = ${siteStatsFinder.getStats()}">
 
-    <div class="item-headline"><i class="iconfont icon-icon-sidebar-scxmtj"></i><span>统计</span></div>
-    <div class="webinfo">
-        <div class="webinfo-item">
-            <div class="webinfo-item-title"><i class="iconfont icon-file-alt"></i>
-                <div class="item-name">文章数 :</div>
-            </div>
-            <div class="item-count" th:text="${stats.post}"></div>
-        </div>
-        <!--<div class="webinfo-item">-->
-        <!--    <div class="webinfo-item-title"><i class="item-icon fas fa-stopwatch"></i>-->
-        <!--        <div class="item-name">建站天数 :</div>-->
-        <!--    </div>-->
-        <!--    <div class="item-count" data-publishdate="2019-10-27T16:00:00.000Z" id="runtimeshow"></div>-->
-        <!--</div>-->
-        <!--<div class="webinfo-item">-->
-        <!--    <div class="webinfo-item-title"><i class="item-icon fas fa-font"></i>-->
-        <!--        <div class="item-name">全站字数 :</div>-->
-        <!--    </div>-->
-        <!--    <div class="item-count">606.7k</div>-->
-        <!--</div>-->
-        <div class="webinfo-item">
-            <div class="webinfo-item-title"><i class="iconfont icon-sliders"></i>
-                <div class="item-name">分类数 :</div>
-            </div>
-            <div class="item-count" th:text="${stats.category}"></div>
-        </div>
-        <div class="webinfo-item">
-            <div class="webinfo-item-title"><i class="iconfont icon-comment-alt"></i>
-                <div class="item-name">评论数 :</div>
-            </div>
-            <div class="item-count" th:text="${stats.comment}"></div>
-        </div>
-        <div class="webinfo-item">
-            <div class="webinfo-item-title"><i class="iconfont icon-bullseye"></i>
-                <div class="item-name">访问量 :</div>
-            </div>
-            <div class="item-count" th:text="${stats.visit}"></div>
-        </div>
-    </div>
-</th:block>
-
-</html>
+<div class="card-widget card-webinfo"  th:fragment="stat">
+    <th:block th:replace="modules/widgets/aside/contain/stat-contain :: stat-contain"></th:block>
+</div>
