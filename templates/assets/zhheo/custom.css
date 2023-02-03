@@ -44,7 +44,7 @@ ul li {
 #article-container ol li:not(.tab), #article-container ul li:not(.tab){
     margin-left: 2em;
 }
-/* prism.js 代码高亮 背景颜色出错 */
+
 #article-container pre > code {
     background: transparent !important;
 }
