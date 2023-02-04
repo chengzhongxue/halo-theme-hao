@@ -9582,11 +9582,13 @@ span.recent-post-top-text {
     position: absolute;
     top: 8px;
     left: 8px;
+    display: flex;
 }
 
 
 /* 自定义的文章分类 */
 a.article-meta__category {
+    display: block;
     padding: 2px 6px;
     background: var(--heo-black-op);
     border-radius: 6px;
