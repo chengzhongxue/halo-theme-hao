@@ -12,18 +12,6 @@
             </div>
             <div class="item-count" th:text="${stats.post}"></div>
         </div>
-        <!--<div class="webinfo-item">-->
-        <!--    <div class="webinfo-item-title"><i class="item-icon fas fa-stopwatch"></i>-->
-        <!--        <div class="item-name">建站天数 :</div>-->
-        <!--    </div>-->
-        <!--    <div class="item-count" data-publishdate="2019-10-27T16:00:00.000Z" id="runtimeshow"></div>-->
-        <!--</div>-->
-        <!--<div class="webinfo-item">-->
-        <!--    <div class="webinfo-item-title"><i class="item-icon fas fa-font"></i>-->
-        <!--        <div class="item-name">全站字数 :</div>-->
-        <!--    </div>-->
-        <!--    <div class="item-count">606.7k</div>-->
-        <!--</div>-->
         <div class="webinfo-item">
             <div class="webinfo-item-title"><i class="iconfont icon-sliders"></i>
                 <div class="item-name">分类数 :</div>
@@ -42,6 +30,18 @@
             </div>
             <div class="item-count" th:text="${stats.visit}"></div>
         </div>
+        <div class="webinfo-item">
+            <div class="webinfo-item-title"><i class="item-icon fas fa-stopwatch"></i>
+                <div class="item-name">建站天数 :</div>
+            </div>
+            <div class="item-count" th:text="${theme.config.basics.siteStartTime}"  id="runtimeshow"></div>
+        </div>
+        <!-- <div class="webinfo-item">
+            <div class="webinfo-item-title"><i class="item-icon fas fa-font"></i>
+                <div class="item-name">全站字数 :</div>
+            </div>
+            <div class="item-count">606.7k</div>
+        </div> -->
     </div>
 </th:block>
 
