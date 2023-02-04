@@ -691,7 +691,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 s2 = new Date();
                 var days = s2.getTime() - s1.getTime();
                 var number_of_days = parseInt(days / (1000 * 60 * 60 * 24));
-                $runtimeCount.innerText =number_of_days;
+                $runtimeCount.innerText =number_of_days+"天";
             }
         }
     }
