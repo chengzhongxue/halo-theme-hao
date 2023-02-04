@@ -682,10 +682,17 @@ document.addEventListener('DOMContentLoaded', function () {
      * 網頁運行時間
      */
     const addRuntime = () => {
-        const $runtimeCount = document.getElementById('runtimeshow')
+        const $runtimeCount = document.getElementById('runtimeshow');
         if ($runtimeCount) {
-            const publishDate = $runtimeCount.getAttribute('data-publishDate')
-            $runtimeCount.innerText = btf.diffDate(publishDate) + ' ' + GLOBAL_CONFIG.runtime
+            var s1 = $runtimeCount.innerText;;//建站时间
+            if(s1)
+            {
+                s1 = new Date(s1.replace(/-/g, "/"));
+                s2 = new Date();
+                var days = s2.getTime() - s1.getTime();
+                var number_of_days = parseInt(days / (1000 * 60 * 60 * 24));
+                $runtimeCount.innerText =number_of_days+"天";
+            }
         }
     }
 
@@ -863,6 +870,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // GLOBAL_CONFIG.runtime && addRuntime()
             addLastPushDate()
             toggleCardCategory()
+            addRuntime()
         }
 
         sidebarFn()
