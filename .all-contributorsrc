@@ -51,6 +51,15 @@
         "tutorial",
         "code"
       ]
+    },
+    {
+      "login": "AirboZH",
+      "name": "airbo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50261327?v=4",
+      "profile": "http://airbozh.cn",
+      "contributions": [
+        "tutorial"
+      ]
     }
   ],
   "contributorsPerLine": 7,
