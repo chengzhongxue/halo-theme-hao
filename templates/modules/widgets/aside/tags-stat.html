@@ -4,16 +4,14 @@
 
 <th:block th:fragment="tags-stat">
 
-    <div class="sticky_layout">
-        <div class="card-widget card-tags card-archives card-webinfo card-allinfo">
+    <div class="card-widget card-tags card-archives card-webinfo card-allinfo">
 
-            <th:block th:replace="modules/widgets/aside/tags :: tags"></th:block>
+        <th:block th:replace="modules/widgets/aside/contain/tags-contain :: tags-contain"></th:block>
 
-            <hr>
+        <hr>
 
-            <th:block th:replace="modules/widgets/aside/stat :: stat"></th:block>
+        <th:block th:replace="modules/widgets/aside/contain/stat-contain :: stat-contain"></th:block>
 
-        </div>
     </div>
 
 </th:block>
