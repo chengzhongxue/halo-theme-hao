@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<!-- 可以是最近六篇文章 -->
-<div class="topGroup" th:fragment="top-group" th:with="topGroupPosts = ${postFinder.list(1,6)}">
+<!-- 推荐文章 -->
+<div class="topGroup" th:fragment="top-group" th:with="topGroupPosts = ${postFinder.list(1,theme.config.post.recommendQuantity)}">
     <div class="recent-post-item"
          th:each="post : ${topGroupPosts}"
          th:if="${#strings.equals(theme.config.top.recommendPost, 'latest')}">
