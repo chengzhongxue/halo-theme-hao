@@ -165,8 +165,8 @@ function getContrastYIQ(hexcolor) {
 //导航栏文章
 function navTitle() {
     var titlevalue = document.title;
-    var simptitle = titlevalue.replace(' | XXXX', '')
-    document.getElementById("page-name-text").innerHTML = simptitle;
+    var postName = document.getElementsByClassName("post-title")[0];
+    document.getElementById("page-name-text").innerHTML = postName.innerText;
 }
 
 window.onload = function () {
