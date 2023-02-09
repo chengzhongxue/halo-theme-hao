@@ -57,11 +57,26 @@
                     </span>
                 </th:block>
                 <!-- 创建时间 -->
-                <span class="post-meta-date">
+                <span class="post-meta-date" th:with="days=${(new java.util.Date().getTime()-post.spec.publishTime.toEpochMilli())/86400000}">
                     <i class="far fa-calendar-alt"></i>
                     <span class="article-meta-label">创建</span>
-                    <time style="display: inline;" th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
-                          th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
+                    <time style="display: inline;"
+                          th:if="${days > 30}"
+                          th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
+                          th:datetime="${post.spec.publishTime}"
+                          th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}+创建">
+                    </time>
+                    <time style="display: inline;"
+                          th:if="${days <= 30 && days > 0}"
+                          th:text="${days}+天前"
+                          th:datetime="${post.spec.publishTime}"
+                          th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}+创建">
+                    </time>
+                    <time style="display: inline;"
+                          th:if="${days == 0}"
+                          th:text="最近"
+                          th:datetime="${post.spec.publishTime}"
+                          th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}+创建">
                     </time>
                 </span>
             </div>
