@@ -544,7 +544,7 @@ spec:
               value: true
             - label: 关闭
               value: false
-          help: "文章底部显示版权声明模块"
+          help: "文章主色匹配图片颜色"
         - $formkit: number
           name: recommendQuantity
           label: 阅读建议
