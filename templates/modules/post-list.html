@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="post-list"
-          th:with="postItems=${posts.items}">
+           th:with='postItems=${posts.items},postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg : theme.config.layout.postRandomImg+"?"}'>
+
 
     <!-- card，需要添加在没有图片时使用随机图片 -->
     <div class="recent-post-item"
@@ -16,8 +17,7 @@
             <a th:attr="title=${post.spec.title}" th:href="@{${post.status.permalink}}">
                 <img class="post_bg entered loaded" loading="lazy"
                      th:alt="${post.status.excerpt}"
-                     th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}">
-            </a>
+                     th:src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+","+iStat.index : post.spec.cover}'>            </a>
         </div>
         <!-- 类别非空时 -->
         <th:block th:if="${not #lists.isEmpty(post.categories)}">
