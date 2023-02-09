@@ -2,7 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <!-- 推荐文章 -->
-<div class="topGroup" th:fragment="top-group" th:with="topGroupPosts = ${postFinder.list(1,theme.config.post.recommendQuantity)}">
+<div class="topGroup" th:fragment="top-group" th:with='topGroupPosts = ${postFinder.list(1,theme.config.post.recommendQuantity)},
+    postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg : theme.config.layout.postRandomImg+"?"}'
+>
     <div class="recent-post-item"
          th:each="post : ${topGroupPosts}"
          th:if="${#strings.equals(theme.config.top.recommendPost, 'latest')}">
@@ -12,7 +14,8 @@
                 <span class="recent-post-top-text">荐</span>
                 <img class="post_bg" loading="lazy"
                      th:alt="${post.spec.title}"
-                     th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}">
+                     th:src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+","+post.spec.title : post.spec.cover}'
+                />
             </a>
         </div>
         <div class="recent-post-info">
@@ -32,7 +35,8 @@
                 <span class="recent-post-top-text">荐</span>
                 <img class="post_bg" loading="lazy"
                      th:alt="${cuscomPost.title}"
-                     th:src="${cuscomPost.cover}">
+                     th:src='${#strings.isEmpty(cuscomPost.cover) ? postRandomImg+","+cuscomPost.title : cuscomPost.cover}'
+                />
             </a>
         </div>
         <div class="recent-post-info">
