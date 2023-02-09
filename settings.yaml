@@ -550,6 +550,11 @@ spec:
           label: 阅读建议
           value: 4
           help: "推荐阅读的文章数量"
+        - $formkit: number
+          name: recentPost
+          label: 最近发布文章
+          value: 4
+          help: "最近发布的文章数量"
         - $formkit: radio
           name: copyright
           label: 版权声明

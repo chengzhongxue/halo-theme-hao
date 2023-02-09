@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div class="card-widget card-recent-post" th:fragment="recent-posts" th:with="posts = ${postFinder.list(1,6)}">
+<div class="card-widget card-recent-post" th:fragment="recent-posts" th:with="posts = ${postFinder.list(1,theme.config.post.recentPost)}">
     <div class="item-headline"><i class="iconfont icon-listol"></i><span>最近发布</span></div>
     <div class="aside-list">
         <!-- 最新文章，用户可以自定义展示数量 -->
