@@ -52,7 +52,7 @@
                            th:each="tag : ${post.tags}"
                            th:href="@{${tag.status.permalink}}"
                            th:title="${tag.spec.displayName}">
-                            <span class="tags-punctuation">#[[${tag.spec.displayName}]]</span>
+                            <span class="tags-punctuation">#</span>[[${#strings.trim(tag.spec.displayName)}]]
                         </a>
                     </span>
                 </th:block>
@@ -60,7 +60,7 @@
                 <span class="post-meta-date">
                     <i class="far fa-calendar-alt"></i>
                     <span class="article-meta-label">创建</span>
-                    <time th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
+                    <time style="display: inline;" th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
                           th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
                     </time>
                 </span>
