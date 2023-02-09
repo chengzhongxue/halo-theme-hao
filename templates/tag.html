@@ -22,10 +22,11 @@
                 <div class="article-sort-title" th:text="${tag.spec.displayName}"></div>
                 <div class="article-sort" th:with="postItems=${posts.items}">
                     <!--<div class="article-sort-item year">2022</div>-->
-                    <div class="article-sort-item" th:each="post : ${postItems}">
+                    <div class="article-sort-item" th:each="post : ${postItems}"
+                         th:with='postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"," : theme.config.layout.postRandomImg+"?"}'>
                         <a class="article-sort-item-img" th:href="@{${post.status.permalink}}"
                            th:title="${post.spec.title}">
-                            <img loading="lazy" th:alt="${post.status.excerpt}" th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}">
+                            <img loading="lazy" th:alt="${post.status.excerpt}" th:src="${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}">
                         </a>
                         <div class="article-sort-item-info">
                             <div class="article-sort-item-time"><i class="far fa-calendar-alt"></i>

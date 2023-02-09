@@ -33,11 +33,12 @@
                 <div class="article-sort">
                     <!-- TODO 按照年份分组 需要 halo 提供归档数据-->
                     <!--<div class="article-sort-item year">2022</div>-->
-                    <div class="article-sort-item" th:each="post : ${posts.items}">
+                    <div class="article-sort-item" th:each="post : ${posts.items}"
+                         th:with='postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"," : theme.config.layout.postRandomImg+"?"}'>
                         <a class="article-sort-item-img" th:href="@{${post.status.permalink}}"
                            th:title="${post.spec.title}">
                             <img th:alt="${post.spec.title}"
-                                 th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}">
+                                 th:src="${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}">
                         </a>
                         <div class="article-sort-item-info">
                             <div class="article-sort-item-time"><i class="far fa-calendar-alt"></i>
@@ -53,8 +54,7 @@
                             <div class="article-sort-item-tags">
                                 <a class="article-meta__tags"
                                    th:each="tag : ${post.tags}" th:href="@{${tag.status.permalink}}">
-                                    <span class="tags-punctuation">#</span>
-                                    [[${tag.spec.displayName}]]
+                                    <span class="tags-punctuation">#</span>[[${tag.spec.displayName}]]
                                 </a>
                                 <span class="article-meta__link">•</span>
                             </div>
