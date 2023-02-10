@@ -62,10 +62,9 @@
                     </div>
                 </div>
                 <!-- 分页 -->
-                <nav id="pagination">
-                    <div class="pagination"><span class="page-number current">1</span></div>
-                </nav>
+                <div th:replace="modules/widgets/page :: page(${'/categories/'+category.spec.slug},${posts})"></div>
             </div>
+            <!-- sidebar -->
             <div th:replace="modules/aside :: aside(${theme.config.sidebar.categoryWidgets})"></div>
         </main>
 

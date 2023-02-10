@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 
+    分页模块
+
+    @param  path       '/path/page/n' 中的 `/path` 需要保留 `/`
+    @param  pageInfo   Halo类型UrlContextListResult<ListedPostVo>
+ -->
+    <nav id="pagination" th:fragment="page(path,pageInfo)">
+        <div class="pagination">
+
+            <!-- 页码按钮 -->
+            <th:block th:if="${pageInfo.page > 3}">
+                <a class="page-number" th:href="${path+'/page/1'}" th:text="1"></a>
+                <span class="space" th:if="${pageInfo.page != 4}">…</span>
+            </th:block>
+
+            <th:block th:each="index:${#numbers.sequence(pageInfo.page-2,pageInfo.page+2)}">
+                <span class="page-number current" th:if="${pageInfo.page} == ${index}" th:text="${pageInfo.page}"></span>
+                <a class="page-number" th:unless="${pageInfo.page == index}" th:if="${index > 0 && index <= pageInfo.totalPages}"
+                     th:href="${path+'/page/'+index}" th:text="${index}"></a>
+            </th:block>
+
+            <th:block th:if="${pageInfo.totalPages - pageInfo.page > 2}">
+                <span class="space" th:if="${pageInfo.totalPages - pageInfo.page != 3}">…</span>
+                <a class="page-number" th:href="${path+'/page/'+pageInfo.totalPages}" th:text="${pageInfo.totalPages}"></a>
+            </th:block>
+           
+            <!-- 翻页按钮 -->
+            <a class="extend prev" rel="prev"  th:if="${pageInfo.hasPrevious}" th:href="${pageInfo.prevUrl}" data-pjax-state="">
+                <i class="fas fa-chevron-left fa-fw"></i>
+                <div class="pagination_tips_prev">上页</div>
+            </a>
+            
+            <a class="extend next" rel="next"  th:if="${pageInfo.hasNext}" th:href="${pageInfo.nextUrl}" data-pjax-state="">
+                <div class="pagination_tips_next">下页</div>
+                <i class="fas fa-chevron-right fa-fw"></i>
+            </a>
+
+        </div>
+    </nav>
+
+</html>
