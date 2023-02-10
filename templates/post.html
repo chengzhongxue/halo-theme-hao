@@ -229,7 +229,7 @@
                             <span>你无需删除空行，直接评论以获取最佳展示效果</span>
                         </div>
                     </div>
-                    <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}"/>
+                    <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" colorScheme="document.documentElement.getAttribute('data-theme') />
                 </div>
             </div>
 
