@@ -205,6 +205,7 @@ rm.switchDarkMode = function () {
     navFn.switchDarkMode();
     rm.hideRightMenu();
     heo.darkModeStatus();
+    halo.darkComment();
 }
 
 rm.copyUrl = function (id) {
