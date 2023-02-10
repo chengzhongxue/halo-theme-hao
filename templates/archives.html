@@ -46,13 +46,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- //TODO 分页 -->
-                <nav id="pagination">
-                    <div class="pagination">
-                        <span class="page-number current" th:if="${archives.page} == ${index}"
-                              th:text="${archives.page}"></span>
-                    </div>
-                </nav>
+                <!-- 分页 -->
+                <div th:replace="modules/widgets/page :: page('/archives',${archives})"></div>
             </div>
             <!-- sidebar -->
             <div th:replace="modules/aside :: aside(${theme.config.sidebar.categoryWidgets})"></div>

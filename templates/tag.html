@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'tag')" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" th:replace="modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'tag')"
+      xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
 
@@ -26,7 +27,8 @@
                          th:with='postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"," : theme.config.layout.postRandomImg+"?"}'>
                         <a class="article-sort-item-img" th:href="@{${post.status.permalink}}"
                            th:title="${post.spec.title}">
-                            <img loading="lazy" th:alt="${post.status.excerpt}" th:src="${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}">
+                            <img loading="lazy" th:alt="${post.status.excerpt}"
+                                 th:src="${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}">
                         </a>
                         <div class="article-sort-item-info">
                             <div class="article-sort-item-time"><i class="far fa-calendar-alt"></i>
@@ -48,10 +50,10 @@
                         </div>
                     </div>
                 </div>
-                <nav id="pagination">
-                    <div class="pagination"><span class="page-number current">1</span></div>
-                </nav>
+                <!-- 分页 -->
+                <div th:replace="modules/widgets/page :: page(${'/tags/'+tag.spec.slug},${posts})"></div>
             </div>
+            <!-- sidebar -->
             <div th:replace="modules/aside :: aside(${theme.config.sidebar.tagWidgets})"></div>
         </main>
 
