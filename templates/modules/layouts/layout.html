@@ -28,6 +28,37 @@
             },
 
         };
+
+        // 根据htmlType设置页面title
+        let setTitle = ()=>{
+            let title = ''
+
+            switch([[${htmlType}]]){
+                case 'post':
+                    if(GLOBAL_CONFIG.postTitle != '')
+                        title = GLOBAL_CONFIG.postTitle
+                    break;
+                case 'archive':
+                    title = '归档'
+                    break;
+                case 'category':
+                    title = '分类'
+                    break;
+                case 'links':
+                    title = '友链'
+                    break;
+                case 'tag':
+                    title = '标签'
+                    break;
+            }
+            if(title != '')
+                document.title = title + ' - ' + [[${site.title}]]
+        }
+
+        (() => {
+            setTitle()
+        })()
+
     </script>
 
 </head>
