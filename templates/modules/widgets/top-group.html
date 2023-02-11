@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <!-- 推荐文章 -->
-<div class="topGroup" th:fragment="top-group" th:with='topGroupPosts = ${postFinder.list(1,theme.config.post.recommendQuantity)},
+<div class="topGroup" th:fragment="top-group" th:with='topGroupPosts = ${postFinder.list(1,6)},
     postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg : theme.config.layout.postRandomImg+"?"}'
 >
     <div class="recent-post-item"
