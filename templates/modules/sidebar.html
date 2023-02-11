@@ -77,7 +77,7 @@
                     <li th:each="category : ${categories}">
                         <a class="site-page child" th:href="@{${category.status.permalink}}">
                             <!--<i class="fa-fw fas fa-swatchbook"></i>-->
-                            <span th:title="${category.spec.displayName}"></span>
+                            <span th:title="${category.spec.displayName}">[[${category.spec.displayName}]]</span>
                         </a>
                     </li>
                 </ul>
