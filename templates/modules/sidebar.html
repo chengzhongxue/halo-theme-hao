@@ -40,14 +40,14 @@
         </th:block>
         <div class="menus_items">
             <div class="menus_item">
-                <!-- <a class="site-page" href="javascript:void(0);" rel="external nofollow">
-                    <span>文库</span><i class="iconfont icon-chevron-down"></i>
-                </a> -->
+                <a class="site-page" href="javascript:void(0);" rel="external nofollow">
+                    <span>文章</span><i class="iconfont icon-chevron-down"></i>
+                </a>
                 <ul class="menus_item_child">
                     <li>
                         <a class="site-page child" href="/archives">
                             <i class="iconfont icon-list-ul"></i>
-                            <span>文章列表</span>
+                            <span>文章归档</span>
                         </a>
                     </li>
                     <li>
@@ -71,7 +71,7 @@
             </div>
             <div class="menus_item">
                 <a class="site-page" href="javascript:void(0);" rel="external nofollow">
-                    <span>专栏</span><i class="iconfont icon-chevron-down"></i>
+                    <span>分类</span><i class="iconfont icon-chevron-down"></i>
                 </a>
                 <ul class="menus_item_child" th:with="categories = ${categoryFinder.listAll()}">
                     <li th:each="category : ${categories}">
