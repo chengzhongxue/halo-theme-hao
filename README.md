@@ -63,6 +63,7 @@
 - [x] 文章过期提醒
 - [x] [评论系统](https://github.com/halo-sigs/plugin-comment-widget)（插件）
 - [x] [懒加载](https://github.com/liuzhihang/plugin-lazyload)（插件）
+- [x] [评论邮件通知](https://github.com/pannanxu/halo-plugin-email)（插件）
 - ...
 
 ## 许可
