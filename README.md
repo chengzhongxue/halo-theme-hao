@@ -2,10 +2,10 @@
 <img width="100px" src="https://cdn.jsdelivr.net/gh/sun0225SUN/hao-docs/assets/images/logo.png">
 <h1>Halo-Theme-Hao</h1>
 <p align="center">
-  <a href="#主题预览">主题预览</a> |
-  <a href="#安装主题">快速上手</a> |
-  <a href="https://docs.liuzhihang.com">使用文档</a> |
-  <a href="#更新日志">更新日志</a>
+[主题预览](#主题预览) |
+[快速上手](#快速上手) |
+[使用文档](https://docs.liuzhihang.com) |
+[更新日志](更新日志)
 </p>
 </div>
 
