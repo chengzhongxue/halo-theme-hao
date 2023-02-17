@@ -20,7 +20,7 @@
 </tr>
 </table>
 
-# 🌐 预览
+## 🌐 预览
 
 - 程序员小航：[https://liuzhihang.com](https://liuzhihang.com)
 - 小孙同学：[https://blog.sunguoqi.com](https://blog.sunguoqi.com)
@@ -28,13 +28,13 @@
 - Rita：[https://www.nightglow.top](https://www.nightglow.top)
 - 好招彭于晏：[http://blog.xinsiwei.vip](http://blog.xinsiwei.vip)
 
-# 👋 简介
+## 👋 简介
 
 &emsp;&emsp;[Halo-Theme-Hao](https://github.com/liuzhihang/halo-theme-hao) 是一款适用于 [Halo2.x](https://github.com/halo-dev/halo) 的博客主题。
 
 &emsp;&emsp;移植自 [Hexo](https://hexo.io/zh-cn/index.html) 社区中 [张洪 Heo](https://blog.zhheo.com/) 对 [Hexo-Theme-Butterfly](https://github.com/liuzhihang/halo-theme-hao) 主题的魔改版本。
 
-# ⚙️ 安装
+## ⚙️ 安装
 
 &emsp;&emsp;在 [Release](https://github.com/liuzhihang/halo-theme-hao/releases) 页面下载最新版本 `zip` 后，通过 `Halo Console` 安装上传即可。
 
@@ -42,7 +42,7 @@
 
 <img src="https://docs.halo.run/assets/images/theme-install-d123abd76ac65df94e330ad64fd1b7c3.png" />
 
-# 📱 功能
+## 📱 功能
 
 > 部分功能使用插件实现
 
@@ -62,11 +62,11 @@
 - [x] [懒加载](https://github.com/liuzhihang/plugin-lazyload)（插件）
 - ...
 
-# ⚖️ 许可
+## ⚖️ 许可
 
 &emsp;&emsp;[Halo-Theme-Hao](https://github.com/liuzhihang/halo-theme-hao) 使用 [GPL-v3.0](./LICENSE) 协议开源，请遵守开源协议。
 
-# 💻 贡献
+## 💻 贡献
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
@@ -95,11 +95,11 @@
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-# 📃 更新日志
+## 📃 更新日志
 
 > 小版本每周五更新
 
-## ⏱️2023/2/11 🏷️v1.0.8
+### ⏱️2023/2/11 🏷️v1.0.8
 
 - 新增 文章顶部导航栏显示文章标题 #77
 - 新增 建站天数图标 #79
@@ -113,15 +113,15 @@
 - 增加 文章 - 最近发布文章 数量设置 #88
 - 更新 文章 - 动态主色 的说明文字更新 文章-动态主色 的说明文字 #83
 
-## ⏱️2023/2/4 🏷️v1.0.7
+### ⏱️2023/2/4 🏷️v1.0.7
 
 - 移除 font-awesome
 
-## ⏱️2023/1/30 🏷️v1.0.6
+### ⏱️2023/1/30 🏷️v1.0.6
 
 - 修复 侧边栏配置的 `分类` 和 `标签` 模块
 
-# 🤝 加入我们
+## 🤝 加入我们
 
 &emsp;&emsp;如果你对主题有什么建议或者意见，欢迎提 PR & issue。
 
@@ -134,7 +134,7 @@
 
 > 卖服务器的广告人，就不要加了。
 
-# ✨ Contributors
+## ✨ Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
