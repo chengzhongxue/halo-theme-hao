@@ -1,25 +1,50 @@
-# Halo Theme Hao
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
----
+<div align="center">
+<img width="100px" src="https://cdn.jsdelivr.net/gh/sun0225SUN/hao-docs/assets/images/logo.png">
+<h1>Halo-Theme-Hao</h1>
+<p align="center">
+  <a href="#主题预览">主题预览</a> |
+  <a href="#安装主题">快速上手</a> |
+  <a href="https://docs.liuzhihang.com">使用文档</a> |
+  <a href="#更新日志">更新日志</a>
+</p>
+</div>
 
-预览：[程序员小航](http://liuzhihang.com/)
+<table>
+<tr>
+<td>
+<img src="https://cdn.jsdelivr.net/gh/sun0225SUN/hao-docs/assets/images/Halo-Theme-Hao-White.jpg"/>
+</td>
+<td>
+<img src="https://cdn.jsdelivr.net/gh/sun0225SUN/hao-docs/assets/images/Halo-Theme-Hao-Black.jpg"/>
+</td>
+</tr>
+</table>
 
-文档：[语雀](https://www.yuque.com/liuzhihangs/halo-theme-hao)
+# 🌐 预览
 
-> halo-theme-hao 是一款 [Halo2.0](https://github.com/halo-dev/halo) 的博客主题
->
-> 移植于 Hexo 社区 [hexo-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly)
-> 主题中 [Heo](https://blog.zhheo.com/) 的魔改
+- 程序员小航：[https://liuzhihang.com](https://liuzhihang.com)
+- 小孙同学：[https://blog.sunguoqi.com](https://blog.sunguoqi.com)
+- Lanbin の 知识库：[http://lib.lanbin.top](http://lib.lanbin.top)
+- Rita：[https://www.nightglow.top](https://www.nightglow.top)
+- 好招彭于晏：[http://blog.xinsiwei.vip](http://blog.xinsiwei.vip)
 
-## 安裝
+# 👋 简介
 
-### 下载安装
-在 [Release](https://github.com/liuzhihang/halo-theme-hao/releases) 页面下载最新版本 zip 后，通过 Halo Console 后台主题安装处上传即可。
+&emsp;&emsp;[Halo-Theme-Hao](https://github.com/liuzhihang/halo-theme-hao) 是一款适用于 [Halo2.x](https://github.com/halo-dev/halo) 的博客主题。
 
-## 说明
-> 部分功能是使用插件进行支持
+&emsp;&emsp;移植自 [Hexo](https://hexo.io/zh-cn/index.html) 社区中 [张洪 Heo](https://blog.zhheo.com/) 对 [Hexo-Theme-Butterfly](https://github.com/liuzhihang/halo-theme-hao) 主题的魔改版本。
+
+# ⚙️ 安装
+
+&emsp;&emsp;在 [Release](https://github.com/liuzhihang/halo-theme-hao/releases) 页面下载最新版本 `zip` 后，通过 `Halo Console` 安装上传即可。
+
+&emsp;&emsp;详细文档请参考：[https://docs.halo.run/user-guide/themes](https://docs.halo.run/user-guide/themes)
+
+<img src="https://docs.halo.run/assets/images/theme-install-d123abd76ac65df94e330ad64fd1b7c3.png" />
+
+# 📱 功能
+
+> 部分功能使用插件实现
 
 - [x] 卡片化设计
 - [x] 多栏设置，支持单栏/双栏/三栏/四栏
@@ -27,27 +52,27 @@
 - [x] 响应式主题
 - [x] 夜间模式
 - [x] 文章阅读模式
-- [X] [文章目录](https://github.com/liuzhihang/plugin-tocbot)（插件）
-- [X] [代码高亮/语言/复制](https://github.com/liuzhihang/plugin-prismjs)（插件）
-- [x] [文章搜索](https://github.com/halo-sigs/plugin-search-widget)
+- [x] [文章目录](https://github.com/liuzhihang/plugin-tocbot)（插件）
+- [x] [代码高亮/语言/复制](https://github.com/liuzhihang/plugin-prismjs)（插件）
+- [x] [文章搜索](https://github.com/halo-sigs/plugin-search-widget)（插件）
 - [x] 显示字数统计
 - [x] 显示相关文章
 - [x] 文章过期提醒
-- [X] [评论系统](https://github.com/halo-sigs/plugin-comment-widget)
-- [x] [懒加载](https://github.com/liuzhihang/plugin-lazyload)
-- [x] 其他功能
+- [x] [评论系统](https://github.com/halo-sigs/plugin-comment-widget)（插件）
+- [x] [懒加载](https://github.com/liuzhihang/plugin-lazyload)（插件）
+- ...
 
+# ⚖️ 许可
 
-## 预览
+&emsp;&emsp;[Halo-Theme-Hao](https://github.com/liuzhihang/halo-theme-hao) 使用 [GPL-v3.0](./LICENSE) 协议开源，请遵守开源协议。
 
+# 💻 贡献
 
-## 许可证
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-[![license](https://img.shields.io/github/license/halo-dev/halo.svg?style=flat-square)](https://github.com/halo-dev/halo/blob/master/LICENSE)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat)](#contributors-)
 
-Halo-Theme-Hao 使用 GPL-v3.0 协议开源，请遵守开源协议。
-
-## 贡献
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -70,18 +95,46 @@ Halo-Theme-Hao 使用 GPL-v3.0 协议开源，请遵守开源协议。
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-## 其他
+# 📃 更新日志
 
-如果你对主题有什么建议或者意见，欢迎提 PR & issue。
+> 小版本每周五更新
 
-想了解更多信息可以关注 「 程序员小航 」。
+## ⏱️2023/2/11 🏷️v1.0.8
 
-- 发送 "hao群" 可以加群 （群验证信息最好是个人网站）
+- 新增 文章顶部导航栏显示文章标题 #77
+- 新增 建站天数图标 #79
+- 新增 文章发表时间 #86 #90
+- 新增 归档页以及分页 #95
+- 修复 首页文章 分类角标 模糊效果错位问题#73
+- 修复右键菜单中 标签和分类路径错误问题 #74
+- 修复“阅读建议 ”为“0”时不生效的问题 #76
+- 修复 文章随机图重复的问题 #84
+- 修复 评论组件不能切换暗色主题的问题
+- 增加 文章 - 最近发布文章 数量设置 #88
+- 更新 文章 - 动态主色 的说明文字更新 文章-动态主色 的说明文字 #83
+
+## ⏱️2023/2/4 🏷️v1.0.7
+
+- 移除 font-awesome
+
+## ⏱️2023/1/30 🏷️v1.0.6
+
+- 修复 侧边栏配置的 `分类` 和 `标签` 模块
+
+# 🤝 加入我们
+
+&emsp;&emsp;如果你对主题有什么建议或者意见，欢迎提 PR & issue。
+
+&emsp;&emsp;想了解更多信息可以关注 「 程序员小航 」。
+
+![程序员小航](https://liuzhihang.com/themes/theme-hao/assets/images/wechat/wechat1.png)
+
+- 发送 "hao 群" 可以加群 （群验证信息最好是个人网站）
 - 发送"加好友"，可以加我微信，我拉你进群 （群二维码失效时）
 
 > 卖服务器的广告人，就不要加了。
 
-## Contributors ✨
+# ✨ Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
@@ -90,6 +143,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
