@@ -28,7 +28,7 @@
 - 程序员小航：[https://liuzhihang.com](https://liuzhihang.com)
 - 小孙同学：[https://blog.sunguoqi.com](https://blog.sunguoqi.com)
 - Lanbin の 知识库：[http://lib.lanbin.top](http://lib.lanbin.top)
-- Rita：[https://www.nightglow.top](https://www.nightglow.top)
+- AirboZH 的博客：[https://www.airbozh.cn](https://www.airbozh.cn)
 - 好招彭于晏：[http://blog.xinsiwei.vip](http://blog.xinsiwei.vip)
 
 ## 简介
