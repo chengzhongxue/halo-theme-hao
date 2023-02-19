@@ -2,7 +2,7 @@
 <html lang="en" th:fragment="layout(content, htmlType)" xmlns:th="http://www.thymeleaf.org">
 
 <!-- head 中自定义的  -->
-<head th:replace="modules/head :: head(metas = null, links = null, scripts =  ~{::head/script})">
+<head th:replace="~{modules/head :: head(metas = null, links = null, scripts =  ~{::head/script})}">
 
     <!-- 声明一些公共信息 -->
     <script th:inline="javascript">
@@ -66,15 +66,15 @@
 <body>
 
 <!-- loading 页面 -->
-<div th:replace="modules/loading-box :: loading-box"></div>
+<div th:replace="~{modules/loading-box :: loading-box}"></div>
 
 <!-- 网站背景 -->
 <div id="web_bg"></div>
 
 <!-- 控制台 -->
-<div th:replace="modules/widgets/console :: console"></div>
+<div th:replace="~{modules/widgets/console :: console}"></div>
 
-<div th:replace="modules/sidebar :: sidebar"></div>
+<div th:replace="~{modules/sidebar :: sidebar}"></div>
 
 <!-- 内容 -->
 <th:block th:replace="${content}"></th:block>
@@ -92,7 +92,7 @@
 <!--    </div>-->
 <!--</div>-->
 
-<div th:replace="modules/right-menu :: right-menu"></div>
+<div th:replace="~{modules/right-menu :: right-menu}"></div>
 
 <div>
     <script th:src="@{/assets/js/utils.js}"></script>

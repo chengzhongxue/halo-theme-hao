@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'category')" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'category')}" xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
 
     <div class="page" id="body-wrap">
         <header class="not-top-img" id="page-header">
-            <nav th:replace="modules/nav :: nav"></nav>
+            <nav th:replace="~{modules/nav :: nav}"></nav>
         </header>
         <main class="layout" id="content-inner">
             <div id="category">
@@ -62,14 +62,14 @@
                     </div>
                 </div>
                 <!-- 分页 -->
-                <div th:replace="modules/widgets/page :: page(${'/categories/'+category.spec.slug},${posts})"></div>
+                <div th:replace="~{modules/widgets/page :: page(${'/categories/'+category.spec.slug},${posts})}"></div>
             </div>
             <!-- sidebar -->
-            <div th:replace="modules/aside :: aside(${theme.config.sidebar.categoryWidgets})"></div>
+            <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.categoryWidgets})}"></div>
         </main>
 
         <!-- 底部 -->
-        <footer th:replace="modules/footer :: footer"></footer>
+        <footer th:replace="~{modules/footer :: footer}"></footer>
     </div>
 
 </th:block>
