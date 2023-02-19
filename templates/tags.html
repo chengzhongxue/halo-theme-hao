@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'tag')"
+<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'tag')}"
       xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
 
     <div class="page" id="body-wrap">
         <header class="not-top-img" id="page-header">
-            <nav th:replace="modules/nav :: nav"></nav>
+            <nav th:replace="~{modules/nav :: nav}"></nav>
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page"><h1 class="page-title" style="display: inline;">标签</h1>
@@ -24,7 +24,7 @@
             </div>
         </main>
         <!-- 底部 -->
-        <footer th:replace="modules/footer :: footer"></footer>
+        <footer th:replace="~{modules/footer :: footer}"></footer>
     </div>
 
 </th:block>

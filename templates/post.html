@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'post')"
+<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'post')}"
       xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
@@ -7,7 +7,7 @@
 
         <header class="post-bg" id="page-header"
                 th:style="'background-image:url(' + (${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}) + ')'">
-            <nav th:replace="modules/nav :: nav"></nav>
+            <nav th:replace="~{modules/nav :: nav}"></nav>
             <div class="coverdiv" id="coverdiv">
                 <img crossorigin="anonymous" id="post-cover"
                      th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}">
@@ -234,11 +234,11 @@
             </div>
 
             <!-- 侧栏 -->
-            <div th:replace="modules/aside :: aside(${theme.config.sidebar.postWidgets})"></div>
+            <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.postWidgets})}"></div>
         </main>
 
         <!-- 底部 -->
-        <footer th:replace="modules/footer :: footer"></footer>
+        <footer th:replace="~{modules/footer :: footer}"></footer>
 
     </div>
 

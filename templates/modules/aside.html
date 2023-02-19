@@ -10,11 +10,11 @@
         <th:block th:each="widget,iterStat : ${#strings.listSplit(widgets, ',')}">
 
             <th:block th:if="not ${iterStat.last}">
-                <th:block th:replace="'modules/widgets/aside/'+ ${widget}"/>
+                <th:block th:replace="~{'modules/widgets/aside/'+ ${widget}}"/>
             </th:block>
             <th:block th:if="${iterStat.last}">
                 <div class="sticky_layout">
-                    <th:block th:replace="'modules/widgets/aside/'+ ${widget}"/>
+                    <th:block th:replace="~{'modules/widgets/aside/'+ ${widget}}"/>
                 </div>
             </th:block>
         </th:block>
@@ -25,15 +25,15 @@
 
         <th:block th:each="widget : ${#strings.listSplit(#strings.substringBefore(widgets, 'toc'), ',')}">
 
-            <th:block th:replace="'modules/widgets/aside/'+ ${widget}"/>
+            <th:block th:replace="~{'modules/widgets/aside/'+ ${widget}}"/>
         </th:block>
 
         <!-- toc 之后的组件需要被 sticky_layout 包裹 -->
         <div class="sticky_layout">
-            <th:block th:replace="modules/widgets/aside/toc :: toc"/>
+            <th:block th:replace="~{modules/widgets/aside/toc :: toc}"/>
 
             <th:block th:each="widget : ${#strings.listSplit(#strings.substringAfter(widgets, 'toc'), ',')}">
-                <th:block th:replace="'modules/widgets/aside/'+ ${widget}"/>
+                <th:block th:replace="~{'modules/widgets/aside/'+ ${widget}}"/>
             </th:block>
         </div>
     </th:block>

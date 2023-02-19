@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'archive')"
+<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'archive')}"
       xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
 
     <div class="page" id="body-wrap">
         <header class="not-top-img" id="page-header">
-            <nav th:replace="modules/nav :: nav"></nav>
+            <nav th:replace="~{modules/nav :: nav}"></nav>
         </header>
         <main class="layout" id="content-inner">
             <!-- archive -->
@@ -47,13 +47,13 @@
                     </div>
                 </div>
                 <!-- 分页 -->
-                <div th:replace="modules/widgets/page :: page('/archives',${archives})"></div>
+                <div th:replace="~{modules/widgets/page :: page('/archives',${archives})}"></div>
             </div>
             <!-- sidebar -->
-            <div th:replace="modules/aside :: aside(${theme.config.sidebar.categoryWidgets})"></div>
+            <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.categoryWidgets})}"></div>
         </main>
         <!-- 底部 -->
-        <footer th:replace="modules/footer :: footer"></footer>
+        <footer th:replace="~{modules/footer :: footer}"></footer>
     </div>
 
 </th:block>
