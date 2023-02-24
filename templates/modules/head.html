@@ -111,6 +111,11 @@
             } else if (t === 'light') activateLightMode()
             else activateDarkMode()
 
+            if("[[${theme.config.style.colorScheme}]]" === 'dark')
+                activateDarkMode()
+            if("[[${theme.config.style.colorScheme}]]" === 'light')
+                activateLightMode()
+
             const asideStatus = saveToLocal.get('aside-status')
             if (asideStatus !== undefined) {
                 if (asideStatus === 'hide') {
