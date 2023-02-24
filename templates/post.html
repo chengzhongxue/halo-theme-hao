@@ -67,7 +67,10 @@
                             <span class="post-meta-label">热度:</span>
                             <span id="visit" th:text="${post.stats.visit}"></span>
                         </span>
-                        <span class="post-meta-commentcount" onclick="heo.scrollTo('#post-comment');" title="评论数">
+                        <span class="post-meta-commentcount" 
+                              th:if="${pluginFinder.available('PluginCommentWidget')}" 
+                              onclick="heo.scrollTo('#post-comment');" 
+                              title="评论数">
                             <i class="iconfont icon-comment-alt"></i>
                             <span class="post-meta-label">评论:</span>
                             <a href="#post-comment"><span id="comment-count" th:text="${post.stats.comment}"></span></a>
