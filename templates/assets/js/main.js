@@ -336,6 +336,8 @@ document.addEventListener('DOMContentLoaded', function () {
      */
     const scrollFn = function () {
         const $rightside = document.getElementById('rightside')
+        // 解决浏览器滚动时无休止报错
+        if ($rightside === null) { return }
         const innerHeight = window.innerHeight + 56
 
         // 當滾動條小于 56 的時候
