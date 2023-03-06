@@ -3,13 +3,8 @@
     text-indent: 2em;
 } */
 
-/* 代码块阴影 Bug */
-#article-container pre > code {
-    background: transparent !important;
-}
-
 /* 代码块纯黑色背景 */
-code[class*="language-"], pre[class*="language-"]{
+code[class*=" language-"], pre[class*=" language-"]{
     background: #18171d;
 }
 
@@ -47,4 +42,7 @@ ul li {
 
 #article-container pre > code {
     background: transparent !important;
+    /* 解决文章界面代码超长时溢出问题 */
+    display: block;
+    overflow: auto;
 }
