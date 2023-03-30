@@ -159,3 +159,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+
+本工具使用 JetBrains IDEA 进行开发
+----
+<a href="https://www.jetbrains.com/?from=Toolkit"><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/jetbrains-logo-MrNwcp.png" width="20%" height="20%"></a><a href="https://www.jetbrains.com/?from=Toolkit"><img src="https://cdn.jsdelivr.net/gh/liuzhihang/oss/pic/article/idea-logo-XpnqgG.png" width="20%" height="20%"> </a>
