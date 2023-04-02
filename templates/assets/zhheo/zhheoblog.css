@@ -5701,6 +5701,7 @@ html {
 
 #page-header.not-top-img {
     margin-bottom: 0rem;
+    z-index:1;
 }
 
 #nav #toggle-menu {
