@@ -5558,7 +5558,7 @@ html {
     transition: 0s;
     display: flex;
     justify-content: center;
-    z-index: 1000 !important;
+    /*z-index: 1000 !important;*/
 }
 
 @media screen and (max-width: 768px) {
