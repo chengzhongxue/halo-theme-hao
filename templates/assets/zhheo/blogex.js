@@ -545,14 +545,14 @@ document.addEventListener('scroll', btf.throttle(function () {
     if (eventlistner && pagination) {
         var centerY = eventlistner.offsetTop + (eventlistner.offsetHeight / 2);
         if (document.body.clientWidth > 1300) {
-            if (centerY < visibleBottom) {
+            if (centerY < visibleTop) {
                 pagination.classList.add("show-window");
             } else {
                 pagination.classList.remove("show-window");
             }
         }
     }
-}, 200))
+}, 200));
 
 
 // 页面百分比
