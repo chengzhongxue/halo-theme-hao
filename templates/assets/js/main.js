@@ -861,10 +861,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     window.refreshFn = function () {
-        initAdjust()
+        initAdjust();
 
         if (GLOBAL_CONFIG.isPost) {
             GLOBAL_CONFIG.isToc && tocFn()
+            addRuntime();
             // GLOBAL_CONFIG.noticeOutdate !== undefined && addPostOutdateNotice()
             // GLOBAL_CONFIG.relativeDate.post && relativeDate(document.querySelectorAll('#post-meta time'))
         } else {
