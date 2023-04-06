@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div class="commentList container" id="commentList" th:fragment="moment" th:if="${theme.config.top.moment}">
-    <!--   等待日志模块适配日志   -->
+<div class="bbTimeList container" id="bbTimeList" th:fragment="moment" th:if="${theme.config.top.moment}">
+    <!--   瞬间插件   -->
     <i class="iconfont icon-logo-moment" onclick="" style="font-size: 1.3rem;" title="瞬间"></i>
-    <div class="swiper-container swiper-no-swiping" id="moment" tabindex="-1">
-        <div class="swiper-wrapper" id="comment-list" onclick="">
-            <div class="li-style swiper-slide">这里需要后面适配瞬间的插件</div>
-            <div class="li-style swiper-slide">后面再适配吧！</div>
+    <div class="swiper-container swiper-no-swiping" id="bbtalk" tabindex="-1">
+        <div class="swiper-wrapper" id="bber-talk" onclick="/comment">
+            <th:block th:each="moment : ${momentFinder.listAll()}" th:with="content=${moment.spec.content}">
+                <div class="li-style swiper-slide" th:if="${not #strings.isEmpty(content.html)}" th:utext="${content.html}"></div>
+            </th:block>
         </div>
     </div>
-    <i class="comment-goto iconfont icon-arrow-circle-right" onclick="" title="查看全文"></i>
+    <i class="bber-gotobb fas fa-arrow-circle-right" onclick="/comment" title="查看全文"></i>
 </div>
 </html>

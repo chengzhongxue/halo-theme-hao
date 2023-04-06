@@ -8800,8 +8800,8 @@ a.categoryButton:hover {
     font-weight: bold;
 }
 
-/* 主页瞬间 */
-#comment-list {
+/* 主页哔哔bb */
+#bber-talk {
     width: 100%;
     height: 25px;
     line-height: 25px;
@@ -8809,7 +8809,7 @@ a.categoryButton:hover {
     flex-direction: column;
 }
 
-#moment {
+#bbtalk {
     overflow: hidden;
     width: 100%;
     overflow: hidden;
@@ -8817,7 +8817,7 @@ a.categoryButton:hover {
     white-space: nowrap;
 }
 
-#comment-list .li-style {
+#bber-talk .li-style {
     width: auto;
     max-width: 100%;
     height: 25px;
@@ -8831,7 +8831,7 @@ a.categoryButton:hover {
     white-space: nowrap;
 }
 
-#commentList .li-style:hover {
+#bbTimeList .li-style:hover {
     color: var(--heo-theme);
     transition: 0.3s;
 }
@@ -8844,7 +8844,7 @@ li {
     padding: 0;
 }
 
-#commentList {
+#bbTimeList {
     background: var(--heo-none);
     color: var(--heo-fontcolor);
     padding: 0.5rem 1rem;
@@ -8858,26 +8858,26 @@ li {
     height: 50px;
 }
 
-#commentList:hover {
+#bbTimeList:hover {
     border: var(--style-border-hover);
     box-shadow: var(--heo-shadow-main);
 }
 
 @media screen and (min-width: 1300px) {
-    #commentList {
+    #bbTimeList {
         margin-bottom: 1rem;
     }
 }
 
 /* 哔哔前往 */
-.comment-goto {
+.bber-gotobb {
     line-height: 25px;
     margin-left: 1rem;
     transition: 0.3s;
     cursor: pointer;
 }
 
-.comment-goto:hover {
+.bber-gotobb:hover {
     opacity: 0.8;
     color: var(--heo-theme);
 }
@@ -9470,7 +9470,7 @@ span.recent-post-top-text {
         width: 100%;
     }
 
-    #commentList {
+    #bbTimeList {
         margin-top: 0;
         border-radius: 0;
         background: var(--heo-background);
@@ -9485,7 +9485,7 @@ span.recent-post-top-text {
         font-size: 12px;
     }
 
-    #commentList {
+    #bbTimeList {
         margin-bottom: 0rem;
     }
 }
@@ -12341,6 +12341,7 @@ a.reward-main-btn:hover {
     }
 
 
+
     @media screen and (min-width: 1300px) {
         #pagination .page-number:hover {
             transform: scale(1.03);
@@ -14307,17 +14308,19 @@ figure.gallery-group:hover .gallery-group-name::after {
     display: none;
 }
 
-/* 瞬间 */
-#comment .timeline #waterfall {
+/* bb哔哔 */
+/* bb样式 */
+
+#bber .timeline #waterfall {
     opacity: 0;
     transition: 0.3s;
 }
 
-#comment .timeline #waterfall.show {
+#bber .timeline #waterfall.show {
     opacity: 1;
 }
 
-#comment .timeline ul li.item {
+#bber .timeline ul li.item {
     position: relative;
     width: 32%;
     border: var(--style-border-always);
@@ -14335,7 +14338,7 @@ figure.gallery-group:hover .gallery-group-name::after {
     margin-right: 2%;
 }
 
-#comment .timeline ul li.item hr {
+#bber .timeline ul li.item hr {
     display: flex;
     position: relative;
     margin: 8px 0;
@@ -14344,23 +14347,23 @@ figure.gallery-group:hover .gallery-group-name::after {
 }
 
 @media screen and (max-width: 768px) {
-    #comment .timeline ul li.item {
+    #bber .timeline ul li.item {
         padding: 0;
     }
 }
 
-#comment .timeline ul li.item:hover {
+#bber .timeline ul li.item:hover {
     border: var(--style-border-hover);
 }
 
-#comment ul.list {
+#bber ul.list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-#comment li.item {
+#bber li.item {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -14369,7 +14372,7 @@ figure.gallery-group:hover .gallery-group-name::after {
 
 
 @media screen and (max-width: 1300px) {
-    #comment .timeline ul li.item {
+    #bber .timeline ul li.item {
         width: 49%;
         margin-right: 1%;
     }
@@ -14377,12 +14380,12 @@ figure.gallery-group:hover .gallery-group-name::after {
 
 
 @media screen and (max-width: 768px) {
-    #comment .timeline ul li.item {
+    #bber .timeline ul li.item {
         width: 100%;
         margin-right: 0;
     }
 
-    #comment .timeline ul li.item {
+    #bber .timeline ul li.item {
         padding: 16px 20px;
     }
 }
@@ -14409,13 +14412,13 @@ figure.gallery-group:hover .gallery-group-name::after {
     color: var(--heo-hovertext);
 }
 
-#comment {
+#bber {
     margin-top: 1rem;
     width: 100%;
 }
 
 /* 每条动态 */
-#comment div.bber-content {
+#bber div.bber-content {
     display: flex;
     flex-direction: initial;
     flex-wrap: wrap;
@@ -14424,20 +14427,20 @@ figure.gallery-group:hover .gallery-group-name::after {
     height: 100%;
 }
 
-#comment > section > ul > li.item {
+#bber > section > ul > li.item {
     margin-bottom: 1rem;
 }
 
-#comment .bber-info {
+#bber .bber-info {
     display: flex;
     align-items: center;
 }
 
-#comment .bber-info .fa-rectangles-mixed {
+#bber .bber-info .fa-rectangles-mixed {
     margin-right: 8px;
 }
 
-#comment .bber-content-link {
+#bber .bber-content-link {
     display: flex;
     margin-left: 0.5rem;
     color: var(--heo-secondtext);
@@ -14449,41 +14452,41 @@ figure.gallery-group:hover .gallery-group-name::after {
     border-radius: 20px;
 }
 
-#comment .bber-content-link:hover {
+#bber .bber-content-link:hover {
     background-color: var(--heo-main);
     color: var(--heo-white);
 }
 
-#comment .bber-content-link i {
+#bber .bber-content-link i {
     margin-right: 3px;
 }
 
-#comment .bber-reply {
+#bber .bber-reply {
     cursor: pointer;
     padding: 0 4px;
 }
 
-#comment .bber-bottom {
+#bber .bber-bottom {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-#comment .count {
+#bber .count {
     color: var(--heo-secondtext);
     font-size: 0.8rem;
 }
 
-#comment p {
+#bber p {
     margin: 0;
 }
 
-#comment .datafrom i {
+#bber .datafrom i {
     margin-right: 4px;
 }
 
 /* 音乐 */
-#comment .bber-music {
+#bber .bber-music {
     width: 100%;
     height: 90px;
     margin: 0.5rem 0;
@@ -14493,33 +14496,33 @@ figure.gallery-group:hover .gallery-group-name::after {
     background: var(--heo-secondbg);
 }
 
-#comment .aplayer {
+#bber .aplayer {
     margin: 0;
 }
 
-#comment .aplayer .aplayer-info .aplayer-music .aplayer-title {
+#bber .aplayer .aplayer-info .aplayer-music .aplayer-title {
     font-size: 0.8rem;
     font-weight: bold;
     margin: 0;
     color: var(--heo-black);
 }
 
-#comment .aplayer.aplayer-withlrc .aplayer-pic {
+#bber .aplayer.aplayer-withlrc .aplayer-pic {
     height: 82px;
     width: 82px;
     margin: 4px;
     border-radius: 4px;
 }
 
-#comment .aplayer .aplayer-info .aplayer-music {
+#bber .aplayer .aplayer-info .aplayer-music {
     height: 23px;
 }
 
-#comment .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap {
+#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap {
     padding: 0;
 }
 
-#comment .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar {
+#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar {
     background: var(--heo-gray);
     height: 8px;
     border-radius: 12px;
@@ -14527,38 +14530,38 @@ figure.gallery-group:hover .gallery-group-name::after {
     overflow: hidden;
 }
 
-#comment .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap:hover .aplayer-bar {
+#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap:hover .aplayer-bar {
     height: 12px;
 }
 
-#comment .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played {
+#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played {
     height: 100%;
     border-radius: 12px;
 }
 
-#comment .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded {
+#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded {
     height: 100%;
     border-radius: 12px;
 }
 
-#comment .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb {
+#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb {
     display: none;
 }
 
-#comment .aplayer .aplayer-info .aplayer-controller {
+#bber .aplayer .aplayer-info .aplayer-controller {
     align-items: center;
 }
 
-#comment .aplayer .aplayer-info .aplayer-controller .aplayer-time {
+#bber .aplayer .aplayer-info .aplayer-controller .aplayer-time {
     position: initial;
 }
 
-#comment .bber-music .aplayer-lrc {
+#bber .bber-music .aplayer-lrc {
     display: none;
 }
 
 /* 只能展示30条的提示 */
-#comment-tips {
+#bber-tips {
     font-size: 14px;
     display: flex;
     justify-content: center;
@@ -14567,13 +14570,13 @@ figure.gallery-group:hover .gallery-group-name::after {
 
 /* 图片 */
 
-#comment .bber-content-img img {
+#bber .bber-content-img img {
     object-fit: cover;
     max-height: 100%;
     border-radius: 12px;
 }
 
-#comment .bber-content-img {
+#bber .bber-content-img {
     height: 100px;
     margin: auto;
     margin-top: 0.2rem;
@@ -14587,7 +14590,7 @@ figure.gallery-group:hover .gallery-group-name::after {
 
 /* 时间 */
 
-#comment > section > ul > li > div .bber-info-time {
+#bber > section > ul > li > div .bber-info-time {
     color: var(--heo-fontcolor);
     font-size: 0.7rem;
     background-color: var(--heo-gray-op);
@@ -14598,12 +14601,12 @@ figure.gallery-group:hover .gallery-group-name::after {
     align-items: center;
 }
 
-#comment > section > ul > li > div .bber-info-time i {
+#bber > section > ul > li > div .bber-info-time i {
     margin-right: 8px;
 }
 
 /* 内容 */
-#comment .bber-content .datacont {
+#bber .bber-content .datacont {
     order: 0;
     font-size: 0.8rem;
     font-weight: bold;
@@ -14618,14 +14621,14 @@ figure.gallery-group:hover .gallery-group-name::after {
 }
 
 /* 设备 */
-#comment > section > ul > li > div .datafrom {
+#bber > section > ul > li > div .datafrom {
     order: 2;
     color: var(--heo-secondtext);
     font-size: 0.7rem;
     margin-left: 8px;
 }
 
-#comment > section > ul > li > div .datafrom small {
+#bber > section > ul > li > div .datafrom small {
     font-size: 0.7rem;
 }
 
@@ -15217,6 +15220,7 @@ span.hexo-douban-pagenum {
 }
 
 
+
 #about-page .author-title {
     font-size: 2rem;
     font-weight: bold;
@@ -15347,7 +15351,7 @@ span.hexo-douban-pagenum {
 /* 关于页面地图 */
 
 .author-content-item.map {
-    background: url(../images/404.gif) no-repeat center;
+    background: url(https://img.zhheo.com/i/2022/08/31/630ef8e827401.webp) no-repeat center;
     min-height: 160px;
     max-height: 400px;
     position: relative;
@@ -15359,7 +15363,7 @@ span.hexo-douban-pagenum {
 }
 
 [data-theme=dark] .author-content-item.map {
-    background: url(../images/404.gif) no-repeat center;
+    background: url(https://img.zhheo.com/i/2022/08/31/630ef8db0fefe.webp) no-repeat center;
     background-size: 100%;
 }
 
@@ -15767,7 +15771,7 @@ span.hexo-douban-pagenum {
 #about-page .about-statistic {
     min-height: 380px;
     width: 39%;
-    background: url(../images/404.gif) no-repeat top;
+    background: url(https://img.zhheo.com/i/2022/09/23/632d5d8f37e90.webp) no-repeat top;
     background-size: cover;
     color: var(--heo-white);
     overflow: hidden;
@@ -15957,7 +15961,7 @@ span.hexo-douban-pagenum {
 
 /* 喜欢的游戏 lol */
 .author-content-item.game-lol {
-    background: url(../images/404.gif) no-repeat top;
+    background: url(https://img.zhheo.com/i/2022/08/31/630efa7ae39fe.webp) no-repeat top;
     background-size: cover;
     min-height: 300px;
     overflow: hidden;
@@ -16012,17 +16016,17 @@ span.hexo-douban-pagenum {
 }
 
 .icon-pos-sup {
-    background: url(../images/404.gif);
+    background: url('https://img.zhheo.com/i/2022/08/25/63074b68d9f4c.png');
 }
 
 .icon-pos-mid {
-    background: url(../images/404.gif);
+    background: url('https://img.zhheo.com/i/2022/08/25/63074b54d2731.png');
 }
 
 /* 喜欢的游戏 狼人杀 */
 .author-content-item.game-wolf {
     width: 39%;
-    background: url(../images/404.gif) no-repeat top;
+    background: url(https://img.zhheo.com/i/2022/08/31/630efa916a851.webp) no-repeat top;
     background-size: cover;
     min-height: 300px;
     overflow: hidden;
@@ -16041,7 +16045,7 @@ span.hexo-douban-pagenum {
 
 /* 关注领域 */
 .author-content-item.like-technology {
-    background: url(../images/404.gif) no-repeat;
+    background: url(https://img.zhheo.com/i/2022/08/31/630efac3ecef3.webp) no-repeat;
     background-size: cover;
     min-height: 230px;
     color: var(--heo-white);
@@ -16049,7 +16053,7 @@ span.hexo-douban-pagenum {
 
 /* 喜欢音乐 */
 .author-content-item.like-music {
-    background: url(../images/404.gif) no-repeat top;
+    background: url(https://img.zhheo.com/i/2022/08/31/630efae141e9a.webp) no-repeat top;
     background-size: cover;
     min-height: 400px;
     color: var(--heo-white);
@@ -16128,7 +16132,7 @@ span.hexo-douban-pagenum {
 /* 豆瓣电影页面 */
 .author-content-item.single.like-movie {
     height: 19rem;
-    background: url(../images/404.gif) no-repeat top;
+    background: url(https://img.zhheo.com/i/2022/09/27/633289920d1c7.webp) no-repeat top;
     background-size: cover;
     color: var(--heo-white);
     overflow: hidden;
@@ -16192,7 +16196,7 @@ span.hexo-douban-pagenum {
 /* 工具推荐 */
 .author-content.author-content-item.toolPage {
     height: 19rem;
-    background: url(../images/404.gif) no-repeat top;
+    background: url(https://img.zhheo.com/i/2022/08/26/6308d5778ba3c.jpg) no-repeat top;
     background-size: cover;
     color: var(--heo-white);
     overflow: hidden;
@@ -16202,7 +16206,7 @@ span.hexo-douban-pagenum {
 /* 友链鱼塘 */
 .author-content.author-content-item.momentsPage {
     height: 19rem;
-    background: url(../images/404.gif) no-repeat top;
+    background: url(https://img.zhheo.com/i/2022/08/26/6308d5b137881.jpg) no-repeat top;
     background-size: cover;
     color: var(--heo-white);
     overflow: hidden;
@@ -16212,7 +16216,7 @@ span.hexo-douban-pagenum {
 /* 即刻短文 */
 .author-content.author-content-item.essayPage {
     height: 19rem;
-    background: url(../images/404.gif) no-repeat center;
+    background: url(https://img.zhheo.com/i/2022/08/27/6309587509a02.jpg) no-repeat center;
     background-size: cover;
     color: var(--heo-white);
     overflow: hidden;
@@ -16636,52 +16640,4 @@ span.hexo-douban-pagenum {
     vertical-align: baseline;
     line-height: 1;
     height: 24px;
-}
-
-/* 首行缩进 */
-/* .post-content p {
-    text-indent: 2em;
-} */
-
-/* 代码块纯黑色背景 */
-code[class*=" language-"], pre[class*=" language-"]{
-    background: #18171d;
-}
-
-/* banner 字体图标大小及位置 */
-i.iconfont.icon-arrow-right.banner-righticon{
-    font-size: 66px;
-}
-
-span.bannerText{
-    display: block;
-    margin-top: 35px;
-}
-
-/* 自我介绍渐变色背景 */
-#aside-content > .card-widget.card-info::before {
-    background: linear-gradient(-25deg,#0084ff,#031764,#67044d);
-    background-size: 400%;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    content: '';
-    animation: gradient 15s ease infinite;
-}
-
-/* 列表样式及缩进 */
-ul li {
-    font-size: 18px;
-}
-
-#article-container ol li:not(.tab), #article-container ul li:not(.tab){
-    margin-left: 2em;
-}
-
-#article-container pre > code {
-    background: transparent !important;
-    display: block;
-    overflow: auto;
 }

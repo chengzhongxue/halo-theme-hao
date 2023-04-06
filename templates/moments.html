@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'moments')}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="content">
+
+    <div class="page" id="body-wrap">
+
+        <!-- 头部导航栏 -->
+        <header class="not-top-img" id="page-header">
+            <nav th:replace="~{modules/nav :: nav}"></nav>
+        </header>
+        <main class="layout hide-aside" id="content-inner">
+            <div id="page">
+                <div class="author-content author-content-item essayPage single">
+                    <div class="card-content">
+                        <div class="author-content-item-tips">即刻短文</div>
+                        <span class="author-content-item-title">分享生活的小确幸</span>
+                        <div class="content-bottom">
+                            <div class="tips">使用 即刻短文静态部署版 构建</div>
+                        </div>
+                        <div class="banner-button-group"><a class="banner-button" onclick="pjax.loadUrl(&quot;/p/557c9e72.html&quot;)"><i
+                                class="fas fa-circle-chevron-right"></i><span class="banner-button-text">部署项目</span></a></div>
+                    </div>
+                </div>
+                <script data-pjax="" defer="" src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js"></script>
+                <script data-pjax="" defer="" src="https://cdn.zhheo.com/public/aplayer/Meting2.min.js"></script>
+                <link href="https://cdn.zhheo.com/public/aplayer/APlayer.min.css" rel="stylesheet external nofollow">
+                <div id="bber">
+                    <section class="timeline page-1">
+                        <ul class="list" id="waterfall">
+                            <li class="item" th:each="moment : ${moments.items}" th:with="content=${moment.spec.content}">
+                                <div class="bber-content">
+                                    <p class="datacont" th:if="${not #strings.isEmpty(content.html)}" th:utext="${content.html}"></p>
+                                </div>
+                                <th:block th:each="momentItem : ${content.medium}" th:if="${not #lists.isEmpty(content.medium)}">
+
+                                    <div class="bber-content-img" th:if="${momentItem.type.name == 'PHOTO'}">
+                                        <img class="bber-content-image-self entered loaded"
+                                             data-ll-status="loaded" th:src="${momentItem.url}"
+                                             title="瞬间配图">
+                                    </div>
+                                    <div class="bber-music" th:if="${momentItem.type.name == 'VIDEO'}">
+                                        <video th:src="${momentItem.url}"></video>
+                                    </div>
+                                    <hr>
+                                </th:block>
+                                <div class="bber-bottom">
+                                    <div class="bber-info">
+                                        <div class="bber-info-time"><i class="fas fa-calendar-days"></i>
+                                            <time class="datatime" th:text="${#dates.format(moment.spec.releaseTime,'yyyy-MM-dd')}"></time>
+                                        </div>
+                                    </div>
+                                    <a class="bber-reply"
+                                       th:attr="onclick='rm.rightMenuCommentText(&quot;\''+ ${content.html} +'&quot;\')'">
+                                        <i class="fa-solid fa-message"></i>
+                                    </a>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </section>
+                    <!--  分页还没写 -->
+                </div>
+                <script>heo.reflashEssayWaterFall();</script>
+                <hr/>
+                <!-- 评论模块 -->
+                <div id="post-comment" th:if="${pluginFinder.available('PluginCommentWidget')}">
+                    <div class="comment-head">
+                        <div class="comment-headline"><i class="iconfont icon-comment-alt"></i> <span>评论</span></div>
+                        <div class="comment-privacy"><a href="#">隐私政策</a></div>
+                        <div class="comment-tips" id="comment-tips">
+                            <span>你无需删除空行，直接评论以获取最佳展示效果</span>
+                        </div>
+                    </div>
+                    <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name='links'"
+                                  colorScheme="document.documentElement.getAttribute('data-theme')"/>
+                </div>
+            </div>
+
+
+        </main>
+        <!-- 底部 -->
+        <footer th:replace="~{modules/footer :: footer}"></footer>
+    </div>
+
+</th:block>
+
+</html>
+
