@@ -8966,7 +8966,7 @@ li {
 }
 
 .recent-post-item .recent-post-info .recent-post-info-top .content {
-    opacity: 1;
+    opacity: 0;
     transition: 0.3s;
     display: -webkit-box;
     overflow: hidden;
