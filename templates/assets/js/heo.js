@@ -14,21 +14,21 @@ var heo = {
         }
     },
 
-    //bb添加时间
-    changeTimeInEssay: function () {
-        const relativeDate = function (selector) {
-            selector.forEach(item => {
-                const $this = item
-                const timeVal = $this.getAttribute('datetime')
-                $this.innerText = btf.diffDate(timeVal, true)
-                $this.style.display = 'inline'
-            })
-        }
-
-        if (document.querySelector('#comment')) {
-            relativeDate(document.querySelectorAll('#comment time'))
-        }
-    },
+    // //bb添加时间
+    // changeTimeInEssay: function () {
+    //     const relativeDate = function (selector) {
+    //         selector.forEach(item => {
+    //             const $this = item
+    //             const timeVal = $this.getAttribute('datetime')
+    //             $this.innerText = btf.diffDate(timeVal, true)
+    //             $this.style.display = 'inline'
+    //         })
+    //     }
+    //
+    //     if (document.querySelector('#comment')) {
+    //         relativeDate(document.querySelectorAll('#comment time'))
+    //     }
+    // },
 
     // 首页bb
     initIndexEssay: function () {

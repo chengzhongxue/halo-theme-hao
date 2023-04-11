@@ -8803,8 +8803,10 @@ a.categoryButton:hover {
 /* 主页哔哔bb */
 #bber-talk {
     width: 100%;
-    height: 25px;
-    line-height: 25px;
+    /* height: 25px; */
+    /* line-height: 25px; */
+    height: 31px;
+    line-height: 0px;
     display: flex;
     flex-direction: column;
 }
