@@ -760,7 +760,7 @@ document.addEventListener('pjax:send', function () {
     heo.showLoading();
 })
 
-document.addEventListener('load', function () {
+document.addEventListener('DOMContentLoaded', function () {
     // coverColor()
     navTitle()
     percent()
@@ -769,13 +769,13 @@ document.addEventListener('load', function () {
     heo.sayhi()
     heo.addTag()
     heo.stopImgRightDrag()
-    heo.addFriendLinksInFooter()
+    // heo.addFriendLinksInFooter()
     heo.qrcodeCreate()
     heo.hidecookie()
     heo.onlyHome()
     heo.addNavBackgroundInit()
     heo.initIndexEssay()
-    heo.changeTimeInEssay()
+    // heo.changeTimeInEssay()
     heo.reflashEssayWaterFall()
     heo.addMediumInEssay()
     heo.darkModeStatus()
