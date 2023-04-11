@@ -32,7 +32,7 @@ var heo = {
 
     // 首页bb
     initIndexEssay: function () {
-        if (document.querySelector('#comment-list')) {
+        if (document.querySelector('#bber-talk')) {
             var swiper = new Swiper('.swiper-container', {
                 direction: 'vertical', // 垂直切换选项
                 loop: true,
