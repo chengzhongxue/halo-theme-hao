@@ -12,7 +12,7 @@
            th:if="${tagQuantity >= 0 && iterStat.index < tagQuantity || tagQuantity < 0}"
            th:title="${tag.spec.displayName}">
             <!-- 角标 -->
-            [[${tag.spec.displayName}]]<sup th:text="${tag.status.postCount}"></sup>
+            [[${tag.spec.displayName}]]<sup th:text="${tag.status.visiblePostCount}"></sup>
         </a>
 
     </div>
