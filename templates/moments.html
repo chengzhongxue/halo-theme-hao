@@ -12,15 +12,20 @@
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-                <div class="author-content author-content-item essayPage single">
+                <div class="author-content author-content-item essayPage single"
+                     th:style="'background:url('+${theme.config.moment.backgroundImg}+') center no-repeat;'">
                     <div class="card-content">
-                        <div class="author-content-item-tips">即刻短文</div>
-                        <span class="author-content-item-title">分享生活的小确幸</span>
+                        <div class="author-content-item-tips" th:text="${theme.config.moment.smallTitle}"></div>
+                        <span class="author-content-item-title" th:text="${theme.config.moment.bigTitle}"></span>
                         <div class="content-bottom">
-                            <div class="tips">使用 即刻短文静态部署版 构建</div>
+                            <div class="tips" th:text="${theme.config.moment.detail}"></div>
                         </div>
-                        <div class="banner-button-group"><a class="banner-button" onclick="pjax.loadUrl(&quot;/p/557c9e72.html&quot;)"><i
-                                class="fas fa-circle-chevron-right"></i><span class="banner-button-text">部署项目</span></a></div>
+                        <div class="banner-button-group">
+                            <a class="banner-button" th:href="${theme.config.moment.buttonUrl}">
+                                <i class="fas fa-circle-chevron-right"></i>
+                                <span class="banner-button-text" th:text="${theme.config.moment.buttonTitle}"></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <script data-pjax="" defer="" src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js"></script>

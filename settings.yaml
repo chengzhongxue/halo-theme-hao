@@ -682,6 +682,39 @@ spec:
           label: 大标题
           value: 我和我的小伙伴们
 
+    - group: moment
+      label: 瞬间
+      formSchema:
+        - $formkit: url
+          name: backgroundImg
+          validation: "url"
+          label: 图片
+          value: https://p.zhheo.com/2023e02cff7c3ddef5c06b908fef079fbcfe081902.png!cover
+          placeholder: 请输入图片地址
+        - $formkit: text
+          name: smallTitle
+          label: 小标题
+          value: 即刻短文
+        - $formkit: text
+          name: bigTitle
+          label: 大标题
+          value: 分享生活的小确幸
+        - $formkit: text
+          name: detail
+          label: 描述
+          value: 使用 Halo/Moment插件 构建
+        - $formkit: text
+          name: buttonTitle
+          label: 按钮标题
+          value: 部署瞬间
+        - $formkit: url
+          name: buttonUrl
+          validation: "url"
+          value: "https://github.com/halo-sigs/plugin-moments"
+          label: 按钮跳转连链接
+          placeholder: 请输入跳转 url
+
+
     - group: other
       label: 其他设置
       formSchema:
