@@ -10,7 +10,7 @@
                 <a class="card-category-list-link" th:href="@{${category.status.permalink}}">
                         <span class="card-category-list-name" th:text="${category.spec.displayName}"
                               th:title="${category.spec.displayName}"></span>
-                    <span class="card-category-list-count" th:text="${category.status.postCount}"></span>
+                    <span class="card-category-list-count" th:text="${category.status.visiblePostCount}"></span>
                 </a>
             </li>
         </ul>

@@ -17,7 +17,7 @@
                        th:href="@{${tagItem.status.permalink}}"
                        th:id="${tagItem.spec.displayName}">
                         <span class="tags-punctuation">#</span> [[${tagItem.spec.displayName}]]
-                        <span class="tagsPageCount" th:text="${tagItem.status.postCount}"></span>
+                        <span class="tagsPageCount" th:text="${tagItem.status.visiblePostCount}"></span>
                     </a>
                 </div>
                 <div class="article-sort-title" th:text="${tag.spec.displayName}"></div>

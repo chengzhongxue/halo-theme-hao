@@ -8966,7 +8966,6 @@ li {
 }
 
 .recent-post-item .recent-post-info .recent-post-info-top .content {
-    opacity: 0;
     transition: 0.3s;
     display: -webkit-box;
     overflow: hidden;
@@ -8979,13 +8978,13 @@ li {
 
 @media screen and (max-width: 1300px) {
     .recent-post-item:hover .recent-post-info .recent-post-info-top .content {
-        display: flow-root;
+
     }
 }
 
 @media screen and (min-width: 1300px) {
     .recent-post-item:hover .recent-post-info .recent-post-info-top .content {
-        display: flow-root;
+
     }
 }
 
@@ -9008,8 +9007,7 @@ li {
 
     .recent-post-item .recent-post-info .recent-post-info-top .content {
         opacity: 1;
-        -webkit-line-clamp: 3;
-        display: flow-root;
+        -webkit-line-clamp: 2;
     }
 
     #recent-posts .recent-post-item .recent-post-info .article-title {

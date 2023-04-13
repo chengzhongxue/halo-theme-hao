@@ -29,7 +29,7 @@
                        th:each="tag : ${tags}"
                        th:href="@{${tag.status.permalink}}"
                        th:text="${tag.spec.displayName}">
-                        <sup th:text="${tag.status.postCount}"> </sup>
+                        <sup th:text="${tag.status.visiblePostCount}"> </sup>
                     </a>
                 </div>
             </div>
