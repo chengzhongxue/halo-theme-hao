@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<div class="bbTimeList container" id="bbTimeList" th:fragment="moment" th:if="not ${momentFinder}">
+<div class="bbTimeList container" id="bbTimeList" th:fragment="moment" th:if="!${pluginFinder.available('PluginMoments')}">
     <!--   未安装插件   -->
     <i class="iconfont icon-logo-moment" onclick="" style="font-size: 1.3rem;" title="瞬间"></i>
     <div class="swiper-container swiper-no-swiping" id="bbtalk" tabindex="-1">
@@ -13,7 +13,7 @@
     <i class="bber-gotobb fas fa-arrow-circle-right" onclick="location.href=location.href='https\:\/\/github.com/halo-sigs/plugin-moments'" title="下载插件"></i>
 </div>
 
-<div class="bbTimeList container" id="bbTimeList" th:fragment="moment" th:if="${theme.config.top.moment} and ${momentFinder}">
+<div class="bbTimeList container" id="bbTimeList" th:fragment="moment" th:if="${theme.config.top.moment} and ${pluginFinder.available('PluginMoments')}">
     <!--   瞬间插件   -->
     <i class="iconfont icon-logo-moment" onclick="" style="font-size: 1.3rem;" title="瞬间"></i>
     <div class="swiper-container swiper-no-swiping" id="bbtalk" tabindex="-1">
