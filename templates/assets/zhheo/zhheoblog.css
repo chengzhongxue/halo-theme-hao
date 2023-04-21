@@ -8965,12 +8965,23 @@ li {
     }
 }
 
-.recent-post-item .recent-post-info .recent-post-info-top .content {
+.recent-post-info-top:not(:has(> span)) .content {
     transition: 0.3s;
     display: -webkit-box;
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    line-height: 1.4;
+    color: var(--heo-secondtext);
+    margin-top: 0.5rem;
+}
+
+span + a + .content:last-child {
+    transition: 0.3s;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
     line-height: 1.4;
     color: var(--heo-secondtext);
     margin-top: 0.5rem;
