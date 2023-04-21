@@ -17,9 +17,8 @@
                        th:id="${tagItem.spec.displayName}" th:style="'font-size: 1em; color:' + ${tagItem.spec.color} ">
                         <span class="tags-punctuation">#</span>
                         [[${tagItem.spec.displayName}]]
-                        <span class="tagsPageCount">[[${tagItem.visiblePostCount}]]</span>
+                        <span class="tagsPageCount">[[${tagItem.status.visiblePostCount}]]</span>
                     </a>
-
                 </div>
             </div>
         </main>
