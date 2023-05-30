@@ -6,44 +6,44 @@
 
     <!-- 功能都需要添加开关 -->
 
-    <!-- 随机友链 -->
-    <!--<div class="nav-button only-home" id="travellings_button">-->
-    <!--    <a class="site-page" href="javascript:void(0);" rel="external nofollow"-->
-    <!--       title="友链">-->
-    <!--        <i class="iconfont icon-bus" style="font-size:1rem"></i>-->
-    <!--    </a>-->
-    <!--</div>-->
+    <div class="nav-button only-home" id="travellings_button">
+        <a class="site-page" href="https://www.travellings.cn/go.html" rel="noopener external nofollow" target="_blank"
+           title="开往-友链接力" width="120">
+            <i class="fa-solid fa-train-subway" style="font-size: 1rem;"></i>
+        </a>
+    </div>
 
-    <!--<div class="nav-button">-->
-    <!--    <a class="site-page" href="javascript:void(0);" title="随机文章">-->
-    <!--        <i class="iconfont icon-shuffle" style="font-size:1rem"></i>-->
-    <!--    </a>-->
-    <!--</div>-->
+    <div class="nav-button" id="randomPost_button">
+        <a class="site-page" onclick="toRandomPost()"
+           title="随机前往一个文章">
+            <i class="fas fa-shuffle" style="font-size: 1rem;"></i>
+        </a>
+    </div>
 
     <!-- 搜索使用搜索插件 -->
     <div class="nav-button" id="search-button" th:if="${pluginFinder.available('PluginSearchWidget')}">
         <a class="site-page social-icon search" href="javascript:SearchWidget.open();" rel="external nofollow" title="站内搜索">
-            <i class="iconfont icon-search" style="font-size:1rem"></i>
+            <i class="fas fa-magnifying-glass" style="font-size: 1rem;"></i>
         </a>
     </div>
 
-    <!-- 控制台 -->
-    <!--<div class="nav-button">-->
-    <!--    <a class="console_switchbutton" href="javascript:void(0);" onclick="heo.showConsole()" rel="external nofollow"-->
-    <!--       title="控制台">-->
-    <!--        <i class="iconfont icon-a-theconsole-fill" style="font-size:1rem"></i>-->
-    <!--    </a>-->
-    <!--</div>-->
+    <div class="nav-button" id="nav-console">
+        <a class="console_switchbutton" href="javascript:void(0);"
+           onclick="acrylic.showConsole()" rel="external nofollow" title="显示中控台">
+            <i class="fas fa-bars-progress" style="font-size: 1rem;"></i>
+        </a>
+    </div>
 
-    <div class="nav-button" id="nav-totop" onclick="btf.scrollToDest(0,500)">
+
+    <div class="nav-button" id="nav-totop" onclick="acrylic.toTop()">
         <a class="totopbtn">
-            <i class="iconfont icon-arrowup"></i><span id="percent">0</span>
+            <i class="fas fa-arrow-up"></i>
+            <span id="percent">0</span>
         </a>
     </div>
-
     <div id="toggle-menu">
         <a class="site-page">
-            <i class="iconfont icon-bars"></i>
+            <i class="fas fa-bars fa-fw" style="font-size: 1rem;"></i>
         </a>
     </div>
 </div>

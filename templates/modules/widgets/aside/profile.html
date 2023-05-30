@@ -14,7 +14,6 @@
                  th:if="${not #strings.isEmpty(theme.config.sidebar.profile.profileName)}"
                  th:text="${theme.config.sidebar.profile.profileName}"></div>
             <div class="author-info__description" th:utext="${theme.config.sidebar.profile.profileDesc}">
-
             </div>
         </div>
     </div>
@@ -22,7 +21,7 @@
     <!-- 跳转信息 -->
     <div class="banner-button-group">
         <a class="banner-button" href="/about">
-            <i class="iconfont icon-arrow-circle-right"></i>
+            <i class="fas fa-circle-chevron-right"></i>
             <span class="banner-button-text">了解更多</span>
         </a>
     </div>
@@ -31,11 +30,11 @@
          th:if="${not #lists.isEmpty(theme.config.sidebar.profile.socialMedia)}"
          th:with="socialMedias = ${theme.config.sidebar.profile.socialMedia}">
 
-        <a class="social-icon" rel="external nofollow" target="_blank"
+        <a class="social-icon" rel="noopener" target="_blank"
            th:each="socialMedia : ${socialMedias}"
            th:href="${socialMedia.url}"
            th:title="${socialMedia.name}">
-            <i class="iconfont " th:classappend="${socialMedia.icon}"></i>
+            <i th:class="${socialMedia.icon}"></i>
         </a>
     </div>
 </div>

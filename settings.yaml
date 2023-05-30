@@ -345,61 +345,61 @@ spec:
                   label: 图标
                   options:
                     - label: 电子邮箱
-                      value: icon-mail-line
+                      value: fa-solid fa-envelope
                     - label: 微信
-                      value: icon-wechat2
-                    - label: 公众号
-                      value: icon-weixingongzhonghao
+                      value: fa-brands fa-weixin
+                    #                    - label: 公众号
+                    #                      value:
                     - label: 腾讯 QQ
-                      value: icon-qq-line
+                      value: fa-brands fa-qq
                     - label: 新浪微博
-                      value: icon-weibo-line
+                      value: fa-brands fa-weibo
                     - label: 知乎
-                      value: icon-zhihu-line
-                    - label: 豆瓣
-                      value: icon-douban-line
+                      value: fa-brands fa-zhihu
+                    #                    - label: 豆瓣
+                    #                      value:
                     - label: 哔哩哔哩
-                      value: icon-bilibili-line
+                      value: fa-brands fa-bilibili
                     - label: GitHub
-                      value: icon-github-line
+                      value: fa-brands fa-github
                     - label: GitLab
-                      value: icon-gitlab-line
-                    - label: 百度
-                      value: icon-baidu-line
-                    - label: 掘金
-                      value: icon-juejin
-                    - label: 语雀
-                      value: icon-yuque
-                    - label: 博客园
-                      value: icon-CN_cnblogs
-                    - label: CSDN
-                      value: icon-csdn1
-                    - label: LeetCode
-                      value: icon-leetcode
-                    - label: 头条
-                      value: icon-jinritoutiao
+                      value: fa-brands fa-gitlab
+                    #                    - label: 百度
+                    #                      value: icon-baidu-line
+                    #                    - label: 掘金
+                    #                      value: icon-juejin
+                    #                    - label: 语雀
+                    #                      value: icon-yuque
+                    #                    - label: 博客园
+                    #                      value: icon-CN_cnblogs
+                    #                    - label: CSDN
+                    #                      value: icon-csdn1
+                    #                    - label: LeetCode
+                    #                      value: icon-leetcode
+                    #                    - label: 头条
+                    #                      value: icon-jinritoutiao
                     - label: 抖音 / TikTok
-                      value: icon-douyin
+                      value: fa-brands fa-tiktok
                     - label: Telegram
-                      value: icon-telegram-line
+                      value: fa-brands fa-telegram
                     - label: Facebook
-                      value: icon-facebook-box-line
+                      value: fa-brands fa-facebook
                     - label: Instagram
-                      value: icon-instagram-line
+                      value: fa-brands fa-instagram
                     - label: LinkedIn
-                      value: icon-linkedin-box-line
+                      value: fa-brands fa-linkedin
                     - label: Twitter
-                      value: icon-twitter-line
+                      value: fa-brands fa-twitter
                     - label: Slack
-                      value: icon-slack-line
+                      value: fa-brands fa-slack
                     - label: Discord
-                      value: icon-discord-line
+                      value: fa-brands fa-discord
                     - label: YouTube
-                      value: icon-youtube-line
+                      value: fa-brands fa-youtube
                     - label: Steam
-                      value: icon-steam-fill
+                      value: fa-brands fa-steam
                     - label: Dribbble
-                      value: icon-dribbble-line
+                      value: fa-brands fa-dribbble
                 - $formkit: text
                   name: name
                   label: 名称

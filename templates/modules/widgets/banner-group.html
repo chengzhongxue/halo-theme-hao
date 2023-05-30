@@ -153,30 +153,30 @@
             </div>
         </div>
         <!-- 随机前往一篇文章 -->
-        <a id="banner-hover" onclick="randomPost()">
+        <a data-pjax-state="" id="banner-hover" onclick="randomPost()">
             <span class="bannerText">随便逛逛</span>
-            <i class="iconfont icon-arrow-right banner-righticon"></i>
+            <i class="fas fa-arrow-right banner-righticon"></i>
         </a>
     </div>
 
     <!-- category -->
     <div class="categoryGroup">
         <div class="categoryItem" style="box-shadow:var(--heo-shadow-blue)">
-            <a class="categoryButton CB1 bikan"
-               th:href="@{${theme.config.top.bikan}}">
-                <span class="categoryButtonText">必看精选</span><i class="iconfont icon-book"></i>
+            <a class="categoryButton CB1 bikan" th:href="@{${theme.config.top.bikan}}">
+                <span class="categoryButtonText">必看精选</span>
+                <i class="fas fa-dove"></i>
             </a>
         </div>
         <div class="categoryItem" style="box-shadow:var(--heo-shadow-red)">
-            <a class="categoryButton remen"
-               th:href="@{${theme.config.top.remen}}">
-                <span class="categoryButtonText">热门文章</span><i class="iconfont icon-burn"></i>
+            <a class="categoryButton remen" th:href="@{${theme.config.top.remen}}">
+                <span class="categoryButtonText">热门文章</span>
+                <i class="fas fa-burn"></i>
             </a>
         </div>
         <div class="categoryItem" style="box-shadow:var(--heo-shadow-green)">
-            <a class="categoryButton shiyong"
-               th:href="@{${theme.config.top.shiyong}}">
-                <span class="categoryButtonText">实用教程</span><i class="iconfont icon-book"></i>
+            <a class="categoryButton shiyong" th:href="@{${theme.config.top.shiyong}}">
+                <span class="categoryButtonText">实用教程</span>
+                <i class="fas fa-book"></i>
             </a>
         </div>
     </div>

@@ -2,113 +2,33 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <!-- 侧栏，主要是手机端时会使用 -->
-<div id="sidebar" th:fragment="sidebar">
+<div id="sidebar" style="zoom: 1;" th:fragment="sidebar">
 
-    <div id="menu-mask"></div>
+    <div id="menu-mask" style="display: none;"></div>
     <div id="sidebar-menus">
         <span class="sidebar-menu-item-title">功能</span>
         <div class="sidebar-menu-item">
-            <a class="darkmode_switchbutton menu-child" href="javascript:void(0);" onclick="rm.switchDarkMode()"
+            <a class="darkmode_switchbutton menu-child" href="javascript:void(0);" onclick="acrylic.switchDarkMode()"
                rel="external nofollow" title="显示模式切换">
-                <i class="iconfont icon-moon" style="font-size: 1rem;"></i>
+                <i class="fas fa-moon" style="font-size: 1rem;"></i>
                 <span>显示模式</span>
             </a>
         </div>
-        <th:block th:if="${not #strings.isEmpty(theme.config.nav.leftMenu)}"
-                  th:with="leftMenu = ${menuFinder.getByName(theme.config.nav.leftMenu)}">
-            <div class="back-menu-list-groups">
-                <div class="back-menu-list-group" th:each="menuItem : ${leftMenu.menuItems}">
 
-                    <th:block th:if="${not #lists.isEmpty(menuItem.children)}">
-                        <!-- 菜单必须有子项才会展示 -->
-                        <div class="back-menu-list-title" th:text="${menuItem.status.displayName}"></div>
-                        <div class="back-menu-list">
-                            <th:block th:each="childMenu : ${menuItem.children}">
-                                <a class="back-menu-item" rel="external nofollow"
-                                   target="_blank" th:href="@{${childMenu.status.href}}">
-                                    <!-- icon 预留 -->
-                                    <!--<img class="back-menu-item-icon" th:src="@{图片地址}">-->
-                                    <span class="back-menu-item-text" th:text="${childMenu.status.displayName}"></span>
-                                </a>
-                            </th:block>
-                        </div>
+        <div class="back-menu-list-groups">
 
-                    </th:block>
-                </div>
-
-            </div>
-        </th:block>
-        <div class="menus_items">
-            <div class="menus_item">
-                <a class="site-page" href="javascript:void(0);" rel="external nofollow">
-                    <span>文章</span><i class="iconfont icon-chevron-down"></i>
-                </a>
-                <ul class="menus_item_child">
-                    <li>
-                        <a class="site-page child" href="/archives">
-                            <i class="iconfont icon-list-ul"></i>
-                            <span>文章归档</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="site-page child" href="/categories">
-                            <i class="iconfont icon-folder-open"></i>
-                            <span>全部分类</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="site-page child" href="/tags">
-                            <i class="iconfont icon-tags"></i>
-                            <span>全部标签</span>
-                        </a>
-                    </li>
-                    <!--<li>-->
-                    <!--    <a class="site-page child" href="essay/index.html">-->
-                    <!--        <i class="fa-fw fas fa-bars-staggered"></i>-->
-                    <!--        <span> 即刻短文</span></a>-->
-                    <!--</li>-->
-                </ul>
-            </div>
-            <div class="menus_item">
-                <a class="site-page" href="javascript:void(0);" rel="external nofollow">
-                    <span>分类</span><i class="iconfont icon-chevron-down"></i>
-                </a>
-                <ul class="menus_item_child" th:with="categories = ${categoryFinder.listAll()}">
-                    <li th:each="category : ${categories}">
-                        <a class="site-page child" th:href="@{${category.status.permalink}}">
-                            <!--<i class="fa-fw fas fa-swatchbook"></i>-->
-                            <span th:title="${category.spec.displayName}">[[${category.spec.displayName}]]</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!--<div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow"><span>-->
-            <!--                友链</span><i class="fas fa-chevron-down expand"></i></a>-->
-            <!--    <ul class="menus_item_child">-->
-            <!--        <li><a class="site-page child" href="moments/index.html"><i-->
-            <!--                class="fa-fw fas fa-fish-fins"></i><span> 友链鱼塘</span></a></li>-->
-            <!--        <li><a class="site-page child" href="link/index.html"><i-->
-            <!--                class="fa-fw fas fa-user-group"></i><span> 友情链接</span></a></li>-->
-            <!--        <li><a class="site-page child" href="javascript:travelling()" rel="external nofollow"><i-->
-            <!--                class="fa-fw fas fa-bus"></i><span> 宝藏博主</span></a></li>-->
-            <!--    </ul>-->
-            <!--</div>-->
-            <!--<div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow"><span>-->
-            <!--                我的</span><i class="fas fa-chevron-down expand"></i></a>-->
-            <!--    <ul class="menus_item_child">-->
-            <!--        <li><a class="site-page child" href="tlink/index.html"><i-->
-            <!--                class="fa-fw fas fa-screwdriver-wrench"></i><span> 在线工具</span></a></li>-->
-            <!--        <li><a class="site-page child" href="movies/index.html"><i-->
-            <!--                class="fa-fw fas fa-clapperboard"></i><span> 电影推荐</span></a></li>-->
-            <!--        <li><a class="site-page child" href="about/index.html"><i-->
-            <!--                class="fa-fw fas fa-sailboat"></i><span> 关于本站</span></a></li>-->
-            <!--    </ul>-->
-            <!--</div>-->
         </div>
+
+        <div class="menus_items">
+
+        </div>
+
         <span class="sidebar-menu-item-title">标签</span>
-        <div class="card-widget card-tags card-archives card-webinfo card-allinfo"
-             th:with="tags = ${tagFinder.listAll()}">
-            <div class="item-headline"><i class="iconfont icon-tags"></i><span>标签</span></div>
+        <div class="card-widget card-tags card-archives card-webinfo card-allinfo" th:with="tags = ${tagFinder.listAll()}">
+            <div class="item-headline">
+                <i class="iconfont icon-tags"></i>
+                <span>标签</span>
+            </div>
             <div class="card-tag-cloud">
                 <a style="font-size:1em;color:#d3d3d3" th:each="tag : ${tags}"
                    th:href="@{${tag.status.permalink}}"

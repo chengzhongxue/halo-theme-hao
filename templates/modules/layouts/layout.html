@@ -2,157 +2,79 @@
 <html lang="en" th:fragment="layout(content, htmlType)" xmlns:th="http://www.thymeleaf.org">
 
 <!-- head 中自定义的  -->
-<head th:replace="~{modules/head :: head(metas = null, links = null, scripts =  ~{::head/script})}">
-
-    <!-- 声明一些公共信息 -->
-    <script th:inline="javascript">
-        const GLOBAL_CONFIG = {
-            siteTitle : [[${site.title}]],
-            // 页面类型 index,page,post,tag,category
-            htmlType: [[${htmlType}]],
-            postTitle: [[${htmlType == 'post' ? post.spec.title : ''}]],
-            isanchor: true,
-            isPost: [[${htmlType == 'post'}]],
-            isHome: [[${htmlType == 'index'}]],
-            isHighlightShrink: false,
-            isToc: [[${htmlType == 'post'}]] && document.getElementById("card-toc"),
-            postUpdate: '2022-11-04 20:08:15',
-            Snackbar: {
-                chs_to_cht: "你已切换为繁体",
-                cht_to_chs: "你已切换为简体",
-                day_to_night: "你已切换为深色模式",
-                night_to_day: "你已切换为浅色模式",
-                bgLight: "#49b1f5",
-                bgDark: "#121212",
-                position: "top-center",
-            },
-
-        };
-
-        // 根据htmlType设置页面title
-        let setTitle = ()=>{
-            let title = ''
-
-            switch([[${htmlType}]]){
-                case 'post':
-                    if(GLOBAL_CONFIG.postTitle != '')
-                        title = GLOBAL_CONFIG.postTitle
-                    break;
-                case 'archive':
-                    title = '归档'
-                    break;
-                case 'category':
-                    title = '分类'
-                    break;
-                case 'links':
-                    title = '友链'
-                    break;
-                case 'tag':
-                    title = '标签'
-                    break;
-                case 'moments':
-                    title = '瞬间'
-                    break;
-            }
-            if(title != '')
-                document.title = title + ' - ' + [[${site.title}]]
-        }
-
-        (() => {
-            setTitle()
-        })()
-
-    </script>
-
+<head th:replace="~{modules/head :: head(htmlType = ${htmlType})}">
+    <title th:text="${site.title}"></title>
 </head>
 
-<body>
-
-<!-- loading 页面 -->
-<div th:replace="~{modules/loading-box :: loading-box}"></div>
-
-<!-- 网站背景 -->
-<div id="web_bg"></div>
+<body id="body">
 
 <!-- 控制台 -->
 <div th:replace="~{modules/widgets/console :: console}"></div>
 
+<!-- sidebar -->
 <div th:replace="~{modules/sidebar :: sidebar}"></div>
+
+
+<!-- loading 页面 -->
+<div th:replace="~{modules/loading-box :: loading-box}"></div>
 
 <!-- 内容 -->
 <th:block th:replace="${content}"></th:block>
 
-<!-- todo 暂时没显示，是右下角悬浮操作按钮 -->
-<!--<div id="rightside">-->
-<!--    <div id="rightside-config-hide">-->
-<!--        <button id="translateLink" title="简繁转换" type="button">简</button>-->
-<!--        <button id="darkmode" title="浅色和深色模式转换" type="button"><i class="fas fa-adjust"></i></button>-->
-<!--        <button id="hide-aside-btn" title="单栏和双栏切换" type="button"><i class="fas fa-arrows-alt-h"></i></button>-->
-<!--    </div>-->
-<!--    <div id="rightside-config-show">-->
-<!--        <button id="rightside_config" title="设置" type="button"><i class="fas fa-cog fa-spin"></i></button>-->
-<!--        <button id="go-up" title="回到顶部" type="button"><i class="fas fa-arrow-up"></i></button>-->
-<!--    </div>-->
-<!--</div>-->
-
-<div th:replace="~{modules/right-menu :: right-menu}"></div>
 
 <div>
-    <script th:src="@{/assets/js/utils.js}"></script>
-    <script th:src="@{/assets/js/main.js}"></script>
-    <script charset="utf-8" data-pjax="" th:src="@{/assets/zhheo/blogex.js}"></script>
+    <script th:src="@{/assets/js/utils.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/js/main.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/lib/pjax.min.js}"></script>
+    <script th:src="@{/assets/lib/snackbar.min.js}"></script>
+    <script th:src="@{/assets/lib/view-image.min.js}"></script>
+    <div id="js-pjax"></div>
+    <script th:src="@{/assets/js/extend/covercolor/web.js}"></script>
+    <script>
+        let pjaxSelectors = [
+            'title',
+            '#body-wrap',
+            '#site-config',
+            'meta[name="description"]',
+            '#js-pjax'
+        ]
 
-    <!-- https://instant.page/ 网站预加载， 放在 </body> 之前 -->
-    <script th:src="@{/assets/libs/instantpage/instantpage.min.js}" type="module"></script>
+        const pjax = new Pjax({
+            elements: 'a:not([target="_blank"])',
+            selectors: pjaxSelectors,
+            cacheBust: false,
+            analytics: false,
+            scrollRestoration: false
+        })
 
-    <!-- 右下角通知 https://www.polonel.com/snackbar/ -->
-    <!-- todo head 中有它的 css，应该可以写一块，并改成后台可配置的功能，代码中应该还有他的 js -->
-    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script>
+        document.querySelectorAll('script[data-pjax]').forEach(item => {
+            const newScript = document.createElement('script')
+            const content = item.text || item.textContent || item.innerHTML || ""
+            Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+            newScript.appendChild(document.createTextNode(content))
+            item.parentNode.replaceChild(newScript, item)
+        })
 
-    <!-- https://davidshimjs.github.io/qrcodejs/ 生成二维码 -->
-    <!-- 应该是文章页分享使用 -->
-    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-    <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
-    <script th:src="@{/assets/libs/waterfall/waterfall.min.js}"></script>
-
-    <!-- 获取主色 https://lokeshdhakar.com/projects/color-thief/ -->
-    <!--<script th:src="@{/assets/libs/color-thief/color-thief.umd.js}"></script>-->
-    <script th:src="@{/assets/libs/fast-average-color/index.browser.min.js}"></script>
+        document.addEventListener('pjax:error', (e) => {
+            if (e.request.status === 404) {
+                pjax.loadUrl('/404.html')
+            }
+        })
+    </script>
 
 </div>
 
-<div>
-
-    <script th:inline="javascript">
-
-
-        if ([[${theme.config.post.dynamicBackground}]]) {
-            // 图片主色
-            coverColor();
-        }
-
-        if ([[${theme.config.other.loadingBox}]]) {
-            // 移除加载动画
-            removeLoading();
-        }
-        navTitle();
-        heo.topPostScroll();
-        heo.topCategoriesBarScroll();
-        heo.sayhi();
-        heo.addTag();
-        heo.stopImgRightDrag();
-        heo.qrcodeCreate();
-        heo.onlyHome();
-        heo.addNavBackgroundInit();
-        heo.reflashEssayWaterFall();
-        heo.addMediumInEssay();
-        heo.darkModeStatus();
-        // heo.categoriesBarActive();
-        heo.initThemeColor();
-
-    </script>
+<div class="needEndHide" id="nav-music" onclick="acrylic.musicToggle()">
+    <div id="nav-music-hoverTips">音乐已暂停</div>
+    <meting-js data-lrctype="0" id="1708664797" mutex="true" order="random" preload="none" server="tencent" theme="var(--heo-main)"
+               type="playlist">
+    </meting-js>
 </div>
 </body>
 </html>
+<!-- 所有文章路径 -->
+<script>const posts = [];
 
+function toRandomPost() {
+    window.pjax ? pjax.loadUrl('/' + posts[Math.floor(Math.random() * posts.length)]) : window.open('/' + posts[Math.floor(Math.random() * posts.length)], "_self");
+}</script>
