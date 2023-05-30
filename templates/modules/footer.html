@@ -4,6 +4,8 @@
 <footer id="footer" th:fragment="footer">
 
     <!-- 社交链接，需要填入 href class title -->
+    <!-- todo  在 中间位置要插入 <img class="footer_mini_logo" onclick="acrylic.toTop()"
+                 src="/img/avatar.webp" title="返回顶部"> -->
     <div id="footer_deal"
          th:if="${not #lists.isEmpty(theme.config.footer.socialMedia)}"
          th:with="socialMedias = ${theme.config.footer.socialMedia}">
@@ -32,59 +34,54 @@
 
     </th:block>
     <!-- 底部 banner -->
+    <div id="footer-section">
+        <div class="footer-section-links">
+            <div class="footer-section-left">
+                <div id="footer-section-tips">
 
-    <div id="footer-banner">
-        <div class="footer-banner-links">
-            <div class="footer-banner-left">
-                <div id="footer-banner-tips">
                     <div class="copyright" th:if="${not #strings.isEmpty(theme.config.basics.siteStartTime)}">
-                        ©[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] - [[${#dates.format(new java.util.Date(), 'yyyy')}]] [[${site.title}]].
+                        ©[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] - [[${#dates.format(new java.util.Date(),
+                        'yyyy')}]] [[${site.title}]].
+                        <a class="footer-section-link" href="https://halo.run" rel="external nofollow">Power by Halo</a>
+                        <a class="footer-section-link" href="https://github.com/liuzhihang/halo-theme-hao"
+                           rel="external nofollow" target="_blank"> Theme By Hao</a>
                     </div>
                     <div class="copyright" th:if="${#strings.isEmpty(theme.config.basics.siteStartTime)}">
                         ©[[${#dates.format(new java.util.Date(), 'yyyy')}]] [[${site.title}]].
+                        <a class="footer-section-link" href="https://halo.run" rel="external nofollow">Power by Halo</a>
+                        <a class="footer-section-link" href="https://github.com/liuzhihang/halo-theme-hao"
+                           rel="external nofollow" target="_blank"> Theme By Hao</a>
                     </div>
                 </div>
-                <br>
-                <div>
-                    &nbsp;
-                    Powered by <a class="hover:underline" href="https://halo.run" target="_blank">Halo</a>.
-                </div>
             </div>
-            <div class="footer-banner-right">
-                <!-- 订阅 需要 RSS 插件支持 -->
-                <a class="footer-banner-link" href="/sitemap.xml"
-                   th:if="${pluginFinder.available('PluginSitemap')}">订阅</a>
-                <a class="footer-banner-link" href="https://github.com/liuzhihang/halo-theme-hao">主题</a>
-                <a class="footer-banner-link" href="/about">关于</a>
-                <a class="footer-banner-link" href="https://beian.miit.gov.cn/#/Integrated/index"
-                   rel="noopener external nofollow noreferrer noopener" target="_blank">[[${theme.config.basics.icp}]]
+            <div class="footer-section-right">
+                <a class="footer-section-link" href="/rss/">订阅</a>
+                &nbsp;
+                <a class="footer-banner-link" href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">
+                    [[${theme.config.basics.icp}]]
                 </a>
-                <a class="footer-banner-link" th:href="@{'http://www.beian.gov.cn/portal/registerSystemInfo'}"
-                   rel="noopener external nofollow noreferrer noopener" target="_blank">[[${theme.config.basics.gongan}]]
+                &nbsp;&nbsp;
+                <a class="footer-banner-link" target="_blank"
+                   th:href="@{'http://www.beian.gov.cn/portal/registerSystemInfo'}"> [[${theme.config.basics.gongan}]]
                 </a>
-                <a class="footer-banner-link cc"
-                   th:href="${theme.config.basics.copyrightAgreement}"
-                   th:if="${not #strings.isEmpty(theme.config.basics.copyrightAgreement)}"
-                   title="cc协议">
-                    <i class="iconfont icon-cc"></i>
-                    <i class="iconfont icon-by"></i>
-                    <i class="iconfont icon-nc"></i>
-                    <i class="iconfont icon-nd"></i>
+                &nbsp;&nbsp;
+                <a class="footer-section-link cc" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="cc协议">
+                    <i class="fa-solid fa-closed-captioning"></i>
                 </a>
             </div>
         </div>
     </div>
     <!-- 暂时不需要弹窗 -->
-    <div id="introduction-window">
-        <div class="introduction-window-title" th:text="${theme.config.snackbar.introductionTitle}"></div>
-        <div class="introduction-window-content">
-            <span class="introduction-tip" th:text="${theme.config.snackbar.introductionTip}"></span>
-            <a class="introduction-link" target="_blank" title="点击查看"
-               th:href="@{${theme.config.snackbar.introductionUrl}}">
-                <i class="iconfont icon-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div>
-    <div id="quit-box" onclick="RemoveRewardMask()"></div>
+    <!--<div id="introduction-window">-->
+    <!--    <div class="introduction-window-title" th:text="${theme.config.snackbar.introductionTitle}"></div>-->
+    <!--    <div class="introduction-window-content">-->
+    <!--        <span class="introduction-tip" th:text="${theme.config.snackbar.introductionTip}"></span>-->
+    <!--        <a class="introduction-link" target="_blank" title="点击查看"-->
+    <!--           th:href="@{${theme.config.snackbar.introductionUrl}}">-->
+    <!--            <i class="iconfont icon-arrow-circle-right"></i>-->
+    <!--        </a>-->
+    <!--    </div>-->
+    <!--</div>-->
+    <!--<div id="quit-box" onclick="RemoveRewardMask()"></div>-->
 </footer>
 </html>
