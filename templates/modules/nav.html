@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<nav class="show" id="nav" th:fragment="nav">
+<nav class="show" id="nav" th:fragment="nav(title)">
     <div id="nav-group">
 
         <!-- 导航栏左侧 -->
@@ -8,7 +8,7 @@
 
         <div id="page-name-mask">
             <div id="page-name">
-                <a id="page-name-text" onclick="acrylic.toTop()">程序员小航</a>
+                <a id="page-name-text" onclick="acrylic.toTop()" th:text="${#strings.isEmpty(title) ? site.title : title}"></a>
             </div>
         </div>
 

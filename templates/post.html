@@ -5,11 +5,10 @@
 <th:block th:fragment="content">
     <div class="post" id="body-wrap">
 
-        <header class="post-bg" id="page-header"
-                th:style="'background-image:url(' + (${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}) + ')'">
-            <nav th:replace="~{modules/nav :: nav}"></nav>
+        <header class="post-bg" id="page-header">
+            <nav th:replace="~{modules/nav :: nav(title = ${post.spec.title})}"></nav>
             <div class="coverdiv" id="coverdiv">
-                <img crossorigin="anonymous" id="post-cover"
+                <img alt="cover" class="nolazyload" id="post-cover"
                      th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}">
             </div>
 
@@ -42,104 +41,98 @@
                 <div id="post-meta">
                     <div class="meta-secondline">
                         <span class="post-meta-date">
-                            <i class="iconfont icon-calendar-alt post-meta-icon"></i>
+                            <i class="post-meta-icon fa-fw fas fa-calendar"></i>
                             <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"
                                   th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
                                   th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
                             </time>
                         </span>
 
-                        <span class="post-meta-wordcount"
-                              th:with="wordCount = ${#strings.length(post.content.content)}">
-                            <i class="iconfont icon-file-word post-meta-icon" title="字数"></i>
-                            <span class="post-meta-label">字数:</span>
-                            <span class="word-count" th:text="${{wordCount}}"></span>
-                            <span class="post-meta-separator"></span>
-                            <i class="iconfont icon-clock post-meta-icon" title="阅读耗时"></i>
-                            <span class="post-meta-label">阅读耗时:</span>
-                            <span>[[${wordCount / 400}]] 分钟</span>
+                        <span class="post-meta-position" title="作者IP归属地为中国">
+                            <i class="fas fa-location-dot post-meta-icon"></i>
+                            <span>中国</span>
                         </span>
 
-                        <!--<span class="post-meta-wechat" title="该文章已在公众号中更新"><i-->
-                        <!--        class="fab fa-weixin post-meta-icon"></i>公众号同步</span>-->
-                        <span class="post-meta-pv" data-flag-title="热度">
-                            <i class="iconfont icon-hotjar post-meta-icon"></i>
-                            <span class="post-meta-label">热度:</span>
-                            <span id="visit" th:text="${post.stats.visit}"></span>
+                        <span class="post-meta-wordcount" th:with="wordCount = ${#strings.length(post.content.content)}">
+                            <i class="fas fa-file-word fa-fw post-meta-icon" title="文章字数"></i></i>
+                            <span class="word-count" th:text="${{wordCount}}"></span>
+                        </span>
+                        <span class="post-meta-time" th:with="wordCount = ${#strings.length(post.content.content)}">
+                            <i class="fas fa-clock post-meta-icon" title="阅读耗时"></i>
+                            <span>[[${wordCount / 400}]] min</span>
+                        </span>
+
+                        <span class="post-meta-pv" title="文章热度">
+                            <i class="fab fa-hotjar fa-fw post-meta-icon"></i>
+                            <span id="twikoo_visitors" th:text="${post.stats.visit}"></span>
                         </span>
                         <span class="post-meta-commentcount" onclick="heo.scrollTo('#post-comment');" title="评论数">
-                            <i class="iconfont icon-comment-alt"></i>
-                            <span class="post-meta-label">评论:</span>
-                            <a href="#post-comment"><span id="comment-count" th:text="${post.stats.comment}"></span></a>
+                            <i class="fa-solid fa-message"></i>
+                            <a data-pjax-state="" href="#post-comment">
+                                <span id="twikoo-count" th:text="${post.stats.comment}"></span>
+                            </a>
                         </span>
                     </div>
 
                 </div>
             </div>
+            <section class="main-hero-waves-area waves-area">
+                <svg class="waves-svg" preserveAspectRatio="none"
+                     shape-rendering="auto" viewBox="0 24 150 28" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <path d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+                              id="gentle-wave"></path>
+                    </defs>
+                    <g class="parallax">
+                        <use href="#gentle-wave" x="48" y="0"></use>
+                        <use href="#gentle-wave" x="48" y="3"></use>
+                        <use href="#gentle-wave" x="48" y="5"></use>
+                        <use href="#gentle-wave" x="48" y="7"></use>
+                    </g>
+                </svg>
+            </section>
         </header>
         <main class="layout" id="content-inner" th:classappend="${theme.config.sidebar.location}">
             <div id="post">
                 <!-- 文章内容 -->
-                <article class="post-content line-numbers" id="article-container"
-                         th:utext="${post.content.content}"></article>
+                <article class="post-content line-numbers" id="article-container" th:utext="${post.content.content}"></article>
 
 
                 <div class="post-tools" id="post-tools">
                     <div class="post-tools-left">
 
-                        <!-- 打赏 -->
-                        <!--<div class="post-reward" onclick="AddRewardMask()">-->
-                        <!--    <div class="reward-button button&#45;&#45;animated" title="赞赏作者"><i class="fas fa-hamburger"></i>-->
-                        <!--        打赏作者-->
-                        <!--    </div>-->
-                        <!--    <div class="reward-main">-->
-                        <!--        <ul class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span>-->
-                        <!--            <ul class="reward-group">-->
-                        <!--                <li class="reward-item"><a href="../img/wechat.png" target="_blank"><img-->
-                        <!--                        alt="微信" class="post-qr-code-img" data-lazy-src="/img/wechat.png"></a>-->
-                        <!--                    <div class="post-qr-code-desc">微信</div>-->
-                        <!--                </li>-->
-                        <!--                <li class="reward-item"><a href="../img/alipay.png" target="_blank"><img-->
-                        <!--                        alt="支付宝" class="post-qr-code-img" data-lazy-src="/img/alipay.png"></a>-->
-                        <!--                    <div class="post-qr-code-desc">支付宝</div>-->
-                        <!--                </li>-->
-                        <!--            </ul>-->
-                        <!--            <a class="reward-main-btn" href="../about/index.html" target="_blank">-->
-                        <!--                <div class="reward-text">赞赏者名单</div>-->
-                        <!--                <div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div>-->
-                        <!--            </a></ul>-->
-                        <!--    </div>-->
-                        <!--</div>-->
-
-                        <!-- 说明 -->
-                        <!--<div class="reward-link mode"><a class="reward-link-button" href="../wechat/index.html">-->
-                        <!--    <i class="fas fa-seedling"></i>运营模式与责任</a>-->
-                        <!--</div>-->
-
                         <!-- 分享 -->
                         <div class="share-link mobile">
                             <div class="share-qrcode">
-                                <div class="share-button" title="使用手机访问这篇文章"><i
-                                        class="iconfont icon-qrcode"></i>
+                                <div class="share-button" title="使用手机访问这篇文章">
+                                    <i class="fas fa-qrcode"></i>
                                 </div>
                                 <div class="share-main">
                                     <div class="share-main-all">
-                                        <div id="qrcode"></div>
+                                        <div id="qrcode" th:title="${post.status.permalink}">
+                                        </div>
                                         <div class="reward-dec">使用手机访问这篇文章</div>
                                     </div>
                                 </div>
+                                <script type="text/javascript">
+                                    new QRCode(document.getElementById("qrcode"), [[${post.status.permalink}]]);
+                                </script>
                             </div>
                         </div>
+
                         <div class="share-link weibo">
                             <a class="share-button"
                                rel="noopener external nofollow noreferrer noopener"
                                target="_blank"
-                               th:href="'https://service.weibo.com/share/share.php?title=' + ${post.spec.title}"
+                               th:href="'https://service.weibo.com/share/share.php?title=' + ${post.spec.title} + 'url=' + ${post.status.permalink} + 'pic=' + ${post.spec.cover}"
                                title="分享到微博">
-                                <i class="iconfont icon-weibo" style="font-size:22px"></i></a></div>
+                                <i class="fab fa-weibo" style="font-size:22px"></i>
+                            </a>
+                        </div>
                         <div class="share-link copyurl">
-                            <div class="share-button" id="post-share-url" onclick="rm.copyPageUrl()" title="复制链接"><i
-                                    class="iconfont icon-link"></i></div>
+                            <div class="share-button" id="post-share-url" onclick="acrylic.copyPageUrl()" title="复制链接">
+                                <i class="fas fa-link"></i>
+                            </div>
                         </div>
                     </div>
                     <div class="post-tools-right">
@@ -169,45 +162,48 @@
                         <span class="post-copyright-info" id="post-copyright-url">
                             <a href="javascript:window.location.href;">[[${post.spec.title}]]</a>
                         </span>
-                        <button class="post-copyright-copybtn" onclick="rm.copyPageUrl()">
-                            <i class="iconfont icon-paste"></i>
+                        <button class="post-copyright-copybtn" onclick="acrylic.copyPageUrl()">
+                            <i class="fas fa-paste copy-btn"></i>
                         </button>
                     </div>
                     <div class="post-copyright__notice">
                         <span class="post-copyright-info" th:utext="${theme.config.post.copyrightInfo}"></span>
                     </div>
                 </div>
+
                 <nav class="pagination-post" id="pagination"
                      th:with="postCursor = ${postFinder.cursor(post.metadata.name)}">
-                    <a th:if="${postCursor.hasPrevious()}" th:href="@{${postCursor.previous.status.permalink}}">
-                        <div class="prev-post pull-left">
+
+                    <div class="prev-post pull-left">
+                        <a th:href="@{${postCursor.previous.status.permalink}}" th:if="${postCursor.hasPrevious()}">
                             <div class="pagination-info">
                                 <div class="label">上一篇</div>
                                 <div class="prev_info" th:text="${postCursor.previous.spec.title}"></div>
                             </div>
-                        </div>
-                    </a>
-                    <a th:if="${postCursor.hasNext()}" th:href="@{${postCursor.next.status.permalink}}">
-                        <div class="next-post pull-right">
+                        </a>
+                    </div>
+                    <div class="next-post pull-right">
+                        <a th:href="@{${postCursor.next.status.permalink}}" th:if="${postCursor.hasNext()}">
                             <div class="pagination-info">
                                 <div class="label">下一篇</div>
                                 <div class="next_info" th:text="${postCursor.next.spec.title}"></div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </nav>
                 <div class="relatedPosts" th:if="${not #lists.isEmpty(post.categories)}">
 
                     <div class="headline">
-                        <i class="iconfont icon-robot"></i>
+                        <i class="fa-solid fa-robot"></i>
                         <span>阅读建议</span>
                     </div>
                     <div class="relatedPosts-list"
                          th:with="recommandPosts = ${postFinder.listByCategory(1, theme.config.post.recommendQuantity, post.categories.get(0).metadata.name)}">
+
                         <!-- 建议阅读，这里可以自定义文章数量，然后遍历展示 -->
                         <div th:each="recommandPost :${recommandPosts}">
                             <a th:href="@{${recommandPost.status.permalink}}" th:title="${recommandPost.spec.title}">
-                                <img alt="cover" class="cover" loading="lazy"
+                                <img alt="cover" class="cover entered loading" loading="lazy"
                                      th:src="${#strings.isEmpty(recommandPost.spec.cover) ? theme.config.layout.postRandomImg : recommandPost.spec.cover}">
                                 <div class="content is-center">
                                     <div class="date"><i class="far fa-calendar-alt fa-fw"></i>
@@ -223,13 +219,17 @@
                 <!-- 评论模块 -->
                 <div id="post-comment" th:if="${pluginFinder.available('PluginCommentWidget')}">
                     <div class="comment-head">
-                        <div class="comment-headline"><i class="iconfont icon-comment-alt"></i> <span>评论</span></div>
+                        <div class="comment-headline">
+                            <i class="fa-sharp fa-regular fa-comment"></i>
+                            <span>评论</span>
+                        </div>
                         <div class="comment-privacy"><a href="#">隐私政策</a></div>
                         <div class="comment-tips" id="comment-tips">
                             <span>你无需删除空行，直接评论以获取最佳展示效果</span>
                         </div>
                     </div>
-                    <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" colorScheme="document.documentElement.getAttribute('data-theme')" />
+                    <halo:comment colorScheme="document.documentElement.getAttribute('data-theme')" group="content.halo.run" kind="Post"
+                                  th:attr="name=${post.metadata.name}"/>
                 </div>
             </div>
 
