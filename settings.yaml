@@ -592,6 +592,48 @@ spec:
             - $formkit: color
               name: background
               label: 背景色
+        - $formkit: repeater
+          name: authorInfoLeftTags
+          label: 个人标签-左
+          help: 头像左侧个人标签
+          value: [ ]
+          children:
+            - $formkit: text
+              name: tag
+              label: 标签
+              placeholder: 请输入内容
+        - $formkit: repeater
+          name: authorInfoRightTags
+          label: 个人标签-右
+          help: 头像右侧个人标签
+          value: [ ]
+          children:
+            - $formkit: text
+              name: tag
+              label: 标签
+              placeholder: 请输入内容
+        - $formkit: textarea
+          name: content
+          label: 我的介绍
+          value: <div class="title1">你好，很高兴认识你👋</div>
+            <div class="title2">我叫 <span class="inline-word">程序员小航</span></div>
+            <div class="title1">是一名 前端开发工程师、后端开发工程师、全干工程师</div>
+          help: 支持 HTML 语法
+        - $formkit: textarea
+          name: idea
+          label: 我的想法
+          value: <div class="author-content-item-tips">一定</div>
+            <h2>记得<br> 修改这块<span class="inline-word">代码</span>
+            <div class="mask">
+            <span class="first-tips" data-show="">优秀的产品</span>
+            <span>出色的设计</span>
+            <span>高效的编程</span>
+            <span data-up="">人性化的用户体验</span>
+            </div>
+            </h2>
+          help: 支持 HTML 语法
+
+
 
     - group: style
       label: 样式（WIP）

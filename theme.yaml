@@ -7,11 +7,17 @@ spec:
   author:
     name: 程序员小航
     website: 'https://liuzhihang.com'
+  customTemplates:
+    page:
+      - name: 关于
+        description: 关于页面
+        screenshot:
+        file: about.html
   description: Halo 2.0 Theme base on Thymeleaf, Referring to Butterfly and Heo
   logo: 'https://liuzhihang.com/themes/theme-hao/assets/images/hao-logo.jpg'
   website: 'https://liuzhihang.com'
   repo: 'https://github.com/liuzhihang/halo-theme-hao'
   settingName: "theme-hao-setting"
   configMapName: "theme-hao-configMap"
-  version: 1.1.1
+  version: 1.1.2
   require: 2.0.0
