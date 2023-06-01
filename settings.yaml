@@ -632,6 +632,46 @@ spec:
             </div>
             </h2>
           help: 支持 HTML 语法
+        - $formkit: select
+          name: personalities
+          label: 人格
+          help: 选择你的16人格
+          value: infp
+          options:
+            - label: INFP
+              value: infp
+            - label: ENFP
+              value: enfp
+            - label: INFJ
+              value: infj
+            - label: ENFJ
+              value: enfj
+            - label: INTJ
+              value: intj
+            - label: ENTJ
+              value: entj
+            - label: INTP
+              value: intp
+            - label: ENTP
+              value: entp
+            - label: ISFP
+              value: isfp
+            - label: ESFP
+              value: esfp
+            - label: ISTP
+              value: istp
+            - label: ESTP
+              value: estp
+            - label: ISFJ
+              value: isfj
+            - label: ESFJ
+              value: esfj
+            - label: ISTJ
+              value: istj
+            - label: ESTJ
+              value: estj
+          
+
 
 
 
