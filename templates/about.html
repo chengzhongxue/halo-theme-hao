@@ -360,146 +360,255 @@
                         <div class="author-content-item careers">
                             <div class="card-content">
                                 <div class="author-content-item-tips">生涯</div>
-                                <span class="author-content-item-title">无限进步</span>
-                                <div class="careers-group">
-
-                                    <div class="careers-item">
-                                        <div class="circle" style="background: #357ef5"></div>
-                                        <div class="name">DLPU, 产品设计专业</div>
+                                <span class="author-content-item-title"
+                                      th:text="${theme.config.about.authorCareersTitle}">无限进步</span>
+                                <div class="careers-group"
+                                     th:if="${not #lists.isEmpty(theme.config.about.authorCareersTags)}"
+                                     th:with="careersTags = ${theme.config.about.authorCareersTags}">
+                                    <div class="careers-item" th:each="tag : ${careersTags}">
+                                        <div class="circle" th:style="'background:' + ${tag.background}"></div>
+                                        <div class="name" th:text="${tag.desc}"></div>
                                     </div>
-
-                                    <div class="careers-item">
-                                        <div class="circle" style="background: #eb372a"></div>
-                                        <div class="name">ITSO, UI/产品经理</div>
-                                    </div>
-
                                 </div>
-                                <img alt="生涯"
-                                     class="author-content-img"
-                                     src="https://p.zhheo.com/20236d5152f4058d0b8b29185c7b71bbd74a071902.png!cover">
+                                <img alt="生涯" class="author-content-img"
+                                     th:src="${#strings.isEmpty(theme.config.about.authorCareersBackground) ? '/assets/images/hao-logo.jpg' : theme.config.about.authorCareersBackground}">
                             </div>
                         </div>
                     </div>
 
                     <!-- personalities -->
                     <div class="author-content">
-                        <div class="author-content-item personalities" th:with="personality = ${theme.config.about.personalities}">
+                        <div class="author-content-item personalities"
+                             th:with="personality = ${theme.config.about.personalities}">
                             <div class="author-content-item-tips">性格</div>
-                            
+
                             <th:block th:if="${personality == 'infp'}">
                                 <span class="author-content-item-title">调停者</span>
                                 <div class="title2" style="color: #56a178;">INFP</div>
-                                <div class="image"><img src="/themes/theme-hao/assets/images/infp.svg" style="transform: rotateY(180deg);"  ></div>
-                                <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow" target="_blank">16personalities</a> 了解更多关于 <a th:href="@{'https://www.16personalities.com/ch/INFP-%E4%BA%BA%E6%A0%BC'}" rel="noopener external nofollow" target="_blank">调停者</a></div>
+                                <div class="image"><img src="/themes/theme-hao/assets/images/infp.svg"
+                                                        style="transform: rotateY(180deg);"></div>
+                                <div class="post-tips">在 <a href="https://www.16personalities.com/"
+                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                    了解更多关于 <a
+                                            rel="noopener external nofollow"
+                                            target="_blank"
+                                            th:href="@{'https://www.16personalities.com/ch/INFP-%E4%BA%BA%E6%A0%BC'}">调停者</a>
+                                </div>
                             </th:block>
-                                                 
+
                             <th:block th:if="${personality == 'intj'}">
                                 <span class="author-content-item-title">建筑师</span>
                                 <div class="title2" style="color: #56a178;">INTJ</div>
-                                <div class="image"><img src="/themes/theme-hao/assets/images/intj.svg" style="transform: rotateY(180deg);"></div>
-                                <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow" target="_blank">16personalities</a> 了解更多关于 <a th:href="@{'https://www.16personalities.com/ch/INTJ-%E4%BA%BA%E6%A0%BC'}" rel="noopener external nofollow" target="_blank">建筑师</a></div>
-                            </th:block>                           
-                            
+                                <div class="image"><img src="/themes/theme-hao/assets/images/intj.svg"
+                                                        style="transform: rotateY(180deg);"></div>
+                                <div class="post-tips">在 <a href="https://www.16personalities.com/"
+                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                    了解更多关于 <a
+                                            rel="noopener external nofollow"
+                                            target="_blank"
+                                            th:href="@{'https://www.16personalities.com/ch/INTJ-%E4%BA%BA%E6%A0%BC'}">建筑师</a>
+                                </div>
+                            </th:block>
+
                             <th:block th:if="${personality == 'intp'}">
                                 <span class="author-content-item-title">逻辑学家</span>
                                 <div class="title2" style="color: #56a178;">INTP</div>
-                                <div class="image"><img src="/themes/theme-hao/assets/images/intp.svg" style="transform: rotateY(180deg);"></div>
-                                <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow" target="_blank">16personalities</a> 了解更多关于 <a th:href="@{'https://www.16personalities.com/ch/INTP-%E4%BA%BA%E6%A0%BC'}" rel="noopener external nofollow" target="_blank">逻辑学家</a></div>
+                                <div class="image"><img src="/themes/theme-hao/assets/images/intp.svg"
+                                                        style="transform: rotateY(180deg);"></div>
+                                <div class="post-tips">在 <a href="https://www.16personalities.com/"
+                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                    了解更多关于 <a
+                                            rel="noopener external nofollow"
+                                            target="_blank"
+                                            th:href="@{'https://www.16personalities.com/ch/INTP-%E4%BA%BA%E6%A0%BC'}">逻辑学家</a>
+                                </div>
                             </th:block>
-                                                      
+
                             <th:block th:if="${personality == 'entj'}">
                                 <span class="author-content-item-title">指挥官</span>
                                 <div class="title2" style="color: #56a178;">ENTJ</div>
-                                <div class="image"><img src="/themes/theme-hao/assets/images/entj.svg" style="transform: rotateY(180deg);"></div>
-                                <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow" target="_blank">16personalities</a> 了解更多关于 <a th:href="@{'https://www.16personalities.com/ch/ENTJ-%E4%BA%BA%E6%A0%BC'}" rel="noopener external nofollow" target="_blank">指挥官</a></div>
-                            </th:block>                          
-                            
+                                <div class="image"><img src="/themes/theme-hao/assets/images/entj.svg"
+                                                        style="transform: rotateY(180deg);"></div>
+                                <div class="post-tips">在 <a href="https://www.16personalities.com/"
+                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                    了解更多关于 <a
+                                            rel="noopener external nofollow"
+                                            target="_blank"
+                                            th:href="@{'https://www.16personalities.com/ch/ENTJ-%E4%BA%BA%E6%A0%BC'}">指挥官</a>
+                                </div>
+                            </th:block>
+
                             <th:block th:if="${personality == 'entp'}">
                                 <span class="author-content-item-title">辩论家</span>
                                 <div class="title2" style="color: #56a178;">ENTP</div>
-                                <div class="image"><img src="/themes/theme-hao/assets/images/entp.svg" style="transform: rotateY(180deg);"></div>
-                                <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow" target="_blank">16personalities</a> 了解更多关于 <a th:href="@{'https://www.16personalities.com/ch/ENTP-%E4%BA%BA%E6%A0%BC'}" rel="noopener external nofollow" target="_blank">辩论家</a></div>
+                                <div class="image"><img src="/themes/theme-hao/assets/images/entp.svg"
+                                                        style="transform: rotateY(180deg);"></div>
+                                <div class="post-tips">在 <a href="https://www.16personalities.com/"
+                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                    了解更多关于 <a
+                                            rel="noopener external nofollow"
+                                            target="_blank"
+                                            th:href="@{'https://www.16personalities.com/ch/ENTP-%E4%BA%BA%E6%A0%BC'}">辩论家</a>
+                                </div>
                             </th:block>
-                                                      
+
                             <th:block th:if="${personality == 'enfj'}">
                                 <span class="author-content-item-title">主人公</span>
                                 <div class="title2" style="color: #56a178;">ENFJ</div>
-                                <div class="image"><img src="/themes/theme-hao/assets/images/enfj.svg" style="transform: rotateY(180deg);"></div>
-                                <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow" target="_blank">16personalities</a> 了解更多关于 <a th:href="@{'https://www.16personalities.com/ch/ENFJ-%E4%BA%BA%E6%A0%BC'}" rel="noopener external nofollow" target="_blank">主人公</a></div>
+                                <div class="image"><img src="/themes/theme-hao/assets/images/enfj.svg"
+                                                        style="transform: rotateY(180deg);"></div>
+                                <div class="post-tips">在 <a href="https://www.16personalities.com/"
+                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                    了解更多关于 <a
+                                            rel="noopener external nofollow"
+                                            target="_blank"
+                                            th:href="@{'https://www.16personalities.com/ch/ENFJ-%E4%BA%BA%E6%A0%BC'}">主人公</a>
+                                </div>
                             </th:block>
-                                               
+
                             <th:block th:if="${personality == 'enfp'}">
                                 <span class="author-content-item-title">竞选者</span>
                                 <div class="title2" style="color: #56a178;">ENFP</div>
-                                <div class="image"><img src="/themes/theme-hao/assets/images/enfp.svg" style="transform: rotateY(180deg);"></div>
-                                <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow" target="_blank">16personalities</a> 了解更多关于 <a th:href="@{'https://www.16personalities.com/ch/ENFP-%E4%BA%BA%E6%A0%BC'}" rel="noopener external nofollow" target="_blank">竞选者</a></div>
-                            </th:block>                           
-                            
+                                <div class="image"><img src="/themes/theme-hao/assets/images/enfp.svg"
+                                                        style="transform: rotateY(180deg);"></div>
+                                <div class="post-tips">在 <a href="https://www.16personalities.com/"
+                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                    了解更多关于 <a
+                                            rel="noopener external nofollow"
+                                            target="_blank"
+                                            th:href="@{'https://www.16personalities.com/ch/ENFP-%E4%BA%BA%E6%A0%BC'}">竞选者</a>
+                                </div>
+                            </th:block>
+
                             <th:block th:if="${personality == 'estj'}">
                                 <span class="author-content-item-title">总经理</span>
                                 <div class="title2" style="color: #56a178;">ESTJ</div>
-                                <div class="image"><img src="/themes/theme-hao/assets/images/estj.svg" style="transform: rotateY(180deg);"></div>
-                                <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow" target="_blank">16personalities</a> 了解更多关于 <a th:href="@{'https://www.16personalities.com/ch/ESTJ-%E4%BA%BA%E6%A0%BC'}" rel="noopener external nofollow" target="_blank">总经理</a></div>
+                                <div class="image"><img src="/themes/theme-hao/assets/images/estj.svg"
+                                                        style="transform: rotateY(180deg);"></div>
+                                <div class="post-tips">在 <a href="https://www.16personalities.com/"
+                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                    了解更多关于 <a
+                                            rel="noopener external nofollow"
+                                            target="_blank"
+                                            th:href="@{'https://www.16personalities.com/ch/ESTJ-%E4%BA%BA%E6%A0%BC'}">总经理</a>
+                                </div>
                             </th:block>
-                                                       
+
                             <th:block th:if="${personality == 'estp'}">
                                 <span class="author-content-item-title">企业家</span>
                                 <div class="title2" style="color: #56a178;">ESTP</div>
-                                <div class="image"><img src="/themes/theme-hao/assets/images/estp.svg" style="transform: rotateY(180deg);"></div>
-                                <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow" target="_blank">16personalities</a> 了解更多关于 <a th:href="@{'https://www.16personalities.com/ch/ESTP-%E4%BA%BA%E6%A0%BC'}" rel="noopener external nofollow" target="_blank">企业家</a></div>
+                                <div class="image"><img src="/themes/theme-hao/assets/images/estp.svg"
+                                                        style="transform: rotateY(180deg);"></div>
+                                <div class="post-tips">在 <a href="https://www.16personalities.com/"
+                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                    了解更多关于 <a
+                                            rel="noopener external nofollow"
+                                            target="_blank"
+                                            th:href="@{'https://www.16personalities.com/ch/ESTP-%E4%BA%BA%E6%A0%BC'}">企业家</a>
+                                </div>
                             </th:block>
-                                                  
+
                             <th:block th:if="${personality == 'esfj'}">
                                 <span class="author-content-item-title">执政官</span>
                                 <div class="title2" style="color: #56a178;">ESFJ</div>
-                                <div class="image"><img src="/themes/theme-hao/assets/images/esfj.svg" style="transform: rotateY(180deg);"></div>
-                                <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow" target="_blank">16personalities</a> 了解更多关于 <a th:href="@{'https://www.16personalities.com/ch/ESFJ-%E4%BA%BA%E6%A0%BC'}" rel="noopener external nofollow" target="_blank">执政官</a></div>
+                                <div class="image"><img src="/themes/theme-hao/assets/images/esfj.svg"
+                                                        style="transform: rotateY(180deg);"></div>
+                                <div class="post-tips">在 <a href="https://www.16personalities.com/"
+                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                    了解更多关于 <a
+                                            rel="noopener external nofollow"
+                                            target="_blank"
+                                            th:href="@{'https://www.16personalities.com/ch/ESFJ-%E4%BA%BA%E6%A0%BC'}">执政官</a>
+                                </div>
                             </th:block>
-                                                
+
                             <th:block th:if="${personality == 'esfp'}">
                                 <span class="author-content-item-title">表演者</span>
                                 <div class="title2" style="color: #56a178;">ESFP</div>
-                                <div class="image"><img src="/themes/theme-hao/assets/images/esfp.svg" style="transform: rotateY(180deg);"></div>
-                                <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow" target="_blank">16personalities</a> 了解更多关于 <a th:href="@{'https://www.16personalities.com/ch/ESFP-%E4%BA%BA%E6%A0%BC'}" rel="noopener external nofollow" target="_blank">表演者</a></div>
+                                <div class="image"><img src="/themes/theme-hao/assets/images/esfp.svg"
+                                                        style="transform: rotateY(180deg);"></div>
+                                <div class="post-tips">在 <a href="https://www.16personalities.com/"
+                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                    了解更多关于 <a
+                                            rel="noopener external nofollow"
+                                            target="_blank"
+                                            th:href="@{'https://www.16personalities.com/ch/ESFP-%E4%BA%BA%E6%A0%BC'}">表演者</a>
+                                </div>
                             </th:block>
-                                                 
+
                             <th:block th:if="${personality == 'infj'}">
                                 <span class="author-content-item-title">提倡者</span>
                                 <div class="title2" style="color: #56a178;">INFJ</div>
-                                <div class="image"><img src="/themes/theme-hao/assets/images/infj.svg" style="transform: rotateY(180deg);"></div>
-                                <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow" target="_blank">16personalities</a> 了解更多关于 <a th:href="@{'https://www.16personalities.com/ch/INFJ-%E4%BA%BA%E6%A0%BC'}" rel="noopener external nofollow" target="_blank">提倡者</a></div>
-                            </th:block>                          
-                            
+                                <div class="image"><img src="/themes/theme-hao/assets/images/infj.svg"
+                                                        style="transform: rotateY(180deg);"></div>
+                                <div class="post-tips">在 <a href="https://www.16personalities.com/"
+                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                    了解更多关于 <a
+                                            rel="noopener external nofollow"
+                                            target="_blank"
+                                            th:href="@{'https://www.16personalities.com/ch/INFJ-%E4%BA%BA%E6%A0%BC'}">提倡者</a>
+                                </div>
+                            </th:block>
+
                             <th:block th:if="${personality == 'istj'}">
                                 <span class="author-content-item-title">物流师</span>
                                 <div class="title2" style="color: #56a178;">ISTJ</div>
-                                <div class="image"><img src="/themes/theme-hao/assets/images/istj.svg" style="transform: rotateY(180deg);"></div>
-                                <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow" target="_blank">16personalities</a> 了解更多关于 <a th:href="@{'https://www.16personalities.com/ch/ISTJ-%E4%BA%BA%E6%A0%BC'}" rel="noopener external nofollow" target="_blank">物流师</a></div>
+                                <div class="image"><img src="/themes/theme-hao/assets/images/istj.svg"
+                                                        style="transform: rotateY(180deg);"></div>
+                                <div class="post-tips">在 <a href="https://www.16personalities.com/"
+                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                    了解更多关于 <a
+                                            rel="noopener external nofollow"
+                                            target="_blank"
+                                            th:href="@{'https://www.16personalities.com/ch/ISTJ-%E4%BA%BA%E6%A0%BC'}">物流师</a>
+                                </div>
                             </th:block>
-                                                       
+
                             <th:block th:if="${personality == 'istp'}">
                                 <span class="author-content-item-title">鉴赏家</span>
                                 <div class="title2" style="color: #56a178;">ISTP</div>
-                                <div class="image"><img src="/themes/theme-hao/assets/images/istp.svg" style="transform: rotateY(180deg);"></div>
-                                <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow" target="_blank">16personalities</a> 了解更多关于 <a th:href="@{'https://www.16personalities.com/ch/ISTP-%E4%BA%BA%E6%A0%BC'}" rel="noopener external nofollow" target="_blank">鉴赏家</a></div>
+                                <div class="image"><img src="/themes/theme-hao/assets/images/istp.svg"
+                                                        style="transform: rotateY(180deg);"></div>
+                                <div class="post-tips">在 <a href="https://www.16personalities.com/"
+                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                    了解更多关于 <a
+                                            rel="noopener external nofollow"
+                                            target="_blank"
+                                            th:href="@{'https://www.16personalities.com/ch/ISTP-%E4%BA%BA%E6%A0%BC'}">鉴赏家</a>
+                                </div>
                             </th:block>
-                            
+
                             <th:block th:if="${personality == 'isfj'}">
                                 <span class="author-content-item-title">守卫者</span>
                                 <div class="title2" style="color: #56a178;">ISFJ</div>
-                                <div class="image"><img src="/themes/theme-hao/assets/images/isfj.svg" style="transform: rotateY(180deg);"></div>
-                                <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow" target="_blank">16personalities</a> 了解更多关于 <a th:href="@{'https://www.16personalities.com/ch/ISFJ-%E4%BA%BA%E6%A0%BC'}" rel="noopener external nofollow" target="_blank">守卫者</a></div>
+                                <div class="image"><img src="/themes/theme-hao/assets/images/isfj.svg"
+                                                        style="transform: rotateY(180deg);"></div>
+                                <div class="post-tips">在 <a href="https://www.16personalities.com/"
+                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                    了解更多关于 <a
+                                            rel="noopener external nofollow"
+                                            target="_blank"
+                                            th:href="@{'https://www.16personalities.com/ch/ISFJ-%E4%BA%BA%E6%A0%BC'}">守卫者</a>
+                                </div>
                             </th:block>
-                            
+
                             <th:block th:if="${personality == 'isfp'}">
                                 <span class="author-content-item-title">探险家</span>
                                 <div class="title2" style="color: #56a178;">ISFP</div>
-                                <div class="image"><img src="/themes/theme-hao/assets/images/isfp.svg" style="transform: rotateY(180deg);"></div>
-                                <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow" target="_blank">16personalities</a> 了解更多关于 <a th:href="@{'https://www.16personalities.com/ch/ISFP-%E4%BA%BA%E6%A0%BC'}" rel="noopener external nofollow" target="_blank">探险家</a></div>
+                                <div class="image"><img src="/themes/theme-hao/assets/images/isfp.svg"
+                                                        style="transform: rotateY(180deg);"></div>
+                                <div class="post-tips">在 <a href="https://www.16personalities.com/"
+                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                    了解更多关于 <a
+                                            rel="noopener external nofollow"
+                                            target="_blank"
+                                            th:href="@{'https://www.16personalities.com/ch/ISFP-%E4%BA%BA%E6%A0%BC'}">探险家</a>
+                                </div>
                             </th:block>
-         
+
                         </div>
-                        <div class="author-content-item myphoto"><img alt="自拍" class="author-content-img" src="https://p.zhheo.com/2023788ba3b8739936f844e64f483faacaf1085602.png!cover">
+                        <div class="author-content-item myphoto"><img alt="自拍" class="author-content-img"
+                                                                      th:src="${theme.config.about.authorCareersPhoto}">
                         </div>
                     </div>
 
@@ -507,16 +616,23 @@
                     <div class="author-content">
                         <div class="author-content-item maxim">
                             <div class="author-content-item-tips">座右铭</div>
-                            <span class="maxim-title"><span
-                                    style="opacity: 0.6;margin-bottom:8px;">荆棘之路，</span><span>劈风斩浪。</span></span>
+                            <span class="maxim-title">
+                                <span style="opacity: 0.6;margin-bottom:8px;">荆棘之路，</span>
+                                <span>劈风斩浪。</span>
+                            </span>
                         </div>
                         <div class="author-content-item buff">
 
                             <div class="card-content">
                                 <div class="author-content-item-tips">特长</div>
-                                <span class="buff-title"><span style="opacity: 0.6;margin-bottom:8px;">玄学流电脑疑难问题解决<span
-                                        class="inline-word">专家</span></span><span>软件学习能力<span
-                                        class="inline-word">MAX</span></span></span>
+                                <span class="buff-title">
+                                    <span style="opacity: 0.6;margin-bottom:8px;">玄学流电脑疑难问题解决
+                                        <span class="inline-word">专家</span>
+                                    </span>
+                                    <span>软件学习能力
+                                        <span class="inline-word">MAX</span>
+                                    </span>
+                                </span>
                             </div>
                         </div>
                     </div>

@@ -162,7 +162,7 @@ spec:
           name: recommendPostCustom
           label: 自定义文章
           help: "建议设置六篇文章"
-          value: []
+          value: [ ]
           children:
             - $formkit: url
               name: url
@@ -338,7 +338,7 @@ spec:
               name: socialMedia
               label: 社交媒体
               help: 侧栏社交媒体建议只设置两个
-              value: []
+              value: [ ]
               children:
                 - $formkit: select
                   name: icon
@@ -449,7 +449,7 @@ spec:
         - $formkit: repeater
           name: socialMedia
           label: 社交媒体
-          value: []
+          value: [ ]
           children:
             - $formkit: select
               name: icon
@@ -578,7 +578,7 @@ spec:
           name: techStack
           label: 技术栈
           help: 个人技术栈
-          value: []
+          value: [ ]
           children:
             - $formkit: text
               name: name
@@ -615,23 +615,41 @@ spec:
         - $formkit: textarea
           name: content
           label: 我的介绍
-          value: <div class="title1">你好，很高兴认识你👋</div>
-            <div class="title2">我叫 <span class="inline-word">程序员小航</span></div>
-            <div class="title1">是一名 前端开发工程师、后端开发工程师、全干工程师</div>
+          value: <div class="title1">你好，很高兴认识你👋</div> <div class="title2">我叫 <span class="inline-word">程序员小航</span></div> <div class="title1">是一名 前端开发工程师、后端开发工程师、全干工程师</div>
+
           help: 支持 HTML 语法
         - $formkit: textarea
           name: idea
           label: 我的想法
-          value: <div class="author-content-item-tips">一定</div>
-            <h2>记得<br> 修改这块<span class="inline-word">代码</span>
-            <div class="mask">
-            <span class="first-tips" data-show="">优秀的产品</span>
-            <span>出色的设计</span>
-            <span>高效的编程</span>
-            <span data-up="">人性化的用户体验</span>
-            </div>
-            </h2>
+          value: <div class="author-content-item-tips">一定</div> <h2>记得<br> 修改这块<span class="inline-word">代码</span> <div class="mask"> <span class="first-tips" data-show="">优秀的产品</span> <span>出色的设计</span> <span>高效的编程</span> <span data-up="">人性化的用户体验</span> </div> </h2>
           help: 支持 HTML 语法
+        - $formkit: text
+          name: authorCareersTitle
+          label: 职业生涯标题
+          placeholder: 请输入内容
+        - $formkit: repeater
+          name: authorCareersTags
+          label: 职业生涯标签
+          value: [ ]
+          children:
+            - $formkit: color
+              name: background
+              label: 颜色
+            - $formkit: text
+              name: desc
+              label: 描述
+        - $formkit: url
+          name: authorCareersBackground
+          label: 职业生涯背景图
+          placeholder: 建议找个透明图
+          validation: "url"
+        - $formkit: url
+          name: authorCareersPhoto
+          label: 图片
+          validation: "url"
+          value: https://p.zhheo.com/2023788ba3b8739936f844e64f483faacaf1085602.png!cover
+
+
         - $formkit: select
           name: personalities
           label: 人格
@@ -670,7 +688,7 @@ spec:
               value: istj
             - label: ESTJ
               value: estj
-          
+
 
 
 
