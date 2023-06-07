@@ -648,6 +648,31 @@ spec:
           label: 图片
           validation: "url"
           value: https://p.zhheo.com/2023788ba3b8739936f844e64f483faacaf1085602.png!cover
+        - $formkit: text
+          name: authorInfoAddress
+          label: 居住地
+          placeholder: 请输入内容
+        - $formkit: text
+          name: authorInfoAddressBackground
+          label: 居住地背景图
+          placeholder: 请输入内容
+        - $formkit: repeater
+          name: authorInfo
+          label: 个人信息
+          value: [ ]
+          children:
+            - $formkit: text
+              name: authorInfoTitle
+              label: 标题
+              placeholder: 请输入内容
+            - $formkit: text
+              name: authorInfoContent
+              label: 内容
+              placeholder: 请输入内容
+            - $formkit: color
+              name: authorInfoColor
+              label: 内容颜色
+              placeholder: 请输入内容
 
 
         - $formkit: select
