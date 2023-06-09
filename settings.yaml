@@ -674,6 +674,25 @@ spec:
               label: 内容颜色
               placeholder: 请输入内容
 
+        - $formkit: repeater
+          name: textarea
+          label: 文本块
+          min: 2
+          max: 2
+          help: 左边的一行10字 右面一行19字
+          children:
+            - $formkit: text
+              name: tittle
+              label: 文本块标题
+              value: 座右铭
+            - $formkit: text
+              name: textarea_up
+              label: 文本块(上)
+              value: 生活原本沉闷，
+            - $formkit: text
+              name: textarea_down
+              label: 文本块(下)
+              value: 但跑起来就有风。
 
         - $formkit: select
           name: personalities

@@ -613,25 +613,23 @@
                     </div>
 
                     <!-- motto -->
-                    <div class="author-content">
+                    <div class="author-content" th:with="texts = ${theme.config.about.textarea}">
                         <div class="author-content-item maxim">
-                            <div class="author-content-item-tips">座右铭</div>
+                            <div class="author-content-item-tips" th:text="${texts[0].tittle}">座右铭</div>
                             <span class="maxim-title">
-                                <span style="opacity: 0.6;margin-bottom:8px;">荆棘之路，</span>
-                                <span>劈风斩浪。</span>
+                                <span style="opacity: 0.6;margin-bottom:8px;" th:text="${texts[0].textarea_up}">生活原本沉闷，</span>
+                                <span th:text="${texts[0].textarea_down}">但跑起来就有风。</span>
                             </span>
                         </div>
-                        <div class="author-content-item buff">
 
+                        <div class="author-content-item buff">
                             <div class="card-content">
-                                <div class="author-content-item-tips">特长</div>
+                                <div class="author-content-item-tips" th:text="${texts[1].tittle}">特长</div>
                                 <span class="buff-title">
-                                    <span style="opacity: 0.6;margin-bottom:8px;">玄学流电脑疑难问题解决
+                                    <span style="opacity: 0.6;margin-bottom:8px;"  th:text="${texts[1].textarea_up}">玄学流电脑疑难问题解决
                                         <span class="inline-word">专家</span>
                                     </span>
-                                    <span>软件学习能力
-                                        <span class="inline-word">MAX</span>
-                                    </span>
+                                    <span th:text="${texts[1].textarea_down}">软件学习能力</span>
                                 </span>
                             </div>
                         </div>
