@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<div class="bbTimeList container" id="bbTimeList" th:fragment="moment" th:if="!${pluginFinder.available('PluginMoments')}">
+
+<div class="bbTimeList container" id="bbTimeList" th:fragment="moment"
+     th:if="!${pluginFinder.available('PluginMoments')}">
     <!--   未安装插件   -->
     <i class="bber-logo fa-regular fa-bell icon-bblogo" onclick="" title="瞬间"></i>
     <div class="swiper-container swiper-no-swiping swiper-container-initialized swiper-container-vertical swiper-container-pointer-events"
          id="bbtalk" tabindex="-1">
-        <div class="swiper-wrapper" id="bber-talk" onclick="location.href=location.href='https\:\/\/github.com/halo-sigs/plugin-moments'">
+        <div class="swiper-wrapper" id="bber-talk"
+             onclick="location.href=location.href='https\:\/\/github.com/halo-sigs/plugin-moments'">
             <div class="li-style swiper-slide">这里需要安装瞬间的插件</div>
             <div class="li-style swiper-slide">去安装吧！</div>
         </div>
     </div>
-    <i class="bber-gotobb fas fa-arrow-circle-right" onclick="location.href=location.href='https\:\/\/github.com/halo-sigs/plugin-moments'"
+    <i class="bber-gotobb fas fa-arrow-circle-right"
+       onclick="location.href=location.href='https\:\/\/github.com/halo-sigs/plugin-moments'"
        title="下载插件"></i>
 </div>
 
@@ -19,11 +23,13 @@
      th:if="${theme.config.top.moment} and ${pluginFinder.available('PluginMoments')}">
     <!--   瞬间插件   -->
     <i class="bber-logo fa-regular fa-bell icon-bblogo" onclick="" title="瞬间"></i>
-    <div class="swiper-container swiper-no-swiping swiper-container-initialized swiper-container-vertical swiper-container-pointer-events"
+    <div class="swiper-container swiper-no-swiping swiper-container-initialized swiper-container-vertical swiper-container-pointer-events swiper-initialized swiper-vertical swiper-backface-hidden"
          id="bbtalk" tabindex="-1">
-        <div class="swiper-wrapper" id="bber-talk" onclick="location.href='/moments'" th:if="${momentFinder}">
-            <th:block th:each="moment : ${momentFinder.listAll()}" th:with="content=${moment.spec.content}">
-                <div class="li-style swiper-slide" th:if="${not #strings.isEmpty(content.html)}"
+        <div aria-live="off" class="swiper-wrapper" id="bber-talk" onclick="location.href='/moments'"
+             th:if="${momentFinder}">
+            <th:block th:each="moment,iterStat : ${momentFinder.list(1, 10)}" th:with="content=${moment.spec.content}">
+                <div class="li-style swiper-slide" role="group" style="height: 25px;"
+                     th:if="${not #strings.isEmpty(content.html)}"
                      th:text="${#strings.substringBefore(#strings.substringAfter(content.html,'<p>'),'</p>')}"></div>
             </th:block>
         </div>
