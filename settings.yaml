@@ -517,7 +517,6 @@ spec:
             - $formkit: text
               name: url
               label: 链接
-              validation: "url"
             - $formkit: radio
               name: urlType
               label: 链接类型

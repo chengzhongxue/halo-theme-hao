@@ -11627,7 +11627,7 @@ figure.gallery-group:hover .gallery-group-name::after {
 
 #bber .timeline ul li.item {
     position: relative;
-    width: 32%;
+    width: 30%;
     border: var(--style-border-always);
     border-radius: 12px;
     padding: 1rem 1rem 0.5rem;
@@ -11723,7 +11723,7 @@ figure.gallery-group:hover .gallery-group-name::after {
 
 /* 每条动态 */
 #bber div.bber-content {
-    display: flex;
+    /*display: flex;*/
     flex-direction: initial;
     flex-wrap: wrap;
     border-radius: 12px;
@@ -11910,7 +11910,7 @@ figure.gallery-group:hover .gallery-group-name::after {
 }
 
 /* 内容 */
-#bber .bber-content .datacont {
+#bber .bber-content p {
     order: 0;
     font-size: 0.8rem;
     font-weight: bold;
@@ -11922,6 +11922,7 @@ figure.gallery-group:hover .gallery-group-name::after {
     display: flex;
     flex-direction: column;
     text-align: justify;
+    overflow-wrap: break-word;
 }
 
 /* 设备 */
