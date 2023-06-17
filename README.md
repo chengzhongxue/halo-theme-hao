@@ -45,8 +45,6 @@
 
 &emsp;&emsp;详细文档请参考：[https://docs.halo.run/user-guide/themes](https://docs.halo.run/user-guide/themes)
 
-<img src="https://docs.halo.run/assets/images/theme-install-d123abd76ac65df94e330ad64fd1b7c3.png" />
-
 ## 功能
 
 > 部分功能使用插件实现
