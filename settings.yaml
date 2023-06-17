@@ -162,7 +162,7 @@ spec:
           name: recommendPostCustom
           label: 自定义文章
           help: "建议设置六篇文章"
-          value: []
+          value: [ ]
           children:
             - $formkit: url
               name: url
@@ -338,68 +338,68 @@ spec:
               name: socialMedia
               label: 社交媒体
               help: 侧栏社交媒体建议只设置两个
-              value: []
+              value: [ ]
               children:
                 - $formkit: select
                   name: icon
                   label: 图标
                   options:
                     - label: 电子邮箱
-                      value: icon-mail-line
+                      value: fa-solid fa-envelope
                     - label: 微信
-                      value: icon-wechat2
-                    - label: 公众号
-                      value: icon-weixingongzhonghao
+                      value: fa-brands fa-weixin
+                    #                    - label: 公众号
+                    #                      value:
                     - label: 腾讯 QQ
-                      value: icon-qq-line
+                      value: fa-brands fa-qq
                     - label: 新浪微博
-                      value: icon-weibo-line
+                      value: fa-brands fa-weibo
                     - label: 知乎
-                      value: icon-zhihu-line
-                    - label: 豆瓣
-                      value: icon-douban-line
+                      value: fa-brands fa-zhihu
+                    #                    - label: 豆瓣
+                    #                      value:
                     - label: 哔哩哔哩
-                      value: icon-bilibili-line
+                      value: fa-brands fa-bilibili
                     - label: GitHub
-                      value: icon-github-line
+                      value: fa-brands fa-github
                     - label: GitLab
-                      value: icon-gitlab-line
-                    - label: 百度
-                      value: icon-baidu-line
-                    - label: 掘金
-                      value: icon-juejin
-                    - label: 语雀
-                      value: icon-yuque
-                    - label: 博客园
-                      value: icon-CN_cnblogs
-                    - label: CSDN
-                      value: icon-csdn1
-                    - label: LeetCode
-                      value: icon-leetcode
-                    - label: 头条
-                      value: icon-jinritoutiao
+                      value: fa-brands fa-gitlab
+                    #                    - label: 百度
+                    #                      value: icon-baidu-line
+                    #                    - label: 掘金
+                    #                      value: icon-juejin
+                    #                    - label: 语雀
+                    #                      value: icon-yuque
+                    #                    - label: 博客园
+                    #                      value: icon-CN_cnblogs
+                    #                    - label: CSDN
+                    #                      value: icon-csdn1
+                    #                    - label: LeetCode
+                    #                      value: icon-leetcode
+                    #                    - label: 头条
+                    #                      value: icon-jinritoutiao
                     - label: 抖音 / TikTok
-                      value: icon-douyin
+                      value: fa-brands fa-tiktok
                     - label: Telegram
-                      value: icon-telegram-line
+                      value: fa-brands fa-telegram
                     - label: Facebook
-                      value: icon-facebook-box-line
+                      value: fa-brands fa-facebook
                     - label: Instagram
-                      value: icon-instagram-line
+                      value: fa-brands fa-instagram
                     - label: LinkedIn
-                      value: icon-linkedin-box-line
+                      value: fa-brands fa-linkedin
                     - label: Twitter
-                      value: icon-twitter-line
+                      value: fa-brands fa-twitter
                     - label: Slack
-                      value: icon-slack-line
+                      value: fa-brands fa-slack
                     - label: Discord
-                      value: icon-discord-line
+                      value: fa-brands fa-discord
                     - label: YouTube
-                      value: icon-youtube-line
+                      value: fa-brands fa-youtube
                     - label: Steam
-                      value: icon-steam-fill
+                      value: fa-brands fa-steam
                     - label: Dribbble
-                      value: icon-dribbble-line
+                      value: fa-brands fa-dribbble
                 - $formkit: text
                   name: name
                   label: 名称
@@ -449,7 +449,7 @@ spec:
         - $formkit: repeater
           name: socialMedia
           label: 社交媒体
-          value: []
+          value: [ ]
           children:
             - $formkit: select
               name: icon
@@ -578,7 +578,7 @@ spec:
           name: techStack
           label: 技术栈
           help: 个人技术栈
-          value: []
+          value: [ ]
           children:
             - $formkit: text
               name: name
@@ -592,6 +592,150 @@ spec:
             - $formkit: color
               name: background
               label: 背景色
+        - $formkit: repeater
+          name: authorInfoLeftTags
+          label: 个人标签-左
+          help: 头像左侧个人标签
+          value: [ ]
+          children:
+            - $formkit: text
+              name: tag
+              label: 标签
+              placeholder: 请输入内容
+        - $formkit: repeater
+          name: authorInfoRightTags
+          label: 个人标签-右
+          help: 头像右侧个人标签
+          value: [ ]
+          children:
+            - $formkit: text
+              name: tag
+              label: 标签
+              placeholder: 请输入内容
+        - $formkit: textarea
+          name: content
+          label: 我的介绍
+          value: <div class="title1">你好，很高兴认识你👋</div> <div class="title2">我叫 <span class="inline-word">程序员小航</span></div> <div class="title1">是一名 前端开发工程师、后端开发工程师、全干工程师</div>
+
+          help: 支持 HTML 语法
+        - $formkit: textarea
+          name: idea
+          label: 我的想法
+          value: <div class="author-content-item-tips">一定</div> <h2>记得<br> 修改这块<span class="inline-word">代码</span> <div class="mask"> <span class="first-tips" data-show="">优秀的产品</span> <span>出色的设计</span> <span>高效的编程</span> <span data-up="">人性化的用户体验</span> </div> </h2>
+          help: 支持 HTML 语法
+        - $formkit: text
+          name: authorCareersTitle
+          label: 职业生涯标题
+          placeholder: 请输入内容
+        - $formkit: repeater
+          name: authorCareersTags
+          label: 职业生涯标签
+          value: [ ]
+          children:
+            - $formkit: color
+              name: background
+              label: 颜色
+            - $formkit: text
+              name: desc
+              label: 描述
+        - $formkit: url
+          name: authorCareersBackground
+          label: 职业生涯背景图
+          placeholder: 建议找个透明图
+          validation: "url"
+        - $formkit: url
+          name: authorCareersPhoto
+          label: 图片
+          validation: "url"
+          value: https://p.zhheo.com/2023788ba3b8739936f844e64f483faacaf1085602.png!cover
+        - $formkit: text
+          name: authorInfoAddress
+          label: 居住地
+          placeholder: 请输入内容
+        - $formkit: text
+          name: authorInfoAddressBackground
+          label: 居住地背景图
+          placeholder: 请输入内容
+        - $formkit: repeater
+          name: authorInfo
+          label: 个人信息
+          value: [ ]
+          children:
+            - $formkit: text
+              name: authorInfoTitle
+              label: 标题
+              placeholder: 请输入内容
+            - $formkit: text
+              name: authorInfoContent
+              label: 内容
+              placeholder: 请输入内容
+            - $formkit: color
+              name: authorInfoColor
+              label: 内容颜色
+              placeholder: 请输入内容
+
+        - $formkit: repeater
+          name: textarea
+          label: 文本块
+          min: 2
+          max: 2
+          help: 左边的一行10字 右面一行19字
+          children:
+            - $formkit: text
+              name: tittle
+              label: 文本块标题
+              value: 座右铭
+            - $formkit: text
+              name: textarea_up
+              label: 文本块(上)
+              value: 生活原本沉闷，
+            - $formkit: text
+              name: textarea_down
+              label: 文本块(下)
+              value: 但跑起来就有风。
+
+        - $formkit: select
+          name: personalities
+          label: 人格
+          help: 选择你的16人格
+          value: infp
+          options:
+            - label: INFP
+              value: infp
+            - label: ENFP
+              value: enfp
+            - label: INFJ
+              value: infj
+            - label: ENFJ
+              value: enfj
+            - label: INTJ
+              value: intj
+            - label: ENTJ
+              value: entj
+            - label: INTP
+              value: intp
+            - label: ENTP
+              value: entp
+            - label: ISFP
+              value: isfp
+            - label: ESFP
+              value: esfp
+            - label: ISTP
+              value: istp
+            - label: ESTP
+              value: estp
+            - label: ISFJ
+              value: isfj
+            - label: ESFJ
+              value: esfj
+            - label: ISTJ
+              value: istj
+            - label: ESTJ
+              value: estj
+
+
+
+
 
     - group: style
       label: 样式（WIP）

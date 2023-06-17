@@ -1,4 +1,4 @@
-var btf = {
+const utils = {
     debounce: function (func, wait, immediate) {
         let timeout
         return function () {
@@ -49,139 +49,6 @@ var btf = {
         return throttled
     },
 
-    sidebarPaddingR: () => {
-        const innerWidth = window.innerWidth
-        const clientWidth = document.body.clientWidth
-        const paddingRight = innerWidth - clientWidth
-        if (innerWidth !== clientWidth) {
-            document.body.style.paddingRight = paddingRight + 'px'
-        }
-    },
-
-    snackbarShow: (text, showAction, duration) => {
-        const sa = (typeof showAction !== 'undefined') ? showAction : false
-        const dur = (typeof duration !== 'undefined') ? duration : 5000
-        const position = GLOBAL_CONFIG.Snackbar.position
-        const bg = document.documentElement.getAttribute('data-theme') === 'light' ? GLOBAL_CONFIG.Snackbar.bgLight : GLOBAL_CONFIG.Snackbar.bgDark
-        document.styleSheets[0].addRule(':root', '--heo-snackbar-time:' + dur + 'ms!important')
-        Snackbar.show({
-            text: text,
-            backgroundColor: bg,
-            showAction: sa,
-            duration: dur,
-            pos: position
-        })
-
-    },
-
-    initJustifiedGallery: function (selector) {
-        if (!(selector instanceof jQuery)) {
-            selector = $(selector)
-        }
-        selector.each(function (i, o) {
-            if ($(this).is(':visible')) {
-                $(this).justifiedGallery({
-                    rowHeight: 220,
-                    margins: 4
-                })
-            }
-        })
-    },
-
-    diffDate: (d, more = false) => {
-        const dateNow = new Date()
-        const datePost = new Date(d)
-        const dateDiff = dateNow.getTime() - datePost.getTime()
-        const minute = 1000 * 60
-        const hour = minute * 60
-        const day = hour * 24
-        const month = day * 30
-
-        let result
-        if (more) {
-            const monthCount = dateDiff / month
-            const dayCount = dateDiff / day
-            const hourCount = dateDiff / hour
-            const minuteCount = dateDiff / minute
-
-            if (monthCount > 12) {
-                // result = datePost.toLocaleDateString().replace(/\//g, '-')
-                result = datePost.toLocaleDateString()
-            } else if (dayCount >= 7) {
-                // } else if (monthCount >= 1) {
-                result = datePost.toLocaleDateString().substr(5)
-                // result = parseInt(monthCount) + ' ' + GLOBAL_CONFIG.date_suffix.month
-            } else if (dayCount >= 1) {
-                result = parseInt(dayCount) + '' + GLOBAL_CONFIG.date_suffix.day
-            } else if (hourCount >= 1) {
-                result = '最近'
-                // result = parseInt(hourCount) + ' ' + GLOBAL_CONFIG.date_suffix.hour
-            } else if (minuteCount >= 1) {
-                result = '最近'
-                // result = parseInt(minuteCount) + ' ' + GLOBAL_CONFIG.date_suffix.min
-            } else {
-                result = GLOBAL_CONFIG.date_suffix.just
-            }
-        } else {
-            result = parseInt(dateDiff / day)
-        }
-        return result
-    },
-
-    loadComment: (dom, callback) => {
-        if ('IntersectionObserver' in window) {
-            const observerItem = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    callback()
-                    observerItem.disconnect()
-                }
-            }, {threshold: [0]})
-            observerItem.observe(dom)
-        } else {
-            callback()
-        }
-    },
-
-    scrollToDest: (pos, time) => {
-        if (pos < 0 || time < 0) {
-            return
-        }
-
-        const currentPos = window.scrollY || window.screenTop
-        pos = pos - 70
-
-        if ('CSS' in window && CSS.supports('scroll-behavior', 'smooth')) {
-            window.scrollTo({
-                top: pos,
-                behavior: 'smooth'
-            })
-            return
-        }
-
-        let start = null
-        time = time || 500
-        window.requestAnimationFrame(function step(currentTime) {
-            start = !start ? currentTime : start
-            if (currentPos < pos) {
-                const progress = currentTime - start
-                window.scrollTo(0, ((pos - currentPos) * progress / time) + currentPos)
-                if (progress < time) {
-                    window.requestAnimationFrame(step)
-                } else {
-                    window.scrollTo(0, pos)
-                }
-            } else {
-                const progress = currentTime - start
-                window.scrollTo(0, currentPos - ((currentPos - pos) * progress / time))
-                if (progress < time) {
-                    window.requestAnimationFrame(step)
-                } else {
-                    window.scrollTo(0, pos)
-                }
-            }
-        })
-    },
-
     fadeIn: (ele, time) => {
         ele.style.cssText = `display:block;animation: to_show ${time}s`
     },
@@ -194,11 +61,84 @@ var btf = {
         ele.style.animation = `to_hide ${time}s`
     },
 
-    getParents: (elem, selector) => {
-        for (; elem && elem !== document; elem = elem.parentNode) {
-            if (elem.matches(selector)) return elem
+    sidebarPaddingR: () => {
+        const innerWidth = window.innerWidth
+        const clientWidth = document.body.clientWidth
+        const paddingRight = innerWidth - clientWidth
+        if (innerWidth !== clientWidth) {
+            document.body.style.paddingRight = paddingRight + 'px'
         }
-        return null
+    },
+
+    snackbarShow: (text, showAction, duration) => {
+        const sa = (typeof showAction !== 'undefined') ? showAction : false
+        const dur = (typeof duration !== 'undefined') ? duration : 5000
+        document.styleSheets[0].addRule(':root', '--heo-snackbar-time:' + dur + 'ms!important')
+        Snackbar.show({
+            text: text,
+            showAction: sa,
+            duration: dur,
+            pos: 'top-center'
+        })
+    },
+
+    copy: async (text) => {
+        try {
+            await navigator.clipboard.writeText(text)
+            utils.snackbarShow(GLOBALCONFIG.lang.copy.success, false, 2000)
+        } catch (err) {
+            utils.snackbarShow(GLOBALCONFIG.lang.copy.error, false, 2000)
+        }
+    },
+
+    getEleTop: ele => {
+        let actualTop = ele.offsetTop
+        let current = ele.offsetParent
+
+        while (current !== null) {
+            actualTop += current.offsetTop
+            current = current.offsetParent
+        }
+
+        return actualTop
+    },
+
+    randomNum: (length) => {
+        return Math.floor(Math.random() * length)
+    },
+
+    timeDiff: (timeObj, today) => {
+        var timeDiff = today.getTime() - timeObj.getTime();
+        return Math.floor(timeDiff / (1000 * 3600 * 24));
+    },
+
+    scrollToDest: (pos, time = 500) => {
+        const currentPos = window.pageYOffset
+        const isNavFixed = document.getElementById('page-header').classList.contains('nav-fixed')
+        if (currentPos > pos || isNavFixed) pos = pos - 70
+        if ('scrollBehavior' in document.documentElement.style) {
+            window.scrollTo({
+                top: pos,
+                behavior: 'smooth'
+            })
+            return
+        }
+        let start = null
+        pos = +pos
+        window.requestAnimationFrame(function step(currentTime) {
+            start = !start ? currentTime : start
+            const progress = currentTime - start
+            if (currentPos < pos) {
+                window.scrollTo(0, ((pos - currentPos) * progress / time) + currentPos)
+            } else {
+                window.scrollTo(0, currentPos - ((currentPos - pos) * progress / time))
+            }
+            if (progress < time) {
+                window.requestAnimationFrame(step)
+            } else {
+                window.scrollTo(0, pos)
+            }
+        })
     },
 
     siblings: (ele, selector) => {
@@ -209,50 +149,5 @@ var btf = {
             return child !== ele
         })
     },
-
-    /**
-     *
-     * @param {*} selector
-     * @param {*} eleType the type of create element
-     * @param {*} id id
-     * @param {*} cn class name
-     */
-    wrap: function (selector, eleType, id = '', cn = '') {
-        const creatEle = document.createElement(eleType)
-        if (id) creatEle.id = id
-        if (cn) creatEle.className = cn
-        selector.parentNode.insertBefore(creatEle, selector)
-        creatEle.appendChild(selector)
-    },
-
-    unwrap: function (el) {
-        const elParentNode = el.parentNode
-        if (elParentNode !== document.body) {
-            elParentNode.parentNode.insertBefore(el, elParentNode)
-            elParentNode.parentNode.removeChild(elParentNode)
-        }
-    },
-
-    isJqueryLoad: (fn) => {
-        if (typeof jQuery === 'undefined') {
-            getScript(GLOBAL_CONFIG.source.jQuery).then(fn)
-        } else {
-            fn()
-        }
-    },
-
-    isHidden: (ele) => ele.offsetHeight === 0 && ele.offsetWidth === 0,
-
-    getEleTop: (ele) => {
-        let actualTop = ele.offsetTop
-        let current = ele.offsetParent
-
-        while (current !== null) {
-            actualTop += current.offsetTop
-            current = current.offsetParent
-        }
-
-        return actualTop
-    }
-
+    isMobile: () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
 }

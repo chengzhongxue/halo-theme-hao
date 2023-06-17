@@ -1,0 +1,182 @@
+@charset "UTF-8";
+
+:root {
+    --heo-white: #fff;
+    --heo-white-op: rgba(255, 255, 255, 0.2);
+    --heo-black: #000;
+    --heo-black-op: rgba(0, 0, 0, 0.2);
+    --heo-none: #00000000;
+    --heo-gray: #999999;
+    --heo-gray-op: #9999992b;
+    --heo-vip: #e5a80d;
+    --heo-main: var(--heo-theme);
+    --heo-main-op: var(--heo-theme-op);
+    --heo-main-op-deep: var(--heo-theme-op-deep);
+    --heo-main-none: var(--heo-theme-none);
+    --heo-shadow-theme: 0 8px 12px -3px var(--heo-theme-op);
+    --heo-shadow-blackdeep: 0 2px 16px -3px rgba(0, 0, 0, .15);
+    --heo-shadow-main: 0 8px 12px -3px var(--heo-main-op);
+    --heo-shadow-blue: 0 8px 12px -3px rgba(40, 109, 234, .20);
+    --heo-shadow-white: 0 8px 12px -3px rgba(255, 255, 255, .20);
+    --heo-shadow-black: 0 0 12px 4px rgba(0, 0, 0, .05);
+    --heo-shadow-yellow: 0px 38px 77px -26px rgba(255, 201, 62, .12);
+    --heo-shadow-red: 0 8px 12px -3px #ee7d7936;
+    --heo-shadow-green: 0 8px 12px -3px #87ee7936;
+    --heo-logo-color: linear-gradient(215deg, #4584ff 0%, #cf0db9 100%);
+    --heo-snackbar-time: 5s;
+    --hl-color: #eff;
+    --hl-bg: #212121;
+    --hltools-bg: #1c1c1c;
+    --hltools-color: rgba(238, 255, 255, 0.8);
+    --hlnumber-bg: #212121;
+    --hlnumber-color: rgba(238, 255, 255, 0.5);
+    --hlscrollbar-bg: #121212;
+    --hlexpand-bg: linear-gradient(180deg, rgba(33, 33, 33, 0.6), rgba(33, 33, 33, 0.9));
+    /* 相册变量定义 */
+    --album-background-dark: #2d3548;
+    --album-text-light: rgba(255, 255, 255, 0.6);
+    --album-text-lighter: rgba(255, 255, 255, 0.9);
+    --album-spacing-s: 8px;
+    --album-spacing-m: 16px;
+    --album-spacing-l: 24px;
+    --album-spacing-xl: 32px;
+    --album-spacing-xxl: 64px;
+}
+
+::selection {
+    background: var(--heo-fontcolor);
+    color: var(--heo-background);
+}
+
+[data-theme=light] {
+    --heo-theme: #425AEF;
+    --heo-theme-op: #4259ef23;
+    --heo-theme-op-deep: #4259efdd;
+    --heo-theme-none: #4259ef01;
+    --heo-blue: #425AEF;
+    --heo-red: #f04a63;
+    --heo-pink: #FF7C7C;
+    --heo-green: #57bd6a;
+    --heo-yellow: #c28b00;
+    --heo-yellow-op: #d99c001a;
+    --heo-orange: #e38100;
+    --heo-fontcolor: #363636;
+    --heo-background: #f7f9fe;
+    --heo-reverse: #000;
+    --heo-maskbg: rgba(255, 255, 255, 0.6);
+    --heo-maskbgdeep: rgba(255, 255, 255, 0.85);
+    --heo-hovertext: var(--heo-main);
+    --heo-ahoverbg: #F7F7FA;
+    --heo-lighttext: var(--heo-main);
+    --heo-secondtext: rgba(60, 60, 67, 0.6);
+    --heo-scrollbar: rgba(60, 60, 67, 0.4);
+    --heo-card-btn-bg: #edf0f7;
+    --heo-post-blockquote-bg: #fafcff;
+    --heo-post-tabs-bg: #f2f5f8;
+    --heo-secondbg: #f1f3f8;
+    --heo-shadow-nav: 0 5px 12px -5px rgba(102, 68, 68, 0.05);
+    --heo-card-bg: #fff;
+    --heo-card-bg-op: var(--heo-black-op);
+    --heo-card-bg-none: rgba(255, 255, 255, 0);
+    --heo-shadow-lightblack: 0 5px 12px -5px rgba(102, 68, 68, 0.00);
+    --heo-shadow-light2black: 0 5px 12px -5px rgba(102, 68, 68, 0.00);
+    --heo-card-border: #e3e8f7;
+    --heo-shadow-border: 0 8px 16px -4px #2c2d300c;
+    --style-border: 1px solid var(--heo-card-border);
+    --style-border-always: 1px solid var(--heo-card-border);
+    --style-border-hover: 1px solid var(--heo-main);
+    --style-border-hover-always: 1px solid var(--heo-main);
+    --style-border-dashed: 1px dashed var(--heo-theme-op);
+    --style-border-forever: 2px solid var(--heo-main);
+}
+
+[data-theme=dark] {
+    --heo-theme: #f2b94b;
+    --heo-theme-op: #f2b94b23;
+    --heo-theme-op-deep: #f2b94bdd;
+    --heo-theme-none: #f2b94b00;
+    --heo-blue: #0084FF;
+    --heo-red: #FF3842;
+    --heo-pink: #d44040;
+    --heo-green: #3e9f50;
+    --heo-yellow: #ffc93e;
+    --heo-yellow-op: #ffc93e30;
+    --heo-orange: #ff953e;
+    --heo-fontcolor: #F7F7FA;
+    --heo-background: #18171d;
+    --heo-reverse: #fff;
+    --heo-maskbg: rgba(0, 0, 0, 0.6);
+    --heo-maskbgdeep: rgba(0, 0, 0, 0.85);
+    --heo-hovertext: #0A84FF;
+    --heo-ahoverbg: #fff;
+    --heo-lighttext: var(--heo-theme);
+    --heo-secondtext: #a1a2b8;
+    --heo-scrollbar: rgba(200, 200, 223, 0.4);
+    --heo-card-btn-bg: #30343f;
+    --heo-post-blockquote-bg: #000;
+    --heo-post-tabs-bg: #121212;
+    --heo-secondbg: #30343f;
+    --heo-shadow-nav: 0 5px 20px 0px rgba(28, 28, 28, 0.4);
+    --heo-card-bg: #1d1e22;
+    --heo-card-bg-op: var(--heo-white-op);
+    --heo-card-bg-none: #1d1b2600;
+    --heo-shadow-lightblack: 0 5px 12px -5px rgba(102, 68, 68, 0.0);
+    --heo-shadow-light2black: 0 5px 12px -5px rgba(102, 68, 68, 0.0);
+    --heo-card-border: #3d3d3f;
+    --heo-shadow-border: 0 8px 16px -4px #00000050;
+    --style-border: 1px solid var(--heo-card-border);
+    --style-border-always: 1px solid var(--heo-card-border);
+    --style-border-hover: 1px solid var(--heo-theme);
+    --style-border-hover-always: 1px solid var(--heo-theme);
+    --style-border-dashed: 1px dashed var(--heo-theme-op);
+    --style-border-forever: 2px solid var(--heo-lighttext);
+}
+
+[data-theme="dark"] #footer::before, [data-theme="dark"] #page-header::before, [data-theme="dark"] #web_bg::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    content: "";
+}
+
+[data-theme="dark"] #article-container pre > code {
+    background: rgb(23, 23, 23);
+}
+
+[data-theme="dark"] #article-container figure.highlight {
+    box-shadow: none;
+}
+
+[data-theme="dark"] #article-container .note code {
+    background: rgba(27, 31, 35, 0.05);
+}
+
+[data-theme="dark"] #article-container .aplayer {
+    filter: brightness(0.8);
+}
+
+[data-theme="dark"] #article-container kbd {
+    border-color: rgb(105, 105, 105);
+    background-color: rgb(82, 82, 82);
+    color: rgb(226, 241, 255);
+}
+
+[data-theme="dark"] .note {
+    filter: brightness(0.9);
+}
+
+[data-theme="dark"] img {
+    filter: brightness(0.8);
+}
+
+[data-theme="dark"] #aside-content .aside-list > .aside-list-item:not(:last-child) {
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --style-border: 0px solid var(--heo-card-border);
+        --style-border-hover: 0px solid var(--heo-main);
+    }
+}
