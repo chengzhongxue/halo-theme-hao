@@ -31,14 +31,16 @@
                 <!--                <script data-pjax="" defer="" src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js"></script>-->
                 <!--                <script data-pjax="" defer="" src="https://cdn.zhheo.com/public/aplayer/Meting2.min.js"></script>-->
                 <!--                <link href="https://cdn.zhheo.com/public/aplayer/APlayer.min.css" rel="stylesheet external nofollow">-->
+
                 <div id="bber">
                     <section class="timeline page-1">
-                        <ul class="list" id="waterfall">
-                            <li class="item" th:each="moment : ${moments.items}" th:with="content=${moment.spec.content}">
-                                <div class="bber-content">
-                                    <p class="datacont" th:if="${not #strings.isEmpty(content.html)}" th:utext="${content.html}"></p>
-                                </div>
-                                <th:block th:each="momentItem : ${content.medium}" th:if="${not #lists.isEmpty(content.medium)}">
+                        <ul class="list show" id="waterfall">
+                            <li class="item" th:each="moment : ${moments.items}"
+                                th:with="content=${moment.spec.content}">
+                                <div class="bber-content" th:if="${not #strings.isEmpty(content.html)}"
+                                     th:utext="${content.html}"></div>
+                                <th:block th:each="momentItem : ${content.medium}"
+                                          th:if="${not #lists.isEmpty(content.medium)}">
 
                                     <div class="bber-content-img" th:if="${momentItem.type.name == 'PHOTO'}">
                                         <img class="bber-content-image-self entered loaded"
@@ -66,6 +68,15 @@
                         </ul>
                     </section>
                     <!--  分页还没写 -->
+                    <div th:if="${moments.hasPrevious() || moments.hasNext()}">
+                        <a th:href="@{${moments.prevUrl}}">
+                            <span>上一页</span>
+                        </a>
+                        <span th:text="${moments.page}"></span>
+                        <a th:href="@{${moments.nextUrl}}">
+                            <span>下一页</span>
+                        </a>
+                    </div>
                 </div>
                 <script>heo.reflashEssayWaterFall();</script>
                 <hr/>
