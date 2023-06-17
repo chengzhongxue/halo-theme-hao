@@ -772,7 +772,7 @@ figure.highlight pre .javascript .function, figure.highlight pre .tag .attr {
 #article-container figure.highlight, #article-container pre {
     overflow: auto;
     margin: 0px 0px 1rem;
-    padding: 0px;
+    /*padding: 0px;*/
     line-height: 1.6;
 }
 
@@ -8696,7 +8696,7 @@ b, strong {
 }
 
 #article-container.post-content h1, #article-container.post-content h2, #article-container.post-content h3, #article-container.post-content h4 {
-    display: flex;
+    /*display: flex;*/
     align-items: center;
     justify-content: space-between;
     flex-direction: row-reverse;
