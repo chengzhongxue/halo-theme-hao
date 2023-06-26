@@ -6,6 +6,8 @@
     <div class="page" id="body-wrap">
         <header class="not-top-img" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
+            <link rel="stylesheet" type="text/css" th:href="@{/assets/zhheo/heo-fcircle3.css}">
+
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
@@ -16,7 +18,7 @@
                     </div>
                     <div class="banner-button-group">
                         <a class="banner-button secondary" data-pjax-state="" onclick="travelling()">
-                            <i class="fas fa-shuffle"></i>
+                            <i class="anzhiyufont anzhiyu-icon-paper-plane1"></i>
                             <span class="banner-button-text">随机访问</span>
                         </a>
                         <a class="banner-button" href="#post-comment" rel="external nofollow">
@@ -49,6 +51,30 @@
                         </div>
                     </div>
                 </div>
+
+                <!--钓鱼-->
+                <th:block th:if="${not #lists.isEmpty(groups)}">
+                    <div class="title-h2-a">
+                        <div class="title-h2-a-left">
+                            <h2 style="padding-top:0;margin:.6rem 0 .6rem">🎣 钓鱼</h2><a class="random-post-start"
+                                                                                         href="javascript:fetchRandomPost();"><i
+                                class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a>
+                        </div>
+                        <div class="title-h2-a-right"><a class="random-post-all" href="/fcircle"
+                                                         data-pjax-state="">查看鱼塘</a></div>
+                    </div>
+                    <div id="random-post"></div>
+                    <script type="text/javascript">
+                        var fdataUser = {
+                            apiurl: [[${theme.config.fcircle.apiurl}]],
+                            defaultFish: 500,
+                            hungryFish: 500,
+                        }
+                    </script>
+                    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.yzczi.com/moments/random-friends-post.css"> -->
+                    <script th:src="@{/assets/libs/moments/random-friends-post.js}"></script>
+                </th:block>
+
                 <div class="flink" id="article-container">
 
                     <th:block th:each="group,iterStat : ${groups}">
@@ -106,19 +132,27 @@
 
                     </th:block>
 
+
                 </div>
                 <hr/>
                 <!-- 评论模块 -->
-                <div id="post-comment" th:if="${pluginFinder.available('PluginCommentWidget')}">
+                <th:block
+                        th:if="${theme.config.comments.twikoo && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.envId)}">
+                    <div th:replace="~{modules/twikoo :: twikoo}"></div>
+                </th:block>
+                <div id="post-comment"
+                     th:if="${pluginFinder.available('PluginCommentWidget') && #strings.equals(theme.config.comments.use, 'commentWidget')}">
                     <div class="comment-head">
                         <div class="comment-headline"><i class="iconfont icon-comment-alt"></i> <span>评论</span></div>
-                        <div class="comment-privacy"><a href="#">隐私政策</a></div>
+                        <div class="comment-privacy"><a href="/privacy">隐私政策</a></div>
                         <div class="comment-tips" id="comment-tips">
                             <span>你无需删除空行，直接评论以获取最佳展示效果</span>
                         </div>
                     </div>
-                    <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name='links'" colorScheme="document.documentElement.getAttribute('data-theme')" />
+                    <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name='links'"
+                                  colorScheme="document.documentElement.getAttribute('data-theme')"/>
                 </div>
+
             </div>
         </main>
         <!-- 底部 -->
@@ -126,4 +160,5 @@
     </div>
 
 </th:block>
+
 </html>

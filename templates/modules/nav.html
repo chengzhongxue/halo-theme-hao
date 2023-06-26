@@ -7,9 +7,8 @@
         <div th:replace="~{modules/widgets/nav-left :: nav-left}"></div>
 
         <div id="page-name-mask">
-            <div id="page-name">
-                <a id="page-name-text" onclick="acrylic.toTop()" th:text="${#strings.isEmpty(title) ? site.title : title}"></a>
-            </div>
+            <div id="page-name"><a id="page-name-text" onclick="btf.scrollToDest(0,500)"
+                                   th:text="${#strings.isEmpty(title) ? site.title : title}"></a></div>
         </div>
 
         <!-- 导航栏中间 -->
@@ -17,7 +16,6 @@
 
         <!-- 导航栏右侧 -->
         <div th:replace="~{modules/widgets/nav-right :: nav-right}"></div>
-
 
     </div>
 </nav>

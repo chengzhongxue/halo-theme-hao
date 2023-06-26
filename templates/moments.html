@@ -13,7 +13,7 @@
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
                 <div class="author-content author-content-item essayPage single"
-                     th:style="'background:url('+${theme.config.moment.backgroundImg}+') center no-repeat;'">
+                     th:style="'background:url('+${theme.config.moment.backgroundImg}+') left 28% / cover no-repeat !important;'">
                     <div class="card-content">
                         <div class="author-content-item-tips" th:text="${theme.config.moment.smallTitle}"></div>
                         <span class="author-content-item-title" th:text="${theme.config.moment.bigTitle}"></span>
@@ -28,39 +28,38 @@
                         </div>
                     </div>
                 </div>
-                <!--                <script data-pjax="" defer="" src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js"></script>-->
-                <!--                <script data-pjax="" defer="" src="https://cdn.zhheo.com/public/aplayer/Meting2.min.js"></script>-->
-                <!--                <link href="https://cdn.zhheo.com/public/aplayer/APlayer.min.css" rel="stylesheet external nofollow">-->
-
                 <div id="bber">
                     <section class="timeline page-1">
-                        <ul class="list show" id="waterfall">
+                        <ul class="list" id="waterfall">
                             <li class="item" th:each="moment : ${moments.items}"
                                 th:with="content=${moment.spec.content}">
-                                <div class="bber-content" th:if="${not #strings.isEmpty(content.html)}"
-                                     th:utext="${content.html}"></div>
+                                <div class="bber-content">
+                                    <p class="datacont" th:if="${not #strings.isEmpty(content.html)}"
+                                       th:utext="${content.html}"></p>
+                                </div>
                                 <th:block th:each="momentItem : ${content.medium}"
                                           th:if="${not #lists.isEmpty(content.medium)}">
 
                                     <div class="bber-content-img" th:if="${momentItem.type.name == 'PHOTO'}">
-                                        <img class="bber-content-image-self entered loaded"
-                                             data-ll-status="loaded" th:src="${momentItem.url}"
-                                             title="瞬间配图">
+                                        <img class="bber-content-image-self entered loaded" data-ll-status="loaded"
+                                             th:src="${momentItem.url}" title="瞬间配图">
                                     </div>
                                     <div class="bber-music" th:if="${momentItem.type.name == 'VIDEO'}">
                                         <video th:src="${momentItem.url}"></video>
                                     </div>
-                                    <hr>
+
                                 </th:block>
+                                <hr>
                                 <div class="bber-bottom">
                                     <div class="bber-info">
                                         <div class="bber-info-time"><i class="fas fa-calendar-days"></i>
-                                            <time class="datatime" th:text="${#dates.format(moment.spec.releaseTime,'yyyy-MM-dd')}"></time>
+                                            <time class="datatime"
+                                                  th:text="${#dates.format(moment.spec.releaseTime,'yyyy-MM-dd')}"></time>
                                         </div>
                                     </div>
                                     <a class="bber-reply"
-                                       th:attr="onclick='rm.rightMenuCommentText(&quot;\''+ ${content.html} +'&quot;\')'">
-                                        <i class="fa-solid fa-message"></i>
+                                       th:attr="onclick='rm.rightMenuCommentText(&quot;\''+ ${content.html} +'&quot;\')'"
+                                       data-pjax-state=""> <i class="fa-solid fa-message"></i>
                                     </a>
                                 </div>
                             </li>
@@ -68,30 +67,27 @@
                         </ul>
                     </section>
                     <!--  分页还没写 -->
-                    <div th:if="${moments.hasPrevious() || moments.hasNext()}">
-                        <a th:href="@{${moments.prevUrl}}">
-                            <span>上一页</span>
-                        </a>
-                        <span th:text="${moments.page}"></span>
-                        <a th:href="@{${moments.nextUrl}}">
-                            <span>下一页</span>
-                        </a>
-                    </div>
                 </div>
                 <script>heo.reflashEssayWaterFall();</script>
                 <hr/>
                 <!-- 评论模块 -->
-                <div id="post-comment" th:if="${pluginFinder.available('PluginCommentWidget')}">
+                <th:block
+                        th:if="${theme.config.comments.twikoo && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.envId)}">
+                    <div th:replace="~{modules/twikoo :: twikoo}"></div>
+                </th:block>
+                <div id="post-comment"
+                     th:if="${pluginFinder.available('PluginCommentWidget') && #strings.equals(theme.config.comments.use, 'commentWidget')}">
                     <div class="comment-head">
                         <div class="comment-headline"><i class="iconfont icon-comment-alt"></i> <span>评论</span></div>
-                        <div class="comment-privacy"><a href="#">隐私政策</a></div>
+                        <div class="comment-privacy"><a href="/privacy">隐私政策</a></div>
                         <div class="comment-tips" id="comment-tips">
                             <span>你无需删除空行，直接评论以获取最佳展示效果</span>
                         </div>
                     </div>
-                    <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name='moments'"
+                    <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name='links'"
                                   colorScheme="document.documentElement.getAttribute('data-theme')"/>
                 </div>
+
             </div>
 
 
@@ -103,4 +99,3 @@
 </th:block>
 
 </html>
-

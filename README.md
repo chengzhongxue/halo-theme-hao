@@ -37,7 +37,7 @@
 
 &emsp;&emsp;移植自 [Hexo](https://hexo.io/zh-cn/index.html) 社区中 [张洪 Heo](https://blog.zhheo.com/)
 对 [Hexo-Theme-Butterfly](https://github.com/liuzhihang/halo-theme-hao)
-主题的魔改版本。同步参考 [Hexo-Theme-Acrylic-Next](https://github.com/hexo-theme-Acrylic/Hexo-Theme-Acrylic-Next)
+主题的魔改版本。
 
 ## 安装
 

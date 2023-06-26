@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'fcircle')}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="content">
+
+    <div class="page" id="body-wrap">
+
+        <!-- 头部导航栏 -->
+        <header class="not-top-img" id="page-header">
+            <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
+        </header>
+        <main class="layout hide-aside" id="content-inner">
+            <div id="page">
+                <div class="author-content author-content-item essayPage single"
+                     th:style="'background:url('+${theme.config.fcircle.backgroundImg}+') left 28% / cover no-repeat !important;'">
+                    <div class="card-content">
+                        <div class="author-content-item-tips" th:text="${theme.config.fcircle.smallTitle}"></div>
+                        <span class="author-content-item-title" th:text="${theme.config.fcircle.bigTitle}"></span>
+                        <div class="content-bottom">
+                            <div class="tips" th:text="${theme.config.fcircle.detail}"></div>
+                        </div>
+                        <div class="banner-button-group">
+                            <a class="banner-button" th:href="${theme.config.fcircle.buttonUrl}">
+                                <i class="fas fa-circle-chevron-right"></i>
+                                <span class="banner-button-text" th:text="${theme.config.fcircle.buttonTitle}"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--钓鱼-->
+                <div class="title-h2-a">
+                    <div class="title-h2-a-left">
+                        <h2 style="padding-top:0;margin:.6rem 0 .6rem">🎣 钓鱼</h2><a class="random-post-start"
+                                                                                     href="javascript:fetchRandomPost();"><i
+                            class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a>
+                    </div>
+                    <div class="title-h2-a-right"><a class="random-post-all" href="/links">全部友链</a></div>
+                </div>
+                <div id="random-post"></div>
+                <script type="text/javascript">
+                    var fdataUser = {
+                        apiurl: [[${theme.config.fcircle.apiurl}]],
+                        defaultFish: 500,
+                        hungryFish: 500,
+                    }
+                </script>
+                <script th:src="@{/assets/libs/moments/random-friends-post.js}"></script>
+                <!--鱼塘-->
+                <!-- <div id="hexo-circle-of-friends-root"></div>
+                <script defer data-pjax src="https://cdn.yzczi.com/anzhiyu-blog-static%401.0.0/friends_vue/index2.js"></script> -->
+                <div class="title-h2-a">
+                    <div class="title-h2-a-left"><h2 style="padding-top: 0;margin:0.6rem 0 0.6rem;">🐟 鱼塘</h2></div>
+                    <div class="title-h2-a-right"><span>以下内容自动生成，未经过审核</span></div>
+                </div>
+                <div id="hexo-circle-of-friends-root"></div>
+                <script>
+                    let UserConfig = {
+                        // 填写你的api地址
+                        private_api_url: [[${theme.config.fcircle.apiurl}]],
+                        // 点击加载更多时，一次最多加载几篇文章，默认10
+                        page_turning_number: 12,
+                        // 头像加载失败时，默认头像地址
+                        error_img: 'https://sdn.geekzu.org/avatar/57d8260dfb55501c37dde588e7c3852c',
+                        // 进入页面时第一次的排序规则
+                        sort_rule: 'created'
+                    }
+                </script>
+                <link rel="stylesheet" th:href="@{/assets/libs/moments/heoMainColor.css}">
+                <script type="text/javascript" th:src="@{/assets/libs/moments/app.min.js}"></script>
+                <script type="text/javascript" th:src="@{/assets/libs/moments/bundle.js}"></script>
+
+
+            </div>
+
+
+        </main>
+        <!-- 底部 -->
+        <footer th:replace="~{modules/footer :: footer}"></footer>
+    </div>
+
+</th:block>
+
+</html>
+

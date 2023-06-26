@@ -1,67 +1,242 @@
 <!DOCTYPE html>
-<html data-theme="light" lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 公共的 head 部分，可以定义部分 links,scripts,styles -->
 <head th:fragment="head(htmlType)">
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
     <title th:text="${site.title}"></title>
-    <noscript>开启Javascript是必要的</noscript>
+    <meta content="telephone=no" name="format-detection">
+    <meta content="var(--heo-card-bg)" name="theme-color">
+
+    <link rel="shortcut icon"
+          th:href="@{${#strings.isEmpty(site.favicon) ? '/assets/images/hao-logo.jpg' : site.favicon}}"/>
+
+    <script th:src="@{/assets/js/heo.js}"></script>
+
+    <script th:src="@{/assets/js/halo.js}"></script>
+
+    <link rel="stylesheet" th:href="@{/assets/zhheo/zhheoblog.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/zhheo/custom.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/zhheo/commentBarrage.css}">
 
 
-    <link rel="icon" th:href="@{${#strings.isEmpty(site.favicon) ? '/assets/images/hao-logo.jpg' : site.favicon}}" type="image/x-icon">
-    <link rel="apple-touch-icon" th:href="@{${#strings.isEmpty(site.favicon) ? '/assets/images/hao-logo.jpg' : site.favicon}}">
-    <meta content="程序员小航" name="apple-mobile-web-app-title">
-    <link rel="bookmark" th:href="@{${#strings.isEmpty(site.favicon) ? '/assets/images/hao-logo.jpg' : site.favicon}}">
-    <link rel="apple-touch-icon-precomposed" sizes="180x180"
-          th:href="@{${#strings.isEmpty(site.favicon) ? '/assets/images/hao-logo.jpg' : site.favicon}}">
+    <link media="print"
+          onload='this.media="all"'
+          rel="stylesheet"
+          th:href="@{/assets/libs/iconfont/iconfont.css}">
 
-    <meta content="学，然后知不足；教，然后知困。" name="description">
-    <meta content="#1C1C1F" name="theme-color">
-    <link rel="stylesheet" th:href="@{/assets/css/var.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/main.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/custom.css}">
+    <!-- swiper 在瞬间滚动时会使用 -->
+    <link rel="stylesheet" th:href="@{/assets/libs/swiper/swiper-bundle.min.css}"/>
 
-    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
+    <!-- 右下角通知 -->
+    <link th:href="@{/assets/libs/snackbar/snackbar.min.css}"
+          media="print"
+          onload='this.media="all"'
+          rel="stylesheet"
+    />
 
-    <link rel="stylesheet" th:href="@{/assets/lib/snackbar.min.css}">
 
-    <script th:src="@{/assets/lib/qrcode.min.js}"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.0/css/all.min.css" media="all"
+          onload="this.media='all'">
 
-    <script th:inline="javascript">
-        var GLOBALCONFIG = {
-            "root": "/",
-            "runtime": "2021-12-12 00:00:00",
-            "lazyload": {"enable": false, "error": "/img/acrylic.png"},
-            "hightlight": {"enable": false, "limit": 200},
-            "lightbox": true,
-            "randomlinks": false,
-            "lang": {
-                "theme": {"dark": "已切换至深色模式", "light": "已切换至浅色模式"},
-                "copy": {"success": "复制成功", "error": "复制失败"},
-                "backtop": "返回顶部",
-                "time": {"recent": "最近", "yesterday": "昨天", "berforeyesterday": "前天", "daybefore": "天前", "runtime": "天"},
-                "sayhello": {
-                    "morning": "早上好",
-                    "noon": "中午好",
-                    "afternoon": "下午好",
-                    "night": "晚上好",
-                    "goodnight": "晚安",
-                    "iam": "!  我是"
+    <script>
+        (win => {
+            win.saveToLocal = {
+                set: function setWithExpiry(key, value, ttl) {
+                    if (ttl === 0) return
+                    const now = new Date()
+                    const expiryDay = ttl * 86400000
+                    const item = {
+                        value: value,
+                        expiry: now.getTime() + expiryDay,
+                    }
+                    localStorage.setItem(key, JSON.stringify(item))
                 },
-                "search": {"empty": "搜索结果为空", "hit": "已为您找到 ${query} 条结果", "placeholder": "输入关键词快速查找"}
-            },
-            "covercolor": true
-        };</script>
-    <script id="site-config">
-        // 页面类型 index,page,post,tag,category
-        var PAGECONFIG = {
-            "is_home": [[${htmlType == 'index'}]],
-            "is_post": [[${htmlType == 'post'}]],
-            "is_page": [[${htmlType == 'page'}]],
-            "page": false
-        };
+
+                get: function getWithExpiry(key) {
+                    const itemStr = localStorage.getItem(key)
+
+                    if (!itemStr) {
+                        return undefined
+                    }
+                    const item = JSON.parse(itemStr)
+                    const now = new Date()
+
+                    if (now.getTime() > item.expiry) {
+                        localStorage.removeItem(key)
+                        return undefined
+                    }
+                    return item.value
+                }
+            }
+
+            win.getScript = url => new Promise((resolve, reject) => {
+                const script = document.createElement('script')
+                script.src = url
+                script.async = true
+                script.onerror = reject
+                script.onload = script.onreadystatechange = function () {
+                    const loadState = this.readyState
+                    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                    script.onload = script.onreadystatechange = null
+                    resolve()
+                }
+                document.head.appendChild(script)
+            })
+
+            win.activateDarkMode = function () {
+                document.documentElement.setAttribute('data-theme', 'dark')
+                heo.initThemeColor()
+            }
+            win.activateLightMode = function () {
+                document.documentElement.setAttribute('data-theme', 'light')
+                heo.initThemeColor()
+            }
+            const t = saveToLocal.get('theme')
+
+            const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+            const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+            const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+            const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+            if (t === undefined) {
+                if (isLightMode) activateLightMode()
+                else if (isDarkMode) activateDarkMode()
+                else if (isNotSpecified || hasNoSupport) {
+                    const now = new Date()
+                    const hour = now.getHours()
+                    const isNight = hour <= 6 || hour >= 18
+                    isNight ? activateDarkMode() : activateLightMode()
+                }
+                window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+                    if (saveToLocal.get('theme') === undefined) {
+                        e.matches ? activateDarkMode() : activateLightMode()
+                    }
+                })
+            } else if (t === 'light') activateLightMode()
+            else activateDarkMode()
+
+            if ("[[${theme.config.style.colorScheme}]]" === 'dark')
+                activateDarkMode()
+            if ("[[${theme.config.style.colorScheme}]]" === 'light')
+                activateLightMode()
+
+            const asideStatus = saveToLocal.get('aside-status')
+            if (asideStatus !== undefined) {
+                if (asideStatus === 'hide') {
+                    document.documentElement.classList.add('hide-aside')
+                } else {
+                    document.documentElement.classList.remove('hide-aside')
+                }
+            }
+        })(window)
     </script>
+    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- 动态加载条 -->
+    <script data-pace-options='{ "restartOnRequestAfter":false,"eventLag":false}'
+            src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/pace/1.2.4/pace.min.js"
+            th:if="${theme.config.other.loadProgressBar}">
+    </script>
+
+    <!-- 复制 https://github.com/zenorocha/clipboard.js -->
+    <script th:src="@{/assets/libs/clipboard/clipboard.min.js}"></script>
+
+    <!-- 全局图片预览-->
+    <script th:src="@{/assets/libs/fancybox/jquery.fancybox.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/assets/libs/fancybox/jquery.fancybox.min.css}">
+
+
+
+    <!-- icon图标 -->
+    <link rel="preload" as="style" onload="this.rel='stylesheet'"
+          th:href="@{/assets/icon/fontawesome/fontawesome.min.css}">
+    <link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.1.0/icon/ali_iconfont_css.css">
+
+    <!-- 声明一些公共信息 -->
+    <script id="site-config" th:inline="javascript">
+        var GLOBAL_CONFIG = {
+            // 页面类型 index,page,post,tag,category
+            htmlType: [[${ htmlType }]],
+            postTitle: [[${ htmlType == 'post' ? post.spec.title : ''}]],
+            isanchor: true,
+            isPost: [[${htmlType == 'post'}]],
+            isHome: [[${ htmlType == 'index'}]],
+            isHighlightShrink: false,
+            //isToc: [[${ htmlType == 'post'}]] && document.getElementById("card-toc"),
+            postUpdate: '2022-11-04 20:08:15',
+            copyright: undefined,
+            lightbox: 'fancybox',
+            lazyload: {enable: true, error: "/themes/theme-hao/assets/images/404s.gif"},
+            date_suffix: {
+                just: '刚刚',
+                min: '分钟前',
+                hour: '小时前',
+                day: '天前',
+                month: '个月前'
+            },
+            Snackbar: {
+                chs_to_cht: "你已切换为繁体",
+                cht_to_chs: "你已切换为简体",
+                day_to_night: "你已切换为深色模式",
+                night_to_day: "你已切换为浅色模式",
+                bgLight: "#49b1f5",
+                bgDark: "#121212",
+                position: "top-center",
+            },
+
+        };
+
+        // 根据htmlType设置页面title
+        setTitle = () => {
+            let title = ''
+
+            switch ([[${ htmlType }]]) {
+                case 'post':
+                    if (GLOBAL_CONFIG.postTitle != '')
+                        title = GLOBAL_CONFIG.postTitle
+                    break;
+                case 'archive':
+                    title = '归档'
+                    break;
+                case 'category':
+                    title = '分类'
+                    break;
+                case 'links':
+                    title = '友链'
+                    break;
+                case 'tag':
+                    title = '标签'
+                    break;
+                case 'moments':
+                    title = '瞬间'
+                    break;
+                case 'fcircle':
+                    title = '友链鱼塘'
+                    break;
+                case 'about':
+                    title = '关于'
+                    break;
+                case '404':
+                    title = '页面没有找到'
+                    break;
+
+            }
+            if (title != '')
+                document.title = title + ' - ' + [[${ site.title }]]
+        }
+
+        (() => {
+            setTitle()
+        })()
+
+
+    </script>
+
+
 </head>
 
 </html>

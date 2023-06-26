@@ -15,24 +15,25 @@
 
         <div class="post_cover left_radius">
             <a th:attr="title=${post.spec.title}" th:href="@{${post.status.permalink}}">
-                <img class="post_bg" th:alt="${post.status.excerpt}"
+                <img class="post_bg entered loaded" loading="lazy"
+                     th:alt="${post.status.excerpt}"
                      th:src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+","+post.spec.title : post.spec.cover}'>
             </a>
         </div>
-
+        <!-- 类别非空时 -->
+        <th:block th:if="${not #lists.isEmpty(post.categories)}">
+            <span class="article-meta__categories">
+                <a class="article-meta__category"
+                   th:each="category : ${post.categories}"
+                   th:href="@{${category.status.permalink}}"
+                   th:text="${category.spec.displayName}"
+                   th:title="${category.spec.displayName}">
+                </a>
+            </span>
+        </th:block>
         <div class="recent-post-info">
             <div class="recent-post-info-top">
                 <span class="pinned-post" th:if="${post.spec.pinned}">置顶</span>
-                <!-- 类别非空时 -->
-                <div class="recent-post-info-top-tips">
-                    <th:block th:if="${not #lists.isEmpty(post.categories)}">
-                        <span class="original" th:each="category : ${post.categories}"
-                              th:text="${category.spec.displayName}"
-                              th:title="${category.spec.displayName}">
-                        </span>
-                    </th:block>
-                </div>
-
                 <a class="article-title"
                    th:attr="title=${post.spec.title}"
                    th:href="@{${post.status.permalink}}"
@@ -46,7 +47,8 @@
                 <!-- tag -->
                 <th:block th:if="${not #lists.isEmpty(post.tags)}">
                     <span class="article-meta tags">
-                        <a class="article-meta__tags" onclick="window.event.cancelBubble=true;"
+                        <a class="article-meta__tags" event.cancelbubble
+                           onclick="window.event.cancelBubble=!0"
                            th:each="tag : ${post.tags}"
                            th:href="@{${tag.status.permalink}}"
                            th:title="${tag.spec.displayName}">
@@ -58,7 +60,6 @@
                 <span class="post-meta-date"
                       th:with="days=${(new java.util.Date().getTime()-post.spec.publishTime.toEpochMilli())/86400000}">
                     <i class="far fa-calendar-alt"></i>
-                    <span class="article-meta-label">创建</span>
                     <time style="display: inline;"
                           th:datetime="${post.spec.publishTime}"
                           th:if="${days > 30}"
