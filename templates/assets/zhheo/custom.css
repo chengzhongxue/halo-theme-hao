@@ -1,0 +1,48 @@
+/* 首行缩进 */
+/* .post-content p {
+    text-indent: 2em;
+} */
+
+/* 代码块纯黑色背景 */
+code[class*=" language-"], pre[class*=" language-"] {
+    background: #18171d;
+}
+
+/* banner 字体图标大小及位置 */
+i.iconfont.icon-arrow-right.banner-righticon {
+    font-size: 66px;
+}
+
+span.bannerText {
+    display: block;
+    margin-top: 35px;
+}
+
+/* 自我介绍渐变色背景 */
+#aside-content > .card-widget.card-info::before {
+    background: linear-gradient(-25deg, #0084ff, #031764, #67044d);
+    background-size: 400%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    content: '';
+    animation: gradient 15s ease infinite;
+}
+
+/* 列表样式及缩进 */
+ul li {
+    font-size: 18px;
+}
+
+#article-container ol li:not(.tab), #article-container ul li:not(.tab) {
+    /* margin-left: 2em; */
+}
+
+#article-container pre > code {
+    background: transparent !important;
+    /* 解决文章界面代码超长时溢出问题 */
+    /* display: block;
+    overflow: auto; */
+}

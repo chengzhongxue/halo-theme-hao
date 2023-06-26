@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 导航栏菜单栏 -->
+<div id="post-comment" th:fragment="twikoo">
+    <div class="comment-head">
+        <div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i> <span>评论</span></div>
+        <div class="comment-privacy"><a href="/privacy">隐私政策</a></div>
+        <div class="comment-tips" id="comment-tips">
+            <span>你无需删除空行，直接评论以获取最佳展示效果</span>
+        </div>
+    </div>
+    <div id="twikoo-wrap"></div>
+    <!-- <script th:src="@{/assets/libs/twikoo/twikoo.all.min.js}"></script>
+    <script>
+    twikoo.init({
+    envId: [[${theme.config.comments.envId}]], // 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+    el: '#twikoo-wrap', // 容器元素
+    // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+    // path: location.pathname, // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+    // lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/main/src/client/utils/i18n/index.js
+    })
+    </script> -->
+    <script>(() => {
+        const init = () => {
+            twikoo.init(Object.assign({
+                el: '#twikoo-wrap',
+                envId: [[${theme.config.comments.envId}]],
+                region: '',
+                onCommentLoaded: function () {
+                    //- btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.vemoji)'))
+                    $("input").focus(function () {
+                        heo_intype = true;
+                    });
+                    $("textarea").focus(function () {
+                        heo_intype = true;
+                    });
+                    $("input").focusout(function () {
+                        heo_intype = false;
+                    });
+                    $("textarea").focusout(function () {
+                        heo_intype = false;
+                    });
+                }
+            }, null))
+        }
+
+        const getCount = () => {
+            twikoo.getCommentsCount({
+                envId: [[${theme.config.comments.envId}]],
+                region: '',
+                urls: [window.location.pathname],
+                includeReply: true
+            }).then(function (res) {
+                document.getElementById('twikoo-count').innerText = res[0].count
+            }).catch(function (err) {
+            });
+        }
+
+        const runFn = () => {
+            init()
+            true && getCount()
+        }
+
+        const loadTwikoo = () => {
+            if (typeof twikoo === 'object') {
+                setTimeout(runFn, 0)
+                return
+            }
+            getScript('/themes/theme-hao/assets/libs/twikoo/twikoo.all.min.js').then(runFn)
+        }
+
+        if ('Twikoo' === 'Twikoo' || !false) {
+            if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+            else loadTwikoo()
+        } else {
+            window.loadOtherComment = () => {
+                loadTwikoo()
+            }
+        }
+
+
+    })()</script>
+
+    <style>
+        #twikoo .tk-tag-green {
+            background-color: #3b70fc;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+        }
+
+
+    </style>
+
+
+</div>
+
+
+</html>

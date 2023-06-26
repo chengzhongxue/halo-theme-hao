@@ -24,7 +24,8 @@
                                   th:text="${authorTag.tag}"></span>
                         </div>
                         <div class="author-img">
-                            <img th:src="@{${#strings.isEmpty(site.favicon) ? '/assets/images/hao-logo.jpg' : site.favicon}}">
+                            <img
+                                    th:src="@{${#strings.isEmpty(site.favicon) ? '/assets/images/hao-logo.jpg' : site.favicon}}">
                         </div>
                         <div class="author-tag-right"
                              th:if="${not #lists.isEmpty(theme.config.about.authorInfoRightTags)}"
@@ -37,8 +38,8 @@
 
 
                     <div class="author-content">
-                        <div class="author-content-item myInfoAndSayHello"
-                             th:utext="${theme.config.about.content}"></div>
+                        <div class="author-content-item myInfoAndSayHello" th:utext="${theme.config.about.content}">
+                        </div>
                         <div class="aboutsiteTips author-content-item" th:utext="${theme.config.about.idea}"></div>
                     </div>
                     <script>
@@ -361,17 +362,17 @@
                             <div class="card-content">
                                 <div class="author-content-item-tips">生涯</div>
                                 <span class="author-content-item-title"
-                                      th:text="${theme.config.about.authorCareersTitle}">无限进步</span>
+                                      th:text="${theme.config.about.authorCareers.authorCareersTitle}">无限进步</span>
                                 <div class="careers-group"
-                                     th:if="${not #lists.isEmpty(theme.config.about.authorCareersTags)}"
-                                     th:with="careersTags = ${theme.config.about.authorCareersTags}">
+                                     th:if="${not #lists.isEmpty(theme.config.about.authorCareers.authorCareersTags)}"
+                                     th:with="careersTags = ${theme.config.about.authorCareers.authorCareersTags}">
                                     <div class="careers-item" th:each="tag : ${careersTags}">
                                         <div class="circle" th:style="'background:' + ${tag.background}"></div>
                                         <div class="name" th:text="${tag.desc}"></div>
                                     </div>
                                 </div>
                                 <img alt="生涯" class="author-content-img"
-                                     th:src="${#strings.isEmpty(theme.config.about.authorCareersBackground) ? '/assets/images/hao-logo.jpg' : theme.config.about.authorCareersBackground}">
+                                     th:src="@{${#strings.isEmpty(theme.config.about.authorCareers.authorCareersBackground) ? '/assets/images/hao-logo.jpg' : theme.config.about.authorCareers.authorCareersBackground}}">
                             </div>
                         </div>
                     </div>
@@ -389,10 +390,8 @@
                                                         style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
                                                              rel="noopener nofollow" target="_blank">16personalities</a>
-                                    了解更多关于 <a
-                                            rel="noopener external nofollow"
-                                            target="_blank"
-                                            th:href="@{'https://www.16personalities.com/ch/INFP-%E4%BA%BA%E6%A0%BC'}">调停者</a>
+                                    了解更多关于 <a rel="noopener external nofollow" target="_blank"
+                                                    th:href="@{'https://www.16personalities.com/ch/INFP-%E4%BA%BA%E6%A0%BC'}">调停者</a>
                                 </div>
                             </th:block>
 
@@ -403,10 +402,8 @@
                                                         style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
                                                              rel="noopener nofollow" target="_blank">16personalities</a>
-                                    了解更多关于 <a
-                                            rel="noopener external nofollow"
-                                            target="_blank"
-                                            th:href="@{'https://www.16personalities.com/ch/INTJ-%E4%BA%BA%E6%A0%BC'}">建筑师</a>
+                                    了解更多关于 <a rel="noopener external nofollow" target="_blank"
+                                                    th:href="@{'https://www.16personalities.com/ch/INTJ-%E4%BA%BA%E6%A0%BC'}">建筑师</a>
                                 </div>
                             </th:block>
 
@@ -417,10 +414,8 @@
                                                         style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
                                                              rel="noopener nofollow" target="_blank">16personalities</a>
-                                    了解更多关于 <a
-                                            rel="noopener external nofollow"
-                                            target="_blank"
-                                            th:href="@{'https://www.16personalities.com/ch/INTP-%E4%BA%BA%E6%A0%BC'}">逻辑学家</a>
+                                    了解更多关于 <a rel="noopener external nofollow" target="_blank"
+                                                    th:href="@{'https://www.16personalities.com/ch/INTP-%E4%BA%BA%E6%A0%BC'}">逻辑学家</a>
                                 </div>
                             </th:block>
 
@@ -431,10 +426,8 @@
                                                         style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
                                                              rel="noopener nofollow" target="_blank">16personalities</a>
-                                    了解更多关于 <a
-                                            rel="noopener external nofollow"
-                                            target="_blank"
-                                            th:href="@{'https://www.16personalities.com/ch/ENTJ-%E4%BA%BA%E6%A0%BC'}">指挥官</a>
+                                    了解更多关于 <a rel="noopener external nofollow" target="_blank"
+                                                    th:href="@{'https://www.16personalities.com/ch/ENTJ-%E4%BA%BA%E6%A0%BC'}">指挥官</a>
                                 </div>
                             </th:block>
 
@@ -445,10 +438,8 @@
                                                         style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
                                                              rel="noopener nofollow" target="_blank">16personalities</a>
-                                    了解更多关于 <a
-                                            rel="noopener external nofollow"
-                                            target="_blank"
-                                            th:href="@{'https://www.16personalities.com/ch/ENTP-%E4%BA%BA%E6%A0%BC'}">辩论家</a>
+                                    了解更多关于 <a rel="noopener external nofollow" target="_blank"
+                                                    th:href="@{'https://www.16personalities.com/ch/ENTP-%E4%BA%BA%E6%A0%BC'}">辩论家</a>
                                 </div>
                             </th:block>
 
@@ -459,10 +450,8 @@
                                                         style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
                                                              rel="noopener nofollow" target="_blank">16personalities</a>
-                                    了解更多关于 <a
-                                            rel="noopener external nofollow"
-                                            target="_blank"
-                                            th:href="@{'https://www.16personalities.com/ch/ENFJ-%E4%BA%BA%E6%A0%BC'}">主人公</a>
+                                    了解更多关于 <a rel="noopener external nofollow" target="_blank"
+                                                    th:href="@{'https://www.16personalities.com/ch/ENFJ-%E4%BA%BA%E6%A0%BC'}">主人公</a>
                                 </div>
                             </th:block>
 
@@ -473,10 +462,8 @@
                                                         style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
                                                              rel="noopener nofollow" target="_blank">16personalities</a>
-                                    了解更多关于 <a
-                                            rel="noopener external nofollow"
-                                            target="_blank"
-                                            th:href="@{'https://www.16personalities.com/ch/ENFP-%E4%BA%BA%E6%A0%BC'}">竞选者</a>
+                                    了解更多关于 <a rel="noopener external nofollow" target="_blank"
+                                                    th:href="@{'https://www.16personalities.com/ch/ENFP-%E4%BA%BA%E6%A0%BC'}">竞选者</a>
                                 </div>
                             </th:block>
 
@@ -487,10 +474,8 @@
                                                         style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
                                                              rel="noopener nofollow" target="_blank">16personalities</a>
-                                    了解更多关于 <a
-                                            rel="noopener external nofollow"
-                                            target="_blank"
-                                            th:href="@{'https://www.16personalities.com/ch/ESTJ-%E4%BA%BA%E6%A0%BC'}">总经理</a>
+                                    了解更多关于 <a rel="noopener external nofollow" target="_blank"
+                                                    th:href="@{'https://www.16personalities.com/ch/ESTJ-%E4%BA%BA%E6%A0%BC'}">总经理</a>
                                 </div>
                             </th:block>
 
@@ -501,10 +486,8 @@
                                                         style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
                                                              rel="noopener nofollow" target="_blank">16personalities</a>
-                                    了解更多关于 <a
-                                            rel="noopener external nofollow"
-                                            target="_blank"
-                                            th:href="@{'https://www.16personalities.com/ch/ESTP-%E4%BA%BA%E6%A0%BC'}">企业家</a>
+                                    了解更多关于 <a rel="noopener external nofollow" target="_blank"
+                                                    th:href="@{'https://www.16personalities.com/ch/ESTP-%E4%BA%BA%E6%A0%BC'}">企业家</a>
                                 </div>
                             </th:block>
 
@@ -515,10 +498,8 @@
                                                         style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
                                                              rel="noopener nofollow" target="_blank">16personalities</a>
-                                    了解更多关于 <a
-                                            rel="noopener external nofollow"
-                                            target="_blank"
-                                            th:href="@{'https://www.16personalities.com/ch/ESFJ-%E4%BA%BA%E6%A0%BC'}">执政官</a>
+                                    了解更多关于 <a rel="noopener external nofollow" target="_blank"
+                                                    th:href="@{'https://www.16personalities.com/ch/ESFJ-%E4%BA%BA%E6%A0%BC'}">执政官</a>
                                 </div>
                             </th:block>
 
@@ -529,10 +510,8 @@
                                                         style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
                                                              rel="noopener nofollow" target="_blank">16personalities</a>
-                                    了解更多关于 <a
-                                            rel="noopener external nofollow"
-                                            target="_blank"
-                                            th:href="@{'https://www.16personalities.com/ch/ESFP-%E4%BA%BA%E6%A0%BC'}">表演者</a>
+                                    了解更多关于 <a rel="noopener external nofollow" target="_blank"
+                                                    th:href="@{'https://www.16personalities.com/ch/ESFP-%E4%BA%BA%E6%A0%BC'}">表演者</a>
                                 </div>
                             </th:block>
 
@@ -543,10 +522,8 @@
                                                         style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
                                                              rel="noopener nofollow" target="_blank">16personalities</a>
-                                    了解更多关于 <a
-                                            rel="noopener external nofollow"
-                                            target="_blank"
-                                            th:href="@{'https://www.16personalities.com/ch/INFJ-%E4%BA%BA%E6%A0%BC'}">提倡者</a>
+                                    了解更多关于 <a rel="noopener external nofollow" target="_blank"
+                                                    th:href="@{'https://www.16personalities.com/ch/INFJ-%E4%BA%BA%E6%A0%BC'}">提倡者</a>
                                 </div>
                             </th:block>
 
@@ -557,10 +534,8 @@
                                                         style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
                                                              rel="noopener nofollow" target="_blank">16personalities</a>
-                                    了解更多关于 <a
-                                            rel="noopener external nofollow"
-                                            target="_blank"
-                                            th:href="@{'https://www.16personalities.com/ch/ISTJ-%E4%BA%BA%E6%A0%BC'}">物流师</a>
+                                    了解更多关于 <a rel="noopener external nofollow" target="_blank"
+                                                    th:href="@{'https://www.16personalities.com/ch/ISTJ-%E4%BA%BA%E6%A0%BC'}">物流师</a>
                                 </div>
                             </th:block>
 
@@ -571,10 +546,8 @@
                                                         style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
                                                              rel="noopener nofollow" target="_blank">16personalities</a>
-                                    了解更多关于 <a
-                                            rel="noopener external nofollow"
-                                            target="_blank"
-                                            th:href="@{'https://www.16personalities.com/ch/ISTP-%E4%BA%BA%E6%A0%BC'}">鉴赏家</a>
+                                    了解更多关于 <a rel="noopener external nofollow" target="_blank"
+                                                    th:href="@{'https://www.16personalities.com/ch/ISTP-%E4%BA%BA%E6%A0%BC'}">鉴赏家</a>
                                 </div>
                             </th:block>
 
@@ -585,10 +558,8 @@
                                                         style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
                                                              rel="noopener nofollow" target="_blank">16personalities</a>
-                                    了解更多关于 <a
-                                            rel="noopener external nofollow"
-                                            target="_blank"
-                                            th:href="@{'https://www.16personalities.com/ch/ISFJ-%E4%BA%BA%E6%A0%BC'}">守卫者</a>
+                                    了解更多关于 <a rel="noopener external nofollow" target="_blank"
+                                                    th:href="@{'https://www.16personalities.com/ch/ISFJ-%E4%BA%BA%E6%A0%BC'}">守卫者</a>
                                 </div>
                             </th:block>
 
@@ -599,10 +570,8 @@
                                                         style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
                                                              rel="noopener nofollow" target="_blank">16personalities</a>
-                                    了解更多关于 <a
-                                            rel="noopener external nofollow"
-                                            target="_blank"
-                                            th:href="@{'https://www.16personalities.com/ch/ISFP-%E4%BA%BA%E6%A0%BC'}">探险家</a>
+                                    了解更多关于 <a rel="noopener external nofollow" target="_blank"
+                                                    th:href="@{'https://www.16personalities.com/ch/ISFP-%E4%BA%BA%E6%A0%BC'}">探险家</a>
                                 </div>
                             </th:block>
 
@@ -617,7 +586,8 @@
                         <div class="author-content-item maxim">
                             <div class="author-content-item-tips" th:text="${texts[0].tittle}">座右铭</div>
                             <span class="maxim-title">
-                                <span style="opacity: 0.6;margin-bottom:8px;" th:text="${texts[0].textarea_up}">生活原本沉闷，</span>
+                                <span style="opacity: 0.6;margin-bottom:8px;"
+                                      th:text="${texts[0].textarea_up}">生活原本沉闷，</span>
                                 <span th:text="${texts[0].textarea_down}">但跑起来就有风。</span>
                             </span>
                         </div>
@@ -626,7 +596,8 @@
                             <div class="card-content">
                                 <div class="author-content-item-tips" th:text="${texts[1].tittle}">特长</div>
                                 <span class="buff-title">
-                                    <span style="opacity: 0.6;margin-bottom:8px;"  th:text="${texts[1].textarea_up}">玄学流电脑疑难问题解决
+                                    <span style="opacity: 0.6;margin-bottom:8px;"
+                                          th:text="${texts[1].textarea_up}">玄学流电脑疑难问题解决
                                         <span class="inline-word">专家</span>
                                     </span>
                                     <span th:text="${texts[1].textarea_down}">软件学习能力</span>
@@ -634,60 +605,75 @@
                             </div>
                         </div>
                     </div>
+                    <div class="author-content">
+                        <div class="author-content-item game-lol"
+                             th:style="'background: url('+ @{${theme.config.about.game.game_bg}} +') top / cover no-repeat'">
+                            <div class="card-content">
+                                <div class="author-content-item-tips" th:text="${theme.config.about.game.game_tips}">
 
-                    <!-- hobbies -->
-                    <!--                    <div class="author-content">-->
-                    <!--                        <div class="author-content-item left-side">-->
-                    <!--                            <img alt="" src="https://p.zhheo.com/2023788ba3b8739936f844e64f483faacaf1085602.png!cover">-->
-                    <!--                            <div class="card-content">-->
-                    <!--                                <div class="author-content-item-tips">英雄联盟</div>-->
-                    <!--                                <span class="author-content-item-title"></span>-->
-                    <!--                                <div class="content-bottom">-->
-                    <!--                                    <div class="tips"></div>-->
-                    <!--                                    <div class="tips"></div>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                        <div class="author-content-item right-side">-->
-                    <!--                            <img alt="" src="https://p.zhheo.com/2023ff56a55649cf81989b9e1f4efc836907085102.png!cover">-->
-                    <!--                            <div class="card-content">-->
-                    <!--                                <div class="author-content-item-tips">狼人杀</div>-->
-                    <!--                                <span class="author-content-item-title"></span>-->
-                    <!--                                <div class="content-bottom">-->
-                    <!--                                    <div class="tips"></div>-->
-                    <!--                                    <div class="tips"></div>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
+                                </div>
+                                <span class="author-content-item-title"
+                                      th:text="${theme.config.about.game.game_title}"></span>
+                                <div class="content-bottom">
+                                    <div class="icon-group">
+                                        <div class="loading-bar" role="presentation" aria-hidden="true"></div>
+                                    </div>
+                                    <div class="tips" th:text="${theme.config.about.game.game_uid}"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="author-content-item game-wolf"
+                             th:style="'background: url('+ @{${theme.config.about.game2.game2_bg}} +') top / cover no-repeat'">
+                            <div class="card-content">
+                                <div class="author-content-item-tips" th:text="${theme.config.about.game2.game2_tips}">
 
-                    <!--                    <div class="author-content">-->
+                                </div>
+                                <span class="author-content-item-title"
+                                      th:text="${theme.config.about.game2.game2_title}"></span>
+                                <div class="content-bottom">
+                                    <div class="tips" th:text="${theme.config.about.game2.game2_uid}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                    <!--                        <div-->
-                    <!--                             class="author-content-item like-technology"-->
-                    <!--                             style="background: url(https://p.zhheo.com/2023e6940f5f56f0004af2705c3586d1fdf5190802.png!cover)">-->
-                    <!--                            <div class="card-content">-->
-                    <!--                                <div class="author-content-item-tips">关注偏好</div>-->
-                    <!--                                <span class="author-content-item-title">数码科技</span>-->
-                    <!--                                <div class="content-bottom">-->
-                    <!--                                    <div class="tips">手机、电脑软硬件</div>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
+                    <div class="author-content">
 
-                    <!--                        <div-->
-                    <!--                             class="author-content-item like-music"-->
-                    <!--                             style="background: url(https://bu.dusays.com/2023/03/12/640dc6bed6d2d.jpg)">-->
-                    <!--                            <div class="card-content">-->
-                    <!--                                <div class="author-content-item-tips">音乐偏好</div>-->
-                    <!--                                <span class="author-content-item-title">Hiphop、民谣、华语流行</span>-->
-                    <!--                                <div class="content-bottom">-->
-                    <!--                                    <div class="tips"></div>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
+                        <div class="author-content-item like-technology"
+                             th:style="'background: url('+ @{${theme.config.about.like.like_bg}} +') top / cover no-repeat;'">
+                            <div class="card-content">
+                                <div class="author-content-item-tips" th:text="${theme.config.about.like.like_tips}">
 
-                    <!--                    </div>-->
+                                </div>
+                                <span class="author-content-item-title"
+                                      th:text="${theme.config.about.like.like_title}"></span>
+                                <div class="content-bottom">
+                                    <div class="tips" th:text="${theme.config.about.like.like_bottom}"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="author-content-item like-music"
+                             th:style="'background: url('+ @{${theme.config.about.music.music_bg}} +') top / cover no-repeat'">
+                            <div class="card-content">
+                                <div class="author-content-item-tips" th:text="${theme.config.about.music.music_tips}">
+
+                                </div>
+                                <span class="author-content-item-title"
+                                      th:text="${theme.config.about.music.music_title}"></span>
+                                <div class="content-bottom">
+                                    <div class="tips">跟 [[${site.title}]] 一起欣赏更多音乐</div>
+                                </div>
+                                <!-- <div class="banner-button-group"><a class="banner-button"
+                                       target="_blank"
+                                        rel="noopener nofollow">
+                                        <i class="heofont icon-arrow-right-circle-fill"></i>
+                                        <span class="banner-button-text">更多推荐</span></a>
+                                </div> -->
+                            </div>
+                        </div>
+
+                    </div>
 
                     <div class="author-content">
                         <div class="about-statistic author-content-item"
@@ -699,20 +685,31 @@
                                 <div class="post-tips">统计信息来自 <a href="https://invite.51.la/1NzKqTeb?target=V6"
                                                                        rel="noopener nofollow"
                                                                        target="_blank">51la网站统计</a></div>
+                                <div class="banner-button-group"><a class="banner-button"
+                                                                    onclick="pjax.loadUrl('/archives')"
+                                                                    data-pjax-state=""><i
+                                        class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i><span
+                                        class="banner-button-text">文章隧道</span></a></div>
                             </div>
                         </div>
                         <script>
-                            fetch("https://v6-widget.51.la/v6/K0yfsHaZHpjPWap0/quote.js")
+                            // 链接替换即可，不需要后面的参数
+                            fetch("[[${theme.config.about.LingQueMonitorID}]]")
                                 .then(res => res.text())
                                 .then(data => {
                                     let title = ["最近活跃", "今日人数", "今日访问", "昨日人数", "昨日访问", "本月访问", "总访问量"];
+                                    // let num = data.match(/(?<=<\/span><span>).*?(?=<\/span><\/p>)/g)
                                     let num = data.match(/(<\/span><span>).*?(\/span><\/p>)/g);
+
                                     num = num.map(el => {
                                         let val = el.replace(/(<\/span><span>)/g, "");
                                         let str = val.replace(/(<\/span><\/p>)/g, "");
                                         return str;
                                     });
+
                                     let s = document.getElementById("statistic");
+
+                                    // 自定义不显示哪个或者显示哪个，如下为不显示 最近活跃访客 和 总访问量
                                     let statistic = [];
                                     for (let i = 0; i < num.length; i++) {
                                         if (i == 0 || i == num.length - 1) continue;
@@ -720,158 +717,126 @@
                                     }
                                 });
                         </script>
-
-
                         <div class="author-content-item-group column mapAndInfo">
-                            <div class="author-content-item map single"
-                                 th:style="'background:' + ${theme.config.about.authorInfoAddressBackground} ">
+                            <div class="author-content-item map single">
                                 <span class="map-title">我现在住在
-                                    <b th:text="${theme.config.about.authorInfoAddress}"></b>
-                                </span>
+                                    <b>[[${theme.config.about.map.StrengthenTitle}]]</b></span>
                             </div>
                             <div class="author-content-item selfInfo single"
-                                 th:if="${not #lists.isEmpty(theme.config.about.authorInfo)}"
-                                 th:with="authorInfo = ${theme.config.about.authorInfo}">
-                                <div th:each="info : ${authorInfo}">
-                                    <span class="selfInfo-title" th:text="${info.authorInfoTitle}"></span>
-                                    <span class="selfInfo-content" th:style="'color:' + ${info.authorInfoColor} "
-                                          th:text="${info.authorInfoContent}"></span>
+                                 th:if="${not #lists.isEmpty(theme.config.about.map.authorInfo)}"
+                                 th:with="texts = ${theme.config.about.map.authorInfo}">
+                                <div><span class="selfInfo-title" th:text="${texts[0].authorInfoTitle}">生于</span><span
+                                        class="selfInfo-content" th:style="'color:' + ${texts[0].authorInfoColor}"
+                                        th:text="${texts[0].authorInfoContent}">2000</span>
+                                </div>
+                                <div><span class="selfInfo-title"
+                                           th:text="${texts[1].authorInfoTitle}">太原理工大学</span><span
+                                        class="selfInfo-content" th:style="'color:' + ${texts[1].authorInfoColor}"
+                                        th:text="${texts[1].authorInfoContent}">计算机科学</span>
+                                </div>
+                                <div><span class="selfInfo-title"
+                                           th:text="${texts[2].authorInfoTitle}">现在职业</span><span
+                                        class="selfInfo-content" th:style="'color:' + ${texts[2].authorInfoColor}"
+                                        th:text="${texts[2].authorInfoContent}">BI工程师</span>
                                 </div>
                             </div>
+                            <style>
+                                .author-content-item.map {
+                                    background: url([[${theme.config.about.map.background}]]) no-repeat center;
+                                    min-height: 160px;
+                                    max-height: 400px;
+                                    position: relative;
+                                    overflow: hidden;
+                                    margin-bottom: 0.5rem;
+                                    height: 60%;
+                                    background-size: 100%;
+                                    transition: 1s ease-in-out;
+                                }
+
+                                [data-theme=dark] .author-content-item.map {
+                                    background: url([[${theme.config.about.map.backgroundDark}]]) no-repeat center;
+                                    background-size: 100%;
+                                }
+                            </style>
                         </div>
                     </div>
-                    <div class="author-content">
-                        <div class="create-site-post author-content-item single">
-                            <div class="author-content-item-tips">心路历程</div>
-                            <span class="author-content-item-title"
-                                  th:text="${singlePage.spec.title}">为什么建站？</span>
-                            <p th:utext="${singlePage.content.content}"></p>
-                        </div>
-                    </div>
-                    <!--                    <div class="author-content">-->
-                    <!--                        <div class="author-content-item single reward">-->
-                    <!--                            <div class="author-content-item-tips">致谢</div>-->
-                    <!--                            <span class="author-content-item-title">赞赏名单</span>-->
-                    <!--                            <div class="author-content-item-description">-->
-                    <!--                                感谢赞赏的人，因为你们，让我感受到写博客这件事情能够给你们创造了价值。这会让我在这条路上走得更远。-->
-                    <!--                            </div>-->
-                    <!--                            <div class="reward-list-all">-->
-
-                    <!--                                <div class="reward-list-item">-->
-                    <!--                                    <div class="reward-list-item-name">思宁</div>-->
-                    <!--                                    <div class="reward-list-bottom-group">-->
-                    <!--                                        <div class="reward-list-item-money">¥ 1</div>-->
-                    <!--                                        <time class="datatime reward-list-item-time"-->
-                    <!--                                              datetime="2021-05-06T08:00:00+08:00"></time>-->
-                    <!--                                    </div>-->
-                    <!--                                </div>-->
-
-                    <!--                                <div class="reward-list-item">-->
-                    <!--                                    <div class="reward-list-item-name">小屁卡</div>-->
-                    <!--                                    <div class="reward-list-bottom-group">-->
-                    <!--                                        <div class="reward-list-item-money">¥ 3</div>-->
-                    <!--                                        <time class="datatime reward-list-item-time"-->
-                    <!--                                              datetime="2021-04-20T08:00:00+08:00"></time>-->
-                    <!--                                    </div>-->
-                    <!--                                </div>-->
-
-                    <!--                                <div class="reward-list-item">-->
-                    <!--                                    <div class="reward-list-item-name">Adil</div>-->
-                    <!--                                    <div class="reward-list-bottom-group">-->
-                    <!--                                        <div class="reward-list-item-money" style="background: var(&#45;&#45;heo-vip);">¥ 50-->
-                    <!--                                        </div>-->
-                    <!--                                        <time class="datatime reward-list-item-time"-->
-                    <!--                                              datetime="2021-03-25T08:00:00+08:00"></time>-->
-                    <!--                                    </div>-->
-                    <!--                                </div>-->
-
-                    <!--                                <div class="reward-list-item">-->
-                    <!--                                    <div class="reward-list-item-name">ғᴏᴜʀʏ</div>-->
-                    <!--                                    <div class="reward-list-bottom-group">-->
-                    <!--                                        <div class="reward-list-item-money">¥ 1</div>-->
-                    <!--                                        <time class="datatime reward-list-item-time"-->
-                    <!--                                              datetime="2021-03-13T08:00:00+08:00"></time>-->
-                    <!--                                    </div>-->
-                    <!--                                </div>-->
-
-                    <!--                                <div class="reward-list-item">-->
-                    <!--                                    <div class="reward-list-item-name">**才</div>-->
-                    <!--                                    <div class="reward-list-bottom-group">-->
-                    <!--                                        <div class="reward-list-item-money">¥ 2</div>-->
-                    <!--                                        <time class="datatime reward-list-item-time"-->
-                    <!--                                              datetime="2021-02-17T08:00:00+08:00"></time>-->
-                    <!--                                    </div>-->
-                    <!--                                </div>-->
-
-                    <!--                                <div class="reward-list-item">-->
-                    <!--                                    <div class="reward-list-item-name">ZEvan</div>-->
-                    <!--                                    <div class="reward-list-bottom-group">-->
-                    <!--                                        <div class="reward-list-item-money">¥ 1</div>-->
-                    <!--                                        <time class="datatime reward-list-item-time"-->
-                    <!--                                              datetime="2021-01-11T08:00:00+08:00"></time>-->
-                    <!--                                    </div>-->
-                    <!--                                </div>-->
-
-                    <!--                                <div class="post-reward">-->
-                    <!--                                    <div class="post-reward" onclick="AddRewardMask()"></div>-->
-                    <!--                                    <div class="reward-button" title="赞赏作者"><i-->
-                    <!--                                            class="heofont icon-hand-heart-fill"></i>-->
-                    <!--                                        打赏作者-->
-                    <!--                                    </div>-->
-                    <!--                                    <div class="reward-main">-->
-                    <!--                                        <ul class="reward-all">-->
-                    <!--                                            <span class="reward-title">感谢你赐予我前进的力量</span>-->
-                    <!--                                            <ul class="reward-group">-->
-
-
-                    <!--                                                <li class="reward-item">-->
-                    <!--                                                    <a href="" target="_blank">-->
-                    <!--                                                        <img alt="微信" class="post-qr-code-img" src="">-->
-                    <!--                                                    </a>-->
-                    <!--                                                    <div class="post-qr-code-desc">-->
-                    <!--                                                        微信-->
-                    <!--                                                    </div>-->
-                    <!--                                                </li>-->
-
-                    <!--                                                <li class="reward-item">-->
-                    <!--                                                    <a href="" target="_blank">-->
-                    <!--                                                        <img alt="支付宝" class="post-qr-code-img" src="">-->
-                    <!--                                                    </a>-->
-                    <!--                                                    <div class="post-qr-code-desc">-->
-                    <!--                                                        支付宝-->
-                    <!--                                                    </div>-->
-                    <!--                                                </li>-->
-
-                    <!--                                            </ul>-->
-                    <!--                                        </ul>-->
-                    <!--                                    </div>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-
                 </div>
 
-                <!-- 评论模块 -->
-                <div id="post-comment"
-                     th:if="${pluginFinder.available('PluginCommentWidget') and singlePage.spec.allowComment}">
-                    <div class="comment-head">
-                        <div class="comment-headline"><i class="iconfont icon-comment-alt"></i> <span>评论</span></div>
-                        <div class="comment-privacy"><a href="#">隐私政策</a></div>
-                        <div class="comment-tips" id="comment-tips">
-                            <span>你无需删除空行，直接评论以获取最佳展示效果</span>
+
+                <div class="author-content">
+                    <div class="create-site-post author-content-item single" th:utext="${theme.config.about.xjlc}">
+                    </div>
+                </div>
+                <div class="author-content">
+                    <div class="author-content-item single reward">
+                        <div class="author-content-item-tips">致谢</div>
+                        <span class="author-content-item-title"
+                              th:text="${theme.config.aboutReward.title}">赞赏名单</span>
+                        <div class="author-content-item-description" th:text="${theme.config.aboutReward.content}">
+                            感谢赞赏的人，因为你们，让我感受到写博客这件事情能够给你们创造了价值。这会让我在这条路上走得更远。
+                        </div>
+                        <div class="post-reward" th:if="${theme.config.aboutReward.reward.enable_reward}">
+                            <div class="post-reward" onclick="AddRewardMask()"></div>
+                            <div class="reward-button" title="赞赏作者"><i class="heofont icon-hand-heart-fill"></i>
+                                [[${theme.config.aboutReward.reward.name}]]
+                            </div>
+                            <div class="reward-main">
+                                <ul class="reward-all">
+                                    <span class="reward-title">
+                                        [[${theme.config.aboutReward.reward.content}]]</span>
+                                    <ul class="reward-group">
+
+
+                                        <li class="reward-item">
+                                            <a href="" target="_blank"
+                                               th:href="@{${theme.config.aboutReward.reward.wxPay}}">
+                                                <img alt="微信" class="post-qr-code-img"
+                                                     th:src="${theme.config.aboutReward.reward.wxPay}">
+                                            </a>
+                                            <div class="post-qr-code-desc">
+                                                微信
+                                            </div>
+                                        </li>
+
+                                        <li class="reward-item">
+                                            <a href="" target="_blank"
+                                               th:href="@{${theme.config.aboutReward.reward.alipay}}">
+                                                <img alt="支付宝" class="post-qr-code-img"
+                                                     th:src="${theme.config.aboutReward.reward.alipay}">
+                                            </a>
+                                            <div class="post-qr-code-desc">
+                                                支付宝
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="reward-list-all" th:if="${not #lists.isEmpty(theme.config.aboutReward.reward_list)}"
+                             th:with="authorRewardList = ${theme.config.aboutReward.reward_list}">
+
+                            <div class="reward-list-item" th:each="authorReward : ${authorRewardList}">
+                                <div class="reward-list-item-name">[[${authorReward.name}]]</div>
+                                <div class="reward-list-bottom-group">
+                                    <div th:if="${authorReward.sign == 'N'}" class="reward-list-item-money">¥
+                                        [[${authorReward.amount}]]
+                                    </div>
+                                    <div th:if="${authorReward.sign == 'Y'}" class="reward-list-item-money"
+                                         style="background: var(--heo-vip);">¥ [[${authorReward.amount}]]
+                                    </div>
+                                    <time class="datatime reward-list-item-time">[[${authorReward.datatime}]]</time>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <halo:comment colorScheme="document.documentElement.getAttribute('data-theme')"
-                                  group="content.halo.run"
-                                  kind="SinglePage"
-                                  th:attr="name=${singlePage.metadata.name}"/>
                 </div>
 
             </div>
 
-            <!-- 侧栏 -->
-            <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.pageWidgets})}"></div>
+            <!-- 评论模块 -->
+
 
         </main>
         <!-- 底部 -->
@@ -881,4 +846,3 @@
 </th:block>
 
 </html>
-

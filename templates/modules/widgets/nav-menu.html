@@ -8,7 +8,13 @@
         <!-- 第一层仅展示使用，不做跳转 -->
         <div class="menus_item" th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
 
-            <a class="site-page" rel="external nofollow" th:href="@{${menuItem.status.href}}">
+            <!-- javascript:void(0);" -->
+            <a th:if="${#lists.isEmpty(menuItem.children)}" class="site-page" rel="external nofollow"
+               th:href="@{${menuItem.status.href}}">
+                <span th:text="${menuItem.status.displayName}"></span>
+            </a>
+
+            <a th:if="${not #lists.isEmpty(menuItem.children)}" class="site-page" rel="external nofollow">
                 <span th:text="${menuItem.status.displayName}"></span>
             </a>
 
@@ -19,7 +25,10 @@
                     <li th:each="childMenu : ${menuItem.children}">
                         <a class="site-page child" th:href="@{${childMenu.status.href}}">
                             <!-- 这里应该有一个 icon 暂时还不支持 -->
-                            <!--<i class="fas fa-box-archive"></i>-->
+                            <!--<i class="fa-fw fa-duotone fa-list-timeline"></i>-->
+                            <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(childMenu, 'icon', ''))}"
+                               th:class="${#annotations.getOrDefault(childMenu, 'icon', '')}"
+                               style="font-size:.9em"></i>
                             <span th:text="${childMenu.status.displayName}"></span>
                         </a>
                     </li>
