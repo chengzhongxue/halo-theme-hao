@@ -6,7 +6,6 @@
 [主题预览](#预览) |
 [快速上手](#安装) |
 [使用文档](https://docs.liuzhihang.com) |
-[更新日志](#更新日志) |
 [加入我们](#加入我们)
 
 </p>
@@ -27,9 +26,7 @@
 
 - 程序员小航：[https://liuzhihang.com](https://liuzhihang.com)
 - 小孙同学：[https://blog.sunguoqi.com](https://blog.sunguoqi.com)
-- Lanbin の 知识库：[http://lib.lanbin.top](http://lib.lanbin.top)
-- AirboZH 的博客：[https://www.airbozh.cn](https://www.airbozh.cn)
-- 好招彭于晏：[http://blog.xinsiwei.vip](http://blog.xinsiwei.vip)
+- 困困鱼：[https://0206.ink](https://0206.ink)
 
 ## 简介
 
@@ -45,30 +42,10 @@
 
 &emsp;&emsp;详细文档请参考：[https://docs.halo.run/user-guide/themes](https://docs.halo.run/user-guide/themes)
 
-## 功能
 
-> 部分功能使用插件实现
+## 使用
 
-- [x] 卡片化设计
-- [x] 多栏设置，支持单栏/双栏/三栏/四栏
-- [x] 自定义封面图位置，上部/左侧/右侧
-- [x] 响应式主题
-- [x] 夜间模式
-- [x] 文章阅读模式
-- [x] [文章目录](https://github.com/liuzhihang/plugin-tocbot)（插件）
-- [x] [代码高亮/语言/复制](https://github.com/liuzhihang/plugin-prismjs)（插件）
-- [x] [文章搜索](https://github.com/halo-sigs/plugin-search-widget)（插件）
-- [x] 显示字数统计
-- [x] 显示相关文章
-- [x] 文章过期提醒
-- [x] [评论系统](https://github.com/halo-sigs/plugin-comment-widget)（插件）
-- [x] [懒加载](https://github.com/liuzhihang/plugin-lazyload)（插件）
-- [x] [评论邮件通知](https://github.com/pannanxu/halo-plugin-email)（插件）
-- ...
-
-## 许可
-
-&emsp;&emsp;[Halo-Theme-Hao](https://github.com/liuzhihang/halo-theme-hao) 使用 [GPL-v3.0](./LICENSE) 协议开源，请遵守开源协议。
+### &emsp;&emsp;[点我查看正在编写中的文档](https://docs.liuzhihang.com)
 
 ## 贡献
 
@@ -99,39 +76,9 @@
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-## 更新日志
+## 许可
 
-> 小版本每周五更新
-
-### ⏱️2023/2/17 🏷️v1.0.9
-
-- 新增：根据 htmlType属性 设置页面Title
-- 修复：默认参数造成的主页布局不整齐
-- 修复：修复侧栏专栏没用text的问题
-- 修复：更新手机端侧栏相关字段名称
-- 优化：美化主题Readme.md，主题文档采用 Vuepress 构建
-
-### ⏱️2023/2/11 🏷️v1.0.8
-
-- 新增 文章顶部导航栏显示文章标题 #77
-- 新增 建站天数图标 #79
-- 新增 文章发表时间 #86 #90
-- 新增 归档页以及分页 #95
-- 修复 首页文章 分类角标 模糊效果错位问题#73
-- 修复右键菜单中 标签和分类路径错误问题 #74
-- 修复“阅读建议 ”为“0”时不生效的问题 #76
-- 修复 文章随机图重复的问题 #84
-- 修复 评论组件不能切换暗色主题的问题
-- 增加 文章 - 最近发布文章 数量设置 #88
-- 更新 文章 - 动态主色 的说明文字更新 文章-动态主色 的说明文字 #83
-
-### ⏱️2023/2/4 🏷️v1.0.7
-
-- 移除 font-awesome
-
-### ⏱️2023/1/30 🏷️v1.0.6
-
-- 修复 侧边栏配置的 `分类` 和 `标签` 模块
+&emsp;&emsp;[Halo-Theme-Hao](https://github.com/liuzhihang/halo-theme-hao) 使用 [GPL-v3.0](./LICENSE) 协议开源，请遵守开源协议。
 
 ## 加入我们
 
