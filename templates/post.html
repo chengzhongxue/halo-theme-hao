@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'post')}"
-      xmlns:th="http://www.thymeleaf.org">
+    xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
     <div class="post" id="body-wrap">
 
         <header class="post-bg" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = ${post.spec.title})}"></nav>
-            <div class="coverdiv" id="coverdiv">
+            <div class="coverdiv loaded" id="coverdiv">
                 <img alt="cover" class="nolazyload" id="post-cover"
-                     th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}">
+                    th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}">
             </div>
 
             <div id="post-info">
@@ -18,16 +18,18 @@
                         <!-- 这里要跳转到版权页 -->
                         <!--<a class="post-meta-original" th:href="@{/cc}" title="该文章为原创文章，注意版权协议">原创</a>-->
                         <span class="post-meta-categories" th:each="category : ${post.categories}"
-                              th:if="${not #lists.isEmpty(post.categories)}">
+                            th:if="${not #lists.isEmpty(post.categories)}">
                             <a class="post-meta-categories" th:href="@{${category.status.permalink}}"
-                               th:text="${category.spec.displayName}" th:title="${category.spec.displayName}">
+                                th:text="${category.spec.displayName}" th:title="${category.spec.displayName}">
                             </a>
                         </span>
                         <div class="tag_share" th:if="${not #lists.isEmpty(post.tags)}">
                             <div class="post-meta__tag-list">
                                 <a class="post-meta__tags" th:each="tag : ${post.tags}"
-                                   th:href="@{${tag.status.permalink}}" th:text="'#'+${tag.spec.displayName}"
-                                   th:title="${tag.spec.displayName}"></a>
+                                    th:href="@{${tag.status.permalink}}"
+                                    th:title="${tag.spec.displayName}">
+                                    <span class="tags-name tags-punctuation">[[${tag.spec.displayName}]]</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -38,13 +40,13 @@
                         <span class="post-meta-date">
                             <i class="iconfont icon-calendar-alt post-meta-icon"></i>
                             <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"
-                                  th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
-                                  th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
+                                th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
+                                th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
                             </time>
                         </span>
 
                         <span class="post-meta-wordcount"
-                              th:with="wordCount = ${#strings.length(post.content.content)}">
+                            th:with="wordCount = ${#strings.length(post.content.content)}">
                             <i class="iconfont icon-file-word post-meta-icon" title="字数"></i>
                             <span class="post-meta-label">字数:</span>
                             <span class="word-count" th:text="${{wordCount}}"></span>
@@ -61,13 +63,12 @@
                             <span class="post-meta-label">热度:</span>
                             <span id="visit" th:text="${post.stats.visit}"></span>
                         </span>
-                        <span th:if="${post.spec.allowComment}" class="post-meta-commentcount"
-                              onclick="heo.scrollTo('#post-comment');" title="评论数">
+                        <span th:if="${post.spec.allowComment}" class="post-meta-commentcount" onclick="heo.scrollTo('#post-comment');" title="评论数">
                             <i class="iconfont icon-comment-alt"></i>
                             <span class="post-meta-label">评论:</span>
                             <a th:if="${#strings.equals(theme.config.comments.use, 'commentWidget')}"
-                               href="#post-comment"><span id="comment-count"
-                                                          th:text="${post.stats.comment}"></span></a>
+                                href="#post-comment"><span id="comment-count"
+                                    th:text="${post.stats.comment}"></span></a>
 
                             <a th:if="${#strings.equals(theme.config.comments.use, 'Twikoo')}" href="#post-comment">
                                 <span id="twikoo-count"></span></a>
@@ -78,11 +79,11 @@
             </div>
             <section class="main-hero-waves-area waves-area">
                 <svg class="waves-svg" preserveAspectRatio="none" shape-rendering="auto" viewBox="0 24 150 28"
-                     xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                    xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <path
-                                d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
-                                id="gentle-wave"></path>
+                            d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+                            id="gentle-wave"></path>
                     </defs>
                     <g class="parallax">
                         <use href="#gentle-wave" x="48" y="0"></use>
@@ -445,7 +446,7 @@
 
                         <!-- 打赏 -->
                         <div th:if="${theme.config.post.reward.enable_reward && (not #strings.isEmpty(theme.config.post.reward.wxPay) || not #strings.isEmpty(theme.config.post.reward.alipay))}"
-                             class="post-reward" onclick="AddRewardMask()">
+                            class="post-reward" onclick="AddRewardMask()">
                             <div class="reward-button button&#45;&#45;animated" title="赞赏作者"><i
                                     class="fas fa-hamburger"></i>
                                 打赏作者
@@ -454,20 +455,19 @@
                                 <ul class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span>
                                     <ul class="reward-group">
                                         <li class="reward-item"><a th:href="@{${theme.config.post.reward.wxPay}}"
-                                                                   target="_blank">
-                                            <img alt="微信" class="post-qr-code-img"
-                                                 th:src="${theme.config.post.reward.wxPay}"></a>
+                                                target="_blank">
+                                                <img alt="微信" class="post-qr-code-img"
+                                                    th:src="${theme.config.post.reward.wxPay}"></a>
                                             <div class="post-qr-code-desc">微信</div>
                                         </li>
                                         <li class="reward-item"><a th:href="@{${theme.config.post.reward.alipay}}"
-                                                                   target="_blank"><img alt="支付宝"
-                                                                                        class="post-qr-code-img"
-                                                                                        th:src="${theme.config.post.reward.alipay}"></a>
+                                                target="_blank"><img alt="支付宝" class="post-qr-code-img"
+                                                    th:src="${theme.config.post.reward.alipay}"></a>
                                             <div class="post-qr-code-desc">支付宝</div>
                                         </li>
                                     </ul>
                                     <a class="reward-main-btn" th:href="@{${theme.config.post.reward.reward_md_url}}"
-                                       target="_blank">
+                                        target="_blank">
                                         <div class="reward-text">赞赏者名单</div>
                                         <div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div>
                                     </a>
@@ -478,14 +478,13 @@
                         <!-- 说明 -->
                         <div th:if="${theme.config.post.post_edit.enable_post_edit}" class="reward-link mode"><a
                                 class="reward-link-button" th:href="@{${theme.config.post.post_edit.post_edit_url}}">
-                            <i class="fas fa-seedling"></i>运营模式与责任</a>
+                                <i class="fas fa-seedling"></i>运营模式与责任</a>
                         </div>
 
                         <!-- 分享 -->
                         <div class="share-link mobile">
                             <div class="share-qrcode">
-                                <div class="share-button" title="使用手机访问这篇文章"><i
-                                        class="iconfont icon-qrcode"></i>
+                                <div class="share-button" title="使用手机访问这篇文章"><i class="iconfont icon-qrcode"></i>
                                 </div>
                                 <div class="share-main">
                                     <div class="share-main-all">
@@ -497,8 +496,8 @@
                         </div>
                         <div class="share-link weibo">
                             <a class="share-button" rel="noopener external nofollow noreferrer noopener" target="_blank"
-                               th:href="'https://service.weibo.com/share/share.php?title=' + ${post.spec.title}"
-                               title="分享到微博">
+                                th:href="'https://service.weibo.com/share/share.php?title=' + ${post.spec.title}"
+                                title="分享到微博">
                                 <i class="iconfont icon-weibo" style="font-size:22px"></i></a>
                         </div>
                         <div class="share-link copyurl">
@@ -510,10 +509,9 @@
                         <div class="tag_share">
                             <div class="post-meta__tag-list">
                                 <a class="post-meta__tags" th:each="tag : ${post.tags}"
-                                   th:href="@{${tag.status.permalink}}">
-                                    <span class="tags-punctuation">#</span>
-                                    <th:block th:text="${tag.spec.displayName}" th:title="${tag.spec.displayName}">
-                                    </th:block>
+                                    th:href="@{${tag.status.permalink}}">
+                                    <span class="tags-punctuation">[[${tag.spec.displayName}]]</span>
+                                    
                                     <span class="tagsPageCount" th:text="${tag.status.visiblePostCount}"></span>
                                 </a>
                             </div>
@@ -526,7 +524,7 @@
                     <div class="post-copyright__author">
                         <!-- 版权页 以及版权描述文字 -->
                         <a class="post-copyright__original" th:href="@{${theme.config.basics.copyrightAgreement}}"
-                           title="该文章为原创文章，注意版权协议">原创</a>
+                            title="该文章为原创文章，注意版权协议">原创</a>
                         <a class="post-copyright-title" href="#"><span th:text="${post.spec.title}"></span></a>
                     </div>
                     <div class="post-copyright__type">
@@ -542,7 +540,7 @@
                     </div>
                 </div>
                 <nav class="pagination-post" id="pagination"
-                     th:with="postCursor = ${postFinder.cursor(post.metadata.name)}">
+                    th:with="postCursor = ${postFinder.cursor(post.metadata.name)}">
                     <div class="prev-post pull-left">
                         <a th:if="${postCursor.hasPrevious()}" th:href="@{${postCursor.previous.status.permalink}}">
                             <div class="pagination-info">
@@ -567,12 +565,12 @@
                         <span>阅读建议</span>
                     </div>
                     <div class="relatedPosts-list"
-                         th:with="recommandPosts = ${postFinder.listByCategory(1, theme.config.post.recommendQuantity, post.categories.get(0).metadata.name)}">
+                        th:with="recommandPosts = ${postFinder.listByCategory(1, theme.config.post.recommendQuantity, post.categories.get(0).metadata.name)}">
                         <!-- 建议阅读，这里可以自定义文章数量，然后遍历展示 -->
                         <div th:each="recommandPost :${recommandPosts}">
                             <a th:href="@{${recommandPost.status.permalink}}" th:title="${recommandPost.spec.title}">
                                 <img alt="cover" class="cover" loading="lazy"
-                                     th:src="${#strings.isEmpty(recommandPost.spec.cover) ? theme.config.layout.postRandomImg : recommandPost.spec.cover}">
+                                    th:src="${#strings.isEmpty(recommandPost.spec.cover) ? theme.config.layout.postRandomImg : recommandPost.spec.cover}">
                                 <div class="content is-center">
                                     <div class="date"><i class="far fa-calendar-alt fa-fw"></i>
                                         [[${#dates.format(recommandPost.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}]]
@@ -586,11 +584,11 @@
                 <hr>
                 <!-- 评论模块 -->
                 <th:block
-                        th:if="${post.spec.allowComment && theme.config.comments.twikoo && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.envId)}">
+                    th:if="${post.spec.allowComment && theme.config.comments.twikoo && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.envId)}">
                     <div th:replace="~{modules/twikoo :: twikoo}"></div>
                 </th:block>
                 <div id="post-comment"
-                     th:if="${post.spec.allowComment && pluginFinder.available('PluginCommentWidget') && #strings.equals(theme.config.comments.use, 'commentWidget')}">
+                    th:if="${post.spec.allowComment && pluginFinder.available('PluginCommentWidget') && #strings.equals(theme.config.comments.use, 'commentWidget')}">
                     <div class="comment-head">
                         <div class="comment-headline"><i class="iconfont icon-comment-alt"></i> <span>评论</span></div>
                         <div class="comment-privacy"><a href="/privacy">隐私政策</a></div>
@@ -599,9 +597,9 @@
                         </div>
                     </div>
                     <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name='links'"
-                                  colorScheme="document.documentElement.getAttribute('data-theme')"/>
+                        colorScheme="document.documentElement.getAttribute('data-theme')" />
                 </div>
-
+            
             </div>
 
             <!-- 侧栏 -->

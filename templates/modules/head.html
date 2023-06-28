@@ -17,12 +17,12 @@
     <script th:src="@{/assets/js/halo.js}"></script>
 
     <link rel="stylesheet" th:href="@{/assets/zhheo/zhheoblog.css}">
-
+    
     <link rel="stylesheet" th:href="@{/assets/zhheo/custom.css}">
 
     <link rel="stylesheet" th:href="@{/assets/zhheo/commentBarrage.css}">
-
-
+    
+    
     <link media="print"
           onload='this.media="all"'
           rel="stylesheet"
@@ -36,11 +36,10 @@
           media="print"
           onload='this.media="all"'
           rel="stylesheet"
-    />
+    /> 
+        
 
-
-    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.0/css/all.min.css" media="all"
-          onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.0/css/all.min.css" media="all" onload="this.media='all'">
 
     <script>
         (win => {
@@ -119,9 +118,9 @@
             } else if (t === 'light') activateLightMode()
             else activateDarkMode()
 
-            if ("[[${theme.config.style.colorScheme}]]" === 'dark')
+            if("[[${theme.config.style.colorScheme}]]" === 'dark')
                 activateDarkMode()
-            if ("[[${theme.config.style.colorScheme}]]" === 'light')
+            if("[[${theme.config.style.colorScheme}]]" === 'light')
                 activateLightMode()
 
             const asideStatus = saveToLocal.get('aside-status')
@@ -152,8 +151,7 @@
 
 
     <!-- icon图标 -->
-    <link rel="preload" as="style" onload="this.rel='stylesheet'"
-          th:href="@{/assets/icon/fontawesome/fontawesome.min.css}">
+	<link rel="preload" as="style" onload="this.rel='stylesheet'" th:href="@{/assets/icon/fontawesome/fontawesome.min.css}">
     <link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.1.0/icon/ali_iconfont_css.css">
 
     <!-- 声明一些公共信息 -->
@@ -171,6 +169,9 @@
             copyright: undefined,
             lightbox: 'fancybox',
             lazyload: {enable: true, error: "/themes/theme-hao/assets/images/404s.gif"},
+            isFriendLinksInFooter: [[${theme.config.footer.enable_footer_group}]],
+            loadingBox: [[${theme.config.other.loadingBox}]],
+            loadProgressBar: [[${theme.config.other.loadProgressBar}]],
             date_suffix: {
                 just: '刚刚',
                 min: '分钟前',
@@ -191,7 +192,7 @@
         };
 
         // 根据htmlType设置页面title
-        setTitle = () => {
+         setTitle = () => {
             let title = ''
 
             switch ([[${ htmlType }]]) {
@@ -233,10 +234,12 @@
             setTitle()
         })()
 
+        
 
     </script>
 
-
+    
+     
 </head>
 
 </html>

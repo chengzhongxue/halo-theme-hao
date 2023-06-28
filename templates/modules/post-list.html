@@ -52,13 +52,12 @@
                            th:each="tag : ${post.tags}"
                            th:href="@{${tag.status.permalink}}"
                            th:title="${tag.spec.displayName}">
-                            <span class="tags-punctuation">#</span>[[${#strings.trim(tag.spec.displayName)}]]
+                            <span class="tags-punctuation">[[${#strings.trim(tag.spec.displayName)}]]</span>
                         </a>
                     </span>
                 </th:block>
                 <!-- 创建时间 -->
-                <span class="post-meta-date"
-                      th:with="days=${(new java.util.Date().getTime()-post.spec.publishTime.toEpochMilli())/86400000}">
+                <span class="post-meta-date" th:with="days=${(new java.util.Date().getTime()-post.spec.publishTime.toEpochMilli())/86400000}">
                     <i class="far fa-calendar-alt"></i>
                     <time style="display: inline;"
                           th:datetime="${post.spec.publishTime}"

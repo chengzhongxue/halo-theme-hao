@@ -20,7 +20,7 @@ function coverColor() {
         // 获取颜色 https://github.com/fast-average-color/fast-average-color
         const fac = new FastAverageColor();
 
-        fac.getColorAsync(path, {
+        fac.getColorAsync(path,{
             // 忽略白色
             ignoredColor: [255, 255, 255, 255]
         })
@@ -166,9 +166,9 @@ function getContrastYIQ(hexcolor) {
 function navTitle() {
     var titlevalue = document.title;
     var postName = document.getElementsByClassName("post-title")[0];
-    if (postName == null || postName == '') {
-        document.getElementById("page-name-text").innerHTML = titlevalue;
-    } else {
+    if(postName==null || postName==''){
+      document.getElementById("page-name-text").innerHTML = titlevalue;
+    }else{
         document.getElementById("page-name-text").innerHTML = postName?.innerText;
     }
 }
@@ -314,6 +314,7 @@ function AddRewardMask() {
     document.querySelector(".reward-main").style.display = "flex";
     document.getElementById("quit-box").style.display = "flex";
 }
+
 
 
 //监听蒙版关闭

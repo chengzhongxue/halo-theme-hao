@@ -1,18 +1,19 @@
 var btf = {
 
 
+
     // 修改时间显示"最近"
     diffDate: function (d, more = false) {
-        const dateNow = new Date();
-        const datePost = new Date(d);
-        const dateDiff = dateNow.getTime() - datePost.getTime();
-        const minute = 1000 * 60;
-        const hour = minute * 60;
-        const day = hour * 24;
-        const month = day * 30;
+            const dateNow = new Date();
+            const datePost = new Date(d);
+            const dateDiff = dateNow.getTime() - datePost.getTime();
+            const minute = 1000 * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+            const month = day * 30;
 
-        let result;
-        if (more) {
+            let result;
+            if (more) {
             const monthCount = dateDiff / month;
             const dayCount = dateDiff / day;
             const hourCount = dateDiff / hour;
@@ -29,48 +30,48 @@ var btf = {
             } else {
                 result = GLOBAL_CONFIG.date_suffix.just;
             }
-        } else {
-            result = parseInt(dateDiff / day);
+            } else {
+        result = parseInt(dateDiff / day);
         }
         return result;
     },
 
     loadLightbox: ele => {
         const service = GLOBAL_CONFIG.lightbox;
-
+    
         if (service === "mediumZoom") {
-            const zoom = mediumZoom(ele);
-            zoom.on("open", e => {
-                const photoBg = document.documentElement.getAttribute("data-theme") === "dark" ? "#121212" : "#fff";
-                zoom.update({
-                    background: photoBg,
-                });
+          const zoom = mediumZoom(ele);
+          zoom.on("open", e => {
+            const photoBg = document.documentElement.getAttribute("data-theme") === "dark" ? "#121212" : "#fff";
+            zoom.update({
+              background: photoBg,
             });
+          });
         }
-
+    
         if (service === "fancybox") {
-            ele.forEach(i => {
-                if (i.parentNode.tagName !== "A") {
-                    const dataSrc = i.dataset.lazySrc || i.src;
-                    const dataCaption = i.title || i.alt || "";
-                    anzhiyu.wrap(i, "a", {
-                        href: dataSrc,
-                        "data-fancybox": "gallery",
-                        "data-caption": dataCaption,
-                        "data-thumb": dataSrc,
-                    });
-                }
-            });
-
-            if (!window.fancyboxRun) {
-                Fancybox.bind("[data-fancybox]", {
-                    Hash: false,
-                    Thumbs: {
-                        autoStart: false,
-                    },
-                });
-                window.fancyboxRun = true;
+          ele.forEach(i => {
+            if (i.parentNode.tagName !== "A") {
+              const dataSrc = i.dataset.lazySrc || i.src;
+              const dataCaption = i.title || i.alt || "";
+              btf.wrap(i, "a", {
+                href: dataSrc,
+                "data-fancybox": "gallery",
+                "data-caption": dataCaption,
+                "data-thumb": dataSrc,
+              });
             }
+          });
+    
+          if (!window.fancyboxRun) {
+            Fancybox.bind("[data-fancybox]", {
+              Hash: false,
+              Thumbs: {
+                autoStart: false,
+              },
+            });
+            window.fancyboxRun = true;
+          }
         }
     },
     debounce: function (func, wait, immediate) {
@@ -216,32 +217,32 @@ var btf = {
         }
     },
 
-
-    scrollToDest: (e, t) => {
+    
+    scrollToDest: (e,t)=>{
         if (e < 0 || t < 0)
             return;
         const n = window.scrollY || window.screenTop;
         if (e -= 70,
-        "CSS" in window && CSS.supports("scroll-behavior", "smooth"))
+        "CSS"in window && CSS.supports("scroll-behavior", "smooth"))
             return void window.scrollTo({
                 top: e,
                 behavior: "smooth"
             });
         let o = null;
         t = t || 500,
-            window.requestAnimationFrame((function i(s) {
-                    if (o = o || s,
-                    n < e) {
-                        const r = s - o;
-                        window.scrollTo(0, (e - n) * r / t + n),
-                            r < t ? window.requestAnimationFrame(i) : window.scrollTo(0, e)
-                    } else {
-                        const r = s - o;
-                        window.scrollTo(0, n - (n - e) * r / t),
-                            r < t ? window.requestAnimationFrame(i) : window.scrollTo(0, e)
-                    }
-                }
-            ))
+        window.requestAnimationFrame((function i(s) {
+            if (o = o || s,
+            n < e) {
+                const r = s - o;
+                window.scrollTo(0, (e - n) * r / t + n),
+                r < t ? window.requestAnimationFrame(i) : window.scrollTo(0, e)
+            } else {
+                const r = s - o;
+                window.scrollTo(0, n - (n - e) * r / t),
+                r < t ? window.requestAnimationFrame(i) : window.scrollTo(0, e)
+            }
+        }
+        ))
     },
 
     fadeIn: (ele, time) => {
