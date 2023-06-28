@@ -38,7 +38,7 @@
                                 <div class="article-sort-item-tags">
                                     <a class="article-meta__tags"
                                        th:each="tag : ${post.tags}" th:href="@{${tag.status.permalink}}">
-                                        <span class="tags-punctuation">#</span>[[${tag.spec.displayName}]]
+                                        <span class="tags-punctuation">[[${tag.spec.displayName}]]</span>
                                     </a>
                                     <span class="article-meta__link">•</span>
                                 </div>

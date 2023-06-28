@@ -268,8 +268,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // }
 
     /**
-     * fancybox和 mediumZoom
-     */
+    * fancybox和 mediumZoom
+    */
     const addFancybox = function (ele) {
         const runFancybox = (ele) => {
             ele.each(function (i, o) {
@@ -308,26 +308,26 @@ document.addEventListener('DOMContentLoaded', function () {
     const addMediumZoom = () => {
         const zoom = mediumZoom(document.querySelectorAll('#article-container :not(a)>img'))
         zoom.on('open', e => {
-            const photoBg = document.documentElement.getAttribute('data-theme') === 'dark' ? '#121212' : '#fff'
-            zoom.update({
-                background: photoBg
-            })
+          const photoBg = document.documentElement.getAttribute('data-theme') === 'dark' ? '#121212' : '#fff'
+          zoom.update({
+            background: photoBg
+          })
         })
-    }
-
+      }
+    
     const jqLoadAndRun = () => {
         const $fancyboxEle = GLOBAL_CONFIG.lightbox === 'fancybox'
-            ? document.querySelectorAll('#article-container :not(a):not(.gallery-group) > img, #article-container > img,.bber-content-img > img')
-            : []
+          ? document.querySelectorAll('#article-container :not(a):not(.gallery-group) > img, #article-container > img,.bber-content-img > img')
+          : []
         const fbLengthNoZero = $fancyboxEle.length > 0
         const $jgEle = document.querySelectorAll('#article-container .justified-gallery')
         const jgLengthNoZero = $jgEle.length > 0
-
+    
         if (jgLengthNoZero || fbLengthNoZero) {
-            btf.isJqueryLoad(() => {
-                jgLengthNoZero && runJustifiedGallery($jgEle)
-                fbLengthNoZero && addFancybox($fancyboxEle)
-            })
+          btf.isJqueryLoad(() => {
+            jgLengthNoZero && runJustifiedGallery($jgEle)
+            fbLengthNoZero && addFancybox($fancyboxEle)
+          })
         }
     }
 
@@ -338,13 +338,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const $rightside = document.getElementById('rightside')
         const innerHeight = window.innerHeight + 0
         // console.log("滚动处理运行");
-
+    
         // 當滾動條小于 0 的時候
         if (document.body.scrollHeight <= innerHeight) {
-            $rightside.style.cssText = 'opacity: 1; transform: translateX(-38px)'
-            return
+          $rightside.style.cssText = 'opacity: 1; transform: translateX(-38px)'
+          return
         }
-
+    
         let initTop = 0
         let isChatShow = true
         const $header = document.getElementById('page-header')
@@ -353,48 +353,48 @@ document.addEventListener('DOMContentLoaded', function () {
         const isChatBtnHide = typeof chatBtnHide === 'function'
         const isChatBtnShow = typeof chatBtnShow === 'function'
         window.addEventListener('scroll', btf.throttle(function (e) {
-            const currentTop = window.scrollY || document.documentElement.scrollTop
-            const isDown = scrollDirection(currentTop)
-            if (currentTop > 0) {
-                if (isDown) {
-                    if ($header.classList.contains('nav-visible')) $header.classList.remove('nav-visible')
-                    if (isChatBtnShow && isChatShow === true) {
-                        chatBtnHide()
-                        isChatShow = false
-                    }
-                } else {
-                    if (!$header.classList.contains('nav-visible')) $header.classList.add('nav-visible')
-                    if (isChatBtnHide && isChatShow === false) {
-                        chatBtnShow()
-                        isChatShow = true
-                    }
-                }
-
-
-                $header.classList.add('nav-fixed')
-                if ($cookies_window != null && $cookies_window != '') {
-                    $cookies_window.classList.add('cw-hide')
-                }
-                if (window.getComputedStyle($rightside).getPropertyValue('opacity') === '0') {
-                    $rightside.style.cssText = 'opacity: 1; transform: translateX(-38px)'
-                }
+          const currentTop = window.scrollY || document.documentElement.scrollTop
+          const isDown = scrollDirection(currentTop)
+          if (currentTop > 0) {
+            if (isDown) {
+              if ($header.classList.contains('nav-visible')) $header.classList.remove('nav-visible')
+              if (isChatBtnShow && isChatShow === true) {
+                chatBtnHide()
+                isChatShow = false
+              }
             } else {
-                if (currentTop === 0) {
-                    $header.classList.remove('nav-fixed', 'nav-visible')
-                }
-                $rightside.style.cssText = "opacity: ''; transform: ''"
+              if (!$header.classList.contains('nav-visible')) $header.classList.add('nav-visible')
+              if (isChatBtnHide && isChatShow === false) {
+                chatBtnShow()
+                isChatShow = true
+              }
             }
 
-            if (document.body.scrollHeight <= innerHeight) {
-                $rightside.style.cssText = 'opacity: 1; transform: translateX(-38px)'
+            
+            $header.classList.add('nav-fixed')
+            if($cookies_window!=null && $cookies_window!=''){
+                $cookies_window.classList.add('cw-hide')
+            }     
+            if (window.getComputedStyle($rightside).getPropertyValue('opacity') === '0') {
+              $rightside.style.cssText = 'opacity: 1; transform: translateX(-38px)'
             }
+          } else {
+            if (currentTop === 0) {
+              $header.classList.remove('nav-fixed', 'nav-visible')
+            }
+            $rightside.style.cssText = "opacity: ''; transform: ''"
+          }
+    
+          if (document.body.scrollHeight <= innerHeight) {
+            $rightside.style.cssText = 'opacity: 1; transform: translateX(-38px)'
+          }
         }, 200))
-
+    
         // find the scroll direction
-        function scrollDirection(currentTop) {
-            const result = currentTop > initTop // true is down & false is up
-            initTop = currentTop
-            return result
+        function scrollDirection (currentTop) {
+          const result = currentTop > initTop // true is down & false is up
+          initTop = currentTop
+          return result
         }
     }
 
@@ -516,18 +516,14 @@ document.addEventListener('DOMContentLoaded', function () {
             if (isAnchor) updateAnchor(currentId)
 
             if (currentId === '') {
-                $cardToc.querySelectorAll('.active').forEach(i => {
-                    i.classList.remove('active')
-                })
+                $cardToc.querySelectorAll('.active').forEach(i => { i.classList.remove('active') })
                 detectItem = currentIndex
                 return
             }
 
             detectItem = currentIndex
 
-            $cardToc.querySelectorAll('.active').forEach(item => {
-                item.classList.remove('active')
-            })
+            $cardToc.querySelectorAll('.active').forEach(item => { item.classList.remove('active') })
             const currentActive = $tocLink[currentIndex]
             currentActive.classList.add('active')
 
@@ -700,8 +696,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const addRuntime = () => {
         const $runtimeCount = document.getElementById('runtimeshow');
         if ($runtimeCount) {
-            var s1 = $runtimeCount.innerText;
-            ;//建站时间
+            var s1 = $runtimeCount.innerText;;//建站时间
             if (s1) {
                 s1 = new Date(s1.replace(/-/g, "/"));
                 s2 = new Date();
@@ -872,7 +867,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
 
         clickFnOfSubMenu()
-
+        
         GLOBAL_CONFIG.copyright !== undefined && addCopyright()
     }
 

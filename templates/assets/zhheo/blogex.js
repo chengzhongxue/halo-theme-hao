@@ -20,7 +20,7 @@ function coverColor() {
         // 获取颜色 https://github.com/fast-average-color/fast-average-color
         const fac = new FastAverageColor();
 
-        fac.getColorAsync(path, {
+        fac.getColorAsync(path,{
             // 忽略白色
             ignoredColor: [255, 255, 255, 255]
         })
@@ -166,9 +166,9 @@ function getContrastYIQ(hexcolor) {
 function navTitle() {
     var titlevalue = document.title;
     var postName = document.getElementsByClassName("post-title")[0];
-    if (postName == null || postName == '') {
-        document.getElementById("page-name-text").innerHTML = titlevalue;
-    } else {
+    if(postName==null || postName==''){
+      document.getElementById("page-name-text").innerHTML = titlevalue;
+    }else{
         document.getElementById("page-name-text").innerHTML = postName?.innerText;
     }
 }
@@ -314,6 +314,7 @@ function AddRewardMask() {
     document.querySelector(".reward-main").style.display = "flex";
     document.getElementById("quit-box").style.display = "flex";
 }
+
 
 
 //监听蒙版关闭
@@ -467,9 +468,9 @@ document.querySelector('#console').addEventListener('wheel', (e) => {
 // })
 
 //自动调整即刻短文尺寸
-window.addEventListener("resize", (function () {
-        document.querySelector("#waterfall") && heo.reflashEssayWaterFall()
-    }
+window.addEventListener("resize", (function() {
+    document.querySelector("#waterfall") && heo.reflashEssayWaterFall()
+}
 ));
 
 //首页大卡片恢复显示
@@ -562,21 +563,21 @@ function owoBig() {
 // }, 200));
 
 
+
 // 页面百分比
 function percent() {
     let e = document.documentElement.scrollTop || window.pageYOffset
-        ,
-        t = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight) - document.documentElement.clientHeight
-        , o = Math.round(e / t * 100)
-        , n = document.querySelector("#percent");
+      , t = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight) - document.documentElement.clientHeight
+      , o = Math.round(e / t * 100)
+      , n = document.querySelector("#percent");
     var a = window.scrollY + document.documentElement.clientHeight
-        , i = document.getElementById("post-tools") || document.getElementById("footer");
+      , i = document.getElementById("post-tools") || document.getElementById("footer");
     i.offsetTop + i.offsetHeight / 2 < a || o > 90 ? (document.querySelector("#nav-totop").classList.add("long"),
-        n.innerHTML = "返回顶部") : (document.querySelector("#nav-totop").classList.remove("long"),
+    n.innerHTML = "返回顶部") : (document.querySelector("#nav-totop").classList.remove("long"),
     o >= 0 && (n.innerHTML = o)),
-        endresult = t - e,
-        endresult < 100 ? $(".needEndHide").addClass("hide") : $(".needEndHide").removeClass("hide"),
-        window.onscroll = percent
+    endresult = t - e,
+    endresult < 100 ? $(".needEndHide").addClass("hide") : $(".needEndHide").removeClass("hide"),
+    window.onscroll = percent
 }
 
 //检查是否开启快捷键
@@ -758,8 +759,17 @@ if (getCookie('browsertc') != 1) {
 
 //注入函数
 document.addEventListener('pjax:send', function () {
-    Pace.restart();
-    heo.showLoading();
+
+    //显示加载进度条
+    if(GLOBAL_CONFIG.loadProgressBar){
+        Pace.restart();
+    }
+    //显示加载动画
+    if(GLOBAL_CONFIG.loadingBox){
+        heo.showLoading();
+    }
+
+    
 })
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -771,10 +781,13 @@ document.addEventListener('DOMContentLoaded', function () {
     heo.sayhi()
     heo.addTag()
     heo.stopImgRightDrag()
-    link.addFriendLinksInFooter()
+    //页脚友联
+    if(GLOBAL_CONFIG.isFriendLinksInFooter){
+        link.addFriendLinksInFooter()
+    }
     heo.qrcodeCreate()
     heo.onlyHome()
-
+    
     heo.addNavBackgroundInit()
     heo.initIndexEssay()
     // heo.changeTimeInEssay()
@@ -783,7 +796,10 @@ document.addEventListener('DOMContentLoaded', function () {
     heo.darkModeStatus()
     // heo.categoriesBarActive()
     heo.initThemeColor()
-    heo.hideLoading()
+    //隐藏加载动画
+    if(GLOBAL_CONFIG.loadingBox){
+        heo.hideLoading()
+    }
     // heo.tagPageActive()
 })
 window.onscroll = function () {

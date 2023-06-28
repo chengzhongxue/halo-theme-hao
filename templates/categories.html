@@ -19,8 +19,8 @@
                            th:each="categoryItem : ${categoryFinder.listAll()}"
                            th:href="@{${categoryItem.status.permalink}}"
                            th:id="${categoryItem.spec.displayName}">
-                            <span class="tags-punctuation">#</span>
-                            [[${categoryItem.spec.displayName}]]
+                            <span style="font-size: 22px;" class="tags-punctuation">[[${categoryItem.spec.displayName}]]</span>
+                            
                             <span class="tagsPageCount">[[${categoryItem.status.visiblePostCount}]]</span></a>
                     </div>
                 </div>

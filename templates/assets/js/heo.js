@@ -31,9 +31,9 @@ var heo = {
     // },
 
     // 首页bb
-    initIndexEssay: function () {
+    initIndexEssay: function() {
         if (document.querySelector("#bber-talk"))
-            new Swiper(".swiper-container", {
+            new Swiper(".swiper-container",{
                 direction: "vertical",
                 loop: !0,
                 autoplay: {
@@ -67,14 +67,14 @@ var heo = {
 
 
     //监测是否在页面开头
-    addNavBackgroundInit: function () {
+    addNavBackgroundInit: function() {
         var e = 0
-            , t = 0;
+          , t = 0;
         document.body && (e = document.body.scrollTop),
         document.documentElement && (t = document.documentElement.scrollTop),
         0 != (e - t > 0 ? e : t) && (document.getElementById("page-header").classList.add("nav-fixed"),
-            document.getElementById("page-header").classList.add("nav-visible"),
-            $("#cookies-window").hide())
+        document.getElementById("page-header").classList.add("nav-visible"),
+        $("#cookies-window").hide())
     },
 
     // 标签页面
@@ -221,11 +221,11 @@ var heo = {
     },
 
     // 刷新即刻短文瀑布流
-    reflashEssayWaterFall: function () {
-        document.querySelector("#waterfall") && setTimeout((function () {
-                waterfall("#waterfall"),
-                    document.getElementById("waterfall").classList.add("show")
-            }
+    reflashEssayWaterFall: function() {
+        document.querySelector("#waterfall") && setTimeout((function() {
+            waterfall("#waterfall"),
+            document.getElementById("waterfall").classList.add("show")
+        }
         ), 500)
     },
 
@@ -290,14 +290,14 @@ var heo = {
     },
 
     //隐藏cookie窗口
-    hidecookie: function () {
-        heo_cookiesTime = setTimeout((() => {
-                document.getElementById("cookies-window").classList.add("cw-hide"),
-                    setTimeout((() => {
-                            $("#cookies-window").hide()
-                        }
-                    ), 1e3)
+    hidecookie: function() {
+        heo_cookiesTime = setTimeout((()=>{
+            document.getElementById("cookies-window").classList.add("cw-hide"),
+            setTimeout((()=>{
+                $("#cookies-window").hide()
             }
+            ), 1e3)
+        }
         ), 3e3)
     },
 
@@ -403,7 +403,7 @@ var heo = {
     //显示中控台
     showConsole: function () {
         document.querySelector("#console").classList.add("show");
-
+        
     },
 
     //隐藏中控台
@@ -434,11 +434,11 @@ var heo = {
     hideAsideBtn: () => { // Hide aside
         const $htmlDom = document.documentElement.classList
         $htmlDom.contains('hide-aside')
-            ? saveToLocal.set('aside-status', 'show', 2)
-            : saveToLocal.set('aside-status', 'hide', 2)
+          ? saveToLocal.set('aside-status', 'show', 2)
+          : saveToLocal.set('aside-status', 'hide', 2)
         $htmlDom.toggle('hide-aside')
-    },
-
+      },
+  
 
     //初始化console图标
     initConsoleState: function () {

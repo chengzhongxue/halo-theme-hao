@@ -180,7 +180,7 @@ spec:
           name: recommendPostCustom
           label: 自定义文章
           help: "建议设置六篇文章"
-          value: [ ]
+          value: []
           children:
             - $formkit: url
               name: url
@@ -356,7 +356,7 @@ spec:
               name: socialMedia
               label: 社交媒体
               help: 侧栏社交媒体建议只设置两个
-              value: [ ]
+              value: []
               children:
                 - $formkit: select
                   name: icon
@@ -466,11 +466,11 @@ spec:
           name: centerImg
           label: 社交媒体中间logo
           help: logo图片链接
-          placeholder: 请填写logo图片链接
+          placeholder: 请填写logo图片链接  
         - $formkit: repeater
           name: socialMediaLeft
           label: 社交媒体（左）
-          value: [ ]
+          value: []
           children:
             - $formkit: select
               name: icon
@@ -551,7 +551,7 @@ spec:
         - $formkit: repeater
           name: socialMediaRight
           label: 社交媒体（右）
-          value: [ ]
+          value: []
           children:
             - $formkit: select
               name: icon
@@ -628,10 +628,25 @@ spec:
                 - label: 跳转链接
                   value: normal
                 - label: 图片
-                  value: image
+                  value: image        
         - $formkit: menuRadio
           name: menu
           label: 底部相关链接
+        - $formkit: radio
+          name: enable_footer_group
+          label: 启用页脚友链
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: url
+          name: fetchUrl
+          value: "`https://moments.0206.ink/randomfriend?num=3`"
+          label: 页脚友链地址
+          placeholder: 请输入页脚友链地址  
+          help: 注意格式 (`友链地址`)    
 
     - group: post
       label: 文章
@@ -803,7 +818,7 @@ spec:
             - $formkit: attachment
               name: authorCareersBackground
               label: 职业生涯背景图
-              placeholder: 建议找个透明图
+              placeholder: 建议找个透明图  
         - $formkit: select
           name: personalities
           label: 人格
@@ -894,7 +909,7 @@ spec:
               label: 爱好游戏背景
               placeholder: 请输入内容
               value: https://img.zhheo.com/i/2022/08/31/630efa7ae39fe.webp
-
+         
         - $formkit: group
           name: game2
           label: 爱好游戏2相关配置
@@ -976,7 +991,7 @@ spec:
               name: music_link
               label: 音乐偏好按钮链接
               placeholder: 请输入内容
-              value:
+              value: 
             - $formkit: attachment
               name: music_bg
               label: 音乐偏好背景
@@ -1024,7 +1039,7 @@ spec:
                 - $formkit: color
                   name: authorInfoColor
                   label: 内容颜色
-                  placeholder: 请输入内容
+                  placeholder: 请输入内容   
         - $formkit: textarea
           name: xjlc
           label: 心路历程
@@ -1051,7 +1066,7 @@ spec:
             name:
             content:
             wxPay:
-            alipay:
+            alipay:          
           children:
             - $formkit: radio
               name: enable_reward
@@ -1108,7 +1123,7 @@ spec:
                   value: "Y"
                 - label: 否
                   value: "N"
-
+              
     - group: style
       label: 样式（WIP）
       formSchema:
@@ -1260,14 +1275,9 @@ spec:
           name: apiurl
           value: "`https://moments.0206.ink/`"
           label: token地址
-          placeholder: 请输入token地址
-          help: 注意格式 (`token地址`)
-        - $formkit: url
-          name: fetchUrl
-          value: "`https://moments.0206.ink/randomfriend?num=3`"
-          label: 页脚友链地址
-          placeholder: 请输入页脚友链地址
-          help: 注意格式 (`友链地址`)
+          placeholder: 请输入token地址    
+          help: 注意格式 (`token地址`)  
+          
     - group: comments
       label: 评论
       formSchema:
