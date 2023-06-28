@@ -62,7 +62,7 @@
       "name": "Gadore",
       "avatar_url": "https://avatars.githubusercontent.com/u/18081104?v=4",
       "profile": "https://github.com/gadore",
-            "contributions": [
+      "contributions": [
         "code"
       ]
     },
@@ -71,6 +71,15 @@
       "name": "羡羡",
       "avatar_url": "https://avatars.githubusercontent.com/u/64968400?v=4",
       "profile": "https://www.hydsb0.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "chengzhongxue",
+      "name": "困困鱼",
+      "avatar_url": "https://avatars.githubusercontent.com/u/89380218?v=4",
+      "profile": "https://github.com/chengzhongxue",
       "contributions": [
         "code"
       ]
@@ -87,5 +96,6 @@
   "commit": false,
   "imageSize": 100,
   "linkToUsage": true,
-  "contributorsPerLine": 6
+  "contributorsPerLine": 6,
+  "commitType": "docs"
 }
