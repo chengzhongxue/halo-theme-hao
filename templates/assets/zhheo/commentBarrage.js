@@ -4,9 +4,9 @@ var commentBarrageConfig = {
     //弹幕显示间隔时间ms
     barrageTime: 4000,
     //twikoo部署地址腾讯云的为环境ID
-    twikooUrl: "https://twikoo.yzczi.com/",
+    twikooUrl: "xxxx",
     //token获取见上方
-    accessToken: "a0b1120dcbdd45579833ceab6ec112f7",
+    accessToken: "xxxx",
     pageUrl: window.location.pathname,
     barrageTimer: [],
     barrageList: [],

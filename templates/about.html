@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'about')}"
-      xmlns:th="http://www.thymeleaf.org">
+    xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
 
@@ -18,20 +18,20 @@
 
                     <div class="author-info">
                         <div class="author-tag-left"
-                             th:if="${not #lists.isEmpty(theme.config.about.authorInfoLeftTags)}"
-                             th:with="authorTags = ${theme.config.about.authorInfoLeftTags}">
+                            th:if="${not #lists.isEmpty(theme.config.about.authorInfoLeftTags)}"
+                            th:with="authorTags = ${theme.config.about.authorInfoLeftTags}">
                             <span class="author-tag" th:each="authorTag : ${authorTags}"
-                                  th:text="${authorTag.tag}"></span>
+                                th:text="${authorTag.tag}"></span>
                         </div>
                         <div class="author-img">
                             <img
-                                    th:src="@{${#strings.isEmpty(site.favicon) ? '/assets/images/hao-logo.jpg' : site.favicon}}">
+                                th:src="@{${#strings.isEmpty(site.favicon) ? '/assets/images/hao-logo.jpg' : site.favicon}}">
                         </div>
                         <div class="author-tag-right"
-                             th:if="${not #lists.isEmpty(theme.config.about.authorInfoRightTags)}"
-                             th:with="authorTags = ${theme.config.about.authorInfoRightTags}">
+                            th:if="${not #lists.isEmpty(theme.config.about.authorInfoRightTags)}"
+                            th:with="authorTags = ${theme.config.about.authorInfoRightTags}">
                             <span class="author-tag" th:each="authorTag : ${authorTags}"
-                                  th:text="${authorTag.tag}"></span>
+                                th:text="${authorTag.tag}"></span>
                         </div>
                     </div>
                     <div class="author-title">关于本站</div>
@@ -73,51 +73,51 @@
                                             <div class="tags-group-all">
                                                 <!--  banners 使用默认值-->
                                                 <div class="tags-group-wrapper"
-                                                     th:if="${#strings.equals(theme.config.top.bannersBackground, 'default')}">
+                                                    th:if="${#strings.equals(theme.config.top.bannersBackground, 'default')}">
                                                     <div class="tags-group-icon-pair">
                                                         <div class="tags-group-icon" style="background:#989bf8">
                                                             <img th:src="@{/assets/images/icons/AfterEffect.png}"
-                                                                 title="AfterEffect">
+                                                                title="AfterEffect">
                                                         </div>
                                                         <div class="tags-group-icon" style="background:#fff">
                                                             <img th:src="@{/assets/images/icons/Sketch.png}"
-                                                                 title="Sketch">
+                                                                title="Sketch">
                                                         </div>
                                                     </div>
                                                     <div class="tags-group-icon-pair">
                                                         <div class="tags-group-icon" style="background:#57b6e6">
                                                             <img th:src="@{/assets/images/icons/Docker.png}"
-                                                                 title="Docker">
+                                                                title="Docker">
                                                         </div>
                                                         <div class="tags-group-icon" style="background:#4082c3">
                                                             <img th:src="@{/assets/images/icons/Photoshop.png}"
-                                                                 title="Photoshop">
+                                                                title="Photoshop">
                                                         </div>
                                                     </div>
                                                     <div class="tags-group-icon-pair">
                                                         <div class="tags-group-icon" style="background:#fff">
                                                             <img th:src="@{/assets/images/icons/FinalCutPro.png}"
-                                                                 title="FinalCutPro">
+                                                                title="FinalCutPro">
                                                         </div>
                                                         <div class="tags-group-icon" style="background:#fff">
                                                             <img th:src="@{/assets/images/icons/Python.png}"
-                                                                 title="Python">
+                                                                title="Python">
                                                         </div>
                                                     </div>
                                                     <div class="tags-group-icon-pair">
                                                         <div class="tags-group-icon" style="background:#eb6840">
                                                             <img th:src="@{/assets/images/icons/Swift.png}"
-                                                                 title="Swift">
+                                                                title="Swift">
                                                         </div>
                                                         <div class="tags-group-icon" style="background:#8f55ba">
                                                             <img th:src="@{/assets/images/icons/Principle.png}"
-                                                                 title="Principle">
+                                                                title="Principle">
                                                         </div>
                                                     </div>
                                                     <div class="tags-group-icon-pair">
                                                         <div class="tags-group-icon" style="background:#f29e39">
                                                             <img th:src="@{/assets/images/icons/illustrator.png}"
-                                                                 title="illustrator">
+                                                                title="illustrator">
                                                         </div>
                                                         <div class="tags-group-icon" style="background:#2c51db">
                                                             <img th:src="@{/assets/images/icons/CSS3.png}" title="CSS3">
@@ -137,53 +137,53 @@
                                                         </div>
                                                         <div class="tags-group-icon" style="background:#e65164">
                                                             <img th:src="@{/assets/images/icons/Apifox.webp}"
-                                                                 title="Apifox">
+                                                                title="Apifox">
                                                         </div>
                                                     </div>
                                                     <div class="tags-group-icon-pair">
                                                         <div class="tags-group-icon" style="background:#989bf8">
                                                             <img th:src="@{/assets/images/icons/AfterEffect.png}"
-                                                                 title="AfterEffect">
+                                                                title="AfterEffect">
                                                         </div>
                                                         <div class="tags-group-icon" style="background:#fff">
                                                             <img th:src="@{/assets/images/icons/Sketch.png}"
-                                                                 title="Sketch">
+                                                                title="Sketch">
                                                         </div>
                                                     </div>
                                                     <div class="tags-group-icon-pair">
                                                         <div class="tags-group-icon" style="background:#57b6e6">
                                                             <img th:src="@{/assets/images/icons/Docker.png}"
-                                                                 title="Docker">
+                                                                title="Docker">
                                                         </div>
                                                         <div class="tags-group-icon" style="background:#4082c3">
                                                             <img th:src="@{/assets/images/icons/Photoshop.png}"
-                                                                 title="Photoshop">
+                                                                title="Photoshop">
                                                         </div>
                                                     </div>
                                                     <div class="tags-group-icon-pair">
                                                         <div class="tags-group-icon" style="background:#fff">
                                                             <img th:src="@{/assets/images/icons/FinalCutPro.png}"
-                                                                 title="FinalCutPro">
+                                                                title="FinalCutPro">
                                                         </div>
                                                         <div class="tags-group-icon" style="background:#fff">
                                                             <img th:src="@{/assets/images/icons/Python.png}"
-                                                                 title="Python">
+                                                                title="Python">
                                                         </div>
                                                     </div>
                                                     <div class="tags-group-icon-pair">
                                                         <div class="tags-group-icon" style="background:#eb6840">
                                                             <img th:src="@{/assets/images/icons/Swift.png}"
-                                                                 title="Swift">
+                                                                title="Swift">
                                                         </div>
                                                         <div class="tags-group-icon" style="background:#8f55ba">
                                                             <img th:src="@{/assets/images/icons/Principle.png}"
-                                                                 title="Principle">
+                                                                title="Principle">
                                                         </div>
                                                     </div>
                                                     <div class="tags-group-icon-pair">
                                                         <div class="tags-group-icon" style="background:#f29e39">
                                                             <img th:src="@{/assets/images/icons/illustrator.png}"
-                                                                 title="illustrator">
+                                                                title="illustrator">
                                                         </div>
                                                         <div class="tags-group-icon" style="background:#2c51db">
                                                             <img th:src="@{/assets/images/icons/CSS3.png}" title="CSS3">
@@ -203,29 +203,29 @@
                                                         </div>
                                                         <div class="tags-group-icon" style="background:#e65164">
                                                             <img th:src="@{/assets/images/icons/Apifox.webp}"
-                                                                 title="Apifox">
+                                                                title="Apifox">
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <!--  banners 使用默认值-->
                                                 <div class="tags-group-wrapper"
-                                                     th:if="${#strings.equals(theme.config.top.bannersBackground, 'techStack')}"
-                                                     th:with="techs = ${theme.config.about.techStack}">
+                                                    th:if="${#strings.equals(theme.config.top.bannersBackground, 'techStack')}"
+                                                    th:with="techs = ${theme.config.about.techStack}">
                                                     <th:block th:each="tech,iterStat : ${techs}">
                                                         <div class="tags-group-icon-pair" th:if="${iterStat.odd}">
                                                             <div class="tags-group-icon"
-                                                                 th:style="'background:' + ${techOdd.background}"
-                                                                 th:with="techOdd = ${techs.get(iterStat.index - 1)}">
+                                                                th:style="'background:' + ${techOdd.background}"
+                                                                th:with="techOdd = ${techs.get(iterStat.index - 1)}">
                                                                 <img th:src="@{${techOdd.url}}"
-                                                                     th:title="${techOdd.name}">
+                                                                    th:title="${techOdd.name}">
                                                             </div>
 
                                                             <div class="tags-group-icon"
-                                                                 th:style="'background:' + ${techEven.background}"
-                                                                 th:with="techEven = ${tech}">
+                                                                th:style="'background:' + ${techEven.background}"
+                                                                th:with="techEven = ${tech}">
                                                                 <img th:src="@{${techEven.url}}"
-                                                                     th:title="${techEven.name}">
+                                                                    th:title="${techEven.name}">
                                                             </div>
                                                         </div>
                                                     </th:block>
@@ -236,13 +236,13 @@
 
                                     <!--  banners 使用默认值-->
                                     <div class="skills-list"
-                                         th:if="${#strings.equals(theme.config.top.bannersBackground, 'default')}"
-                                         th:with="techs = ${theme.config.about.techStack}">
+                                        th:if="${#strings.equals(theme.config.top.bannersBackground, 'default')}"
+                                        th:with="techs = ${theme.config.about.techStack}">
 
                                         <div class="skill-info">
                                             <div class="skill-icon" style="background:#989bf8">
                                                 <img th:src="@{/assets/images/icons/AfterEffect.png}"
-                                                     title="AfterEffect">
+                                                    title="AfterEffect">
                                             </div>
                                             <div class="skill-name"><span>AfterEffect</span></div>
                                         </div>
@@ -271,7 +271,7 @@
                                         <div class="skill-info">
                                             <div class="skill-icon" style="background:#ffffff">
                                                 <img th:src="@{/assets/images/icons/FinalCutPro.png}"
-                                                     title="FinalCutPro">
+                                                    title="FinalCutPro">
                                             </div>
                                             <div class="skill-name"><span>FinalCutPro</span></div>
                                         </div>
@@ -300,7 +300,7 @@
                                         <div class="skill-info">
                                             <div class="skill-icon" style="background:#f29e39">
                                                 <img th:src="@{/assets/images/icons/illustrator.png}"
-                                                     title="illustrator">
+                                                    title="illustrator">
                                             </div>
                                             <div class="skill-name"><span>illustrator</span></div>
                                         </div>
@@ -343,8 +343,8 @@
                                         <div class="etc">...</div>
                                     </div>
                                     <div class="skills-list"
-                                         th:if="${#strings.equals(theme.config.top.bannersBackground, 'techStack')}"
-                                         th:with="techs = ${theme.config.about.techStack}">
+                                        th:if="${#strings.equals(theme.config.top.bannersBackground, 'techStack')}"
+                                        th:with="techs = ${theme.config.about.techStack}">
                                         <th:block th:each="tech : ${techs}">
                                             <div class="skill-info">
                                                 <div class="skill-icon" th:style="'background:' + ${tech.background}">
@@ -362,17 +362,17 @@
                             <div class="card-content">
                                 <div class="author-content-item-tips">生涯</div>
                                 <span class="author-content-item-title"
-                                      th:text="${theme.config.about.authorCareers.authorCareersTitle}">无限进步</span>
+                                    th:text="${theme.config.about.authorCareers.authorCareersTitle}">无限进步</span>
                                 <div class="careers-group"
-                                     th:if="${not #lists.isEmpty(theme.config.about.authorCareers.authorCareersTags)}"
-                                     th:with="careersTags = ${theme.config.about.authorCareers.authorCareersTags}">
+                                    th:if="${not #lists.isEmpty(theme.config.about.authorCareers.authorCareersTags)}"
+                                    th:with="careersTags = ${theme.config.about.authorCareers.authorCareersTags}">
                                     <div class="careers-item" th:each="tag : ${careersTags}">
                                         <div class="circle" th:style="'background:' + ${tag.background}"></div>
                                         <div class="name" th:text="${tag.desc}"></div>
                                     </div>
                                 </div>
                                 <img alt="生涯" class="author-content-img"
-                                     th:src="@{${#strings.isEmpty(theme.config.about.authorCareers.authorCareersBackground) ? '/assets/images/hao-logo.jpg' : theme.config.about.authorCareers.authorCareersBackground}}">
+                                    th:src="@{${#strings.isEmpty(theme.config.about.authorCareers.authorCareersBackground) ? '/assets/images/hao-logo.jpg' : theme.config.about.authorCareers.authorCareersBackground}}">
                             </div>
                         </div>
                     </div>
@@ -380,18 +380,18 @@
                     <!-- personalities -->
                     <div class="author-content">
                         <div class="author-content-item personalities"
-                             th:with="personality = ${theme.config.about.personalities}">
+                            th:with="personality = ${theme.config.about.personalities}">
                             <div class="author-content-item-tips">性格</div>
 
                             <th:block th:if="${personality == 'infp'}">
                                 <span class="author-content-item-title">调停者</span>
                                 <div class="title2" style="color: #56a178;">INFP</div>
                                 <div class="image"><img src="/themes/theme-hao/assets/images/infp.svg"
-                                                        style="transform: rotateY(180deg);"></div>
+                                        style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
-                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                        rel="noopener nofollow" target="_blank">16personalities</a>
                                     了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                                                    th:href="@{'https://www.16personalities.com/ch/INFP-%E4%BA%BA%E6%A0%BC'}">调停者</a>
+                                        th:href="@{'https://www.16personalities.com/ch/INFP-%E4%BA%BA%E6%A0%BC'}">调停者</a>
                                 </div>
                             </th:block>
 
@@ -399,11 +399,11 @@
                                 <span class="author-content-item-title">建筑师</span>
                                 <div class="title2" style="color: #56a178;">INTJ</div>
                                 <div class="image"><img src="/themes/theme-hao/assets/images/intj.svg"
-                                                        style="transform: rotateY(180deg);"></div>
+                                        style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
-                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                        rel="noopener nofollow" target="_blank">16personalities</a>
                                     了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                                                    th:href="@{'https://www.16personalities.com/ch/INTJ-%E4%BA%BA%E6%A0%BC'}">建筑师</a>
+                                        th:href="@{'https://www.16personalities.com/ch/INTJ-%E4%BA%BA%E6%A0%BC'}">建筑师</a>
                                 </div>
                             </th:block>
 
@@ -411,11 +411,11 @@
                                 <span class="author-content-item-title">逻辑学家</span>
                                 <div class="title2" style="color: #56a178;">INTP</div>
                                 <div class="image"><img src="/themes/theme-hao/assets/images/intp.svg"
-                                                        style="transform: rotateY(180deg);"></div>
+                                        style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
-                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                        rel="noopener nofollow" target="_blank">16personalities</a>
                                     了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                                                    th:href="@{'https://www.16personalities.com/ch/INTP-%E4%BA%BA%E6%A0%BC'}">逻辑学家</a>
+                                        th:href="@{'https://www.16personalities.com/ch/INTP-%E4%BA%BA%E6%A0%BC'}">逻辑学家</a>
                                 </div>
                             </th:block>
 
@@ -423,11 +423,11 @@
                                 <span class="author-content-item-title">指挥官</span>
                                 <div class="title2" style="color: #56a178;">ENTJ</div>
                                 <div class="image"><img src="/themes/theme-hao/assets/images/entj.svg"
-                                                        style="transform: rotateY(180deg);"></div>
+                                        style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
-                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                        rel="noopener nofollow" target="_blank">16personalities</a>
                                     了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                                                    th:href="@{'https://www.16personalities.com/ch/ENTJ-%E4%BA%BA%E6%A0%BC'}">指挥官</a>
+                                        th:href="@{'https://www.16personalities.com/ch/ENTJ-%E4%BA%BA%E6%A0%BC'}">指挥官</a>
                                 </div>
                             </th:block>
 
@@ -435,11 +435,11 @@
                                 <span class="author-content-item-title">辩论家</span>
                                 <div class="title2" style="color: #56a178;">ENTP</div>
                                 <div class="image"><img src="/themes/theme-hao/assets/images/entp.svg"
-                                                        style="transform: rotateY(180deg);"></div>
+                                        style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
-                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                        rel="noopener nofollow" target="_blank">16personalities</a>
                                     了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                                                    th:href="@{'https://www.16personalities.com/ch/ENTP-%E4%BA%BA%E6%A0%BC'}">辩论家</a>
+                                        th:href="@{'https://www.16personalities.com/ch/ENTP-%E4%BA%BA%E6%A0%BC'}">辩论家</a>
                                 </div>
                             </th:block>
 
@@ -447,11 +447,11 @@
                                 <span class="author-content-item-title">主人公</span>
                                 <div class="title2" style="color: #56a178;">ENFJ</div>
                                 <div class="image"><img src="/themes/theme-hao/assets/images/enfj.svg"
-                                                        style="transform: rotateY(180deg);"></div>
+                                        style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
-                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                        rel="noopener nofollow" target="_blank">16personalities</a>
                                     了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                                                    th:href="@{'https://www.16personalities.com/ch/ENFJ-%E4%BA%BA%E6%A0%BC'}">主人公</a>
+                                        th:href="@{'https://www.16personalities.com/ch/ENFJ-%E4%BA%BA%E6%A0%BC'}">主人公</a>
                                 </div>
                             </th:block>
 
@@ -459,11 +459,11 @@
                                 <span class="author-content-item-title">竞选者</span>
                                 <div class="title2" style="color: #56a178;">ENFP</div>
                                 <div class="image"><img src="/themes/theme-hao/assets/images/enfp.svg"
-                                                        style="transform: rotateY(180deg);"></div>
+                                        style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
-                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                        rel="noopener nofollow" target="_blank">16personalities</a>
                                     了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                                                    th:href="@{'https://www.16personalities.com/ch/ENFP-%E4%BA%BA%E6%A0%BC'}">竞选者</a>
+                                        th:href="@{'https://www.16personalities.com/ch/ENFP-%E4%BA%BA%E6%A0%BC'}">竞选者</a>
                                 </div>
                             </th:block>
 
@@ -471,11 +471,11 @@
                                 <span class="author-content-item-title">总经理</span>
                                 <div class="title2" style="color: #56a178;">ESTJ</div>
                                 <div class="image"><img src="/themes/theme-hao/assets/images/estj.svg"
-                                                        style="transform: rotateY(180deg);"></div>
+                                        style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
-                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                        rel="noopener nofollow" target="_blank">16personalities</a>
                                     了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                                                    th:href="@{'https://www.16personalities.com/ch/ESTJ-%E4%BA%BA%E6%A0%BC'}">总经理</a>
+                                        th:href="@{'https://www.16personalities.com/ch/ESTJ-%E4%BA%BA%E6%A0%BC'}">总经理</a>
                                 </div>
                             </th:block>
 
@@ -483,11 +483,11 @@
                                 <span class="author-content-item-title">企业家</span>
                                 <div class="title2" style="color: #56a178;">ESTP</div>
                                 <div class="image"><img src="/themes/theme-hao/assets/images/estp.svg"
-                                                        style="transform: rotateY(180deg);"></div>
+                                        style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
-                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                        rel="noopener nofollow" target="_blank">16personalities</a>
                                     了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                                                    th:href="@{'https://www.16personalities.com/ch/ESTP-%E4%BA%BA%E6%A0%BC'}">企业家</a>
+                                        th:href="@{'https://www.16personalities.com/ch/ESTP-%E4%BA%BA%E6%A0%BC'}">企业家</a>
                                 </div>
                             </th:block>
 
@@ -495,11 +495,11 @@
                                 <span class="author-content-item-title">执政官</span>
                                 <div class="title2" style="color: #56a178;">ESFJ</div>
                                 <div class="image"><img src="/themes/theme-hao/assets/images/esfj.svg"
-                                                        style="transform: rotateY(180deg);"></div>
+                                        style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
-                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                        rel="noopener nofollow" target="_blank">16personalities</a>
                                     了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                                                    th:href="@{'https://www.16personalities.com/ch/ESFJ-%E4%BA%BA%E6%A0%BC'}">执政官</a>
+                                        th:href="@{'https://www.16personalities.com/ch/ESFJ-%E4%BA%BA%E6%A0%BC'}">执政官</a>
                                 </div>
                             </th:block>
 
@@ -507,11 +507,11 @@
                                 <span class="author-content-item-title">表演者</span>
                                 <div class="title2" style="color: #56a178;">ESFP</div>
                                 <div class="image"><img src="/themes/theme-hao/assets/images/esfp.svg"
-                                                        style="transform: rotateY(180deg);"></div>
+                                        style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
-                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                        rel="noopener nofollow" target="_blank">16personalities</a>
                                     了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                                                    th:href="@{'https://www.16personalities.com/ch/ESFP-%E4%BA%BA%E6%A0%BC'}">表演者</a>
+                                        th:href="@{'https://www.16personalities.com/ch/ESFP-%E4%BA%BA%E6%A0%BC'}">表演者</a>
                                 </div>
                             </th:block>
 
@@ -519,11 +519,11 @@
                                 <span class="author-content-item-title">提倡者</span>
                                 <div class="title2" style="color: #56a178;">INFJ</div>
                                 <div class="image"><img src="/themes/theme-hao/assets/images/infj.svg"
-                                                        style="transform: rotateY(180deg);"></div>
+                                        style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
-                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                        rel="noopener nofollow" target="_blank">16personalities</a>
                                     了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                                                    th:href="@{'https://www.16personalities.com/ch/INFJ-%E4%BA%BA%E6%A0%BC'}">提倡者</a>
+                                        th:href="@{'https://www.16personalities.com/ch/INFJ-%E4%BA%BA%E6%A0%BC'}">提倡者</a>
                                 </div>
                             </th:block>
 
@@ -531,11 +531,11 @@
                                 <span class="author-content-item-title">物流师</span>
                                 <div class="title2" style="color: #56a178;">ISTJ</div>
                                 <div class="image"><img src="/themes/theme-hao/assets/images/istj.svg"
-                                                        style="transform: rotateY(180deg);"></div>
+                                        style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
-                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                        rel="noopener nofollow" target="_blank">16personalities</a>
                                     了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                                                    th:href="@{'https://www.16personalities.com/ch/ISTJ-%E4%BA%BA%E6%A0%BC'}">物流师</a>
+                                        th:href="@{'https://www.16personalities.com/ch/ISTJ-%E4%BA%BA%E6%A0%BC'}">物流师</a>
                                 </div>
                             </th:block>
 
@@ -543,11 +543,11 @@
                                 <span class="author-content-item-title">鉴赏家</span>
                                 <div class="title2" style="color: #56a178;">ISTP</div>
                                 <div class="image"><img src="/themes/theme-hao/assets/images/istp.svg"
-                                                        style="transform: rotateY(180deg);"></div>
+                                        style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
-                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                        rel="noopener nofollow" target="_blank">16personalities</a>
                                     了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                                                    th:href="@{'https://www.16personalities.com/ch/ISTP-%E4%BA%BA%E6%A0%BC'}">鉴赏家</a>
+                                        th:href="@{'https://www.16personalities.com/ch/ISTP-%E4%BA%BA%E6%A0%BC'}">鉴赏家</a>
                                 </div>
                             </th:block>
 
@@ -555,11 +555,11 @@
                                 <span class="author-content-item-title">守卫者</span>
                                 <div class="title2" style="color: #56a178;">ISFJ</div>
                                 <div class="image"><img src="/themes/theme-hao/assets/images/isfj.svg"
-                                                        style="transform: rotateY(180deg);"></div>
+                                        style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
-                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                        rel="noopener nofollow" target="_blank">16personalities</a>
                                     了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                                                    th:href="@{'https://www.16personalities.com/ch/ISFJ-%E4%BA%BA%E6%A0%BC'}">守卫者</a>
+                                        th:href="@{'https://www.16personalities.com/ch/ISFJ-%E4%BA%BA%E6%A0%BC'}">守卫者</a>
                                 </div>
                             </th:block>
 
@@ -567,17 +567,17 @@
                                 <span class="author-content-item-title">探险家</span>
                                 <div class="title2" style="color: #56a178;">ISFP</div>
                                 <div class="image"><img src="/themes/theme-hao/assets/images/isfp.svg"
-                                                        style="transform: rotateY(180deg);"></div>
+                                        style="transform: rotateY(180deg);"></div>
                                 <div class="post-tips">在 <a href="https://www.16personalities.com/"
-                                                             rel="noopener nofollow" target="_blank">16personalities</a>
+                                        rel="noopener nofollow" target="_blank">16personalities</a>
                                     了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                                                    th:href="@{'https://www.16personalities.com/ch/ISFP-%E4%BA%BA%E6%A0%BC'}">探险家</a>
+                                        th:href="@{'https://www.16personalities.com/ch/ISFP-%E4%BA%BA%E6%A0%BC'}">探险家</a>
                                 </div>
                             </th:block>
 
                         </div>
                         <div class="author-content-item myphoto"><img alt="自拍" class="author-content-img"
-                                                                      th:src="${theme.config.about.authorCareersPhoto}">
+                                th:src="${theme.config.about.authorCareersPhoto}">
                         </div>
                     </div>
 
@@ -587,7 +587,7 @@
                             <div class="author-content-item-tips" th:text="${texts[0].tittle}">座右铭</div>
                             <span class="maxim-title">
                                 <span style="opacity: 0.6;margin-bottom:8px;"
-                                      th:text="${texts[0].textarea_up}">生活原本沉闷，</span>
+                                    th:text="${texts[0].textarea_up}">生活原本沉闷，</span>
                                 <span th:text="${texts[0].textarea_down}">但跑起来就有风。</span>
                             </span>
                         </div>
@@ -597,7 +597,7 @@
                                 <div class="author-content-item-tips" th:text="${texts[1].tittle}">特长</div>
                                 <span class="buff-title">
                                     <span style="opacity: 0.6;margin-bottom:8px;"
-                                          th:text="${texts[1].textarea_up}">玄学流电脑疑难问题解决
+                                        th:text="${texts[1].textarea_up}">玄学流电脑疑难问题解决
                                         <span class="inline-word">专家</span>
                                     </span>
                                     <span th:text="${texts[1].textarea_down}">软件学习能力</span>
@@ -607,13 +607,12 @@
                     </div>
                     <div class="author-content">
                         <div class="author-content-item game-lol"
-                             th:style="'background: url('+ @{${theme.config.about.game.game_bg}} +') top / cover no-repeat'">
+                            th:style="'background: url('+ @{${theme.config.about.game.game_bg}} +') top / cover no-repeat'">
                             <div class="card-content">
                                 <div class="author-content-item-tips" th:text="${theme.config.about.game.game_tips}">
 
-                                </div>
-                                <span class="author-content-item-title"
-                                      th:text="${theme.config.about.game.game_title}"></span>
+                                </div><span class="author-content-item-title"
+                                    th:text="${theme.config.about.game.game_title}"></span>
                                 <div class="content-bottom">
                                     <div class="icon-group">
                                         <div class="loading-bar" role="presentation" aria-hidden="true"></div>
@@ -623,13 +622,12 @@
                             </div>
                         </div>
                         <div class="author-content-item game-wolf"
-                             th:style="'background: url('+ @{${theme.config.about.game2.game2_bg}} +') top / cover no-repeat'">
+                            th:style="'background: url('+ @{${theme.config.about.game2.game2_bg}} +') top / cover no-repeat'">
                             <div class="card-content">
                                 <div class="author-content-item-tips" th:text="${theme.config.about.game2.game2_tips}">
 
-                                </div>
-                                <span class="author-content-item-title"
-                                      th:text="${theme.config.about.game2.game2_title}"></span>
+                                </div><span class="author-content-item-title"
+                                    th:text="${theme.config.about.game2.game2_title}"></span>
                                 <div class="content-bottom">
                                     <div class="tips" th:text="${theme.config.about.game2.game2_uid}"></div>
                                 </div>
@@ -640,13 +638,13 @@
                     <div class="author-content">
 
                         <div class="author-content-item like-technology"
-                             th:style="'background: url('+ @{${theme.config.about.like.like_bg}} +') top / cover no-repeat;'">
+                            th:style="'background: url('+ @{${theme.config.about.like.like_bg}} +') top / cover no-repeat;'">
                             <div class="card-content">
                                 <div class="author-content-item-tips" th:text="${theme.config.about.like.like_tips}">
 
                                 </div>
                                 <span class="author-content-item-title"
-                                      th:text="${theme.config.about.like.like_title}"></span>
+                                    th:text="${theme.config.about.like.like_title}"></span>
                                 <div class="content-bottom">
                                     <div class="tips" th:text="${theme.config.about.like.like_bottom}"></div>
                                 </div>
@@ -654,13 +652,13 @@
                         </div>
 
                         <div class="author-content-item like-music"
-                             th:style="'background: url('+ @{${theme.config.about.music.music_bg}} +') top / cover no-repeat'">
+                            th:style="'background: url('+ @{${theme.config.about.music.music_bg}} +') top / cover no-repeat'">
                             <div class="card-content">
                                 <div class="author-content-item-tips" th:text="${theme.config.about.music.music_tips}">
 
                                 </div>
                                 <span class="author-content-item-title"
-                                      th:text="${theme.config.about.music.music_title}"></span>
+                                    th:text="${theme.config.about.music.music_title}"></span>
                                 <div class="content-bottom">
                                     <div class="tips">跟 [[${site.title}]] 一起欣赏更多音乐</div>
                                 </div>
@@ -677,24 +675,22 @@
 
                     <div class="author-content">
                         <div class="about-statistic author-content-item"
-                             style="background: url(https://bu.dusays.com/2023/03/12/640dc8c72f623.webp);">
+                            style="background: url(https://bu.dusays.com/2023/03/12/640dc8c72f623.webp);">
                             <div class="card-content">
                                 <div class="author-content-item-tips">数据</div>
                                 <span class="author-content-item-title">访问统计</span>
                                 <div id="statistic"></div>
                                 <div class="post-tips">统计信息来自 <a href="https://invite.51.la/1NzKqTeb?target=V6"
-                                                                       rel="noopener nofollow"
-                                                                       target="_blank">51la网站统计</a></div>
-                                <div class="banner-button-group"><a class="banner-button"
-                                                                    onclick="pjax.loadUrl('/archives')"
-                                                                    data-pjax-state=""><i
-                                        class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i><span
-                                        class="banner-button-text">文章隧道</span></a></div>
+                                        rel="noopener nofollow" target="_blank">51la网站统计</a></div>
+                                <div class="banner-button-group"><a class="banner-button" onclick="pjax.loadUrl('/archives')"
+                                        data-pjax-state=""><i
+                                            class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i><span
+                                            class="banner-button-text">文章隧道</span></a></div>
                             </div>
                         </div>
                         <script>
                             // 链接替换即可，不需要后面的参数
-                            fetch("[[${theme.config.about.LingQueMonitorID}]]")
+                            fetch("https://v6-widget.51.la/v6/[[${theme.config.about.LingQueMonitorID}]]/quote.js")
                                 .then(res => res.text())
                                 .then(data => {
                                     let title = ["最近活跃", "今日人数", "今日访问", "昨日人数", "昨日访问", "本月访问", "总访问量"];
@@ -723,19 +719,18 @@
                                     <b>[[${theme.config.about.map.StrengthenTitle}]]</b></span>
                             </div>
                             <div class="author-content-item selfInfo single"
-                                 th:if="${not #lists.isEmpty(theme.config.about.map.authorInfo)}"
-                                 th:with="texts = ${theme.config.about.map.authorInfo}">
+                                th:if="${not #lists.isEmpty(theme.config.about.map.authorInfo)}"
+                                th:with="texts = ${theme.config.about.map.authorInfo}">
                                 <div><span class="selfInfo-title" th:text="${texts[0].authorInfoTitle}">生于</span><span
                                         class="selfInfo-content" th:style="'color:' + ${texts[0].authorInfoColor}"
                                         th:text="${texts[0].authorInfoContent}">2000</span>
                                 </div>
                                 <div><span class="selfInfo-title"
-                                           th:text="${texts[1].authorInfoTitle}">太原理工大学</span><span
+                                        th:text="${texts[1].authorInfoTitle}">太原理工大学</span><span
                                         class="selfInfo-content" th:style="'color:' + ${texts[1].authorInfoColor}"
                                         th:text="${texts[1].authorInfoContent}">计算机科学</span>
                                 </div>
-                                <div><span class="selfInfo-title"
-                                           th:text="${texts[2].authorInfoTitle}">现在职业</span><span
+                                <div><span class="selfInfo-title" th:text="${texts[2].authorInfoTitle}">现在职业</span><span
                                         class="selfInfo-content" th:style="'color:' + ${texts[2].authorInfoColor}"
                                         th:text="${texts[2].authorInfoContent}">BI工程师</span>
                                 </div>
@@ -770,65 +765,70 @@
                 <div class="author-content">
                     <div class="author-content-item single reward">
                         <div class="author-content-item-tips">致谢</div>
-                        <span class="author-content-item-title"
-                              th:text="${theme.config.aboutReward.title}">赞赏名单</span>
-                        <div class="author-content-item-description" th:text="${theme.config.aboutReward.content}">
-                            感谢赞赏的人，因为你们，让我感受到写博客这件事情能够给你们创造了价值。这会让我在这条路上走得更远。
+                        <span class="author-content-item-title" >[[${theme.config.aboutReward.title}]]</span>
+                        <div class="author-content-item-description" >
+                            [[${theme.config.aboutReward.content}]]
                         </div>
-                        <div class="post-reward" th:if="${theme.config.aboutReward.reward.enable_reward}">
-                            <div class="post-reward" onclick="AddRewardMask()"></div>
-                            <div class="reward-button" title="赞赏作者"><i class="heofont icon-hand-heart-fill"></i>
-                                [[${theme.config.aboutReward.reward.name}]]
+
+                        <div th:if="${theme.config.aboutReward.reward.enable_reward}" class="about-reward">
+                            <div id="con"></div>
+                            <div id="TA-con" onclick="heo.rewardShowConsole()">
+                                <div id="text-con">
+                                    <div id="linght"></div>
+                                    <div id="TA">[[${theme.config.aboutReward.reward.name}]]</div>
+                                </div>
                             </div>
-                            <div class="reward-main">
-                                <ul class="reward-all">
-                                    <span class="reward-title">
-                                        [[${theme.config.aboutReward.reward.content}]]</span>
-                                    <ul class="reward-group">
-
-
-                                        <li class="reward-item">
-                                            <a href="" target="_blank"
-                                               th:href="@{${theme.config.aboutReward.reward.wxPay}}">
-                                                <img alt="微信" class="post-qr-code-img"
-                                                     th:src="${theme.config.aboutReward.reward.wxPay}">
-                                            </a>
-                                            <div class="post-qr-code-desc">
-                                                微信
-                                            </div>
-                                        </li>
-
-                                        <li class="reward-item">
-                                            <a href="" target="_blank"
-                                               th:href="@{${theme.config.aboutReward.reward.alipay}}">
-                                                <img alt="支付宝" class="post-qr-code-img"
-                                                     th:src="${theme.config.aboutReward.reward.alipay}">
-                                            </a>
-                                            <div class="post-qr-code-desc">
-                                                支付宝
-                                            </div>
-                                        </li>
-
-                                    </ul>
-                                </ul>
+                            <div id="tube-con"><svg viewBox="0 0 1028 385" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 77H234.226L307.006 24H790" stroke="#e5e9ef" stroke-width="20"></path>
+                                    <path d="M0 140H233.035L329.72 71H1028" stroke="#e5e9ef" stroke-width="20"></path>
+                                    <path d="M1 255H234.226L307.006 307H790" stroke="#e5e9ef" stroke-width="20"></path>
+                                    <path d="M0 305H233.035L329.72 375H1028" stroke="#e5e9ef" stroke-width="20"></path>
+                                    <rect y="186" width="236" height="24" fill="#e5e9ef"></rect>
+                                    <ellipse cx="790" cy="25.5" rx="25" ry="25.5" fill="#e5e9ef"></ellipse>
+                                    <circle r="14" transform="matrix(1 0 0 -1 790 25)" fill="white"></circle>
+                                    <ellipse cx="790" cy="307.5" rx="25" ry="25.5" fill="#e5e9ef"></ellipse>
+                                    <circle r="14" transform="matrix(1 0 0 -1 790 308)" fill="white"></circle>
+                                </svg>
+                                <div id="mask"><svg viewBox="0 0 1028 385" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 77H234.226L307.006 24H790" stroke="#f25d8e" stroke-width="20"></path>
+                                        <path d="M0 140H233.035L329.72 71H1028" stroke="#f25d8e" stroke-width="20"></path>
+                                        <path d="M1 255H234.226L307.006 307H790" stroke="#f25d8e" stroke-width="20"></path>
+                                        <path d="M0 305H233.035L329.72 375H1028" stroke="#f25d8e" stroke-width="20"></path>
+                                        <rect y="186" width="236" height="24" fill="#f25d8e"></rect>
+                                        <ellipse cx="790" cy="25.5" rx="25" ry="25.5" fill="#f25d8e"></ellipse>
+                                        <circle r="14" transform="matrix(1 0 0 -1 790 25)" fill="white"></circle>
+                                        <ellipse cx="790" cy="307.5" rx="25" ry="25.5" fill="#f25d8e"></ellipse>
+                                        <circle r="14" transform="matrix(1 0 0 -1 790 308)" fill="white"></circle>
+                                    </svg></div>
+                                <div id="orange-mask"><svg viewBox="0 0 1028 385" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 77H234.226L307.006 24H790" stroke="#ffd52b" stroke-width="20"></path>
+                                        <path d="M0 140H233.035L329.72 71H1028" stroke="#ffd52b" stroke-width="20"></path>
+                                        <path d="M1 255H234.226L307.006 307H790" stroke="#ffd52b" stroke-width="20"></path>
+                                        <path d="M0 305H233.035L329.72 375H1028" stroke="#ffd52b" stroke-width="20"></path>
+                                        <rect y="186" width="236" height="24" fill="#ffd52b"></rect>
+                                        <ellipse cx="790" cy="25.5" rx="25" ry="25.5" fill="#ffd52b"></ellipse>
+                                        <circle r="14" transform="matrix(1 0 0 -1 790 25)" fill="white"></circle>
+                                        <ellipse cx="790" cy="307.5" rx="25" ry="25.5" fill="#ffd52b"></ellipse>
+                                        <circle r="14" transform="matrix(1 0 0 -1 790 308)" fill="white"></circle>
+                                    </svg></div>
+                                <!-- <p id="people">共<b>29</b>人</p> -->
                             </div>
                         </div>
                         <div class="reward-list-all" th:if="${not #lists.isEmpty(theme.config.aboutReward.reward_list)}"
-                             th:with="authorRewardList = ${theme.config.aboutReward.reward_list}">
+                            th:with="authorRewardList = ${theme.config.aboutReward.reward_list}">
 
                             <div class="reward-list-item" th:each="authorReward : ${authorRewardList}">
                                 <div class="reward-list-item-name">[[${authorReward.name}]]</div>
                                 <div class="reward-list-bottom-group">
                                     <div th:if="${authorReward.sign == 'N'}" class="reward-list-item-money">¥
-                                        [[${authorReward.amount}]]
-                                    </div>
+                                        [[${authorReward.amount}]]</div>
                                     <div th:if="${authorReward.sign == 'Y'}" class="reward-list-item-money"
-                                         style="background: var(--heo-vip);">¥ [[${authorReward.amount}]]
+                                        style="background: var(--heo-vip);">¥ [[${authorReward.amount}]]
                                     </div>
                                     <time class="datatime reward-list-item-time">[[${authorReward.datatime}]]</time>
                                 </div>
                             </div>
-
+ 
                         </div>
                     </div>
                 </div>
