@@ -5,7 +5,7 @@ metadata:
 spec:
   forms:
     - group: basics
-      label: 基础1
+      label: 基础
       formSchema:
         - $formkit: date
           name: siteStartTime
