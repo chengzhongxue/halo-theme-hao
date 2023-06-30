@@ -687,39 +687,6 @@ spec:
           value: 4
           help: "最近发布的文章数量"
         - $formkit: group
-          name: reward
-          label: 打赏
-          value:
-            enable_reward:
-            wxPay:
-            alipay:
-            reward_md_url:
-          children:
-            - $formkit: radio
-              name: enable_reward
-              help: 启用文章打赏，请正确填写名称和二维码图片链接
-              value: false
-              options:
-                - label: 启用
-                  value: true
-                - label: 禁用
-                  value: false
-            - $formkit: attachment
-              name: wxPay
-              label: 微信
-              help: 微信二维码图片链接
-              placeholder: 请填写微信二维码图片链接
-            - $formkit: attachment
-              name: alipay
-              label: 支付宝
-              help: 支付宝二维码图片链接
-              placeholder: 请填写支付宝二维码图片链接
-            - $formkit: url
-              name: reward_md_url
-              label: 赞赏者名单地址
-              placeholder: "请输入赞赏者名单地址"
-              value: "/about"
-        - $formkit: group
           name: post_edit
           label: 运营模式与责任
           value:
@@ -729,7 +696,7 @@ spec:
             - $formkit: radio
               name: enable_post_edit
               help: 启用文章运营模式与责任，请正确填写链接
-              value: true
+              value: false
               options:
                 - label: 启用
                   value: true
@@ -776,6 +743,7 @@ spec:
           name: mode
           label: 模式
           value: local
+          help: "本地模式需要自己填写文章摘要"
           options:
             - label: 本地
               value: local
@@ -1143,6 +1111,8 @@ spec:
             name:
             wxPay:
             alipay:
+            enable_reward_wz:
+            reward_md_url:   
           children:
             - $formkit: radio
               name: enable_reward_wz
@@ -1160,7 +1130,7 @@ spec:
               value: "/about"
             - $formkit: radio
               name: enable_reward
-              help: 启用文章打赏，请正确填写名称和二维码图片链接
+              help: 启用关于页面打赏
               value: false
               options:
                 - label: 启用
@@ -1243,7 +1213,7 @@ spec:
         - $formkit: radio
           name: switch
           label: 开关（WIP）
-          value: true
+          value: false
           options:
             - label: 打开
               value: true
