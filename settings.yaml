@@ -661,6 +661,16 @@ spec:
             - label: 关闭
               value: false
           help: "文章主色匹配图片颜色"
+        - $formkit: radio
+          name: summarize
+          label: 文章摘要
+          value: false
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
+          help: "是否显示文章摘要"
         - $formkit: number
           name: recommendQuantity
           label: 阅读建议
@@ -800,8 +810,8 @@ spec:
           label: 你的博客地址
           help: 注意保留最后的斜杠
           value: https://xx.xx/
-        
-          
+
+
     - group: about
       label: 个人
       formSchema:
@@ -1119,7 +1129,7 @@ spec:
           name: content
           label: 内容
           placeholder: 请输入内容
-          value: 感谢赞赏的人，因为你们，让我感受到写博客这件事情能够给你们创造了价值。这会让我在这条路上走得更远。        
+          value: 感谢赞赏的人，因为你们，让我感受到写博客这件事情能够给你们创造了价值。这会让我在这条路上走得更远。
         - $formkit: group
           name: reward
           label: 打赏按钮
@@ -1388,6 +1398,11 @@ spec:
           label: Twikoo评论-mailMd5
           placeholder: 请输入mailMd5
           help: 注意格式 (`mailMd5`)
+        - $formkit: number
+          name: newcommentnumber
+          label: 评论数量
+          value: 5
+          help: "最新评论数量"
     - group: other
       label: 其他设置
       formSchema:
