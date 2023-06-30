@@ -88,7 +88,7 @@
                         <div th:if="${#strings.equals(group.spec.displayStyle,'beautify') && not #lists.isEmpty(group.spec.displayStyle)}" class="site-card-group" >
                             <div class="site-card" th:each="link : ${group.links}">
                                 <span th:if="${not #lists.isEmpty(link.spec.label)}" th:style="'background-color:' + ${link.spec.labelColor}" class="site-card-tag">[[${link.spec.label}]]</span>
-                                <a class="img" target="_blank" th:href="${link.spec.siteshot}"
+                                <a class="img" target="_blank" th:href="${link.spec.url}"
                                    th:title="${link.spec.displayName}">
                                     <img class="flink-avatar" style="pointer-events: none;"
                                          th:alt="${link.spec.displayName}" th:src="${link.spec.siteshot}">
