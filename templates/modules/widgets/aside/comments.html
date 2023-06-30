@@ -3,23 +3,39 @@
 <!-- 归档 -->
 <div class="card-widget card-recent-post"  th:fragment="comments">
     <div class="item-headline"><i class="iconfont icon-comment-dots"></i><span>最新评论</span></div>
-    <div class="aside-list">
+    <div class="aside-list" id="newcomm">
 
-    <div class="aside-list-item">
-            <a class="thumbnail" href="/404.html">
-                <img loading="lazy" alt="dasda" src="https://seccdn.libravatar.org/avatar/7d88658473effdd6b068e181b9636878?d=robohash">
-            </a>
-            <div class="content">
-                <a class="comment" href="/messageboard/#635ba6370ccf12000f30a175" title="test">
-                    评论模块未完成
-                </a>
-                <div class="name">
-                    <span>liuzhihang / </span>
-                    <time datetime="2022-10-28T09:51:51.581Z">20 小時前</time>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
-
+<script th:src="@{/assets/libs/twikoo/twikoo.all.min.js}"></script>
+<script th:if="${theme.config.comments.twikoo && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.envId)}">
+    twikoo.getRecentComments({
+        envId: [[${ theme.config.comments.envId }]], // 环境 ID
+        // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，如果您的环境地域不是上海，需传此参数
+        pageSize: [[${theme.config.comments.newcommentnumber}]], // 获取多少条，默认：10，最大：100
+        includeReply: false // 是否包括最新回复，默认：false
+    }).then(function (res) {
+        let commenthtml = '';
+        res.forEach((items)=>{
+            commenthtml += `<div class="aside-list-item">
+            <a class="thumbnail" href="${items.url}">
+                <img loading="lazy" alt="dasda" src="${items.avatar}">
+            </a>
+            <div class="content">
+                <a class="comment" style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;" href="${items.url}" title="test">
+                ${items.commentText}
+                </a>
+                <div class="name">
+                    <span>${items.nick} / </span>
+                    <time datetime="${items.created}">${items.relativeTime}</time>
+                </div>
+            </div>
+        </div>`
+        });
+        document.querySelector('#newcomm').innerHTML = commenthtml;
+    }).catch(function (err) {
+        // 发生错误
+        console.error(err);
+    });
+</script>
 </html>
