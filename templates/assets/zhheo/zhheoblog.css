@@ -11581,11 +11581,12 @@ details[open]:not(.tk-admin-config-group) > summary:hover:after {
     border-radius: 4px 4px 0 0;
 }
 
-#article-container .site-card:hover a:not(.fancybox) {
+#article-container a:not(.fancybox):hover {
     text-decoration: none;
     border-bottom: 2px solid var(--heo-none);
     color: var(--heo-white);
     background: var(--heo-main);
+    border-radius: 4px;
     box-shadow: var(--heo-shadow-main);
 }
 
