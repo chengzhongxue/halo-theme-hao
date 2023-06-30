@@ -511,7 +511,7 @@
                                 <a class="post-meta__tags" th:each="tag : ${post.tags}"
                                     th:href="@{${tag.status.permalink}}">
                                     <span class="tags-punctuation">[[${tag.spec.displayName}]]</span>
-
+                                    
                                     <span class="tagsPageCount" th:text="${tag.status.visiblePostCount}"></span>
                                 </a>
                             </div>
@@ -541,20 +541,16 @@
                 </div>
                 <nav class="pagination-post" id="pagination"
                     th:with="postCursor = ${postFinder.cursor(post.metadata.name)}">
-                    <div th:class="${postCursor.hasPrevious()==true && postCursor.hasNext()==false} ? 'prev-post2 pull-left postcarnepre' : 'prev-post pull-left'">
+                    <div class="prev-post pull-left">
                         <a th:if="${postCursor.hasPrevious()}" th:href="@{${postCursor.previous.status.permalink}}">
-                            <img alt="cover" id="preimg" class="nolazyload"
-                                 th:src="${#strings.isEmpty(postCursor.previous.spec.cover) ? theme.config.layout.postRandomImg : postCursor.previous.spec.cover}">
                             <div class="pagination-info">
                                 <div class="label">上一篇</div>
                                 <div class="prev_info" th:text="${postCursor.previous.spec.title}"></div>
                             </div>
                         </a>
                     </div>
-                    <div th:class="${postCursor.hasPrevious()==false && postCursor.hasNext()==true} ? 'next-post2 pull-right postcarnepre':'next-post pull-right'">
+                    <div class="next-post pull-right">
                         <a th:if="${postCursor.hasNext()}" th:href="@{${postCursor.next.status.permalink}}">
-                            <img alt="cover" id="preimg" class="nolazyload"
-                                 th:src="${#strings.isEmpty(postCursor.next.spec.cover) ? theme.config.layout.postRandomImg : postCursor.next.spec.cover}">
                             <div class="pagination-info">
                                 <div class="label">下一篇</div>
                                 <div class="next_info" th:text="${postCursor.next.spec.title}"></div>
@@ -573,13 +569,13 @@
                         <!-- 建议阅读，这里可以自定义文章数量，然后遍历展示 -->
                         <div th:each="recommandPost :${recommandPosts}">
                             <a th:href="@{${recommandPost.status.permalink}}" th:title="${recommandPost.spec.title}">
-                                <img alt="cover" class="cover" loading="lazy" id="preimg"
-                                     th:src="${#strings.isEmpty(recommandPost.spec.cover) ? theme.config.layout.postRandomImg : recommandPost.spec.cover}">
-                                <div class="content is-center" >
-                                    <div class="date" style="color: white"><i class="far fa-calendar-alt fa-fw"></i>
+                                <img alt="cover" class="cover" loading="lazy"
+                                    th:src="${#strings.isEmpty(recommandPost.spec.cover) ? theme.config.layout.postRandomImg : recommandPost.spec.cover}">
+                                <div class="content is-center">
+                                    <div class="date"><i class="far fa-calendar-alt fa-fw"></i>
                                         [[${#dates.format(recommandPost.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}]]
                                     </div>
-                                    <div class="title" style="color: white" th:text="${recommandPost.spec.title}"></div>
+                                    <div class="title" th:text="${recommandPost.spec.title}"></div>
                                 </div>
                             </a>
                         </div>
@@ -603,7 +599,7 @@
                     <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name='links'"
                         colorScheme="document.documentElement.getAttribute('data-theme')" />
                 </div>
-
+            
             </div>
 
             <!-- 侧栏 -->
