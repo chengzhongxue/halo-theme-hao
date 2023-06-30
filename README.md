@@ -29,6 +29,7 @@
 - 困困鱼：[https://0206.ink](https://0206.ink)
 - Steven的博客: [https://blog.stevenw.cc/](https://blog.stevenw.cc/)
 - 小张博客: [https://www.xiaozhangstu.com/](https://www.xiaozhangstu.com/)
+- 流殃：[https://shyblog.world/](https://shyblog.world/)
 
 ## 简介
 
