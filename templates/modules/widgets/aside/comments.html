@@ -9,10 +9,13 @@
 </div>
 <script th:src="@{/assets/libs/twikoo/twikoo.all.min.js}"></script>
 <script th:if="${theme.config.comments.twikoo && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.envId)}">
+    const pagesize = [[${theme.config.sidebar.newcommentnumber}]];
+    const defaultpagesize = 5;
+    const finalpagesize = pagesize <= 0 ? defaultpagesize : pagesize;
     twikoo.getRecentComments({
         envId: [[${ theme.config.comments.envId }]], // 环境 ID
         // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，如果您的环境地域不是上海，需传此参数
-        pageSize: [[${theme.config.comments.newcommentnumber}]], // 获取多少条，默认：10，最大：100
+        pageSize: finalpagesize, // 获取多少条，默认：10，最大：100
         includeReply: false // 是否包括最新回复，默认：false
     }).then(function (res) {
         let commenthtml = '';

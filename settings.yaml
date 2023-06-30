@@ -458,6 +458,11 @@ spec:
           label: 分类数量
           value: -1
           help: "小于 0 则展示全部分类"
+        - $formkit: number
+          name: newcommentnumber
+          label: 评论数量
+          value: 5
+          help: "最新评论数量, 小于 0 则展示5条评论"
 
     - group: footer
       label: 页脚
@@ -1398,11 +1403,6 @@ spec:
           label: Twikoo评论-mailMd5
           placeholder: 请输入mailMd5
           help: 注意格式 (`mailMd5`)
-        - $formkit: number
-          name: newcommentnumber
-          label: 评论数量
-          value: 5
-          help: "最新评论数量"
     - group: other
       label: 其他设置
       formSchema:
