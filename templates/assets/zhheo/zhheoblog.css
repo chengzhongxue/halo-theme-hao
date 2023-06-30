@@ -7025,13 +7025,14 @@ a.console_switchbutton {
     transition: 0s;
 }
 
+/* 导航栏名称样式 */
 #nav #site-name {
     color: var(--heo-fontcolor);
-    padding: 0;
+    padding: 0 8px;
     transition: 0.3s;
     display: flex;
     height: 35px;
-    /*width: 75px;*/
+    /* width: 75px; */
     justify-content: center;
     align-items: center;
     text-shadow: none;
@@ -9077,7 +9078,7 @@ li {
     margin: 10px 16px 0px 5px;
     width: fit-content;
     line-height: 1;
-    background: rgba(48,52,63,0.75);
+    background: var(--heo-main);
     color: #fff;
     border-radius: 6px;
     -webkit-user-select: none;
@@ -9092,7 +9093,7 @@ li {
     cursor: pointer;
   }
   .ai-btn-item:hover {
-    background: var(--heo-main);
+    background: var(--heo-theme);
   }
   .ai-recommend {
     display: -webkit-box;
@@ -9183,7 +9184,7 @@ li {
   
   .ai-title {
     display: flex;
-    color: var(--heo-lighttext);
+    color: var(--font-color);
     border-radius: 8px;
     align-items: center;
     padding: 0 12px;
@@ -12108,9 +12109,9 @@ blockquote p {
     position: absolute;
     right: 22px;
     top: -77px;
-    content: "\e00d";
+    content: "\f25e";
     font-size: 180px;
-    font-family: "heofont";
+    font-family: "Font Awesome 5 Brands";
     color: var(--heo-fontcolor);
     opacity: 0.1;
     filter: blur(7px);
@@ -15832,6 +15833,272 @@ span.hexo-douban-pagenum {
     transform: rotate(20deg);
 }
 
+.about-reward {
+    position: absolute;
+    top: 1rem;
+    right: 2rem
+}
+
+@media screen and (max-width: 768px) {
+    .reward .about-reward #con {
+        width:170px
+    }
+
+    .reward #tube-con {
+        display: none
+    }
+}
+
+.reward #con {
+    width: 350px;
+    height: 85px;
+    position: relative;
+    border-radius: 4px
+}
+
+.reward #TA-con {
+    width: 157px;
+    height: 50px;
+    background-color: #f25d8e;
+    -webkit-box-shadow: 0 4px 4px rgba(255,112,159,.3);
+    box-shadow: 0 4px 4px rgba(255,112,159,.3);
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-radius: 4px;
+    cursor: pointer
+}
+
+@media screen and (max-width: 768px) {
+    .reward #TA-con {
+        width:125px;
+        left: 54px
+    }
+}
+
+.reward #TA-con:hover {
+    background-color: #ff6b9a
+}
+
+.reward #text-con {
+    width: 100px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative
+}
+
+.reward #linght {
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 36%;
+    left: 4px;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 10px;
+    border-top: 10px solid #fff;
+    border-radius: 4px;
+    -webkit-transform: rotate(-55deg);
+    -moz-transform: rotate(-55deg);
+    -o-transform: rotate(-55deg);
+    -ms-transform: rotate(-55deg);
+    transform: rotate(-55deg)
+}
+
+.reward #linght::after {
+    position: absolute;
+    top: -13px;
+    left: -11px;
+    content: "";
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 10px;
+    border-top: 10px solid #fff;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    border-radius: 4px
+}
+
+.reward #TA {
+    float: right;
+    line-height: 50px;
+    font-size: 15px;
+    color: #fff
+}
+
+.reward #tube-con {
+    width: 157px;
+    height: 55px;
+    position: absolute;
+    right: -5px;
+    top: 15px
+}
+
+.reward svg {
+    width: 100%;
+    height: 100%
+}
+
+.reward #mask {
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    -ms-transition: all .5s;
+    transition: all .5s
+}
+
+.reward #mask svg {
+    width: 157px;
+    height: 55px
+}
+
+.reward #TA-con:hover+#tube-con>#mask {
+    width: 157px
+}
+
+.reward #TA-con:hover+#tube-con>#orange-mask {
+    -webkit-animation: move1 .5s linear .2s infinite;
+    -moz-animation: move1 .5s linear .2s infinite;
+    -o-animation: move1 .5s linear .2s infinite;
+    -ms-animation: move1 .5s linear .2s infinite;
+    animation: move1 .5s linear .2s infinite
+}
+
+.reward #TA-con:hover+#tube-con>#orange-mask svg {
+    -webkit-animation: movetwo .5s linear .2s infinite;
+    -moz-animation: movetwo .5s linear .2s infinite;
+    -o-animation: movetwo .5s linear .2s infinite;
+    -ms-animation: movetwo .5s linear .2s infinite;
+    animation: movetwo .5s linear .2s infinite
+}
+
+.reward #orange-mask {
+    width: 18px;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    left: -15px;
+    top: 0
+}
+
+.reward #orange-mask svg {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    width: 157px;
+    height: 55px
+}
+
+.reward #people {
+    position: absolute;
+    right: 10px;
+    top: 4px;
+    font-size: 12px;
+    font-family: "雅黑";
+    color: #aaa
+}
+
+.reward #people>b {
+    color: #777
+}
+
+@-moz-keyframes move1 {
+0% {
+    left: -15px
+}
+
+100% {
+    left: 140px
+}
+}
+
+@-webkit-keyframes move1 {
+0% {
+    left: -15px
+}
+
+100% {
+    left: 140px
+}
+}
+
+@-o-keyframes move1 {
+0% {
+    left: -15px
+}
+
+100% {
+    left: 140px
+}
+}
+
+@keyframes move1 {
+0% {
+    left: -15px
+}
+
+100% {
+    left: 140px
+}
+}
+
+@-moz-keyframes movetwo {
+0% {
+    left: 15px
+}
+
+100% {
+    left: -140px
+}
+}
+
+@-webkit-keyframes movetwo {
+0% {
+    left: 15px
+}
+
+100% {
+    left: -140px
+}
+}
+
+@-o-keyframes movetwo {
+0% {
+    left: 15px
+}
+
+100% {
+    left: -140px
+}
+}
+
+@keyframes movetwo {
+0% {
+    left: 15px
+}
+
+100% {
+    left: -140px
+}
+}
+
+
 /* 关于页面打招呼信息 */
 
 #about-page .myInfoAndSayHello {
@@ -16902,6 +17169,7 @@ span.hexo-douban-pagenum {
     }
 }
 
+
 @media screen and (max-width: 768px) {
     #console .console-card-group {
         display: none;
@@ -16910,7 +17178,9 @@ span.hexo-douban-pagenum {
     #consoleHideAside {
         display: none;
     }
+    
 }
+
 
 @media screen and (max-height: 800px) {
     #console .console-card-group {
@@ -16926,6 +17196,30 @@ span.hexo-douban-pagenum {
     }
 }
 
+
+@media screen and (max-width: 867px) {
+    #console .close-btn {
+        display:none
+    }
+
+    #console .console-card-group {
+        display: none
+    }
+
+    #consoleHideAside {
+        display: none
+    }
+
+    .console-card-group-reward .reward-all .reward-item img {
+        width: 130px;
+        height: 130px
+    }   
+
+    #console #consoleKeyboard {
+        display: none
+    }
+}
+
 #console .console-card {
     background: var(--heo-maskbg);
     border-radius: 12px;
@@ -16933,6 +17227,11 @@ span.hexo-douban-pagenum {
     border: var(--style-border);
     box-shadow: var(--heo-shadow-border);
     padding: 40px;
+}
+
+.console-card-group-reward .reward-all .reward-item img {
+    width: 230px;
+    height: 230px
 }
 
 #console .console-card.tags {
@@ -17206,6 +17505,21 @@ span.hexo-douban-pagenum {
     font-size: 1rem;
 }
 
+#console .console-card-group-reward .reward-all {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+#console .console-card-group-reward .reward-all .reward-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: .625rem;
+}
+
+
+
 /* 快捷键窗口 */
 #keyboard-tips {
     position: fixed;
@@ -17347,19 +17661,6 @@ a.toc-link {
   }
 }
 
-/* 导航栏名称样式 */
-#nav #site-name {
-    color: var(--heo-fontcolor);
-    padding: 0;
-    transition: 0.3s;
-    display: flex;
-    height: 35px;
-    width: 75px;
-    justify-content: center;
-    align-items: center;
-    text-shadow: none;
-    border-radius: 40px;
-}    
 
 
   

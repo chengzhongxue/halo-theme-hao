@@ -400,9 +400,21 @@ var heo = {
         return arr[0]
     },
 
+    
+    // 显示打赏中控台
+    rewardShowConsole: function () {
+        $('.console-card-group-reward').attr('style', 'display: flex');
+        $('.console-card-group').attr('style', 'display: none');
+        document.querySelector("#console").classList.add("show");
+        
+    },
+
     //显示中控台
     showConsole: function () {
+        $('.console-card-group-reward').attr('style', 'display: none');
+        $('.console-card-group').attr('style', 'display: flex');
         document.querySelector("#console").classList.add("show");
+        
         
     },
 
@@ -447,5 +459,6 @@ var heo = {
         $htmlDom.contains('hide-aside')
             ? document.querySelector("#consoleHideAside").classList.add("on")
             : document.querySelector("#consoleHideAside").classList.remove("on")
-    }
+    },
+    
 }

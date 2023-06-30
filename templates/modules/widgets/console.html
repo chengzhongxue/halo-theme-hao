@@ -3,84 +3,97 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- TODO 控制台功能 -->
 <div id="console" th:fragment="console">
-    <div class="close-btn" href="javascript:void(0);" onclick="heo.hideConsole()">
-        <i class="anzhiyufont anzhiyu-icon-circle-xmark" style="font-size:35px"></i>
+  <div class="close-btn" href="javascript:void(0);" onclick="heo.hideConsole()">
+    <i class="anzhiyufont anzhiyu-icon-circle-xmark" style="font-size:35px"></i>
+  </div>
+  <div class="console-card-group">
+    <!-- 评论，需要使用评论插件，获取最近评论 -->
+    <div class="console-card-group-left">
+      <div class="console-card" id="card-newest-comments" onclick="heo.hideConsole()">
+        <div class="card-content">
+          <div class="author-content-item-tips">互动</div>
+          <span class="author-content-item-title">最近评论</span>
+        </div>
+        <div class="aside-list"><span>正在加载中...</span></div>
+      </div>
     </div>
-    <div class="console-card-group">
-        <!-- 评论，需要使用评论插件，获取最近评论 -->
-        <div class="console-card-group-left">
-            <div class="console-card" id="card-newest-comments" onclick="heo.hideConsole()">
-                <div class="card-content">
-                    <div class="author-content-item-tips">互动</div>
-                    <span class="author-content-item-title">最近评论</span>
-                </div>
-                <div class="aside-list"><span>正在加载中...</span></div>
-            </div>
+    <!-- 右侧展示 tag -->
+    <div class="console-card-group-right">
+      <div class="console-card tags" onclick="heo.hideConsole()">
+        <div class="card-content">
+          <div class="author-content-item-tips">标签</div>
+          <span class="author-content-item-title">寻找感兴趣的领域</span>
         </div>
-        <!-- 右侧展示 tag -->
-        <div class="console-card-group-right">
-            <div class="console-card tags" onclick="heo.hideConsole()">
-                <div class="card-content">
-                    <div class="author-content-item-tips">标签</div>
-                    <span class="author-content-item-title">寻找感兴趣的领域</span>
-                </div>
-                <div class="card-tag-cloud" th:with="tags = ${tagFinder.listAll()}">
-                    <a style="font-size:1em;color:#d3d3d3" th:each="tag : ${tags}" th:href="@{${tag.status.permalink}}">
-                        [[${tag.spec.displayName}]]<sup th:text="${tag.status.visiblePostCount}"></sup>
-                    </a>
-                </div>
-            </div>
-            <!-- 底部展示时间归档 -->
-            <div class="console-card history" onclick="heo.hideConsole()">
-                <div class="item-headline"><i class="fas fa-archive"></i><span>文章</span></div>
-                <ul class="card-archive-list" th:with="archives = ${postFinder.archives(1,1000)}">
-                    <th:block th:each="archive : ${archives.items}">
-                        <li class="card-archive-list-item" th:each="month,monthStat : ${archive.months}">
-                            <a class="card-archive-list-link"
-                               th:href="@{'/archives/'+${archive.year}+'/'+${month.month}}"
-                               data-pjax-state="load"><span
-                                    class="card-archive-list-date">[[${archive.year}]]-[[${month.month}]]</span>
-                                <div class="card-archive-list-count-group"><span
-                                        class="card-archive-list-count">[[${month.posts.size()}]]</span>
-                                    <span class="card-archive-list-count-unit">篇</span>
-                                </div>
-                            </a>
-                        </li>
-                    </th:block>
-                </ul>
-            </div>
+        <div class="card-tag-cloud" th:with="tags = ${tagFinder.listAll()}">
+          <a style="font-size:1em;color:#d3d3d3" th:each="tag : ${tags}" th:href="@{${tag.status.permalink}}">
+            [[${tag.spec.displayName}]]<sup th:text="${tag.status.visiblePostCount}"></sup>
+          </a>
         </div>
+      </div>
+      <!-- 底部展示时间归档 -->
+      <div class="console-card history" onclick="heo.hideConsole()">
+        <div class="item-headline"><i class="fas fa-archive"></i><span>文章</span></div>
+        <ul class="card-archive-list" th:with="archives = ${postFinder.archives(1,1000)}">
+          <th:block th:each="archive : ${archives.items}">
+            <li class="card-archive-list-item" th:each="month,monthStat : ${archive.months}">
+              <a class="card-archive-list-link" th:href="@{'/archives/'+${archive.year}+'/'+${month.month}}"
+                data-pjax-state="load"><span
+                  class="card-archive-list-date">[[${archive.year}]]-[[${month.month}]]</span>
+                <div class="card-archive-list-count-group"><span
+                    class="card-archive-list-count">[[${month.posts.size()}]]</span>
+                  <span class="card-archive-list-count-unit">篇</span>
+                </div>
+              </a>
+            </li>
+          </th:block>
+        </ul>
+      </div>
     </div>
-    <div class="button-group">
-        <div class="console-btn-item">
-            <!-- 用到了 rightmenu.js 的功能，还需要调整 -->
-            <a class="darkmode_switchbutton" href="javascript:void(0);" onclick="rm.switchDarkMode()"
-               rel="external nofollow"
-               title="显示模式切换"><i class="iconfont icon-moon" style="font-size:1rem"></i>
-            </a>
-        </div>
-        <div class="console-btn-item" id="consoleHideAside" onclick="heo.hideAsideBtn()" title="边栏显示控制"><a
-                class="asideSwitch" data-pjax-state=""><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a>
-        </div>
-        <div class="console-btn-item on" id="consoleCommentBarrage" onclick="heo.switchCommentBarrage()"
-             title="热评开关"><a
-                class="commentBarrage" data-pjax-state=""><i class="anzhiyufont anzhiyu-icon-message"></i></a></div>
+  </div>
 
-        <!--<div class="console-btn-item" id="consoleKeyboard" onclick="heo.keyboardToggle()" title="快捷键开关"><a-->
-        <!--        class="keyboard-switch"><i class="fa-duotone fa-keyboard"></i></a>-->
-        <!--</div>-->
-        <!--<div class="console-btn-item" id="assist-open" onclick="heo.hideConsole()" title="无障碍工具栏"><a-->
-        <!--        class="assist-btn"><i class="fa-duotone fa-wheelchair"></i></a>-->
-        <!--</div>-->
-        <!--<div class="console-btn-item" id="consoleMusic" onclick="heo.musicToggle()" title="音乐开关"><a-->
-        <!--        class="music-switch"><i class="fa-duotone fa-music"></i></a>-->
-        <!--</div>-->
+  <div class="console-card-group-reward" th:if="${theme.config.aboutReward.reward.enable_reward}">
+    <ul class="reward-all console-card">
+      <li class="reward-item"><a th:href="@{${theme.config.aboutReward.reward.wxPay}}"
+          rel="external nofollow noreferrer" target="_blank" draggable="false"><img
+            class=" entered loaded" alt="微信"
+            th:src="${theme.config.aboutReward.reward.wxPay}"></a>
+        <div class="post-qr-code-desc">微信</div>
+      </li>
+      <li class="reward-item"><a th:href="@{${theme.config.aboutReward.reward.alipay}}"
+          rel="external nofollow noreferrer" target="_blank" draggable="false"><img
+            class=" entered loaded" alt="支付宝"
+            th:src="${theme.config.aboutReward.reward.alipay}"></a>
+        <div class="post-qr-code-desc">支付宝</div>
+      </li>
+    </ul>
+  </div>
+  <div class="button-group">
+    <div class="console-btn-item">
+      <!-- 用到了 rightmenu.js 的功能，还需要调整 -->
+      <a class="darkmode_switchbutton" href="javascript:void(0);" onclick="rm.switchDarkMode()" rel="external nofollow"
+        title="显示模式切换"><i class="iconfont icon-moon" style="font-size:1rem"></i>
+      </a>
     </div>
-    <div class="console-mask" href="javascript:void(0);" onclick="heo.hideConsole()" rel="external nofollow">
-    </div>
+    <div class="console-btn-item" id="consoleHideAside" onclick="heo.hideAsideBtn()" title="边栏显示控制"><a
+        class="asideSwitch" data-pjax-state=""><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div>
+    <div class="console-btn-item on" id="consoleCommentBarrage" onclick="heo.switchCommentBarrage()" title="热评开关"><a
+        class="commentBarrage" data-pjax-state=""><i class="anzhiyufont anzhiyu-icon-message"></i></a></div>
 
-    <!-- 最近评论 -->
-    <script th:replace="~{modules/widgets/cardNewestComments :: cardNewestComments}"></script>
+    <!--<div class="console-btn-item" id="consoleKeyboard" onclick="heo.keyboardToggle()" title="快捷键开关"><a-->
+    <!--        class="keyboard-switch"><i class="fa-duotone fa-keyboard"></i></a>-->
+    <!--</div>-->
+    <!--<div class="console-btn-item" id="assist-open" onclick="heo.hideConsole()" title="无障碍工具栏"><a-->
+    <!--        class="assist-btn"><i class="fa-duotone fa-wheelchair"></i></a>-->
+    <!--</div>-->
+    <!--<div class="console-btn-item" id="consoleMusic" onclick="heo.musicToggle()" title="音乐开关"><a-->
+    <!--        class="music-switch"><i class="fa-duotone fa-music"></i></a>-->
+    <!--</div>-->
+  </div>
+  <div class="console-mask" href="javascript:void(0);" onclick="heo.hideConsole()" rel="external nofollow">
+  </div>
+
+  <!-- 最近评论 -->
+  <script th:replace="~{modules/widgets/cardNewestComments :: cardNewestComments}"></script>
 </div>
 
 </html>

@@ -740,7 +740,68 @@ spec:
           label: 版权声明
           placeholder: '本文是原创文章，采用 <a target="_blank" href="/cc">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a href="/" target="_blank" >程序员小航</a>'
           help: "版权声明内容，支持填入 HTML 标签"
-
+    - group: aiDescription
+      label: 文章ai摘要
+      formSchema:
+        - $formkit: radio
+          name: enable
+          label: 启用ai 摘要
+          value: false
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: text
+          name: gptName
+          label: 名称
+          placeholder: 请输入内容
+          value: KunKunYu
+        - $formkit: radio
+          name: mode
+          label: 模式
+          value: local
+          options:
+            - label: 本地
+              value: local
+            - label: ai
+              value: tianli
+        - $formkit: radio
+          name: switchBtn
+          label: 显示切换按钮
+          value: false
+          options:
+            - label: 是
+              value: true
+            - label: 否
+              value: false
+        - $formkit: url
+          name: btnLink
+          label: 链接地址
+          placeholder: 输入链接地址
+          value: https://afdian.net/item/f18c2e08db4411eda2f25254001e7c00
+        - $formkit: number
+          name: randomNum
+          label: 标签数量
+          value: 3
+          help: "按钮最大的随机次数，也就是一篇文章最大随机出来几种"
+        - $formkit: number
+          name: basicWordCount
+          label: 标签数量
+          value: 1000
+          help: "最低获取字符数, 最小1000, 最大1999"
+        - $formkit: text
+          name: key
+          label: key
+          value: xxxx
+          placeholder: 请输入key
+        - $formkit: url
+          name: Referer
+          label: 你的博客地址
+          help: 注意保留最后的斜杠
+          value: https://xx.xx/
+        
+          
     - group: about
       label: 个人
       formSchema:
@@ -1000,6 +1061,7 @@ spec:
         - $formkit: text
           name: LingQueMonitorID
           label: 51la网站统计配置
+          help: 统计ID
           placeholder: 请输入内容
           value: https://v6-widget.51.la/v6/K48u6B53QKqNs741/quote.js
         - $formkit: group
@@ -1057,17 +1119,30 @@ spec:
           name: content
           label: 内容
           placeholder: 请输入内容
-          value: 感谢赞赏的人，因为你们，让我感受到写博客这件事情能够给你们创造了价值。这会让我在这条路上走得更远。
+          value: 感谢赞赏的人，因为你们，让我感受到写博客这件事情能够给你们创造了价值。这会让我在这条路上走得更远。        
         - $formkit: group
           name: reward
           label: 打赏按钮
           value:
             enable_reward:
             name:
-            content:
             wxPay:
             alipay:
           children:
+            - $formkit: radio
+              name: enable_reward_wz
+              help: 启用文章页面打赏
+              value: false
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: url
+              name: reward_md_url
+              label: 赞赏者名单地址
+              placeholder: "请输入赞赏者名单地址"
+              value: "/about"
             - $formkit: radio
               name: enable_reward
               help: 启用文章打赏，请正确填写名称和二维码图片链接
@@ -1082,11 +1157,6 @@ spec:
               label: 按钮名称
               placeholder: 请输入内容
               value: 赞赏作者
-            - $formkit: text
-              name: content
-              label: 内容
-              placeholder: 请输入内容
-              value: 感谢你赐予我前进的力量
             - $formkit: attachment
               name: wxPay
               label: 微信
