@@ -39,7 +39,7 @@
                    th:href="@{${post.status.permalink}}"
                    th:text="${post.spec.title}">
                 </a>
-                <div class="content" th:if="${theme.config.post.summarize}" th:text="${post.status.excerpt}"></div>
+                <div class="content" th:text="${post.status.excerpt}"></div>
             </div>
 
 
