@@ -466,7 +466,7 @@ spec:
           name: centerImg
           label: 社交媒体中间logo
           help: logo图片链接
-          placeholder: 请填写logo图片链接  
+          placeholder: 请填写logo图片链接
         - $formkit: repeater
           name: socialMediaLeft
           label: 社交媒体（左）
@@ -628,7 +628,7 @@ spec:
                 - label: 跳转链接
                   value: normal
                 - label: 图片
-                  value: image        
+                  value: image
         - $formkit: menuRadio
           name: menu
           label: 底部相关链接
@@ -645,8 +645,8 @@ spec:
           name: fetchUrl
           value: "`https://moments.0206.ink/randomfriend?num=3`"
           label: 页脚友链地址
-          placeholder: 请输入页脚友链地址  
-          help: 注意格式 (`友链地址`)    
+          placeholder: 请输入页脚友链地址
+          help: 注意格式 (`友链地址`)
 
     - group: post
       label: 文章
@@ -671,6 +671,39 @@ spec:
           label: 最近发布文章
           value: 4
           help: "最近发布的文章数量"
+        - $formkit: group
+          name: reward
+          label: 打赏
+          value:
+            enable_reward:
+            wxPay:
+            alipay:
+            reward_md_url:
+          children:
+            - $formkit: radio
+              name: enable_reward
+              help: 启用文章打赏，请正确填写名称和二维码图片链接
+              value: false
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: attachment
+              name: wxPay
+              label: 微信
+              help: 微信二维码图片链接
+              placeholder: 请填写微信二维码图片链接
+            - $formkit: attachment
+              name: alipay
+              label: 支付宝
+              help: 支付宝二维码图片链接
+              placeholder: 请填写支付宝二维码图片链接
+            - $formkit: url
+              name: reward_md_url
+              label: 赞赏者名单地址
+              placeholder: "请输入赞赏者名单地址"
+              value: "/about"
         - $formkit: group
           name: post_edit
           label: 运营模式与责任
@@ -846,7 +879,7 @@ spec:
             - $formkit: attachment
               name: authorCareersBackground
               label: 职业生涯背景图
-              placeholder: 建议找个透明图  
+              placeholder: 建议找个透明图
         - $formkit: select
           name: personalities
           label: 人格
@@ -937,7 +970,7 @@ spec:
               label: 爱好游戏背景
               placeholder: 请输入内容
               value: https://img.zhheo.com/i/2022/08/31/630efa7ae39fe.webp
-         
+
         - $formkit: group
           name: game2
           label: 爱好游戏2相关配置
@@ -1019,7 +1052,7 @@ spec:
               name: music_link
               label: 音乐偏好按钮链接
               placeholder: 请输入内容
-              value: 
+              value:
             - $formkit: attachment
               name: music_bg
               label: 音乐偏好背景
@@ -1068,7 +1101,7 @@ spec:
                 - $formkit: color
                   name: authorInfoColor
                   label: 内容颜色
-                  placeholder: 请输入内容   
+                  placeholder: 请输入内容
         - $formkit: textarea
           name: xjlc
           label: 心路历程
@@ -1095,8 +1128,6 @@ spec:
             name:
             wxPay:
             alipay:
-            enable_reward_wz:
-            reward_md_url:          
           children:
             - $formkit: radio
               name: enable_reward_wz
@@ -1114,7 +1145,7 @@ spec:
               value: "/about"
             - $formkit: radio
               name: enable_reward
-              help: 启用关于页面打赏
+              help: 启用文章打赏，请正确填写名称和二维码图片链接
               value: false
               options:
                 - label: 启用
@@ -1162,7 +1193,7 @@ spec:
                   value: "Y"
                 - label: 否
                   value: "N"
-              
+
     - group: style
       label: 样式（WIP）
       formSchema:
@@ -1314,9 +1345,9 @@ spec:
           name: apiurl
           value: "`https://moments.0206.ink/`"
           label: token地址
-          placeholder: 请输入token地址    
-          help: 注意格式 (`token地址`)  
-          
+          placeholder: 请输入token地址
+          help: 注意格式 (`token地址`)
+
     - group: comments
       label: 评论
       formSchema:
