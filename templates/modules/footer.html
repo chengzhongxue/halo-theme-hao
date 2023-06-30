@@ -34,7 +34,7 @@
                     </a>
                 </div>
             </div>
-            <div class="footer-group">
+            <div th:if="${theme.config.footer.enable_footer_group}" class="footer-group">
                 <div class="footer-title-group">
                     <h3 class="footer-title">友链</h3><a class="random-friends-btn"
                                                          href="javascript:link.addFriendLinksInFooter();"
