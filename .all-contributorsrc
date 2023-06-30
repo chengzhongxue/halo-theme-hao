@@ -2,6 +2,16 @@
   "skipCi": true,
   "contributors": [
     {
+      "login": "liuzhihang",
+      "name": "liuzhihang",
+      "avatar_url": "https://avatars.githubusercontent.com/u/26057042?v=4",
+      "profile": "https://liuzhihang.com/",
+      "contributions": [
+        "code",
+        "tutorial"
+      ]
+    },
+    {
       "login": "shy-share",
       "name": "sunheyi",
       "avatar_url": "https://avatars.githubusercontent.com/u/50973219?v=4",
