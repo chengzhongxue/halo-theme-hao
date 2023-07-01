@@ -5,7 +5,7 @@
 <!-- 最近评论 -->
 <script
         th:fragment="cardNewestComments"
-        th:if="${theme.config.comments.twikoo && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.envId)}">
+        th:if="${theme.config.comments.twikoo && #strings.equals(theme.config.comments.use, 'Twikoo') && #strings.isNotEmpty(theme.config.comments.envId)}">
     window.addEventListener('load', () => {
         const changeContent = (content) => {
             if (content === '') return content

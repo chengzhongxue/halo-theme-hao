@@ -353,6 +353,10 @@ rm.copyLink = function () {
     btf.snackbarShow('已复制链接地址');
 }
 
+function switchDarkMode(){
+    rm.switchDarkMode();
+}
+
 function addRightMenuClickEvent() {
     // 添加点击事件
     $('#menu-backward').on('click', function () {
