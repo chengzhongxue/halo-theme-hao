@@ -68,10 +68,9 @@
     </ul>
   </div>
   <div class="button-group">
-    <script th:src="@{/assets/zhheo/rightmenu.js}"></script>
     <div class="console-btn-item">
       <!-- 用到了 rightmenu.js 的功能，还需要调整 -->
-      <a class="darkmode_switchbutton" href="javascript:void(0);" onclick="switchDarkMode()" rel="external nofollow"
+      <a class="darkmode_switchbutton" href="javascript:void(0);" onclick="rm.switchDarkMode()" rel="external nofollow"
         title="显示模式切换"><i class="iconfont icon-moon" style="font-size:1rem"></i>
       </a>
     </div>
@@ -93,7 +92,7 @@
   <div class="console-mask" href="javascript:void(0);" onclick="heo.hideConsole()" rel="external nofollow">
   </div>
 
-    <!-- 最近评论 -->
+  <!-- 最近评论 -->
   <script th:replace="~{modules/widgets/cardNewestComments :: cardNewestComments}"></script>
 </div>
 
