@@ -53,6 +53,10 @@
         <!-- todo head 中有它的 css，应该可以写一块，并改成后台可配置的功能，代码中应该还有他的 js -->
         <script th:src="@{/assets/libs/snackbar/snackbar.min.js}"></script>
 
+        <!-- 深色模式下添加粒子效果canvas -->
+        <canvas th:if="${theme.config.style.universe}" id="universe" width="1312" height="880"></canvas>
+        <script th:if="${theme.config.style.universe}" async="" th:src="@{/assets/libs/canvas/dark.js}"></script>
+
         <!-- https://davidshimjs.github.io/qrcodejs/ 生成二维码 -->
         <!-- 应该是文章页分享使用 -->
         <script data-pjax src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>

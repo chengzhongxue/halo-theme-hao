@@ -1220,6 +1220,15 @@ spec:
           name: enableChangeColorScheme
           label: 允许访客切换配色
           value: true
+        - $formkit: radio
+          name: universe
+          label: 深色模式粒子效果
+          value: true
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
         - $formkit: textarea
           name: fontFamily
           label: 全局字体
@@ -1228,6 +1237,7 @@ spec:
           name: backgroundImg
           label: 全局背景图
           placeholder: "请输入图片地址"
+
 
     - group: snackbar
       label: 弹窗
