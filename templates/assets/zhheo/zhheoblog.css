@@ -100,7 +100,7 @@
     --heo-post-tabs-bg: #121212;
     --heo-secondbg: #30343f;
     --heo-shadow-nav: 0 5px 20px 0px rgba(28, 28, 28, 0.4);
-    --heo-card-bg: #1e1e1e;
+    --heo-card-bg: #1d1e22;
     --heo-card-bg-op: var(--heo-white-op);
     --heo-card-bg-none: #1d1b2600;
     --heo-shadow-lightblack: 0 5px 12px -5px rgba(102, 68, 68, 0);
@@ -9193,6 +9193,27 @@ li {
     margin-left: 4px;
     cursor: pointer;
 }
+
+/* 添加粒子效果 */
+[data-theme="dark"] #universe {
+    display: block;
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+canvas#universe {
+    display: none;
+}
+
 .post-ai {
     background: var(--heo-secondbg);
     border-radius: 12px;
@@ -13998,7 +14019,7 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     color: var(--heo-fontcolor) !important;
     font-size: 1.4em !important;
     padding: 0.2em .5em;
-    background: var(--heo-secondbg);
+    background: var(--heo-card-bg);
     margin: .5em .5em;
     border-radius: 12px;
     -webkit-backface-visibility: hidden;
@@ -14008,7 +14029,7 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
 }
 
 #page .tag-cloud-list a:hover {
-    background: var(--heo-blue) !important;
+    background: var(--heo-theme) !important;
     box-shadow: var(--heo-shadow-blue);
     color: var(--heo-white) !important;
     border: var(--style-border-hover);
@@ -14259,7 +14280,7 @@ figure.gallery-group:hover .gallery-group-name::after {
 /* 随机文章 */
 #random-post {
     min-height: 32px;
-    background: var(--card-bg);
+    background: var(--heo-card-bg);
     border: var(--style-border-always);
     box-shadow: var(--heo-shadow-border);
     padding: 20px 30px;

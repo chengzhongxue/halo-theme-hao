@@ -6,11 +6,21 @@
 
     <div class="card-widget card-tags card-archives card-webinfo card-allinfo">
 
-        <th:block th:replace="~{modules/widgets/aside/contain/tags-contain :: tags-contain}"></th:block>
 
-        <hr>
+        <span th:if="${theme.config.sidebar.tags_switch}">
+            <th:block th:replace="~{modules/widgets/aside/contain/tags-contain :: tags-contain}" th:if="${theme.config.sidebar.tags_switch}"></th:block>
 
-        <th:block th:replace="~{modules/widgets/aside/contain/stat-contain :: stat-contain}"></th:block>
+            <hr>
+        </span>
+
+        <span th:if="${theme.config.sidebar.archive_switch}">
+            <th:block th:replace="~{modules/widgets/aside/contain/archive-contain :: archive-contain}" ></th:block>
+
+            <hr>
+        </span>
+
+
+        <th:block th:replace="~{modules/widgets/aside/contain/stat-contain :: stat-contain}" ></th:block>
 
     </div>
 
