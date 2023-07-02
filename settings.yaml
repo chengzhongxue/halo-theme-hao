@@ -317,7 +317,7 @@ spec:
           name: widgets
           label: 小部件
           value: "profile,wechat,comments,recent-posts,categories,tags-stat"
-          help: "目前提供的小部件有：profile（站点资料）, wechat（微信）, recent-posts（近期文章）, comments（最新评论）, categories（文章分类）, tags（文章标签）, stat（统计）, tags-stat（标签&统计）。你可以随意组合或排序，以逗号隔开。"
+          help: "目前提供的小部件有：profile（站点资料）, wechat（微信）, recent-posts（近期文章）, comments（最新评论）, categories（文章分类）, tags（文章标签）, stat（统计）, tags-stat（标签&归档&统计）。你可以随意组合或排序，以逗号隔开。"
         - $formkit: textarea
           name: postWidgets
           label: 文章页面小部件
@@ -458,6 +458,29 @@ spec:
           label: 分类数量
           value: -1
           help: "小于 0 则展示全部分类"
+        - $formkit: radio
+          name: tags_switch
+          label: 标签&归档&统计 (标签按钮开关)
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
+        - $formkit: radio
+          name: archive_switch
+          label: 标签&归档&统计 (归档按钮开关)
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
+        - $formkit: number
+          name: archivesQuantity
+          label: 归档数量
+          value: -1
+          help: "小于 0 则展示全部归档(目前没用等适配)"
         - $formkit: number
           name: newcommentnumber
           label: 评论数量
@@ -1112,7 +1135,7 @@ spec:
             wxPay:
             alipay:
             enable_reward_wz:
-            reward_md_url:   
+            reward_md_url:
           children:
             - $formkit: radio
               name: enable_reward_wz

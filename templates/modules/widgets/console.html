@@ -37,10 +37,23 @@
           <th:block th:each="archive : ${archives.items}">
             <li class="card-archive-list-item" th:each="month,monthStat : ${archive.months}">
               <a class="card-archive-list-link" th:href="@{'/archives/'+${archive.year}+'/'+${month.month}}"
-                data-pjax-state="load"><span
-                  class="card-archive-list-date">[[${archive.year}]]-[[${month.month}]]</span>
+                 data-pjax-state="load"><span
+                      class="card-archive-list-date">
+                  [[${(month.month=='01') ? '一月' :
+                            (month.month == '02') ? "二月"  :
+                            (month.month == '03') ? "三月" :
+                            (month.month == '04') ? "四月" :
+                            (month.month == '05') ? "五月" :
+                            (month.month == '06') ? "六月" :
+                            (month.month == '07') ? "七月" :
+                            (month.month == '08') ? "八月" :
+                            (month.month == '09') ? "九月" :
+                            (month.month == '10') ? "十月" :
+                            (month.month == '11') ? "十一月" :
+                                          "十二月"}]] [[${archive.year}]]
+                </span>
                 <div class="card-archive-list-count-group"><span
-                    class="card-archive-list-count">[[${month.posts.size()}]]</span>
+                        class="card-archive-list-count">[[${month.posts.size()}]]</span>
                   <span class="card-archive-list-count-unit">篇</span>
                 </div>
               </a>
