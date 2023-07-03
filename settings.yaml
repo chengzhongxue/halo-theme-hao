@@ -155,6 +155,11 @@ spec:
               label: 今日推荐跳转地址
               placeholder: 请输入地址
             - $formkit: text
+              name: todayRecommendxTitle
+              label: 今日推荐小标题
+              placeholder: 请输入小标题
+              value: "今日推荐"
+            - $formkit: text
               name: todayRecommendTitle
               label: 今日推荐标题
               placeholder: 请输入标题
@@ -1388,6 +1393,16 @@ spec:
               value: true
             - label: 关闭
               value: false
+        - $formkit: number
+          name: maxBarrage
+          value: 1
+          label: 同时最多显示弹幕数
+          placeholder: 请输入显示弹幕数
+        - $formkit: number
+          name: barrageTime
+          value: 4000
+          label: 弹幕显示间隔时间ms
+          placeholder: 请输入间隔时间ms
         - $formkit: url
           name: envId
           value: "`xxxxxxx`"
@@ -1399,7 +1414,7 @@ spec:
           value: "`xxxxxxx`"
           label: Twikoo评论-token
           placeholder: 请输入token
-          help: 注意格式 (`token`)
+          help: 注意格式 (`token`) 在控制台中获取
         - $formkit: text
           name: mailMd5
           value: "`xxxxxxx`"
@@ -1434,3 +1449,28 @@ spec:
               value: true
             - label: 关闭
               value: false
+        - $formkit: group
+          name: diytitle
+          label: 动态标题
+          value:
+            enable:
+            leaveTitle:
+            backTitle:
+          children:
+            - $formkit: radio
+              name: enable
+              help: 启用动态标题
+              value: false
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: text
+              name: leaveTitle
+              label: 离开
+              value: "w(ﾟДﾟ)w 不要走！再看看嘛！"
+            - $formkit: text
+              name: backTitle
+              label: 回到
+              value: "♪(^∇^*)欢迎肥来！"

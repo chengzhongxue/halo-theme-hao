@@ -161,6 +161,28 @@
         </script>
 
 
+        <script th:if="${theme.config.other.diytitle.enable}">//动态标题
+            let leaveTitle = '[[${theme.config.other.diytitle.leaveTitle}]]';
+            let backTitle = '[[${theme.config.other.diytitle.backTitle}]]';
+            let OriginTitile = document.title
+            let titleTime
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    //离开当前页面时标签显示内容
+                    document.title = leaveTitle
+                    clearTimeout(titleTime)
+                } else {
+                    //返回当前页面时标签显示内容
+                    document.title = backTitle + OriginTitile
+                    //两秒后变回正常标题
+                    titleTime = setTimeout(function () {
+                        document.title = OriginTitile
+                    }, 2000)
+                }
+            })
+        </script>
+
+
         <script >
             if(GLOBAL_CONFIG.isFriendLinksInFooter){
                 var link = {

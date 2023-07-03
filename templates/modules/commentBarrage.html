@@ -11,9 +11,9 @@
 
     var commentBarrageConfig = {
         //同时最多显示弹幕数
-        maxBarrage: 1,
+        maxBarrage: [[${ theme.config.comments.maxBarrage }]],
         //弹幕显示间隔时间ms
-        barrageTime: 4000,
+        barrageTime: [[${ theme.config.comments.barrageTime }]],
         //twikoo部署地址腾讯云的为环境ID
         twikooUrl: [[${ theme.config.comments.envId }]],
         //token获取见上方
