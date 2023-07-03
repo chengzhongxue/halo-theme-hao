@@ -274,7 +274,7 @@
                 <hr>
                 <!-- 评论模块 -->
                 <th:block
-                    th:if="${post.spec.allowComment && theme.config.comments.twikoo && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.envId)}">
+                        th:if="${post.spec.allowComment && theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
                     <div th:replace="~{modules/twikoo :: twikoo}"></div>
                 </th:block>
                 <div id="post-comment"
