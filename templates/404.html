@@ -15,11 +15,11 @@
             </div>
             <div id="error-wrap">
                 <div class="error-content">
-                    <div class="error-img" style="background-image: url('/themes/theme-hao/assets/images/404s.gif')">
+                    <div class="error-img" th:style="'background-image: url('+${theme.config.other.error_404.background}+')'">
                     </div>
                     <div class="error-info">
                         <h1 class="error_title">404</h1>
-                        <div class="error_subtitle">请尝试站内搜索寻找文章</div>
+                        <div class="error_subtitle">[[${theme.config.other.error_404.subtitle}]]</div>
                         <a class="button--animated" href="/"
                            data-pjax-state=""><i class="fas fa-rocket"></i>回到主页</a>
                     </div>

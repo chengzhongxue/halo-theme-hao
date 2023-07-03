@@ -5,20 +5,20 @@
 
 <script data-pjax=""
         th:fragment="commentBarrage"
-        th:if="${theme.config.comments.twikoo && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.envId)
-    && not #strings.isEmpty(theme.config.comments.accessToken)}">
+        th:if="${theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.twikoos.envId)
+    && not #strings.isEmpty(theme.config.comments.twikoos.accessToken)}">
 
 
     var commentBarrageConfig = {
         //同时最多显示弹幕数
-        maxBarrage: [[${ theme.config.comments.maxBarrage }]],
+        maxBarrage: [[${ theme.config.comments.twikoos.maxBarrage }]],
         //弹幕显示间隔时间ms
-        barrageTime: [[${ theme.config.comments.barrageTime }]],
+        barrageTime: [[${ theme.config.comments.twikoos.barrageTime }]],
         //twikoo部署地址腾讯云的为环境ID
-        twikooUrl: [[${ theme.config.comments.envId }]],
+        twikooUrl: [[${ theme.config.comments.twikoos.envId }]],
         //token获取见上方
-        accessToken: [[${ theme.config.comments.accessToken }]],
-        mailMd5: [[${ theme.config.comments.mailMd5 }]],
+        accessToken: [[${ theme.config.comments.twikoos.accessToken }]],
+        mailMd5: [[${ theme.config.comments.twikoos.mailMd5 }]],
         pageUrl: window.location.pathname,
         barrageTimer: [],
         barrageList: [],

@@ -161,7 +161,7 @@
         </script>
 
 
-        <script th:if="${theme.config.other.diytitle.enable}">//动态标题
+        <script th:if="${theme.config.other.diytitleEnable}">//动态标题
             let leaveTitle = '[[${theme.config.other.diytitle.leaveTitle}]]';
             let backTitle = '[[${theme.config.other.diytitle.backTitle}]]';
             let OriginTitile = document.title
@@ -286,12 +286,14 @@
                 typeof preloader === 'object' && preloader.endLoading()
             })
 
-            document.addEventListener('pjax:error', (e) => {
-                if (e.request.status === 404) {
-                    pjax.loadUrl('/404')
-                }
+            if(GLOBAL_CONFIG.error404Enable){
+                document.addEventListener('pjax:error', (e) => {
+                        if (e.request.status === 404) {
+                            pjax.loadUrl('/404')
+                        }
+                    }
+                )
             }
-            )
         </script>
 
 

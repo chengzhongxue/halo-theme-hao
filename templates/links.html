@@ -53,7 +53,7 @@
                 </div>
 
                 <!--钓鱼-->
-                <th:block th:if="${not #lists.isEmpty(groups)}" >
+                <th:block th:if="${not #lists.isEmpty(groups) && theme.config.fcircle.linksRandomFriendsEnable}" >
                     <div class="title-h2-a">
                         <div class="title-h2-a-left">
                             <h2 style="padding-top:0;margin:.6rem 0 .6rem">🎣 钓鱼</h2><a class="random-post-start"
@@ -155,7 +155,7 @@
 
                 <hr/>
                 <!-- 评论模块 -->
-                <th:block  th:if="${theme.config.comments.twikoo && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.envId)}">
+                <th:block  th:if="${theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
                     <div th:replace="~{modules/twikoo :: twikoo}"></div>
                 </th:block>
                 <div id="post-comment" th:if="${pluginFinder.available('PluginCommentWidget') && #strings.equals(theme.config.comments.use, 'commentWidget')}">

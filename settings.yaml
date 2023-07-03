@@ -755,6 +755,8 @@ spec:
       formSchema:
         - $formkit: radio
           name: enable
+          id: enable
+          key: enable
           label: 启用ai 摘要
           value: false
           options:
@@ -763,11 +765,13 @@ spec:
             - label: 禁用
               value: false
         - $formkit: text
+          if: "$get(enable).value"
           name: gptName
           label: 名称
           placeholder: 请输入内容
           value: KunKunYu
         - $formkit: radio
+          if: "$get(enable).value"
           name: mode
           label: 模式
           value: local
@@ -778,6 +782,7 @@ spec:
             - label: ai
               value: tianli
         - $formkit: radio
+          if: "$get(enable).value"
           name: switchBtn
           label: 显示切换按钮
           value: false
@@ -787,26 +792,31 @@ spec:
             - label: 否
               value: false
         - $formkit: url
+          if: "$get(enable).value"
           name: btnLink
           label: 链接地址
           placeholder: 输入链接地址
           value: https://afdian.net/item/f18c2e08db4411eda2f25254001e7c00
         - $formkit: number
+          if: "$get(enable).value"
           name: randomNum
           label: 标签数量
           value: 3
           help: "按钮最大的随机次数，也就是一篇文章最大随机出来几种"
         - $formkit: number
+          if: "$get(enable).value"
           name: basicWordCount
           label: 标签数量
           value: 1000
           help: "最低获取字符数, 最小1000, 最大1999"
         - $formkit: text
+          if: "$get(enable).value"
           name: key
           label: key
           value: xxxx
           placeholder: 请输入key
         - $formkit: url
+          if: "$get(enable).value"
           name: Referer
           label: 你的博客地址
           help: 注意保留最后的斜杠
@@ -1250,6 +1260,8 @@ spec:
       formSchema:
         - $formkit: radio
           name: switch
+          id: switch
+          key: switch
           label: 开关（WIP）
           value: false
           options:
@@ -1258,19 +1270,23 @@ spec:
             - label: 关闭
               value: false
         - $formkit: text
+          if: "$get(switch).value"
           name: introductionTitle
           label: 介绍框标题
           value: '协议提醒助手'
         - $formkit: text
+          if: "$get(switch).value"
           name: introductionTip
           label: 介绍框内容
           value: '查看本站为你的个人隐私做出的努力'
         - $formkit: url
+          if: "$get(switch).value"
           name: introductionUrl
           value: "/privacy"
           label: 介绍框点击跳转地址
           placeholder: 请输入跳转 url
         - $formkit: text
+          if: "$get(switch).value"
           name: introductionName
           value: "本站如何保护你的隐私"
           label: 按钮标题
@@ -1370,6 +1386,24 @@ spec:
           label: token地址
           placeholder: 请输入token地址
           help: 注意格式 (`token地址`)
+        - $formkit: radio
+          name: fcircleRandomFriendsEnable
+          label: 友链鱼塘页面（钓鱼）
+          value: true
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
+        - $formkit: radio
+          name: linksRandomFriendsEnable
+          label: 友联页面（钓鱼）
+          value: true
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
 
     - group: comments
       label: 评论
@@ -1377,6 +1411,8 @@ spec:
         - $formkit: select
           name: use
           label: 评论选择
+          id: use
+          key: use
           value: commentWidget
           help: Twikoo评论需要(打开,envId填写,accessToken填写)
           options:
@@ -1385,7 +1421,10 @@ spec:
             - label: Twikoo评论
               value: Twikoo
         - $formkit: radio
-          name: twikoo
+          if: "$get(use).value == 'Twikoo'"
+          name: twikooEnable
+          id: twikooEnable
+          key: twikooEnable
           label: Twikoo评论
           value: false
           options:
@@ -1393,34 +1432,46 @@ spec:
               value: true
             - label: 关闭
               value: false
-        - $formkit: number
-          name: maxBarrage
-          value: 1
-          label: 同时最多显示弹幕数
-          placeholder: 请输入显示弹幕数
-        - $formkit: number
-          name: barrageTime
-          value: 4000
-          label: 弹幕显示间隔时间ms
-          placeholder: 请输入间隔时间ms
-        - $formkit: url
-          name: envId
-          value: "`xxxxxxx`"
-          label: Twikoo评论-环境id
-          placeholder: 请输入环境id
-          help: 注意格式 (`地址`)
-        - $formkit: text
-          name: accessToken
-          value: "`xxxxxxx`"
-          label: Twikoo评论-token
-          placeholder: 请输入token
-          help: 注意格式 (`token`) 在控制台中获取
-        - $formkit: text
-          name: mailMd5
-          value: "`xxxxxxx`"
-          label: Twikoo评论-mailMd5
-          placeholder: 请输入mailMd5
-          help: 注意格式 (`mailMd5`)
+        - $formkit: group
+          if: "$get(twikooEnable).value"
+          name: twikoos
+          label: Twikoo评论配置
+          value:
+            maxBarrage:
+            barrageTime:
+            envId:
+            accessToken:
+            mailMd5:
+          children:
+            - $formkit: number
+              name: maxBarrage
+              value: 1
+              label: 同时最多显示弹幕数
+              placeholder: 请输入显示弹幕数
+            - $formkit: number
+              name: barrageTime
+              value: 4000
+              label: 弹幕显示间隔时间ms
+              placeholder: 请输入间隔时间ms
+            - $formkit: url
+              name: envId
+              value: "`xxxxxxx`"
+              label: Twikoo评论-环境id
+              placeholder: 请输入环境id
+              help: 注意格式 (`地址`)
+            - $formkit: text
+              name: accessToken
+              value: "`xxxxxxx`"
+              label: Twikoo评论-token
+              placeholder: 请输入token
+              help: 注意格式 (`token`) 在控制台中获取
+            - $formkit: text
+              name: mailMd5
+              value: "`xxxxxxx`"
+              label: Twikoo评论-mailMd5
+              placeholder: 请输入mailMd5
+              help: 注意格式 (`mailMd5`)
+
     - group: other
       label: 其他设置
       formSchema:
@@ -1449,23 +1500,25 @@ spec:
               value: true
             - label: 关闭
               value: false
+        - $formkit: radio
+          name: diytitleEnable
+          id: diytitleEnable
+          key: diytitleEnable
+          help: 启用动态标题
+          value: false
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
         - $formkit: group
           name: diytitle
           label: 动态标题
+          if: "$get(diytitleEnable).value"
           value:
-            enable:
             leaveTitle:
             backTitle:
           children:
-            - $formkit: radio
-              name: enable
-              help: 启用动态标题
-              value: false
-              options:
-                - label: 启用
-                  value: true
-                - label: 禁用
-                  value: false
             - $formkit: text
               name: leaveTitle
               label: 离开
@@ -1474,3 +1527,32 @@ spec:
               name: backTitle
               label: 回到
               value: "♪(^∇^*)欢迎肥来！"
+        - $formkit: radio
+          name: error_404Enable
+          id: error_404Enable
+          key: error_404Enable
+          label: 启用404页面
+          help: 启动前请发布页面(自定义模板选择`页面没用找到`,别名`404`)
+          value: false
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: group
+          name: error_404
+          label: 404页面配置
+          if: "$get(error_404Enable).value"
+          value:
+            subtitle:
+            background:
+          children:
+            - $formkit: text
+              name: subtitle
+              label: 标题
+              value: "请尝试站内搜索寻找文章"
+            - $formkit: url
+              name: background
+              label: 背景
+              value: "/themes/theme-hao/assets/images/404s.gif"
+
