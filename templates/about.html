@@ -25,7 +25,7 @@
                         </div>
                         <div class="author-img">
                             <img
-                                th:src="@{${#strings.isEmpty(site.favicon) ? '/assets/images/hao-logo.jpg' : site.favicon}}">
+                                th:src="@{${#strings.isEmpty(site.logo) ? '/assets/images/hao-logo.jpg' : site.logo}}">
                         </div>
                         <div class="author-tag-right"
                             th:if="${not #lists.isEmpty(theme.config.about.authorInfoRightTags)}"
@@ -828,7 +828,7 @@
                                     <time class="datatime reward-list-item-time">[[${authorReward.datatime}]]</time>
                                 </div>
                             </div>
- 
+
                         </div>
                     </div>
                 </div>
