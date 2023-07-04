@@ -1555,4 +1555,44 @@ spec:
               name: background
               label: 背景
               value: "/themes/theme-hao/assets/images/404s.gif"
+        - $formkit: radio
+          name: nav_musicEnable
+          id: nav_musicEnable
+          key: nav_musicEnable
+          label: 启用左下角音乐
+          value: false
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: group
+          name: nav_music
+          label: 左下角音乐配置项
+          if: "$get(nav_musicEnable).value"
+          value:
+            id:
+            server:
+            all_playlist:
+          children:
+            - $formkit: text
+              name: id
+              label: 音乐的id
+              help: 歌单的id，可以从音乐歌单分享的链接中获取
+              value: "8668419170"
+            - $formkit: text
+              name: server
+              label: 服务
+              help: 歌单的服务商，例如netease（网易云音乐）,tencent（腾讯）,kugou（酷狗）,xiami（小米音乐）,baidu（百度音乐）
+              value: "tencent"
+            - $formkit: url
+              name: all_playlist
+              label: 播放列表地址
+              help: 用于右键查看所有歌曲
+              value: "https://y.qq.com/n/ryqq/playlist/8668419170"
+            - $formkit: url
+              name: meting_api
+              label: 音乐图片api
+              value: "https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&r=:r"
+
 

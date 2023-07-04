@@ -20,6 +20,11 @@
 
     <div th:replace="~{modules/sidebar :: sidebar}"></div>
 
+    <!-- 左下角音乐 -->
+    <th:block th:if="${theme.config.other.nav_musicEnable}" >
+        <div  th:replace="~{modules/nav-music :: nav-music}"></div>
+    </th:block>
+
     <!-- 内容 -->
     <th:block th:replace="${content}"></th:block>
 
@@ -69,6 +74,20 @@
         <script th:src="@{/assets/libs/fast-average-color/index.browser.min.js}"></script>
 
         <script th:src="@{/assets/libs/view-image/view-image.min.js}"></script>
+
+
+        <!--左下角音乐-->
+        <th:block th:if="${theme.config.other.nav_musicEnable}" >
+            <script>var meting_api = '[[${theme.config.other.nav_music.meting_api}]]'; </script>
+
+            <link rel="stylesheet" th:href="@{/assets/libs/aplayer/APlayer.min.css}" media="all" onload="this.media='all'">
+
+            <script th:src="@{/assets/libs/aplayer/APlayer.min.js}"></script>
+
+            <script th:src="@{/assets/libs/aplayer/Meting2.min.js}"></script>
+
+
+        </th:block>
 
         <script th:src="@{/assets/libs/pjax/pjax.min.js}"></script>
 
