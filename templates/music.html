@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'music')}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="content">
+
+    <div class="page" id="body-wrap">
+
+        <!-- 头部导航栏 -->
+        <header class="not-top-img" id="page-header">
+            <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
+        </header>
+        <main class="layout hide-aside" id="content-inner">
+            <div id="page">
+                <h1 class="page-title">音乐馆</h1>
+                <div id="anMusic-page">
+                    <!-- <div id="anMusicBtnGetSong"><i class="anzhiyufont anzhiyu-icon-shuffle"></i></div>
+                    <div id="anMusicRefreshBtn"><i class="anzhiyufont anzhiyu-icon-arrows-rotate"></i></div>
+                    <div id="anMusicSwitching"><i class="anzhiyufont anzhiyu-icon-repeat"></i></div> -->
+                    <div id="anMusic-page-meting">
+                        <meting-js th:id="${theme.config.other.nav_music.id}" th:server="${theme.config.other.nav_music.server}" type="playlist" mutex="true" preload="auto"
+                                   theme="var(--heo-main)" order="list" list-max-height="calc(100vh - 169px)!important">
+                        </meting-js>
+                    </div>
+                </div>
+            </div>
+
+
+            <link rel="stylesheet" th:href="@{/assets/libs/aplayer/music.css}" >
+
+
+        </main>
+        <!-- 底部 -->
+        <footer th:replace="~{modules/footer :: footer}"></footer>
+    </div>
+
+</th:block>
+
+</html>

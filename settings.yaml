@@ -1569,7 +1569,6 @@ spec:
         - $formkit: group
           name: nav_music
           label: 左下角音乐配置项
-          if: "$get(nav_musicEnable).value"
           value:
             id:
             server:

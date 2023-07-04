@@ -172,6 +172,7 @@
             loadProgressBar: [[${theme.config.other.loadProgressBar}]],
             error404Enable: [[${theme.config.other.error_404Enable}]],
             allPlaylist: [[${theme.config.other.nav_music.all_playlist}]],
+            isMusic: [[${ htmlType == 'music'}]],
             date_suffix: {
                 just: '刚刚',
                 min: '分钟前',
@@ -223,6 +224,9 @@
                     break;
                 case '404':
                     title = '页面没有找到'
+                    break;
+                case 'music':
+                    title = '音乐馆'
                     break;
 
             }
