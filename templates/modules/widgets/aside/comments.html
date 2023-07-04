@@ -19,11 +19,11 @@
                     let commenthtml = '';
                     res.forEach((items)=>{
                         commenthtml += `<div class="aside-list-item">
-            <a class="thumbnail" href="${items.url}">
+            <a class="thumbnail" href="${items.url + '#' + items.id}">
                 <img loading="lazy" alt="dasda" src="${items.avatar}">
             </a>
             <div class="content">
-                <a class="comment" style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;" href="${items.url}" title="test">
+                <a class="comment" style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;" href="${items.url + '#' + items.id}" title="test">
                 ${items.commentText}
                 </a>
                 <div class="name">

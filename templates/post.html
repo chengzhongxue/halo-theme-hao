@@ -263,7 +263,7 @@
                                      th:src="${#strings.isEmpty(recommandPost.spec.cover) ? theme.config.layout.postRandomImg : recommandPost.spec.cover}">
                                 <div class="content is-center" >
                                     <div class="date" style="color: white"><i class="far fa-calendar-alt fa-fw"></i>
-                                        [[${#dates.format(recommandPost.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}]]
+                                        [[${#dates.format(recommandPost.spec.publishTime,'yyyy-MM-dd')}]]
                                     </div>
                                     <div class="title" style="color: white" th:text="${recommandPost.spec.title}"></div>
                                 </div>

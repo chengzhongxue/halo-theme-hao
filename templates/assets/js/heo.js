@@ -69,12 +69,12 @@ var heo = {
     //监测是否在页面开头
     addNavBackgroundInit: function() {
         var e = 0
-          , t = 0;
+            , t = 0;
         document.body && (e = document.body.scrollTop),
         document.documentElement && (t = document.documentElement.scrollTop),
         0 != (e - t > 0 ? e : t) && (document.getElementById("page-header").classList.add("nav-fixed"),
-        document.getElementById("page-header").classList.add("nav-visible"),
-        $("#cookies-window").hide())
+            document.getElementById("page-header").classList.add("nav-visible"),
+            $("#cookies-window").hide())
     },
 
     // 标签页面
@@ -223,9 +223,9 @@ var heo = {
     // 刷新即刻短文瀑布流
     reflashEssayWaterFall: function() {
         document.querySelector("#waterfall") && setTimeout((function() {
-            waterfall("#waterfall"),
-            document.getElementById("waterfall").classList.add("show")
-        }
+                waterfall("#waterfall"),
+                    document.getElementById("waterfall").classList.add("show")
+            }
         ), 500)
     },
 
@@ -292,12 +292,12 @@ var heo = {
     //隐藏cookie窗口
     hidecookie: function() {
         heo_cookiesTime = setTimeout((()=>{
-            document.getElementById("cookies-window").classList.add("cw-hide"),
-            setTimeout((()=>{
-                $("#cookies-window").hide()
+                document.getElementById("cookies-window").classList.add("cw-hide"),
+                    setTimeout((()=>{
+                            $("#cookies-window").hide()
+                        }
+                    ), 1e3)
             }
-            ), 1e3)
-        }
         ), 3e3)
     },
 
@@ -354,59 +354,48 @@ var heo = {
     },
 
     //切换音乐播放状态
-    musicToggle: function () {
-        let msgPlay = '<i class="fa-solid fa-play"></i><span>播放音乐</span>' // 此處可以更改為你想要顯示的文字
-        let msgPause = '<i class="fa-solid fa-pause"></i><span>暂停音乐</span>' // 同上，但兩處均不建議更改
-        if (heo_musicPlaying) {
-            document.querySelector("#nav-music").classList.remove("playing");
-            document.getElementById("menu-music-toggle").innerHTML = msgPlay;
-            document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停";
-            document.querySelector("#consoleMusic").classList.remove("on");
-            heo_musicPlaying = false;
-        } else {
-            document.querySelector("#nav-music").classList.add("playing");
-            document.getElementById("menu-music-toggle").innerHTML = msgPause;
-            document.querySelector("#consoleMusic").classList.add("on");
-            heo_musicPlaying = true;
-        }
-        document.querySelector('meting-js').aplayer.toggle();
-        rm.hideRightMenu();
+    musicToggle: function() {
+        heo_musicPlaying ? (document.querySelector("#nav-music").classList.remove("playing"),
+            document.getElementById("menu-music-toggle").innerHTML = '<i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span>',
+            document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停",
+            document.querySelector("#consoleMusic").classList.remove("on"),
+            btf.snackbarShow("暂停音乐", false, 2000),
+            heo_musicPlaying = !1) : (document.querySelector("#nav-music").classList.add("playing"),
+            document.getElementById("menu-music-toggle").innerHTML = '<i class="anzhiyufont anzhiyu-icon-pause"></i><span>暂停音乐</span>',
+            document.querySelector("#consoleMusic").classList.add("on"),
+            btf.snackbarShow("播放音乐", false, 2000),
+            heo_musicPlaying = !0),
+            document.querySelector("meting-js").aplayer.toggle(),
+            rm.hideRightMenu()
     },
 
     //音乐上一曲
-    musicSkipBack: function () {
-        document.querySelector('meting-js').aplayer.skipBack();
-        rm.hideRightMenu();
+    musicSkipBack: function() {
+        document.querySelector("meting-js").aplayer.skipBack(),
+            rm.hideRightMenu()
     },
 
     //音乐下一曲
-    musicSkipForward: function () {
-        document.querySelector('meting-js').aplayer.skipForward();
-        rm.hideRightMenu();
+    musicSkipForward: function() {
+        document.querySelector("meting-js").aplayer.skipForward(),
+            rm.hideRightMenu()
     },
 
     //获取音乐中的名称
-    musicGetName: function () {
-        var x = $('.aplayer-title')
-        // var x = document.getElementsByClassName('txt');
-        // for (var i = x.length - 1; i >= 0; i--) {
-        // console.log(x[i].innerText)
-        // }
-        var arr = []
-        for (var i = x.length - 1; i >= 0; i--) {
-            arr[i] = x[i].innerText
-            // console.log(x[i].innerText)
-        }
-        return arr[0]
+    musicGetName: function() {
+        for (var e = $(".aplayer-title"), t = [], o = e.length - 1; o >= 0; o--)
+            t[o] = e[o].innerText;
+        return t[0]
     },
 
-    
+
     // 显示打赏中控台
     rewardShowConsole: function () {
         $('.console-card-group-reward').attr('style', 'display: flex');
         $('.console-card-group').attr('style', 'display: none');
         document.querySelector("#console").classList.add("show");
-        
+        heo.initConsoleState()
+
     },
 
     //显示中控台
@@ -414,8 +403,8 @@ var heo = {
         $('.console-card-group-reward').attr('style', 'display: none');
         $('.console-card-group').attr('style', 'display: flex');
         document.querySelector("#console").classList.add("show");
-        
-        
+
+
     },
 
     //隐藏中控台
@@ -446,19 +435,15 @@ var heo = {
     hideAsideBtn: () => { // Hide aside
         const $htmlDom = document.documentElement.classList
         $htmlDom.contains('hide-aside')
-          ? saveToLocal.set('aside-status', 'show', 2)
-          : saveToLocal.set('aside-status', 'hide', 2)
+            ? saveToLocal.set('aside-status', 'show', 2)
+            : saveToLocal.set('aside-status', 'hide', 2)
         $htmlDom.toggle('hide-aside')
-      },
-  
+    },
+
 
     //初始化console图标
-    initConsoleState: function () {
-        //初始化隐藏边栏
-        const $htmlDom = document.documentElement.classList
-        $htmlDom.contains('hide-aside')
-            ? document.querySelector("#consoleHideAside").classList.add("on")
-            : document.querySelector("#consoleHideAside").classList.remove("on")
+    initConsoleState: function() {
+        document.documentElement.classList.contains("hide-aside") ? document.querySelector("#consoleHideAside").classList.add("on") : document.querySelector("#consoleHideAside").classList.remove("on")
     },
-    
+
 }
