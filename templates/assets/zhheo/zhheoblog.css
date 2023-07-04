@@ -17716,6 +17716,14 @@ span.hexo-douban-pagenum {
     height: 24px;
 }
 
+@media screen and (min-width: 768px) {
+    /* 隐藏弹窗 */
+    .needEndHide.hide {
+        bottom: -200px!important;
+        opacity: 0;
+    }
+}
+
 /*   文章目录样式 */
 a.toc-link {
     color: currentColor;
