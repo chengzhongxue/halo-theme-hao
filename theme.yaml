@@ -21,6 +21,10 @@ spec:
         description: 关于页面
         screenshot:
         file: about.html
+      - name: 音乐馆
+        description: 音乐页面
+        screenshot:
+        file: music.html
   description: Halo 2.x Theme base on Thymeleaf, Referring to Butterfly and Heo
   logo: 'https://liuzhihang.com/themes/theme-hao/assets/images/hao-logo.jpg'
   website: 'https://liuzhihang.com'

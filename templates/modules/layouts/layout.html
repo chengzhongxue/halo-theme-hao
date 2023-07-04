@@ -15,6 +15,9 @@
     <!-- 网站背景 -->
     <div id="web_bg"></div>
 
+    <!-- 网站背景 -->
+    <div id="an_music_bg"></div>
+
     <!-- 控制台 -->
     <div th:replace="~{modules/widgets/console :: console}"></div>
 
@@ -77,17 +80,15 @@
 
 
         <!--左下角音乐-->
-        <th:block th:if="${theme.config.other.nav_musicEnable}" >
-            <script>var meting_api = '[[${theme.config.other.nav_music.meting_api}]]'; </script>
+        <script>var meting_api = '[[${theme.config.other.nav_music.meting_api}]]'; </script>
 
-            <link rel="stylesheet" th:href="@{/assets/libs/aplayer/APlayer.min.css}" media="all" onload="this.media='all'">
+        <link rel="stylesheet" th:href="@{/assets/libs/aplayer/APlayer.min.css}" media="all" onload="this.media='all'">
 
-            <script th:src="@{/assets/libs/aplayer/APlayer.min.js}"></script>
+        <script th:src="@{/assets/libs/aplayer/APlayer.min.js}"></script>
 
-            <script th:src="@{/assets/libs/aplayer/Meting2.min.js}"></script>
+        <script th:src="@{/assets/libs/aplayer/Meting2.min.js}"></script>
 
 
-        </th:block>
 
         <script th:src="@{/assets/libs/pjax/pjax.min.js}"></script>
 
@@ -351,6 +352,11 @@
         //右下角 snackbar 弹窗
         if ([[${ theme.config.snackbar.switch }]]) {
             heo.hidecookie()
+        }
+
+        //音乐页面切换歌曲调用
+        if(GLOBAL_CONFIG.isMusic){
+            heo.changeMusicBg(false);
         }
         
 
