@@ -1,5 +1,8 @@
 let heo_cookiesTime = null;
-let heo_musicPlaying = false;
+// 第一次播放音乐
+var heo_musicFirst = false;
+// 音乐播放状态
+var heo_musicPlaying = false;
 let heo_keyboard = false;
 let heo_intype = false;
 // 私有函数
@@ -354,35 +357,66 @@ var heo = {
     },
 
     //切换音乐播放状态
-    musicToggle: function() {
-        heo_musicPlaying ? (document.querySelector("#nav-music").classList.remove("playing"),
-            document.getElementById("menu-music-toggle").innerHTML = '<i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span>',
-            document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停",
-            document.querySelector("#consoleMusic").classList.remove("on"),
-            btf.snackbarShow("暂停音乐", false, 2000),
-            heo_musicPlaying = !1) : (document.querySelector("#nav-music").classList.add("playing"),
-            document.getElementById("menu-music-toggle").innerHTML = '<i class="anzhiyufont anzhiyu-icon-pause"></i><span>暂停音乐</span>',
-            document.querySelector("#consoleMusic").classList.add("on"),
-            btf.snackbarShow("播放音乐", false, 2000),
-            heo_musicPlaying = !0),
-            document.querySelector("meting-js").aplayer.toggle(),
-            rm.hideRightMenu()
+    musicToggle: function (changePaly = true) {
+        const navMusicEl = document.getElementById("nav-music");
+        if (!heo_musicFirst) {
+            heo.musicBindEvent();
+            heo_musicFirst = true;
+        }
+        let msgPlay = '<i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span>';
+        let msgPause = '<i class="anzhiyufont anzhiyu-icon-pause"></i><span>暂停音乐</span>';
+        if (heo_musicPlaying) {
+            navMusicEl.classList.remove("playing");
+            document.getElementById("menu-music-toggle").innerHTML = msgPlay;
+            document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停";
+            document.querySelector("#consoleMusic").classList.remove("on");
+            heo_musicPlaying = false;
+            navMusicEl.classList.remove("stretch");
+        } else {
+            navMusicEl.classList.add("playing");
+            document.getElementById("menu-music-toggle").innerHTML = msgPause;
+            document.querySelector("#consoleMusic").classList.add("on");
+            heo_musicPlaying = true;
+            navMusicEl.classList.add("stretch");
+        }
+        if (changePaly) document.querySelector("#nav-music meting-js").aplayer.toggle();
+        rm.hideRightMenu();
+    },
+
+    // 音乐绑定事件
+    musicBindEvent: function () {
+        document.querySelector("#nav-music .aplayer-music").addEventListener("click", function () {
+            heo.musicTelescopic();
+        });
+        document.querySelector("#nav-music .aplayer-button").addEventListener("click", function () {
+            heo.musicToggle(false);
+        });
+    },
+
+    // 音乐伸缩
+    musicTelescopic: function () {
+        const navMusicEl = document.getElementById("nav-music");
+        if (navMusicEl.classList.contains("stretch")) {
+            navMusicEl.classList.remove("stretch");
+        } else {
+            navMusicEl.classList.add("stretch");
+        }
     },
 
     //音乐上一曲
-    musicSkipBack: function() {
+    musicSkipBack: function () {
         document.querySelector("meting-js").aplayer.skipBack(),
             rm.hideRightMenu()
     },
 
     //音乐下一曲
-    musicSkipForward: function() {
+    musicSkipForward: function () {
         document.querySelector("meting-js").aplayer.skipForward(),
             rm.hideRightMenu()
     },
 
     //获取音乐中的名称
-    musicGetName: function() {
+    musicGetName: function () {
         for (var e = $(".aplayer-title"), t = [], o = e.length - 1; o >= 0; o--)
             t[o] = e[o].innerText;
         return t[0]
