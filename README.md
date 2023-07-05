@@ -17,7 +17,7 @@
 [快速上手](#-安装) |
 [使用文档](https://docs.liuzhihang.com) |
 [加入我们](#-讨论) |
-[为爱发电](#-讨论)
+[为爱发电](#-发电)
 
 </p>
 </div>
@@ -35,15 +35,15 @@
 
 ## 🔥 预览
 
-| 站点名称 | 站点地址 | 站点描述 |
-| :---: | :----: | :----: |
-| 程序员小航 | https://liuzhihang.com | 学，而知不足；教，然后知困 |
-| 小孙同学    | https://blog.sunguoqi.com | 路随远行则将至，事虽难做则必成|
-| 流殃  | https://shyblog.world | 一名2020年毕业的java工程师 |
-| AirboZH | https://www.airbozh.cn | 生活原本沉闷，但跑起来有风 |
-| 羡羡 | https://www.hydsb0.com/ | 心怀所愿、奔赴山海 |
-| 困困鱼 | https://0206.ink | 生活晴朗、万物可爱 |
-| Top John | https://op-lab.top | 热爱开源、喜欢折腾 |
+| 站点名称 | 站点地址 |
+| :---: | :----: |
+| 程序员小航 | https://liuzhihang.com |
+| 小孙同学    | https://blog.sunguoqi.com |
+| 流殃  | https://shyblog.world |
+| AirboZH | https://www.airbozh.cn |
+| 羡羡 | https://www.hydsb0.com/ |
+| 困困鱼 | https://0206.ink |
+| Top John | https://op-lab.top |
 
 ## 👋 简介
 
