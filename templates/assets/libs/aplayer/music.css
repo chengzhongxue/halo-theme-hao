@@ -49,7 +49,11 @@ body:has(#anMusic-page) #page {
     }
 }
 
+#page-header.not-top-img #nav .back-home-button,
+#page-header.not-top-img #nav a {
+    color:#F7F7FA;
 
+}
 
 
 body:has(#anMusic-page) #footer,

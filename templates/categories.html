@@ -12,18 +12,34 @@
 
             <div id="page">
                 <h1 class="page-title" style="display: inline;">分类</h1>
-                <div class="category-lists">
+                <div th:if="${#strings.equals(theme.config.categories.use, 'default')}" class="category-lists">
                     <div class="category-title is-center">分类 - <span class="category-amount">11</span></div>
                     <div class="tag-cloud-list is-center">
-                        <a style="font-size: 1em;"
-                           th:each="categoryItem : ${categoryFinder.listAll()}"
-                           th:href="@{${categoryItem.status.permalink}}"
-                           th:id="${categoryItem.spec.displayName}">
-                            <span style="font-size: 22px;" class="tags-punctuation">[[${categoryItem.spec.displayName}]]</span>
-                            
+                        <a style="font-size: 1em;" th:each="categoryItem : ${categoryFinder.listAll()}"
+                           th:href="@{${categoryItem.status.permalink}}" th:id="${categoryItem.spec.displayName}">
+                            <span style="font-size: 22px;"
+                                  class="tags-punctuation">[[${categoryItem.spec.displayName}]]</span>
+
                             <span class="tagsPageCount">[[${categoryItem.status.visiblePostCount}]]</span></a>
                     </div>
                 </div>
+                <th:block th:if="${#strings.equals(theme.config.categories.use, '3D')}">
+                    <link rel="stylesheet" th:href="@{/assets/libs/no3d/no3d.css}">
+                    <div id="libCategories" >
+                        <div id="lib-cards" class="container" >
+                            <a th:each="categoryItem : ${categoryFinder.listAll()}" th:href="@{${categoryItem.status.permalink}}" th:id="${categoryItem.spec.displayName}">
+                                <card th:data-image="${categoryItem.spec.cover}">
+                                    <h1 slot="header">[[${categoryItem.spec.displayName}]]</h1>
+                                    <p slot="content">[[${categoryItem.spec.description}]]</p>
+                                </card>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="js-pjax">
+                        <script th:src="@{/assets/libs/no3d/vue.min.js}"></script>
+                        <script th:src="@{/assets/libs/no3d/no3d.js}"></script>
+                    </div>
+                </th:block>
             </div>
         </main>
         <!-- 底部 -->
