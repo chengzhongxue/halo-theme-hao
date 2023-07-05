@@ -750,6 +750,18 @@ spec:
           label: 版权声明
           placeholder: '本文是原创文章，采用 <a target="_blank" href="/cc">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a href="/" target="_blank" >程序员小航</a>'
           help: "版权声明内容，支持填入 HTML 标签"
+    - group: categories
+      label: 分类
+      formSchema:
+        - $formkit: select
+          name: use
+          label: 样式选择
+          value: default
+          options:
+            - label: 默认
+              value: default
+            - label: 3D
+              value: 3D
     - group: aiDescription
       label: 文章ai摘要
       formSchema:
