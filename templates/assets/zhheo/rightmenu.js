@@ -118,8 +118,8 @@ window.oncontextmenu = function (event) {
         }
 
         //判断是否是音乐
-        if (event.target.nodeName == "METING-JS") {
-            console.log('这是一个音乐');
+        const navMusicEl = document.querySelector("#nav-music");
+        if (navMusicEl && navMusicEl.contains(event.target)) {
             pluginMode = true;
             $rightMenuMusicToggle.show();
             $rightMenuMusicBack.show();
