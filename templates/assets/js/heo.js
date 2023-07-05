@@ -470,11 +470,13 @@ var heo = {
                     heo.addEventListenerChangeMusicBg();
 
                     // 暂停nav的音乐
-                    if (
-                        document.querySelector("#nav-music meting-js").aplayer &&
-                        !document.querySelector("#nav-music meting-js").aplayer.audio.paused
-                    ) {
-                        heo.musicToggle();
+                    if(GLOBAL_CONFIG.navMusicEnable){
+                        if (
+                            document.querySelector("#nav-music meting-js").aplayer &&
+                            !document.querySelector("#nav-music meting-js").aplayer.audio.paused
+                        ) {
+                            heo.musicToggle();
+                        }
                     }
                 }
             }, 100);
