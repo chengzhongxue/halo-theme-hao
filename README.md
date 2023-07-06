@@ -5,10 +5,12 @@
 <h1>Halo-Theme-Hao</h1>
 <!-- 主题徽章 -->
 <p align="center">
-  <a href="https://github.com/halo-dev/halo"><img alt="Halo version" src="https://img.shields.io/badge/halo-2.0%2B-brightgreen" /></a>
-  <a href="https://github.com/liuzhihang/halo-theme-hao"><img alt="Build Status" src="https://img.shields.io/badge/build-positive-brightgreen"></a>
-  <a href="https://github.com/prettier/prettier"><img alt="Code Style: Prettier" src="https://img.shields.io/badge/release-1.1.5-blue"></a>
-  <a href="./LICENSE"><img alt="LICENSE" src="https://img.shields.io/badge/license-GPL-blue.svg"></a>
+  <!-- halo版本 -->
+  <a href="https://github.com/halo-dev/halo"><img alt="Halo version" src="https://img.shields.io/badge/halo-2.0%2B-blue" /></a>
+  <!-- 下载总数 -->
+  <a href="https://github.com/liuzhihang/halo-theme-hao/releases"><img alt="size" src="https://img.shields.io/github/downloads/liuzhihang/halo-theme-hao/total.svg?style=flat-square""/></a>
+  <!-- 许可协议 -->
+  <a href="./LICENSE"><img alt="LICENSE" src="https://img.shields.io/badge/license-GPL-yellow.svg"></a>
 </p>
 <!-- 快捷导航 -->
 <p align="center">
@@ -16,8 +18,7 @@
 [主题预览](#-预览) |
 [快速上手](#-安装) |
 [使用文档](https://docs.liuzhihang.com) |
-[加入我们](#-讨论) |
-[为爱发电](#-发电)
+[加入我们](#-讨论)
 
 </p>
 </div>
@@ -57,16 +58,26 @@
 
 ### 🚗 自动安装
 
-1. 点击 [此链接](https://halo.run/store/apps/app-MgZJX) 进入 Halo 官方应用市场，找到本主题。
-2. 点击左下角 `下载` 按钮。
-3. 弹出的对话框中，输入自己的网站地址，点击安装。
+1. 点击 [此链接](https://halo.run/store/apps/app-MgZJX) 进入 Halo 官方应用市场，找到本主题
+2. 点击左下角 `下载` 按钮
+3. 弹出的对话框中，输入自己的网站地址，点击安装
 
 ### 🚲 手动安装
-1. 在 [ Release](https://github.com/liuzhihang/halo-theme-hao/releases) 页面 `下载` 最新主题包 (zip) 。
-2. 进入 Halo 后台 -> 主题 (左侧面板)。
-3. 点击右上角 “主题”， 在弹出的窗口中选择 `安装主题`。
-4. 选择下载好的主题包（zip）。
-5. 安装完成后的主题将会出现在 “未安装” 内，点击 `启用主题`。
+
+#### 🚂 本地安装
+
+1. 在 [ Release](https://github.com/liuzhihang/halo-theme-hao/releases) 页面 `下载` 最新主题包 (zip) 
+2. 进入 Halo 后台 -> 主题 (左侧面板)
+3. 点击右上角 “主题”， 在弹出的窗口中选择 `安装主题`
+4. 选择下载好的主题包（zip）
+5. 安装完成后的主题将会出现在 “未安装” 内，点击 `启用主题`
+
+#### 🛸 远程安装
+
+1. 复制地址 `https://github.com/liuzhihang/halo-theme-hao`
+2. 进入Halo后台 -> 外观 -> 主题 (左侧面板)
+3. 点击右上方 `安装` 按钮, 然后选择 `远程下载`
+4. 在文本框中粘贴仓库地址后点击下载
 
 ### 🔌 插件依赖
 > 所有插件均为可选，不安装则不会出现对应功能。
@@ -80,8 +91,6 @@
 - 代码高亮 [plugin-prismjs](https://github.com/liuzhihang/plugin-prismjs)
 - 文章目录 [plugin-tocbot](https://github.com/liuzhihang/plugin-tocbot)
 - 图片懒加载 [plugin-lazyload](https://github.com/liuzhihang/plugin-lazyload)
-
-
 
 > 更多插件请参见：https://github.com/halo-sigs/awesome-halo
 
@@ -99,9 +108,10 @@
 
 想了解更多信息可以关注 「 程序员小航 」。
 
-<img width="500" src="https://liuzhihang.com/themes/theme-hao/assets/images/wechat/wechat1.png" />
+<img width="360" src="https://liuzhihang.com/themes/theme-hao/assets/images/wechat/wechat1.png" />
 
 - 发送 "hao 群" 可以加群 （群验证信息最好是个人网站）
+
 - 发送"加好友"，可以加我微信，我拉你进群 （群二维码失效时）
 
 > 卖服务器的广告人，就不要加了。
@@ -152,23 +162,6 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
-## 🍭 发电
-
-> 如果您喜欢该主题，可以考虑资助一下~ 您的支持是我们继续开发主题的动力。
-
-<table>
-<tr>
-<td>
-<img src=""/>666
-</td>
-<td>
-<img src=""/>777
-</td>
-</tr>
-</table>
-
-欢迎其他各种形式的捐助！
 
 ## 📊 指标
 
