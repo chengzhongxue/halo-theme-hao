@@ -11,7 +11,8 @@
 
         <div class="post_cover">
             <a th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
-                <span class="recent-post-top-text">荐</span>
+                <span class="recent-post-top-text"
+                      th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'">荐</span>
                 <img class="post_bg" loading="lazy"
                      th:alt="${post.spec.title}"
                      th:src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+","+post.spec.title : post.spec.cover}'
@@ -32,7 +33,8 @@
          th:if="${#strings.equals(theme.config.top.recommendPost, 'custom')}">
         <div class="post_cover">
             <a th:href="@{${cuscomPost.url}}" th:title="${cuscomPost.title}">
-                <span class="recent-post-top-text">荐</span>
+                <span class="recent-post-top-text"
+                      th:attr="onclick='pjax.loadUrl(\''+ @{${cuscomPost.url}} +'\')'">荐</span>
                 <img class="post_bg" loading="lazy"
                      th:alt="${cuscomPost.title}"
                      th:src='${#strings.isEmpty(cuscomPost.cover) ? postRandomImg+","+cuscomPost.title : cuscomPost.cover}'
@@ -51,7 +53,7 @@
     <!-- 今日推荐 -->
     <div class="todayCard" id="todayCard"
          th:if="${theme.config.top.todayRecommend}"
-         th:attr="onclick='javascript:window.open(\''+ ${theme.config.top.todayRecommendContent.todayRecommendUrl} +'\')'">
+         th:attr="onclick='javascript:pjax.loadUrl(\''+ ${theme.config.top.todayRecommendContent.todayRecommendUrl} +'\')'">
         <div class="todayCard-info">
             <div class="todayCard-tips" th:text="${theme.config.top.todayRecommendContent.todayRecommendxTitle}"></div>
             <div class="todayCard-title" th:text="${theme.config.top.todayRecommendContent.todayRecommendTitle}"></div>
