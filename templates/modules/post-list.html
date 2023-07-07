@@ -7,7 +7,6 @@
 
     <!-- card，需要添加在没有图片时使用随机图片 -->
     <div class="recent-post-item"
-         th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'"
          th:classappend="${theme.config.layout.cols} + ' ' +
          ${theme.config.layout.postLocation} + ' ' +
          (${iStat.even} ? 'even' : 'odd') +
