@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 爱好 -->
+<div class="author-content" th:fragment="game">
+    <div class="author-content-item game-lol"
+        th:style="'background: url('+ @{${theme.config.about.game.game_bg}} +') top / cover no-repeat'">
+        <div class="card-content">
+            <div class="author-content-item-tips" th:text="${theme.config.about.game.game_tips}">
+
+            </div><span class="author-content-item-title"
+                th:text="${theme.config.about.game.game_title}"></span>
+            <div class="content-bottom">
+                <div class="icon-group">
+                    <div class="loading-bar" role="presentation" aria-hidden="true"></div>
+                </div>
+                <div class="tips" th:text="${theme.config.about.game.game_uid}"></div>
+            </div>
+        </div>
+    </div>
+    <div class="author-content-item game-wolf"
+        th:style="'background: url('+ @{${theme.config.about.game2.game2_bg}} +') top / cover no-repeat'">
+        <div class="card-content">
+            <div class="author-content-item-tips" th:text="${theme.config.about.game2.game2_tips}">
+
+            </div><span class="author-content-item-title"
+                th:text="${theme.config.about.game2.game2_title}"></span>
+            <div class="content-bottom">
+                <div class="tips" th:text="${theme.config.about.game2.game2_uid}"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

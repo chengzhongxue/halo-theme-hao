@@ -7,6 +7,7 @@
 
     <!-- card，需要添加在没有图片时使用随机图片 -->
     <div class="recent-post-item"
+         th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'"
          th:classappend="${theme.config.layout.cols} + ' ' +
          ${theme.config.layout.postLocation} + ' ' +
          (${iStat.even} ? 'even' : 'odd') +
@@ -16,7 +17,7 @@
         <div class="post_cover left_radius">
             <a th:attr="title=${post.spec.title}" th:href="@{${post.status.permalink}}">
                 <img class="post_bg entered loaded" loading="lazy"
-                     th:alt="${post.status.excerpt}"
+                     th:alt="${post.spec.title}"
                      th:src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+","+post.spec.title : post.spec.cover}'>
             </a>
         </div>
@@ -39,7 +40,7 @@
                    th:href="@{${post.status.permalink}}"
                    th:text="${post.spec.title}">
                 </a>
-                 <div class="content" th:if="${theme.config.post.summarize}" th:text="${post.status.excerpt}"></div>
+                <div class="content" th:if="${theme.config.post.summarize}" th:text="${post.status.excerpt}"></div>
             </div>
 
 
