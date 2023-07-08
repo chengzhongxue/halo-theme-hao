@@ -1652,10 +1652,9 @@ spec:
                   value: true
                 - label: 关闭
                   value: false
-            - $formkit: url
+            - $formkit: attachment
               name: loadingBoxImg
               if: "$get(loadingBoxEnable).value"
-              validation: "url"
               label: 加载页图片 URL
               value: "https://bu.dusays.com/2023/03/03/6401a7960c0fb.webp"
               placeholder: 请输入图片 url
