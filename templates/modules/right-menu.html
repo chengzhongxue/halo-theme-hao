@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 右键菜单 -->
-<div th:fragment="right-menu" th:if="${theme.config.rightMenu.switch}">
+<div th:fragment="right-menu" th:if="${theme.config.tool.rightMenu.rightMenuEnable}">
     <script th:src="@{/assets/zhheo/rightmenu.js}"></script>
     <div id="rightMenu">
         <div class="rightMenu-group rightMenu-small">
@@ -60,7 +60,7 @@
                 <span>切换到下一首</span>
             </div>
             <div class="rightMenu-item" id="menu-music-playlist"
-                 th:attr="onclick='javascript:window.open(\''+ ${theme.config.other.nav_music.all_playlist} +'\')'"
+                 th:attr="onclick='javascript:window.open(\''+ ${theme.config.tool.nav_music.all_playlist} +'\')'"
                  style="">
                 <i class="anzhiyufont anzhiyu-icon-radio"></i>
                 <span>查看所有歌曲</span>

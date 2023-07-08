@@ -67,15 +67,15 @@
   <div class="console-card-group-reward" th:if="${theme.config.aboutReward.reward.enable_reward}">
     <ul class="reward-all console-card">
       <li class="reward-item"><a th:href="@{${theme.config.aboutReward.reward.wxPay}}"
-          rel="external nofollow noreferrer" target="_blank" draggable="false"><img
-            class=" entered loaded" alt="微信"
-            th:src="${theme.config.aboutReward.reward.wxPay}"></a>
+                                 rel="external nofollow noreferrer" target="_blank" draggable="false"><img
+              class=" entered loaded" alt="微信"
+              th:src="${theme.config.aboutReward.reward.wxPay}"></a>
         <div class="post-qr-code-desc">微信</div>
       </li>
       <li class="reward-item"><a th:href="@{${theme.config.aboutReward.reward.alipay}}"
-          rel="external nofollow noreferrer" target="_blank" draggable="false"><img
-            class=" entered loaded" alt="支付宝"
-            th:src="${theme.config.aboutReward.reward.alipay}"></a>
+                                 rel="external nofollow noreferrer" target="_blank" draggable="false"><img
+              class=" entered loaded" alt="支付宝"
+              th:src="${theme.config.aboutReward.reward.alipay}"></a>
         <div class="post-qr-code-desc">支付宝</div>
       </li>
     </ul>
@@ -84,13 +84,13 @@
     <div class="console-btn-item">
       <!-- 用到了 rightmenu.js 的功能，还需要调整 -->
       <a class="darkmode_switchbutton" href="javascript:void(0);" onclick="rm.switchDarkMode()" rel="external nofollow"
-        title="显示模式切换"><i class="iconfont icon-moon" style="font-size:1rem"></i>
+         title="显示模式切换"><i class="iconfont icon-moon" style="font-size:1rem"></i>
       </a>
     </div>
     <div class="console-btn-item" id="consoleHideAside" onclick="heo.hideAsideBtn()" title="边栏显示控制"><a
-        class="asideSwitch" data-pjax-state=""><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div>
+            class="asideSwitch" data-pjax-state=""><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div>
     <div class="console-btn-item on" id="consoleCommentBarrage" onclick="heo.switchCommentBarrage()" title="热评开关"><a
-        class="commentBarrage" data-pjax-state=""><i class="anzhiyufont anzhiyu-icon-message"></i></a></div>
+            class="commentBarrage" data-pjax-state=""><i class="anzhiyufont anzhiyu-icon-message"></i></a></div>
 
     <!--<div class="console-btn-item" id="consoleKeyboard" onclick="heo.keyboardToggle()" title="快捷键开关"><a-->
     <!--        class="keyboard-switch"><i class="fa-duotone fa-keyboard"></i></a>-->
@@ -98,7 +98,7 @@
     <!--<div class="console-btn-item" id="assist-open" onclick="heo.hideConsole()" title="无障碍工具栏"><a-->
     <!--        class="assist-btn"><i class="fa-duotone fa-wheelchair"></i></a>-->
     <!--</div>-->
-    <div th:if="${theme.config.other.nav_musicEnable}" class="console-btn-item" id="consoleMusic" onclick="heo.musicToggle()" title="音乐开关">
+    <div th:if="${theme.config.tool.nav_music.nav_musicEnable}" class="console-btn-item" id="consoleMusic" onclick="heo.musicToggle()" title="音乐开关">
       <a class="music-switch" data-pjax-state="">
         <i class="anzhiyufont anzhiyu-icon-music"></i>
       </a>

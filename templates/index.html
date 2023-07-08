@@ -19,12 +19,12 @@
             <div class="recent-posts" id="recent-posts">
 
                 <!-- 分类导航栏 -->
-                <div th:replace="~{'modules/bar/' + ${theme.config.layout.nav}}"></div>
+                <div th:replace="~{'modules/bar/' + ${theme.config.layout.navs.nav}}"></div>
 
                 <th:block th:replace="~{modules/post-list :: post-list}"></th:block>
 
             </div>
-            <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.widgets})}"></div>
+            <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.widgetss.indexWidgets})}"></div>
         </main>
         <!-- 底部 -->
         <footer th:replace="~{modules/footer :: footer}"></footer>
