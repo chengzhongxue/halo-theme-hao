@@ -4,16 +4,16 @@ var btf = {
 
     // 修改时间显示"最近"
     diffDate: function (d, more = false) {
-            const dateNow = new Date();
-            const datePost = new Date(d);
-            const dateDiff = dateNow.getTime() - datePost.getTime();
-            const minute = 1000 * 60;
-            const hour = minute * 60;
-            const day = hour * 24;
-            const month = day * 30;
+        const dateNow = new Date();
+        const datePost = new Date(d);
+        const dateDiff = dateNow.getTime() - datePost.getTime();
+        const minute = 1000 * 60;
+        const hour = minute * 60;
+        const day = hour * 24;
+        const month = day * 30;
 
-            let result;
-            if (more) {
+        let result;
+        if (more) {
             const monthCount = dateDiff / month;
             const dayCount = dateDiff / day;
             const hourCount = dateDiff / hour;
@@ -30,49 +30,108 @@ var btf = {
             } else {
                 result = GLOBAL_CONFIG.date_suffix.just;
             }
-            } else {
-        result = parseInt(dateDiff / day);
+        } else {
+            result = parseInt(dateDiff / day);
         }
         return result;
     },
 
+    // loadLightbox: ele => {
+    //     const service = GLOBAL_CONFIG.lightbox;
+
+    //     if (service === "mediumZoom") {
+    //       const zoom = mediumZoom(ele);
+    //       zoom.on("open", e => {
+    //         const photoBg = document.documentElement.getAttribute("data-theme") === "dark" ? "#121212" : "#fff";
+    //         zoom.update({
+    //           background: photoBg,
+    //         });
+    //       });
+    //     }
+
+    //     if (service === "fancybox") {
+    //       ele.forEach(i => {
+    //         if (i.parentNode.tagName !== "A") {
+    //           const dataSrc = i.dataset.lazySrc || i.src;
+    //           const dataCaption = i.title || i.alt || "";
+    //           btf.wrap(i, "a", {
+    //             href: dataSrc,
+    //             "data-fancybox": "gallery",
+    //             "data-caption": dataCaption,
+    //             "data-thumb": dataSrc,
+    //           });
+    //         }
+    //       });
+
+    //       if (!window.fancyboxRun) {
+    //         Fancybox.bind("[data-fancybox]", {
+    //           Hash: false,
+    //           Thumbs: {
+    //             autoStart: false,
+    //           },
+    //         });
+    //         window.fancyboxRun = true;
+    //       }
+    //     }
+    // },
     loadLightbox: ele => {
-        const service = GLOBAL_CONFIG.lightbox;
-    
-        if (service === "mediumZoom") {
-          const zoom = mediumZoom(ele);
-          zoom.on("open", e => {
-            const photoBg = document.documentElement.getAttribute("data-theme") === "dark" ? "#121212" : "#fff";
-            zoom.update({
-              background: photoBg,
-            });
-          });
-        }
-    
-        if (service === "fancybox") {
-          ele.forEach(i => {
-            if (i.parentNode.tagName !== "A") {
-              const dataSrc = i.dataset.lazySrc || i.src;
-              const dataCaption = i.title || i.alt || "";
-              btf.wrap(i, "a", {
-                href: dataSrc,
-                "data-fancybox": "gallery",
-                "data-caption": dataCaption,
-                "data-thumb": dataSrc,
-              });
+
+        const jqLoadAndRun = () => {
+            const $fancyboxEle = GLOBAL_CONFIG.lightbox === 'fancybox'
+                ? ele
+                : []
+            const fbLengthNoZero = $fancyboxEle.length > 0
+
+            if (fbLengthNoZero) {
+                btf.isJqueryLoad(() => {
+                    fbLengthNoZero && addFancybox($fancyboxEle)
+                })
             }
-          });
-    
-          if (!window.fancyboxRun) {
-            Fancybox.bind("[data-fancybox]", {
-              Hash: false,
-              Thumbs: {
-                autoStart: false,
-              },
-            });
-            window.fancyboxRun = true;
-          }
         }
+
+
+
+
+        /**
+         * fancybox
+         */
+        const addFancybox = function (ele) {
+            const runFancybox = (ele) => {
+                ele.each(function (i, o) {
+                    const $this = $(o)
+                    const lazyloadSrc = $this.attr('data-lazy-src') || $this.attr('src')
+                    const lazyloadSrc1600 = lazyloadSrc + '_1600w'
+                    const dataCaption = $this.attr('alt') || ''
+                    if (lazyloadSrc.indexOf('!blogimg') != -1) {
+                        $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="images" data-caption="${dataCaption}" class="fancybox" data-srcset="${lazyloadSrc1600} 1600w"></a>`)
+                    } else {
+                        $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="images" data-caption="${dataCaption}" class="fancybox" data-srcset="${lazyloadSrc} 1600w"></a>`)
+                    }
+
+                })
+
+                $().fancybox({
+                    selector: '[data-fancybox]',
+                    loop: true,
+                    transitionEffect: 'slide',
+                    protect: true,
+                    buttons: ['slideShow', 'fullScreen', 'thumbs', 'close'],
+                    hash: false
+                })
+            }
+
+            if (typeof $.fancybox === 'undefined') {
+                $('head').append(`<link rel="stylesheet" type="text/css" href="${GLOBAL_CONFIG.source.fancybox.css}">`)
+                $.getScript(`${GLOBAL_CONFIG.source.fancybox.js}`, function () {
+                    runFancybox($(ele))
+                })
+            } else {
+                runFancybox($(ele))
+            }
+        }
+
+        jqLoadAndRun()
+
     },
     debounce: function (func, wait, immediate) {
         let timeout
@@ -217,7 +276,7 @@ var btf = {
         }
     },
 
-    
+
     scrollToDest: (e,t)=>{
         if (e < 0 || t < 0)
             return;
@@ -230,19 +289,19 @@ var btf = {
             });
         let o = null;
         t = t || 500,
-        window.requestAnimationFrame((function i(s) {
-            if (o = o || s,
-            n < e) {
-                const r = s - o;
-                window.scrollTo(0, (e - n) * r / t + n),
-                r < t ? window.requestAnimationFrame(i) : window.scrollTo(0, e)
-            } else {
-                const r = s - o;
-                window.scrollTo(0, n - (n - e) * r / t),
-                r < t ? window.requestAnimationFrame(i) : window.scrollTo(0, e)
-            }
-        }
-        ))
+            window.requestAnimationFrame((function i(s) {
+                    if (o = o || s,
+                    n < e) {
+                        const r = s - o;
+                        window.scrollTo(0, (e - n) * r / t + n),
+                            r < t ? window.requestAnimationFrame(i) : window.scrollTo(0, e)
+                    } else {
+                        const r = s - o;
+                        window.scrollTo(0, n - (n - e) * r / t),
+                            r < t ? window.requestAnimationFrame(i) : window.scrollTo(0, e)
+                    }
+                }
+            ))
     },
 
     fadeIn: (ele, time) => {
