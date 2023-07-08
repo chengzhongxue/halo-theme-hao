@@ -7,7 +7,7 @@
             <a href="/">首页</a>
         </div>
 
-        <th:block th:with="customUrls = ${theme.config.layout.navCustomUrl}">
+        <th:block th:with="customUrls = ${theme.config.layout.navs.navCustomUrl}">
 
             <div class="category-bar-item"
                  th:each="customUrlItem : ${customUrls}"

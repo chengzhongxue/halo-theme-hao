@@ -6,17 +6,17 @@
     <div id="banners">
         <div class="banners-title">
             <div class="banners-title-big"
-                 th:if="${not #strings.isEmpty(theme.config.top.bannersTitleBig)}"
-                 th:utext="${theme.config.top.bannersTitleBig}"></div>
+                 th:if="${not #strings.isEmpty(theme.config.top.BannerLeft.bannersTitleBig)}"
+                 th:utext="${theme.config.top.BannerLeft.bannersTitleBig}"></div>
             <div class="banners-title-small"
-                 th:if="${not #strings.isEmpty(theme.config.top.bannersTitleSmall)}"
-                 th:utext="${theme.config.top.bannersTitleSmall}"></div>
+                 th:if="${not #strings.isEmpty(theme.config.top.BannerLeft.bannersTitleSmall)}"
+                 th:utext="${theme.config.top.BannerLeft.bannersTitleSmall}"></div>
         </div>
 
         <div class="tags-group-all">
 
             <!--  banners 使用默认值-->
-            <div class="tags-group-wrapper" th:if="${#strings.equals(theme.config.top.bannersBackground, 'default')}">
+            <div class="tags-group-wrapper" th:if="${#strings.equals(theme.config.top.BannerLeft.bannersBackground, 'default')}">
                 <div class="tags-group-icon-pair">
                     <div class="tags-group-icon" style="background:#989bf8">
                         <img th:src="@{/assets/images/icons/AfterEffect.png}" title="AfterEffect">
@@ -133,7 +133,7 @@
 
             <!--  banners 使用默认值-->
             <div class="tags-group-wrapper"
-                 th:if="${#strings.equals(theme.config.top.bannersBackground, 'techStack')}"
+                 th:if="${#strings.equals(theme.config.top.BannerLeft.bannersBackground, 'techStack')}"
                  th:with="techs = ${theme.config.about.techStack}">
                 <th:block th:each="tech,iterStat : ${techs}">
                     <div class="tags-group-icon-pair" th:if="${iterStat.odd}">
@@ -163,19 +163,19 @@
     <div class="categoryGroup">
         <div class="categoryItem" style="box-shadow:var(--heo-shadow-blue)">
             <a class="categoryButton CB1 bikan"
-               th:href="@{${theme.config.top.bikan}}">
+               th:href="@{${theme.config.top.BannerLeft.bikan}}">
                 <span class="categoryButtonText">必看精选</span><i class="iconfont icon-book"></i>
             </a>
         </div>
         <div class="categoryItem" style="box-shadow:var(--heo-shadow-red)">
             <a class="categoryButton remen"
-               th:href="@{${theme.config.top.remen}}">
+               th:href="@{${theme.config.top.BannerLeft.remen}}">
                 <span class="categoryButtonText">热门文章</span><i class="iconfont icon-burn"></i>
             </a>
         </div>
         <div class="categoryItem" style="box-shadow:var(--heo-shadow-green)">
             <a class="categoryButton shiyong"
-               th:href="@{${theme.config.top.shiyong}}">
+               th:href="@{${theme.config.top.BannerLeft.shiyong}}">
                 <span class="categoryButtonText">实用教程</span><i class="iconfont icon-book"></i>
             </a>
         </div>

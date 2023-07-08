@@ -7,8 +7,8 @@
 
     <!-- card，需要添加在没有图片时使用随机图片 -->
     <div class="recent-post-item"
-         th:classappend="${theme.config.layout.cols} + ' ' +
-         ${theme.config.layout.postLocation} + ' ' +
+         th:classappend="${theme.config.layout.post.cols} + ' ' +
+         ${theme.config.layout.post.postLocation} + ' ' +
          (${iStat.even} ? 'even' : 'odd') +
          (${post.spec.pinned} ? 'pinned-post-item' : '')"
          th:each="post,iStat : ${postItems}">

@@ -16,7 +16,7 @@
                        th:each="tagItem : ${tags}"
                        th:href="@{${tagItem.status.permalink}}"
                        th:id="${tagItem.spec.displayName}">
-                        <span class="tags-punctuation">[[${tagItem.spec.displayName}]]</span> 
+                        <span class="tags-punctuation">[[${tagItem.spec.displayName}]]</span>
                         <span class="tagsPageCount" th:text="${tagItem.status.visiblePostCount}"></span>
                     </a>
                 </div>
@@ -54,7 +54,7 @@
                 <div th:replace="~{modules/widgets/page :: page(${'/tags/'+tag.spec.slug},${posts})}"></div>
             </div>
             <!-- sidebar -->
-            <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.tagWidgets})}"></div>
+            <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.widgetss.tagWidgets})}"></div>
         </main>
 
         <!-- 底部 -->
