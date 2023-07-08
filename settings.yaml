@@ -769,7 +769,7 @@ spec:
           help: "文章主色匹配图片颜色"
         - $formkit: radio
           name: summarize
-          label: 文章摘要
+          label: 文章摘要（首页）
           value: false
           options:
             - label: 打开
@@ -777,6 +777,88 @@ spec:
             - label: 关闭
               value: false
           help: "是否显示文章摘要"
+        - $formkit: group
+          name: aiDescription
+          label: 文章ai摘要
+          value:
+            aiDescriptionEnable:
+            gptName:
+            mode:
+            switchBtn:
+            btnLink:
+            randomNum:
+            basicWordCount:
+            key:
+            Referer:
+          children:
+            - $formkit: radio
+              name: aiDescriptionEnable
+              id: aiDescriptionEnable
+              key: aiDescriptionEnable
+              label: 启用ai 摘要
+              value: false
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: text
+              if: "$get(aiDescriptionEnable).value"
+              name: gptName
+              label: 名称
+              placeholder: 请输入内容
+              value: KunKunYu
+            - $formkit: radio
+              if: "$get(aiDescriptionEnable).value"
+              name: mode
+              label: 模式
+              value: local
+              help: "本地模式需要自己填写文章摘要"
+              options:
+                - label: 本地
+                  value: local
+                - label: ai
+                  value: tianli
+            - $formkit: radio
+              if: "$get(aiDescriptionEnable).value"
+              name: switchBtn
+              label: 显示切换按钮
+              value: false
+              options:
+                - label: 是
+                  value: true
+                - label: 否
+                  value: false
+            - $formkit: url
+              if: "$get(aiDescriptionEnable).value"
+              name: btnLink
+              label: 链接地址
+              placeholder: 输入链接地址
+              value: https://afdian.net/item/f18c2e08db4411eda2f25254001e7c00
+            - $formkit: number
+              if: "$get(aiDescriptionEnable).value"
+              name: randomNum
+              label: 标签数量
+              value: 3
+              help: "按钮最大的随机次数，也就是一篇文章最大随机出来几种"
+            - $formkit: number
+              if: "$get(aiDescriptionEnable).value"
+              name: basicWordCount
+              label: 标签数量
+              value: 1000
+              help: "最低获取字符数, 最小1000, 最大1999"
+            - $formkit: text
+              if: "$get(aiDescriptionEnable).value"
+              name: key
+              label: key
+              value: xxxx
+              placeholder: 请输入key
+            - $formkit: url
+              if: "$get(aiDescriptionEnable).value"
+              name: Referer
+              label: 你的博客地址
+              help: 注意保留最后的斜杠
+              value: https://xx.xx/
         - $formkit: group
           name: post_edit
           label: 运营模式与责任
@@ -786,6 +868,8 @@ spec:
           children:
             - $formkit: radio
               name: enable_post_edit
+              id: enable_post_edit
+              key: enable_post_edit
               help: 启用文章运营模式与责任，请正确填写链接
               value: false
               options:
@@ -795,6 +879,7 @@ spec:
                   value: false
             - $formkit: url
               name: post_edit_url
+              if: "$get(enable_post_edit).value"
               label: 运营模式与责任地址
               placeholder: "请输入运营模式与责任地址"
               value: "/rss"
@@ -840,77 +925,6 @@ spec:
               value: default
             - label: 3D
               value: 3D
-    - group: aiDescription
-      label: 文章ai摘要
-      formSchema:
-        - $formkit: radio
-          name: enable
-          id: enable
-          key: enable
-          label: 启用ai 摘要
-          value: false
-          options:
-            - label: 启用
-              value: true
-            - label: 禁用
-              value: false
-        - $formkit: text
-          if: "$get(enable).value"
-          name: gptName
-          label: 名称
-          placeholder: 请输入内容
-          value: KunKunYu
-        - $formkit: radio
-          if: "$get(enable).value"
-          name: mode
-          label: 模式
-          value: local
-          help: "本地模式需要自己填写文章摘要"
-          options:
-            - label: 本地
-              value: local
-            - label: ai
-              value: tianli
-        - $formkit: radio
-          if: "$get(enable).value"
-          name: switchBtn
-          label: 显示切换按钮
-          value: false
-          options:
-            - label: 是
-              value: true
-            - label: 否
-              value: false
-        - $formkit: url
-          if: "$get(enable).value"
-          name: btnLink
-          label: 链接地址
-          placeholder: 输入链接地址
-          value: https://afdian.net/item/f18c2e08db4411eda2f25254001e7c00
-        - $formkit: number
-          if: "$get(enable).value"
-          name: randomNum
-          label: 标签数量
-          value: 3
-          help: "按钮最大的随机次数，也就是一篇文章最大随机出来几种"
-        - $formkit: number
-          if: "$get(enable).value"
-          name: basicWordCount
-          label: 标签数量
-          value: 1000
-          help: "最低获取字符数, 最小1000, 最大1999"
-        - $formkit: text
-          if: "$get(enable).value"
-          name: key
-          label: key
-          value: xxxx
-          placeholder: 请输入key
-        - $formkit: url
-          if: "$get(enable).value"
-          name: Referer
-          label: 你的博客地址
-          help: 注意保留最后的斜杠
-          value: https://xx.xx/
 
     - group: aboutReward
       label: 个人（打赏名单）
