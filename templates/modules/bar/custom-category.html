@@ -7,7 +7,7 @@
             <a href="/">首页</a>
         </div>
 
-        <th:block th:each="customCategory : ${theme.config.layout.navCustomCategory}">
+        <th:block th:each="customCategory : ${theme.config.layout.navs.navCustomCategory}">
             <div class="category-bar-item"
                  th:each="categoryItem : ${categoryFinder.getByName(customCategory.category)}"
                  th:id="${categoryItem.spec.displayName}">

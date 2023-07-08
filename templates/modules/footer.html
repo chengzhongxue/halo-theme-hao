@@ -5,16 +5,16 @@
 
     <!-- 社交链接，需要填入 href class title -->
     <div id="footer_deal">
-        <th:block th:with="socialMedias = ${theme.config.footer.socialMediaLeft}">
+        <th:block th:with="socialMedias = ${theme.config.footer.social_media.socialMediaLeft}">
             <a class="deal_link" rel="external nofollow" target="_blank" th:each="socialMedia : ${socialMedias}"
                th:href="${socialMedia.url}" th:title="${socialMedia.name}">
                 <i class="iconfont " th:classappend="${socialMedia.icon}"></i>
             </a>
         </th:block>
 
-        <img th:if="${not #strings.isEmpty(theme.config.footer.centerImg)}" class="footer_mini_logo"
-             th:src="@{${theme.config.footer.centerImg}}" title="返回顶部" onclick="btf.scrollToDest(0, 500)">
-        <th:block th:with="socialMedias = ${theme.config.footer.socialMediaRight}">
+        <img th:if="${not #strings.isEmpty(theme.config.footer.social_media.centerImg)}" class="footer_mini_logo"
+             th:src="@{${theme.config.footer.social_media.centerImg}}" title="返回顶部" onclick="btf.scrollToDest(0, 500)">
+        <th:block th:with="socialMedias = ${theme.config.footer.social_media.socialMediaRight}">
             <a class="deal_link" rel="external nofollow" target="_blank" th:each="socialMedia : ${socialMedias}"
                th:href="${socialMedia.url}" th:title="${socialMedia.name}">
                 <i class="iconfont " th:classappend="${socialMedia.icon}"></i>
@@ -34,7 +34,7 @@
                     </a>
                 </div>
             </div>
-            <div th:if="${theme.config.footer.enable_footer_group}" class="footer-group">
+            <div th:if="${theme.config.footer.footer_group.enable_footer_group}" class="footer-group">
                 <div class="footer-title-group">
                     <h3 class="footer-title">友链</h3><a class="random-friends-btn"
                                                          href="javascript:link.addFriendLinksInFooter();"
@@ -93,13 +93,13 @@
 
 
     <!-- 右下角 snackbar 弹窗 -->
-    <div th:if="${theme.config.snackbar.switch}" class="needEndHide" id="cookies-window">
-        <div class="cookies-window-title" th:text="${theme.config.snackbar.introductionTitle}"></div>
+    <div th:if="${theme.config.tool.snackbar.switch}" class="needEndHide" id="cookies-window">
+        <div class="cookies-window-title" th:text="${theme.config.tool.snackbar.introductionTitle}"></div>
         <div class="cookies-window-content"><span class="cookies-tip"
-                                                  th:text="${theme.config.snackbar.introductionTip}"></span>
+                                                  th:text="${theme.config.tool.snackbar.introductionTip}"></span>
             <a class="cookies-link"
-               th:href="@{${theme.config.snackbar.introductionUrl}}"
-               th:title="${theme.config.snackbar.introductionName}" data-pjax-state=""><i
+               th:href="@{${theme.config.tool.snackbar.introductionUrl}}"
+               th:title="${theme.config.tool.snackbar.introductionName}" data-pjax-state=""><i
                     class="bber-gotobb fas fa-arrow-circle-right"></i></a></div>
     </div>
     <div id="quit-box" onclick="RemoveRewardMask()"></div>

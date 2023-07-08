@@ -138,7 +138,7 @@
     <!-- 动态加载条 -->
     <script data-pace-options='{ "restartOnRequestAfter":false,"eventLag":false}'
             src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/pace/1.2.4/pace.min.js"
-            th:if="${theme.config.other.loadProgressBar}">
+            th:if="${theme.config.other.loadingBoxs.loadProgressBar}">
     </script>
 
     <!-- 复制 https://github.com/zenorocha/clipboard.js -->
@@ -167,13 +167,24 @@
             copyright: undefined,
             lightbox: 'fancybox',
             lazyload: {enable: true, error: "/themes/theme-hao/assets/images/404s.gif"},
-            isFriendLinksInFooter: [[${theme.config.footer.enable_footer_group}]],
-            loadingBox: [[${theme.config.other.loadingBox}]],
-            loadProgressBar: [[${theme.config.other.loadProgressBar}]],
-            error404Enable: [[${theme.config.other.error_404Enable}]],
-            allPlaylist: [[${theme.config.other.nav_music.all_playlist}]],
-            navMusicEnable:[[${theme.config.other.nav_musicEnable}]],
+            isFriendLinksInFooter: [[${theme.config.footer.footer_group.enable_footer_group}]],
+            loadingBox: [[${theme.config.other.loadingBoxs.loadingBoxEnable}]],
+            loadProgressBar: [[${theme.config.other.loadingBoxs.loadProgressBar}]],
+            error404Enable: [[${theme.config.other.error_404.error_404Enable}]],
+            allPlaylist: [[${theme.config.tool.nav_music.all_playlist}]],
+            navMusicEnable:[[${theme.config.tool.nav_music.nav_musicEnable}]],
             isMusic: [[${ htmlType == 'music'}]],
+            source: {
+                jQuery: 'https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js',
+                justifiedGallery: {
+                    js: 'https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js',
+                    css: 'https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/justifiedGallery/3.8.1/css/justifiedGallery.min.css'
+                },
+                fancybox: {
+                    js: 'https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js',
+                    css: 'https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css'
+                }
+            },
             date_suffix: {
                 just: '刚刚',
                 min: '分钟前',
