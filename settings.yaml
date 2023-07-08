@@ -838,13 +838,13 @@ spec:
             - $formkit: number
               if: "$get(aiDescriptionEnable).value"
               name: randomNum
-              label: 标签数量
+              label: 随机次数
               value: 3
               help: "按钮最大的随机次数，也就是一篇文章最大随机出来几种"
             - $formkit: number
               if: "$get(aiDescriptionEnable).value"
               name: basicWordCount
-              label: 标签数量
+              label: 字符数
               value: 1000
               help: "最低获取字符数, 最小1000, 最大1999"
             - $formkit: text
