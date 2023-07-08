@@ -46,3 +46,8 @@ ul li {
     /* display: block;
     overflow: auto; */
 }
+
+/* 导航子菜单闪跳 */
+#nav .menus_items .menus_item .menus_item_child li a{
+    padding: 0.3rem 0.5rem;
+}

@@ -543,7 +543,7 @@ spec:
         - $formkit: radio
           name: archive_switch
           label: 标签&归档&统计 (归档按钮开关)
-          value: true
+          value: false
           options:
             - label: 显示
               value: true
@@ -931,7 +931,7 @@ spec:
     - group: moment
       label: 瞬间
       formSchema:
-        - $formkit: url
+        - $formkit: attachment
           name: backgroundImg
           validation: url
           label: 背景图
