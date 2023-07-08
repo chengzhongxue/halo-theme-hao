@@ -1602,7 +1602,6 @@ spec:
             introductionTip:
             introductionUrl:
             introductionName:
-          help: 暂时不可关闭
           children:
             - $formkit: radio
               name: switch
