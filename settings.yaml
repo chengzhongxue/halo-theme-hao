@@ -1544,20 +1544,24 @@ spec:
             - $formkit: repeater
               name: authorInfo
               label: 个人信息
-              value: [ ]
+              min: 3
+              max: 3
               children:
                 - $formkit: text
                   name: authorInfoTitle
                   label: 标题
                   placeholder: 请输入内容
+                  value: 标题
                 - $formkit: text
                   name: authorInfoContent
                   label: 内容
                   placeholder: 请输入内容
+                  value: 内容
                 - $formkit: color
                   name: authorInfoColor
                   label: 内容颜色
                   placeholder: 请输入内容
+                  value: #ffffff
         - $formkit: textarea
           name: xjlc
           label: 心路历程
