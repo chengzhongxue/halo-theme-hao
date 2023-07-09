@@ -400,6 +400,12 @@ spec:
             socialMedia:
           children:
             - $formkit: text
+              name: helloText
+              label: 作者打招呼
+              placeholder: 请填写作者打招呼
+              value: 🤖️ 数码科技爱好者, 🔍 分享与热心帮助, 🏠 智能家居小能手, 🔨 设计开发一条龙, 🤝 专修交互与设计, 🏃 脚踏实地行动派, 🧱 团队小组发动机, 💢 壮汉人狠话不多
+              help: 注意格式 （🤖️ 数码科技爱好者, 🔍 分享与热心帮助 ） 以逗号隔开
+            - $formkit: text
               name: profileName
               label: 卡片名称
               placeholder: 请填写个人卡片名称
