@@ -377,7 +377,7 @@ spec:
               name: postWidgets
               label: 文章页
               value: profile,wechat,toc,comments,recent-posts,categories,tags-stat
-              help: post 可以支持设置 toc 
+              help: post 可以支持设置 toc
             - $formkit: textarea
               name: tagWidgets
               label: 标签页
@@ -977,7 +977,7 @@ spec:
           name: bigTitle
           label: 大标题
           value: 我和我的小伙伴们
-    
+
     - group: fcircle
       label: 友链鱼塘
       formSchema:
@@ -1309,10 +1309,13 @@ spec:
           label: 地图相关配置
           value:
             StrengthenTitle:
-            background:
-            backgroundDark:
+            mapLocation:
             authorInfo:
           children:
+            - $formkit: text
+              name: StrengthenTitle
+              label: 居住地
+              placeholder: 请输入内容
             - $formkit: text
               name: mapLocation
               label: 居住地坐标
