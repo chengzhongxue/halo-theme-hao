@@ -42,7 +42,6 @@
 | 程序员小航 | https://liuzhihang.com |
 | 小孙同学    | https://blog.sunguoqi.com |
 | 流殃  | https://shyblog.world |
-| AirboZH | https://www.airbozh.cn |
 | 羡羡 | https://www.hydsb0.com/ |
 | 困困鱼 | https://0206.ink |
 | Top John | https://op-lab.top |
