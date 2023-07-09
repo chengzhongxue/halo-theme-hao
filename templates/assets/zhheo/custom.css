@@ -52,12 +52,3 @@ ul li {
     padding: 0.3rem 0.5rem;
 }
 
-[data-theme=dark] .author-content-item.map {
-    background: none!important;
-    background-size: 100%;
-}
-
-.author-content-item.map {
-    background: none!important;
-    background-size: 100%;
-}
