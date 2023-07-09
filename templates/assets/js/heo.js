@@ -5,6 +5,7 @@ var heo_musicFirst = false;
 var heo_musicPlaying = false;
 let heo_keyboard = false;
 let heo_intype = false;
+let lastSayHello = "";
 // 私有函数
 var heo = {
     // 检测显示模式
@@ -472,6 +473,16 @@ var heo = {
             ? saveToLocal.set('aside-status', 'show', 2)
             : saveToLocal.set('aside-status', 'hide', 2)
         $htmlDom.toggle('hide-aside')
+    },
+
+    changeSayHelloText: function() {
+        const e = GLOBAL_CONFIG.helloText.length == 0 ? ["🤖️ 数码科技爱好者", "🔍 分享与热心帮助", "🏠 智能家居小能手", "🔨 设计开发一条龙", "🤝 专修交互与设计", "🏃 脚踏实地行动派", "🧱 团队小组发动机", "💢 壮汉人狠话不多"] : GLOBAL_CONFIG.helloText
+            , t = document.getElementById("author-info__sayhi");
+        let o = e[Math.floor(Math.random() * e.length)];
+        for (; o === lastSayHello; )
+            o = e[Math.floor(Math.random() * e.length)];
+        t.textContent = o,
+            lastSayHello = o
     },
 
 
