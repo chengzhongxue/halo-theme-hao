@@ -60,6 +60,7 @@
         </style> -->
     </div>
     <script th:src="@{/assets/libs/countup/countup.js}"></script>
+    <script src="https://map.qq.com/api/gljs?v=1.exp&key=YZOBZ-34HLF-K3OJV-JV6IN-OALJ5-7MBAC"></script>
     <script>
         // 链接替换即可，不需要后面的参数
         fetch("https://v6-widget.51.la/v6/[[${theme.config.about.LingQueMonitorID}]]/quote.js")
@@ -128,17 +129,10 @@
             });
     </script>
     <script>
-        var e = document.createElement("script");
-        e.type = "text/javascript",
-        e.defer = !0,
-        e.src = "https://map.qq.com/api/gljs?v=1.exp&key=YZOBZ-34HLF-K3OJV-JV6IN-OALJ5-7MBAC",
-        document.body.appendChild(e);
         var t = new TMap.LatLng([[${theme.config.about.mapLocation}]])
             , n = new TMap.Map(document.getElementById("mapContainer"),{
             center: t,
             zoom: 12,
-            // pitch: 43.5,
-            // rotation: 45
         });
         n.removeControl(TMap.constants.DEFAULT_CONTROL_ID.ZOOM),
         n.removeControl(TMap.constants.DEFAULT_CONTROL_ID.ROTATION),
@@ -159,8 +153,7 @@
                 id: "marker",
                 position: t
             }]
-        }),
-        document.querySelector("mapContainer div").querySelectorAll("div")[1].remove()
+        })
     </script>
 </div>
 
