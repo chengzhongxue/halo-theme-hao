@@ -1318,8 +1318,8 @@ spec:
               placeholder: 请输入内容
             - $formkit: text
               name: mapLocation
-              label: 居住地坐标
-              help: 示例：22.582401,113.215456
+              label: 居住地经纬度坐标
+              help: 可访问 https://lbs.qq.com/getPoint 拾取坐标，示例：22.582401,113.215456
               placeholder: 请输入经纬度坐标
             - $formkit: repeater
               name: authorInfo
