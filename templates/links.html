@@ -91,7 +91,7 @@
                                 <a class="img" target="_blank" th:href="${link.spec.url}"
                                    th:title="${link.spec.displayName}">
                                     <img class="flink-avatar" style="pointer-events: none;"
-                                         th:alt="${link.spec.displayName}" th:src="${link.spec.siteshot}">
+                                         th:alt="${link.spec.displayName}" th:src="@{${#strings.isEmpty(link.spec.siteshot) ? link.spec.logo : link.spec.siteshot}}">
                                 </a>
 
                                 <a class="info cf-friends-link" target="_blank" th:href="${link.spec.url}"
