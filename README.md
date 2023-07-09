@@ -86,7 +86,7 @@
 
 - 评论功能 [plugin-comment-widget](https://github.com/halo-sigs/plugin-comment-widget/releases)
 - 搜索功能 [plugin-search-widget](https://github.com/halo-sigs/plugin-search-widget/releases)
-- 友链页面 [plugin-links](https://github.com/halo-sigs/plugin-links) 
+- 友链页面 [plugin-links](https://github.com/chengzhongxue/plugin-links)(魔改版本) 
 - 瞬间页面 [plugin-moments](https://github.com/halo-sigs/plugin-moments) 
 - 图片灯箱 [plugin-lightgallery](https://github.com/halo-sigs/plugin-lightgallery)
 - 代码高亮 [plugin-prismjs](https://github.com/liuzhihang/plugin-prismjs)
