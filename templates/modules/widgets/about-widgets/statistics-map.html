@@ -18,7 +18,8 @@
 
 
     <div class="author-content-item-group column mapAndInfo">
-        <div class="author-content-item map single">
+        <div class="author-content-item map single" style="padding: 0;">
+            <div id="mapContainer" style="height: 120%;"></div>
             <span class="map-title">我现在住在
                 <b>[[${theme.config.about.map.StrengthenTitle}]]</b></span>
         </div>
@@ -39,7 +40,7 @@
                     th:text="${texts[2].authorInfoContent}">BI工程师</span>
             </div>
         </div>
-        <style>
+        <!-- <style>
             .author-content-item.map {
                 background: url([[${theme.config.about.map.background}]]) no-repeat center;
                 min-height: 160px;
@@ -56,9 +57,10 @@
                 background: url([[${theme.config.about.map.backgroundDark}]]) no-repeat center;
                 background-size: 100%;
             }
-        </style>
+        </style> -->
     </div>
     <script th:src="@{/assets/libs/countup/countup.js}"></script>
+    <script src="https://map.qq.com/api/gljs?v=1.exp&key=YZOBZ-34HLF-K3OJV-JV6IN-OALJ5-7MBAC"></script>
     <script>
         // 链接替换即可，不需要后面的参数
         fetch("https://v6-widget.51.la/v6/[[${theme.config.about.LingQueMonitorID}]]/quote.js")
@@ -122,11 +124,36 @@
                     };
                     const observer = new IntersectionObserver(callback, options);
                     observer.observe(statisticElement);
-                }
-
+                }            
                 statisticUP()
-
             });
+    </script>
+    <script>
+        var t = new TMap.LatLng([[${theme.config.about.mapLocation}]])
+            , n = new TMap.Map(document.getElementById("mapContainer"),{
+            center: t,
+            zoom: 12,
+        });
+        n.removeControl(TMap.constants.DEFAULT_CONTROL_ID.ZOOM),
+        n.removeControl(TMap.constants.DEFAULT_CONTROL_ID.ROTATION),
+        n.removeControl(TMap.constants.DEFAULT_CONTROL_ID.SCALE),
+        new TMap.MultiMarker({
+            map: n,
+            styles: {
+                marker: new TMap.MarkerStyle({
+                    width: 20,
+                    height: 30,
+                    anchor: {
+                        x: 10,
+                        y: 30
+                    }
+                })
+            },
+            geometries: [{
+                id: "marker",
+                position: t
+            }]
+        })
     </script>
 </div>
 

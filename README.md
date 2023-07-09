@@ -1,6 +1,6 @@
 <div align="center">
 <!-- 主题Logo -->
-<img width="100px" src="https://cdn.jsdelivr.net/gh/sun0225SUN/hao-docs/assets/images/logo.png">
+<img width="100px" src="https://liuzhihang.com/upload/logo.png">
 <!-- 主题名称 -->
 <h1>Halo-Theme-Hao</h1>
 <!-- 主题徽章 -->
@@ -23,15 +23,16 @@
 </p>
 </div>
 
+<!-- 主题预览图 -->
 <table>
-<tr>
-<td>
-<img src="https://cdn.jsdelivr.net/gh/sun0225SUN/hao-docs/assets/images/Halo-Theme-Hao-White.jpg"/>
-</td>
-<td>
-<img src="https://cdn.jsdelivr.net/gh/sun0225SUN/hao-docs/assets/images/Halo-Theme-Hao-Black.jpg"/>
-</td>
-</tr>
+  <tr>
+    <td>
+      <img src="https://liuzhihang.com/upload/hao_white.jpg"/>
+    </td>
+    <td>
+      <img src="https://liuzhihang.com/upload/hao_dark.jpg"/>
+    </td>
+  </tr>
 </table>
 
 ## 🔥 预览
@@ -82,6 +83,7 @@
 ### 🔌 插件依赖
 > 所有插件均为可选，不安装则不会出现对应功能。
 > 部分插件可能已经预设在 Halo 内。
+> 部分插件主题尚未适配。
 
 - 评论功能 [plugin-comment-widget](https://github.com/halo-sigs/plugin-comment-widget/releases)
 - 搜索功能 [plugin-search-widget](https://github.com/halo-sigs/plugin-search-widget/releases)
@@ -108,11 +110,11 @@
 
 想了解更多信息可以关注 「 程序员小航 」。
 
+发送 "hao 群" 可以加群 （群验证信息最好是个人网站）
+
+发送"加好友"，可以加我微信，我拉你进群 （群二维码失效时）
+
 <img width="360" src="https://liuzhihang.com/themes/theme-hao/assets/images/wechat/wechat1.png" />
-
-- 发送 "hao 群" 可以加群 （群验证信息最好是个人网站）
-
-- 发送"加好友"，可以加我微信，我拉你进群 （群二维码失效时）
 
 > 卖服务器的广告人，就不要加了。
 

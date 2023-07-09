@@ -6,30 +6,30 @@ spec:
   displayName: Hao
   author:
     name: 程序员小航
-    website: 'https://liuzhihang.com'
+    website: https://liuzhihang.com
   customTemplates:
     page:
-      - name: 页面没有找到
-        description: 404页面
-        screenshot:
-        file: 404.html
-      - name: 友链鱼塘
-        description: 友链鱼塘页面
-        screenshot:
-        file: fcircle.html
-      - name: 关于
+      - name: 关于页面模版
         description: 关于页面
         screenshot:
         file: about.html
-      - name: 音乐馆
+      - name: 鱼塘页面模版
+        description: 友链鱼塘
+        screenshot:
+        file: fcircle.html
+      - name: 音乐页面模版
         description: 音乐页面
         screenshot:
         file: music.html
+      - name: 404页面模版
+        description: 404 not found
+        screenshot:
+        file: 404.html
   description: Halo 2.x Theme base on Thymeleaf, Referring to Butterfly and Heo
-  logo: 'https://liuzhihang.com/themes/theme-hao/assets/images/hao-logo.jpg'
-  website: 'https://liuzhihang.com'
-  repo: 'https://github.com/liuzhihang/halo-theme-hao'
+  logo: https://liuzhihang.com/upload/logo.jpg
+  website: https://liuzhihang.com
+  repo: https://github.com/liuzhihang/halo-theme-hao
   settingName: "theme-hao-setting"
   configMapName: "theme-hao-configMap"
-  version: 1.1.5
-  require: 2.x
+  version: "1.1.6"
+  require: ">=2.0.0"
