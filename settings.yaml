@@ -1298,48 +1298,53 @@ spec:
           label: 51la 网站统计
           help: 统计ID
           placeholder: 请输入内容
-        - $formkit: group
-          name: map
-          label: 地图相关配置
-          value:
-            StrengthenTitle:
-            background:
-            backgroundDark:
-            authorInfo:
-          children:
-            - $formkit: text
-              name: StrengthenTitle
-              label: 居住地
-              placeholder: 请输入内容
-            - $formkit: attachment
-              name: background
-              label: 地图亮色模式背景
-              placeholder: 请输入内容
-            - $formkit: attachment
-              name: backgroundDark
-              label: 地图暗色模式背景
-              placeholder: 请输入内容
-            - $formkit: repeater
-              name: authorInfo
-              label: 个人信息
-              min: 3
-              max: 3
-              children:
-                - $formkit: text
-                  name: authorInfoTitle
-                  label: 标题
-                  placeholder: 请输入内容
-                  value: 标题
-                - $formkit: text
-                  name: authorInfoContent
-                  label: 内容
-                  placeholder: 请输入内容
-                  value: 内容
-                - $formkit: color
-                  name: authorInfoColor
-                  label: 内容颜色
-                  placeholder: 请输入内容
-                  value: '#ffffff'
+        - $formkit: text
+          name: mapLocation
+          label: 居住地坐标
+          help: 示例：22.5824,113.2154
+          placeholder: 请输入经纬度坐标
+        # - $formkit: group
+        #   name: map
+        #   label: 地图相关配置
+        #   value:
+        #     StrengthenTitle:
+        #     background:
+        #     backgroundDark:
+        #     authorInfo:
+        #   children:
+        #     - $formkit: text
+        #       name: StrengthenTitle
+        #       label: 居住地
+        #       placeholder: 请输入内容
+        #     - $formkit: attachment
+        #       name: background
+        #       label: 地图亮色模式背景
+        #       placeholder: 请输入内容
+        #     - $formkit: attachment
+        #       name: backgroundDark
+        #       label: 地图暗色模式背景
+        #       placeholder: 请输入内容
+        #     - $formkit: repeater
+        #       name: authorInfo
+        #       label: 个人信息
+        #       min: 3
+        #       max: 3
+        #       children:
+        #         - $formkit: text
+        #           name: authorInfoTitle
+        #           label: 标题
+        #           placeholder: 请输入内容
+        #           value: 标题
+        #         - $formkit: text
+        #           name: authorInfoContent
+        #           label: 内容
+        #           placeholder: 请输入内容
+        #           value: 内容
+        #         - $formkit: color
+        #           name: authorInfoColor
+        #           label: 内容颜色
+        #           placeholder: 请输入内容
+        #           value: '#ffffff'
         - $formkit: textarea
           name: xjlc
           label: 心路历程
