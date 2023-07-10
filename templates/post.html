@@ -100,10 +100,10 @@
 
                 <!-- 文章ai摘要 -->
                 <div class="post-ai" th:if="${theme.config.post.aiDescription.aiDescriptionEnable}">
-                    <div class="ai-title"><i class="anzhiyufont anzhiyu-icon-bilibili"></i>
+                    <div class="ai-title"><i class="haofont hao-icon-bilibili"></i>
                         <div class="ai-title-text">AI-摘要</div>
                         <div th:if="${theme.config.post.aiDescription.switchBtn}" id="ai-Toggle">切换</div>
-                        <i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i>
+                        <i class="haofont hao-icon-arrow-rotate-right"></i>
 
                         <div th:if="${#strings.equals(theme.config.post.aiDescription.mode, 'local')}" class="ai-tag" id="ai-tag">[[${theme.config.post.aiDescription.gptName}]] GPT</div>
                         <div th:if="${#strings.equals(theme.config.post.aiDescription.mode, 'tianli')}" class="ai-tag" id="ai-tag">Tianli GPT</div>

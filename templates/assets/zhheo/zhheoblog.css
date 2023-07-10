@@ -9235,7 +9235,7 @@ li {
     font-size: 20px;
     line-height: 20px;
 }
-.ai-title .anzhiyufont.anzhiyu-icon-arrow-rotate-right {
+.ai-title .haofont.hao-icon-arrow-rotate-right {
     font-size: 14px;
     margin-left: 4px;
     cursor: pointer;
@@ -14136,8 +14136,8 @@ span.tags-punctuation {
 }
 
 span.tags-punctuation::before {
-    content: "\e608";
-    font-family: "anzhiyufont" !important;
+    content: "\e663";
+    font-family: "haofont" !important;
     opacity: 0.4;
     margin-right: 2px;
 }
