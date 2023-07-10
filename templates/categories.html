@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'category')}"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      th:with="assets_link=${theme.config.other.staticResource.use == 'elemecdn' ?  'https://npm.elemecdn.com/hao-theme-static@' + theme.spec.version +'/templates/assets' : theme.config.other.staticResource.use == 'custom' ? theme.config.other.staticResource.cdn_link : #theme.assets('/')}">
 
 <th:block th:fragment="content">
 
@@ -24,7 +25,7 @@
                     </div>
                 </div>
                 <th:block th:if="${#strings.equals(theme.config.categories.use, '3D')}">
-                    <link rel="stylesheet" th:href="@{/assets/libs/no3d/no3d.css}">
+                    <link rel="stylesheet" th:href="${assets_link + '/libs/no3d/no3d.css'}">
                     <div id="libCategories" >
                         <div id="lib-cards" class="container" >
                             <a th:each="categoryItem : ${categoryFinder.listAll()}" th:href="@{${categoryItem.status.permalink}}" th:id="${categoryItem.spec.displayName}">
@@ -37,7 +38,7 @@
                     </div>
                     <div class="js-pjax">
                         <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/2.6.14/vue.min.js"></script>
-                        <script th:src="@{/assets/libs/no3d/no3d.js}"></script>
+                        <script th:src="${assets_link + '/libs/no3d/no3d.js'}"></script>
                     </div>
                 </th:block>
             </div>

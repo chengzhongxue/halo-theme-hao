@@ -1642,6 +1642,33 @@ spec:
       label: 其他设置
       formSchema:
         - $formkit: group
+          name: staticResource
+          label: 静态资源文件设置
+          value:
+            use:
+            cdn_link:
+          children:
+            - $formkit: select
+              name: use
+              id: use
+              key: use
+              label: 类型选择
+              value: local
+              options:
+                - label: 本地
+                  value: local
+                - label: elemecdn
+                  value: elemecdn
+                - label: 自定义
+                  value: custom
+            - $formkit: url
+              name: cdn_link
+              if: "$get(use).value == 'custom'"
+              label: cdn地址，外链地址
+              validation: required
+              value: '(https://npm.elemecdn.com/hao-theme-static@1.1.5/templates/assets'
+              help: '默认为npmJs的elemecdn加速地址，如果你有自己的cdn地址（请确保链接下assets文件夹下主题静态资源文件），可以填写，否则请勿修改！ '
+        - $formkit: group
           name: diytitle
           label: 动态标题
           value:

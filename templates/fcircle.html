@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'fcircle')}"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      th:with="assets_link=${theme.config.other.staticResource.use == 'elemecdn' ?  'https://npm.elemecdn.com/hao-theme-static@' + theme.spec.version +'/templates/assets' : theme.config.other.staticResource.use == 'custom' ? theme.config.other.staticResource.cdn_link : #theme.assets('/')}">
 
 <th:block th:fragment="content">
 
@@ -46,7 +47,7 @@
                             hungryFish: 500,
                         }
                     </script>
-                    <script th:src="@{/assets/libs/moments/random-friends-post.js}"></script>
+                    <script th:src="${assets_link + '/libs/moments/random-friends-post.js'}"></script>
 
                 </th:block>
                 <!--鱼塘-->
@@ -69,9 +70,9 @@
                         sort_rule: 'created'
                     }
                 </script>
-                <link rel="stylesheet" th:href="@{/assets/libs/moments/heoMainColor.css}">
-                <script type="text/javascript" th:src="@{/assets/libs/moments/app.min.js}"></script>
-                <script type="text/javascript" th:src="@{/assets/libs/moments/bundle.js}"></script>
+                <link rel="stylesheet" th:href="${assets_link + '/libs/moments/heoMainColor.css'}">
+                <script type="text/javascript" th:src="${assets_link + '/libs/moments/app.min.js'}"></script>
+                <script type="text/javascript" th:src="${assets_link + '/libs/moments/bundle.js'}"></script>
 
 
             </div>

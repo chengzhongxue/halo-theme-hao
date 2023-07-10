@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 公共的 head 部分，可以定义部分 links,scripts,styles -->
-<head th:fragment="head(htmlType)">
+<head th:fragment="head(htmlType)" th:with="assets_link=${theme.config.other.staticResource.use == 'elemecdn' ?  'https://npm.elemecdn.com/hao-theme-static@' + theme.spec.version +'/templates/assets' : theme.config.other.staticResource.use == 'custom' ? theme.config.other.staticResource.cdn_link : #theme.assets('/')}">
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,initial-scale=1" name="viewport">
@@ -12,21 +12,21 @@
     <link rel="shortcut icon"
           th:href="@{${#strings.isEmpty(site.favicon) ? '/assets/images/hao-logo.jpg' : site.favicon}}"/>
 
-    <script th:src="@{/assets/js/heo.js}"></script>
+    <script th:src="${assets_link + '/js/heo.js'}"></script>
 
-    <script th:src="@{/assets/js/halo.js}"></script>
+    <script th:src="${assets_link + '/js/halo.js'}"></script>
 
-    <link rel="stylesheet" th:href="@{/assets/zhheo/zhheoblog.css}">
+    <link rel="stylesheet" th:href="${assets_link + '/zhheo/zhheoblog.css'}">
 
-    <link rel="stylesheet" th:href="@{/assets/zhheo/custom.css}">
+    <link rel="stylesheet" th:href="${assets_link + '/zhheo/custom.css'}">
 
-    <link rel="stylesheet" th:href="@{/assets/zhheo/commentBarrage.css}">
+    <link rel="stylesheet" th:href="${assets_link + '/zhheo/commentBarrage.css'}">
 
 
     <link media="print"
           onload='this.media="all"'
           rel="stylesheet"
-          th:href="@{/assets/libs/iconfont/iconfont.css}">
+          th:href="${assets_link + '/libs/iconfont/iconfont.css'}">
 
     <!-- swiper 在瞬间滚动时会使用 -->
     <link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.css"/>
@@ -142,7 +142,7 @@
     </script>
 
     <!-- 复制 https://github.com/zenorocha/clipboard.js -->
-    <script th:src="@{/assets/libs/clipboard/clipboard.min.js}"></script>
+    <script th:src="${assets_link + '/libs/clipboard/clipboard.min.js'}"></script>
 
     <!-- 全局图片预览-->
     <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
@@ -153,11 +153,11 @@
     <script src="https://map.qq.com/api/gljs?v=1.exp&key=YZOBZ-34HLF-K3OJV-JV6IN-OALJ5-7MBAC"></script>
 
     <!-- 关于统计-->
-    <script th:src="@{/assets/libs/countup/countup.js}"></script>
+    <script th:src="${assets_link + '/libs/countup/countup.js'}"></script>
 
 
     <!-- icon图标 -->
-    <link rel="stylesheet" href="https://npm.elemecdn.com/hao-theme-static@1.1.7/icon/iconfont.css">
+    <link rel="stylesheet" th:href="'https://npm.elemecdn.com/hao-theme-static@'+${theme.spec.version}+'/icon/iconfont.css'">
 
     <!-- 声明一些公共信息 -->
     <script id="site-config" th:inline="javascript">
@@ -182,6 +182,7 @@
             navMusicEnable:[[${theme.config.tool.nav_music.nav_musicEnable}]],
             isMusic: [[${ htmlType == 'music'}]],
             helloText: [[${#strings.listSplit(theme.config.sidebar.profile.helloText, ',')}]],
+            assetsLink: [[${assets_link}]],
             source: {
                 jQuery: 'https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js',
                 justifiedGallery: {
