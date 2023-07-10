@@ -56,7 +56,7 @@
                 setTimeout(runFn, 0)
                 return
             }
-            getScript('/themes/theme-hao/assets/libs/twikoo/twikoo.all.min.js').then(runFn)
+            getScript(GLOBAL_CONFIG.twikoo.js).then(runFn)
         }
 
         if ('Twikoo' === 'Twikoo' || !false) {

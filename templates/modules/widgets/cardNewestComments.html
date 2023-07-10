@@ -50,7 +50,7 @@
             if (typeof twikoo === 'object') {
                 runTwikoo()
             } else {
-                getScript('/themes/theme-hao/assets/libs/twikoo/twikoo.all.min.js').then(runTwikoo)
+                getScript(GLOBAL_CONFIG.twikoo.js).then(runTwikoo)
             }
         }
 

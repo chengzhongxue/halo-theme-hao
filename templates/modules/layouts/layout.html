@@ -53,13 +53,13 @@
     <script charset="utf-8" data-pjax th:src="@{/assets/zhheo/blogex.js}"></script>
 
     <!-- https://instant.page/ 网站预加载， 放在 </body> 之前 -->
-    <script th:src="@{/assets/libs/instantpage/instantpage.min.js}" type="module"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script>
 
-    <script th:src="@{/assets/libs/lazyload/lazyload.iife.min.js}"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script>
 
     <!-- 右下角通知 https://www.polonel.com/snackbar/ -->
     <!-- todo head 中有它的 css，应该可以写一块，并改成后台可配置的功能，代码中应该还有他的 js -->
-    <script th:src="@{/assets/libs/snackbar/snackbar.min.js}"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script>
 
     <!-- 深色模式下添加粒子效果canvas -->
     <canvas th:if="${theme.config.style.universe}" id="universe" width="1312" height="880"></canvas>
@@ -82,7 +82,7 @@
     <!--左下角音乐-->
     <script>var meting_api = '[[${theme.config.tool.nav_music.meting_api}]]'; </script>
 
-    <link rel="stylesheet" th:href="@{/assets/libs/aplayer/APlayer.min.css}" media="all" onload="this.media='all'">
+    <link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="all" onload="this.media='all'">
 
     <script th:src="@{/assets/libs/aplayer/APlayer.min.js}"></script>
 
@@ -93,7 +93,7 @@
     <script th:src="@{/assets/libs/pjax/pjax.min.js}"></script>
 
     <!-- swiper 在瞬间滚动时会使用 -->
-    <script data-pjax  th:src="@{/assets/libs/swiper/swiper-bundle.min.js}"></script>
+    <script data-pjax  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.js"></script>
 
     <!-- 评论弹幕 -->
     <script th:replace="~{modules/commentBarrage :: commentBarrage}"></script>
