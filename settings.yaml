@@ -977,6 +977,11 @@ spec:
           name: bigTitle
           label: 大标题
           value: 我和我的小伙伴们
+        - $formkit: url
+          name: randomfriendurl
+          value: "https://moments.0206.ink/randomfriend"
+          label: 随机访问地址
+          help: 注意格式 (你的鱼塘token地址 + randomfriend)
 
     - group: fcircle
       label: 友链鱼塘
@@ -1011,10 +1016,10 @@ spec:
           placeholder: 请输入跳转 url
         - $formkit: url
           name: apiurl
-          value: "https://moments.0206.ink/"
+          value: "`https://moments.0206.ink/`"
           label: token地址
           placeholder: 请输入token地址
-          help: 注意格式 (https://moments.0206.ink/)
+          help: 注意格式 (`token地址`)
         - $formkit: radio
           name: fcircleRandomFriendsEnable
           label: 友链鱼塘页面（钓鱼）

@@ -358,7 +358,7 @@ document.addEventListener('scroll', btf.throttle(function () {
 
 //友链随机传送
 function travelling() {
-    var fetchUrl = GLOBAL_CONFIG.source.fcircleApiurl +"randomfriend"
+    var fetchUrl = GLOBAL_CONFIG.source.links.randomfriendurl
     fetch(fetchUrl)
         .then(res => res.json())
         .then(json => {
