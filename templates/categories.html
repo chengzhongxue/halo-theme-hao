@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'category')}"
-      xmlns:th="http://www.thymeleaf.org"
-      th:with="assets_link=${theme.config.other.staticResource.use == 'elemecdn' ?  'https://npm.elemecdn.com/hao-theme-static@' + theme.spec.version +'/templates/assets' : theme.config.other.staticResource.use == 'custom' ? theme.config.other.staticResource.cdn_link : #theme.assets('/')}">
+      xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
 

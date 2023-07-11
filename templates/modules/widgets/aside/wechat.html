@@ -5,9 +5,9 @@ th:with="faceImg = ${theme.config.sidebar.wechat.wechatImgFace}, backImg=${theme
     <div id="flip-wrapper">
         <div id="flip-content">
             <div class="face"
-                 th:style="'background: url('+ @{${#strings.isEmpty(faceImg) ? '/assets/images/wechat/wechat1.png' : faceImg }} +') center center / 100% no-repeat;'"></div>
+                 th:style="'background: url('+ @{${#strings.isEmpty(faceImg) ?  assets_link + '/images/wechat/wechat1.png' : faceImg }} +') center center / 100% no-repeat;'"></div>
             <div class="back face"
-                 th:style="'background: url('+ @{${#strings.isEmpty(backImg) ? '/assets/images/wechat/wechat2.png' : backImg }} +') center center / 100% no-repeat;'"></div>
+                 th:style="'background: url('+ @{${#strings.isEmpty(backImg) ?  assets_link + '/images/wechat/wechat2.png' : backImg }} +') center center / 100% no-repeat;'"></div>
         </div>
     </div>
 </div>
