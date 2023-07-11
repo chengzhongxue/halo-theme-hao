@@ -197,7 +197,10 @@ var btf = {
         const dur = (typeof duration !== 'undefined') ? duration : 5000
         const position = GLOBAL_CONFIG.Snackbar.position
         const bg = document.documentElement.getAttribute('data-theme') === 'light' ? GLOBAL_CONFIG.Snackbar.bgLight : GLOBAL_CONFIG.Snackbar.bgDark
-        document.styleSheets[0].addRule(':root', '--heo-snackbar-time:' + dur + 'ms!important')
+        const style = document.createElement('style');
+        document.head.appendChild(style);
+        const styleSheet = style.sheet;
+        styleSheet.insertRule(`:root{--heo-snackbar-time: ${dur}ms!important}`, styleSheet.cssRules.length);
         Snackbar.show({
             text: text,
             backgroundColor: bg,

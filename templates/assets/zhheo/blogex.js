@@ -37,10 +37,13 @@ function coverColor() {
                     value = LightenDarkenColor(colorHex(value), -40)
                 }
 
-                document.styleSheets[0].addRule(':root', '--heo-main:' + value + '!important');
-                document.styleSheets[0].addRule(':root', '--heo-main-op:' + value + '23!important');
-                document.styleSheets[0].addRule(':root', '--heo-main-op-deep:' + value + 'dd!important');
-                document.styleSheets[0].addRule(':root', '--heo-main-none:' + value + '00!important');
+                const style = document.createElement('style');
+                document.head.appendChild(style);
+                const styleSheet = style.sheet;
+                styleSheet.insertRule(`:root{--heo-main: ${value}!important}`, styleSheet.cssRules.length);
+                styleSheet.insertRule(`:root{--heo-main-op: ${value}23!important}`, styleSheet.cssRules.length);
+                styleSheet.insertRule(`:root{--heo-main-op-deep: ${value}dd!important}`, styleSheet.cssRules.length);
+                styleSheet.insertRule(`:root{--heo-main-none: ${value}00!important}`, styleSheet.cssRules.length);
                 heo.initThemeColor()
                 document.getElementById("coverdiv").classList.add("loaded");
             })
@@ -50,10 +53,13 @@ function coverColor() {
 
     } else {
         // document.styleSheets[0].addRule('#page-header:before','background: none!important');
-        document.styleSheets[0].addRule(':root', '--heo-main: var(--heo-theme)!important');
-        document.styleSheets[0].addRule(':root', '--heo-main-op: var(--heo-theme-op)!important');
-        document.styleSheets[0].addRule(':root', '--heo-main-op-deep:var(--heo-theme-op-deep)!important');
-        document.styleSheets[0].addRule(':root', '--heo-main-none: var(--heo-theme-none)!important');
+        const style = document.createElement('style');
+        document.head.appendChild(style);
+        const styleSheet = style.sheet;
+        styleSheet.insertRule(`:root{--heo-main: var(--heo-theme)!important}`, styleSheet.cssRules.length);
+        styleSheet.insertRule(`:root{--heo-main-op: var(--heo-theme-op)!important}`, styleSheet.cssRules.length);
+        styleSheet.insertRule(`:root{--heo-main-op-deep:var(--heo-theme-op-deep)!important}`, styleSheet.cssRules.length);
+        styleSheet.insertRule(`:root{--heo-main-none: var(--heo-theme-none)!important}`, styleSheet.cssRules.length);
         heo.initThemeColor()
     }
 }
@@ -352,7 +358,7 @@ document.addEventListener('scroll', btf.throttle(function () {
 
 //友链随机传送
 function travelling() {
-    var fetchUrl = "https://moments.0206.ink/randomfriend"
+    var fetchUrl = GLOBAL_CONFIG.source.links.randomfriendurl
     fetch(fetchUrl)
         .then(res => res.json())
         .then(json => {
