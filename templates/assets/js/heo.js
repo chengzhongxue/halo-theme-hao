@@ -364,8 +364,8 @@ var heo = {
             heo.musicBindEvent();
             heo_musicFirst = true;
         }
-        let msgPlay = '<i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span>';
-        let msgPause = '<i class="anzhiyufont anzhiyu-icon-pause"></i><span>暂停音乐</span>';
+        let msgPlay = '<i class="haofont hao-icon-play"></i><span>播放音乐</span>';
+        let msgPause = '<i class="haofont hao-icon-pause"></i><span>暂停音乐</span>';
         if (heo_musicPlaying) {
             navMusicEl.classList.remove("playing");
             document.getElementById("menu-music-toggle").innerHTML = msgPlay;

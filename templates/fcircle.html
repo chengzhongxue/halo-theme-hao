@@ -34,7 +34,7 @@
                         <div class="title-h2-a-left">
                             <h2 style="padding-top:0;margin:.6rem 0 .6rem">🎣 钓鱼</h2><a class="random-post-start"
                                                                                          href="javascript:fetchRandomPost();"><i
-                                class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a>
+                                class="haofont hao-icon-arrow-rotate-right"></i></a>
                         </div>
                         <div class="title-h2-a-right"><a class="random-post-all" href="/links">全部友链</a></div>
                     </div>
@@ -46,7 +46,7 @@
                             hungryFish: 500,
                         }
                     </script>
-                    <script th:src="@{/assets/libs/moments/random-friends-post.js}"></script>
+                    <script th:src="${assets_link + '/libs/moments/random-friends-post.js'}"></script>
 
                 </th:block>
                 <!--鱼塘-->
@@ -69,9 +69,9 @@
                         sort_rule: 'created'
                     }
                 </script>
-                <link rel="stylesheet" th:href="@{/assets/libs/moments/heoMainColor.css}">
-                <script type="text/javascript" th:src="@{/assets/libs/moments/app.min.js}"></script>
-                <script type="text/javascript" th:src="@{/assets/libs/moments/bundle.js}"></script>
+                <link rel="stylesheet" th:href="${assets_link + '/libs/moments/heoMainColor.css'}">
+                <script type="text/javascript" th:src="${assets_link + '/libs/moments/app.min.js'}"></script>
+                <script type="text/javascript" th:src="${assets_link + '/libs/moments/bundle.js'}"></script>
 
 
             </div>

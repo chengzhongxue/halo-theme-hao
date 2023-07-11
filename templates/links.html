@@ -6,7 +6,7 @@
     <div class="page" id="body-wrap">
         <header class="not-top-img" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
-            <link rel="stylesheet" type="text/css" th:href="@{/assets/zhheo/heo-fcircle3.css}">
+            <link rel="stylesheet" type="text/css" th:href="${assets_link + '/zhheo/heo-fcircle3.css'}">
 
         </header>
         <main class="layout hide-aside" id="content-inner">
@@ -18,7 +18,7 @@
                     </div>
                     <div class="banner-button-group">
                         <a class="banner-button secondary" data-pjax-state="" onclick="travelling()">
-                            <i class="anzhiyufont anzhiyu-icon-paper-plane1"></i>
+                            <i class="haofont hao-icon-paper-plane1"></i>
                             <span class="banner-button-text">随机访问</span>
                         </a>
                         <a class="banner-button" href="#post-comment" rel="external nofollow">
@@ -57,7 +57,7 @@
                     <div class="title-h2-a">
                         <div class="title-h2-a-left">
                             <h2 style="padding-top:0;margin:.6rem 0 .6rem">🎣 钓鱼</h2><a class="random-post-start"
-                                                                                         href="javascript:fetchRandomPost();"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a>
+                                                                                         href="javascript:fetchRandomPost();"><i class="haofont hao-icon-arrow-rotate-right"></i></a>
                         </div>
                         <div class="title-h2-a-right"><a class="random-post-all" href="/fcircle" data-pjax-state="">查看鱼塘</a></div>
                     </div>
@@ -69,7 +69,7 @@
                             hungryFish: 500,
                         }
                     </script>
-                    <script th:src="@{/assets/libs/moments/random-friends-post.js}"></script>
+                    <script th:src="${assets_link + '/libs/moments/random-friends-post.js'}"></script>
                 </th:block>
 
                 <div class="flink" id="article-container">
@@ -126,6 +126,8 @@
                                               th:text="${link.spec.displayName}"></span>
                                         <span class="flink-item-desc" th:text="${link.spec.description}"
                                               th:title="${link.spec.description}"></span>
+                                        <img th:src="${link.spec.logo}"
+                                             class="entered loaded">
                                     </div>
                                 </a>
                             </div>

@@ -25,7 +25,7 @@
                         </div>
                         <div class="author-img">
                             <img
-                                    th:src="@{${#strings.isEmpty(site.logo) ? '/assets/images/hao-logo.jpg' : site.logo}}">
+                                    th:src="@{${#strings.isEmpty(site.logo) ?  assets_link + '/images/hao-logo.jpg' : site.logo}}">
                         </div>
                         <div class="author-tag-right"
                              th:if="${not #lists.isEmpty(theme.config.about.authorInfoRightTags)}"

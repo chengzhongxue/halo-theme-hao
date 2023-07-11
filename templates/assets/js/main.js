@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const jqLoadAndRun = () => {
         const $fancyboxEle = GLOBAL_CONFIG.lightbox === 'fancybox'
-            ? document.querySelectorAll('#article-container :not(a):not(.gallery-group):not(.site-card-avatar) > img, #article-container > img,.bber-content-img > img')
+            ? document.querySelectorAll('#article-container :not(a):not(.gallery-group):not(.site-card-avatar):not(.flink-item-info) > img, #article-container > img,.bber-content-img > img')
             : []
         const fbLengthNoZero = $fancyboxEle.length > 0
         const $jgEle = document.querySelectorAll('#article-container .justified-gallery')

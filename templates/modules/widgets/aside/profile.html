@@ -9,7 +9,7 @@
             <div class="author-info__top-group">
                 <div class="author-info__sayhi" id="author-info__sayhi" onclick="heo.changeSayHelloText()">你好啊！我是</div>
                 <img class="avatar-img entered loaded"
-                     th:src="@{${#strings.isEmpty(site.logo) ? '/assets/images/hao-logo.jpg' : site.logo}}">
+                     th:src="@{${#strings.isEmpty(site.logo) ? assets_link + '/images/hao-logo.jpg' : site.logo}}">
             </div>
             <div class="author-info__name"
                  th:if="${#strings.isEmpty(theme.config.sidebar.profile.profileName)}"

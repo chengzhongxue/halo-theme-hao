@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 右键菜单 -->
 <div th:fragment="right-menu" th:if="${theme.config.tool.rightMenu.rightMenuEnable}">
-    <script th:src="@{/assets/zhheo/rightmenu.js}"></script>
+    <script th:src="${assets_link + '/zhheo/rightmenu.js'}"></script>
     <div id="rightMenu">
         <div class="rightMenu-group rightMenu-small">
             <div class="rightMenu-item" id="menu-backward"><i class="iconfont icon-arrow-left"></i></div>
@@ -48,25 +48,25 @@
                 <span>百度搜索</span>
             </div>
             <div class="rightMenu-item" id="menu-music-toggle" style="">
-                <i class="anzhiyufont anzhiyu-icon-play"></i>
+                <i class="haofont hao-icon-play"></i>
                 <span>播放音乐</span>
             </div>
             <div class="rightMenu-item" id="menu-music-back" style="">
-                <i class="anzhiyufont anzhiyu-icon-backward"></i>
+                <i class="haofont hao-icon-backward"></i>
                 <span>切换到上一首</span>
             </div>
             <div class="rightMenu-item" id="menu-music-forward" style="">
-                <i class="anzhiyufont anzhiyu-icon-forward"></i>
+                <i class="haofont hao-icon-forward"></i>
                 <span>切换到下一首</span>
             </div>
             <div class="rightMenu-item" id="menu-music-playlist"
                  th:attr="onclick='javascript:window.open(\''+ ${theme.config.tool.nav_music.all_playlist} +'\')'"
                  style="">
-                <i class="anzhiyufont anzhiyu-icon-radio"></i>
+                <i class="haofont hao-icon-radio"></i>
                 <span>查看所有歌曲</span>
             </div>
             <div class="rightMenu-item" id="menu-music-copyMusicName" style="">
-                <i class="anzhiyufont anzhiyu-icon-copy"></i>
+                <i class="haofont hao-icon-copy"></i>
                 <span>复制歌名</span>
             </div>
         </div>

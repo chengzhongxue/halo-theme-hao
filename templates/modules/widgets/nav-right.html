@@ -10,13 +10,13 @@
     <div class="nav-button only-home" id="travellings_button" th:if="${theme.config.nav.right.travelling}">
         <a class="site-page" th:href="@{${theme.config.nav.right.travellingUrl}}" target="_blank" rel="external nofollow"
            title="随机前往一个开往项目网站">
-            <i class="anzhiyufont anzhiyu-icon-train" style="font-size: 1rem; font-weight: 700; "></i>
+            <i class="haofont hao-icon-train" style="font-size: 1rem; font-weight: 700; "></i>
         </a>
     </div>
 
     <div class="nav-button only-home" th:if="${theme.config.nav.right.article}">
         <a class="site-page" href="javascript:void(0);" onclick="toRandomPost()" title="随机文章">
-            <i class="anzhiyufont anzhiyu-icon-dice" style="font-size: 1rem; font-weight: 700;"></i>
+            <i class="haofont hao-icon-dice" style="font-size: 1rem; font-weight: 700;"></i>
         </a>
     </div>
 
@@ -24,7 +24,7 @@
     <div class="nav-button" id="search-button" th:if="${pluginFinder.available('PluginSearchWidget')}">
         <a class="site-page social-icon search" href="javascript:SearchWidget.open();" rel="external nofollow"
            title="站内搜索">
-            <i class="anzhiyufont anzhiyu-icon-magnifying-glass" style="font-size: 1rem; font-weight: 700;"></i>
+            <i class="haofont hao-icon-magnifying-glass" style="font-size: 1rem; font-weight: 700;"></i>
         </a>
     </div>
 
@@ -32,7 +32,7 @@
     <!-- <div class="nav-button" th:if="${theme.config.nav.enableChangeColorScheme}">
         <a class="console_switchbutton" href="javascript:void(0);"  onclick="rm.switchDarkMode()" rel="external nofollow"
            title="切换模式 - 日夜交替，黑白互换。">
-           <i class="anzhiyufont anzhiyu-icon-circle-half-stroke" style="font-size: 1rem; font-weight: 700;"></i>
+           <i class="haofont hao-icon-circle-half-stroke" style="font-size: 1rem; font-weight: 700;"></i>
         </a>
     </div> -->
 

@@ -94,7 +94,7 @@ function popCommentBarrage(data) {
       <a class="barrageTitle" href="#post-comment">热评</a>
 			<div class="barrageNick">${data.nick}</div>
 			<img class="barrageAvatar" src="https://cravatar.cn/avatar/${data.mailMd5}"/>
-			<a class="comment-barrage-close" href="javascript:heo.switchCommentBarrage()"><i class="anzhiyufont anzhiyu-icon-xmark"></i></a>
+			<a class="comment-barrage-close" href="javascript:heo.switchCommentBarrage()"><i class="haofont hao-icon-xmark"></i></a>
 		</div>
 		<a class="barrageContent" href="#${data.id}">${data.comment}</a>
 	`

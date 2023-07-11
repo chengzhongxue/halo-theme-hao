@@ -4,7 +4,7 @@
 <!-- TODO 控制台功能 -->
 <div id="console" th:fragment="console">
   <div class="close-btn" onclick="heo.hideConsole()" href="javascript:void(0);">
-    <i class="anzhiyufont anzhiyu-icon-circle-xmark"></i>
+    <i class="haofont hao-icon-circle-xmark"></i>
   </div>
   <div class="console-card-group">
     <!-- 评论，需要使用评论插件，获取最近评论 -->
@@ -88,9 +88,9 @@
       </a>
     </div>
     <div class="console-btn-item" id="consoleHideAside" onclick="heo.hideAsideBtn()" title="边栏显示控制"><a
-            class="asideSwitch" data-pjax-state=""><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div>
+            class="asideSwitch" data-pjax-state=""><i class="haofont hao-icon-arrows-left-right"></i></a></div>
     <div class="console-btn-item on" id="consoleCommentBarrage" onclick="heo.switchCommentBarrage()" title="热评开关"><a
-            class="commentBarrage" data-pjax-state=""><i class="anzhiyufont anzhiyu-icon-message"></i></a></div>
+            class="commentBarrage" data-pjax-state=""><i class="haofont hao-icon-message"></i></a></div>
 
     <!--<div class="console-btn-item" id="consoleKeyboard" onclick="heo.keyboardToggle()" title="快捷键开关"><a-->
     <!--        class="keyboard-switch"><i class="fa-duotone fa-keyboard"></i></a>-->
@@ -100,7 +100,7 @@
     <!--</div>-->
     <div th:if="${theme.config.tool.nav_music.nav_musicEnable}" class="console-btn-item" id="consoleMusic" onclick="heo.musicToggle()" title="音乐开关">
       <a class="music-switch" data-pjax-state="">
-        <i class="anzhiyufont anzhiyu-icon-music"></i>
+        <i class="haofont hao-icon-music"></i>
       </a>
     </div>
   </div>

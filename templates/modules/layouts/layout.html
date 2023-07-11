@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="layout(content, htmlType)" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" th:fragment="layout(content, htmlType)" xmlns:th="http://www.thymeleaf.org"
+      th:with="assets_link=${theme.config.other.staticResource.use == 'elemecdn' ? 'https://npm.elemecdn.com/hao-theme-static@' + theme.spec.version +'/templates/assets' :
+      theme.config.other.staticResource.use == 'custom' ? theme.config.other.staticResource.cdn_link : #theme.assets('/')}">
 
 <!-- head 中自定义的  -->
 
@@ -48,59 +50,59 @@
 <div th:replace="~{modules/right-menu :: right-menu}"></div>
 
 <div>
-    <script th:src="@{/assets/js/utils.js}"></script>
-    <script th:src="@{/assets/js/main.js}"></script>
-    <script charset="utf-8" data-pjax th:src="@{/assets/zhheo/blogex.js}"></script>
+    <script th:src="${assets_link + '/js/utils.js'}"></script>
+    <script th:src="${assets_link + '/js/main.js'}"></script>
+    <script charset="utf-8" data-pjax th:src="${assets_link + '/zhheo/blogex.js'}"></script>
 
     <!-- https://instant.page/ 网站预加载， 放在 </body> 之前 -->
-    <script th:src="@{/assets/libs/instantpage/instantpage.min.js}" type="module"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script>
 
-    <script th:src="@{/assets/libs/lazyload/lazyload.iife.min.js}"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script>
 
     <!-- 右下角通知 https://www.polonel.com/snackbar/ -->
     <!-- todo head 中有它的 css，应该可以写一块，并改成后台可配置的功能，代码中应该还有他的 js -->
-    <script th:src="@{/assets/libs/snackbar/snackbar.min.js}"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script>
 
     <!-- 深色模式下添加粒子效果canvas -->
     <canvas th:if="${theme.config.style.universe}" id="universe" width="1312" height="880"></canvas>
-    <script th:if="${theme.config.style.universe}" async="" th:src="@{/assets/libs/canvas/dark.js}"></script>
+    <script th:if="${theme.config.style.universe}" async="" th:src="${assets_link + '/libs/canvas/dark.js'}"></script>
 
     <!-- https://davidshimjs.github.io/qrcodejs/ 生成二维码 -->
     <!-- 应该是文章页分享使用 -->
     <script data-pjax src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
-    <script th:src="@{/assets/libs/waterfall/waterfall.min.js}"></script>
+    <script th:src="${assets_link + '/libs/waterfall/waterfall.min.js'}"></script>
 
     <!-- 获取主色 https://lokeshdhakar.com/projects/color-thief/ -->
     <!--<script th:src="@{/assets/libs/color-thief/color-thief.umd.js}"></script>-->
-    <script th:src="@{/assets/libs/fast-average-color/index.browser.min.js}"></script>
+    <script th:src="${assets_link + '/libs/fast-average-color/index.browser.min.js'}"></script>
 
-    <script th:src="@{/assets/libs/view-image/view-image.min.js}"></script>
+    <script th:src="${assets_link + '/libs/view-image/view-image.min.js'}"></script>
 
 
     <!--左下角音乐-->
     <script>var meting_api = '[[${theme.config.tool.nav_music.meting_api}]]'; </script>
 
-    <link rel="stylesheet" th:href="@{/assets/libs/aplayer/APlayer.min.css}" media="all" onload="this.media='all'">
+    <link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="all" onload="this.media='all'">
 
-    <script th:src="@{/assets/libs/aplayer/APlayer.min.js}"></script>
+    <script th:src="${assets_link + '/libs/aplayer/APlayer.min.js'}"></script>
 
-    <script th:src="@{/assets/libs/aplayer/Meting2.min.js}"></script>
+    <script th:src="${assets_link + '/libs/aplayer/Meting2.min.js'}"></script>
 
 
 
-    <script th:src="@{/assets/libs/pjax/pjax.min.js}"></script>
+    <script th:src="${assets_link + '/libs/pjax/pjax.min.js'}"></script>
 
     <!-- swiper 在瞬间滚动时会使用 -->
-    <script data-pjax  th:src="@{/assets/libs/swiper/swiper-bundle.min.js}"></script>
+    <script data-pjax  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.js"></script>
 
     <!-- 评论弹幕 -->
     <script th:replace="~{modules/commentBarrage :: commentBarrage}"></script>
 
     <!-- Tocbot 目录生成 start -->
-    <script th:src="@{/assets/libs/tocbot/4.18.2/tocbot.min.js}"></script>
-    <link th:href="@{/assets/libs/tocbot/4.18.2/tocbot.css}" rel="stylesheet">
+    <script th:src="${assets_link + '/libs/tocbot/4.18.2/tocbot.min.js'}"></script>
+    <link th:href="${assets_link + '/libs/tocbot/4.18.2/tocbot.css'}" rel="stylesheet">
 
     <script>
         document.addEventListener("DOMContentLoaded",  function() {
