@@ -365,7 +365,10 @@ function travelling() {
             var name = json.name;
             var link = json.link;
             var msg = "点击前往按钮进入随机一个友链，不保证跳转网站的安全性和可用性。本次随机到的是本站友链：「" + name + "」";
-            document.styleSheets[0].addRule(':root', '--heo-snackbar-time:' + 8000 + 'ms!important');
+            const style = document.createElement('style');
+            document.head.appendChild(style);
+            const styleSheet = style.sheet;
+            styleSheet.insertRule(`:root{--heo-snackbar-time: 8000ms!important}`, styleSheet.cssRules.length);
             Snackbar.show({
                 text: msg,
                 duration: 8000,
