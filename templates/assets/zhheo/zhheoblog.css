@@ -14445,6 +14445,7 @@ figure.gallery-group:hover .gallery-group-name::after {
     min-height: 60px;
 }
 
+
 /* 悬浮状态头像 */
 .flink#article-container .flink-list > .flink-list-item:hover a img {
     transition: 0.6s;
@@ -14455,6 +14456,29 @@ figure.gallery-group:hover .gallery-group-name::after {
     min-width: 0px;
     min-height: 0px;
 }
+
+/* 友链右侧图标 */
+
+#article-container .flink-list>.flink-list-item:hover .flink-item-info> img {
+    opacity: .8 !important;
+}
+
+#article-container .flink-list>.flink-list-item .flink-item-info> img {
+    position: absolute;
+    opacity: 0 !important;
+    right: -30px !important;
+    bottom: -40px !important;
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50% !important;
+    z-index: -1;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
 
 /* 标题和描述 */
 .flink#article-container .flink-list > .flink-list-item a span {
