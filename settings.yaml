@@ -1011,10 +1011,10 @@ spec:
           placeholder: 请输入跳转 url
         - $formkit: url
           name: apiurl
-          value: "`https://moments.0206.ink/`"
+          value: "https://moments.0206.ink/"
           label: token地址
           placeholder: 请输入token地址
-          help: 注意格式 (`token地址`)
+          help: 注意格式 (https://moments.0206.ink/)
         - $formkit: radio
           name: fcircleRandomFriendsEnable
           label: 友链鱼塘页面（钓鱼）
