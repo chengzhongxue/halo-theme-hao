@@ -14846,14 +14846,7 @@ figure.gallery-group:hover .gallery-group-name::after {
 
 
 /*页脚样式一*/
-[data-theme="light"] .copyright,#ghbdages,#workboard{
-    color: var(--font-color);
-}
-.copyright,#ghbdages,#workboard {
-    position: relative;
-    padding: 0px 20px;
-    text-align: center;
-}
+
 .haofont.hao-icon-heartbeat {
     transition: 0.3s;
     animation: heartbeat-bounce 2s ease-in-out infinite;
