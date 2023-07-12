@@ -771,6 +771,95 @@ spec:
               label: 页脚友链地址
               placeholder: 请输入页脚友链地址
               help: 注意格式 (`友链地址`)
+        - $formkit: group
+          name: footerContent
+          label: 页脚内容
+          value:
+            runtime:
+            footeStyle:
+          children:
+            - $formkit: select
+              name: footerStyle
+              id: footeStyle
+              key: footeStyle
+              label: 样式
+              value: default
+              options:
+                - value: default
+                  label: 默认
+                - value: one
+                  label: 样式一
+            - $formkit: group
+              if: $get(footeStyle).value == 'one'
+              name: style_one
+              label: 样式一
+              value:
+                runtime_enable:
+                work_img:
+                work_description:
+                offduty_img:
+                offduty_description:
+                bdageitem:
+              children:
+                - $formkit: radio
+                  name: runtime_enable
+                  id: runtime_enable
+                  key: runtime_enable
+                  value: true
+                  label: 运行时间
+                  options:
+                    - label: 显示
+                      value: true
+                    - label: 隐藏
+                      value: false
+                - $formkit: attachment
+                  if: $get(runtime_enable).value
+                  name: work_img
+                  label: 上班时间的徽标
+                  placeholder: 请输入内容
+                  value: "https://0206.ink/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
+                - $formkit: text
+                  if: $get(runtime_enable).value
+                  name: work_description
+                  label: 上班时间的 title 描述
+                  placeholder: 请输入内容
+                  value: "距离月入25k也就还差一个大佬带我~"
+                - $formkit: attachment
+                  if: $get(runtime_enable).value
+                  name: offduty_img
+                  label: 下班时间的徽标
+                  placeholder: 请输入内容
+                  value: "https://0206.ink/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
+                - $formkit: text
+                  if: $get(runtime_enable).value
+                  name: offduty_description
+                  label: 下班时间的 title 描述
+                  placeholder: 请输入内容
+                  value: "下班了就该开开心心的玩耍，嘿嘿~"
+                - $formkit: repeater
+                  name: bdageitem
+                  label: 徽标配置项
+                  value: []
+                  children:
+                    - $formkit: url
+                      name: link
+                      label: 链接
+                      placeholder: 请输入内容
+                      value: "https://hexo.io/"
+                      validation: required
+                    - $formkit: attachment
+                      name: shields
+                      label: 徽标
+                      placeholder: 请输入内容
+                      validation: required
+                      value: "https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg"
+                    - $formkit: text
+                      name: message
+                      label: 徽标 title
+                      placeholder: 请输入内容
+                      validation: required
+                      value: "博客框架为Hexo_v5.4.0"
+
 
     - group: post
       label: 文章
@@ -995,7 +1084,7 @@ spec:
     - group: fcircle
       label: 友链鱼塘
       formSchema:
-        - $formkit: url
+        - $formkit: attachment
           name: backgroundImg
           validation: url
           label: 图片
@@ -1680,7 +1769,7 @@ spec:
               if: "$get(use).value == 'custom'"
               label: cdn地址，外链地址
               validation: required
-              value: '(https://npm.elemecdn.com/hao-theme-static@1.1.5/templates/assets'
+              value: 'https://npm.elemecdn.com/hao-theme-static@1.1.5/templates/assets'
               help: '默认为npmJs的elemecdn加速地址，如果你有自己的cdn地址（请确保链接下assets文件夹下主题静态资源文件），可以填写，否则请勿修改！ '
         - $formkit: group
           name: diytitle
