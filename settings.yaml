@@ -1451,7 +1451,7 @@ spec:
           id: use
           key: use
           value: commentWidget
-          help: Twikoo评论需要(打开,envId填写,accessToken填写)
+          help: Twikoo评论需要填写下方配置
           options:
             - label: 默认
               value: commentWidget
@@ -1472,7 +1472,7 @@ spec:
         - $formkit: group
           if: $get(twikooEnable).value
           name: twikoos
-          label: Twikoo评论配置
+          label: Twikoo评论配置（注意填写格式）
           value:
             maxBarrage:
             barrageTime:
@@ -1485,29 +1485,31 @@ spec:
               value: 1
               label: 同时最多显示弹幕数
               placeholder: 请输入显示弹幕数
+              help: 右下角同时最多显示的弹幕数量
             - $formkit: number
               name: barrageTime
               value: 4000
               label: 弹幕显示间隔时间ms
               placeholder: 请输入间隔时间ms
+              help: 右下角弹出热评弹幕的间隔时间
             - $formkit: url
               name: envId
               value: "`xxxxxxx`"
-              label: Twikoo评论-环境id
-              placeholder: 请输入环境id
-              help: 注意格式 (`地址`)
+              label: Twikoo评论 - 环境id/后端URL
+              placeholder: 请输入环境id或URL 格式：`ID或地址`
+              help: 注意格式，请用反单引号括起来，详情请查看文档
             - $formkit: text
               name: accessToken
-              value: "`xxxxxxx`"
-              label: Twikoo评论-token
-              placeholder: 请输入token
-              help: 注意格式 (`token`) 在控制台中获取，用于显示弹幕
+              value: "`tokenxxxxx`"
+              label: Twikoo评论 - 管理员令牌
+              placeholder: 请输入token 格式：`tokenxxxxx`
+              help: 注意格式，在浏览器F12的控制台中获取，用于显示弹幕，详情请查看文档
             - $formkit: text
               name: mailMd5
-              value: "`xxxxxxx`"
-              label: Twikoo评论-mailMd5
-              placeholder: 请输入mailMd5
-              help: 注意格式 (`mailMd5`)，用于验证博主评论
+              value: "`xxxxxxxxxx`"
+              label: Twikoo评论 - 博主邮箱MD5值
+              placeholder: 请输入md5值
+              help: 用于验证博主评论，可前往cmd5.com加密自己使用的邮箱，选择32位小写
 
     - group: style
       label: 样式
