@@ -119,6 +119,18 @@
 
         </span>
 
+        <style>
+            [data-theme="light"] .copyright,#ghbdages,#workboard{
+                color: var(--font-color);
+            }
+            .copyright,#ghbdages,#workboard {
+                position: relative;
+                padding: 0px 20px;
+                text-align: center;
+            }
+        </style>
+
+
         <script async="async">(function () {
             var grt = new Date("[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[1]}]]/[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[2]}]]/[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] 00:00:00"); //设置网站上线时间
             var now = new Date();
@@ -127,6 +139,8 @@
             var mnum;
             var snum;
             var nowHour;
+            var t;
+            var n;
 
             // 计算并更新天数、小时数、分钟数和秒数
             function updateTime() {
@@ -149,6 +163,8 @@
                 if (String(snum).length == 1) {
                     snum = "0" + snum;
                 }
+                t = Math.trunc(234e8 + (now - grt) / 1e3 * 17)
+                n = (t / 1496e5).toFixed(6)
             }
 
             // 更新网页中显示的网站运行时间
@@ -158,7 +174,7 @@
                 let currentTimeHtml = "";
                 if (nowHour < 18 && nowHour >= 9) {
                     // 如果是上班时间，默认就是"困困鱼-上班摸鱼中.svg"图片，不需要更改
-                    currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='haofont hao-icon-heartbeat' style='color:red'></i>`;
+                    currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='haofont hao-icon-heartbeat' style='color:red'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${n} 个天文单位 🚀`;
                 } else {
                     // 如果是下班时间，插入"困困鱼-下班啦.svg"图片
                     let img = document.querySelector("#workboard .workSituationImg");
@@ -166,7 +182,7 @@
                     img.title = "[[${theme.config.footer.footerContent.style_one.work_description}]]";
                     img.alt = "[[${theme.config.footer.footerContent.style_one.work_description}]]";
 
-                    currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='haofont hao-icon-heartbeat' style='color:red'></i>`;
+                    currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='haofont hao-icon-heartbeat' style='color:red'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${n} 个天文单位 🚀`;
                 }
 
                 if (document.getElementById("runtimeTextTip")) {
