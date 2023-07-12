@@ -343,6 +343,15 @@ spec:
           label: 随机封面
           value: https://source.unsplash.com/random/600x400/?blog,scenery,night,desert,sea
           help:  未设置文章封面时，将使用随机封面 (二次元随机图地址：https://www.dmoe.cc/random.php)
+        - $formkit: radio
+          name: articleCardPolish
+          label: 首页文章卡片(擦亮效果)
+          value: false
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
 
     - group: sidebar
       label: 侧栏
