@@ -49,7 +49,7 @@
     </th:block>
     <!-- 底部 banner -->
 
-    <div id="footer-banner">
+    <div th:if="${theme.config.footer.footerContent.footerStyle == 'default'}" id="footer-banner">
         <div class="footer-banner-links">
             <div class="footer-banner-left">
                 <div id="footer-banner-tips">
@@ -91,6 +91,95 @@
         </div>
     </div>
 
+    <th:block  th:if="${theme.config.footer.footerContent.footerStyle == 'one'}">
+        <div class="copyright" th:if="${not #strings.isEmpty(theme.config.basics.siteStartTime)}">
+            ©[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] - [[${#dates.format(new
+            java.util.Date(), 'yyyy')}]] By [[${site.title}]]
+        </div>
+        <div class="copyright" th:if="${#strings.isEmpty(theme.config.basics.siteStartTime)}">
+            ©[[${#dates.format(new java.util.Date(), 'yyyy')}]] By [[${site.title}]]
+        </div>
+        <div th:if="${theme.config.footer.footerContent.style_one.runtime_enable}" id="workboard">
+            <img class="workSituationImg boardsign"
+                 th:src="${theme.config.footer.footerContent.style_one.work_img}"
+                 th:alt="${theme.config.footer.footerContent.style_one.work_description}"
+                 th:title="${theme.config.footer.footerContent.style_one.work_description}" />
+            <div id="runtimeTextTip"></div>
+        </div>
+        <p id="ghbdages"
+           th:with="bdageitem = ${theme.config.footer.footerContent.style_one.bdageitem}">
+            <a class="github-badge" th:each="data : ${bdageitem}" target="_blank"
+               th:href="@{${data.link}}" style="margin-inline:5px"
+               th:title="${data.message}">
+                <img th:src="@{${data.shields}}"
+                     th:alt="${data.message}" />
+            </a>
+        </p>
+        <span style="padding: 20px 20px;">
+
+        </span>
+
+        <script async="async">(function () {
+            var grt = new Date("[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[1]}]]/[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[2]}]]/[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] 00:00:00"); //设置网站上线时间
+            var now = new Date();
+            var dnum;
+            var hnum;
+            var mnum;
+            var snum;
+            var nowHour;
+
+            // 计算并更新天数、小时数、分钟数和秒数
+            function updateTime() {
+                now = new Date(); // 更新 now 的值
+                nowHour = now.getHours(); // 更新 nowHour 的值
+                var days = (now - grt) / 1000 / 60 / 60 / 24;
+                dnum = Math.floor(days);
+                var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+                hnum = Math.floor(hours);
+                if (String(hnum).length == 1) {
+                    hnum = "0" + hnum;
+                }
+                var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+                mnum = Math.floor(minutes);
+                if (String(mnum).length == 1) {
+                    mnum = "0" + mnum;
+                }
+                var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+                snum = Math.round(seconds);
+                if (String(snum).length == 1) {
+                    snum = "0" + snum;
+                }
+            }
+
+            // 更新网页中显示的网站运行时间
+            function updateHtml() {
+                const footer = document.getElementById("footer");
+                if (!footer) return
+                let currentTimeHtml = "";
+                if (nowHour < 18 && nowHour >= 9) {
+                    // 如果是上班时间，默认就是"困困鱼-上班摸鱼中.svg"图片，不需要更改
+                    currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='haofont hao-icon-heartbeat' style='color:red'></i>`;
+                } else {
+                    // 如果是下班时间，插入"困困鱼-下班啦.svg"图片
+                    let img = document.querySelector("#workboard .workSituationImg");
+                    img.src = "[[${theme.config.footer.footerContent.style_one.work_img}]]";
+                    img.title = "[[${theme.config.footer.footerContent.style_one.work_description}]]";
+                    img.alt = "[[${theme.config.footer.footerContent.style_one.work_description}]]";
+
+                    currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='haofont hao-icon-heartbeat' style='color:red'></i>`;
+                }
+
+                if (document.getElementById("runtimeTextTip")) {
+                    document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+                }
+            }
+
+            setInterval(() => {
+                updateTime();
+                updateHtml();
+            }, 1000);
+        })();</script>
+    </th:block>
 
     <!-- 右下角 snackbar 弹窗 -->
     <div th:if="${theme.config.tool.snackbar.switch}" class="needEndHide" id="cookies-window">

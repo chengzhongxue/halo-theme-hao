@@ -14844,6 +14844,64 @@ figure.gallery-group:hover .gallery-group-name::after {
     letter-spacing: -10px;
 }
 
+
+/*页脚样式一*/
+[data-theme="light"] .copyright,#ghbdages,#workboard{
+    color: var(--font-color);
+}
+.copyright,#ghbdages,#workboard {
+    position: relative;
+    padding: 0px 20px;
+    text-align: center;
+}
+.haofont.hao-icon-heartbeat {
+    transition: 0.3s;
+    animation: heartbeat-bounce 2s ease-in-out infinite;
+    -webkit-font-smoothing: antialiased;
+    display: var(--fa-display, inline-block);
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+}
+#ghbdages .github-badge img {
+    height: 20px;
+    max-width: 150px;
+    border-radius: 4px;
+    pointer-events: none
+}
+
+#workboard img.boardsign {
+    width: 100%;
+    max-width: 130px;
+    border-radius: 0
+}
+@keyframes heartbeat-bounce {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    10%,
+    30% {
+        transform: scale(0.9);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: scale(1.1);
+    }
+    50%,
+    70% {
+        transform: scale(1.1);
+    }
+}
+#workboard {
+    font-size: 12px;
+}
+/*页脚样式一*/
+
 /* 页脚底层背景 */
 #footer:before {
     position: absolute !important;

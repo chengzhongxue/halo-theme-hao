@@ -80,6 +80,25 @@
                 </span>
             </div>
         </div>
+
+        <!-- 文章卡片擦亮效果 -->
+        <style th:if="${theme.config.layout.articleCardPolish}">
+            #recent-posts > .recent-post-item:not(a)::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 200%;
+                background: linear-gradient(to right, transparent, white, transparent);
+                transform: translateX(-200%);
+                transition: transform 0.5s linear;
+                z-index: 1;
+            }
+            #recent-posts > .recent-post-item:not(a):hover::before {
+                transform: translateX(100%) skewX(-60deg);
+            }
+        </style>
     </div>
 
     <!-- 分页 -->
