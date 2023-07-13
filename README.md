@@ -124,7 +124,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -147,6 +147,9 @@ This project follows the [all-contributors](https://github.com/all-contributors/
       <td align="center" valign="top" width="16.66%"><a href="https://github.com/chengzhongxue"><img src="https://avatars.githubusercontent.com/u/89380218?v=4?s=100" width="100px;" alt="困困鱼"/><br /><sub><b>困困鱼</b></sub></a><br /><a href="https://github.com/liuzhihang/halo-theme-hao/commits?author=chengzhongxue" title="Code">💻</a></td>
       <td align="center" valign="top" width="16.66%"><a href="https://op-lab.top"><img src="https://avatars.githubusercontent.com/u/7914367?v=4?s=100" width="100px;" alt="Top John"/><br /><sub><b>Top John</b></sub></a><br /><a href="https://github.com/liuzhihang/halo-theme-hao/commits?author=TopJohn" title="Code">💻</a></td>
       <td align="center" valign="top" width="16.66%"><a href="https://khbit.cn"><img src="https://avatars.githubusercontent.com/u/72146468?v=4?s=100" width="100px;" alt="BugJi"/><br /><sub><b>BugJi</b></sub></a><br /><a href="https://github.com/liuzhihang/halo-theme-hao/commits?author=daizihan233" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="16.66%"><a href="http://roozen.top"><img src="https://avatars.githubusercontent.com/u/93673944?v=4?s=100" width="100px;" alt="Roozen"/><br /><sub><b>Roozen</b></sub></a><br /><a href="https://github.com/liuzhihang/halo-theme-hao/commits?author=Roozenlz" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>
