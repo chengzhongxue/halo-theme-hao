@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'comments')}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="content">
+
+    <div class="page" id="body-wrap">
+
+        <!-- 头部导航栏 -->
+        <header class="not-top-img" id="page-header">
+            <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
+        </header>
+        <main class="layout hide-aside" id="content-inner">
+            <div id="page">
+                <h1 >[[${theme.config.envelope_comment.title}]]</h1>
+                <div id="article-container">
+                    <style>
+                        @media screen and (max-width:600px) {
+
+                            #afterimg,
+                            #beforeimg {
+                                display: none !important
+                            }
+                        }
+
+                        @media screen and (min-width:600px) {
+                            #article-container img {
+                                margin: 0 auto 0
+                            }
+
+                            #form-wrap {
+                                overflow: hidden;
+                                height: 447px;
+                                position: relative;
+                                top: 0;
+                                transition: all 1s ease-in-out .3s;
+                                z-index: 0
+                            }
+
+                            #form-wrap:hover {
+                                height: [[${theme.config.envelope_comment.height}]]px;
+                                top: -200px
+                            }
+
+                            #beforeimg {
+                                position: absolute;
+                                bottom: 126px;
+                                left: 0;
+                                background-repeat: no-repeat;
+                                width: 530px;
+                                height: 317px;
+                                z-index: -100;
+                                pointer-events: none
+                            }
+
+                            #afterimg {
+                                position: absolute;
+                                bottom: -2px;
+                                left: 0;
+                                background-repeat: no-repeat;
+                                width: 530px;
+                                height: 259px;
+                                z-index: 100;
+                                pointer-events: none
+                            }
+
+                            #envelope {
+                                position: relative;
+                                overflow: visible;
+                                width: 500px;
+                                margin: 0 auto;
+                                transition: all 1s ease-in-out .3s;
+                                padding-top: 200px
+                            }
+
+                            #maincontent {
+                                width: 530px;
+                                margin: 20px auto 0
+                            }
+
+                            .formmain {
+                                background: #fff;
+                                width: 95%;
+                                max-width: 800px;
+                                margin: auto auto;
+                                border-radius: 5px;
+                                border: 1px solid;
+                                overflow: hidden;
+                                -webkit-box-shadow: 0 0 20px 0 #000;
+                                box-shadow: 0 0 20px 0 #000
+                            }
+                        }
+
+                        [data-theme=dark] .formmain {
+                            background: #323232
+                        }
+
+                        [data-theme=dark] .comments {
+                            background: #5a5a5a !important
+                        }
+                    </style>
+                    <div id="maincontent">
+                        <div id="form-wrap"><img class="no-lightbox entered loaded" id="beforeimg"
+                                                 th:src="@{${theme.config.envelope_comment.custom_pic.beforeimg}}">
+                            <div id="envelope">
+                                <form>
+                                    <div class="formmain" style="pointer-events:none"><img
+                                            class="headerimg no-lightbox entered loaded"
+                                            th:src="@{${theme.config.envelope_comment.custom_pic.cover}}"
+                                            style="width:100%;overflow:hidden;pointer-events:none"
+                                    >
+                                        <div class="comments-main">
+                                            <h3 class="title3"
+                                                style="text-decoration:none;color:$theme-color;text-align:center">
+                                                来自[[${site.title}]]的留言:</h3>
+                                            <div class="comments"
+                                                 style="text-align:center;border-bottom:#ddd 1px solid;border-left:#ddd 1px solid;padding-bottom:20px;background-color:#eee;margin:15px 0;padding-left:20px;padding-right:20px;border-top:#ddd 1px solid;border-right:#ddd 1px solid;padding-top:20px"
+                                                 th:with="message = ${theme.config.envelope_comment.messageList}">
+
+                                                <div th:each="data : ${message}">[[${data.content}]]</div>
+
+                                            </div>
+                                            <div class="bottomcontent" style="text-align:center;margin-top:40px"><img
+                                                    class="bottomimg no-lightbox entered loaded"
+                                                    th:src="@{${theme.config.envelope_comment.custom_pic.line}}"
+                                                    style="width:100%;margin:5px auto 5px auto;display:block;pointer-events:none"
+                                            ></div>
+                                            <p class="bottomhr" style="font-size:12px;text-align:center;color:#999">
+                                                [[${theme.config.envelope_comment.bottom}]]</p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div><img class="no-lightbox entered loaded" id="afterimg"
+                                       th:src="@{${theme.config.envelope_comment.custom_pic.afterimg}}" >
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- 评论模块 -->
+                <th:block
+                        th:if="${theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
+                    <div th:replace="~{modules/twikoo :: twikoo}"></div>
+                </th:block>
+                <div id="post-comment"
+                     th:if="${pluginFinder.available('PluginCommentWidget') && #strings.equals(theme.config.comments.use, 'commentWidget')}">
+                    <div class="comment-head">
+                        <div class="comment-headline"><i class="iconfont icon-comment-alt"></i> <span>评论</span></div>
+                        <div class="comment-privacy"><a href="/privacy">隐私政策</a></div>
+                        <div class="comment-tips" id="comment-tips">
+                            <span>你无需删除空行，直接评论以获取最佳展示效果</span>
+                        </div>
+                    </div>
+                    <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name='links'"
+                                  colorScheme="document.documentElement.getAttribute('data-theme')"/>
+                </div>
+
+            </div>
+
+
+        </main>
+        <!-- 底部 -->
+        <footer th:replace="~{modules/footer :: footer}"></footer>
+    </div>
+
+</th:block>
+
+</html>
