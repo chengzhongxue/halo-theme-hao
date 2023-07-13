@@ -1910,7 +1910,7 @@ spec:
               name: subtitle
               label: 标题
               value: 请尝试站内搜索寻找文章
-            - $formkit: url
+            - $formkit: attachment
               name: background
               label: 背景
               value: /themes/theme-hao/assets/images/404s.gif
