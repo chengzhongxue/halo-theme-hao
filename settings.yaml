@@ -1905,26 +1905,12 @@ spec:
           value:
             subtitle:
             background:
-            error_404Enable:
           children:
-            - $formkit: radio
-              name: error_404Enable
-              id: error_404Enable
-              key: error_404Enable
-              help: 启动前请发布页面(自定义模板选择`404页面模版`,别名`404`)
-              value: false
-              options:
-                - label: 启用
-                  value: true
-                - label: 禁用
-                  value: false
             - $formkit: text
               name: subtitle
-              if: $get(error_404Enable).value
               label: 标题
               value: 请尝试站内搜索寻找文章
-            - $formkit: url
+            - $formkit: attachment
               name: background
-              if: $get(error_404Enable).value
               label: 背景
               value: /themes/theme-hao/assets/images/404s.gif

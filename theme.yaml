@@ -21,10 +21,6 @@ spec:
         description: 音乐页面
         screenshot:
         file: music.html
-      - name: 404页面模版
-        description: 404 not found
-        screenshot:
-        file: 404.html
       - name: 留言板页面模版
         description: 留言板页面
         screenshot:
