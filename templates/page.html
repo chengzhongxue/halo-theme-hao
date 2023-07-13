@@ -27,8 +27,8 @@
                             <span>你无需删除空行，直接评论以获取最佳展示效果</span>
                         </div>
                     </div>
-                    <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name='links'"
-                                  colorScheme="document.documentElement.getAttribute('data-theme')"/>
+                    <halo:comment group="content.halo.run" kind="SinglePage"
+                                  th:attr="name=${singlePage.metadata.name}" colorScheme="document.documentElement.getAttribute('data-theme')" />
                 </div>
             </div>
 
