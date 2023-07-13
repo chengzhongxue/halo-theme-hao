@@ -25,6 +25,10 @@ spec:
         description: 404 not found
         screenshot:
         file: 404.html
+      - name: 留言板页面模版
+        description: 留言板页面
+        screenshot:
+        file: comments.html
   description: Halo 2.x Theme base on Thymeleaf, Referring to Butterfly and Heo
   logo: https://liuzhihang.com/upload/logo.jpg
   website: https://liuzhihang.com
