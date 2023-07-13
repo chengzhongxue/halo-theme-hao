@@ -53,7 +53,7 @@
     <!-- 今日推荐 -->
     <div class="todayCard" id="todayCard"
          th:if="${theme.config.top.BannerRight.todayRecommend}"
-         th:attr="onclick='javascript:window.location.href=\''+${theme.config.top.BannerRight.todayRecommendContent.todayRecommendUrl}+'\'">
+         th:attr="onclick='javascript:window.open(\''+ ${theme.config.top.BannerRight.todayRecommendContent.todayRecommendUrl} +'\')'">
         <div class="todayCard-info">
             <div class="todayCard-tips" th:text="${theme.config.top.BannerRight.todayRecommendContent.todayRecommendxTitle}"></div>
             <div class="todayCard-title" th:text="${theme.config.top.BannerRight.todayRecommendContent.todayRecommendTitle}"></div>
