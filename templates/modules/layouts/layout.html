@@ -308,14 +308,12 @@
             typeof preloader === 'object' && preloader.endLoading()
         })
 
-        if(GLOBAL_CONFIG.error404Enable){
-            document.addEventListener('pjax:error', (e) => {
-                    if (e.request.status === 404) {
-                        pjax.loadUrl('/404')
-                    }
+        document.addEventListener('pjax:error', (e) => {
+                if (e.request.status === 404 || e.request.status === 500) {
+                    window.location.href = e.request.responseURL;
                 }
-            )
-        }
+            }
+        )
     </script>
 
 
