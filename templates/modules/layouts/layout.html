@@ -211,6 +211,7 @@
                 // 页脚友链
                 addFriendLinksInFooter: function () {
 
+                    var linksUrl = '[[${theme.config.link.linksUrl}]]'
                     var fetchUrl = [[${theme.config.footer.footer_group.fetchUrl}]]
                     fetch(fetchUrl)
                         .then(res => res.json())
@@ -222,7 +223,7 @@
                                 var item = randomFriendLinks[i]
                                 htmlText += `<a class='footer-item' href='${item.link}'  target="_blank" rel="noopener nofollow">${item.name}</a>`;
                             }
-                            htmlText += `<a class='footer-item' href='/links'>更多</a>`
+                            htmlText += `<a class='footer-item' href='${linksUrl}'>更多</a>`
                             document.getElementById("friend-links-in-footer").innerHTML = htmlText;
                         })
                 }

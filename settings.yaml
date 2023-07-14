@@ -1080,6 +1080,15 @@ spec:
           value: "https://moments.0206.ink/randomfriend"
           label: 随机访问地址
           help: 注意格式 (你的鱼塘token地址 + randomfriend)
+        - $formkit: url
+          name: fcircleUrl
+          value: "/fcircle"
+          label: 鱼塘链接
+        - $formkit: url
+          name: linksUrl
+          value: "/links"
+          label: 友链链接
+
 
     - group: fcircle
       label: 友链鱼塘
