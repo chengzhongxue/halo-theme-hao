@@ -25,6 +25,10 @@ spec:
         description: 留言板页面
         screenshot:
         file: comments.html
+      - name: 追番页面模版
+        description: 追番页面
+        screenshot:
+        file: bangumis.html
   description: Halo 2.x Theme base on Thymeleaf, Referring to Butterfly and Heo
   logo: https://liuzhihang.com/upload/logo.jpg
   website: https://liuzhihang.com

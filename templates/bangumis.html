@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'comments')}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="content">
+
+    <div class="page" id="body-wrap">
+
+        <!-- 头部导航栏 -->
+        <header class="not-top-img" id="page-header">
+            <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
+        </header>
+        <main class="layout hide-aside" id="content-inner">
+            <div id="page">
+                <h1>[[${theme.config.envelope_comment.title}]]</h1>
+                <div id="article-container">
+                    <blockquote><p>生命不息，追番不止！</p></blockquote>
+                    <style>
+                        .bangumi-tabs {
+                            margin-bottom: 15px;
+                            margin-top: 15px
+                        }
+
+                        .bangumi-tab {
+                            padding: 5px
+                        }
+
+                        a.bangumi-tab {
+                            text-decoration: none
+                        }
+
+                        .bangumi-active {
+                            background: #657b83;
+                            color: #fff
+                        }
+
+                        .bangumi-item {
+                            position: relative;
+                            clear: both;
+                            padding: 10px 0;
+                            border-bottom: 1px solid #ddd;
+                            min-height: 180px
+                        }
+
+                        @media screen and (max-width: 600px) {
+                            .bangumi-item {
+                                width: 100%
+                            }
+                        }
+
+                        .bangumi-picture {
+                            position: absolute;
+                            left: 0;
+                            top: 10px;
+                            width: 110px
+                        }
+
+                        .bangumi-picture img {
+                            margin: 10px 0
+                        }
+
+                        .bangumi-info {
+                            padding-left: 120px;
+                            margin-top: 10px
+                        }
+
+                        .bangumi-meta {
+                            font-size: 12px;
+                            padding-right: 10px;
+                            height: 45px
+                        }
+
+                        .bangumi-comments {
+                            font-size: 12px;
+                            margin-top: 10px
+                        }
+
+                        .bangumi-comments > p {
+                            word-break: break-all;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: normal;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 3
+                        }
+
+                        .bangumi-pagination {
+                            margin-top: 15px;
+                            text-align: center;
+                            margin-bottom: 10px
+                        }
+
+                        .bangumi-button {
+                            padding: 5px
+                        }
+
+                        .bangumi-button:hover {
+                            background: #657b83;
+                            color: #fff
+                        }
+
+                        .bangumi-hide {
+                            display: none
+                        }
+
+                        .bangumi-show {
+                            display: block
+                        }
+
+                        .bangumi-title {
+                            font-size: 18px
+                        }
+
+                        .bangumi-title a {
+                            line-height: 1;
+                            text-decoration: none
+                        }
+
+                        .bangumi-info-items {
+                            font-size: 12px;
+                            color: #2fd8d8;
+                            padding-top: 10px;
+                            line-height: 1;
+                            float: left;
+                            width: 100%
+                        }
+
+                        .bangumi-info-item {
+                            display: inline-block;
+                            width: 13%;
+                            border-right: 1px solid #2fd8d8;
+                            text-align: center;
+                            height: 34px
+                        }
+
+                        .bangumi-info-label {
+                            display: block;
+                            line-height: 12px
+                        }
+
+                        .bangumi-info-item em {
+                            display: block;
+                            padding-top: 6px;
+                            line-height: 17px;
+                            font-style: normal;
+                            font-weight: 700
+                        }
+
+                        .bangumi-info-total {
+                            padding-top: 11px;
+                            display: block;
+                            line-height: 12px;
+                            font-weight: 700
+                        }
+
+                        .bangumi-info-item-score {
+                            border-right: 1px solid #0000;
+                            width: 50px
+                        }
+
+                        .bangumi-info-label-em {
+                            color: transparent;
+                            opacity: 0;
+                            visibility: hidden;
+                            line-height: 6px !important;
+                            padding: 0 !important
+                        }
+
+                        @media (max-width: 650px) {
+                            .bangumi-coin, .bangumi-type {
+                                display: none
+                            }
+
+                            .bangumi-info-item {
+                                width: 16%
+                            }
+                        }
+
+                        @media (max-width: 590px) {
+                            .bangumi-danmaku, .bangumi-wish {
+                                display: none
+                            }
+
+                            .bangumi-info-item {
+                                width: 19%
+                            }
+                        }
+
+                        @media (max-width: 520px) {
+                            .bangumi-doing, .bangumi-play {
+                                display: none
+                            }
+
+                            .bangumi-info-item {
+                                width: 24%
+                            }
+                        }
+
+                        @media (max-width: 480px) {
+                            .bangumi-collect, .bangumi-follow {
+                                display: none
+                            }
+
+                            .bangumi-info-item {
+                                width: 30%
+                            }
+                        }
+
+                        @media (max-width: 400px) {
+                            .bangumi-area {
+                                display: none
+                            }
+
+                            .bangumi-info-item {
+                                width: 45%
+                            }
+                        }
+
+                        .bangumi-my-comments {
+                            border: 1px dashed #8f8f8f;
+                            padding: 3px;
+                            border-radius: 5px;
+                            margin-left: -120px
+                        }
+
+                        .bangumi-starstop {
+                            background: url(https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.7.9/lib/img/rate_star_2x.png) 100% 100%/10px 19.5px repeat-x;
+                            height: 10px;
+                            width: 50px;
+                            display: inline-block;
+                            float: none
+                        }
+
+                        .bangumi-starlight {
+                            background: url(https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.7.9/lib/img/rate_star_2x.png) 0 0/10px 19.5px repeat-x;
+                            height: 10px;
+                            display: block;
+                            width: 100%
+                        }
+
+                        .bangumi-starlight.stars1 {
+                            width: 5px
+                        }
+
+                        .bangumi-starlight.stars2 {
+                            width: 10px
+                        }
+
+                        .bangumi-starlight.stars3 {
+                            width: 15px
+                        }
+
+                        .bangumi-starlight.stars4 {
+                            width: 20px
+                        }
+
+                        .bangumi-starlight.stars5 {
+                            width: 25px
+                        }
+
+                        .bangumi-starlight.stars6 {
+                            width: 30px
+                        }
+
+                        .bangumi-starlight.stars7 {
+                            width: 35px
+                        }
+
+                        .bangumi-starlight.stars8 {
+                            width: 40px
+                        }
+
+                        .bangumi-starlight.stars9 {
+                            width: 45px
+                        }
+
+                        .bangumi-starlight.stars10 {
+                            width: 50px
+                        }
+                    </style>
+                    <div class="bangumi-tabs">
+                        <a class="bangumi-tab" id="bangumi-tab1" href="javascript:;"
+                           rel="external" target="_self" onclick="return!1" data-pjax-state="">想看 (10)</a>
+                        <a class="bangumi-tab bangumi-active" id="bangumi-tab2" href="javascript:;"
+                           rel="external" target="_self" onclick="return!1" data-pjax-state="">在看 (55)</a>
+                        <a class="bangumi-tab" id="bangumi-tab3" href="javascript:;" rel="external" target="_self"
+                           onclick="return!1" data-pjax-state="">已看 (43)</a>
+                    </div>
+                    <div>
+                        <div id="bangumi-item1" class="bangumi-hide">
+                            <div class="bangumi-item">
+                                <div class="bangumi-picture">
+                                    <a
+                                            href="https://i0.hdslb.com/bfs/bangumi/image/4b2547ffdd6f40f997454b37c0ad48624a1730d9.jpg"
+                                            data-fancybox="gallery" data-caption=""
+                                            data-thumb="https://i0.hdslb.com/bfs/bangumi/image/4b2547ffdd6f40f997454b37c0ad48624a1730d9.jpg">
+                                        <img
+                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/4b2547ffdd6f40f997454b37c0ad48624a1730d9.jpg"
+                                                referrerpolicy="no-referrer" width="110"
+                                                style="width:110px;margin:20px auto">
+                                    </a>
+                                </div>
+                                <div class="bangumi-info">
+                                <div class="bangumi-title">
+                                        <a target="_blank"
+                                           href="https://www.bilibili.com/bangumi/media/md28237126/"
+                                           rel="external nofollow noreferrer">夏日重现</a>
+                                    </div>
+                                    <div class="bangumi-meta">
+                                        <span class="bangumi-info-items"><span
+                                                class="bangumi-info-item"><span class="bangumi-info-total">全25话</span><em
+                                                class="bangumi-info-label-em">0</em></span> <span
+                                                class="bangumi-info-item bangumi-area"><span
+                                                class="bangumi-info-label">番剧</span> <em>日本</em></span> <span
+                                                class="bangumi-info-item bangumi-play"><span
+                                                class="bangumi-info-label">总播放</span> <em>2.1 亿</em></span> <span
+                                                class="bangumi-info-item bangumi-follow"><span
+                                                class="bangumi-info-label">追番人数</span> <em>439.7 万</em></span> <span
+                                                class="bangumi-info-item bangumi-coin"><span
+                                                class="bangumi-info-label">硬币数</span> <em>136.5 万</em></span> <span
+                                                class="bangumi-info-item bangumi-danmaku"><span
+                                                class="bangumi-info-label">弹幕总数</span> <em>127.4 万</em></span> <span
+                                                class="bangumi-info-item bangumi-info-item-score"><span
+                                                class="bangumi-info-label">评分</span> <em>9.8</em></span></span></div>
+                                    <div class="bangumi-comments">
+                                        <p>简介：“潮死了。”
+                                            网代慎平收到发小——小舟潮的讣告后，回到了阔别两年的故乡——和歌山市日都岛。
+                                            慎平与亲人朋友重聚，葬礼也顺利地进行着。 然而，好友告诉他“潮的死有疑点，可能是他杀”。
+                                            第二天，邻近...
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="bangumi-item2" class="bangumi-show">
+                            <div class="bangumi-item">
+                                <div class="bangumi-picture">
+                                    <a
+                                            href="https://i0.hdslb.com/bfs/bangumi/image/6806055cb3a313ff70bb57f899ef49189e5d4c42.png"
+                                            data-fancybox="gallery" data-caption=""
+                                            data-thumb="https://i0.hdslb.com/bfs/bangumi/image/6806055cb3a313ff70bb57f899ef49189e5d4c42.png">
+                                        <img
+                                                src="https://i0.hdslb.com/bfs/bangumi/image/6806055cb3a313ff70bb57f899ef49189e5d4c42.png"
+                                                data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/6806055cb3a313ff70bb57f899ef49189e5d4c42.png"
+                                                referrerpolicy="no-referrer" width="110"
+                                                style="width:110px;margin:20px auto"
+                                                data-ll-status="loaded" class="entered loaded">
+                                    </a>
+                                </div>
+                                <div class="bangumi-info">
+                                    <div class="bangumi-title">
+                                        <a target="_blank"
+                                           href="https://www.bilibili.com/bangumi/media/md20140389/"
+                                           rel="external nofollow noreferrer">鬼灭之刃
+                                            刀匠村篇
+                                        </a>
+                                    </div>
+                                    <div class="bangumi-meta">
+                                        <span class="bangumi-info-items">
+                                            <span class="bangumi-info-item">
+                                                <span class="bangumi-info-total">全13话</span>
+                                                <em class="bangumi-info-label-em">0</em>
+                                            </span>
+                                            <span class="bangumi-info-item bangumi-area">
+                                                <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                                            </span>
+                                            <span class="bangumi-info-item bangumi-play">
+                                                <span class="bangumi-info-label">总播放</span>
+                                                <em>9465.7 万</em>
+                                            </span>
+                                            <span class="bangumi-info-item bangumi-follow">
+                                                <span class="bangumi-info-label">追番人数</span>
+                                                <em>1556.8 万</em>
+                                            </span>
+                                            <span class="bangumi-info-item bangumi-coin">
+                                                <span class="bangumi-info-label">硬币数</span>
+                                                <em>22.0 万</em>
+                                            </span>
+                                            <span class="bangumi-info-item bangumi-danmaku">
+                                                <span class="bangumi-info-label">弹幕总数</span>
+                                                <em>22.4 万</em>
+                                            </span>
+                                            <span class="bangumi-info-item bangumi-info-item-score">
+                                                <span class="bangumi-info-label">评分</span>
+                                                <em>9.2</em>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="bangumi-comments">
+                                        <p>简介：故事来到了新的地方—— 炭治郎的目的地是「刀匠村」。
+                                            与鬼杀队的最强剑士，霞柱·时透无一郎与恋柱·甘露寺蜜璃再会，而鬼也悄然逼近。
+                                            炭治郎一行人新的战斗即将开始。...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bangumi-pagination">
+                                <a class="bangumi-button bangumi-firstpage"
+                                   href="javascript:;" rel="external nofollow noreferrer"
+                                   target="_self" onclick="return!1"
+                                   data-pjax-state="">首页</a>
+                                <a
+                                        class="bangumi-button bangumi-previouspage" href="javascript:;"
+                                        rel="external nofollow noreferrer" target="_self" onclick="return!1"
+                                        data-pjax-state="">上一页</a>
+                                <span class="bangumi-pagenum">1 / 5</span>
+                                <a
+                                        class="bangumi-button bangumi-nextpage" href="javascript:;"
+                                        rel="external nofollow noreferrer" target="_self" onclick="return!1"
+                                        data-pjax-state="">下一页</a>
+                                <a class="bangumi-button bangumi-lastpage"
+                                   href="javascript:;"
+                                   rel="external nofollow noreferrer" target="_self"
+                                   onclick="return!1" data-pjax-state="">尾页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- 评论模块 -->
+                <th:block
+                        th:if="${theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
+                    <div th:replace="~{modules/twikoo :: twikoo}"></div>
+                </th:block>
+                <div id="post-comment"
+                     th:if="${pluginFinder.available('PluginCommentWidget') && #strings.equals(theme.config.comments.use, 'commentWidget')}">
+                    <div class="comment-head">
+                        <div class="comment-headline"><i class="iconfont icon-comment-alt"></i> <span>评论</span></div>
+                        <div class="comment-privacy"><a href="/privacy">隐私政策</a></div>
+                        <div class="comment-tips" id="comment-tips">
+                            <span>你无需删除空行，直接评论以获取最佳展示效果</span>
+                        </div>
+                    </div>
+                    <halo:comment group="content.halo.run" kind="SinglePage"
+                                  th:attr="name=${singlePage.metadata.name}"
+                                  colorScheme="document.documentElement.getAttribute('data-theme')"/>
+                </div>
+
+            </div>
+
+
+        </main>
+        <!-- 底部 -->
+        <footer th:replace="~{modules/footer :: footer}"></footer>
+    </div>
+
+</th:block>
+
+</html>
