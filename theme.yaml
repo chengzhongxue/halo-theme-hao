@@ -9,6 +9,10 @@ spec:
     website: https://liuzhihang.com
   customTemplates:
     page:
+      - name: 友情链接页面模版
+        description: 支持可预设文本的友链
+        screenshot:
+        file: page_links.html
       - name: 关于页面模版
         description: 关于页面
         screenshot:

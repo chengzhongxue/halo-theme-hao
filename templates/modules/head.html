@@ -232,7 +232,7 @@
         var GLOBAL_CONFIG = {
             // 页面类型 index,page,post,tag,category
             htmlType: [[${ htmlType }]],
-            postTitle: [[${ htmlType == 'post' ? post.spec.title : ''}]],
+            postTitle: [[${ htmlType == 'post' ? post.spec.title : htmlType == 'page' ? singlePage.spec.title : ''}]],
             isanchor: true,
             isPost: [[${htmlType == 'post'}]],
             isHome: [[${ htmlType == 'index'}]],
@@ -292,6 +292,10 @@
 
             switch ([[${ htmlType }]]) {
                 case 'post':
+                    if (GLOBAL_CONFIG.postTitle != '')
+                        title = GLOBAL_CONFIG.postTitle
+                    break;
+                case 'page':
                     if (GLOBAL_CONFIG.postTitle != '')
                         title = GLOBAL_CONFIG.postTitle
                     break;

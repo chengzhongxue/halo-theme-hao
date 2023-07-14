@@ -36,7 +36,9 @@
                                                                                          href="javascript:fetchRandomPost();"><i
                                 class="haofont hao-icon-arrow-rotate-right"></i></a>
                         </div>
-                        <div class="title-h2-a-right"><a class="random-post-all" href="/links">全部友链</a></div>
+                        <div th:if="${not #strings.isEmpty(theme.config.link.linksUrl)}" class="title-h2-a-right">
+                            <a class="random-post-all" th:href="${theme.config.link.linksUrl}">全部友链</a>
+                        </div>
                     </div>
                     <div id="random-post"></div>
                     <script type="text/javascript">
