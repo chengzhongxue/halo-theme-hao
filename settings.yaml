@@ -107,6 +107,7 @@ spec:
             bikan:
             remen:
             shiyong:
+            techStack:
           children:
             - $formkit: select
               name: bannersBackground
@@ -118,6 +119,22 @@ spec:
                 - label: 个人技术栈
                   value: techStack
               help: 自定义技术栈需要在【个人】中配置
+            - $formkit: repeater
+              name: techStack
+              label: 个人技术栈
+              value: [ ]
+              children:
+                - $formkit: text
+                  name: name
+                  label: 名称
+                  placeholder: 请输入名称
+                - $formkit: attachment
+                  name: url
+                  label: 路径
+                  placeholder: 请输入图标路径
+                - $formkit: color
+                  name: background
+                  label: 背景色
             - $formkit: textarea
               name: bannersTitleBig
               label: 大标题
@@ -839,26 +856,29 @@ spec:
                 - $formkit: repeater
                   name: bdageitem
                   label: 徽标配置项
-                  value: []
+                  value:
+                    - link: "https://halo.run/"
+                      shields: "https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/Frame-Halo-blue.svg"
+                      message: "博客框架为halo2.x"
                   children:
                     - $formkit: url
                       name: link
                       label: 链接
                       placeholder: 请输入内容
-                      value: "https://hexo.io/"
+                      value: "https://halo.run/"
                       validation: required
                     - $formkit: attachment
                       name: shields
                       label: 徽标
                       placeholder: 请输入内容
                       validation: required
-                      value: "https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg"
+                      value: "https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/Frame-Halo-blue.svg"
                     - $formkit: text
                       name: message
                       label: 徽标 title
                       placeholder: 请输入内容
                       validation: required
-                      value: "博客框架为Hexo_v5.4.0"
+                      value: "博客框架为halo2.x"
 
 
     - group: post
@@ -1097,7 +1117,7 @@ spec:
           name: backgroundImg
           validation: url
           label: 图片
-          value: https://img.cdn.yzczi.com/img/64624940e3623.jpeg
+          value: https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/64624940e3623.jpeg
           placeholder: 请输入图片地址
         - $formkit: text
           name: smallTitle
@@ -1188,23 +1208,6 @@ spec:
           name: helloAbout
           label: 我的问候
           value: Hello there!
-        - $formkit: repeater
-          name: techStack
-          label: 个人技术栈
-          value: [ ]
-          children:
-            - $formkit: text
-              name: name
-              label: 名称
-              placeholder: 请输入名称
-            - $formkit: url
-              name: url
-              label: 路径
-              placeholder: 请输入图标路径
-              validation: url
-            - $formkit: color
-              name: background
-              label: 背景色
         - $formkit: group
           name: authorCareers
           label: 职业生涯
@@ -1329,7 +1332,7 @@ spec:
               name: loading_bar
               label: 爱好游戏logo
               placeholder: 请输入内容
-              value: https://img.cdn.yzczi.com/img/64795eaece0fc.png
+              value: https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/64795eaece0fc.png
         - $formkit: group
           name: game2
           label: 爱好游戏 2
@@ -1559,11 +1562,12 @@ spec:
     - group: envelope_comment
       label: 留言板
       formSchema:
-        - $formkit: text
+        - $formkit: textarea
           name: title
           label: 标题
           placeholder: 请输入内容
-          value: 留言板
+          value: <div align="center">留言板</div>
+          help: 支持 HTML 语法
         - $formkit: group
           name: custom_pic
           label: 信笺图片
@@ -1759,25 +1763,21 @@ spec:
                   value: false
             - $formkit: text
               name: id
-              if: $get(nav_musicEnable).value
               label: 音乐的id
               help: 歌单的id，可以从音乐歌单分享的链接中获取
               value: "8668419170"
             - $formkit: text
               name: server
-              if: $get(nav_musicEnable).value
               label: 服务
               help: 歌单的服务商，例如netease（网易云音乐）,tencent（腾讯）,kugou（酷狗）,xiami（小米音乐）,baidu（百度音乐）
               value: "tencent"
             - $formkit: url
               name: all_playlist
-              if: $get(nav_musicEnable).value
               label: 播放列表地址
               help: 用于右键查看所有歌曲
               value: https://y.qq.com/n/ryqq/playlist/8668419170
             - $formkit: url
               name: meting_api
-              if: $get(nav_musicEnable).value
               label: 音乐图片api
               value: https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&r=:r
         - $formkit: group
