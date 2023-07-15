@@ -19,7 +19,7 @@
                         <div class="back-menu-list">
                             <th:block th:each="childMenu : ${menuItem.children}">
                                 <a class="back-menu-item" rel="external nofollow"
-                                   target="_blank" th:href="@{${childMenu.status.href}}">
+                                   th:target="${childMenu.spec.target?.value}" th:href="@{${childMenu.status.href}}">
                                     <!-- icon 预留 -->
                                     <img th:if="${!#strings.isEmpty(#annotations.getOrDefault(childMenu, 'icon', ''))}"
                                          class="back-menu-item-icon"

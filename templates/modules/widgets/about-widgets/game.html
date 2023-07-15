@@ -29,6 +29,20 @@
             </div>
         </div>
     </div>
+    <style>
+        .loading-bar::after {
+            content: "";
+            position: absolute;
+            top: 500px;
+            left: 0;
+            filter: drop-shadow(0 -500px 0 #ece5d8);
+            width: 500px;
+            height: 62.5px;
+            background: url([[${theme.config.about.game.loading_bar}]]) no-repeat left 100%;
+            background-size: 500px 62.5px;
+            background-position-x: 0;
+        }
+    </style>
 </div>
 
 </html>
