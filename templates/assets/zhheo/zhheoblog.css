@@ -17030,19 +17030,6 @@ span.hexo-douban-pagenum {
     overflow: hidden;
 }
 
-.loading-bar::after {
-    content: "";
-    position: absolute;
-    top: 500px;
-    left: 0;
-    filter: drop-shadow(0 -500px 0 #ece5d8);
-    width: 500px;
-    height: 62.5px;
-    background: url("https://img.cdn.yzczi.com/img/64795eaece0fc.png") no-repeat left 100%;
-    background-size: 500px 62.5px;
-    background-position-x: 0;
-}
-
 .author-content-item.game-lol:hover .loading-bar::after {
     animation: loading-bar 3.5s cubic-bezier(0.28, 0.11, 0.32, 1) infinite forwards;
 }

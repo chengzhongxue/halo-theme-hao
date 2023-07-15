@@ -1303,6 +1303,7 @@ spec:
             game_title:
             game_uid:
             game_bg:
+            loading_bar:
           children:
             - $formkit: text
               name: game_tips
@@ -1324,6 +1325,11 @@ spec:
               label: 爱好游戏背景
               placeholder: 请输入内容
               value: https://img.zhheo.com/i/2022/08/31/630efa7ae39fe.webp
+            - $formkit: attachment
+              name: loading_bar
+              label: 爱好游戏logo
+              placeholder: 请输入内容
+              value: https://img.cdn.yzczi.com/img/64795eaece0fc.png
         - $formkit: group
           name: game2
           label: 爱好游戏 2
