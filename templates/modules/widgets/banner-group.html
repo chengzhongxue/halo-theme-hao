@@ -134,7 +134,7 @@
             <!--  banners 使用默认值-->
             <div class="tags-group-wrapper"
                  th:if="${#strings.equals(theme.config.top.BannerLeft.bannersBackground, 'techStack')}"
-                 th:with="techs = ${theme.config.about.techStack}">
+                 th:with="techs = ${theme.config.top.BannerLeft.techStack}">
                 <th:block th:each="tech,iterStat : ${techs}">
                     <div class="tags-group-icon-pair" th:if="${iterStat.odd}">
                         <div class="tags-group-icon"

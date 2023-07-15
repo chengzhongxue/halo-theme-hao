@@ -12,7 +12,9 @@
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-                <h1 >[[${theme.config.envelope_comment.title}]]</h1>
+                <th:block th:if="${not #strings.isEmpty(theme.config.envelope_comment.title)}"
+                          th:utext="${theme.config.envelope_comment.title}">
+                </th:block>
                 <div id="article-container">
                     <style>
                         @media screen and (max-width:600px) {
