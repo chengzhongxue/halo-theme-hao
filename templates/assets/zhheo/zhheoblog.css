@@ -1195,7 +1195,7 @@ blockquote footer cite::before {
 
 /* 代码块增加边框 */
 #article-container pre {
-    border: var(--style-border-always);
+    /*border: var(--style-border-always);*/
 }
 
 

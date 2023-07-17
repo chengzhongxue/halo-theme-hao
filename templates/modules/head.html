@@ -43,6 +43,18 @@
 
 
 
+   <!-- 代码块-->
+    <th:block th:if="${theme.config.code.enable}">
+        <link rel="preload" as="style" onload="this.rel='stylesheet'"
+              th:href="${assets_link+'/libs/prism/prism.min.css'}">
+        <link rel="preload" as="style" onload="this.rel='stylesheet'" data-code-theme="light"
+              th:href="${assets_link+ '/libs/prism/themes/prism-'+theme.config.code.theme_light+'.css'}">
+        <link rel="preload" as="style" onload="this.rel='stylesheet'" data-code-theme="dark"
+              th:href="${assets_link+'/libs/prism/themes/prism-'+theme.config.code.theme_dark+'.css'}">
+        <script data-pjax type="text/javascript" th:src="${assets_link+'/libs/prism/prism.min.js'}"></script>
+
+    </th:block>
+
     <script th:if="${theme.config.footer.footerContent.footerStyle == 'one'}" async="async">(function () {
         var grt = new Date("[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[1]}]]/[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[2]}]]/[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] 00:00:00"); //设置网站上线时间
         var now = new Date();
@@ -282,6 +294,15 @@
                 bgLight: "#49b1f5",
                 bgDark: "#121212",
                 position: "top-center",
+            },
+            prism: {
+                enable: [[${ theme.config.code.enable }]],
+                enable_title: [[${ theme.config.code.enable_title }]],
+                enable_hr: [[${ theme.config.code.enable_hr }]],
+                enable_line: [[${ theme.config.code.enable_line }]],
+                enable_copy: [[${ theme.config.code.enable_copy }]],
+                enable_expander: [[${ theme.config.code.enable_expander }]],
+                prism_limit: 330,
             },
 
         };

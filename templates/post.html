@@ -119,7 +119,7 @@
                 </div>
 
                 <!-- 文章内容 -->
-                <article class="post-content line-numbers" id="article-container" th:utext="${post.content.content}">
+                <article th:class="'post-content  '+${ theme.config.code.enable_line ? 'line-numbers' : ''}" id="article-container" th:utext="${post.content.content}">
                 </article>
 
 

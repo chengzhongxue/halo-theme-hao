@@ -1725,6 +1725,233 @@ spec:
           label: 全局字体
           placeholder: '"PingFang SC", "Hiragino Sans GB", "Microsoft YaHei"'
 
+    - group: code
+      label: 代码块
+      formSchema:
+        - $formkit: radio
+          name: enable
+          id: enable
+          key: enable
+          label: 启用代码块
+          help: 如果安装代码块插件，可关闭此功能
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_title
+          if: $get(enable).value
+          label: 启用代码标题
+          help: 启用代码块的标题，默认显示语言类型，也可自定义标题
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_hr
+          if: $get(enable).value
+          label: 启用代码标题分割线
+          help: 启用代码标题和内容之间的分割线，不展示时会更加简洁
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_line
+          if: $get(enable).value
+          label: 启用代码行号
+          help: 启用代码块行号功能
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_copy
+          if: $get(enable).value
+          label: 启用代码复制
+          help: 启用代码块复制按钮
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          name: enable_expander
+          if: $get(enable).value
+          label: 启用代码折叠
+          help: 启用代码折叠功能
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: select
+          name: theme_light
+          if: $get(enable).value
+          label: 代码块主题（浅色）随着系统主题变化
+          value: one-light
+          options:
+            - value: "one-dark"
+              label: "one-dark"
+            - value: "one-light"
+              label: "one-light"
+            - value: "a11y-dark"
+              label: "a11y-dark"
+            - value: "atom-dark"
+              label: "atom-dark"
+            - value: "base16-ateliersulphurpool.light"
+              label: "base16-ateliersulphurpool.light"
+            - value: "cb"
+              label: "cb"
+            - value: "coldark-cold"
+              label: "coldark-cold"
+            - value: "coldark-dark"
+              label: "coldark-dark"
+            - value: "coy-without-shadows"
+              label: "coy-without-shadows"
+            - value: "darcula"
+              label: "darcula"
+            - value: "dracula"
+              label: "dracula"
+            - value: "duotone-dark"
+              label: "duotone-dark"
+            - value: "duotone-earth"
+              label: "duotone-earth"
+            - value: "duotone-forest"
+              label: "duotone-forest"
+            - value: "duotone-light"
+              label: "duotone-light"
+            - value: "duotone-sea"
+              label: "duotone-sea"
+            - value: "duotone-space"
+              label: "duotone-space"
+            - value: "ghcolors"
+              label: "ghcolors"
+            - value: "gruvbox-dark"
+              label: "gruvbox-dark"
+            - value: "gruvbox-light"
+              label: "gruvbox-light"
+            - value: "holi-theme"
+              label: "holi-theme"
+            - value: "hopscotch"
+              label: "hopscotch"
+            - value: "lucario"
+              label: "lucario"
+            - value: "material-dark"
+              label: "material-dark"
+            - value: "material-light"
+              label: "material-light"
+            - value: "material-oceanic"
+              label: "material-oceanic"
+            - value: "night-owl"
+              label: "night-owl"
+            - value: "nord"
+              label: "nord"
+            - value: "pojoaque"
+              label: "pojoaque"
+            - value: "shades-of-purple"
+              label: "shades-of-purple"
+            - value: "solarized-dark-atom"
+              label: "solarized-dark-atom"
+            - value: "synthwave84"
+              label: "synthwave84"
+            - value: "vs"
+              label: "vs"
+            - value: "vsc-dark-plus"
+              label: "vsc-dark-plus"
+            - value: "xonokai"
+              label: "xonokai"
+            - value: "z-touch"
+              label: "z-touch"
+        - $formkit: select
+          name: theme_dark
+          if: $get(enable).value
+          label: 代码块主题（深色）随着系统主题变化
+          value: one-dark
+          options:
+            - value: "one-dark"
+              label: "one-dark"
+            - value: "one-light"
+              label: "one-light"
+            - value: "a11y-dark"
+              label: "a11y-dark"
+            - value: "atom-dark"
+              label: "atom-dark"
+            - value: "base16-ateliersulphurpool.light"
+              label: "base16-ateliersulphurpool.light"
+            - value: "cb"
+              label: "cb"
+            - value: "coldark-cold"
+              label: "coldark-cold"
+            - value: "coldark-dark"
+              label: "coldark-dark"
+            - value: "coy-without-shadows"
+              label: "coy-without-shadows"
+            - value: "darcula"
+              label: "darcula"
+            - value: "dracula"
+              label: "dracula"
+            - value: "duotone-dark"
+              label: "duotone-dark"
+            - value: "duotone-earth"
+              label: "duotone-earth"
+            - value: "duotone-forest"
+              label: "duotone-forest"
+            - value: "duotone-light"
+              label: "duotone-light"
+            - value: "duotone-sea"
+              label: "duotone-sea"
+            - value: "duotone-space"
+              label: "duotone-space"
+            - value: "ghcolors"
+              label: "ghcolors"
+            - value: "gruvbox-dark"
+              label: "gruvbox-dark"
+            - value: "gruvbox-light"
+              label: "gruvbox-light"
+            - value: "holi-theme"
+              label: "holi-theme"
+            - value: "hopscotch"
+              label: "hopscotch"
+            - value: "lucario"
+              label: "lucario"
+            - value: "material-dark"
+              label: "material-dark"
+            - value: "material-light"
+              label: "material-light"
+            - value: "material-oceanic"
+              label: "material-oceanic"
+            - value: "night-owl"
+              label: "night-owl"
+            - value: "nord"
+              label: "nord"
+            - value: "pojoaque"
+              label: "pojoaque"
+            - value: "shades-of-purple"
+              label: "shades-of-purple"
+            - value: "solarized-dark-atom"
+              label: "solarized-dark-atom"
+            - value: "synthwave84"
+              label: "synthwave84"
+            - value: "vs"
+              label: "vs"
+            - value: "vsc-dark-plus"
+              label: "vsc-dark-plus"
+            - value: "xonokai"
+              label: "xonokai"
+            - value: "z-touch"
+              label: "z-touch"
+
     - group: tool
       label: 小部件
       formSchema:
