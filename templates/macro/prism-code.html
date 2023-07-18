@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="prism-code">
+    <th:block th:if="${theme.config.code.enable}">
+        <link rel="preload" as="style" onload="this.rel='stylesheet'"
+              th:href="${assets_link+'/libs/prism/prism.min.css'}">
+        <link rel="preload" as="style" onload="this.rel='stylesheet'"
+              th:href="${assets_link+'/libs/prism/code.css'}">
+        <link rel="preload" as="style" onload="this.rel='stylesheet'" data-code-theme="light"
+              th:href="${assets_link+ '/libs/prism/themes/prism-'+theme.config.code.theme_light+'.css'}">
+        <link rel="preload" as="style" onload="this.rel='stylesheet'" data-code-theme="dark"
+              th:href="${assets_link+'/libs/prism/themes/prism-'+theme.config.code.theme_dark+'.css'}">
+        <script data-pjax type="text/javascript" th:src="${assets_link+'/libs/prism/prism.min.js'}"></script>
+
+        <style>
+
+            #article-container .code-toolbar pre.close{
+                overflow: hidden;
+                height: [[${theme.config.code.height_limit}]]px;
+            }
+        </style>
+
+    </th:block>
+</th:block>
+</html>

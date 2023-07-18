@@ -42,20 +42,8 @@
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.0/css/all.min.css" media="all" onload="this.media='all'">
 
 
-
-   <!-- 代码块-->
-    <th:block th:if="${theme.config.code.enable}">
-        <link rel="preload" as="style" onload="this.rel='stylesheet'"
-              th:href="${assets_link+'/libs/prism/prism.min.css'}">
-        <link rel="preload" as="style" onload="this.rel='stylesheet'"
-              th:href="${assets_link+'/libs/prism/code.css'}">
-        <link rel="preload" as="style" onload="this.rel='stylesheet'" data-code-theme="light"
-              th:href="${assets_link+ '/libs/prism/themes/prism-'+theme.config.code.theme_light+'.css'}">
-        <link rel="preload" as="style" onload="this.rel='stylesheet'" data-code-theme="dark"
-              th:href="${assets_link+'/libs/prism/themes/prism-'+theme.config.code.theme_dark+'.css'}">
-        <script data-pjax type="text/javascript" th:src="${assets_link+'/libs/prism/prism.min.js'}"></script>
-
-    </th:block>
+   <!--  代码块-->
+    <th:block th:replace="~{macro/prism-code :: prism-code}"/>
 
     <script th:if="${theme.config.footer.footerContent.footerStyle == 'one'}" async="async">(function () {
         var grt = new Date("[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[1]}]]/[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[2]}]]/[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] 00:00:00"); //设置网站上线时间
@@ -304,7 +292,8 @@
                 enable_line: [[${ theme.config.code.enable_line }]],
                 enable_copy: [[${ theme.config.code.enable_copy }]],
                 enable_expander: [[${ theme.config.code.enable_expander }]],
-                prism_limit: 330,
+                prism_limit: Number([[${#strings.isEmpty(theme.config.code.height_limit) ? 300 : theme.config.code.height_limit}]])+30,
+                enable_height_limit: [[${theme.config.code.enable_height_limit}]]
             },
 
         };

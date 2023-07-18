@@ -45,6 +45,7 @@ let halo = {
         const isEnableCopy = GLOBAL_CONFIG.prism.enable_copy;
         const isEnableExpander = GLOBAL_CONFIG.prism.enable_expander;
         const prismLimit = GLOBAL_CONFIG.prism.prism_limit;
+        const isEnableHeightLimit = GLOBAL_CONFIG.prism.enable_height_limit;
 
         // https://stackoverflow.com/a/30810322/7595472
 
@@ -181,20 +182,62 @@ let halo = {
             }
 
 
+
+            const prismToolsFn = function (e) {
+                const $target = e.target.classList;
+                if ($target.contains("code-expander")) prismShrinkFn(this);
+            };
+
             //折叠
             if(isEnableExpander){
                 var expander = document.createElement("i");
                 expander.className = 'fa-sharp fa-solid fa-caret-down code-expander cursor-pointer'
                 customItem.appendChild(expander)
 
+                expander.addEventListener('click', prismToolsFn)
 
-                const expanderCode = function () {
-                    r.firstElementChild.classList.toggle('c-toggle')
-                    toolbar.classList.toggle('c-expander')
+
+
+            }
+
+
+            const expandCode = function () {
+                this.classList.toggle("expand-done");
+                this.style.display = "none";
+                r.classList.toggle("expand-done");
+            };
+
+            if (isEnableHeightLimit && r.offsetHeight > prismLimit) {
+
+                r.classList.add("close")
+                const ele = document.createElement("div");
+                ele.className = "code-expand-btn";
+                ele.innerHTML = '<i class="haofont hao-icon-angle-double-down"></i>';
+                ele.addEventListener("click", expandCode);
+                r.offsetParent.appendChild(ele);
+            }
+
+
+
+
+            const prismShrinkFn = ele => {
+                const $nextEle = r.offsetParent.lastElementChild.classList
+                toolbar.classList.toggle('c-expander')
+                r.classList.toggle("expand-done-expander");
+                if (toolbar.classList.contains('c-expander')) {
+                    r.firstElementChild.style.display = "none";
+                    if($nextEle.contains('code-expand-btn')){
+                        r.offsetParent.lastElementChild.style.display = "none";
+                    }
+                } else {
+                    r.firstElementChild.style.display = "block";
+                    if($nextEle.contains('code-expand-btn') &&  !r.classList.contains('expand-done')){
+                        r.offsetParent.lastElementChild.style.display = "block";
+                    }
                 }
 
-                expander.addEventListener('click', expanderCode)
-            }
+            };
+
 
             toolbar.appendChild(customItem)
 
