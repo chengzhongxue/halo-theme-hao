@@ -68,6 +68,7 @@
 }
 
 #article-container .code-toolbar .toolbar .custom-item>i {
+    cursor: pointer;
     margin-left: 10px;
     -webkit-transition: -webkit-transform .2s;
     transition: transform .2s;
@@ -77,6 +78,11 @@
 #article-container .code-toolbar .toolbar .custom-item>i:hover {
     -webkit-filter: brightness(1.2);
     filter: brightness(1.2)
+}
+
+#article-container .toolbar .copy-button:hover,
+#article-container .toolbar .code-expander:hover{
+    color: var(--heo-main);
 }
 
 
