@@ -2659,22 +2659,11 @@ blockquote footer cite::before {
     transition: all 0.5s ease 0s;
 }
 
-#page-header.full_page {
-    height: 20rem;
-    background-attachment: fixed;
-}
-
-#page-header.full_page #site-info {
-    position: absolute;
-    top: 7.8rem;
-    padding: 0px 0.5rem;
-    width: 100%;
-}
-
 #page-header #scroll-down .scroll-down-effects,
 #page-header #site-subtitle,
 #page-header #site-title {
     text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
     line-height: 1.5;
 }
 
@@ -2720,14 +2709,6 @@ blockquote footer cite::before {
     text-shadow: rgba(0, 0, 0, 0.15) 0.1rem 0.1rem 0.2rem;
     font-size: 1.43em;
     cursor: pointer;
-}
-
-#page-header #scroll-down {
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    cursor: pointer;
-    display: none;
 }
 
 #page-header #scroll-down .scroll-down-effects {
@@ -8126,60 +8107,6 @@ span.fund_name {
     background: var(--heo-red);
 }
 
-/* 加载页
----------------------------------------------------------------- */
-
-/* 已经写在loading.pug中了 */
-
-/* #loading-box .loading-bg{
-  display: flex;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  background: var(--heo-card-bg);
-  z-index: 99999;
-  opacity: 1;
-  transition: 0.3s;
-  pointer-events: all;
-}
-
-#loading-box.loaded .loading-bg{
-  opacity: 0;
-  pointer-events: none;
-}
-
-#loading-box .loading-img{
-  width: 100px;
-  margin: auto;
-  animation-duration: 0.3s;
-  animation-name: loadingAction;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-@keyframes loadingAction {
-  from {
-    opacity: 1;
-  }
-
-  to {
-   opacity: 0.4;
- }
-} */
-
-/* 主页
----------------------------------------------------------------- */
-
-/* 主页顶部封面 */
-#page-header.full_page {
-    height: 2rem;
-    background-image: none !important;
-    background-color: var(--heo-none);
-}
-
-#page-header.full_page #site-info {
-    display: none;
-}
 
 /* 主页导航栏让位偏移 */
 /* .layout_page .recent-posts{

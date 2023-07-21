@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 第一屏 -->
+<th:block th:fragment="index-img">
+    <th:block th:if="${theme.config.top.above.enable_above}">
+        <div class="pl-container">
+            <div class="pl-img pl-blur pl-visible"></div>
+            <div class="pl-img pl-visible"></div>
+            <video class="video"></video>
+        </div>
+
+        <div id="site-info">
+            <h1 id="site-title">[[${site.title}]]</h1>
+        </div>
+        <div id="scroll-down"><i class="haofont hao-icon-angle-down scroll-down-effects"></i></div>
+
+        <link rel="stylesheet" th:href="${assets_link + '/css/fullPage.css'}">
+
+        <style>
+            .pl-img {
+                background-image: url([[${theme.config.top.above.index_img}]]);
+
+            }
+
+            @media screen and (max-width: 768px) {
+                .pl-img {
+                    background-image: url([[${theme.config.top.above.phone_index_img}]]);
+                }
+            }
+        </style>
+
+    </th:block>
+</th:block>
+
+</html>

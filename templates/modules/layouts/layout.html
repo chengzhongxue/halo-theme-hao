@@ -27,7 +27,7 @@
 
 <!-- 左下角音乐 -->
 <th:block th:if="${theme.config.tool.nav_music.nav_musicEnable}" >
-    <div  th:replace="~{modules/nav-music :: nav-music}"></div>
+    <div  th:replace="~{modules/widgets/nav-music :: nav-music}"></div>
 </th:block>
 
 <!-- 内容 -->
@@ -80,7 +80,6 @@
 
     <script th:src="${assets_link + '/libs/view-image/view-image.min.js'}"></script>
 
-
     <!--左下角音乐-->
     <script>var meting_api = '[[${theme.config.tool.nav_music.meting_api}]]'; </script>
 
@@ -90,146 +89,25 @@
 
     <script th:src="${assets_link + '/libs/aplayer/Meting2.min.js'}"></script>
 
-
-
     <script th:src="${assets_link + '/libs/pjax/pjax.min.js'}"></script>
 
     <!-- swiper 在瞬间滚动时会使用 -->
     <script data-pjax  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.js"></script>
 
     <!-- 评论弹幕 -->
-    <script th:replace="~{modules/commentBarrage :: commentBarrage}"></script>
+    <script th:replace="~{modules/comment/commentBarrage :: commentBarrage}"></script>
 
     <!-- Tocbot 目录生成 start -->
-    <script th:src="${assets_link + '/libs/tocbot/4.18.2/tocbot.min.js'}"></script>
-    <link th:href="${assets_link + '/libs/tocbot/4.18.2/tocbot.css'}" rel="stylesheet">
+    <th:block th:replace="~{modules/common/toc-bot :: toc-bot}"></th:block>
 
-    <script>
-        document.addEventListener("DOMContentLoaded",  function() {
+    <!-- 51统计 -->
+    <th:block th:replace="~{modules/common/51-la :: 51-la}"></th:block>
 
-            const postContent = document.querySelector('.post-content');
+    <!-- 动态标题 -->
+    <script th:replace="~{modules/common/diytitle :: diytitle}"></script>
 
-            if (postContent == null) return;
-
-            const headers = postContent.querySelectorAll('h1,h2,h3,h4,h5,h6');
-            // 没有 toc 目录，则直接移除
-            if (headers.length === 0) {
-                document.getElementById("card-toc").remove();
-            } else {
-                tocbot.init({
-                    tocSelector: '.toc-content',
-                    contentSelector: '.post-content',
-                    headingSelector: 'h1,h2,h3,h4,h5,h6',
-                    hasInnerContainers: true
-                });
-
-            }
-        })
-        document.addEventListener('pjax:complete', function () {
-
-            const postContent = document.querySelector('.post-content');
-
-            if (postContent == null) return;
-
-            const headers = postContent.querySelectorAll('h1,h2,h3,h4,h5,h6');
-            // 没有 toc 目录，则直接移除
-            if (headers.length === 0) {
-                document.getElementById("card-toc").remove();
-            } else {
-                tocbot.init({
-                    tocSelector: '.toc-content',
-                    contentSelector: '.post-content',
-                    headingSelector: 'h1,h2,h3,h4,h5,h6',
-                    hasInnerContainers: true
-                });
-
-            }
-        })
-    </script>
-
-    <!-- Tocbot 目录生成 end -->
-
-
-
-    <script>
-        !function(p) {
-            "use strict";
-            !function(t) {
-                var s = window
-                    , e = document
-                    , i = p
-                    , c = "".concat("https:" === e.location.protocol ? "https://" : "http://", "sdk.51.la/js-sdk-pro.min.js")
-                    , n = e.createElement("script")
-                    , r = e.getElementsByTagName("script")[0];
-                n.type = "text/javascript",
-                    n.setAttribute("charset", "UTF-8"),
-                    n.async = !0,
-                    n.src = c,
-                    n.id = "LA_COLLECT",
-                    i.d = n;
-                var o = function() {
-                    s.LA.ids.push(i)
-                };
-                s.LA ? s.LA.ids && o() : (s.LA = p,
-                    s.LA.ids = [],
-                    o()),
-                    r.parentNode.insertBefore(n, r)
-            }()
-        }({
-            id: "[[${theme.config.about.LingQueMonitorID}]]",
-            ck: "[[${theme.config.about.LingQueMonitorID}]]",
-            hashMode: true
-        });
-    </script>
-
-
-    <script th:if="${theme.config.other.diytitle.diytitleEnable}">//动态标题
-    let leaveTitle = '[[${theme.config.other.diytitle.leaveTitle}]]';
-    let backTitle = '[[${theme.config.other.diytitle.backTitle}]]';
-    let OriginTitile = document.title
-    let titleTime
-    document.addEventListener('visibilitychange', function () {
-        if (document.hidden) {
-            //离开当前页面时标签显示内容
-            document.title = leaveTitle
-            clearTimeout(titleTime)
-        } else {
-            //返回当前页面时标签显示内容
-            document.title = backTitle + OriginTitile
-            //两秒后变回正常标题
-            titleTime = setTimeout(function () {
-                document.title = OriginTitile
-            }, 2000)
-        }
-    })
-    </script>
-
-
-    <script >
-        if(GLOBAL_CONFIG.isFriendLinksInFooter){
-            var link = {
-                // 页脚友链
-                addFriendLinksInFooter: function () {
-
-                    var linksUrl = '[[${theme.config.link.linksUrl}]]'
-                    var fetchUrl = [[${theme.config.footer.footer_group.fetchUrl}]]
-                    fetch(fetchUrl)
-                        .then(res => res.json())
-                        .then(json => {
-                            var randomFriendLinks = getArrayItems(json, 3);
-
-                            var htmlText = '';
-                            for (let i = 0; i < randomFriendLinks.length; ++i) {
-                                var item = randomFriendLinks[i]
-                                htmlText += `<a class='footer-item' href='${item.link}'  target="_blank" rel="noopener nofollow">${item.name}</a>`;
-                            }
-                            htmlText += `<a class='footer-item' href='${linksUrl}'>更多</a>`
-                            document.getElementById("friend-links-in-footer").innerHTML = htmlText;
-                        })
-                }
-            }
-        }
-    </script>
+    <!-- 公共js -->
+    <script th:replace="~{modules/common/common-script :: common-script}"></script>
 
     <div id="js-pjax"></div>
 

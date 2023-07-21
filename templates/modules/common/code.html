@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="code">
+    <!-- 解决 pjax问题  自动识别语言-->
+    <th:block th:if="${pluginFinder.available('PluginPrismJS')}">
+        <script src="/plugins/PluginPrismJS/assets/static/highlight.js/highlight.min.js"></script>
+
+
+        <script>
+            document.addEventListener("pjax:complete", function () {
+                hljs.highlightAll()
+            })
+        </script>
+
+        <script data-pjax
+                src="/plugins/PluginPrismJS/assets/static/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+
+    </th:block>
+
+    <!-- 自动识别语言 -->
+    <th:block th:if="${theme.config.code.enable}">
+        <script th:src="${assets_link+'/libs/prism/highlight.min.js'}"></script>
+
+
+        <script>
+            document.addEventListener("pjax:complete", function () {
+                hljs.highlightAll()
+            })
+            document.addEventListener("DOMContentLoaded", function () {
+                hljs.highlightAll()
+            })
+        </script>
+
+    </th:block>
+
+</th:block>
+
+</html>
