@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="comment(group, kind, name)">
+    <th:block
+            th:if="${theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
+        <div th:replace="~{modules/twikoo :: twikoo}"></div>
+    </th:block>
+    <!-- 已知问题 PJAX 下，comment 首次请求会出错。当前的临时解决办法是使用 js 重试 -->
+    <div id="post-comment"
+         th:if="${pluginFinder.available('PluginCommentWidget') && #strings.equals(theme.config.comments.use, 'commentWidget')}">
+        <div class="comment-head">
+            <div class="comment-headline"><i class="iconfont icon-comment-alt"></i> <span>评论</span></div>
+            <div class="comment-privacy"><a href="/privacy">隐私政策</a></div>
+            <div class="comment-tips" id="comment-tips">
+                <span>你无需删除空行，直接评论以获取最佳展示效果</span>
+            </div>
+        </div>
+        <halo:comment th:attr="name=${name},kind=${kind},group=${group}" colorScheme="document.documentElement.getAttribute('data-theme')"/>
+    </div>
+</th:block>
+</html>

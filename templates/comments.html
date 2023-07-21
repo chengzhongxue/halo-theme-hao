@@ -12,7 +12,9 @@
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-                <h1 >[[${theme.config.envelope_comment.title}]]</h1>
+                <th:block th:if="${not #strings.isEmpty(theme.config.envelope_comment.title)}"
+                          th:utext="${theme.config.envelope_comment.title}">
+                </th:block>
                 <div id="article-container">
                     <style>
                         @media screen and (max-width:600px) {
@@ -136,23 +138,11 @@
                     </div>
                 </div>
                 <hr>
-                <!-- 评论模块 -->
+                <!--/* 评论组件 */-->
                 <th:block
-                        th:if="${theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
-                    <div th:replace="~{modules/twikoo :: twikoo}"></div>
-                </th:block>
-                <div id="post-comment"
-                     th:if="${pluginFinder.available('PluginCommentWidget') && #strings.equals(theme.config.comments.use, 'commentWidget')}">
-                    <div class="comment-head">
-                        <div class="comment-headline"><i class="iconfont icon-comment-alt"></i> <span>评论</span></div>
-                        <div class="comment-privacy"><a href="/privacy">隐私政策</a></div>
-                        <div class="comment-tips" id="comment-tips">
-                            <span>你无需删除空行，直接评论以获取最佳展示效果</span>
-                        </div>
-                    </div>
-                    <halo:comment group="content.halo.run" kind="SinglePage"
-                                  th:attr="name=${singlePage.metadata.name}" colorScheme="document.documentElement.getAttribute('data-theme')" />
-                </div>
+                        th:replace="~{modules/comment :: comment(group = 'content.halo.run',
+                  kind = 'SinglePage',
+                  name = ${singlePage.metadata.name})}"/>
 
             </div>
 

@@ -30,7 +30,9 @@
                 <h3 class="footer-title" th:text="${menuItem.status.displayName}"></h3>
                 <div class="footer-links">
                     <a class="footer-item" th:each="childMenu : ${menuItem.children}"
-                       th:href="@{${childMenu.status.href}}" th:text="${childMenu.status.displayName}">
+                       th:href="@{${childMenu.status.href}}"
+                       th:target="${childMenu.spec.target?.value}"
+                       th:text="${childMenu.status.displayName}">
                     </a>
                 </div>
             </div>
@@ -48,6 +50,8 @@
 
     </th:block>
     <!-- 底部 banner -->
+
+    <halo:footer />
 
     <div th:if="${theme.config.footer.footerContent.footerStyle == 'default'}" id="footer-banner">
         <div class="footer-banner-links">

@@ -9,6 +9,10 @@ spec:
     website: https://liuzhihang.com
   customTemplates:
     page:
+      - name: 友情链接页面模版
+        description: 支持可预设文本的友链
+        screenshot:
+        file: page_links.html
       - name: 关于页面模版
         description: 关于页面
         screenshot:
@@ -35,5 +39,5 @@ spec:
   repo: https://github.com/liuzhihang/halo-theme-hao
   settingName: "theme-hao-setting"
   configMapName: "theme-hao-configMap"
-  version: "1.1.5"
-  require: ">=2.0.0"
+  version: "1.2.0"
+  require: ">=2.6.0"
