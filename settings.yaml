@@ -118,7 +118,6 @@ spec:
                   value: default
                 - label: 个人技术栈
                   value: techStack
-              help: 自定义技术栈需要在【个人】中配置
             - $formkit: repeater
               name: techStack
               label: 个人技术栈
