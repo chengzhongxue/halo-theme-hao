@@ -42,6 +42,8 @@
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.0/css/all.min.css" media="all" onload="this.media='all'">
 
 
+   <!--  代码块-->
+    <th:block th:replace="~{macro/prism-code :: prism-code}"/>
 
     <script th:if="${theme.config.footer.footerContent.footerStyle == 'one'}" async="async">(function () {
         var grt = new Date("[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[1]}]]/[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[2]}]]/[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] 00:00:00"); //设置网站上线时间
@@ -282,6 +284,16 @@
                 bgLight: "#49b1f5",
                 bgDark: "#121212",
                 position: "top-center",
+            },
+            prism: {
+                enable: [[${ theme.config.code.enable }]],
+                enable_title: [[${ theme.config.code.enable_title }]],
+                enable_hr: [[${ theme.config.code.enable_hr }]],
+                enable_line: [[${ theme.config.code.enable_line }]],
+                enable_copy: [[${ theme.config.code.enable_copy }]],
+                enable_expander: [[${ theme.config.code.enable_expander }]],
+                prism_limit: Number([[${#strings.isEmpty(theme.config.code.height_limit) ? 300 : theme.config.code.height_limit}]])+30,
+                enable_height_limit: [[${theme.config.code.enable_height_limit}]]
             },
 
         };
