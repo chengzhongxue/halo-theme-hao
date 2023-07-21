@@ -6,8 +6,7 @@
     <div class="page" id="body-wrap">
         <!-- 头部导航栏 -->
 
-        <header th:class="${theme.config.top.above.enable_above ? 'full_page' : 'not-top-img'}" id="page-header"
-                th:style="${theme.config.top.above.enable_above ? 'background-image: url(theme.config.top.above.index_img);' : ''}">
+        <header th:class="${theme.config.top.above.enable_above ? 'full_page' : 'not-top-img'}" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
 
             <!-- 第一屏 -->
