@@ -207,7 +207,7 @@
 
     <!-- 动态加载条 -->
     <script data-pace-options='{ "restartOnRequestAfter":false,"eventLag":false}'
-            src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/pace/1.2.4/pace.min.js"
+            th:src="${assets_link + '/libs/pace/pace.min.js'}"
             th:if="${theme.config.other.loadingBoxs.loadProgressBar}">
     </script>
 
