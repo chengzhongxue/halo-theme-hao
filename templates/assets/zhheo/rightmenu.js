@@ -205,6 +205,12 @@ rm.switchDarkMode = function () {
     navFn.switchDarkMode();
     rm.hideRightMenu();
     heo.darkModeStatus();
+    //代码块
+    if(GLOBAL_CONFIG.prism.enable){
+        halo.dataCodeTheme();
+    }
+
+
     //halo.darkComment();
 }
 

@@ -1195,7 +1195,7 @@ blockquote footer cite::before {
 
 /* 代码块增加边框 */
 #article-container pre {
-    border: var(--style-border-always);
+    /*border: var(--style-border-always);*/
 }
 
 
@@ -12075,26 +12075,26 @@ blockquote p {
 /*}*/
 
 /* 代码展开图标 */
-#article-container .code-expand-btn i {
-    color: var(--heo-fontcolor);
-    font-size: 1rem;
-}
+/*#article-container .code-expand-btn i {*/
+/*    color: var(--heo-fontcolor);*/
+/*    font-size: 1rem;*/
+/*}*/
 
-#article-container .code-expand-btn {
-    background-color: var(--heo-mask);
-    background: var(--heo-secondbg);
-    transition: 0.3s;
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
+/*#article-container .code-expand-btn {*/
+/*    background-color: var(--heo-mask);*/
+/*    background: var(--heo-secondbg);*/
+/*    transition: 0.3s;*/
+/*    backdrop-filter: saturate(180%) blur(20px);*/
+/*    -webkit-backdrop-filter: blur(20px);*/
+/*}*/
 
-#article-container .code-expand-btn:hover {
-    background: var(--heo-main);
-}
+/*#article-container .code-expand-btn:hover {*/
+/*    background: var(--heo-main);*/
+/*}*/
 
-#article-container .code-expand-btn:hover i {
-    color: var(--heo-white);
-}
+/*#article-container .code-expand-btn:hover i {*/
+/*    color: var(--heo-white);*/
+/*}*/
 
 /* 结尾寄语 */
 #readmore-talk {

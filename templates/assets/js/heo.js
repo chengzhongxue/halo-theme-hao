@@ -473,6 +473,7 @@ var heo = {
             ? saveToLocal.set('aside-status', 'show', 2)
             : saveToLocal.set('aside-status', 'hide', 2)
         $htmlDom.toggle('hide-aside')
+        $htmlDom.contains("hide-aside") ? document.querySelector("#consoleHideAside").classList.add("on") : document.querySelector("#consoleHideAside").classList.remove("on")
     },
 
     changeSayHelloText: function() {
