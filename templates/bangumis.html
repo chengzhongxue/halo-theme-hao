@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'comments')}"
+<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'bangumis')}"
       xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
@@ -12,7 +12,7 @@
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-                <h1 class="page-title">[[${theme.config.envelope_comment.title}]]</h1>
+                <h1 class="page-title" style="display: inline;">追番列表</h1>
                 <div id="article-container">
                     <blockquote><p>生命不息，追番不止！</p></blockquote>
                     <style>
@@ -278,6 +278,68 @@
                         .bangumi-starlight.stars10 {
                             width: 50px
                         }
+
+                        #article-container .bangumi-picture a {
+                            padding-left: 0px;
+                            padding-right: 0px;
+                            border-bottom-width: 0px;
+                        }
+
+                        #page #article-container .bangumi-tab.bangumi-active {
+                            background: var(--heo-theme);
+                            color: var(--heo-ahoverbg);
+                            border-radius: 10px;
+                        }
+
+                        #page #article-container .bangumi-tabs .bangumi-tab {
+                            border-bottom: none;
+                            border-radius: 10px;
+                        }
+
+                        #page #article-container .bangumi-tabs a.bangumi-tab:hover {
+                            text-decoration: none !important;
+                            border-radius: 10px;
+                            column-gap: var(--heo-ahoverbg);
+                        }
+
+                        #page #article-container .bangumi-pagination a.bangumi-button {
+                            border-bottom: none;
+                            border-radius: 10px;
+                        }
+
+                        .bangumi-button:hover {
+                            background: var(--heo-theme) !important;
+                            border-radius: 10px !important;
+                            color: var(--heo-ahoverbg) !important;
+                        }
+
+                        a.bangumi-button.bangumi-nextpage:hover {
+                            text-decoration: none !important;
+                        }
+
+                        .bangumi-button {
+                            padding: 5px 10px !important;
+                        }
+
+                        a.bangumi-tab {
+                            padding: 5px 10px !important;
+                        }
+
+                        svg.icon.faa-tada {
+                            font-size: 1.1em;
+                        }
+
+                        .bangumi-info-item {
+                            border-right: 1px solid #f2b94b;
+                        }
+
+                        .bangumi-info-item span {
+                            color: #f2b94b;
+                        }
+
+                        .bangumi-info-item em {
+                            color: #f2b94b;
+                        }
                     </style>
                     <div class="bangumi-tabs">
                         <a class="bangumi-tab" id="bangumi-tab1" href="javascript:;"
@@ -296,7 +358,7 @@
                                             data-fancybox="gallery" data-caption=""
                                             data-thumb="https://i0.hdslb.com/bfs/bangumi/image/4b2547ffdd6f40f997454b37c0ad48624a1730d9.jpg">
                                         <img
-                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                src="https://i0.hdslb.com/bfs/bangumi/image/4b2547ffdd6f40f997454b37c0ad48624a1730d9.jpg"
                                                 data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/4b2547ffdd6f40f997454b37c0ad48624a1730d9.jpg"
                                                 referrerpolicy="no-referrer" width="110"
                                                 style="width:110px;margin:20px auto">
@@ -309,21 +371,43 @@
                                            rel="external nofollow noreferrer">夏日重现</a>
                                     </div>
                                     <div class="bangumi-meta">
-                                        <span class="bangumi-info-items"><span
-                                                class="bangumi-info-item"><span class="bangumi-info-total">全25话</span><em
-                                                class="bangumi-info-label-em">0</em></span> <span
-                                                class="bangumi-info-item bangumi-area"><span
-                                                class="bangumi-info-label">番剧</span> <em>日本</em></span> <span
-                                                class="bangumi-info-item bangumi-play"><span
-                                                class="bangumi-info-label">总播放</span> <em>2.1 亿</em></span> <span
-                                                class="bangumi-info-item bangumi-follow"><span
-                                                class="bangumi-info-label">追番人数</span> <em>439.7 万</em></span> <span
-                                                class="bangumi-info-item bangumi-coin"><span
-                                                class="bangumi-info-label">硬币数</span> <em>136.5 万</em></span> <span
-                                                class="bangumi-info-item bangumi-danmaku"><span
-                                                class="bangumi-info-label">弹幕总数</span> <em>127.4 万</em></span> <span
-                                                class="bangumi-info-item bangumi-info-item-score"><span
-                                                class="bangumi-info-label">评分</span> <em>9.8</em></span></span></div>
+                                        <span class="bangumi-info-items">
+                                            <span class="bangumi-info-item">
+                                                <span class="bangumi-info-total">全25话</span>
+                                                <em class="bangumi-info-label-em">0</em>
+                                            </span>
+                                            <span class="bangumi-info-item bangumi-area">
+                                                <span class="bangumi-info-label">番剧</span>
+                                                <em>日本</em>
+                                            </span>
+                                            <span class="bangumi-info-item bangumi-play">
+                                                <span
+                                                        class="bangumi-info-label">总播放</span>
+                                                <em>2.1 亿</em>
+                                            </span>
+                                            <span
+                                                    class="bangumi-info-item bangumi-follow"><span
+                                                    class="bangumi-info-label">追番人数</span>
+                                                <em>439.7 万</em>
+                                        </span>
+                                            <span
+                                                    class="bangumi-info-item bangumi-coin"><span
+                                                    class="bangumi-info-label">硬币数</span>
+                                                <em>136.5 万</em>
+                                        </span>
+                                            <span
+                                                    class="bangumi-info-item bangumi-danmaku">
+                                                <span
+                                                        class="bangumi-info-label">弹幕总数</span>
+                                                <em>127.4 万</em>
+                                        </span> <span
+                                                class="bangumi-info-item bangumi-info-item-score">
+                                            <span
+                                                    class="bangumi-info-label">评分</span>
+                                            <em>9.8</em>
+                                        </span>
+                                        </span>
+                                    </div>
                                     <div class="bangumi-comments">
                                         <p>简介：“潮死了。”
                                             网代慎平收到发小——小舟潮的讣告后，回到了阔别两年的故乡——和歌山市日都岛。
@@ -333,65 +417,90 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="bangumi-pagination">
+                                <a class="bangumi-button bangumi-firstpage"
+                                   href="javascript:;" rel="external nofollow noreferrer"
+                                   target="_self" onclick="return!1"
+                                   data-pjax-state="">首页</a>
+                                <a
+                                        class="bangumi-button bangumi-previouspage" href="javascript:;"
+                                        rel="external nofollow noreferrer" target="_self" onclick="return!1"
+                                        data-pjax-state="">上一页</a>
+                                <span class="bangumi-pagenum">1 / 5</span>
+                                <a
+                                        class="bangumi-button bangumi-nextpage" href="javascript:;"
+                                        rel="external nofollow noreferrer" target="_self" onclick="return!1"
+                                        data-pjax-state="">下一页</a>
+                                <a class="bangumi-button bangumi-lastpage"
+                                   href="javascript:;"
+                                   rel="external nofollow noreferrer" target="_self"
+                                   onclick="return!1" data-pjax-state="">尾页</a>
+                            </div>
                         </div>
                         <div id="bangumi-item2" class="bangumi-show">
                             <div class="bangumi-item">
                                 <div class="bangumi-picture">
                                     <a
-                                            href="https://i0.hdslb.com/bfs/bangumi/image/6806055cb3a313ff70bb57f899ef49189e5d4c42.png"
+                                            href="https://i0.hdslb.com/bfs/bangumi/image/4b2547ffdd6f40f997454b37c0ad48624a1730d9.jpg"
                                             data-fancybox="gallery" data-caption=""
-                                            data-thumb="https://i0.hdslb.com/bfs/bangumi/image/6806055cb3a313ff70bb57f899ef49189e5d4c42.png">
+                                            data-thumb="https://i0.hdslb.com/bfs/bangumi/image/4b2547ffdd6f40f997454b37c0ad48624a1730d9.jpg">
                                         <img
-                                                src="https://i0.hdslb.com/bfs/bangumi/image/6806055cb3a313ff70bb57f899ef49189e5d4c42.png"
-                                                data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/6806055cb3a313ff70bb57f899ef49189e5d4c42.png"
+                                                src="https://i0.hdslb.com/bfs/bangumi/image/4b2547ffdd6f40f997454b37c0ad48624a1730d9.jpg"
+                                                data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/4b2547ffdd6f40f997454b37c0ad48624a1730d9.jpg"
                                                 referrerpolicy="no-referrer" width="110"
-                                                style="width:110px;margin:20px auto"
-                                                data-ll-status="loaded" class="entered loaded">
+                                                style="width:110px;margin:20px auto">
                                     </a>
                                 </div>
                                 <div class="bangumi-info">
                                     <div class="bangumi-title">
                                         <a target="_blank"
-                                           href="https://www.bilibili.com/bangumi/media/md20140389/"
-                                           rel="external nofollow noreferrer">鬼灭之刃
-                                            刀匠村篇
-                                        </a>
+                                           href="https://www.bilibili.com/bangumi/media/md28237126/"
+                                           rel="external nofollow noreferrer">夏日重现</a>
                                     </div>
                                     <div class="bangumi-meta">
                                         <span class="bangumi-info-items">
                                             <span class="bangumi-info-item">
-                                                <span class="bangumi-info-total">全13话</span>
+                                                <span class="bangumi-info-total">全25话</span>
                                                 <em class="bangumi-info-label-em">0</em>
                                             </span>
                                             <span class="bangumi-info-item bangumi-area">
-                                                <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                                                <span class="bangumi-info-label">番剧</span>
+                                                <em>日本</em>
                                             </span>
                                             <span class="bangumi-info-item bangumi-play">
-                                                <span class="bangumi-info-label">总播放</span>
-                                                <em>9465.7 万</em>
+                                                <span
+                                                        class="bangumi-info-label">总播放</span>
+                                                <em>2.1 亿</em>
                                             </span>
-                                            <span class="bangumi-info-item bangumi-follow">
-                                                <span class="bangumi-info-label">追番人数</span>
-                                                <em>1556.8 万</em>
-                                            </span>
-                                            <span class="bangumi-info-item bangumi-coin">
-                                                <span class="bangumi-info-label">硬币数</span>
-                                                <em>22.0 万</em>
-                                            </span>
-                                            <span class="bangumi-info-item bangumi-danmaku">
-                                                <span class="bangumi-info-label">弹幕总数</span>
-                                                <em>22.4 万</em>
-                                            </span>
-                                            <span class="bangumi-info-item bangumi-info-item-score">
-                                                <span class="bangumi-info-label">评分</span>
-                                                <em>9.2</em>
-                                            </span>
+                                            <span
+                                                    class="bangumi-info-item bangumi-follow"><span
+                                                    class="bangumi-info-label">追番人数</span>
+                                                <em>439.7 万</em>
+                                        </span>
+                                            <span
+                                                    class="bangumi-info-item bangumi-coin"><span
+                                                    class="bangumi-info-label">硬币数</span>
+                                                <em>136.5 万</em>
+                                        </span>
+                                            <span
+                                                    class="bangumi-info-item bangumi-danmaku">
+                                                <span
+                                                        class="bangumi-info-label">弹幕总数</span>
+                                                <em>127.4 万</em>
+                                        </span> <span
+                                                class="bangumi-info-item bangumi-info-item-score">
+                                            <span
+                                                    class="bangumi-info-label">评分</span>
+                                            <em>9.8</em>
+                                        </span>
                                         </span>
                                     </div>
                                     <div class="bangumi-comments">
-                                        <p>简介：故事来到了新的地方—— 炭治郎的目的地是「刀匠村」。
-                                            与鬼杀队的最强剑士，霞柱·时透无一郎与恋柱·甘露寺蜜璃再会，而鬼也悄然逼近。
-                                            炭治郎一行人新的战斗即将开始。...</p>
+                                        <p>简介：“潮死了。”
+                                            网代慎平收到发小——小舟潮的讣告后，回到了阔别两年的故乡——和歌山市日都岛。
+                                            慎平与亲人朋友重聚，葬礼也顺利地进行着。 然而，好友告诉他“潮的死有疑点，可能是他杀”。
+                                            第二天，邻近...
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -419,109 +528,87 @@
                             <div class="bangumi-item">
                                 <div class="bangumi-picture">
                                     <a
-                                            href="https://i0.hdslb.com/bfs/bangumi/image/9ab7fe805a15af618e8f86696b461437e09891d1.jpg"
+                                            href="https://i0.hdslb.com/bfs/bangumi/image/4b2547ffdd6f40f997454b37c0ad48624a1730d9.jpg"
                                             data-fancybox="gallery" data-caption=""
-                                            data-thumb="https://i0.hdslb.com/bfs/bangumi/image/9ab7fe805a15af618e8f86696b461437e09891d1.jpg"><img
-                                            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                            data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/9ab7fe805a15af618e8f86696b461437e09891d1.jpg"
-                                            referrerpolicy="no-referrer" width="110"
-                                            style="width:110px;margin:20px auto;"></a>
+                                            data-thumb="https://i0.hdslb.com/bfs/bangumi/image/4b2547ffdd6f40f997454b37c0ad48624a1730d9.jpg">
+                                        <img
+                                                src="https://i0.hdslb.com/bfs/bangumi/image/4b2547ffdd6f40f997454b37c0ad48624a1730d9.jpg"
+                                                data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/4b2547ffdd6f40f997454b37c0ad48624a1730d9.jpg"
+                                                referrerpolicy="no-referrer" width="110"
+                                                style="width:110px;margin:20px auto">
+                                    </a>
                                 </div>
                                 <div class="bangumi-info">
                                     <div class="bangumi-title">
-                                        <a target="_blank" href="https://www.bilibili.com/bangumi/media/md8292/"
-                                           draggable="false">我们仍未知道那天所看见的花的名字。 剧场版</a>
+                                        <a target="_blank"
+                                           href="https://www.bilibili.com/bangumi/media/md28237126/"
+                                           rel="external nofollow noreferrer">夏日重现</a>
                                     </div>
                                     <div class="bangumi-meta">
                                         <span class="bangumi-info-items">
                                             <span class="bangumi-info-item">
-                                                <span class="bangumi-info-total">全1话</span>
+                                                <span class="bangumi-info-total">全25话</span>
                                                 <em class="bangumi-info-label-em">0</em>
                                             </span>
                                             <span class="bangumi-info-item bangumi-area">
-                                                <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                                                <span class="bangumi-info-label">番剧</span>
+                                                <em>日本</em>
                                             </span>
                                             <span class="bangumi-info-item bangumi-play">
-                                                <span class="bangumi-info-label">总播放</span> <em>1314.3 万</em>
+                                                <span
+                                                        class="bangumi-info-label">总播放</span>
+                                                <em>2.1 亿</em>
                                             </span>
-                                            <span class="bangumi-info-item bangumi-follow">
-                                                <span class="bangumi-info-label">追番人数</span> <em>105.3 万</em>
-                                            </span>
-                                            <span class="bangumi-info-item bangumi-coin">
-                                                <span class="bangumi-info-label">硬币数</span> <em>15.5 万</em>
-                                            </span>
-                                            <span class="bangumi-info-item bangumi-danmaku">
-                                                <span class="bangumi-info-label">弹幕总数</span> <em>20.3 万</em>
-                                            </span>
-                                            <span class="bangumi-info-item bangumi-info-item-score">
-                                                <span class="bangumi-info-label">评分</span> <em>9.7</em>
-                                            </span>
+                                            <span
+                                                    class="bangumi-info-item bangumi-follow"><span
+                                                    class="bangumi-info-label">追番人数</span>
+                                                <em>439.7 万</em>
+                                        </span>
+                                            <span
+                                                    class="bangumi-info-item bangumi-coin"><span
+                                                    class="bangumi-info-label">硬币数</span>
+                                                <em>136.5 万</em>
+                                        </span>
+                                            <span
+                                                    class="bangumi-info-item bangumi-danmaku">
+                                                <span
+                                                        class="bangumi-info-label">弹幕总数</span>
+                                                <em>127.4 万</em>
+                                        </span> <span
+                                                class="bangumi-info-item bangumi-info-item-score">
+                                            <span
+                                                    class="bangumi-info-label">评分</span>
+                                            <em>9.8</em>
+                                        </span>
                                         </span>
                                     </div>
                                     <div class="bangumi-comments">
-                                        <p>简介：某天，“她”突然出现了。少年少女们美好而又哀伤的故事开始发展……</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bangumi-item">
-                                <div class="bangumi-picture"><a
-                                        href="https://cdn.jsdelivr.net/gh/mmdjiji/bangumis@main/Yosuga-no-Sora/cover.jpg"
-                                        data-fancybox="gallery" data-caption=""
-                                        data-thumb="https://cdn.jsdelivr.net/gh/mmdjiji/bangumis@main/Yosuga-no-Sora/cover.jpg"><img
-                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                        data-lazy-src="https://cdn.jsdelivr.net/gh/mmdjiji/bangumis@main/Yosuga-no-Sora/cover.jpg"
-                                        referrerpolicy="no-referrer" width="110" style="width:110px;margin:20px auto;"></a>
-                                </div>
-                                <div class="bangumi-info">
-                                    <div class="bangumi-title">
-                                        <a target="_blank" href="https://www.bilibili.com/bangumi/media/md0/"
-                                           draggable="false">缘之空</a>
-                                    </div>
-                                    <div class="bangumi-meta">
-                                        <span class="bangumi-info-items">
-                                            <span class="bangumi-info-item">
-
-                                            <span class="bangumi-info-total">全12话</span><em
-                                                    class="bangumi-info-label-em">0</em>
-                                            </span>
-
-
-                                            <span class="bangumi-info-item bangumi-area">
-                                                <span class="bangumi-info-label">番剧</span> <em>日本</em>
-                                            </span>
-
-                                            <span class="bangumi-info-item bangumi-play">
-                                                <span class="bangumi-info-label">总播放</span> <em>不可用</em>
-                                            </span>
-                                            <span class="bangumi-info-item bangumi-follow">
-                                                <span class="bangumi-info-label">追番人数</span> <em>不可用</em>
-                                            </span>
-                                            <span class="bangumi-info-item bangumi-coin">
-                                                <span class="bangumi-info-label">硬币数</span> <em>不可用</em>
-                                            </span>
-                                            <span class="bangumi-info-item bangumi-danmaku">
-                                                <span class="bangumi-info-label">弹幕总数</span> <em>不可用</em>
-                                            </span>
-                                            <span class="bangumi-info-item bangumi-info-item-score">
-                                                <span class="bangumi-info-label">评分</span> <em>不可用</em>
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="bangumi-comments"><p>
-                                        简介：远离都市的田园小镇，奥木染。春日野悠带着妹妹穹，来到了这座城镇。坐落在这里的是，儿时暑假经常造访的充满回忆的已故祖父的家。双亲因意外事故而丧生，变得无依无靠...</p>
+                                        <p>简介：“潮死了。”
+                                            网代慎平收到发小——小舟潮的讣告后，回到了阔别两年的故乡——和歌山市日都岛。
+                                            慎平与亲人朋友重聚，葬礼也顺利地进行着。 然而，好友告诉他“潮的死有疑点，可能是他杀”。
+                                            第二天，邻近...
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="bangumi-pagination">
-                                <a class="bangumi-button bangumi-firstpage" href="javascript:;" target="_self"
-                                   onclick="return false" draggable="false" data-pjax-state=""> 首页</a>
-                                <a class="bangumi-button bangumi-previouspage" href="javascript:;" target="_self"
-                                   onclick="return false" draggable="false" data-pjax-state="">上一页</a>
-                                <span class="bangumi-pagenum">1 / 1</span>
-                                <a class="bangumi-button bangumi-nextpage" href="javascript:;" target="_self"
-                                   onclick="return false" draggable="false" data-pjax-state="">下一页</a>
-                                <a class="bangumi-button bangumi-lastpage" href="javascript:;" target="_self"
-                                   onclick="return false" draggable="false" data-pjax-state="">尾页</a>
+                                <a class="bangumi-button bangumi-firstpage"
+                                   href="javascript:;" rel="external nofollow noreferrer"
+                                   target="_self" onclick="return!1"
+                                   data-pjax-state="">首页</a>
+                                <a
+                                        class="bangumi-button bangumi-previouspage" href="javascript:;"
+                                        rel="external nofollow noreferrer" target="_self" onclick="return!1"
+                                        data-pjax-state="">上一页</a>
+                                <span class="bangumi-pagenum">1 / 5</span>
+                                <a
+                                        class="bangumi-button bangumi-nextpage" href="javascript:;"
+                                        rel="external nofollow noreferrer" target="_self" onclick="return!1"
+                                        data-pjax-state="">下一页</a>
+                                <a class="bangumi-button bangumi-lastpage"
+                                   href="javascript:;"
+                                   rel="external nofollow noreferrer" target="_self"
+                                   onclick="return!1" data-pjax-state="">尾页</a>
                             </div>
                         </div>
                     </div>
