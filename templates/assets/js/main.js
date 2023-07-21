@@ -71,8 +71,10 @@ document.addEventListener('DOMContentLoaded', function () {
      */
     const scrollDownInIndex = () => {
         const $scrollDownEle = document.getElementById('scroll-down')
+        const $homeTop = document.getElementById('home_top')
         $scrollDownEle && $scrollDownEle.addEventListener('click', function () {
-            btf.scrollToDest(document.getElementById('content-inner').offsetTop, 300)
+            $homeTop &&  btf.scrollToDest($homeTop.offsetTop, 300)
+
         })
     }
 

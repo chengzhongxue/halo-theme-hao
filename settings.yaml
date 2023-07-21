@@ -76,6 +76,35 @@ spec:
     - group: top
       label: 顶部
       formSchema:
+        - $formkit: group
+          name: above
+          label: 首页第一屏
+          value:
+            bannersBackground:
+            bannersTitleBig:
+          children:
+            - $formkit: radio
+              name: enable_above
+              key: enable_above
+              id: enable_above
+              value: false
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
+            - $formkit: attachment
+              name: index_img
+              if: $get(enable_above).value
+              label: PC背景图
+              placeholder: 请填写背景图地址
+              value: https://rp.realxlfd.cloud/alist
+            - $formkit: attachment
+              name: phone_index_img
+              if: $get(enable_above).value
+              label: 移动端背景图
+              placeholder: 请填写移动端背景图地址
+              value: https://imgapi.kouseki.cn/random?sort=mp
         - $formkit: radio
           name: moment
           label: 瞬间说说
@@ -1733,7 +1762,7 @@ spec:
           key: enable
           label: 启用代码块
           help: 如果安装代码块插件，可关闭此功能
-          value: true
+          value: false
           options:
             - label: 启用
               value: true

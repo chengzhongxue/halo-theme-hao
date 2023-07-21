@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- Tocbot 目录生成 start -->
+<th:block th:fragment="toc-bot">
+    <script th:src="${assets_link + '/libs/tocbot/4.18.2/tocbot.min.js'}"></script>
+    <link th:href="${assets_link + '/libs/tocbot/4.18.2/tocbot.css'}" rel="stylesheet">
+
+    <script>
+        document.addEventListener("DOMContentLoaded",  function() {
+
+            const postContent = document.querySelector('.post-content');
+
+            if (postContent == null) return;
+
+            const headers = postContent.querySelectorAll('h1,h2,h3,h4,h5,h6');
+            // 没有 toc 目录，则直接移除
+            if (headers.length === 0) {
+                document.getElementById("card-toc").remove();
+            } else {
+                tocbot.init({
+                    tocSelector: '.toc-content',
+                    contentSelector: '.post-content',
+                    headingSelector: 'h1,h2,h3,h4,h5,h6',
+                    hasInnerContainers: true
+                });
+
+            }
+        })
+        document.addEventListener('pjax:complete', function () {
+
+            const postContent = document.querySelector('.post-content');
+
+            if (postContent == null) return;
+
+            const headers = postContent.querySelectorAll('h1,h2,h3,h4,h5,h6');
+            // 没有 toc 目录，则直接移除
+            if (headers.length === 0) {
+                document.getElementById("card-toc").remove();
+            } else {
+                tocbot.init({
+                    tocSelector: '.toc-content',
+                    contentSelector: '.post-content',
+                    headingSelector: 'h1,h2,h3,h4,h5,h6',
+                    hasInnerContainers: true
+                });
+
+            }
+        })
+    </script>
+</th:block>
+
+
+
+</html>

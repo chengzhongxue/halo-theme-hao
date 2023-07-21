@@ -11,7 +11,9 @@
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-                <div  id="article-container" th:utext="${singlePage.content.content}"></div>
+                <div  id="article-container"
+                      th:class="${ theme.config.code.enable_line || pluginFinder.available('PluginPrismJS') ? 'line-numbers' : ''}"
+                      th:utext="${singlePage.content.content}"></div>
                 <hr>
                 <!--/* 评论组件 */-->
                 <th:block
