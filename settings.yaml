@@ -2183,9 +2183,9 @@ spec:
               key: loadingBoxEnable
               value: true
               options:
-                - label: 打开
+                - label: 启用
                   value: true
-                - label: 关闭
+                - label: 禁用
                   value: false
             - $formkit: attachment
               name: loadingBoxImg
@@ -2198,9 +2198,9 @@ spec:
               label: 加载进度条
               value: true
               options:
-                - label: 开启
+                - label: 启用
                   value: true
-                - label: 关闭
+                - label: 禁用
                   value: false
         - $formkit: group
           name: error_404
@@ -2217,3 +2217,13 @@ spec:
               name: background
               label: 背景
               value: /themes/theme-hao/assets/images/404s.gif
+        - $formkit: radio
+          name: bubbleEnable
+          label: 页面卡片顶部气泡升起效果
+          help: 已有页面(友链鱼塘,瞬间)
+          value: false
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
