@@ -44,7 +44,7 @@
     --heo-blue: #425AEF;
     --heo-red: #f04a63;
     --heo-pink: #FF7C7C;
-    --heo-green: #28a63f;
+    --heo-green: #57bd6a;
     --heo-yellow: #c28b00;
     --heo-yellow-op: #d99c001a;
     --heo-orange: #e38100;
@@ -61,7 +61,7 @@
     --heo-card-btn-bg: #edf0f7;
     --heo-post-blockquote-bg: #fafcff;
     --heo-post-tabs-bg: #f2f5f8;
-    --heo-secondbg: #f1f3f8;
+    --heo-secondbg: #f7f7f9;
     --heo-shadow-nav: 0 5px 12px -5px rgba(102, 68, 68, 0.05);
     --heo-card-bg: #fff;
     --heo-card-bg-op: var(--heo-black-op);
@@ -3515,9 +3515,7 @@ ul {
     margin-bottom: 0px !important;
 }
 
-#post .tag_share .post-meta__tag-list {
-    display: inline-block;
-}
+
 
 #post .tag_share .post-meta__tags {
     display: inline-block;
@@ -3583,13 +3581,7 @@ ul {
     border-radius: 4px;
 }
 
-#post .post-copyright .post-copyright-info a:hover {
-    text-decoration: none;
-    background-color: rgb(255, 255, 255);
-    color: rgb(59, 130, 255);
-    cursor: pointer;
-    border-radius: 4px;
-}
+
 
 #post .post-outdate-notice {
     position: relative;
@@ -3686,15 +3678,7 @@ ul {
     text-align: center;
 }
 
-.post-reward .reward-button {
-    display: inline-block;
-    padding: 0.2rem 1.2rem;
-    background: var(--btn-bg);
-    color: var(--btn-color);
-    cursor: pointer;
-    transition: all 0.4s ease 0s;
-    border-radius: 5px;
-}
+
 
 .post-reward:hover > .reward-main {
     display: block;
@@ -12099,9 +12083,7 @@ blockquote p {
     height: 34px;
 }
 
-#post .tag_share .post-meta__tags:not(:last-child) {
-    margin: 0 0.5rem 0 0;
-}
+
 
 #post .tag_share .post-meta__tags:hover {
     background: var(--heo-lighttext);
@@ -12120,37 +12102,7 @@ blockquote p {
     }
 }
 
-/* 版权信息 */
-/* 背景 */
-#post .post-copyright {
-    background: var(--heo-card-bg);
-    padding: 1rem 1.3rem;
-    overflow: hidden;
-    border: var(--style-border);
-    border-width: 1px;
-    transition: 0.3s;
-    position: relative;
-    margin: 1.5rem 0px 0.5rem;
-    border-radius: 12px;
-}
 
-#post .post-copyright:after {
-    position: absolute;
-    right: 22px;
-    top: -77px;
-    content: "\f25e";
-    font-size: 180px;
-    font-family: "Font Awesome 5 Brands";
-    color: var(--heo-fontcolor);
-    opacity: 0.1;
-    filter: blur(7px);
-}
-
-@media screen and (max-width: 768px) {
-    #post .post-copyright {
-        padding: 1rem 1.3rem;
-    }
-}
 
 .post-copyright__author {
     display: flex;
@@ -12205,29 +12157,12 @@ blockquote p {
     transition: 0.3s;
 }
 
-/* 作者名 */
-#post .post-copyright .post-copyright-info a {
-    padding: 0;
-    color: var(--heo-fontcolor);
-    font-weight: bold;
-}
+
 
 #post .post-copyright .post-copyright__notice .post-copyright-info a {
     padding: 0 4px;
 }
 
-#post .post-copyright .post-copyright-info a:hover {
-    color: var(--heo-lighttext);
-}
-
-#post .post-copyright .post-copyright-info {
-    padding-left: 0;
-    color: var(--heo-fontcolor);
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-}
 
 #post .post-copyright .post-copyright-title {
     padding-left: 0;
@@ -12296,28 +12231,11 @@ blockquote p {
     -webkit-box-orient: vertical;
 }
 
-/* 提示 */
-#post > div.post-copyright > div.post-copyright__notice {
-    font-size: 0.7rem;
-    line-height: 1rem;
-    margin: 0.5rem 0;
-}
-
 /* 装饰圈 */
 #post .post-copyright:before {
     display: none;
 }
 
-/* 赞赏作者按钮 */
-.post-reward .reward-button {
-    background: var(--heo-red);
-    color: var(--heo-white);
-    padding: 0;
-    width: 133px;
-    height: 40px;
-    line-height: 39px;
-    box-shadow: var(--heo-shadow-red);
-}
 
 .post-reward:hover .reward-button {
     color: var(--heo-white);
@@ -12389,43 +12307,7 @@ a.reward-main-btn:hover {
     color: var(--heo-red);
 }
 
-.reward-link.mode {
-    background: var(--heo-green);
-    color: var(--heo-white);
-    padding: 0;
-    width: 173px;
-    height: 40px;
-    line-height: 39px;
-    box-shadow: var(--heo-shadow-green);
-    border-radius: 8px;
-    margin-left: 0.5rem;
-    text-align: center;
-    transition: 0.3s;
-}
 
-@media screen and (min-width: 1300px) {
-    .reward-link.mode:hover {
-        transform: scale(1.03);
-    }
-
-    .reward-link.mode:active {
-        transform: scale(0.97);
-    }
-}
-
-
-.reward-link.mode a {
-    color: var(--heo-white);
-}
-
-.reward-link.mode i {
-    margin-right: 4px;
-}
-
-.reward-link.mode:hover {
-    background: var(--heo-theme);
-    box-shadow: none;
-}
 
 /* 赞赏背景 */
 
@@ -13593,13 +13475,7 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     }
 }
 
-.post-tools {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-}
+
 
 .post-reward {
     margin-top: 0rem;
@@ -13623,17 +13499,6 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
 }
 
 @media screen and (max-width: 768px) {
-    .post-reward .reward-main {
-        justify-content: center !important;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 102;
-        width: 100%;
-        margin: auto;
-        padding: 0;
-    }
 
     .post-reward .reward-main .reward-all {
         width: 100%;
@@ -13675,45 +13540,7 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     }
 }
 
-/* 捐助工具栏 */
-.post-tools-left {
-    white-space: nowrap;
-    display: flex;
-    text-overflow: ellipsis;
-    flex-wrap: wrap;
-    margin-bottom: 0.5rem;
-}
 
-.post-tools-right {
-    overflow: scroll;
-    overflow-x: overlay;
-    padding-right: 0px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5rem;
-}
-
-@media screen and (max-width: 768px) {
-
-    .post-tools-left > div {
-        margin: 8px;
-    }
-
-    .post-tools-left {
-        white-space: nowrap;
-        display: flex;
-        text-overflow: ellipsis;
-        margin-top: 1rem;
-        justify-content: center;
-        width: 100%;
-    }
-
-    .post-tools-right {
-        margin-top: 1rem;
-        width: 100%;
-        justify-content: center;
-    }
-}
 
 .post-reward .reward-main .reward-all:after {
     display: none;
@@ -13980,22 +13807,7 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     }
 }
 
-/* 标签列表页 */
 
-#post .tag_share .post-meta__tag-list {
-    display: flex;
-}
-
-@media screen and (max-width: 768px) {
-    #post .tag_share .post-meta__tag-list {
-        display: flex;
-        overflow: scroll;
-        position: absolute;
-        left: 0;
-        padding: 0 20px 0 20px;
-        width: 100%;
-    }
-}
 
 #page .tag-cloud-list a {
     color: var(--heo-fontcolor) !important;
@@ -14018,7 +13830,7 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
 }
 
 span.tagsPageCount {
-    background: var(--heo-card-bg);
+    background: var(--heo-secondbg);
     padding: 4px 4px;
     border-radius: 8px;
     color: var(--heo-secondtext);
@@ -14027,16 +13839,16 @@ span.tagsPageCount {
     min-width: 35px;
     display: inline-block;
     font-size: 1rem;
+    margin-left: 4px;
 }
 
 #page .tag-cloud-list a:hover span.tagsPageCount {
     color: var(--heo-lighttext);
 }
 
-#tag-page-tags .tagsPageCount,
-#post .tag_share .post-meta__tags span.tagsPageCount {
-    padding: 2px 4px;
-    background: var(--heo-secondbg);
+#tag-page-tags .tagsPageCount, #post .tag_share .post-meta__tags span.tagsPageCount {
+    padding: 2px;
+    background: var(--heo-card-bg);
     border: var(--style-border-always);
     min-width: 22.5px;
     display: inline-block;
@@ -14047,9 +13859,8 @@ span.tagsPageCount {
     margin-left: 4px;
 }
 
-#tag #tag-page-tags a:hover .tagsPageCount,
+
 #post .tag_share .post-meta__tags:hover span.tagsPageCount {
-    background: var(--heo-card-bg);
     color: var(--heo-lighttext);
 }
 

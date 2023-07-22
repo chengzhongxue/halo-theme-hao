@@ -908,7 +908,6 @@ spec:
                       validation: required
                       value: "博客框架为halo2.x"
 
-
     - group: post
       label: 文章
       formSchema:
@@ -1013,6 +1012,22 @@ spec:
               label: 你的博客地址
               help: 注意保留最后的斜杠
               value: https://xx.xx/
+        - $formkit: select
+          name: copyrightsStyle
+          id: copyrightsStyle
+          key: copyrightsStyle
+          label: 版权样式
+          value: default
+          options:
+            - value: default
+              label: 默认
+            - value: one
+              label: 样式一
+        - $formkit: text
+          if: $get(copyrightsStyle).value == 'one'
+          name: desc
+          value: "分享设计与科技生活"
+          label: 版权样式一(描述)
         - $formkit: group
           name: post_edit
           label: 运营模式与责任
