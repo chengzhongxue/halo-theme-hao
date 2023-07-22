@@ -37,6 +37,10 @@ spec:
         description: 追番页面
         screenshot:
         file: bangumis.html
+      - name: 我的装备页面模版
+        description: 我的装备页面
+        screenshot:
+        file: equipment.html
   description: Halo 2.x Theme base on Thymeleaf, Referring to Butterfly and Heo
   logo: https://liuzhihang.com/upload/logo.jpg
   website: https://liuzhihang.com
