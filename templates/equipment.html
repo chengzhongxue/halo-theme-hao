@@ -5,6 +5,7 @@
 <th:block th:fragment="content">
 
     <div class="page" id="body-wrap">
+        <script th:src="${assets_link + '/zhheo/rightmenu.js'}"></script>
 
         <!-- 头部导航栏 -->
         <header class="not-top-img" id="page-header">
@@ -13,49 +14,53 @@
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
                 <div class="author-content author-content-item essayPage single"
-                     th:style="'background:url('+${theme.config.todo.backgroundImg}+') left 28% / cover no-repeat !important;'">
+                     th:style="'background:url('+${theme.config.equipment.backgroundImg}+') left 28% / cover no-repeat !important;'">
                     <div class="card-content">
-                        <div class="author-content-item-tips" th:text="${theme.config.todo.smallTitle}"></div>
-                        <span class="author-content-item-title" th:text="${theme.config.todo.bigTitle}"></span>
+                        <div class="author-content-item-tips" th:text="${theme.config.equipment.smallTitle}"></div>
+                        <span class="author-content-item-title" th:text="${theme.config.equipment.bigTitle}"></span>
                         <div class="content-bottom">
-                            <div class="tips" th:text="${theme.config.todo.detail}"></div>
+                            <div class="tips" th:text="${theme.config.equipment.detail}"></div>
                         </div>
                     </div>
                 </div>
-                <div id="equipment">
-                    <div class="equipment-item">
-                        <h2 class="equipment-item-title">生产力</h2>
-                        <div class="equipment-item-description">提升自己生产效率的硬件设备</div>
-                        <div class="equipment-item-content">
-                            <div class="equipment-item-content-item">
-                                <div class="equipment-item-content-item-cover"><img
-                                        class="equipment-item-content-item-image entered loaded"
-                                        data-lazy-src="https://p.zhheo.com/YnW8cc21590681686120255749.png!cover"
-                                        onerror="this.onerror=null;this.src='https://bu.dusays.com/2023/03/03/6401a7902b8de.png'"
-                                        alt="翻新 MacBookPro" data-ll-status="loaded"
-                                        src="https://p.zhheo.com/YnW8cc21590681686120255749.png!cover"></div>
-                                <div class="equipment-item-content-item-info">
-                                    <div class="equipment-item-content-item-name"
-                                         onclick="rm.rightmenuCopyText(&quot;翻新 MacBookPro&quot;);btf.snackbarShow(&quot;已复制装备名称&quot;);">
-                                        翻新 MacBookPro
+                <div id="equipment" th:if="${not #lists.isEmpty(theme.config.equipment.category_list)}"
+                     th:with="categoryList = ${theme.config.equipment.category_list}">
+                    <th:block th:each="category : ${categoryList}">
+                        <div class="equipment-item">
+                            <h2 class="equipment-item-title">[[${category.category_name}]]</h2>
+                            <div class="equipment-item-description">[[${category.description}]]</div>
+                            <div class="equipment-item-content" th:with="equipmentList = ${category.equipment_list}">
+
+                                <div class="equipment-item-content-item" th:each="equipment : ${equipmentList}">
+                                    <div class="equipment-item-content-item-cover">
+                                        <img class="equipment-item-content-item-image entered loaded"
+                                             th:alt="${equipment.name}"
+                                             th:src="${equipment.img}">
                                     </div>
-                                    <div class="equipment-item-content-item-specification">M1Pro 32G / 1TB</div>
-                                    <div class="equipment-item-content-item-description">
-                                        屏幕显示效果好、色彩准确、对比度强、性能强劲、续航优秀。可以用来开发和设计。
-                                    </div>
-                                    <div class="equipment-item-content-item-toolbar">
-                                        <a class="equipment-item-content-item-link" href="/"
-                                           target="_blank">查看文章</a>
-                                        <a class="bber-reply"
-                                           onclick="rm.rightMenuCommentText(&quot;翻新 MacBookPro M1Pro 32G / 1TB 屏幕显示效果好、色彩准确、对比度强、性能强劲、续航优秀。可以用来开发和设计。&quot;);"
-                                           data-pjax-state="">
-                                            <i class="heofont icon-chat-1-fill"></i>
-                                        </a>
+                                    <div class="equipment-item-content-item-info">
+                                        <div class="equipment-item-content-item-name"
+                                             th:onclick="rm.rightmenuCopyText([[${equipment.name}]]);btf.snackbarShow('已复制装备名称');">
+                                            [[${equipment.name}]]
+                                        </div>
+                                        <div class="equipment-item-content-item-specification">[[${equipment.model}]]
+                                        </div>
+                                        <div class="equipment-item-content-item-description">
+                                            [[${equipment.description}]]
+                                        </div>
+                                        <div class="equipment-item-content-item-toolbar">
+                                            <a class="equipment-item-content-item-link" th:href="${equipment.url}"
+                                               target="_blank">[[${equipment.button}]]</a>
+                                            <a class="bber-reply"
+                                               th:onclick="rm.rightMenuCommentText([['&quot;'+${equipment.name}+' '+${equipment.model}+' '+${equipment.description}+'&quot;']]);"
+                                               data-pjax-state="">
+                                                <i class="haofont hao-icon-link"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </th:block>
                 </div>
                 <style>
                     /* 我的装备 */
@@ -186,8 +191,12 @@
                         cursor: pointer;
                     }
                 </style>
+                <!--/* 评论组件 */-->
+                <th:block
+                        th:replace="~{modules/comment :: comment(group = 'content.halo.run',
+                  kind = 'SinglePage',
+                  name = ${singlePage.metadata.name})}"/>
             </div>
-
 
         </main>
         <!-- 底部 -->
