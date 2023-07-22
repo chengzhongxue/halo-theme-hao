@@ -1208,6 +1208,63 @@ spec:
               value: true
             - label: 关闭
               value: false
+    - group: todo
+      label: 待办清单
+      formSchema:
+        - $formkit: attachment
+          name: backgroundImg
+          validation: url
+          label: 图片
+          value: https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/64624940e3623.jpeg
+          placeholder: 请输入图片地址
+        - $formkit: text
+          name: smallTitle
+          label: 小标题
+          value: 想做清单
+        - $formkit: text
+          name: bigTitle
+          label: 大标题
+          value: ToDoList
+        - $formkit: text
+          name: detail
+          label: 描述
+          value: 要做的事还有很多，想做的事源源不断
+        - $formkit: repeater
+          name: list
+          label: 待办清单
+          value: [ ]
+          children:
+            - $formkit: text
+              name: class_name
+              label: 标题
+              placeholder: 请输入标题
+            - $formkit: radio
+              name: seat
+              label: 位置
+              value: left
+              options:
+                - label: 左
+                  value: left
+                - label: 右
+                  value: right
+            - $formkit: repeater
+              name: todo_list
+              label: 内容列表
+              value: [ ]
+              children:
+                - $formkit: textarea
+                  name: content
+                  label: 内容
+                  placeholder: 请输入内容
+                - $formkit: radio
+                  name: completed
+                  label: 填写
+                  value: false
+                  options:
+                    - label: 完成
+                      value: true
+                    - label: 未完成
+                      value: false
 
     - group: about
       label: 关于

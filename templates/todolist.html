@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page')}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="content">
+
+    <div class="page" id="body-wrap">
+
+        <!-- 头部导航栏 -->
+        <header class="not-top-img" id="page-header">
+            <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
+        </header>
+        <main class="layout hide-aside" id="content-inner">
+            <div id="page">
+                <div class="author-content author-content-item essayPage single"
+                     th:style="'background:url('+${theme.config.todo.backgroundImg}+') left 28% / cover no-repeat !important;'">
+                    <div class="card-content">
+                        <div class="author-content-item-tips" th:text="${theme.config.todo.smallTitle}"></div>
+                        <span class="author-content-item-title" th:text="${theme.config.todo.bigTitle}"></span>
+                        <div class="content-bottom">
+                            <div class="tips" th:text="${theme.config.todo.detail}"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="todolist-main" th:if="${not #lists.isEmpty(theme.config.todo.list)}"
+                     th:with="todoList = ${theme.config.todo.list}">
+
+                    <th:block th:each="todo : ${todoList}">
+
+                        <div id="todolist-left" th:if="${#strings.equals(todo.seat, 'left')}">
+
+
+                            <div class="todolist-item">
+                                <h3 class="todolist-title">[[${todo.class_name}]]</h3>
+                                <ul class="todolist-ul">
+                                    <th:block th:if="${not #lists.isEmpty(todo.todo_list)}"
+                                              th:each="data : ${todo.todo_list}">
+                                        <li th:class="${data.completed ? 'achieve' : ''}">
+                                            <i style="margin-right: 5px;"
+                                               th:class="${data.completed ? 'fa-regular fa-circle-check' : 'fa-regular fa-circle'}">
+                                            </i>[[${data.content}]]
+                                        </li>
+                                    </th:block>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="todolist-right" th:if="${#strings.equals(todo.seat, 'right')}">
+                            <div class="todolist-item">
+                                <h3 class="todolist-title">[[${todo.class_name}]]</h3>
+                                <ul>
+                                    <th:block th:if="${not #lists.isEmpty(todo.todo_list)}"
+                                              th:each="data : ${todo.todo_list}">
+                                        <li th:class="${data.completed ? 'achieve' : ''}">
+                                            <i style="margin-right: 5px;"
+                                               th:class="${data.completed ? 'fa-regular fa-circle-check' : 'fa-regular fa-circle'}">
+                                            </i>[[${data.content}]]
+                                        </li>
+                                    </th:block>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </th:block>
+
+                </div>
+
+
+                <style>
+                    :root {
+                        --todo-border: 1px solid #f7a796;
+                    }
+
+                    [data-theme=dark] {
+                        --todo-border: 1px solid #51908b;
+                    }
+
+                    #todolist-main {
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        margin: 16px 0 10px
+                    }
+
+                    #todolist-main li {
+                        list-style: none;
+                        font-size: 17px
+                    }
+
+                    #todolist-main ul {
+                        margin: 0;
+                        padding: 0
+                    }
+
+                    #todolist-left {
+                        width: 50%;
+                        padding: 0 8px 0 0
+                    }
+
+                    #todolist-right {
+                        width: 50%;
+                        padding: 0 0 0 8px
+                    }
+
+                    .todolist-item {
+                        position: relative;
+                        background: #fae4df;
+                        border-radius: 12px;
+                        padding: 10px 1rem 1.2rem;
+                        border: 2px dashed #f7a796;
+                        margin-bottom: 1rem
+                    }
+
+                    @media screen and (max-width: 768px) {
+                        #todolist-left,#todolist-right {
+                            width: 100%;
+                        }
+                    }
+
+                    [data-theme=dark] .todolist-item {
+                        background: #242424;
+                        border: 2px dashed #51908b
+                    }
+
+
+                    h3.todolist-title {
+                        margin: 0 !important;
+                        border-bottom: var(--todo-border)
+                    }
+
+                    .todolist-item li {
+                        margin: 0 !important;
+                        border-bottom: var(--todo-border);
+                    }
+
+                    .todolist-item li::marker {
+                        content: none;
+                    }
+
+                    li.achieve {
+                        opacity: .8;
+                        text-decoration: line-through;
+                    }
+                </style>
+
+
+
+            </div>
+
+
+        </main>
+        <!-- 底部 -->
+        <footer th:replace="~{modules/footer :: footer}"></footer>
+        <!-- 卡片顶部气泡效果 -->
+        <script th:if="${theme.config.other.bubbleEnable}" async data-pjax
+                th:src="${assets_link + '/libs/canvas/bubble.js'}"></script>
+    </div>
+
+</th:block>
+
+</html>
