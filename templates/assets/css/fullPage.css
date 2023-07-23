@@ -1,8 +1,8 @@
 
 :root {
 
-    --light-grey:rgba(255,255,255,0.7);
-    --white: rgba(255,255,255,0.9);
+    --light-grey: rgba(255, 255, 255, 0.7);
+    --white: rgba(255, 255, 255, 0.9);
 }
 
 @media screen and (max-width: 768px) {
@@ -14,14 +14,16 @@
 }
 
 
-.back-home-button{
-    color: rgba(255,255,255,0.7);
+.back-home-button {
+    color: rgba(255, 255, 255, 0.7);
 }
-#nav #site-name{
+
+#nav #site-name {
     color: var(--light-grey);
 }
-#nav .site-page{
-    color: rgba(255,255,255,0.7);
+
+#nav .site-page {
+    color: rgba(255, 255, 255, 0.7);
 }
 
 #page-header.full_page {
@@ -29,12 +31,14 @@
     background-attachment: fixed;
     border-radius: 0;
 }
+
 #page-header.full_page #site-info {
     position: absolute;
     top: 43%;
     padding: 0 10px;
     width: 100%;
 }
+
 #page-header #scroll-down {
     position: absolute;
     bottom: 0;
@@ -60,6 +64,7 @@
     -webkit-justify-content: center;
     justify-content: center;
 }
+
 #page-header #scroll-down .scroll-down-effects {
     position: relative;
     width: 100%;
@@ -132,4 +137,8 @@
 .pl-blur {
     /* 小图锯齿多，增加高斯模糊 */
     filter: blur(50px);
+}
+
+#nav a {
+    color: var(--light-grey);
 }

@@ -93,6 +93,15 @@ spec:
                   value: true
                 - label: 隐藏
                   value: false
+            - $formkit: repeater
+              name: typed
+              label: 打字机显示的文字
+              value: [ ]
+              children:
+                - $formkit: text
+                  name: text
+                  label: 文字
+                  placeholder: 请输入文字
             - $formkit: attachment
               name: index_img
               if: $get(enable_above).value
