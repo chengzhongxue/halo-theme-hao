@@ -37,7 +37,7 @@
         <script th:inline="javascript">
             (() => {
                 const greeting = [[${theme.config.other.greeting.setting}]].map((itme) => {
-                    return itme.realNode.item
+                    return itme.realNode
                 })
                 let e = greeting.length !== 0 ? greeting : [
                     {
