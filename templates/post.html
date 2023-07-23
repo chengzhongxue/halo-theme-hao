@@ -180,7 +180,8 @@
                 <th:block
                         th:replace="~{modules/comment :: comment(group = 'content.halo.run',
                   kind = 'Post',
-                  name = ${post.metadata.name})}"/>
+                  name = ${post.metadata.name},
+                  allowComment = ${post.spec.allowComment})}"/>
 
             </div>
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<th:block th:fragment="comment(group, kind, name)">
+<th:block th:fragment="comment(group, kind, name, allowComment)" th:if="${allowComment}">
     <th:block
             th:if="${theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
         <div th:replace="~{modules/comment/twikoo :: twikoo}"></div>
