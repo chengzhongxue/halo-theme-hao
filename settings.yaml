@@ -2348,7 +2348,7 @@ spec:
         - $formkit: radio
           name: bubbleEnable
           label: 页面卡片顶部气泡升起效果
-          help: 已有页面(友链鱼塘,瞬间,ToDoList,我的设备)
+          help: 已有页面(友链鱼塘,瞬间,ToDoList,我的装备)
           value: false
           options:
             - label: 启用
