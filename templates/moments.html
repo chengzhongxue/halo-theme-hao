@@ -60,7 +60,7 @@
                                         </div>
                                     </div>
                                     <a class="bber-reply"
-                                       th:attr="onclick='rm.rightMenuCommentText(&quot;\''+ ${content.html} +'&quot;\')'"
+                                       th:onclick="rm.rightMenuCommentText([[${content.html}]]);"
                                        data-pjax-state=""> <i class="fa-solid fa-message"></i>
                                     </a>
                                 </div>
