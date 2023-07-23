@@ -2411,20 +2411,17 @@ spec:
                   start_time: 20
                   end_time: 24
               children:
-                - $formkit: group
-                  name: item
-                  children:
-                    - $formkit: text
-                      name: greeting
-                      label: 问候内容
-                      placeholder: 请输入问候内容
-                    - $formkit: text
-                      name: start_time
-                      label: 开始时间
-                      placeholder: 请输入开始时间(小时)
-                      help: 与上一个问候的结束时间相同时，上一个问候在该时间生效
-                    - $formkit: text
-                      name: end_time
-                      label: 结束时间
-                      placeholder: 请输入结束时间(小时)
-                      help: 可以与开始时间相同，表示一个小时内的问候
+                - $formkit: text
+                  name: greeting
+                  label: 问候内容
+                  placeholder: 请输入问候内容
+                - $formkit: text
+                  name: start_time
+                  label: 开始时间
+                  placeholder: 请输入开始时间(小时)
+                  help: 与上一个问候的结束时间相同时，上一个问候在该时间生效
+                - $formkit: text
+                  name: end_time
+                  label: 结束时间
+                  placeholder: 请输入结束时间(小时)
+                  help: 可以与开始时间相同，表示一个小时内的问候
