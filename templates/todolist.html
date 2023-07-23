@@ -25,43 +25,46 @@
                 <div id="todolist-main" th:if="${not #lists.isEmpty(theme.config.todo.list)}"
                      th:with="todoList = ${theme.config.todo.list}">
 
-                    <th:block th:each="todo : ${todoList}">
 
-                        <div id="todolist-left" th:if="${#strings.equals(todo.seat, 'left')}">
-
-
-                            <div class="todolist-item">
-                                <h3 class="todolist-title">[[${todo.class_name}]]</h3>
-                                <ul class="todolist-ul">
-                                    <th:block th:if="${not #lists.isEmpty(todo.todo_list)}"
-                                              th:each="data : ${todo.todo_list}">
-                                        <li th:class="${data.completed ? 'achieve' : ''}">
-                                            <i style="margin-right: 5px;"
-                                               th:class="${data.completed ? 'fa-regular fa-circle-check' : 'fa-regular fa-circle'}">
-                                            </i>[[${data.content}]]
-                                        </li>
-                                    </th:block>
-                                </ul>
+                    <div id="todolist-left-container">
+                        <th:block th:each="todo : ${todoList}">
+                            <div id="todolist-left" th:if="${#strings.equals(todo.seat, 'left')}">
+                                <div class="todolist-item">
+                                    <h3 class="todolist-title">[[${todo.class_name}]]</h3>
+                                    <ul class="todolist-ul">
+                                        <th:block th:if="${not #lists.isEmpty(todo.todo_list)}"
+                                                  th:each="data : ${todo.todo_list}">
+                                            <li th:class="${data.completed ? 'achieve' : ''}">
+                                                <i style="margin-right: 5px;"
+                                                   th:class="${data.completed ? 'fa-regular fa-circle-check' : 'fa-regular fa-circle'}">
+                                                </i>[[${data.content}]]
+                                            </li>
+                                        </th:block>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-
-                        <div id="todolist-right" th:if="${#strings.equals(todo.seat, 'right')}">
-                            <div class="todolist-item">
-                                <h3 class="todolist-title">[[${todo.class_name}]]</h3>
-                                <ul>
-                                    <th:block th:if="${not #lists.isEmpty(todo.todo_list)}"
-                                              th:each="data : ${todo.todo_list}">
-                                        <li th:class="${data.completed ? 'achieve' : ''}">
-                                            <i style="margin-right: 5px;"
-                                               th:class="${data.completed ? 'fa-regular fa-circle-check' : 'fa-regular fa-circle'}">
-                                            </i>[[${data.content}]]
-                                        </li>
-                                    </th:block>
-
-                                </ul>
+                        </th:block>
+                    </div>
+                    <div id="todolist-right-container">
+                        <th:block th:each="todo : ${todoList}">
+                            <div id="todolist-right" th:if="${#strings.equals(todo.seat, 'right')}">
+                                <div class="todolist-item">
+                                    <h3 class="todolist-title">[[${todo.class_name}]]</h3>
+                                    <ul>
+                                        <th:block th:if="${not #lists.isEmpty(todo.todo_list)}"
+                                                  th:each="data : ${todo.todo_list}">
+                                            <li th:class="${data.completed ? 'achieve' : ''}">
+                                                <i style="margin-right: 5px;"
+                                                   th:class="${data.completed ? 'fa-regular fa-circle-check' : 'fa-regular fa-circle'}">
+                                                </i>[[${data.content}]]
+                                            </li>
+                                        </th:block>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                    </th:block>
+                        </th:block>
+                    </div>
+
 
                 </div>
 
@@ -79,7 +82,7 @@
                         display: flex;
                         flex-direction: row;
                         flex-wrap: wrap;
-                        justify-content: center;
+                        justify-content: space-between;
                         margin: 16px 0 10px
                     }
 
@@ -93,13 +96,21 @@
                         padding: 0
                     }
 
-                    #todolist-left {
+                    #todolist-left-container, #todolist-right-container {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: start;
+                        align-items: center;
                         width: 50%;
+                    }
+
+                    #todolist-left {
+                        width: 100%;
                         padding: 0 8px 0 0
                     }
 
                     #todolist-right {
-                        width: 50%;
+                        width: 100%;
                         padding: 0 0 0 8px
                     }
 
@@ -113,7 +124,7 @@
                     }
 
                     @media screen and (max-width: 768px) {
-                        #todolist-left,#todolist-right {
+                        #todolist-left, #todolist-right {
                             width: 100%;
                         }
                     }
@@ -143,7 +154,6 @@
                         text-decoration: line-through;
                     }
                 </style>
-
 
 
             </div>
