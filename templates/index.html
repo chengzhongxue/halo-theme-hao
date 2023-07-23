@@ -8,7 +8,8 @@
 
         <header th:class="${theme.config.top.above.enable_above ? 'full_page' : 'not-top-img'}" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
-
+            <!-- 问候语 -->
+            <th:block th:replace="~{modules/header/greeting :: greeting}"></th:block>
             <!-- 第一屏 -->
             <th:block th:replace="~{modules/header/index-img :: index-img}"></th:block>
         </header>

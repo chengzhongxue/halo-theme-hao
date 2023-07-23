@@ -3,7 +3,6 @@
 <!-- 第一屏 -->
 <th:block th:fragment="index-img">
     <th:block th:if="${theme.config.top.above.enable_above}">
-        <div id="greetingBox"></div>
         <div class="pl-container">
             <div class="pl-img pl-blur pl-visible"></div>
             <div class="pl-img pl-visible"></div>
@@ -231,35 +230,6 @@
                     opacity: 1;
                 }
             }
-
-            #greetingBox {
-                position: fixed;
-                top: 10px;
-                left: 15%;
-                width: 400px;
-                text-align: center;
-                z-index: 999;
-                pointer-events: none
-            }
-
-            #greeting {
-                display: inline-block;
-                position: relative;
-                opacity: 0;
-                top: -110px;
-                padding: 5px 40px;
-                border-radius: 50px;
-                background-color: #fff;
-                color: #000;
-                font-size: small;
-                transition: .5s;
-                box-shadow: rgb(0 0 0 / 5%) 0 10px 20px
-            }
-
-            #greeting.shown {
-                opacity: 1;
-                top: 0
-            }
         </style>
         <script th:inline="javascript">
             function subtitleType() {
@@ -281,47 +251,6 @@
             }
             "function" == typeof Typed ? subtitleType() : getScript("https://npm.elemecdn.com/typed.js@2.0.12/lib/typed.min.js").then(subtitleType)
         </script>
-        <script>
-            (() => {
-                const e = [{greeting: "晚安😴", startTime: 0, endTime: 5}, {
-                    greeting: "早上好鸭👋, 祝你一天好心情！",
-                    startTime: 6,
-                    endTime: 9
-                }, {
-                    greeting: "上午好👋, 状态很好，鼓励一下～",
-                    startTime: 10,
-                    endTime: 10
-                }, {greeting: "11点多啦, 在坚持一下就吃饭啦～", startTime: 11, endTime: 11}, {
-                    greeting: "午安👋, 宝贝",
-                    startTime: 12,
-                    endTime: 14
-                }, {
-                    greeting: "🌈充实的一天辛苦啦！",
-                    startTime: 14,
-                    endTime: 18
-                }, {
-                    greeting: "19点喽, 奖励一顿丰盛的大餐吧🍔。",
-                    startTime: 19,
-                    endTime: 19
-                }, {greeting: "晚上好👋, 在属于自己的时间好好放松😌~", startTime: 20, endTime: 24}];
-                let t = document.createElement("div");
-                t.id = "greeting", setTimeout((() => {
-                    t.classList.add("shown")
-                }), 1e3);
-                let i = document.querySelector("#greetingBox");
-                i.appendChild(t);
-                const n = (new Date).getHours();
-                let r = "晚上好👋";
-                for (let t = 0; t < e.length; t++) if (n >= e[t].startTime && n <= e[t].endTime) {
-                    r = e[t].greeting;
-                    break
-                }
-                t.innerHTML = r, setTimeout((() => {
-                    t.classList.remove("shown"), setTimeout((() => {
-                        i.remove()
-                    }), 500)
-                }), 3e3)
-            })()</script>
     </th:block>
 </th:block>
 

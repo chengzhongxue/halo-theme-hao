@@ -80,8 +80,10 @@ spec:
           name: above
           label: 首页第一屏
           value:
-            bannersBackground:
-            bannersTitleBig:
+            enable_above:
+            typed:
+            index_img:
+            phone_index_img:
           children:
             - $formkit: radio
               name: enable_above
@@ -95,6 +97,7 @@ spec:
                   value: false
             - $formkit: repeater
               name: typed
+              if: $get(enable_above).value
               label: 打字机显示的文字
               value: [ ]
               children:
@@ -249,7 +252,7 @@ spec:
                   name: todayRecommendCover
                   label: 背景图
                   placeholder: 请输入地址
-                  value:  https://liuzhihang.com/upload/hao_dark.jpg
+                  value: https://liuzhihang.com/upload/hao_dark.jpg
                 - $formkit: select
                   name: recommendPost
                   id: recommendPost
@@ -266,7 +269,7 @@ spec:
                   name: recommendPostCustom
                   label: 自定义文章
                   help: 建议设置六篇文章
-                  value: []
+                  value: [ ]
                   children:
                     - $formkit: url
                       name: url
@@ -396,7 +399,7 @@ spec:
           name: postRandomImg
           label: 随机封面
           value: https://source.unsplash.com/random/600x400/?blog,scenery,night,desert,sea
-          help:  未设置文章封面时，将使用随机封面 (二次元随机图地址：https://www.dmoe.cc/random.php)
+          help: 未设置文章封面时，将使用随机封面 (二次元随机图地址：https://www.dmoe.cc/random.php)
         - $formkit: radio
           name: articleCardPolish
           label: 首页文章卡片(擦亮效果)
@@ -483,7 +486,7 @@ spec:
               label: 社交媒体
               help: 此处社交媒体最多设置两个
               max: 2
-              value: []
+              value: [ ]
               children:
                 - $formkit: select
                   name: icon
@@ -638,7 +641,7 @@ spec:
             - $formkit: repeater
               name: socialMediaLeft
               label: 左侧
-              value: []
+              value: [ ]
               children:
                 - $formkit: select
                   name: icon
@@ -719,7 +722,7 @@ spec:
             - $formkit: repeater
               name: socialMediaRight
               label: 右侧
-              value: []
+              value: [ ]
               children:
                 - $formkit: select
                   name: icon
@@ -2364,3 +2367,64 @@ spec:
               value: true
             - label: 禁用
               value: false
+        - $formkit: group
+          name: greeting
+          label: 首页问候语
+          children:
+            - $formkit: radio
+              name: enable_greeting
+              key: enable_greeting
+              id: enable_greeting
+              value: false
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
+            - $formkit: repeater
+              name: setting
+              if: $get(enable_greeting).value
+              label: 问候语配置
+              value:
+                - greeting: 晚安😴
+                  start_time: 0
+                  end_time: 5
+                - greeting: 早上好鸭👋, 祝你一天好心情！
+                  start_time: 6
+                  end_time: 9
+                - greeting: 上午好👋, 状态很好，鼓励一下
+                  start_time: 10
+                  end_time: 10
+                - greeting: 11点多啦, 在坚持一下就吃饭啦～
+                  start_time: 11
+                  end_time: 11
+                - greeting: 午安👋, 宝贝
+                  start_time: 12
+                  end_time: 14
+                - greeting: 🌈充实的一天辛苦啦！
+                  start_time: 14
+                  end_time: 18
+                - greeting: 19点喽, 奖励一顿丰盛的大餐吧🍔。
+                  start_time: 19
+                  end_time: 19
+                - greeting: 晚上好👋, 在属于自己的时间好好放松😌~
+                  start_time: 20
+                  end_time: 24
+              children:
+                - $formkit: group
+                  name: item
+                  children:
+                    - $formkit: text
+                      name: greeting
+                      label: 问候内容
+                      placeholder: 请输入问候内容
+                    - $formkit: text
+                      name: start_time
+                      label: 开始时间
+                      placeholder: 请输入开始时间(小时)
+                      help: 与上一个问候的结束时间相同时，上一个问候在该时间生效
+                    - $formkit: text
+                      name: end_time
+                      label: 结束时间
+                      placeholder: 请输入结束时间(小时)
+                      help: 可以与开始时间相同，表示一个小时内的问候
