@@ -159,7 +159,11 @@
                     }
                 </style>
 
-
+                <th:block
+                        th:replace="~{modules/comment :: comment(group = 'content.halo.run',
+                  kind = 'SinglePage',
+                  name = ${singlePage.metadata.name},
+                  allowComment = ${singlePage.spec.allowComment})}"/>
             </div>
 
 
