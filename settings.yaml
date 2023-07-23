@@ -93,6 +93,15 @@ spec:
                   value: true
                 - label: 隐藏
                   value: false
+            - $formkit: repeater
+              name: typed
+              label: 打字机显示的文字
+              value: [ ]
+              children:
+                - $formkit: text
+                  name: text
+                  label: 文字
+                  placeholder: 请输入文字
             - $formkit: attachment
               name: index_img
               if: $get(enable_above).value
@@ -1152,7 +1161,6 @@ spec:
           value: "/links"
           label: 友链链接
 
-
     - group: fcircle
       label: 友链鱼塘
       formSchema:
@@ -1208,6 +1216,7 @@ spec:
               value: true
             - label: 关闭
               value: false
+
     - group: todo
       label: 待办清单
       formSchema:
@@ -1265,6 +1274,77 @@ spec:
                       value: true
                     - label: 未完成
                       value: false
+
+    - group: equipment
+      label: 我的装备
+      formSchema:
+        - $formkit: attachment
+          name: backgroundImg
+          validation: url
+          label: 图片
+          value: https://liuzhihang.com/upload/moments.png
+          placeholder: 请输入图片地址
+        - $formkit: text
+          name: smallTitle
+          label: 小标题
+          value: 好物
+        - $formkit: text
+          name: bigTitle
+          label: 大标题
+          value: 实物装备推荐
+        - $formkit: text
+          name: detail
+          label: 描述
+          value: 跟我一起享受科技带来的乐趣
+        - $formkit: repeater
+          name: category_list
+          label: 我的装备
+          value: [ ]
+          children:
+            - $formkit: text
+              name: category_name
+              label: 装备分类名称
+              placeholder: 请输入装备分类名称
+              value: 生产力
+            - $formkit: text
+              name: description
+              label: 分类描述信息
+              placeholder: 请输入分类描述信息
+              value: 提升自己生产效率的硬件设备
+            - $formkit: repeater
+              name: equipment_list
+              label: 装备列表
+              value: [ ]
+              children:
+                - $formkit: attachment
+                  name: img
+                  label: 装备展示图
+                  placeholder: 请输入装备展示图地址
+                - $formkit: text
+                  name: name
+                  label: 装备名称
+                  placeholder: 请输入装备名称
+                  value: MacBookPro
+                - $formkit: text
+                  name: model
+                  label: 装备型号/版本
+                  placeholder: 请输入装备型号/版本
+                  value: M1Pro 32G / 1TB
+                - $formkit: textarea
+                  name: description
+                  label: 装备描述
+                  placeholder: 请输入装备描述
+                  value: 屏幕显示效果好、色彩准确、对比度强、性能强劲、续航优秀。可以用来开发和设计。
+                - $formkit: text
+                  name: button
+                  label: 左下角按钮显示文字
+                  placeholder: 请输入左下角按钮显示文字
+                  value: 详情
+                - $formkit: text
+                  name: url
+                  label: 左下角按钮跳转链接
+                  placeholder: 请输入左下角按钮跳转链接
+                  value: https://www.apple.com.cn/macbook-pro/
 
     - group: about
       label: 关于
@@ -2277,7 +2357,7 @@ spec:
         - $formkit: radio
           name: bubbleEnable
           label: 页面卡片顶部气泡升起效果
-          help: 已有页面(友链鱼塘,瞬间)
+          help: 已有页面(友链鱼塘,瞬间,ToDoList,我的装备)
           value: false
           options:
             - label: 启用
