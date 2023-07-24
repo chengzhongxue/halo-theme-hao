@@ -2390,6 +2390,15 @@ spec:
               value: true
             - label: 禁用
               value: false
+        - $formkit: radio
+          name: scrollbarLinearGradientEnable
+          label: 渐变滚动条效果
+          value: false
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
         - $formkit: group
           name: greeting
           label: 首页问候语
