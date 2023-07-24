@@ -12,16 +12,12 @@
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-                <div class="author-content author-content-item essayPage single"
-                     th:style="'background:url('+${theme.config.todo.backgroundImg}+') left 28% / cover no-repeat !important;'">
-                    <div class="card-content">
-                        <div class="author-content-item-tips" th:text="${theme.config.todo.smallTitle}"></div>
-                        <span class="author-content-item-title" th:text="${theme.config.todo.bigTitle}"></span>
-                        <div class="content-bottom">
-                            <div class="tips" th:text="${theme.config.todo.detail}"></div>
-                        </div>
-                    </div>
-                </div>
+                <th:div  th:replace="~{macro/author-content :: author-content(background = ${theme.config.todo.backgroundImg},
+                        smallTitle = ${theme.config.todo.smallTitle},
+                        bigTitle = ${theme.config.todo.bigTitle},
+                        detail = ${theme.config.todo.detail},
+                        buttonUrl = '',
+                        buttonTitle = '')}" />
                 <div id="todolist-main" th:if="${not #lists.isEmpty(theme.config.todo.list)}"
                      th:with="todoList = ${theme.config.todo.list}">
 

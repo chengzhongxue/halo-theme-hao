@@ -11,31 +11,30 @@
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-                <div class="author-content author-content-item essayPage single"
-                     th:style="'background:url('+${theme.config.equipment.backgroundImg}+') left 28% / cover no-repeat !important;'">
-                    <div class="card-content">
-                        <div class="author-content-item-tips" th:text="${theme.config.equipment.smallTitle}"></div>
-                        <span class="author-content-item-title" th:text="${theme.config.equipment.bigTitle}"></span>
-                        <div class="content-bottom">
-                            <div class="tips" th:text="${theme.config.equipment.detail}"></div>
-                        </div>
-                    </div>
-                </div>
+                <th:block th:each="group : ${photoFinder.groupBy()}">
+
+                    <th:block th:if="${#strings.equals(group.metadata.name, param.photo_group_name)}">
+                        <th:div  th:replace="~{macro/author-content :: author-content(background = ${group.spec.background},
+                        smallTitle = '相册集',
+                        bigTitle = ${group.spec.displayName},
+                        detail = ${group.spec.description},
+                        buttonUrl = '',
+                        buttonTitle = '')}" />
+                    </th:block>
+
+                </th:block>
+
                 <div id="article-container">
                     <section class="timeline page-1">
                         <div class="type-gallery">
                             <div class="gallery">
-                                <th:block th:each="group : ${groups}">
-                                    <th:block
-                                            th:if="${#strings.toString(group.spec.displayName)}==${#strings.toString(param.photo_group_name)}">
-                                        <div class="fj-gallery-item" th:each="photo : ${group.photos}">
-                                            <div class="tag-address">[[${photo.spec.displayName}]]</div>
-                                            <img th:src="${photo.spec.url}" th:alt="${photo.spec.description}"
-                                                 th:title="${photo.spec.description}">
+                                <div class="fj-gallery-item"
+                                     th:each="photo : ${photoFinder.listBy(param.photo_group_name)}">
+                                    <div class="tag-address">[[${photo.spec.displayName}]]</div>
+                                    <img th:src="${photo.spec.url}" th:alt="${photo.spec.description}"
+                                         th:title="${photo.spec.description}">
 
-                                        </div>
-                                    </th:block>
-                                </th:block>
+                                </div>
                             </div>
                         </div>
                     </section>
