@@ -12,22 +12,12 @@
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-                <div class="author-content author-content-item essayPage single"
-                     th:style="'background:url('+${theme.config.fcircle.backgroundImg}+') left 28% / cover no-repeat !important;'">
-                    <div class="card-content">
-                        <div class="author-content-item-tips" th:text="${theme.config.fcircle.smallTitle}"></div>
-                        <span class="author-content-item-title" th:text="${theme.config.fcircle.bigTitle}"></span>
-                        <div class="content-bottom">
-                            <div class="tips" th:text="${theme.config.fcircle.detail}"></div>
-                        </div>
-                        <div class="banner-button-group">
-                            <a class="banner-button" th:href="${theme.config.fcircle.buttonUrl}">
-                                <i class="fas fa-circle-chevron-right"></i>
-                                <span class="banner-button-text" th:text="${theme.config.fcircle.buttonTitle}"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <th:div  th:replace="~{macro/author-content :: author-content(background = ${theme.config.fcircle.backgroundImg},
+                smallTitle = ${theme.config.fcircle.smallTitle},
+                bigTitle = ${theme.config.fcircle.bigTitle},
+                detail = ${theme.config.fcircle.detail},
+                buttonUrl = ${theme.config.fcircle.buttonUrl},
+                buttonTitle = ${theme.config.fcircle.buttonTitle})}" />
                 <!--钓鱼-->
                 <th:block th:if="${theme.config.fcircle.fcircleRandomFriendsEnable}" >
                     <div  class="title-h2-a">

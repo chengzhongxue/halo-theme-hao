@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page')}"
-    xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
 
@@ -13,28 +13,25 @@
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
                 <div id="album">
-                    <div class="author-content author-content-item essayPage single"
-                        th:style="'background:url('+${theme.config.photos.backgroundImg}+') left 28% / cover no-repeat !important;'">
-                        <div class="card-content">
-                            <div class="author-content-item-tips" th:text="${theme.config.photos.smallTitle}"></div>
-                            <span class="author-content-item-title" th:text="${theme.config.photos.bigTitle}"></span>
-                            <div class="content-bottom">
-                                <div class="tips" th:text="${theme.config.photos.detail}"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <th:div  th:replace="~{macro/author-content :: author-content(background = ${theme.config.photos.backgroundImg},
+                        smallTitle = ${theme.config.photos.smallTitle},
+                        bigTitle = ${theme.config.photos.bigTitle},
+                        detail = ${theme.config.photos.detail},
+                        buttonUrl = '',
+                        buttonTitle = '')}" />
+
                     <div class="card-album">
-                        <th:block th:each="photos : ${theme.config.photos.list}">
-                            <div class="card" th:onclick="go([[${photos.group_name}]])">
+                        <th:block th:each="group : ${photoFinder.groupBy()}">
+                            <div class="card" th:onclick="go([[${group.metadata.name}]])">
                                 <img class="card_cover entered loaded"
-                                     th:src="${photos.url}">
+                                     th:src="${group.spec.cover}">
                                 <div class="card__content">
-                                    <p class="card__category" th:text="${photos.group_name}"></p>
-                                    <h3 class="card__heading" th:text="${photos.group_description}"></h3>
+                                    <p class="card__category" th:text="${group.spec.displayName}"></p>
+                                    <h3 class="card__heading" th:text="${group.spec.description}"></h3>
                                 </div>
                             </div>
                         </th:block>
-                        <th:block th:each="photos : ${theme.config.photos.list}">
+                        <th:block th:each="photos : ${photoFinder.groupBy()}">
                             <div class="album-content-nocover"></div>
                         </th:block>
                     </div>
@@ -156,7 +153,7 @@
         <footer th:replace="~{modules/footer :: footer}"></footer>
         <!-- 卡片顶部气泡效果 -->
         <script th:if="${theme.config.other.bubbleEnable}" async data-pjax
-            th:src="${assets_link + '/libs/canvas/bubble.js'}"></script>
+                th:src="${assets_link + '/libs/canvas/bubble.js'}"></script>
     </div>
 
 </th:block>

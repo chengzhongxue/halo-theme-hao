@@ -12,24 +12,12 @@
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-                <div class="author-content author-content-item essayPage single"
-                     th:style="'background:url('+${theme.config.moment.backgroundImg}+') left 28% / cover no-repeat !important;'">
-                    <div class="card-content">
-                        <div class="author-content-item-tips" th:text="${theme.config.moment.smallTitle}"></div>
-                        <span class="author-content-item-title" th:text="${theme.config.moment.bigTitle}"></span>
-                        <div class="content-bottom">
-                            <div class="tips" th:text="${theme.config.moment.detail}"></div>
-                        </div>
-                        <div class="banner-button-group">
-                            <a class="banner-button" th:href="${theme.config.moment.buttonUrl}">
-                                <i class="fas fa-circle-chevron-right"></i>
-                                <span class="banner-button-text" th:text="${theme.config.moment.buttonTitle}"></span>
-                            </a>
-                        </div>
-                    </div>
-                    <canvas id="header_canvas" width="1216" height="1871"
-                            style="position: absolute; bottom: 0px;"></canvas>
-                </div>
+                <th:div th:replace="~{macro/author-content :: author-content(background = ${theme.config.moment.backgroundImg},
+                        smallTitle = ${theme.config.moment.smallTitle},
+                        bigTitle = ${theme.config.moment.bigTitle},
+                        detail = ${theme.config.moment.detail},
+                        buttonUrl = ${theme.config.moment.buttonUrl},
+                        buttonTitle = ${theme.config.moment.buttonTitle})}" />
                 <div id="bber">
                     <section class="timeline page-1">
                         <ul class="list" id="waterfall">

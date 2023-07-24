@@ -224,6 +224,20 @@ var btf = {
             }
         })
     },
+    initJustifiedGallerys: function (selector) {
+        selector.forEach((function(t) {
+                btf.isHidden(t) || fjGallery(t, {
+                    itemSelector: ".fj-gallery-item",
+                    rowHeight: 240,
+                    gutter: 4,
+                    onJustify: function() {
+                        this.$container.style.opacity = "1"
+                    }
+                })
+            }
+        ))
+        document.querySelectorAll('#article-container .timeline')[0]?.classList.remove("loadings");
+    },
 
     diffDate: (d, more = false) => {
         const dateNow = new Date()

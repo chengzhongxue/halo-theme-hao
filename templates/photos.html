@@ -11,109 +11,156 @@
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-                <div class="author-content author-content-item essayPage single"
-                     th:style="'background:url('+${theme.config.equipment.backgroundImg}+') left 28% / cover no-repeat !important;'">
-                    <div class="card-content">
-                        <div class="author-content-item-tips" th:text="${theme.config.equipment.smallTitle}"></div>
-                        <span class="author-content-item-title" th:text="${theme.config.equipment.bigTitle}"></span>
-                        <div class="content-bottom">
-                            <div class="tips" th:text="${theme.config.equipment.detail}"></div>
+                <th:block th:each="group : ${photoFinder.groupBy()}">
+
+                    <th:block th:if="${#strings.equals(group.metadata.name, param.photo_group_name)}">
+                        <th:div  th:replace="~{macro/author-content :: author-content(background = ${group.spec.background},
+                        smallTitle = '相册集',
+                        bigTitle = ${group.spec.displayName},
+                        detail = ${group.spec.description},
+                        buttonUrl = '',
+                        buttonTitle = '')}" />
+                    </th:block>
+
+                </th:block>
+
+                <div id="article-container">
+                    <section class="timeline page-1 loadings">
+                        <div class="type-gallery ">
+                            <div class="gallery">
+                                <div class="fj-gallery-item"
+                                     th:each="photo : ${photoFinder.listBy(param.photo_group_name)}">
+                                    <div class="tag-address">[[${photo.spec.displayName}]]</div>
+                                    <img th:src="${photo.spec.url}" th:alt="${photo.spec.description}"
+                                         th:title="${photo.spec.description}">
+
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div id="photos">
-                    <section class="timeline page-1">
-                        <th:block th:each="group : ${groups}">
-                            <ul class="list" id="waterfall"
-                                th:if="${#strings.toString(group.spec.displayName)}==${#strings.toString(param.photo_group_name)}">
-                                <li class="item" th:each="photo : ${group.photos}">
-                                    <img th:src="${photo.spec.url}">
-                                    <span class="photo-title" th:text="${photo.spec.displayName}"></span>
-                                </li>
-                            </ul>
-                        </th:block>
                     </section>
                 </div>
-                <script>heo.reflashEssayWaterFall();</script>
                 <style>
-                    #photos {
-                        margin-top: 1rem;
-                        width: 100%;
+
+                    #content-inner .loadings .type-gallery {
+                        opacity: 0
                     }
 
-                    #photos .timeline #waterfall.show {
-                        opacity: 1;
+                    .loadings {
+                        height: 60px;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        color: #504e4e;
+                        border: none;
+                        background-size: auto 100%;
+                        box-shadow: none;
+                        background-color: inherit;
+                        background-image: none;
+                        background-image: url(/themes/theme-hao/assets/images/load/rotating-ball-o.svg)
                     }
 
-                    #photos .timeline #waterfall {
-                        opacity: 0;
-                        transition: 0.3s;
-                    }
-
-                    #photos ul.list {
-                        display: flex;
-                        flex-direction: row;
-                        flex-wrap: wrap;
-                        justify-content: space-between;
-                    }
-
-                    #photos .timeline ul li.item {
-                        position: relative;
-                        width: 24.35%;
-                        margin: 4px;
-                        border-radius: 12px;
-                        transition: 0.3s;
-                        display: flex;
-                        flex-direction: column;
-                        flex-wrap: nowrap;
-                        justify-content: space-between;
-                        align-items: center;
+                    #article-container .type-gallery {
                         overflow: hidden;
+                        margin-top: 40px;
                     }
 
-                    #photos .timeline ul li:hover img {
-                        transform: scale(1.1);
+                    #content-inner .gallery {
+                        margin: 0 0 16px;
+                        text-align: center
                     }
 
-                    #photos .timeline ul li.item img {
-                        width: 100%;
-                        animation: fadeIn 1s;
+                    #content-inner .gallery .fj-gallery {
+                        opacity: 0;
+                        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+                        filter: alpha(opacity=0)
                     }
 
-
-                    span.photo-title {
-                        bottom: 4px;
-                        border-radius: 0 8px 0 8px;
+                    #content-inner .gallery .fj-gallery .img-alt {
+                        display: none
                     }
 
-                    span.photo-title {
-                        max-width: calc(100% - 7px);
-                        line-height: 1.8;
+                    #content-inner .gallery .fj-gallery.lazyload+button {
+                        display: inline-block
+                    }
+
+                    #content-inner .gallery .fj-gallery .gallery-data {
+                        opacity: 0;
+                        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+                        filter: alpha(opacity=0);
+                        visibility: hidden
+                    }
+
+                    #content-inner .gallery button {
+                        display: none;
+                        margin-top: 25px;
+                        padding: 10px;
+                        width: 9em;
+                        border-radius: 5px;
+                        background: var(--btn-bg);
+                        color: var(--btn-color);
+                        font-weight: 700;
+                        font-size: 1.1em;
+                        -webkit-transition: all .3s;
+                        -moz-transition: all .3s;
+                        -o-transition: all .3s;
+                        -ms-transition: all .3s;
+                        transition: all .3s
+                    }
+
+                    #content-inner .gallery button>* {
+                        -webkit-transition: all .4s;
+                        -moz-transition: all .4s;
+                        -o-transition: all .4s;
+                        -ms-transition: all .4s;
+                        transition: all .4s
+                    }
+
+                    #content-inner .gallery button i {
+                        opacity: 1;
+                        -ms-filter: none;
+                        filter: none;
+                        font-size: 1.1rem
+                    }
+
+                    #content-inner .gallery button:hover {
+                        background: var(--btn-hover-color)
+                    }
+
+                    #content-inner .gallery button:hover i {
+                        margin-left: 2px
+                    }
+
+                    #article-container .tag-address {
+                        display: flex;
                         position: absolute;
-                        left: 4px;
-                        font-size: 14px;
-                        background: rgba(0, 0, 0, .3);
-                        padding: 0 8px;
-                        color: #fff;
-                        animation: fadeIn 1s;
+                        left: 8px;
+                        top: 8px;
+                        padding: 4px 6px;
+                        border-radius: 8px;
+                        background: var(--heo-black-op);
+                        font-size: 12px;
+                        color: var(--heo-white);
+                        transition: .3s;
+                        z-index: 1;
+                        user-select: none
                     }
 
-                    @keyframes fadeIn {
-                        0% {
-                            opacity: 0
-                        }
-                        100% {
-                            opacity: 1
-                        }
+                    img {
+                        border-style: none;
+                        border-radius: 8px;
+                        max-width: 100%;
+                        transition: all .2s ease 0s;
+                        -webkit-user-drag: none;
+                        -khtml-user-drag: none;
+                        -moz-user-drag: none;
+                        -ms-user-drag: none;
+                        user-drag: none
                     }
                 </style>
                 <!--/* 评论组件 */-->
-                <!--/* 评论组件 */-->
-                <th:block
-                        th:replace="~{modules/comment :: comment(group = 'content.halo.run',
+                <th:block th:replace="~{modules/comment :: comment(group = 'content.halo.run',
                   kind = 'SinglePage',
                   name = 'moments',
-                  allowComment = true)}"/>
+                  allowComment = true)}" />
             </div>
 
         </main>
