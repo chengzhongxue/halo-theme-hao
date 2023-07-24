@@ -1378,8 +1378,8 @@ spec:
         - $formkit: textarea
           name: widgets
           label: 小部件
-          value: content-idea,authorCareers,personalities-photo,textarea,game,like-music,statistics-map
-          help: content-idea（我的介绍&我的想法）, authorCareers（技能&职业生涯）, personalities-photo（性格&图片）, textarea（座右铭）, game（爱好）, like-music（关注偏好&音乐偏好）, statistics-map（数据统计&音乐偏好）。你可以随意组合或排序，以逗号隔开。
+          value: content-idea,hello-about,authorCareers,personalities-photo,textarea,game,like-music,statistics-map
+          help: content-idea（我的介绍&我的想法）, hello-about（我的问候）, authorCareers（技能&职业生涯）, personalities-photo（性格&图片）, textarea（座右铭）, game（爱好）, like-music（关注偏好&音乐偏好）, statistics-map（数据统计&音乐偏好）。你可以随意组合或排序，以逗号隔开。
         - $formkit: repeater
           name: authorInfoLeftTags
           label: 个人标签-左
