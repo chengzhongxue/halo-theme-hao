@@ -25,8 +25,8 @@
                 </th:block>
 
                 <div id="article-container">
-                    <section class="timeline page-1">
-                        <div class="type-gallery">
+                    <section class="timeline page-1 loadings">
+                        <div class="type-gallery ">
                             <div class="gallery">
                                 <div class="fj-gallery-item"
                                      th:each="photo : ${photoFinder.listBy(param.photo_group_name)}">
@@ -40,6 +40,24 @@
                     </section>
                 </div>
                 <style>
+
+                    #content-inner .loadings .type-gallery {
+                        opacity: 0
+                    }
+
+                    .loadings {
+                        height: 60px;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        color: #504e4e;
+                        border: none;
+                        background-size: auto 100%;
+                        box-shadow: none;
+                        background-color: inherit;
+                        background-image: none;
+                        background-image: url(/themes/theme-hao/assets/images/load/rotating-ball-o.svg)
+                    }
+
                     #article-container .type-gallery {
                         overflow: hidden;
                         margin-top: 40px;

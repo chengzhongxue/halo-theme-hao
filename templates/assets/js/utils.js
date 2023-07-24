@@ -236,6 +236,7 @@ var btf = {
                 })
             }
         ))
+        document.querySelectorAll('#article-container .timeline')[0]?.classList.remove("loadings");
     },
 
     diffDate: (d, more = false) => {
