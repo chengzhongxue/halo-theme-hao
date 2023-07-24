@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page')}"
+    xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="content">
+
+    <div class="page" id="body-wrap">
+
+        <!-- 头部导航栏 -->
+        <header class="not-top-img" id="page-header">
+            <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
+        </header>
+        <main class="layout hide-aside" id="content-inner">
+            <div id="page">
+                <div id="album">
+                    <div class="author-content author-content-item essayPage single"
+                        th:style="'background:url('+${theme.config.photos.backgroundImg}+') left 28% / cover no-repeat !important;'">
+                        <div class="card-content">
+                            <div class="author-content-item-tips" th:text="${theme.config.photos.smallTitle}"></div>
+                            <span class="author-content-item-title" th:text="${theme.config.photos.bigTitle}"></span>
+                            <div class="content-bottom">
+                                <div class="tips" th:text="${theme.config.photos.detail}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-album">
+                        <th:block th:each="photos : ${theme.config.photos.list}">
+                            <div class="card" th:onclick="go([[${photos.group_name}]])">
+                                <img class="card_cover entered loaded"
+                                     th:src="${photos.url}">
+                                <div class="card__content">
+                                    <p class="card__category" th:text="${photos.group_name}"></p>
+                                    <h3 class="card__heading" th:text="${photos.group_description}"></h3>
+                                </div>
+                            </div>
+                        </th:block>
+                        <th:block th:each="photos : ${theme.config.photos.list}">
+                            <div class="album-content-nocover"></div>
+                        </th:block>
+                    </div>
+                </div>
+                <script>
+                    const go = (photo_group_name)=>{
+                        window.location.href='/photos?photo_group_name='+photo_group_name
+                    }
+                </script>
+                <style>
+                    :root {
+                        --album-background-dark: #2d3548;
+                        --album-text-light: rgba(255, 255, 255, 0.6);
+                        --album-text-lighter: rgba(255, 255, 255, 0.9);
+                        --album-spacing-s: 8px;
+                        --album-spacing-m: 16px;
+                        --album-spacing-l: 24px;
+                        --album-spacing-xl: 32px;
+                        --album-spacing-xxl: 64px
+                    }
+
+                    #album .card-album {
+                        width: 100%;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-around;
+                        margin: var(--album-spacing-xxl) 0 0
+                    }
+
+                    #album .card-album .album-content-nocover {
+                        width: calc(100% / 4 - 40px)
+                    }
+
+                    #album .card-album .card {
+                        list-style: none;
+                        position: relative;
+                        display: flex;
+                        width: calc(100% / 4 - 10px);
+                        padding: 10px
+                    }
+
+                    #album .card-album .card:hover {
+                        cursor: pointer
+                    }
+
+                    #album .card_cover {
+                        border-radius: var(--album-spacing-l);
+                        filter: brightness(.75) saturate(1.2) contrast(.85);
+                        transform-origin: center;
+                        transform: scale(1) translateZ(0);
+                        transition: filter .2s linear, transform .2s linear;
+                        max-width: 100%;
+                        overflow: hidden;
+                        height: 550px;
+                        width: 100%;
+                        max-width: 100%;
+                        object-fit: cover;
+                        border-radius: var(--album-spacing-l)
+                    }
+
+                    #album .card:hover .card_cover {
+                        transform: scale(1.05) translateZ(0);
+                        filter: brightness(.9) saturate(1.2) contrast(1)
+                    }
+
+                    #album .card-album:hover>.card:not(:hover) .card_cover {
+                        filter: brightness(.5) saturate(.9) contrast(1.2) blur(20px)
+                    }
+
+                    #album .card__content {
+                        left: 0;
+                        padding: var(--album-spacing-l);
+                        position: absolute;
+                        top: 0
+                    }
+
+                    #album .card__category {
+                        color: var(--album-text-light);
+                        font-size: .9rem;
+                        margin-bottom: var(--album-spacing-s);
+                        text-transform: uppercase
+                    }
+
+                    #album .card__heading {
+                        color: var(--album-text-lighter);
+                        font-size: 1.9rem;
+                        text-shadow: 2px 2px 20px rgba(0, 0, 0, .2);
+                        line-height: 1.4;
+                        word-spacing: 100vw
+                    }
+
+                    @media (min-width: 1024px) {
+                        #album img.card_cover {
+                            height: 600px
+                        }
+                    }
+
+                    @media (max-width: 960px) {
+                        #album .card-album .card {
+                            width: calc(100% / 2 - 40px)
+                        }
+                    }
+
+                    @media (max-width: 540px) {
+                        #album .card-album .card {
+                            width: calc(100%)
+                        }
+                    }
+                </style>
+                <!--/* 评论组件 */-->
+                <th:block th:replace="~{modules/comment :: comment(group = 'content.halo.run',
+                  kind = 'SinglePage',
+                  name = ${singlePage.metadata.name},
+                  allowComment = ${singlePage.spec.allowComment})}" />
+            </div>
+
+        </main>
+        <!-- 底部 -->
+        <footer th:replace="~{modules/footer :: footer}"></footer>
+        <!-- 卡片顶部气泡效果 -->
+        <script th:if="${theme.config.other.bubbleEnable}" async data-pjax
+            th:src="${assets_link + '/libs/canvas/bubble.js'}"></script>
+    </div>
+
+</th:block>
+
+</html>

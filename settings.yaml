@@ -1220,6 +1220,56 @@ spec:
             - label: 关闭
               value: false
 
+    - group: photos
+      label: 图库
+      formSchema:
+        - $formkit: attachment
+          name: backgroundImg
+          validation: url
+          label: 图片
+          value: https://liuzhihang.com/upload/moments.png
+          placeholder: 请输入图片地址
+        - $formkit: text
+          name: smallTitle
+          label: 小标题
+          value: 相册集
+        - $formkit: text
+          name: bigTitle
+          label: 大标题
+          value: 这里是我的相册集哦😯
+        - $formkit: text
+          name: detail
+          label: 描述
+          value: 每一张照片都是一次美好的记忆。
+        - $formkit: repeater
+          name: list
+          label: 相册集
+          value:
+            - group_name: 既是日常，也是奇迹
+              group_description: 记录生活小美好。
+              url: https://bu.dusays.com/2023/04/09/64329399d1175.jpg
+            - group_name: 清晨&amp;夕阳&amp;美景
+              group_description: 因为到不了世界各地，所以请网友们发来了各地的夕阳与风景🌇。
+              url: https://bu.dusays.com/2023/04/09/64329399d1175.jpg
+            - group_name: 精选壁纸
+              group_description: 不一定精，但是我选了
+              url: https://bu.dusays.com/2023/04/09/64329399d1175.jpg
+          children:
+            - $formkit: text
+              name: group_name
+              label: 图库分组名称
+              placeholder: 请输入图库分组名称
+              help: 必须与图库插件里的分组名一致
+            - $formkit: text
+              name: group_description
+              label: 图库分组描述
+              placeholder: 请输入图库分组描述
+            - $formkit: attachment
+              name: url
+              label: 图库分组展示图
+              placeholder: 请输入图库分组展示图
+
+
     - group: todo
       label: 待办清单
       formSchema:

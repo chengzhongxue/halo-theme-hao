@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'photos')}"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="content">
+
+    <div class="page" id="body-wrap">
+        <!-- 头部导航栏 -->
+        <header class="not-top-img" id="page-header">
+            <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
+        </header>
+        <main class="layout hide-aside" id="content-inner">
+            <div id="page">
+                <div class="author-content author-content-item essayPage single"
+                     th:style="'background:url('+${theme.config.equipment.backgroundImg}+') left 28% / cover no-repeat !important;'">
+                    <div class="card-content">
+                        <div class="author-content-item-tips" th:text="${theme.config.equipment.smallTitle}"></div>
+                        <span class="author-content-item-title" th:text="${theme.config.equipment.bigTitle}"></span>
+                        <div class="content-bottom">
+                            <div class="tips" th:text="${theme.config.equipment.detail}"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="photos">
+                    <section class="timeline page-1">
+                        <th:block th:each="group : ${groups}">
+                            <ul class="list" id="waterfall"
+                                th:if="${#strings.toString(group.spec.displayName)}==${#strings.toString(param.photo_group_name)}">
+                                <li class="item" th:each="photo : ${group.photos}">
+                                    <img th:src="${photo.spec.url}">
+                                    <span class="photo-title" th:text="${photo.spec.displayName}"></span>
+                                </li>
+                            </ul>
+                        </th:block>
+                    </section>
+                </div>
+                <script>heo.reflashEssayWaterFall();</script>
+                <style>
+                    #photos {
+                        margin-top: 1rem;
+                        width: 100%;
+                    }
+
+                    #photos .timeline #waterfall.show {
+                        opacity: 1;
+                    }
+
+                    #photos .timeline #waterfall {
+                        opacity: 0;
+                        transition: 0.3s;
+                    }
+
+                    #photos ul.list {
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+                    }
+
+                    #photos .timeline ul li.item {
+                        position: relative;
+                        width: 24.35%;
+                        margin: 4px;
+                        border-radius: 12px;
+                        transition: 0.3s;
+                        display: flex;
+                        flex-direction: column;
+                        flex-wrap: nowrap;
+                        justify-content: space-between;
+                        align-items: center;
+                        overflow: hidden;
+                    }
+
+                    #photos .timeline ul li:hover img {
+                        transform: scale(1.1);
+                    }
+
+                    #photos .timeline ul li.item img {
+                        width: 100%;
+                        animation: fadeIn 1s;
+                    }
+
+
+                    span.photo-title {
+                        bottom: 4px;
+                        border-radius: 0 8px 0 8px;
+                    }
+
+                    span.photo-title {
+                        max-width: calc(100% - 7px);
+                        line-height: 1.8;
+                        position: absolute;
+                        left: 4px;
+                        font-size: 14px;
+                        background: rgba(0, 0, 0, .3);
+                        padding: 0 8px;
+                        color: #fff;
+                        animation: fadeIn 1s;
+                    }
+
+                    @keyframes fadeIn {
+                        0% {
+                            opacity: 0
+                        }
+                        100% {
+                            opacity: 1
+                        }
+                    }
+                </style>
+                <!--/* 评论组件 */-->
+                <!--/* 评论组件 */-->
+                <th:block
+                        th:replace="~{modules/comment :: comment(group = 'content.halo.run',
+                  kind = 'SinglePage',
+                  name = 'moments',
+                  allowComment = true)}"/>
+            </div>
+
+        </main>
+        <!-- 底部 -->
+        <footer th:replace="~{modules/footer :: footer}"></footer>
+        <!-- 卡片顶部气泡效果 -->
+        <script th:if="${theme.config.other.bubbleEnable}" async data-pjax
+                th:src="${assets_link + '/libs/canvas/bubble.js'}"></script>
+    </div>
+
+</th:block>
+
+</html>
