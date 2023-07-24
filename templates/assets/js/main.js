@@ -78,169 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     }
 
-    /**
-     * 代碼
-     * 只適用於Hexo默認的代碼渲染
-     */
-    // const addHighlightTool = function () {
-    //     const highLight = GLOBAL_CONFIG.highlight
-    //     if (!highLight) return
-    //
-    //     const isHighlightCopy = highLight.highlightCopy
-    //     const isHighlightLang = highLight.highlightLang
-    //     const isHighlightShrink = GLOBAL_CONFIG_SITE.isHighlightShrink
-    //     const highlightHeightLimit = highLight.highlightHeightLimit
-    //     const isShowTool = isHighlightCopy || isHighlightLang || isHighlightShrink !== undefined
-    //     const $figureHighlight = highLight.plugin === 'highlighjs' ? document.querySelectorAll('figure.highlight') : document.querySelectorAll('pre[class*="language-"]')
-    //
-    //     if (!((isShowTool || highlightHeightLimit) && $figureHighlight.length)) return
-    //
-    //     const isPrismjs = highLight.plugin === 'prismjs'
-    //
-    //     let highlightShrinkEle = ''
-    //     let highlightCopyEle = ''
-    //     const highlightShrinkClass = isHighlightShrink === true ? 'closed' : ''
-    //
-    //     if (isHighlightShrink !== undefined) {
-    //         highlightShrinkEle = `<i class="fas fa-angle-down expand ${highlightShrinkClass}"></i>`
-    //     }
-    //
-    //     if (isHighlightCopy) {
-    //         highlightCopyEle = '<div class="copy-notice"></div><i class="fas fa-copy copy-button"></i>'
-    //     }
-    //
-    //     const copy = (text, ctx) => {
-    //         if (document.queryCommandSupported && document.queryCommandSupported('copy')) {
-    //             document.execCommand('copy')
-    //             if (GLOBAL_CONFIG.Snackbar !== undefined) {
-    //                 btf.snackbarShow(GLOBAL_CONFIG.copy.success)
-    //             } else {
-    //                 const prevEle = ctx.previousElementSibling
-    //                 prevEle.innerText = GLOBAL_CONFIG.copy.success
-    //                 prevEle.style.opacity = 1
-    //                 setTimeout(() => {
-    //                     prevEle.style.opacity = 0
-    //                 }, 700)
-    //             }
-    //         } else {
-    //             if (GLOBAL_CONFIG.Snackbar !== undefined) {
-    //                 btf.snackbarShow(GLOBAL_CONFIG.copy.noSupport)
-    //             } else {
-    //                 ctx.previousElementSibling.innerText = GLOBAL_CONFIG.copy.noSupport
-    //             }
-    //         }
-    //     }
-    //
-    //     // click events
-    //     const highlightCopyFn = (ele) => {
-    //         const $buttonParent = ele.parentNode
-    //         $buttonParent.classList.add('copy-true')
-    //         const selection = window.getSelection()
-    //         const range = document.createRange()
-    //         if (isPrismjs) range.selectNodeContents($buttonParent.querySelectorAll('pre code')[0])
-    //         else range.selectNodeContents($buttonParent.querySelectorAll('table .code pre')[0])
-    //         selection.removeAllRanges()
-    //         selection.addRange(range)
-    //         const text = selection.toString()
-    //         copy(text, ele.lastChild)
-    //         selection.removeAllRanges()
-    //         $buttonParent.classList.remove('copy-true')
-    //     }
-    //
-    //     const highlightShrinkFn = (ele) => {
-    //         const $nextEle = [...ele.parentNode.children].slice(1)
-    //         ele.firstChild.classList.toggle('closed')
-    //         if (btf.isHidden($nextEle[$nextEle.length - 1])) {
-    //             $nextEle.forEach(e => {
-    //                 e.style.display = 'block'
-    //             })
-    //         } else {
-    //             $nextEle.forEach(e => {
-    //                 e.style.display = 'none'
-    //             })
-    //         }
-    //     }
-    //
-    //     const highlightToolsFn = function (e) {
-    //         const $target = e.target.classList
-    //         if ($target.contains('expand')) highlightShrinkFn(this)
-    //         else if ($target.contains('copy-button')) highlightCopyFn(this)
-    //     }
-    //
-    //     const expandCode = function () {
-    //         this.classList.toggle('expand-done')
-    //     }
-    //
-    //     function createEle(lang, item, service) {
-    //         const fragment = document.createDocumentFragment()
-    //
-    //         if (isShowTool) {
-    //             const hlTools = document.createElement('div')
-    //             hlTools.className = `highlight-tools ${highlightShrinkClass}`
-    //             hlTools.innerHTML = highlightShrinkEle + lang + highlightCopyEle
-    //             hlTools.addEventListener('click', highlightToolsFn)
-    //             fragment.appendChild(hlTools)
-    //         }
-    //
-    //         if (highlightHeightLimit && item.offsetHeight > highlightHeightLimit + 30) {
-    //             const ele = document.createElement('div')
-    //             ele.className = 'code-expand-btn'
-    //             ele.innerHTML = '<i class="fas fa-angle-double-down"></i>'
-    //             ele.addEventListener('click', expandCode)
-    //             fragment.appendChild(ele)
-    //         }
-    //
-    //         if (service === 'hl') {
-    //             item.insertBefore(fragment, item.firstChild)
-    //         } else {
-    //             item.parentNode.insertBefore(fragment, item)
-    //         }
-    //     }
-    //
-    //     if (isHighlightLang) {
-    //         if (isPrismjs) {
-    //             $figureHighlight.forEach(function (item) {
-    //                 const langName = item.getAttribute('data-language') ? item.getAttribute('data-language') : 'Code'
-    //                 const highlightLangEle = `<div class="code-lang">${langName}</div>`
-    //                 btf.wrap(item, 'figure', '', 'highlight')
-    //                 createEle(highlightLangEle, item)
-    //             })
-    //         } else {
-    //             $figureHighlight.forEach(function (item) {
-    //                 let langName = item.getAttribute('class').split(' ')[1]
-    //                 if (langName === 'plain' || langName === undefined) langName = 'Code'
-    //                 const highlightLangEle = `<div class="code-lang">${langName}</div>`
-    //                 createEle(highlightLangEle, item, 'hl')
-    //             })
-    //         }
-    //     } else {
-    //         if (isPrismjs) {
-    //             $figureHighlight.forEach(function (item) {
-    //                 btf.wrap(item, 'figure', '', 'highlight')
-    //                 createEle('', item)
-    //             })
-    //         } else {
-    //             $figureHighlight.forEach(function (item) {
-    //                 createEle('', item, 'hl')
-    //             })
-    //         }
-    //     }
-    // }
-
-    /**
-     * PhotoFigcaption
-     */
-    // function addPhotoFigcaption() {
-    //     document.querySelectorAll('#article-container img').forEach(function (item) {
-    //         const parentEle = item.parentNode
-    //         if (!parentEle.parentNode.classList.contains('justified-gallery')) {
-    //             const ele = document.createElement('div')
-    //             ele.className = 'img-alt is-center'
-    //             ele.textContent = item.getAttribute('alt')
-    //             parentEle.insertBefore(ele, item.nextSibling)
-    //         }
-    //     })
-    // }
 
     /**
      * justified-gallery 圖庫排版
@@ -249,25 +86,42 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let detectJgJsLoad = false
     const runJustifiedGallery = function (ele) {
-        const $justifiedGallery = $(ele)
-        const $imgList = $justifiedGallery.find('img')
-        $imgList.unwrap()
-        if ($imgList.length) {
-            $imgList.each(function (i, o) {
-                if ($(o).attr('data-lazy-src')) $(o).attr('src', $(o).attr('data-lazy-src'))
-                $(o).wrap('<div></div>')
-            })
-        }
 
-        if (detectJgJsLoad) btf.initJustifiedGallery($justifiedGallery)
+        if (detectJgJsLoad) btf.initJustifiedGallerys(ele)
         else {
             $('head').append(`<link rel="stylesheet" type="text/css" href="${GLOBAL_CONFIG.source.justifiedGallery.css}">`)
             $.getScript(`${GLOBAL_CONFIG.source.justifiedGallery.js}`, function () {
-                btf.initJustifiedGallery($justifiedGallery)
+
+                btf.initJustifiedGallerys(ele)
             })
             detectJgJsLoad = true
         }
     }
+
+    // let detectJgJsLoad = false
+    // const runJustifiedGallery = function (ele) {
+    //     const $justifiedGallery = $(ele)
+    //     const $imgList = $justifiedGallery.find('img')
+    //     $imgList.unwrap()
+    //     if ($imgList.length) {
+    //         $imgList.each(function (i, o) {
+    //             if ($(o).attr('data-lazy-src')) $(o).attr('src', $(o).attr('data-lazy-src'))
+    //             $(o).wrap('<div class="fj-gallery-item"></div>')
+    //         })
+    //     }
+
+    //     const $gallery = document.querySelectorAll('.gallery')
+
+    //     if (detectJgJsLoad) btf.initJustifiedGallerys($gallery)
+    //     else {
+    //         $('head').append(`<link rel="stylesheet" type="text/css" href="${GLOBAL_CONFIG.source.justifiedGallery.css}">`)
+    //         $.getScript(`${GLOBAL_CONFIG.source.justifiedGallery.js}`, function () {
+
+    //             btf.initJustifiedGallerys($gallery)
+    //         })
+    //         detectJgJsLoad = true
+    //     }
+    // }
 
     /**
      * fancybox和 mediumZoom
@@ -322,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ? document.querySelectorAll('#article-container :not(a):not(.gallery-group):not(.site-card-avatar):not(.flink-item-info) > img, #article-container > img,.bber-content-img > img')
             : []
         const fbLengthNoZero = $fancyboxEle.length > 0
-        const $jgEle = document.querySelectorAll('#article-container .justified-gallery')
+        const $jgEle = document.querySelectorAll('#article-container .gallery')
         const jgLengthNoZero = $jgEle.length > 0
 
         if (jgLengthNoZero || fbLengthNoZero) {
