@@ -10562,7 +10562,7 @@ div#author-info__sayhi:hover {
 
 /* 标签云卡片 */
 #aside-content .card-tag-cloud a {
-    color: var(--heo-fontcolor) !important;
+    color: var(--heo-fontcolor);
     font-size: 0.8rem;
     border-radius: 8px;
 }

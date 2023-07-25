@@ -1,6 +1,4 @@
-
 :root {
-
     --light-grey: rgba(255, 255, 255, 0.7);
     --white: rgba(255, 255, 255, 0.9);
 }
@@ -12,7 +10,6 @@
     }
 
 }
-
 
 .back-home-button {
     color: rgba(255, 255, 255, 0.7);

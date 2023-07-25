@@ -5,11 +5,14 @@
     <div class="cursor" style="translate: none; rotate: none; scale: none; transform: translate(721px,180px);"></div>
     <div class="shapes">
         <div class="shape shape-1"
-            style="translate: none; rotate: none; scale: none; transform: translate(721px,180px);"></div>
+            style="translate: none; rotate: none; scale: none; transform: translate(721px,180px);">
+        </div>
         <div class="shape shape-2"
-            style="translate: none; rotate: none; scale: none; transform: translate(721px,180px);"></div>
+            style="translate: none; rotate: none; scale: none; transform: translate(721px,180px);">
+        </div>
         <div class="shape shape-3"
-            style="translate: none; rotate: none; scale: none; transform: translate(721px,180px);"></div>
+            style="translate: none; rotate: none; scale: none; transform: translate(721px,180px);">
+        </div>
     </div>
     <div class="content">
         <h1>[[${theme.config.about.helloAbout}]]</h1>
@@ -17,7 +20,8 @@
     <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/gsap/3.9.1/gsap.min.js"></script>
     <style>
         .hello-about {
-            margin: 20px auto;
+            margin: 20px auto 0;
+            width: 100%;
             border-radius: 24px;
             background: var(--heo-card-bg);
             border: var(--style-border-always);
@@ -105,6 +109,12 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .hello-about {
+                margin:20px 0 auto
+            }
+        }
+
         .cursor {
             position: absolute;
             background: #2128bd;
@@ -123,11 +133,9 @@
             background: #2128bd;
         }
     </style>
-    <script>(() => {
-
-
-
-            var helloAboutEl = document.querySelector(".hello-about");
+    <script>
+        (() => {
+            const helloAboutEl = document.querySelector(".hello-about");
             helloAboutEl.addEventListener("mousemove", evt => {
                 const mouseX = evt.offsetX;
                 const mouseY = evt.offsetY;
