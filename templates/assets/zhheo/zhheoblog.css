@@ -11456,7 +11456,7 @@ span.post-meta-position {
 }
 
 /* 文章details折叠 */
-details:not(.tk-admin-config-group) {
+details:not(.tk-admin-config-group):not(.card-friend-class-name) {
     display: block;
     position: relative;
     margin-bottom: 1rem;
@@ -11467,11 +11467,11 @@ details:not(.tk-admin-config-group) {
     transition: border 0.3s;
 }
 
-details:not(.tk-admin-config-group):hover {
+details:not(.tk-admin-config-group):not(.card-friend-class-name):hover {
     border: var(--style-border-hover-always);
 }
 
-details:not(.tk-admin-config-group) summary {
+details:not(.tk-admin-config-group):not(.card-friend-class-name) summary {
     position: absolute;
     padding: 0.5rem 1rem;
     background: var(--heo-card-bg);
@@ -11487,21 +11487,21 @@ details:not(.tk-admin-config-group) summary {
     text-overflow: ellipsis; /* 超出部分用省略号表示 */
 }
 
-details:not(.tk-admin-config-group) > *:nth-child(2) {
+details:not(.tk-admin-config-group):not(.card-friend-class-name) > *:nth-child(2) {
     margin-top: calc(54px + 1rem) !important;
 }
 
-details[open]:not(.tk-admin-config-group) summary {
+details[open]:not(.tk-admin-config-group):not(.card-friend-class-name) summary {
     background: var(--heo-main);
     color: var(--heo-white);
 }
 
-details:not(.tk-admin-config-group) summary::before {
+details:not(.tk-admin-config-group):not(.card-friend-class-name) summary::before {
     content: '';
     padding: 4px;
 }
 
-details:not(.tk-admin-config-group) summary:hover {
+details:not(.tk-admin-config-group):not(.card-friend-class-name) summary:hover {
     cursor: pointer;
     background: var(--heo-main);
     color: var(--heo-white);
@@ -11509,31 +11509,31 @@ details:not(.tk-admin-config-group) summary:hover {
     box-shadow: var(--heo-shadow-main);
 }
 
-details:not(.tk-admin-config-group) summary:focus {
+details:not(.tk-admin-config-group):not(.card-friend-class-name) summary:focus {
     outline: none;
 }
 
-details:not(.tk-admin-config-group) summary::marker {
+details:not(.tk-admin-config-group):not(.card-friend-class-name) summary::marker {
     color: var(--heo-main);
     transition: 0.3s;
 }
 
-details[open]:not(.tk-admin-config-group) summary::marker {
+details[open]:not(.tk-admin-config-group):not(.card-friend-class-name) summary::marker {
     color: var(--heo-white);
 }
 
-details:not(.tk-admin-config-group) summary:hover::marker {
+details:not(.tk-admin-config-group):not(.card-friend-class-name) summary:hover::marker {
     color: var(--heo-white);
 }
 
-details[open]:not(.tk-admin-config-group) {
+details[open]:not(.tk-admin-config-group):not(.card-friend-class-name) {
     border-radius: 12px;
     border: var(--style-border-hover-always);
     padding: 0 1.5rem;
     background: var(--heo-card-bg);
 }
 
-details:not(.tk-admin-config-group) summary:hover:after {
+details:not(.tk-admin-config-group):not(.card-friend-class-name) summary:hover:after {
     position: absolute;
     content: '+';
     text-align: center;
@@ -11543,12 +11543,12 @@ details:not(.tk-admin-config-group) summary:hover:after {
     line-height: 1;
 }
 
-details[open]:not(.tk-admin-config-group) > summary:hover:after {
+details[open]:not(.tk-admin-config-group):not(.card-friend-class-name) > summary:hover:after {
     content: '-';
 }
 
 @media screen and (max-width: 768px) {
-    details[open]:not(.tk-admin-config-group) {
+    details[open]:not(.tk-admin-config-group):not(.card-friend-class-name) {
         padding: 0 16px;
     }
 }
