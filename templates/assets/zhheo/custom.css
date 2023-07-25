@@ -54,4 +54,140 @@ ul li {
 
 
 
+/* 通讯录 */
+:root {
+    --card-friend-class-desc-bgcolor: #e7e7e7;
+    --card-friend-name-color: #000;
+    --card-friend-item-hover: var(--text-bg-hover);
+    --card-friend-descr-color: #797979
+}
+
+[data-theme=dark] {
+    --card-friend-class-desc-bgcolor: #111;
+    --card-friend-name-color: #fff;
+    --card-friend-item-hover: var(--text-bg-hover);
+    --card-friend-descr-color: #797979
+}
+
+.card-widget.card-friend-link {
+    padding: 0.4rem 0.6rem !important;
+}
+
+
+.card-widget.card-friend-link .card-friend-link-container {
+    max-height: 460px;
+    overflow: scroll
+}
+
+.card-widget.card-friend-link .card-friend-link-container::-webkit-scrollbar {
+    display: none
+}
+
+.card-widget.card-friend-link summary.card-friend-class-desc {
+    padding: 0 15px
+}
+
+.card-widget.card-friend-link details.card-friend-class-name[open] summary.card-friend-class-desc {
+    position: sticky;
+    top: 0;
+    background: var(--card-friend-class-desc-bgcolor);
+    z-index: 1
+}
+
+.card-widget.card-friend-link a.card-friend-item {
+    padding: 0 15px;
+    height: 60px;
+    width: auto;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-lines: single;
+    -moz-box-lines: single;
+    -o-box-lines: single;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap
+}
+
+.card-widget.card-friend-link a.card-friend-item:hover {
+    background-color: var(--heo-main);
+    border-radius: 12px;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out
+}
+
+.card-widget.card-friend-link img.card-friend-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 10px 10px
+}
+
+.card-widget.card-friend-link .offline-friend-link img.card-friend-avatar {
+    filter: grayscale(100%)
+}
+
+.card-widget.card-friend-link .card-friend-details {
+    width: auto;
+    height: 60px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-lines: single;
+    -moz-box-lines: single;
+    -o-box-lines: single;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -o-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -o-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    -o-box-align: start;
+    -ms-flex-align: start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start
+}
+
+.card-widget.card-friend-link .card-friend-name {
+    color: var(--card-friend-name-color)
+}
+
+.card-widget.card-friend-link .card-friend-descr {
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    width: 14em;
+    color: var(--card-friend-descr-color)
+}
+/* 通讯录 */
+
+
 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 最新评论 -->
+<div class="card-widget card-friend-link" th:fragment="friend-link">
+    <div class="item-headline"><i class="haofont hao-icon-tongxunlu07"
+                                  style="font-size: 0.9rem;font-weight: 700;"></i><span>通讯录</span></div>
+    <div class="card-friend-link-container"
+         th:if="${pluginFinder.available('PluginLinks')}"
+         th:with="groups = ${linkFinder.groupBy()}">
+        <th:block th:each="group,iterStat : ${groups}">
+            <details th:if="${group.spec.displayStyle != 'deprecated' && not #lists.isEmpty(group.spec.displayStyle)}"
+                     class="card-friend-class-name">
+                <summary class="card-friend-class-desc" th:title="${group.spec.description}">
+                    <sapn>[[${group.spec.displayName}]]</sapn>
+                    <sapn>[[${group.links.size}]]</sapn>
+                </summary>
+                <a th:each="link : ${group.links}"
+                   class="card-friend-item online-friend-link" th:href="${link.spec.url}" th:title="${link.spec.displayName}"
+                   target="_blank"><img class="no-lightbox card-friend-avatar"
+                                        th:src="${link.spec.logo}"
+                                        th:alt="${link.spec.displayName}">
+                    <div class="card-friend-details">
+                        <div class="card-friend-name">[[${link.spec.displayName}]]</div>
+                        <div class="card-friend-descr" >[[${link.spec.description}]]</div>
+                    </div>
+                </a>
+            </details>
+            <details th:if="${#strings.equals(group.spec.displayStyle,'deprecated') && not #lists.isEmpty(group.spec.displayStyle)}"
+                     class="card-friend-class-name">
+                <summary class="card-friend-class-desc" th:title="${group.spec.description}">
+                    <sapn>[[${group.spec.displayName}]]</sapn>
+                    <sapn>[[${group.links.size}]]</sapn>
+                </summary>
+                <a th:each="link : ${group.links}"
+                   class="card-friend-item offline-friend-link" th:href="${link.spec.url}" th:title="${link.spec.displayName}"
+                   target="_blank"><img class="no-lightbox card-friend-avatar entered loaded"
+                                        th:src="${link.spec.logo}"
+                                        th:alt="${link.spec.displayName}">
+                    <div class="card-friend-details">
+                        <div class="card-friend-name">[[${link.spec.displayName}]]</div>
+                        <div class="card-friend-descr" >[[${link.spec.description}]]</div>
+                    </div>
+                </a>
+            </details>
+
+        </th:block>
+
+    </div>
+
+
+</div>
+</html>
