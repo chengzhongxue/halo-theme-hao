@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 第一屏 -->
+<th:block th:fragment="change-box">
+    <th:block th:if="${theme.config.nav.right.change_box}">
+        <style>
+            #web_bg {
+                position: fixed;
+                z-index: -999;
+                width: 200%;
+                height: 200%;
+                top: -50%;
+                left: -50%;
+                transform: rotate(-1deg);
+                -webkit-overflow-scrolling: touch;
+                background: var(--heo-background);
+                background-attachment: local;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat
+            }
+
+            #web_bg {
+                background-position: center;
+                background-repeat: no-repeat;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transform: translate(0, 0);
+                z-index: -999;
+            }
+
+            .winbox {
+                border-radius: 12px;
+                overflow: hidden
+            }
+
+            .wb-body {
+                backdrop-filter: blur(35px) saturate(150%);
+                -webkit-backdrop-filter: blur(3px);
+                background: rgba(255, 255, 255, .5);
+                display: flex;
+                padding-top: 25px;
+                padding-bottom: 25px;
+                padding-right: 25px;
+                padding-left: 25px
+            }
+
+            .wb-header {
+                backdrop-filter: blur(3px) saturate(150%);
+                -webkit-backdrop-filter: blur(35px);
+                background: #ffffff70
+            }
+
+            .wb-full {
+                display: none
+            }
+
+            .wb-min {
+                background-position: center
+            }
+
+            [data-theme=dark] #changeBgBox, [data-theme=dark] .wb-body {
+                background: #333 !important
+            }
+
+            .bgbox {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between
+            }
+
+            .box, .imgbox, .pimgbox {
+                width: 166px;
+                margin: 10px;
+                background-size: cover
+            }
+
+            .imgbox, .pimgbox {
+                border-radius: 10px;
+                overflow: hidden
+            }
+
+            .pimgbox {
+                height: 240px
+            }
+
+            .imgbox {
+                height: 95px
+            }
+
+            .box {
+                height: 100px
+            }
+
+            @media screen and (max-width: 768px) {
+                .wb-body {
+                    padding-top: 25px;
+                    padding-bottom: 25px;
+                    padding-right: 25px;
+                    padding-left: 25px
+                }
+            }
+
+            @media screen and (max-width: 768px) {
+                .box, .imgbox, .pimgbox {
+                    height: 73px;
+                    width: 135px
+                }
+
+                .pimgbox {
+                    height: 205px
+                }
+
+                .wb-min {
+                    display: none
+                }
+
+                #changeBgBox .wb-body::-webkit-scrollbar {
+                    display: none
+                }
+            }
+            #footer {
+                background: rgb(255 255 255 / 0%);
+                color: #000;
+                border-top-right-radius: 20px;
+                border-top-left-radius: 20px;
+                backdrop-filter: saturate(100%) blur(5px);
+            }
+        </style>
+        <script async src="https://npm.elemecdn.com/winbox/dist/winbox.bundle.min.js"></script>
+        <div class="nav-button only-home">
+            <a class="site-page" href="javascript:void(0);" onclick="halo.changeBox.toggleWinbox()" title="随机文章">
+                <i class="fas fa-display" style="font-size: 1rem; font-weight: 700;"></i>
+            </a>
+        </div>
+        <script>
+            try {
+                let e = halo.changeBox.loadData("blogbg", 1440);
+                e ? halo.changeBox.changeBg(e, 1) : localStorage.removeItem("blogbg")
+            } catch (t) {
+                localStorage.removeItem("blogbg")
+            }
+        </script>
+    </th:block>
+</th:block>
+
+</html>

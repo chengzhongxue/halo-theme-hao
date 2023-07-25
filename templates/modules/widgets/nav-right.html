@@ -20,6 +20,8 @@
         </a>
     </div>
 
+    <th:block th:replace="~{modules/widgets/change-box :: change-box}"></th:block>
+
     <!-- 搜索使用搜索插件 -->
     <div class="nav-button" id="search-button" th:if="${pluginFinder.available('PluginSearchWidget')}">
         <a class="site-page social-icon search" href="javascript:SearchWidget.open();" rel="external nofollow"

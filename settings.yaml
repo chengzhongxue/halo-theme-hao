@@ -72,6 +72,15 @@ spec:
                   value: true
                 - label: 关闭
                   value: false
+            - $formkit: radio
+              name: change_box
+              label: 壁纸
+              value: true
+              options:
+                - label: 打开
+                  value: true
+                - label: 关闭
+                  value: false
 
     - group: top
       label: 顶部
