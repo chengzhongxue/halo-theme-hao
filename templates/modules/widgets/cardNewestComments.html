@@ -24,7 +24,7 @@
         const getComment = () => {
             const runTwikoo = () => {
                 twikoo.getRecentComments({
-                    envId: [[${ theme.config.comments.twikoos.envId }]],
+                    envId: "[(${theme.config.comments.twikoos.envId})]",
                     region: '',
                     pageSize: 6,
                     includeReply: true

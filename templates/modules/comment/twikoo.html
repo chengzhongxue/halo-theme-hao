@@ -14,7 +14,7 @@
         const init = () => {
             twikoo.init(Object.assign({
                 el: '#twikoo-wrap',
-                envId: [[${theme.config.comments.twikoos.envId}]],
+                envId: "[(${theme.config.comments.twikoos.envId})]",
                 region: '',
                 onCommentLoaded: function () {
                     btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.vemoji)'))
@@ -36,7 +36,7 @@
 
         const getCount = () => {
             twikoo.getCommentsCount({
-                envId: [[${theme.config.comments.twikoos.envId}]],
+                envId: "[(${theme.config.comments.twikoos.envId})]",
                 region: '',
                 urls: [window.location.pathname],
                 includeReply: true

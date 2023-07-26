@@ -15,10 +15,10 @@
         //弹幕显示间隔时间ms
         barrageTime: [[${ theme.config.comments.twikoos.barrageTime }]],
         //twikoo部署地址腾讯云的为环境ID
-        twikooUrl: [[${ theme.config.comments.twikoos.envId }]],
+        twikooUrl: "[(${theme.config.comments.twikoos.envId})]",
         //token获取见上方
-        accessToken: [[${ theme.config.comments.twikoos.accessToken }]],
-        mailMd5: [[${ theme.config.comments.twikoos.mailMd5 }]],
+        accessToken: "[(${theme.config.comments.twikoos.accessToken})]",
+        mailMd5: "[(${theme.config.comments.twikoos.mailMd5})]",
         pageUrl: window.location.pathname,
         barrageTimer: [],
         barrageList: [],
