@@ -257,5 +257,89 @@ let halo = {
 
         };
         Prism.hooks.add("complete", r)
-    }
+    },
+
+    addScript: (e,t,n)=>{
+        if (document.getElementById(e))
+            return n ? n() : void 0;
+        let a = document.createElement("script");
+        a.src = t,
+            a.id = e,
+        n && (a.onload = n),
+            document.head.appendChild(a)
+    },
+
+
+    danmu: (url,token,maxBarrage)=>{
+        const e = new EasyDanmaku({
+            el: "#danmu",
+            line: 10,
+            speed: 20,
+            hover: !0,
+            loop: !0
+        });
+        let t = saveToLocal.get("danmu");
+        if (t)
+            e.batchSend(t, !0);
+        else {
+            let n = [];
+            function a(e) {
+                return e = (e = (e = (e = (e = e.replace(/<\/*br>|[\s\uFEFF\xA0]+/g, "")).replace(/<img.*?>/g, "[图片]")).replace(/<a.*?>.*?<\/a>/g, "[链接]")).replace(/<pre.*?>.*?<\/pre>/g, "[代码块]")).replace(/<.*?>/g, "")
+            }
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify({
+                    event: "GET_RECENT_COMMENTS",
+                    accessToken: token,
+                    includeReply: !1,
+                    pageSize: maxBarrage
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then((e=>e.json())).then((({data: t})=>{
+                    t.forEach((e=>{
+                            null == e.avatar && (e.avatar = "https://cravatar.cn/avatar/d615d5793929e8c7d70eab5f00f7f5f1?d=mp"),
+                                n.push({
+                                    avatar: e.avatar,
+                                    content: e.nick + "：" + a(e.comment),
+                                    href: e.url + '#' + e.id
+
+                                })
+                        }
+                    )),
+                        e.batchSend(n, !0),
+                        saveToLocal.set("danmu", n, .02)
+                }
+            ))
+        }
+        document.getElementById("danmuBtn").innerHTML = "<button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.remove('hidedanmu')\">显示弹幕</button> <button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.add('hidedanmu')\">隐藏弹幕</button>"
+    },
+    //关闭留言板评论弹幕
+    closeCommentBarrage: function () {
+        let commentBarrage = document.querySelector('.comment-barrage');
+        if (commentBarrage) {
+            if ($(".comment-barrage").is(":visible")) {
+                $(".comment-barrage").hide();
+                $(".menu-commentBarrage-text").text("显示热评");
+                document.querySelector("#consoleCommentBarrage").classList.remove("on");
+                localStorage.setItem('commentBarrageSwitch', 'false');
+            }
+        }
+    },
+    //打开评论弹幕
+    openCommentBarrage: function () {
+        let commentBarrage = document.querySelector('.comment-barrage');
+        if (commentBarrage) {
+            if ($(".comment-barrage").is(":hidden")) {
+                $(".comment-barrage").show();
+                $(".menu-commentBarrage-text").text("关闭热评");
+                document.querySelector("#consoleCommentBarrage").classList.add("on");
+                localStorage.removeItem('commentBarrageSwitch');
+                btf.snackbarShow("✨ 已开启评论弹幕", false, 2000)
+            }
+        }
+    },
+
+
 }

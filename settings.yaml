@@ -1766,7 +1766,33 @@ spec:
     - group: envelope_comment
       label: 留言板
       formSchema:
+        - $formkit: radio
+          label: 弹幕
+          name: enable_danmu
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: number
+          name: maxBarrage
+          value: 20
+          label: 弹幕数页数
+          placeholder: 请输入弹幕数页数
+        - $formkit: radio
+          label: 信笺
+          name: enable_envelope_comment
+          key: enable_envelope_comment
+          id: enable_envelope_comment
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
         - $formkit: textarea
+          if: $get(enable_envelope_comment).value
           name: title
           label: 标题
           placeholder: 请输入内容
@@ -1774,6 +1800,7 @@ spec:
           help: 支持 HTML 语法
         - $formkit: group
           name: custom_pic
+          if: $get(enable_envelope_comment).value
           label: 信笺图片
           value:
             cover:
@@ -1803,6 +1830,7 @@ spec:
               value: "https://npm.elemecdn.com/hexo-butterfly-envelope/lib/after.png"
         - $formkit: repeater
           name: messageList
+          if: $get(enable_envelope_comment).value
           label: 正文
           value:
             - content: "有什么想问的？"
@@ -1817,12 +1845,14 @@ spec:
               value: "有什么想问的？"
         - $formkit: text
           name: bottom
+          if: $get(enable_envelope_comment).value
           label: 底部文本
           placeholder: 请输入内容
           value: 自动书记人偶竭诚为您服务！
           help: 仅支持单行文本
         - $formkit: number
           name: height
+          if: $get(enable_envelope_comment).value
           label: 高度
           placeholder: 请输入内容
           help: 信封划出的高度

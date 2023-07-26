@@ -7,347 +7,272 @@
     <div class="page" id="body-wrap">
 
         <!-- 头部导航栏 -->
+
+
         <header class="not-top-img" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
         </header>
+
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-                <th:block th:if="${not #strings.isEmpty(theme.config.envelope_comment.title)}">
-                    <h1>[[${theme.config.envelope_comment.title}]]</h1>
-                </th:block>
-                <style>
-                    @media screen and (max-width: 600px) {
 
-                        #afterimg,
-                        #beforeimg {
-                            display: none !important
-                        }
-                    }
+                <th:block th:if="${theme.config.envelope_comment.enable_envelope_comment}">
+                    <th:block th:if="${not #strings.isEmpty(theme.config.envelope_comment.title)}"
+                              th:utext="${theme.config.envelope_comment.title}">
+                    </th:block>
+                    <style>
+                        @media screen and (max-width: 600px) {
 
-                    @media screen and (min-width: 600px) {
-                        #article-container img {
-                            margin: 0 auto 0
+                            #afterimg,
+                            #beforeimg {
+                                display: none !important
+                            }
                         }
 
-                        #form-wrap {
-                            overflow: hidden;
-                            height: 447px;
-                            position: relative;
-                            top: 0;
-                            transition: all 1s ease-in-out .3s;
-                            z-index: 0
+                        @media screen and (min-width: 600px) {
+                            #article-container img {
+                                margin: 0 auto 0
+                            }
+
+                            #form-wrap {
+                                overflow: hidden;
+                                height: 447px;
+                                position: relative;
+                                top: 0;
+                                transition: all 1s ease-in-out .3s;
+                                z-index: 0
+                            }
+
+                            #form-wrap:hover {
+                                height: [[${theme.config.envelope_comment.height}]]px;
+                                top: -200px
+                            }
+
+                            #beforeimg {
+                                position: absolute;
+                                bottom: 126px;
+                                left: 0;
+                                background-repeat: no-repeat;
+                                width: 530px;
+                                height: 317px;
+                                z-index: -100;
+                                pointer-events: none
+                            }
+
+                            #afterimg {
+                                position: absolute;
+                                bottom: -2px;
+                                left: 0;
+                                background-repeat: no-repeat;
+                                width: 530px;
+                                height: 259px;
+                                z-index: 100;
+                                pointer-events: none
+                            }
+
+                            #envelope {
+                                position: relative;
+                                overflow: visible;
+                                width: 500px;
+                                margin: 0 auto;
+                                transition: all 1s ease-in-out .3s;
+                                padding-top: 200px
+                            }
+
+                            #maincontent {
+                                width: 530px;
+                                margin: 20px auto 0
+                            }
+
+                            .formmain {
+                                background: #fff;
+                                width: 95%;
+                                max-width: 800px;
+                                margin: auto auto;
+                                border-radius: 5px;
+                                border: 1px solid;
+                                overflow: hidden;
+                                -webkit-box-shadow: 0 0 20px 0 #000;
+                                box-shadow: 0 0 20px 0 #000
+                            }
                         }
 
-                        #form-wrap:hover {
-                            height: [[${theme.config.envelope_comment.height}]]px;
-                            top: -200px
+                        [data-theme=dark] .formmain {
+                            background: #323232
                         }
 
-                        #beforeimg {
-                            position: absolute;
-                            bottom: 126px;
-                            left: 0;
-                            background-repeat: no-repeat;
-                            width: 530px;
-                            height: 317px;
-                            z-index: -100;
-                            pointer-events: none
+                        [data-theme=dark] .comments {
+                            background: #5a5a5a !important
                         }
+                    </style>
 
-                        #afterimg {
-                            position: absolute;
-                            bottom: -2px;
-                            left: 0;
-                            background-repeat: no-repeat;
-                            width: 530px;
-                            height: 259px;
-                            z-index: 100;
-                            pointer-events: none
-                        }
 
-                        #envelope {
-                            position: relative;
-                            overflow: visible;
-                            width: 500px;
-                            margin: 0 auto;
-                            transition: all 1s ease-in-out .3s;
-                            padding-top: 200px
-                        }
+                    <div id="article-container">
+                        <div id="maincontent">
+                            <div id="form-wrap">
+                                <img class="no-lightbox entered loaded" id="beforeimg"
+                                     th:src="@{${theme.config.envelope_comment.custom_pic.beforeimg}}">
+                                <div id="envelope">
+                                    <form>
+                                        <div class="formmain" style="pointer-events:none">
+                                            <img class="headerimg no-lightbox entered loaded"
+                                                 th:src="@{${theme.config.envelope_comment.custom_pic.cover}}"
+                                                 style="width:100%;overflow:hidden;pointer-events:none">
+                                            <div class="comments-main">
+                                                <h3 class="title3"
+                                                    style="text-decoration:none;color:var(--heo-theme);text-align:center">
+                                                    来自[[${site.title}]]的留言:</h3>
+                                                <div class="comments"
+                                                     style="text-align:center;border-bottom:#ddd 1px solid;border-left:#ddd 1px solid;padding-bottom:20px;background-color:#eee;margin:15px 0;padding-left:20px;padding-right:20px;border-top:#ddd 1px solid;border-right:#ddd 1px solid;padding-top:20px"
+                                                     th:with="message = ${theme.config.envelope_comment.messageList}">
 
-                        #maincontent {
-                            width: 530px;
-                            margin: 20px auto 0
-                        }
+                                                    <div th:each="data : ${message}">[[${data.content}]]</div>
 
-                        .formmain {
-                            background: #fff;
-                            width: 95%;
-                            max-width: 800px;
-                            margin: auto auto;
-                            border-radius: 5px;
-                            border: 1px solid;
-                            overflow: hidden;
-                            -webkit-box-shadow: 0 0 20px 0 #000;
-                            box-shadow: 0 0 20px 0 #000
-                        }
-                    }
-
-                    [data-theme=dark] .formmain {
-                        background: #323232
-                    }
-
-                    [data-theme=dark] .comments {
-                        background: #5a5a5a !important
-                    }
-
-                    #danmu {
-                        width: 100%;
-                        height: calc(100% - 60px);
-                        position: fixed;
-                        left: 0;
-                        top: 60px;
-                        z-index: 1;
-                        pointer-events: none;
-                    }
-
-                    /* 评论弹幕 */
-                    .barrage {
-                        position: fixed;
-                        right: -500px;
-                        display: inline-block;
-                        width: fit-content;
-                        z-index: 999
-                    }
-
-                    .barrage_box {
-                        display: flex;
-                        background-color: rgba(0, 0, 0, .5);
-                        padding-right: 8px;
-                        height: 40px;
-                        border-radius: 25px;
-                    }
-
-                    .barrage_box .portrait {
-                        display: inline-block;
-                        margin-top: 4px;
-                        margin-left: 4px;
-                        width: 32px;
-                        height: 32px;
-                        border-radius: 50%;
-                        overflow: hidden;
-                    }
-
-                    .barrage_box .portrait img {
-                        width: 100%;
-                        height: 100%;
-                    }
-
-                    .barrage_box div.p a {
-                        display: inline-block;
-                        white-space: nowrap;
-                        max-width: 25rem;
-                        margin-right: 2px;
-                        font-size: 14px;
-                        line-height: 40px;
-                        margin-left: 10px;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        text-decoration: none;
-                    }
-
-                    .barrage_box div.p a:hover {
-                        text-decoration: underline;
-                    }
-
-                    .hidedanmu {
-                        opacity: 0;
-                    }
-
-                    .hidedanmu * {
-                        pointer-events: none !important;
-                    }
-
-                    div#danmuBtn {
-                        display: flex;
-                        justify-content: center;
-                        margin: 20px;
-                    }
-
-                    div#danmuBtn button {
-                        background: var(--heo-theme);
-                        color: white;
-                        padding: 8px 20px;
-                        margin: 0 20px;
-                        border-radius: 100px;
-                    }
-                    .barrage {
-                        pointer-events: all;
-                        cursor: pointer;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        font-size: 16px;
-                        border-radius: 100px;
-                        background-color: rgba(0, 0, 0, 0.5);
-                        padding: 6px 16px 6px 6px;
-                        color: #eee;
-                    }
-                    .barrage:hover {
-                        background-color: rgba(0, 0, 0, 0.7);
-                        transition: .3s
-                    }
-
-                    .barrage img {
-                        pointer-events: none;
-                        height: 30px;
-                        width: 30px;
-                        margin: 0 5px 0 0 !important;
-                        border-radius: 50%;
-                    }
-
-                    .barrage p {
-                        line-height: 1;
-                        pointer-events: none;
-                        margin: 0 !important;
-                        max-width: 300px;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                    }
-                </style>
-                <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                <script src="https://cdn.jsdelivr.net/gh/yaseng/jquery.barrager.js/dist/js/jquery.barrager.min.js"></script>
-                <div id="article-container">
-                    <div id="maincontent">
-                        <div id="form-wrap">
-                            <img class="no-lightbox entered loaded" id="beforeimg"
-                                 th:src="@{${theme.config.envelope_comment.custom_pic.beforeimg}}">
-                            <div id="envelope">
-                                <form>
-                                    <div class="formmain" style="pointer-events:none">
-                                        <img class="headerimg no-lightbox entered loaded"
-                                             th:src="@{${theme.config.envelope_comment.custom_pic.cover}}"
-                                             style="width:100%;overflow:hidden;pointer-events:none">
-                                        <div class="comments-main">
-                                            <h3 class="title3"
-                                                style="text-decoration:none;color:var(--heo-theme);text-align:center">
-                                                来自[[${site.title}]]的留言:</h3>
-                                            <div class="comments"
-                                                 style="text-align:center;border-bottom:#ddd 1px solid;border-left:#ddd 1px solid;padding-bottom:20px;background-color:#eee;margin:15px 0;padding-left:20px;padding-right:20px;border-top:#ddd 1px solid;border-right:#ddd 1px solid;padding-top:20px"
-                                                 th:with="message = ${theme.config.envelope_comment.messageList}">
-
-                                                <div th:each="data : ${message}">[[${data.content}]]</div>
-
+                                                </div>
+                                                <div class="bottomcontent" style="text-align:center;margin-top:40px">
+                                                    <img class="bottomimg no-lightbox entered loaded"
+                                                         th:src="@{${theme.config.envelope_comment.custom_pic.line}}"
+                                                         style="width:100%;margin:5px auto 5px auto;display:block;pointer-events:none">
+                                                </div>
+                                                <p class="bottomhr" style="font-size:12px;text-align:center;color:#999">
+                                                    [[${theme.config.envelope_comment.bottom}]]</p>
                                             </div>
-                                            <div class="bottomcontent" style="text-align:center;margin-top:40px">
-                                                <img class="bottomimg no-lightbox entered loaded"
-                                                     th:src="@{${theme.config.envelope_comment.custom_pic.line}}"
-                                                     style="width:100%;margin:5px auto 5px auto;display:block;pointer-events:none">
-                                            </div>
-                                            <p class="bottomhr" style="font-size:12px;text-align:center;color:#999">
-                                                [[${theme.config.envelope_comment.bottom}]]</p>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
+                                <img id="afterimg" class="no-lightbox entered loaded"
+                                     th:src="@{${theme.config.envelope_comment.custom_pic.afterimg}}">
                             </div>
-                            <img id="afterimg" class="no-lightbox entered loaded"
-                                 th:src="@{${theme.config.envelope_comment.custom_pic.afterimg}}">
                         </div>
                     </div>
+
+                </th:block>
+
+                <div class="flink" id="article-container">
+                    <th:block  th:utext="${singlePage.content.content}"></th:block>
                 </div>
 
-                <div id="loading"></div>
-                <div id="danmu"></div>
-                <div id="danmuBtn">
-                    <button class="hideBtn"
-                            onclick="document.getElementById('danmu').classList.remove('hidedanmu')">显示弹幕
-                    </button>
-                    <button class="hideBtn"
-                            onclick="document.getElementById('danmu').classList.add('hidedanmu')">隐藏弹幕
-                    </button>
-                </div>
-                <script>
-                    let ls = []
-                    let Num = 0;
 
-                    // 以下注释为twikoo api的返回格式
-                    // 返回 Array，包含最新评论的
-                    //   * id:           评论 ID
-                    //   * url:          评论地址
-                    //   * nick:         昵称
-                    //   * mailMd5:      邮箱的 MD5 值，可用于展示头像
-                    //   * link:         网址
-                    //   * comment:      HTML 格式的评论内容
-                    //   * commentText:  纯文本格式的评论内容
-                    //   * created:      评论时间，格式为毫秒级时间戳
-                    //   * avatar:       头像地址（0.2.9 新增）
-                    //   * relativeTime: 相对评论时间，如 “1 小时前”（0.2.9 新增）
-                    // 返回示例: [ // 从新到旧顺序
-                    //   { id: '', url: '', nick: '', mailMd5: '', link: '', comment: '', commentText: '', created: 0 },
-                    //   { id: '', url: '', nick: '', mailMd5: '', link: '', comment: '', commentText: '', created: 0 },
-                    //   { id: '', url: '', nick: '', mailMd5: '', link: '', comment: '', commentText: '', created: 0 }
-                    // ]
-                    addEventListener("load",
-                        () => {
-                            // 手机端显示效果不好，所以直接不让其显示
-                            if (1 && document.body.clientWidth > 768) {
-                                // 加载动画，将 /themes/theme-hao/assets/images/load/rotating-ball-o.svg 换成你的加载图片即可
-                                document.getElementById('loading').innerHTML = '<a href="/themes/theme-hao/assets/images/load/rotating-ball-o.svg" data-fancybox="gallery" data-caption="弹幕加载中..." data-thumb="/themes/theme-hao/assets/images/load/rotating-ball-o.svg" style="position: fixed;bottom: 100px;left: 4%;"><img src="/themes/theme-hao/assets/images/load/rotating-ball-o.svg" data-lazy-src="/themes/theme-hao/assets/images/load/rotating-ball-o.svg" alt="弹幕加载中..." data-ll-status="loaded" class="entered loaded"></a>';
-                                let barrageTime = ''
-                                // 使用twikoo 自带api请求全站数据
-                                twikoo.getRecentComments({
-                                    envId: "[(${theme.config.comments.twikoos.envId})]", // 环境 ID
-                                    // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，如果您的环境地域不是上海，需传此参数
-                                    pageSize: 50, // 获取多少条，默认：10，最大：100
-                                    includeReply: false // 是否包括最新回复，默认：false
-                                }).then((data) => {
-                                    data.forEach(i => {
-                                        if (i.avatar == undefined) i.avatar = 'https://cravatar.cn/avatar/d615d5793929e8c7d70eab5f00f7f5f1?d=mp'
-                                        ls.push({
-                                            img: i.avatar, //图片
-                                            info: i.nick + '：' + formatDanmaku(i.comment), //文字
-                                            href: i.url, //链接
-                                            close: false, //显示关闭按钮
-                                            speed: 15, //延迟,单位秒,默认6
-                                            // bottom: 70, //距离底部高度,单位px,默认随机
-                                            color: '#fff', //颜色,默认白色
-                                            old_ie_color: '#000000', //ie低版兼容色,不能与网页背景相同,默认黑色
-                                        })
-                                    });
-                                    setTimeout(() => {
-                                        document.getElementById('loading').innerHTML = '';
-                                    }, 2000);
-                                    setInterval(() => {
-                                        if (Num >= ls.length) Num = 0
-                                        $('#danmu').barrager(ls[Num]);
-                                        Num++;
-                                    }, 1000); // 弹幕间隔时长
-                                }).catch(function (err) {
-                                    console.error(err);
-                                });
-                            } else {
-                                document.getElementById('loading').innerHTML = '<div class="note danger flat"><p>已关闭弹幕功能，请在电脑上查看。</p></div>' // 如果是手机则提醒
-                                document.getElementById('danmuBtn').innerHTML = ''
-                            }
-                        })
+                <th:block th:if="${theme.config.comments.twikooEnable &&
+                        #strings.equals(theme.config.comments.use, 'Twikoo') &&
+                        theme.config.envelope_comment.enable_danmu }">
+                    <div id="danmuBtn">
+                        <button class="hideBtn"
+                                onclick="document.getElementById('danmu').classList.remove('hidedanmu')">显示弹幕</button>
+                        <button class="hideBtn"
+                                onclick="document.getElementById('danmu').classList.add('hidedanmu')">隐藏弹幕</button>
+                    </div>
 
-                    // 格式化评论
-                    function formatDanmaku(str) {
-                        str = str.replace(/<\/*br>|[\s\uFEFF\xA0]+/g, '');
-                        str = str.replace(/<img.*?>/g, '[图片]');
-                        str = str.replace(/<a.*?>.*?<\/a>/g, '[链接]');
-                        str = str.replace(/<pre.*?>.*?<\/pre>/g, '[代码块]');
-                        str = str.replace(/<.*?>/g, '');
-                        return str
-                    }
-                </script>
+                    <div id="danmu">
+                    </div>
+
+
+                    <style>
+                        .default-style a {
+                            color: #eee;
+                        }
+
+                        .default-style a:hover {
+                            text-decoration: underline;
+                        }
+                        :root {
+                            --hao-purple: #4976f5;
+                        }
+
+                        #article-container a:not(.headerlink, .fancybox) {
+                            font-weight: 700;
+                            color: #4c4948;
+                            padding: 0 3px;
+                            border-bottom: 2px var(--hao-purple) solid;
+                        }
+
+                        #article-container a:not(.headerlink, .fancybox):hover {
+                            color: #fff;
+                            border-radius: 5px;
+                            text-decoration: none;
+                            background-color: var(--hao-purple);
+                        }
+
+                        #danmu {
+                            width: 100%;
+                            height: calc(100% - 60px);
+                            position: fixed;
+                            left: 0;
+                            top: 60px;
+                            z-index: 1;
+                            pointer-events: none;
+                        }
+
+                        .hidedanmu {
+                            opacity: 0;
+                        }
+
+                        .hidedanmu * {
+                            pointer-events: none !important;
+                        }
+
+                        div#danmuBtn {
+                            display: flex;
+                            justify-content: center;
+                            margin: 20px;
+                        }
+
+                        div#danmuBtn button {
+                            background: var(--hao-purple);
+                            color: white;
+                            padding: 8px 20px;
+                            margin: 0 20px;
+                            border-radius: 100px;
+                        }
+
+                        .default-style {
+                            pointer-events: all;
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-size: 16px;
+                            border-radius: 100px;
+                            background-color: rgba(0, 0, 0, 0.5);
+                            padding: 6px 16px 6px 6px;
+                            color: #eee;
+                        }
+
+                        .default-style:hover {
+                            background-color: rgba(0, 0, 0, 0.7);
+                            transition: .3s
+                        }
+
+                        .default-style img {
+                            pointer-events: none;
+                            height: 30px;
+                            width: 30px;
+                            margin: 0 5px 0 0 !important;
+                            border-radius: 50%;
+                        }
+
+                        .default-style p {
+                            line-height: 1;
+                            pointer-events: none;
+                            margin: 0 !important;
+                            max-width: 300px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                    </style>
+                </th:block>
+
+
+
+
+
                 <hr>
                 <!--/* 评论组件 */-->
-                <th:block
-                        th:replace="~{modules/comment :: comment(group = 'content.halo.run',
+                <th:block th:replace="~{modules/comment :: comment(group = 'content.halo.run',
                   kind = 'SinglePage',
                   name = ${singlePage.metadata.name},
-                  allowComment = ${singlePage.spec.allowComment})}"/>
+                  allowComment = ${singlePage.spec.allowComment})}" />
 
             </div>
 
