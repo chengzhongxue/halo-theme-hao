@@ -824,10 +824,9 @@ spec:
             - $formkit: url
               name: fetchUrl
               if: $get(enable_footer_group).value
-              value: "`https://moments.0206.ink/randomfriend?num=3`"
+              value: "https://moments.0206.ink/randomfriend?num=3"
               label: 页脚友链地址
               placeholder: 请输入页脚友链地址
-              help: 注意格式 (`友链地址`)
         - $formkit: group
           name: footerContent
           label: 页脚内容
@@ -1197,10 +1196,9 @@ spec:
           placeholder: 请输入跳转 url
         - $formkit: url
           name: apiurl
-          value: "`https://moments.0206.ink/`"
+          value: "https://moments.0206.ink/"
           label: token地址
           placeholder: 请输入token地址
-          help: 注意格式 (`token地址`)
         - $formkit: radio
           name: fcircleRandomFriendsEnable
           label: 友链鱼塘页面（钓鱼）
@@ -1212,7 +1210,7 @@ spec:
               value: false
         - $formkit: radio
           name: linksRandomFriendsEnable
-          label: 友联页面（钓鱼）
+          label: 友链页面（钓鱼）
           value: true
           options:
             - label: 打开
@@ -1860,7 +1858,7 @@ spec:
         - $formkit: group
           if: $get(twikooEnable).value
           name: twikoos
-          label: Twikoo评论配置（注意填写格式）
+          label: Twikoo评论配置
           value:
             maxBarrage:
             barrageTime:
@@ -1882,19 +1880,16 @@ spec:
               help: 右下角弹出热评弹幕的间隔时间
             - $formkit: url
               name: envId
-              value: "`xxxxxxx`"
               label: Twikoo评论 - 环境id/后端URL
-              placeholder: 请输入环境id或URL 格式：`ID或地址`
-              help: 注意格式，请用反单引号括起来，详情请查看文档
+              placeholder: 请输入环境id或URL
+              help: 详情请查看文档
             - $formkit: text
               name: accessToken
-              value: "`tokenxxxxx`"
               label: Twikoo评论 - 管理员令牌
-              placeholder: 请输入token 格式：`tokenxxxxx`
-              help: 注意格式，在浏览器F12的控制台中获取，用于显示弹幕，详情请查看文档
+              placeholder: 请输入token
+              help: 在浏览器F12的控制台中获取，用于显示弹幕，详情请查看文档
             - $formkit: text
               name: mailMd5
-              value: "`xxxxxxxxxx`"
               label: Twikoo评论 - 博主邮箱MD5值
               placeholder: 请输入md5值
               help: 用于验证博主评论，可前往cmd5.com加密自己使用的邮箱，选择32位小写

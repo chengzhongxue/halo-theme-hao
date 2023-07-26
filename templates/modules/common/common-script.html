@@ -8,7 +8,7 @@
             addFriendLinksInFooter: function () {
 
                 var linksUrl = '[[${theme.config.link.linksUrl}]]'
-                var fetchUrl = [[${theme.config.footer.footer_group.fetchUrl}]]
+                var fetchUrl = "[(${theme.config.footer.footer_group.fetchUrl})]"
                 fetch(fetchUrl)
                     .then(res => res.json())
                     .then(json => {
