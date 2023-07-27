@@ -7,51 +7,72 @@
         <div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about"
                                                      data-pjax-state="">
             <img class="post-copyright__author_img_back entered loading"
-                 th:src="@{${#strings.isEmpty(site.logo) ?  assets_link + '/images/hao-logo.jpg' : site.logo}}"
-            ></a>
+                 th:src="@{${#strings.isEmpty(site.logo) ?  assets_link + '/images/hao-logo.jpg' : site.logo}}"></a>
             <div class="post-copyright__author_name">[[${site.title}]]</div>
             <div class="post-copyright__author_desc">[[${theme.config.post.desc}]]</div>
         </div>
         <div class="post-tools" id="post-tools">
             <div class="post-tools-left">
-                <div th:if="${theme.config.aboutReward.reward.enable_reward_wz}" class="post-reward"
-                     onclick="AddRewardMask()">
-                    <div class="reward-button button--animated" title="打赏作者"><i
-                            class="fas fa-hamburger"></i> 打赏作者</div>
-                    <div class="reward-main">
-                        <ul class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span>
-                            <ul class="reward-group">
-                                <li class="reward-item"><a
-                                        th:href="@{${theme.config.aboutReward.reward.wxPay}}"
-                                        target="_blank">
-                                    <img alt="微信" class="post-qr-code-img"
-                                         th:src="${theme.config.aboutReward.reward.wxPay}"></a>
-                                    <div class="post-qr-code-desc">微信</div>
-                                </li>
-                                <li class="reward-item"><a
-                                        th:href="@{${theme.config.aboutReward.reward.alipay}}"
-                                        target="_blank"><img alt="支付宝" class="post-qr-code-img"
-                                                             th:src="${theme.config.aboutReward.reward.alipay}"></a>
-                                    <div class="post-qr-code-desc">支付宝</div>
-                                </li>
+                <div class="rewardLeftButton" th:if="${theme.config.aboutReward.reward.enable_reward_wz || theme.config.post.post_edit.enable_post_edit}">
+                    <div th:if="${theme.config.aboutReward.reward.enable_reward_wz}" class="post-reward"
+                         onclick="AddRewardMask()">
+                        <div class="reward-button button--animated" title="打赏作者"><i class="fas fa-hamburger"></i> 打赏作者
+                        </div>
+                        <div class="reward-main">
+                            <ul class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span>
+                                <ul class="reward-group">
+                                    <li class="reward-item"><a th:href="@{${theme.config.aboutReward.reward.wxPay}}"
+                                                               target="_blank">
+                                        <img alt="微信" class="post-qr-code-img"
+                                             th:src="${theme.config.aboutReward.reward.wxPay}"></a>
+                                        <div class="post-qr-code-desc">微信</div>
+                                    </li>
+                                    <li class="reward-item"><a th:href="@{${theme.config.aboutReward.reward.alipay}}"
+                                                               target="_blank"><img alt="支付宝" class="post-qr-code-img"
+                                                                                    th:src="${theme.config.aboutReward.reward.alipay}"></a>
+                                        <div class="post-qr-code-desc">支付宝</div>
+                                    </li>
+                                </ul>
+                                <a class="reward-main-btn" th:href="@{${theme.config.aboutReward.reward.reward_md_url}}"
+                                   target="_blank">
+                                    <div class="reward-text">赞赏者名单</div>
+                                    <div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div>
+                                </a>
                             </ul>
-                            <a class="reward-main-btn"
-                               th:href="@{${theme.config.aboutReward.reward.reward_md_url}}"
-                               target="_blank">
-                                <div class="reward-text">赞赏者名单</div>
-                                <div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div>
-                            </a>
-                        </ul>
+                        </div>
+                    </div>
+                    <div th:if="${theme.config.post.post_edit.enable_post_edit}" class="reward-link mode"><a
+                            class="reward-link-button" th:href="@{${theme.config.post.post_edit.post_edit_url}}"
+                            data-pjax-state=""><i class="fas fa-seedling"></i>订阅</a></div>
+                </div>
+                <div class="shareRight"
+                     th:if="${theme.config.post.share_right.mobile_edit  || theme.config.post.share_right.weibo_edit || theme.config.post.share_right.copyurl_edit}">
+                    <div class="share-link mobile" th:if="${theme.config.post.share_right.mobile_edit}">
+                        <div class="share-qrcode">
+                            <div class="share-button" title="使用手机访问这篇文章"><i class="iconfont icon-qrcode"></i>
+                            </div>
+                            <div class="share-main">
+                                <div class="share-main-all">
+                                    <div id="qrcode"></div>
+                                    <div class="reward-dec">使用手机访问这篇文章</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="share-link weibo" th:if="${theme.config.post.share_right.weibo_edit}">
+                        <a class="share-button" rel="noopener external nofollow noreferrer noopener" target="_blank"
+                           th:href="'https://service.weibo.com/share/share.php?title=' + ${post.spec.title}"
+                           title="分享到微博">
+                            <i class="iconfont icon-weibo" style="font-size:22px"></i></a>
+                    </div>
+                    <div class="share-link copyurl" th:if="${theme.config.post.share_right.copyurl_edit}">
+                        <div class="share-button" id="post-share-url" onclick="rm.copyPageUrl()" title="复制链接"><i
+                                class="iconfont icon-link"></i></div>
                     </div>
                 </div>
-                <div th:if="${theme.config.post.post_edit.enable_post_edit}" class="reward-link mode"><a
-                        class="reward-link-button" th:href="@{${theme.config.post.post_edit.post_edit_url}}"
-                        data-pjax-state=""><i class="fas fa-seedling"></i>订阅</a></div>
             </div>
         </div>
-        <div
-                th:if="${theme.config.post.copyrights.enable}"
-                class="post-copyright__notice">
+        <div th:if="${theme.config.post.copyrights.enable}" class="post-copyright__notice">
             <span class="post-copyright-info" th:utext="${theme.config.post.copyrights.content}"></span>
         </div>
 

@@ -2098,24 +2098,14 @@ blockquote footer cite::before {
     }
 }
 
-#aside-content .card-info img {
-    width: 28px;
-    right: 24px;
-    top: 20px;
-    border-radius: 500px;
-    transition: all 0.5s ease 0s;
-    position: absolute;
-}
+
 
 .author-info__top-group {
     display: flex;
     height: 28px;
 }
 
-#aside-content .card-info .author-info__name {
-    font-weight: 500;
-    font-size: 1.57em;
-}
+
 
 #aside-content .card-info .author-info__description {
     margin-top: -0.3rem;
@@ -10230,15 +10220,6 @@ div#author-info__sayhi:hover {
     color: var(--heo-fontcolor);
 }
 
-#aside-content .card-info .author-info__name {
-    text-align: left;
-    font-weight: bold;
-    color: var(--heo-white);
-    font-size: 28px;
-    line-height: 1.1;
-    margin-top: 0.8rem;
-    margin-bottom: 0.4rem;
-}
 
 /* 作者卡片背景 */
 #aside-content > .card-widget:first-child {
@@ -10417,62 +10398,7 @@ div#author-info__sayhi:hover {
     }
 }
 
-/* 社交按钮 */
-#aside-content .card-info #card-info-btn {
-    display: none;
-}
 
-#aside-content .card-info .card-info-social-icons {
-    margin: 0;
-    padding-top: 10px;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    flex-wrap: wrap;
-    cursor: pointer;
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-}
-
-#aside-content .card-info .card-info-social-icons .social-icon {
-    margin: 0;
-    margin-right: 8px;
-}
-
-#aside-content .card-info .card-info-social-icons i {
-    background: var(--heo-white-op);
-    color: var(--heo-white);
-    font-size: 1.2rem;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-}
-
-#aside-content .card-info .card-info-social-icons i:hover {
-    background: var(--heo-secondbg);
-    transform: scale(0.97);
-    color: var(--heo-main);
-    box-shadow: none;
-}
-
-#aside-content .card-info .banner-button {
-    height: 40px;
-    width: 124px;
-    border-radius: 20px;
-    justify-content: center;
-}
-
-@media screen and (min-width: 1300px) {
-    #aside-content .card-info .card-info-social-icons i {
-        color: var(--heo-white);
-    }
-
-    [data-theme=dark] #aside-content .card-info .card-info-social-icons i {
-        color: var(--heo-white);
-    }
-}
 
 #aside-content .card-info .card-info-data > .card-info-data-item:hover {
     background: var(--heo-post-blockquote-bg);

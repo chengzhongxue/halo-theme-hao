@@ -464,7 +464,32 @@ spec:
             profileName:
             profileDesc:
             socialMedia:
+            profileStyle:
+            desc:
+            stickerImg:
           children:
+            - $formkit: select
+              name: profileStyle
+              id: profileStyle
+              key: profileStyle
+              label: 样式
+              value: default
+              options:
+                - value: default
+                  label: 默认
+                - value: one
+                  label: 样式一
+            - $formkit: attachment
+              name: stickerImg
+              if: $get(profileStyle).value == 'one'
+              label: 贴纸
+              value: https://0206.ink/upload/omxo3N22290781690363822143.png
+              placeholder: 请输入图片地址
+            - $formkit: text
+              if: $get(profileStyle).value == 'one'
+              name: desc
+              value: "分享设计与科技生活"
+              label: 卡片名称下面的描述
             - $formkit: text
               name: helloText
               label: 作者打招呼
@@ -1063,6 +1088,41 @@ spec:
               label: 运营模式与责任地址
               placeholder: 请输入运营模式与责任地址
               value: /rss
+        - $formkit: group
+          name: share_right
+          label: 分享按钮
+          value:
+            mobile_edit:
+            weibo_edit:
+            copyurl_edit:
+          children:
+            - $formkit: radio
+              name: mobile_edit
+              help: 启用分享手机访问二维码
+              value: true
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: radio
+              name: weibo_edit
+              help: 启用分享到微博
+              value: true
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: radio
+              name: copyurl_edit
+              help: 启用复制链接
+              value: true
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
         - $formkit: group
           name: copyrights
           label: 版权声明
