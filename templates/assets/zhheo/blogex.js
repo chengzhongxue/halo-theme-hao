@@ -223,28 +223,40 @@ function showcopy() {
 // 早上好问好
 // 获取时间
 var getTimeState = () => {
-    // 获取当前时间
-    var timeNow = new Date();
-    // 获取当前小时
-    var hours = timeNow.getHours();
-    // 设置默认文字
-    var text = ``;
-    // 判断当前时间段
-    if (hours >= 0 && hours <= 5) {
-        text = `晚安`;
-    } else if (hours > 5 && hours <= 10) {
-        text = `早上好`;
-    } else if (hours > 10 && hours <= 14) {
-        text = `中午好`;
-    } else if (hours > 14 && hours <= 18) {
-        text = `下午好`;
-    } else if (hours > 18 && hours <= 24) {
-        text = `晚上好`;
+
+    if (GLOBAL_CONFIG.profileStyle == 'default') {
+        // 获取当前时间
+        var timeNow = new Date();
+        // 获取当前小时
+        var hours = timeNow.getHours();
+        // 设置默认文字
+        var text = ``;
+        // 判断当前时间段
+        if (hours >= 0 && hours <= 5) {
+            text = `晚安`;
+        } else if (hours > 5 && hours <= 10) {
+            text = `早上好`;
+        } else if (hours > 10 && hours <= 14) {
+            text = `中午好`;
+        } else if (hours > 14 && hours <= 18) {
+            text = `下午好`;
+        } else if (hours > 18 && hours <= 24) {
+            text = `晚上好`;
+        }
+        //    console.log(`hours >>>>>`, hours);
+        //    console.log(`text >>>>`, text);
+        // 返回当前时间段对应的状态
+        return text;
+
     }
-    //    console.log(`hours >>>>>`, hours);
-    //    console.log(`text >>>>`, text);
-    // 返回当前时间段对应的状态
-    return text;
+
+    if (GLOBAL_CONFIG.profileStyle == 'one') {
+        var e = (new Date).getHours()
+            , t = "";
+        return e >= 0 && e <= 5 ? t = "睡个好觉，保证精力充沛" : e > 5 && e <= 10 ? t = "一日之计在于晨" : e > 10 && e <= 14 ? t = "吃饱了才有力气干活" : e > 14 && e <= 18 ? t = "集中精力，攻克难关" : e > 18 && e <= 24 && (t = "不要太劳累了，早睡更健康"),
+            t
+    }
+
 };
 
 function fly_to_top() {

@@ -305,3 +305,13 @@ img.post-copyright__author_img_front {
     background:var(--heo-card-bg);
 }
 
+.post-tools .post-tools-left .rewardLeftButton,.post-tools .post-tools-left .shareRight {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    margin: 10px
+}
+
