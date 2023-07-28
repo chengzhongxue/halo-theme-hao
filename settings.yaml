@@ -427,7 +427,7 @@ spec:
         - $formkit: group
           name: widgetss
           label: 侧边栏内容
-          help: 目前提供的小部件有：profile（站点资料）, wechat（微信）,friend-link（通讯录）, recent-posts（近期文章）, comments（最新评论）, categories（文章分类）, tags（文章标签）, stat（统计）, tags-stat（标签&归档&统计）。你可以随意组合或排序，以逗号隔开。
+          help: 目前提供的小部件有：profile（站点资料）, wechat（微信）,welcome（小板报）,music（音乐卡片）, friend-link（通讯录）, recent-posts（近期文章）, comments（最新评论）, categories（文章分类）, tags（文章标签）, stat（统计）, tags-stat（标签&归档&统计）。你可以随意组合或排序，以逗号隔开。
           value:
             indexWidgets:
             postWidgets:
@@ -623,6 +623,37 @@ spec:
               label: 纬度坐标
               help: 示例：22.582401
               placeholder: 请输入纬度坐标
+        - $formkit: group
+          name: music
+          label: 音乐卡片
+          help: 文档请看：https://github.com/zonemeen/netease-recent-profile
+          value:
+            key:
+          children:
+            - $formkit: url
+              name: musicUrl
+              label: 跳转地址
+              value: /music
+            - $formkit: textarea
+              name: lightMsimg
+              label: 浅色卡片
+              value: https://card-music.0206.ink/?id=59878659&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
+              help: https://card-music.0206.ink/?id=59878659&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
+            - $formkit: textarea
+              name: lightBackMsimg
+              label: 浅色翻页卡片
+              value: https://card-music.0206.ink/?id=59878659&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+              help: https://card-music.0206.ink/?id=59878659&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+            - $formkit: textarea
+              name: darkMsimg
+              label: 深色卡片
+              value: https://card-music.0206.ink/?id=59878659&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
+              help: https://card-music.0206.ink/?id=59878659&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
+            - $formkit: textarea
+              name: darkBackMsimg
+              label: 深色翻页卡片
+              value: https://card-music.0206.ink/?id=59878659&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+              help: https://card-music.0206.ink/?id=59878659&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
         - $formkit: number
           name: recentPost
           label: 最新文章
