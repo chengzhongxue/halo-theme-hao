@@ -191,3 +191,189 @@ ul li {
 
 
 
+
+
+/* 音乐天地 */
+#aside-content .item-headline-music {
+    padding-bottom: 0;
+    margin-left: 8px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1em;
+    font-weight: 700;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center
+}
+
+#aside-content .item-headline-music span {
+    margin-left: 6px
+}
+
+#flip-wrapper-card {
+    -webkit-perspective: 1000;
+    perspective: 1000
+}
+
+#flip-wrapper-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1
+}
+
+#flip-music {
+    width: 100%;
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transition: cubic-bezier(0, 0, 0, 1.29) .3s
+}
+
+#aside-content #flip-wrapper-card #flip-music .msimg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-size: 100%
+}
+
+#aside-content #flip-wrapper-card #flip-music .back.msimg {
+    display: block;
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    box-sizing: border-box;
+    background-size: 100%
+}
+
+#flip-wrapper-card:hover #flip-music {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg)
+}
+
+@media screen and (max-width: 768px) {
+    .card-music {
+        height: 520px !important
+    }
+}
+
+.card-music {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 0 !important;
+    cursor: pointer;
+    border: none !important;
+    height: 405px;
+    margin-top: 0 !important;
+    background: 0 0 !important
+}
+
+/* 音乐天地 */
+
+
+/* 小板报 */
+#welcome-info {
+    overflow: hidden;
+    border-radius: 14px;
+    --hao-welcome-color: #49B1F5;
+    --hao-ip-color: #49B1F5;
+    --hao-gl-size: 16px !important;
+}
+#aside-content .card-announcement .item-headline i{
+    color: red;
+}
+/* 小板报 */
+
+
+/* Steam卡片 */
+#aside-content .item-headline-steam {
+    padding-bottom: 0;
+    margin-left: 8px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1em;
+    font-weight: 700;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center
+}
+
+#aside-content .item-headline-steam span {
+    margin-left: 6px
+}
+
+
+#flip-steam {
+    width: 100%;
+    height: 100%;
+    transition: transform .3s
+}
+
+#flip-steam::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background: linear-gradient(to right,transparent,#fff,transparent);
+    transform: translateX(-200%);
+    transition: transform .5s linear;
+    z-index: 1
+}
+
+#flip-steam:hover::before {
+    transform: translateX(100%) skewX(-60deg)
+}
+
+#aside-content #flip-wrapper-card #flip-steam .stimg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    z-index: 0
+}
+
+#aside-content #flip-wrapper-card #flip-steam .back.stimg {
+    display: none
+}
+
+@media screen and (max-width: 768px) {
+    .card-steam {
+        height:130px!important
+    }
+}
+
+.card-steam {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 0!important;
+    cursor: pointer;
+    border: none!important;
+    height: 105px;
+    margin-top: 0!important;
+    background: 0 0!important
+}
+
+/* Steam卡片 */

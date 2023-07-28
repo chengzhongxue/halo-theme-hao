@@ -192,9 +192,16 @@ var heo = {
 
     //作者卡片问好
     sayhi: function () {
-        if (document.querySelector('#author-info__sayhi')) {
-            document.getElementById("author-info__sayhi").innerHTML = getTimeState() + "！我是";
+        if (GLOBAL_CONFIG.profileStyle == 'default') {
+            if (document.querySelector('#author-info__sayhi')) {
+                document.getElementById("author-info__sayhi").innerHTML = getTimeState() + "！我是";
+            }
+        }else{
+            if (document.querySelector('#author-info__sayhi')) {
+                document.getElementById("author-info__sayhi").innerHTML = getTimeState();
+            }
         }
+
     },
 
     // 添加标签
