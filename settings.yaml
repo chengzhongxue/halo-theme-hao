@@ -603,6 +603,26 @@ spec:
               name: wechatImgBack
               placeholder: 公众号背面图
               help: 图片可以从公众号后台下载物料或者自制
+        - $formkit: group
+          name: welcome
+          label: 小板报
+          value:
+            key:
+          children:
+            - $formkit: text
+              name: key
+              label: 腾讯位置服务Key
+              help: 申请地址：https://lbs.qq.com/dev/console/application/mine
+            - $formkit: text
+              name: locationLng
+              label: 经度坐标
+              help: 可访问 https://lbs.qq.com/getPoint 拾取坐标，示例：113.215456
+              placeholder: 请输入经度坐标
+            - $formkit: text
+              name: locationLat
+              label: 纬度坐标
+              help: 示例：22.582401
+              placeholder: 请输入纬度坐标
         - $formkit: number
           name: recentPost
           label: 最新文章
