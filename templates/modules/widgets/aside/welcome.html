@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="card-widget card-announcement" th:fragment="welcome">
+    <div class="item-headline"><i class="haofont hao-icon-bullhorn"
+                                  style="font-size: 0.9rem;font-weight: 700;"></i><span>小板报</span></div>
+
+    <div id="welcome-info"></div>
+
+    <style>
+        #welcome-info {
+            overflow: hidden;
+            border-radius: 14px;
+            --hao-welcome-color: #49B1F5;
+            --hao-ip-color: #49B1F5;
+            --hao-gl-size: 16px !important;
+        }
+        #aside-content .card-announcement .item-headline i{
+            color: red;
+        }
+    </style>
+
+</div>
+
+
+</html>
