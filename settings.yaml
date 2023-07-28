@@ -427,7 +427,7 @@ spec:
         - $formkit: group
           name: widgetss
           label: 侧边栏内容
-          help: 目前提供的小部件有：profile（站点资料）, wechat（微信）,welcome（小板报）,music（音乐卡片）, friend-link（通讯录）, recent-posts（近期文章）, comments（最新评论）, categories（文章分类）, tags（文章标签）, stat（统计）, tags-stat（标签&归档&统计）。你可以随意组合或排序，以逗号隔开。
+          help: 目前提供的小部件有：profile（站点资料）, wechat（微信）,welcome（小板报）, steam（Steam卡片）,music（音乐卡片）, friend-link（通讯录）, recent-posts（近期文章）, comments（最新评论）, categories（文章分类）, tags（文章标签）, stat（统计）, tags-stat（标签&归档&统计）。你可以随意组合或排序，以逗号隔开。
           value:
             indexWidgets:
             postWidgets:
@@ -654,6 +654,22 @@ spec:
               label: 深色翻页卡片
               value: https://card-music.0206.ink/?id=59878659&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
               help: https://card-music.0206.ink/?id=59878659&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+        - $formkit: group
+          name: steam
+          label: Steam卡片
+          help: 文档请看：https://github.com/yuyinws/steam-card
+          value:
+            key:
+          children:
+            - $formkit: url
+              name: steamUrl
+              label: 跳转地址
+              value: /
+            - $formkit: textarea
+              name: cardSteam
+              label: 卡片
+              value: https://card-steam.0206.ink/card/76561198144527983/gradient1,badge,bg-game-1111460,games,screenshots,badges
+              help: https://card-steam.0206.ink/card/76561198144527983/gradient1,badge,bg-game-1111460,games,screenshots,badges
         - $formkit: number
           name: recentPost
           label: 最新文章
