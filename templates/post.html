@@ -122,9 +122,9 @@
                 <article th:class="'post-content  '+${ theme.config.code.enable_line || pluginFinder.available('PluginPrismJS') ? 'line-numbers' : ''}" id="article-container" th:utext="${post.content.content}">
                 </article>
 
-
                 <!-- 文章ai摘要 -->
-                <script th:replace="~{modules/postHeadAiDescription :: postHeadAiDescription}"></script>
+                <script  data-pjax th:if="${theme.config.post.aiDescription.aiDescriptionEnable}"
+                         th:src="${assets_link + '/libs/gpt/post-ai.js'}"></script>
 
                 <!-- 版权声明 -->
                 <th:block th:replace="~{modules/post/copyright :: copyright}"></th:block>

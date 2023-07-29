@@ -95,7 +95,10 @@
     <script data-pjax  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.js"></script>
 
     <!-- 评论弹幕 -->
-    <script th:replace="~{modules/comment/commentBarrage :: commentBarrage}"></script>
+    <script  th:if="${theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') &&
+        not #strings.isEmpty(theme.config.comments.twikoos.envId) &&
+        not #strings.isEmpty(theme.config.comments.twikoos.accessToken)}"  data-pjax=""
+             th:src="${assets_link + '/libs/twikoo/commentBarrage.js'}"></script>
 
     <!-- Tocbot 目录生成 start -->
     <th:block th:replace="~{modules/common/toc-bot :: toc-bot}"></th:block>
