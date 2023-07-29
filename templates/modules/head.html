@@ -217,12 +217,28 @@
                     css: 'https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css'
                 },
                 twikoo:{
-                    js: '/themes/theme-hao/assets/libs/twikoo/twikoo.all.min.js'
+                    js: '/themes/theme-hao/assets/libs/twikoo/twikoo.all.min.js',
+                    maxBarrage: [[${ theme.config.comments.twikoos.maxBarrage }]],
+                    barrageTime: [[${ theme.config.comments.twikoos.barrageTime }]],
+                    twikooUrl: "[(${theme.config.comments.twikoos.envId})]",
+                    accessToken: "[(${theme.config.comments.twikoos.accessToken})]",
+                    mailMd5: "[(${theme.config.comments.twikoos.mailMd5})]",
                 },
                 welcome:{
                     key:"[(${theme.config.sidebar.welcome.key})]",
                     locationLng: [[${theme.config.sidebar.welcome.locationLng}]],
                     locationLat: [[${theme.config.sidebar.welcome.locationLat}]],
+                },
+                postAi:{
+                    ai : '[(${post.status.excerpt})]',
+                    randomNum : [[${theme.config.post.aiDescription.randomNum}]], //按钮最大的随机次数，也就是一篇文章最大随机出来几种
+                    basicWordCount : [[${theme.config.post.aiDescription.basicWordCount}]], // 最低获取字符数, 最小1000, 最大1999
+                    btnLink : "[(${theme.config.post.aiDescription.btnLink})]",
+                    gptName : "[(${theme.config.post.aiDescription.gptName})]",
+                    modeName : [[${theme.config.post.aiDescription.mode}]],
+                    switchBtn : [[${theme.config.post.aiDescription.switchBtn}]],  //# 可以配置是否显示切换按钮 以切换tianli/local
+                    keys : "[(${theme.config.post.aiDescription.key})]",
+                    Referers : "[(${theme.config.post.aiDescription.Referer})]",
                 }
             },
             date_suffix: {
