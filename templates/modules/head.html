@@ -204,8 +204,9 @@
             assetsLink: [[${assets_link}]],
             profileStyle: [[${theme.config.sidebar.profile.profileStyle}]],
             source: {
-                links:{
-                    randomfriendurl: [[${theme.config.link.randomfriendurl}]],
+                links: {
+                    linksUrl: [[${ theme.config.link.linksUrl }]],
+                    linksData: []
                 },
                 jQuery: 'https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js',
                 justifiedGallery: {
@@ -325,6 +326,16 @@
 
 
 
+    </script>
+
+
+    <script data-pjax th:inline="javascript" th:if="${pluginFinder.available('PluginLinks')}">
+        var groupData = [[${ linkFinder.groupBy() }]]
+        if (groupData.length > 0) {
+            GLOBAL_CONFIG.source.links.linksData = groupData.flatMap((item) => {
+                return item.links
+            })
+        }
     </script>
 
 

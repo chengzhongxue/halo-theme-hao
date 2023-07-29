@@ -370,29 +370,30 @@ document.addEventListener('scroll', btf.throttle(function () {
 
 //友链随机传送
 function travelling() {
-    var fetchUrl = GLOBAL_CONFIG.source.links.randomfriendurl
-    fetch(fetchUrl)
-        .then(res => res.json())
-        .then(json => {
-            var name = json.name;
-            var link = json.link;
-            var msg = "点击前往按钮进入随机一个友链，不保证跳转网站的安全性和可用性。本次随机到的是本站友链：「" + name + "」";
-            const style = document.createElement('style');
-            document.head.appendChild(style);
-            const styleSheet = style.sheet;
-            styleSheet.insertRule(`:root{--heo-snackbar-time: 8000ms!important}`, styleSheet.cssRules.length);
-            Snackbar.show({
-                text: msg,
-                duration: 8000,
-                pos: 'top-center',
-                actionText: '前往',
-                onActionClick: function (element) {
-                    //Set opacity of element to 0 to close Snackbar
-                    $(element).css('opacity', 0);
-                    window.open(link, '_blank');
-                }
-            });
-        })
+    const links = GLOBAL_CONFIG.source.links.linksData
+    var name = ''
+    var link = ''
+    if(links.length>0){
+        var randomFriendLinks = getArrayItems(links, 1);
+        name = randomFriendLinks[0].spec.displayName;
+        link = randomFriendLinks[0].spec.url;
+    }
+    var msg = "点击前往按钮进入随机一个友链，不保证跳转网站的安全性和可用性。本次随机到的是本站友链：「" + name + "」";
+    const style = document.createElement('style');
+    document.head.appendChild(style);
+    const styleSheet = style.sheet;
+    styleSheet.insertRule(`:root{--heo-snackbar-time: 8000ms!important}`, styleSheet.cssRules.length);
+    Snackbar.show({
+        text: msg,
+        duration: 8000,
+        pos: 'top-center',
+        actionText: '前往',
+        onActionClick: function (element) {
+            //Set opacity of element to 0 to close Snackbar
+            $(element).css('opacity', 0);
+            window.open(link, '_blank');
+        }
+    });
 }
 
 //前往黑洞
@@ -804,7 +805,7 @@ document.addEventListener('DOMContentLoaded', function () {
     heo.stopImgRightDrag()
     //页脚友联
     if(GLOBAL_CONFIG.isFriendLinksInFooter){
-        link.addFriendLinksInFooter()
+        heo.addFriendLinksInFooter()
     }
     heo.qrcodeCreate()
     heo.onlyHome()
