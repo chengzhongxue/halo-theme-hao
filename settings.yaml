@@ -1289,6 +1289,15 @@ spec:
           name: linksUrl
           value: "/links"
           label: 友链链接
+        - $formkit: radio
+          name: linksCanvas
+          label: 互动友链
+          value: false
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
 
     - group: fcircle
       label: 友链鱼塘
