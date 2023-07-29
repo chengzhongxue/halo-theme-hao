@@ -37,6 +37,9 @@
             </div>
         </div>
 
+        <!--互动友链-->
+        <th:block th:replace="~{macro/links-canvas :: links-canvas(${groups})}" />
+
         <!--钓鱼-->
         <th:block th:if="${not #lists.isEmpty(groups) && theme.config.fcircle.linksRandomFriendsEnable}">
             <div class="title-h2-a">
