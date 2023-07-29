@@ -109,9 +109,6 @@
     <!-- 动态标题 -->
     <script th:replace="~{modules/common/diytitle :: diytitle}"></script>
 
-    <!-- 公共js -->
-    <script th:replace="~{modules/common/common-script :: common-script}"></script>
-
     <div id="js-pjax"></div>
 
     <script th:if="${theme.config.envelope_comment.enable_danmu}" th:src="${assets_link + '/libs/twikoo/easy-Danmaku.js'}" id="Danmaku"></script>
@@ -230,7 +227,7 @@
     heo.initThemeColor();
     //页脚友联
     if(GLOBAL_CONFIG.isFriendLinksInFooter){
-        link.addFriendLinksInFooter()
+        heo.addFriendLinksInFooter()
     }
 
     //右下角 snackbar 弹窗

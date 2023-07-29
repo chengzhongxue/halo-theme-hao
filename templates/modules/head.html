@@ -170,7 +170,12 @@
     <script th:src="${assets_link + '/libs/countup/countup.js'}"></script>
 
     <!-- 小板报 -->
-    <script th:if="${not #strings.isEmpty(theme.config.sidebar.welcome.key)}" defer th:src="${assets_link + '/libs/welcome/welcome.js'}"></script>
+    <script defer th:if="${not #strings.isEmpty(theme.config.sidebar.welcome.key) &&
+        #strings.contains(theme.config.sidebar.widgetss.indexWidgets,'welcome') ||
+        #strings.contains(theme.config.sidebar.widgetss.postWidgets,'welcome') ||
+        #strings.contains(theme.config.sidebar.widgetss.tagWidgets,'welcome') ||
+        #strings.contains(theme.config.sidebar.widgetss.categoryWidgets,'welcome')}"
+            th:src="${assets_link + '/libs/welcome/welcome.js'}"></script>
 
     <!-- icon图标 -->
     <link rel="stylesheet" th:href="'https://npm.elemecdn.com/hao-theme-static@'+${theme.spec.version}+'/icon/iconfont.css'">
@@ -204,8 +209,9 @@
             assetsLink: [[${assets_link}]],
             profileStyle: [[${theme.config.sidebar.profile.profileStyle}]],
             source: {
-                links:{
-                    randomfriendurl: [[${theme.config.link.randomfriendurl}]],
+                links: {
+                    linksUrl: [[${ theme.config.link.linksUrl }]],
+                    linksData: []
                 },
                 jQuery: 'https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js',
                 justifiedGallery: {
@@ -325,6 +331,16 @@
 
 
 
+    </script>
+
+
+    <script data-pjax th:inline="javascript" th:if="${pluginFinder.available('PluginLinks')}">
+        var groupData = [[${ linkFinder.groupBy() }]]
+        if (groupData.length > 0) {
+            GLOBAL_CONFIG.source.links.linksData = groupData.flatMap((item) => {
+                return item.links
+            })
+        }
     </script>
 
 

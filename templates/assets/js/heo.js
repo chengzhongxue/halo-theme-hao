@@ -137,20 +137,16 @@ var heo = {
 
     // 页脚友链
     addFriendLinksInFooter: function () {
-        var fetchUrl = "https://moments.0206.ink/randomfriend?num=3"
-        fetch(fetchUrl)
-            .then(res => res.json())
-            .then(json => {
-                var randomFriendLinks = getArrayItems(json, 3);
-
-                var htmlText = '';
-                for (let i = 0; i < randomFriendLinks.length; ++i) {
-                    var item = randomFriendLinks[i]
-                    htmlText += `<a class='footer-item' href='${item.link}'  target="_blank" rel="noopener nofollow">${item.name}</a>`;
-                }
-                htmlText += `<a class='footer-item' href='/links'>更多</a>`
-                document.getElementById("friend-links-in-footer").innerHTML = htmlText;
-            })
+        const linksUrl = GLOBAL_CONFIG.source.links.linksUrl
+        const links = GLOBAL_CONFIG.source.links.linksData
+        var randomFriendLinks = getArrayItems(links, 3);
+        var htmlText = '';
+        for (let i = 0; i < randomFriendLinks.length; ++i) {
+            var item = randomFriendLinks[i]
+            htmlText += `<a class='footer-item' href='${item.spec.url}'  target="_blank" rel="noopener nofollow">${item.spec.displayName}</a>`;
+        }
+        htmlText += `<a class='footer-item' href='${linksUrl}'>更多</a>`
+        document.getElementById("friend-links-in-footer").innerHTML = htmlText;
     },
 
     //禁止图片右键单击
