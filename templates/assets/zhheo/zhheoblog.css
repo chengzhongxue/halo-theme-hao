@@ -2096,6 +2096,10 @@ blockquote footer cite::before {
     #aside-content .card-widget:not(#card-toc) {
         display: none;
     }
+    #aside-content .item-headline-music:not(#card-toc),
+    #aside-content .item-headline-steam:not(#card-toc){
+        display: none;
+    }
 }
 
 
