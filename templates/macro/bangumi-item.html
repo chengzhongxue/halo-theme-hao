@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="bangumi-item(spec)">
+    <div class="bangumi-item">
+        <div class="bangumi-picture">
+            <a th:href="${spec.cover}" data-fancybox="gallery" data-caption=""
+               th:data-thumb="${spec.cover}">
+                <img th:src="${spec.cover}" th:data-lazy-src="${spec.cover}"
+                     referrerpolicy="no-referrer" width="110"
+                     style="width:110px;margin:20px auto;" data-ll-status="loaded"
+                     class="entered loaded">
+            </a>
+        </div>
+        <div class="bangumi-info">
+            <div class="bangumi-title">
+                <a target="_blank" th:href="${spec.url}">[[${spec.title}]]</a>
+            </div>
+            <div class="bangumi-meta">
+                <span class="bangumi-info-items">
+                    <span class="bangumi-info-item">
+                        <span class="bangumi-info-total">[[${spec.totalCount}]]</span>
+                        <em class="bangumi-info-label-em">0</em>
+                    </span>
+                    <span class="bangumi-info-item bangumi-area">
+                        <span class="bangumi-info-label">[[${spec.type}]]</span>
+                        <em>[[${spec.area}]]</em>
+                    </span>
+                    <span class="bangumi-info-item bangumi-play">
+                        <span class="bangumi-info-label">总播放</span>
+                        <em>[[${spec.view}]]</em>
+                    </span>
+                    <span class="bangumi-info-item bangumi-follow">
+                        <span class="bangumi-info-label">追番人数</span>
+                        <em>[[${spec.follow}]]</em>
+                    </span>
+                    <span class="bangumi-info-item bangumi-coin">
+                        <span class="bangumi-info-label">硬币数</span>
+                        <em>[[${spec.coin}]]</em>
+                    </span>
+                    <span class="bangumi-info-item bangumi-danmaku">
+                        <span class="bangumi-info-label">弹幕总数</span>
+                        <em>[[${spec.danmaku}]]</em>
+                    </span>
+                    <span class="bangumi-info-item bangumi-info-item-score">
+                        <span class="bangumi-info-label">评分</span>
+                        <em>[[${spec.score}]]</em>
+                    </span>
+                </span>
+            </div>
+            <div class="bangumi-comments">
+                <p>[[${spec.des}]]</p>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+</html>
