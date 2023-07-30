@@ -15,6 +15,7 @@ spec:
         - $formkit: date
           name: siteStartTime
           label: 建站时间
+          validation: required
         - $formkit: text
           name: icp
           label: ICP 备案
