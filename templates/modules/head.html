@@ -178,7 +178,7 @@
             th:src="${assets_link + '/libs/welcome/welcome.js'}"></script>
 
     <!-- icon图标 -->
-    <link rel="stylesheet" th:href="'https://npm.elemecdn.com/hao-theme-static@'+${theme.spec.version}+'/icon/iconfont.css'">
+    <link rel="stylesheet" th:href="'https://npm.onmicrosoft.cn/hao-theme-static@'+${theme.spec.version}+'/icon/iconfont.css'">
 
 
     <!-- 代码块自动识别语言 -->
@@ -223,7 +223,7 @@
                     css: 'https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css'
                 },
                 twikoo:{
-                    js: '/themes/theme-hao/assets/libs/twikoo/twikoo.all.min.js',
+                    js: [[${assets_link}]]+'/libs/twikoo/twikoo.all.min.js',
                     maxBarrage: [[${ theme.config.comments.twikoos.maxBarrage }]],
                     barrageTime: [[${ theme.config.comments.twikoos.barrageTime }]],
                     twikooUrl: "[(${theme.config.comments.twikoos.envId})]",

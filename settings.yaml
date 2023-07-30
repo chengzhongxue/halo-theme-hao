@@ -2443,8 +2443,8 @@ spec:
               options:
                 - label: 本地
                   value: local
-                - label: elemecdn
-                  value: elemecdn
+                - label: onmicrosoft
+                  value: onmicrosoft
                 - label: 自定义
                   value: custom
             - $formkit: url
@@ -2452,8 +2452,8 @@ spec:
               if: "$get(use).value == 'custom'"
               label: cdn地址，外链地址
               validation: required
-              value: 'https://npm.elemecdn.com/hao-theme-static@1.1.5/templates/assets'
-              help: '默认为npmJs的elemecdn加速地址，如果你有自己的cdn地址（请确保链接下assets文件夹下主题静态资源文件），可以填写，否则请勿修改！ '
+              value: 'https://npm.onmicrosoft.cn/hao-theme-static@1.3.0/templates/assets'
+              help: '默认为npmJs的onmicrosoft加速地址，如果你有自己的cdn地址（请确保链接下assets文件夹下主题静态资源文件），可以填写，否则请勿修改！ '
         - $formkit: group
           name: diytitle
           label: 动态标题
