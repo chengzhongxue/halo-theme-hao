@@ -92,7 +92,7 @@
     <script th:src="${assets_link + '/libs/pjax/pjax.min.js'}"></script>
 
     <!-- swiper 在瞬间滚动时会使用 -->
-    <script data-pjax  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.js"></script>
+    <script data-pjax  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/6.6.2/swiper-bundle.min.js"></script>
 
     <!-- 评论弹幕 -->
     <script  th:if="${theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') &&
@@ -135,7 +135,9 @@
             window.removeEventListener('scroll', window.tocScrollFn)
 
             typeof preloader === 'object' && preloader.initLoading()
-
+              
+            heo.initIndexEssay() 
+              
             if (window.aplayers) {
                 for (let i = 0; i < window.aplayers.length; i++) {
                     if (!window.aplayers[i].options.fixed) {
