@@ -669,8 +669,8 @@ spec:
             - $formkit: textarea
               name: cardSteam
               label: 卡片
-              value: https://card-steam.0206.ink/card/xxxxxx/gradient1,badge,bg-game-1111460,games,screenshots,badges
-              help: https://card-steam.0206.ink/card/xxxxxx/gradient1,badge,bg-game-1111460,games,screenshots,badges
+              value: https://card.yuy1n.io/card/xxxxxx/gradient1,badge,bg-game-1111460,games,screenshots,badges
+              help: https://card.yuy1n.io/card/xxxxxx/gradient1,badge,bg-game-1111460,games,screenshots,badges
         - $formkit: number
           name: recentPost
           label: 最新文章
