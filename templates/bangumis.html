@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page')}"
+<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'bangumis')}"
       xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
@@ -518,11 +518,11 @@
                 </div>
                 <hr>
                 <!--/* 评论组件 */-->
-                <th:block th:replace="~{modules/comment :: comment(group = 'content.halo.run',
+                <th:block
+                        th:replace="~{modules/comment :: comment(group = 'content.halo.run',
                   kind = 'SinglePage',
-                  name = ${singlePage.metadata.name},
-                  allowComment = ${singlePage.spec.allowComment})}"/>
-
+                  name = 'bangumis',
+                  allowComment = true)}"/>
             </div>
 
 
