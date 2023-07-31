@@ -1233,7 +1233,6 @@ spec:
       formSchema:
         - $formkit: attachment
           name: backgroundImg
-          validation: url
           label: 背景图
           value: https://liuzhihang.com/upload/moments.png
           placeholder: 请输入图片地址
@@ -1294,8 +1293,7 @@ spec:
       formSchema:
         - $formkit: attachment
           name: backgroundImg
-          validation: url
-          label: 图片
+          label: 背景图
           value: https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/64624940e3623.jpeg
           placeholder: 请输入图片地址
         - $formkit: text
@@ -1349,8 +1347,7 @@ spec:
       formSchema:
         - $formkit: attachment
           name: backgroundImg
-          validation: url
-          label: 图片
+          label: 背景图
           value: https://liuzhihang.com/upload/moments.png
           placeholder: 请输入图片地址
         - $formkit: text
@@ -1372,8 +1369,7 @@ spec:
       formSchema:
         - $formkit: attachment
           name: backgroundImg
-          validation: url
-          label: 图片
+          label: 背景图
           value: https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/64624940e3623.jpeg
           placeholder: 请输入图片地址
         - $formkit: text
@@ -1430,8 +1426,7 @@ spec:
       formSchema:
         - $formkit: attachment
           name: backgroundImg
-          validation: url
-          label: 图片
+          label: 背景图
           value: https://liuzhihang.com/upload/moments.png
           placeholder: 请输入图片地址
         - $formkit: text
