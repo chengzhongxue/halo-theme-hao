@@ -57,6 +57,8 @@
 
 ## 🛠 安装
 
+> **安装后请到主题设置页面，将每个设置项都保存一下！！！**
+
 ### 🚗 自动安装
 
 1. 点击 [此链接](https://halo.run/store/apps/app-MgZJX) 进入 Halo 官方应用市场，找到本主题
@@ -89,10 +91,10 @@
 - 搜索功能 [plugin-search-widget](https://github.com/halo-sigs/plugin-search-widget/releases)
 - 友链页面 [plugin-links](https://github.com/chengzhongxue/plugin-links)(魔改版本) 
 - 瞬间页面 [plugin-moments](https://github.com/halo-sigs/plugin-moments) 
-- 图片灯箱 [plugin-lightgallery](https://github.com/halo-sigs/plugin-lightgallery)
 - 代码高亮 [plugin-prismjs](https://github.com/liuzhihang/plugin-prismjs)
-- 文章目录 [plugin-tocbot](https://github.com/liuzhihang/plugin-tocbot)
 - 图片懒加载 [plugin-lazyload](https://github.com/liuzhihang/plugin-lazyload)
+- 追番插件 [plugin-bilibili-bangumi](https://githubfast.com/Roozenlz/plugin-bilibili-bangumi)
+- 图库插件 [plugin-photos](https://github.com/chengzhongxue/plugin-photos)(魔改版本)
 
 > 更多插件请参见：https://github.com/halo-sigs/awesome-halo
 
