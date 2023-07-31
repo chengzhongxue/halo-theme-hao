@@ -33,10 +33,6 @@ spec:
         description: 待办清单页面
         screenshot:
         file: todolist.html
-      - name: 追番页面模版
-        description: 追番页面
-        screenshot:
-        file: bangumis.html
       - name: 我的装备页面模版
         description: 我的装备页面
         screenshot:
