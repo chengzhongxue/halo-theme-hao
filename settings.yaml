@@ -638,23 +638,23 @@ spec:
             - $formkit: textarea
               name: lightMsimg
               label: 浅色卡片
-              value: https://card-music.0206.ink/?id=59878659&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
-              help: https://card-music.0206.ink/?id=59878659&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
+              value: https://card-music.0206.ink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
+              help: https://card-music.0206.ink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
             - $formkit: textarea
               name: lightBackMsimg
               label: 浅色翻页卡片
-              value: https://card-music.0206.ink/?id=59878659&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
-              help: https://card-music.0206.ink/?id=59878659&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+              value: https://card-music.0206.ink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+              help: https://card-music.0206.ink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
             - $formkit: textarea
               name: darkMsimg
               label: 深色卡片
-              value: https://card-music.0206.ink/?id=59878659&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
-              help: https://card-music.0206.ink/?id=59878659&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
+              value: https://card-music.0206.ink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
+              help: https://card-music.0206.ink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
             - $formkit: textarea
               name: darkBackMsimg
               label: 深色翻页卡片
-              value: https://card-music.0206.ink/?id=59878659&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
-              help: https://card-music.0206.ink/?id=59878659&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+              value: https://card-music.0206.ink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+              help: https://card-music.0206.ink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
         - $formkit: group
           name: steam
           label: Steam卡片
@@ -669,8 +669,8 @@ spec:
             - $formkit: textarea
               name: cardSteam
               label: 卡片
-              value: https://card-steam.0206.ink/card/76561198144527983/gradient1,badge,bg-game-1111460,games,screenshots,badges
-              help: https://card-steam.0206.ink/card/76561198144527983/gradient1,badge,bg-game-1111460,games,screenshots,badges
+              value: https://card-steam.0206.ink/card/xxxxxx/gradient1,badge,bg-game-1111460,games,screenshots,badges
+              help: https://card-steam.0206.ink/card/xxxxxx/gradient1,badge,bg-game-1111460,games,screenshots,badges
         - $formkit: number
           name: recentPost
           label: 最新文章
@@ -2367,7 +2367,7 @@ spec:
               name: id
               label: 音乐的id
               help: 歌单的id，可以从音乐歌单分享的链接中获取
-              value: "8668419170"
+              value: "xxxxxx"
             - $formkit: text
               name: server
               label: 服务
@@ -2377,7 +2377,7 @@ spec:
               name: all_playlist
               label: 播放列表地址
               help: 用于右键查看所有歌曲
-              value: https://y.qq.com/n/ryqq/playlist/8668419170
+              value: https://y.qq.com/n/ryqq/playlist/xxxxx
             - $formkit: url
               name: meting_api
               label: 音乐图片api
