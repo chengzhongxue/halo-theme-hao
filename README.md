@@ -93,7 +93,7 @@
 - 瞬间页面 [plugin-moments](https://github.com/halo-sigs/plugin-moments) 
 - 代码高亮 [plugin-prismjs](https://github.com/liuzhihang/plugin-prismjs)
 - 图片懒加载 [plugin-lazyload](https://github.com/liuzhihang/plugin-lazyload)
-- 追番插件 [plugin-bilibili-bangumi](https://githubfast.com/Roozenlz/plugin-bilibili-bangumi)
+- 追番插件 [plugin-bilibili-bangumi](https://github.com/Roozenlz/plugin-bilibili-bangumi)
 - 图库插件 [plugin-photos](https://github.com/chengzhongxue/plugin-photos)(魔改版本)
 
 > 更多插件请参见：https://github.com/halo-sigs/awesome-halo
