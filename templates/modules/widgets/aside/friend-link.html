@@ -8,9 +8,9 @@
          th:if="${pluginFinder.available('PluginLinks')}"
          th:with="groups = ${linkFinder.groupBy()}">
         <th:block th:each="group,iterStat : ${groups}">
-            <details th:if="${group.spec.displayStyle != 'deprecated' && not #lists.isEmpty(group.spec.displayStyle)}"
+            <details th:if="${group.metadata.annotations.displayStyle != 'deprecated' &&  not #strings.isEmpty(group.metadata.annotations.displayStyle)  && not #lists.isEmpty(group.links)}"
                      class="card-friend-class-name">
-                <summary class="card-friend-class-desc" th:title="${group.spec.description}">
+                <summary class="card-friend-class-desc" th:title="${group.metadata.annotations.description}">
                     <sapn>[[${group.spec.displayName}]]</sapn>
                     <sapn>[[${group.links.size}]]</sapn>
                 </summary>
@@ -25,9 +25,9 @@
                     </div>
                 </a>
             </details>
-            <details th:if="${#strings.equals(group.spec.displayStyle,'deprecated') && not #lists.isEmpty(group.spec.displayStyle)}"
+            <details th:if="${#strings.equals(group.metadata.annotations.displayStyle,'deprecated') && not #lists.isEmpty(group.links)}"
                      class="card-friend-class-name">
-                <summary class="card-friend-class-desc" th:title="${group.spec.description}">
+                <summary class="card-friend-class-desc" th:title="${group.metadata.annotations.description}">
                     <sapn>[[${group.spec.displayName}]]</sapn>
                     <sapn>[[${group.links.size}]]</sapn>
                 </summary>
