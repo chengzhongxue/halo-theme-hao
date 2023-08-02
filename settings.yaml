@@ -83,8 +83,10 @@ spec:
           value:
             enable_above:
             typed:
+            enable_above_video:
             index_img:
             phone_index_img:
+            index_video:
           children:
             - $formkit: radio
               name: enable_above
@@ -106,12 +108,30 @@ spec:
                   name: text
                   label: 文字
                   placeholder: 请输入文字
+            - $formkit: radio
+              if: $get(enable_above).value
+              name: enable_above_video
+              key: enable_above_video
+              id: enable_above_video
+              value: false
+              options:
+                - label: 显示视频
+                  value: true
+                - label: 显示图片
+                  value: false
+            - $formkit: attachment
+              name: index_video
+              if: $get(enable_above).value
+              label: 动态壁纸
+              placeholder: 请填写动态壁纸地址
+              value:
+              help: http(s)://xxx.mp4
             - $formkit: attachment
               name: index_img
               if: $get(enable_above).value
               label: PC背景图
               placeholder: 请填写背景图地址
-              value: https://rp.realxlfd.cloud/alist
+              value: https://www.dmoe.cc/random.php
             - $formkit: attachment
               name: phone_index_img
               if: $get(enable_above).value
