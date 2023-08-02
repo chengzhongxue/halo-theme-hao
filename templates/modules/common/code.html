@@ -19,7 +19,7 @@
 
     <!-- 自动识别语言 -->
     <th:block th:if="${theme.config.code.enable}">
-        <script th:src="${assets_link+'/libs/prism/highlight.min.js'}"></script>
+        <script th:src="${assets_link+'/libs/prism/highlight.min.js' + theme_version}"></script>
 
 
         <script>
