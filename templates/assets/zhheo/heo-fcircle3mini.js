@@ -154,7 +154,6 @@ function fetchNextArticle() {
     } else if (start = articleNum) {
         document.getElementById('cf-more').outerHTML = `<div id="cf-more" class="cf-new-add" onclick="loadNoArticle()"><small>一切皆有尽头！</small></div>`
     }
-    window.lazyLoadInstance.update()
 }
 
 // 显示下一页文章，从本地缓存 nextArticle 中获取
