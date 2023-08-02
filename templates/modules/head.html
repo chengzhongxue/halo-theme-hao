@@ -12,15 +12,15 @@
     <link rel="shortcut icon"
           th:href="@{${#strings.isEmpty(site.favicon) ? assets_link + '/images/hao-logo.jpg' : site.favicon}}"/>
 
-    <script th:src="${assets_link + '/js/heo.js'}"></script>
+    <script th:src="${assets_link + '/js/heo.js' + theme_version}"></script>
 
-    <script th:src="${assets_link + '/js/halo.js'}"></script>
+    <script th:src="${assets_link + '/js/halo.js' + theme_version}"></script>
 
-    <link rel="stylesheet" th:href="${assets_link + '/zhheo/zhheoblog.css'}">
+    <link rel="stylesheet" th:href="${assets_link + '/zhheo/zhheoblog.css' + theme_version}">
 
-    <link rel="stylesheet" th:href="${assets_link + '/zhheo/custom.css'}">
+    <link rel="stylesheet" th:href="${assets_link + '/zhheo/custom.css' + theme_version}">
 
-    <link rel="stylesheet" th:href="${assets_link + '/zhheo/commentBarrage.css'}">
+    <link rel="stylesheet" th:href="${assets_link + '/zhheo/commentBarrage.css' + theme_version}">
 
     <style th:if="${theme.config.other.scrollbarLinearGradientEnable}">
         *::-webkit-scrollbar-thumb {
@@ -33,7 +33,7 @@
     <link media="print"
           onload='this.media="all"'
           rel="stylesheet"
-          th:href="${assets_link + '/libs/iconfont/iconfont.css'}">
+          th:href="${assets_link + '/libs/iconfont/iconfont.css' + theme_version}">
 
     <!-- swiper 在瞬间滚动时会使用 -->
     <link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.css"/>
@@ -152,12 +152,12 @@
 
     <!-- 动态加载条 -->
     <script data-pace-options='{ "restartOnRequestAfter":false,"eventLag":false}'
-            th:src="${assets_link + '/libs/pace/pace.min.js'}"
+            th:src="${assets_link + '/libs/pace/pace.min.js' + theme_version}"
             th:if="${theme.config.other.loadingBoxs.loadProgressBar}">
     </script>
 
     <!-- 复制 https://github.com/zenorocha/clipboard.js -->
-    <script th:src="${assets_link + '/libs/clipboard/clipboard.min.js'}"></script>
+    <script th:src="${assets_link + '/libs/clipboard/clipboard.min.js' + theme_version}"></script>
 
     <!-- 全局图片预览-->
     <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
@@ -167,7 +167,7 @@
     <script src="https://map.qq.com/api/gljs?v=1.exp&key=YZOBZ-34HLF-K3OJV-JV6IN-OALJ5-7MBAC"></script>
 
     <!-- 关于统计-->
-    <script th:src="${assets_link + '/libs/countup/countup.js'}"></script>
+    <script th:src="${assets_link + '/libs/countup/countup.js' + theme_version}"></script>
 
     <!-- 小板报 -->
     <script defer th:if="${not #strings.isEmpty(theme.config.sidebar.welcome.key) &&
@@ -175,7 +175,7 @@
         #strings.contains(theme.config.sidebar.widgetss.postWidgets,'welcome') ||
         #strings.contains(theme.config.sidebar.widgetss.tagWidgets,'welcome') ||
         #strings.contains(theme.config.sidebar.widgetss.categoryWidgets,'welcome')}"
-            th:src="${assets_link + '/libs/welcome/welcome.js'}"></script>
+            th:src="${assets_link + '/libs/welcome/welcome.js' + theme_version}"></script>
 
     <!-- icon图标 -->
     <link rel="stylesheet" th:href="'https://npm.onmicrosoft.cn/hao-theme-static@'+${theme.spec.version}+'/icon/iconfont.css'">
@@ -223,7 +223,7 @@
                     css: 'https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css'
                 },
                 twikoo:{
-                    js: [[${assets_link}]]+'/libs/twikoo/twikoo.all.min.js',
+                    js: [[${assets_link}]]+'/libs/twikoo/twikoo.all.min.js' + [[${theme_version}]],
                     maxBarrage: [[${ theme.config.comments.twikoos.maxBarrage }]],
                     barrageTime: [[${ theme.config.comments.twikoos.barrageTime }]],
                     twikooUrl: "[(${theme.config.comments.twikoos.envId})]",

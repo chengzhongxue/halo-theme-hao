@@ -121,20 +121,20 @@ spec:
                   value: false
             - $formkit: attachment
               name: index_video
-              if: $get(enable_above).value
+              if: $get(enable_above).value  &&  $get(enable_above_video).value
               label: 动态壁纸
               placeholder: 请填写动态壁纸地址
               value:
               help: http(s)://xxx.mp4
             - $formkit: attachment
               name: index_img
-              if: $get(enable_above).value
+              if: $get(enable_above).value  &&  $get(enable_above_video).value == false
               label: PC背景图
               placeholder: 请填写背景图地址
               value: https://www.dmoe.cc/random.php
             - $formkit: attachment
               name: phone_index_img
-              if: $get(enable_above).value
+              if: $get(enable_above).value  &&  $get(enable_above_video).value == false
               label: 移动端背景图
               placeholder: 请填写移动端背景图地址
               value: https://imgapi.kouseki.cn/random?sort=mp
