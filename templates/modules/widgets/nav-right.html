@@ -20,6 +20,14 @@
         </a>
     </div>
 
+    <!-- 切换模式 -->
+    <div class="nav-button" th:if="${theme.config.nav.right.darkMode}">
+        <a class="console_switchbutton" href="javascript:void(0);"  onclick="rm.switchDarkMode()" rel="external nofollow"
+           title="切换模式 - 日夜交替，黑白互换。">
+            <i class="haofont hao-icon-circle-half-stroke" style="font-size: 1rem; font-weight: 700;"></i>
+        </a>
+    </div>
+
     <!-- 搜索使用搜索插件 -->
     <div class="nav-button" id="search-button" th:if="${pluginFinder.available('PluginSearchWidget')}">
         <a class="site-page social-icon search" href="javascript:SearchWidget.open();" rel="external nofollow"
@@ -27,14 +35,6 @@
             <i class="haofont hao-icon-magnifying-glass" style="font-size: 1rem; font-weight: 700;"></i>
         </a>
     </div>
-
-    <!-- 切换模式 -->
-    <!-- <div class="nav-button" th:if="${theme.config.nav.enableChangeColorScheme}">
-        <a class="console_switchbutton" href="javascript:void(0);"  onclick="rm.switchDarkMode()" rel="external nofollow"
-           title="切换模式 - 日夜交替，黑白互换。">
-           <i class="haofont hao-icon-circle-half-stroke" style="font-size: 1rem; font-weight: 700;"></i>
-        </a>
-    </div> -->
 
     <div class="nav-button" id="nav-console">
         <a class="console_switchbutton" href="javascript:void(0);"

@@ -73,6 +73,15 @@ spec:
                   value: true
                 - label: 关闭
                   value: false
+            - $formkit: radio
+              name: darkMode
+              label: 切换模式
+              value: true
+              options:
+                - label: 打开
+                  value: true
+                - label: 关闭
+                  value: false
 
     - group: top
       label: 顶部
@@ -121,6 +130,8 @@ spec:
                   value: false
             - $formkit: attachment
               name: index_video
+              key: index_video
+              id: index_video
               if: $get(enable_above).value  &&  $get(enable_above_video).value
               label: 动态壁纸
               placeholder: 请填写动态壁纸地址
