@@ -110,6 +110,9 @@
     <!-- 动态标题 -->
     <script th:replace="~{modules/common/diytitle :: diytitle}"></script>
 
+    <!--官方评论插件js-->
+    <script th:if="${pluginFinder.available('PluginCommentWidget')}" src="/plugins/PluginCommentWidget/assets/static/comment-widget.iife.js"></script>
+
     <div id="js-pjax"></div>
 
     <script th:if="${theme.config.envelope_comment.enable_danmu}" th:src="${assets_link + '/libs/twikoo/easy-Danmaku.js' + theme_version}" id="Danmaku"></script>
