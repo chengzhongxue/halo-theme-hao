@@ -4,9 +4,18 @@
 <th:block th:fragment="index-img">
     <th:block th:if="${theme.config.top.above.enable_above}">
         <div class="pl-container">
-            <div class="pl-img pl-blur pl-visible"></div>
-            <div class="pl-img pl-visible"></div>
-            <video class="video"></video>
+            <th:block th:if="!${theme.config.top.above.enable_above_video}">
+                <div class="pl-img pl-blur pl-visible"></div>
+                <div class="pl-img pl-visible"></div>
+                <video class="video"></video>
+            </th:block>
+            <th:block th:if="${theme.config.top.above.enable_above_video}">
+                <video class="index-video" id="index-video" autoplay=""
+                       th:src="${theme.config.top.above.index_video}" loop="" muted="" playsinline=""
+                       webkit-playsinline=""
+                       style="display:block;object-fit:cover;width:100%;height:100%;pointer-events:none;">
+                </video>
+            </th:block>
         </div>
 
         <div id="site-info">
@@ -236,7 +245,7 @@
                 fetch("https://v1.hitokoto.cn").then((t => t.json())).then((t => {
                     {
                         const e = "出自 " + t.from;
-                        const n = [[${theme.config.top.above.typed}]].map((item)=>{
+                        const n = [[${theme.config.top.above.typed}]].map((item) => {
                             return item.realNode.text;
                         });
                         n.unshift(t.hitokoto, e), window.typed = new Typed("#subtitle", {
