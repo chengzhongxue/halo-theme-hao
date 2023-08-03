@@ -242,23 +242,39 @@
         </style>
         <script th:inline="javascript">
             function subtitleType() {
-                fetch("https://v1.hitokoto.cn").then((t => t.json())).then((t => {
-                    {
-                        const e = "出自 " + t.from;
-                        const n = [[${theme.config.top.above.typed}]].map((item) => {
-                            return item.realNode.text;
-                        });
-                        n.unshift(t.hitokoto, e), window.typed = new Typed("#subtitle", {
-                            strings: n,
-                            startDelay: 300,
-                            typeSpeed: 100,
-                            loop: !0,
-                            backSpeed: 50
-                        })
-                    }
-                }))
+                if([[${theme.config.top.above.enable_typed_random}]]){
+                    fetch("https://v1.hitokoto.cn").then((t => t.json())).then((t => {
+                        {
+                            const e = "出自 " + t.from;
+                            const n = [[${theme.config.top.above.typed}]].map((item) => {
+                                return item.realNode.text;
+                            });
+                            n.push(t.hitokoto, e), window.typed = new Typed("#subtitle", {
+                                strings: n,
+                                startDelay: 300,
+                                typeSpeed: 100,
+                                loop: !0,
+                                backSpeed: 50
+                            })
+                        }
+                    }))
+                }else{
+                    const n = [[${theme.config.top.above.typed}]].map((item) => {
+                        return item.realNode.text;
+                    });
+                    window.typed = new Typed("#subtitle", {
+                        strings: n,
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: !0,
+                        backSpeed: 50
+                    })
+                }
             }
-            "function" == typeof Typed ? subtitleType() : getScript("https://npm.elemecdn.com/typed.js@2.0.12/lib/typed.min.js").then(subtitleType)
+            // 防止加载文字太短时第一个自定义文字显示不出来
+            setTimeout(()=>{
+                "function" == typeof Typed ? subtitleType() : getScript("https://npm.elemecdn.com/typed.js@2.0.12/lib/typed.min.js").then(subtitleType)
+            },1800)
         </script>
     </th:block>
 </th:block>

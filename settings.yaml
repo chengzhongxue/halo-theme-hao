@@ -92,6 +92,7 @@ spec:
           value:
             enable_above:
             typed:
+            enable_typed_random:
             enable_above_video:
             index_img:
             phone_index_img:
@@ -115,10 +116,24 @@ spec:
               children:
                 - $formkit: text
                   name: text
-                  label: 文字
-                  placeholder: 请输入文字
+                  label: 自定义文字
+                  placeholder: 请输入自定义文字
+            - $formkit: radio
+              label: 随机文字
+              if: $get(enable_above).value
+              name: enable_typed_random
+              key: enable_typed_random
+              id: enable_typed_random
+              value: false
+              help: 如果配置了自定义文字，优先展示自定文字
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
             - $formkit: radio
               if: $get(enable_above).value
+              label: 背景模式
               name: enable_above_video
               key: enable_above_video
               id: enable_above_video
