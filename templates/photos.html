@@ -13,11 +13,14 @@
             <div id="page">
                 <th:block th:each="group : ${photoFinder.groupBy()}">
 
-                    <th:block th:if="${#strings.equals(group.metadata.name, param.photo_group_name)}">
-                        <th:div  th:replace="~{macro/author-content :: author-content(background = ${group.spec.background},
+
+                    <th:block th:if="${#strings.equals(group.metadata.name, param.photo_group_name)}"
+                              th:with="description = ${#annotations.get(group, 'description')},
+                         background = ${#annotations.get(group, 'background')}">
+                        <th:div  th:replace="~{macro/author-content :: author-content(background = ${background},
                         smallTitle = '相册集',
                         bigTitle = ${group.spec.displayName},
-                        detail = ${group.spec.description},
+                        detail = ${description},
                         buttonUrl = '',
                         buttonTitle = '')}" />
                     </th:block>

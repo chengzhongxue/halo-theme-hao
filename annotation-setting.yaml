@@ -58,3 +58,24 @@ spec:
       name: "labelColor"
       value: "#425AEF"
       label: "标签颜色"
+
+---
+
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-setting-
+spec:
+  targetRef:
+    group: "core.halo.run"
+    kind: PhotoGroup
+  formSchema:
+    - $formkit: "attachment"
+      name: "cover"
+      label: "分组图片"
+    - $formkit: "attachment"
+      name: "background"
+      label: "分组顶部 banner 图片"
+    - $formkit: "textarea"
+      name: "description"
+      label: "分组描述"
