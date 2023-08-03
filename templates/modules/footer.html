@@ -103,13 +103,7 @@
         <div class="copyright" th:if="${#strings.isEmpty(theme.config.basics.siteStartTime)}">
             ©[[${#dates.format(new java.util.Date(), 'yyyy')}]] By [[${site.title}]]
         </div>
-        <div th:if="${theme.config.footer.footerContent.style_one.runtime_enable}" id="workboard">
-            <img class="workSituationImg boardsign"
-                 th:src="${theme.config.footer.footerContent.style_one.work_img}"
-                 th:alt="${theme.config.footer.footerContent.style_one.work_description}"
-                 th:title="${theme.config.footer.footerContent.style_one.work_description}" />
-            <div id="runtimeTextTip"></div>
-        </div>
+        <div th:if="${theme.config.footer.footerContent.style_one.runtime_enable}" id="workboard"></div>
         <p id="ghbdages"
            th:with="bdageitem = ${theme.config.footer.footerContent.style_one.bdageitem}">
             <a class="github-badge" th:each="data : ${bdageitem}" target="_blank"
