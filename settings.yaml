@@ -854,7 +854,6 @@ spec:
                       value: vertical
                     - label: 水平横向
                       value: horizontal
-                  help: 小于 0 则展示全部分类
                 - $formkit: radio
                   name: full_width_responsive
                   id: full_width_responsive
