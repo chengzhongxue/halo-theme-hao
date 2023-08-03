@@ -23,11 +23,11 @@
                     <div class="card-album">
                         <th:block th:each="group : ${photoFinder.groupBy()}">
                             <div class="card" th:onclick="go([[${group.metadata.name}]])">
-                                <img class="card_cover entered loaded"
-                                     th:src="${group.spec.cover}">
+                                <img  class="card_cover entered loaded"
+                                      th:src="${#annotations.get(group, 'cover')}">
                                 <div class="card__content">
                                     <p class="card__category" th:text="${group.spec.displayName}"></p>
-                                    <h3 class="card__heading" th:text="${group.spec.description}"></h3>
+                                    <h3 class="card__heading" th:text="${#annotations.get(group, 'description')}"></h3>
                                 </div>
                             </div>
                         </th:block>
