@@ -74,18 +74,20 @@
                     [[${group.spec.displayName}]] ([[${group.links.size}]])
                 </h2>
 
-                <div class="flink-desc">[[${group.metadata.annotations.description}]]</div>
+                <div class="flink-desc" th:if="${not #strings.isEmpty(#annotations.get(group, 'description'))}">[[${#annotations.get(group, 'description')}]]</div>
 
                 <!-- 第一个，使用卡片展示 -->
-                <div th:if="${#strings.equals(group.metadata.annotations.displayStyle,'beautify') && not #lists.isEmpty(group.links)}"
+                <div th:if="${#strings.equals(#annotations.get(group, 'displayStyle'),'beautify') && not #lists.isEmpty(group.links)}"
                      class="site-card-group">
+                     
                     <div class="site-card" th:each="link : ${group.links}">
-                        <span th:if="${not #strings.isEmpty(link.metadata.annotations.label)}"
-                              th:style="'background-color:' + ${link.metadata.annotations.labelColor}"
-                              class="site-card-tag">[[${link.metadata.annotations.label}]]</span>
+                        <span th:if="${not #strings.isEmpty(#annotations.get(link, 'label'))}"
+                              th:style="'background-color:' + ${#annotations.get(link,'labelColor')}"
+                              class="site-card-tag">[[${#annotations.get(link, 'label')}]]</span>
+
                         <a class="img" target="_blank" th:href="${link.spec.url}" th:title="${link.spec.displayName}">
                             <img class="flink-avatar" style="pointer-events: none;" th:alt="${link.spec.displayName}"
-                                 th:src="@{${#strings.isEmpty(link.metadata.annotations.siteshot) ? link.spec.logo : link.metadata.annotations.siteshot}}">
+                                 th:src="@{${#strings.isEmpty(#annotations.get(link, 'siteshot')) ? link.spec.logo : #annotations.get(link,'siteshot') }}">
                         </a>
 
                         <a class="info cf-friends-link" target="_blank" th:href="${link.spec.url}"
@@ -106,11 +108,11 @@
                 </div>
 
                 <div class="flink-list"
-                     th:if="${#strings.equals(group.metadata.annotations.displayStyle,'default') && not #lists.isEmpty(group.links)}">
+                     th:if="${#strings.equals(#annotations.get(group, 'displayStyle'),'default') && not #lists.isEmpty(group.links)}">
                     <div class="flink-list-item" th:each="link : ${group.links}">
-                        <span th:if="${not #strings.isEmpty(link.metadata.annotations.label)}"
-                              th:style="'background-color:' + ${link.metadata.annotations.labelColor}"
-                              class="site-card-tag">[[${link.metadata.annotations.label}]]</span>
+                        <span th:if="${not #strings.isEmpty(#annotations.get(link, 'label'))}"
+                              th:style="'background-color:' + ${#annotations.get(link,'labelColor')}"
+                              class="site-card-tag">[[${#annotations.get(link, 'label')}]]</span>
                         <a class="cf-friends-link" rel="external nofollow" target="_blank" th:href="${link.spec.url}"
                            th:title="${link.spec.displayName}">
                             <img class="flink-avatar cf-friends-avatar" th:alt="${link.spec.displayName}"
@@ -126,7 +128,7 @@
                 </div>
 
                 <div class="flink-list mini"
-                     th:if="${#strings.equals(group.metadata.annotations.displayStyle,'deprecated') && not #lists.isEmpty(group.links)}">
+                     th:if="${#strings.equals(#annotations.get(group, 'displayStyle'),'deprecated') && not #lists.isEmpty(group.links)}">
                     <div class="flink-list-item" th:each="link : ${group.links}">
                         <a class="cf-friends-link" rel="external nofollow" target="_blank" th:href="${link.spec.url}"
                            th:title="${link.spec.displayName}">
