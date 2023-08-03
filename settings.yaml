@@ -234,21 +234,64 @@ spec:
               placeholder: 请输入小标题
               value: 更多信息请关注 GitHub
               help: 支持 HTML 语法
-            - $formkit: url
-              name: bikan
-              label: 必看精选
-              placeholder: 请输入地址
-              value: /
-            - $formkit: url
-              name: remen
-              label: 热门文章
-              placeholder: 请输入地址
-              value: /
-            - $formkit: url
-              name: shiyong
-              label: 实用教程
-              placeholder: 请输入地址
-              value: /
+            - $formkit: repeater
+              name: categoryGroup
+              min: 3
+              max: 3
+              value:
+                - title: "必看精选"
+                  icon: "iconfont icon-book"
+                  url: "/"
+                  colorOneLight: "#358bff"
+                  colorTwoLight: "#15c6ff"
+                  colorOneDark: "#0653b8"
+                  colorTwoDark: "#2fcbff"
+                - title: "热门文章"
+                  icon: "iconfont icon-burn"
+                  url: "/"
+                  colorOneLight: "#ff6655"
+                  colorTwoLight: "#ffbf37"
+                  colorOneDark: "#e22a16"
+                  colorTwoDark: "#da980c"
+                - title: "实用教程"
+                  icon: "iconfont icon-book"
+                  url: "/"
+                  colorOneLight: "#18e7ae"
+                  colorTwoLight: "#1eebeb"
+                  colorOneDark: "#099e74"
+                  colorTwoDark: "#0ea4a4"
+              children:
+                - $formkit: text
+                  name: title
+                  label: 标题
+                  placeholder: 请输入内容
+                  validation: required
+                - $formkit: text
+                  name: icon
+                  label: 图标
+                  placeholder: 请输入内容
+                  validation: required
+                - $formkit: url
+                  name: url
+                  label: 跳转地址
+                  placeholder: 请输入内容
+                  validation: required
+                - $formkit: color
+                  name: colorOneLight
+                  label: 颜色1 (浅色)
+                  validation: required
+                - $formkit: color
+                  name: colorTwoLight
+                  label: 颜色2 (浅色)
+                  validation: required
+                - $formkit: color
+                  name: colorOneDark
+                  label: 颜色1 (深色)
+                  validation: required
+                - $formkit: color
+                  name: colorTwoDark
+                  label: 颜色2 (深色)
+                  validation: required
         - $formkit: group
           name: BannerRight
           label: Banner 右侧

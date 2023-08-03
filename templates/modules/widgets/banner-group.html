@@ -161,24 +161,54 @@
 
     <!-- category -->
     <div class="categoryGroup">
-        <div class="categoryItem" style="box-shadow:var(--heo-shadow-blue)">
-            <a class="categoryButton CB1 bikan"
-               th:href="@{${theme.config.top.BannerLeft.bikan}}">
-                <span class="categoryButtonText">必看精选</span><i class="iconfont icon-book"></i>
-            </a>
-        </div>
-        <div class="categoryItem" style="box-shadow:var(--heo-shadow-red)">
-            <a class="categoryButton remen"
-               th:href="@{${theme.config.top.BannerLeft.remen}}">
-                <span class="categoryButtonText">热门文章</span><i class="iconfont icon-burn"></i>
-            </a>
-        </div>
-        <div class="categoryItem" style="box-shadow:var(--heo-shadow-green)">
-            <a class="categoryButton shiyong"
-               th:href="@{${theme.config.top.BannerLeft.shiyong}}">
-                <span class="categoryButtonText">实用教程</span><i class="iconfont icon-book"></i>
-            </a>
-        </div>
+        <th:block th:with="groups = ${theme.config.top.BannerLeft.categoryGroup}">
+            <div class="categoryItem">
+                <a class="categoryButton CB1 bikan" th:href="@{${groups[0].url}}">
+                    <span class="categoryButtonText">[[${groups[0].title}]]</span><i th:class="${groups[0].icon}"></i>
+                </a>
+            </div>
+            <div class="categoryItem">
+                <a class="categoryButton remen" th:href="@{${groups[1].url}}">
+                    <span class="categoryButtonText">[[${groups[1].title}]]</span><i th:class="${groups[1].icon}"></i>
+                </a>
+            </div>
+            <div class="categoryItem">
+                <a class="categoryButton shiyong" th:href="@{${groups[2].url}}">
+                    <span class="categoryButtonText">[[${groups[2].title}]]</span><i th:class="${groups[2].icon}"></i>
+                </a>
+            </div>
+            <style>
+                a.categoryButton.bikan {
+                    background: linear-gradient(to right, [[${groups[0].colorOneLight}]], [[${groups[0].colorTwoLight}]]);
+                    background-size: 200%;
+                }
+
+                a.categoryButton.remen {
+                    background: linear-gradient(to right, [[${groups[1].colorOneLight}]], [[${groups[1].colorTwoLight}]]);
+                    background-size: 200%;
+                }
+
+                a.categoryButton.shiyong {
+                    background: linear-gradient(to right, [[${groups[2].colorOneLight}]], [[${groups[2].colorTwoLight}]]);
+                    background-size: 200%;
+                }
+
+                [data-theme=dark] a.categoryButton.bikan {
+                    background: linear-gradient(to right, [[${groups[0].colorOneDark}]], [[${groups[0].colorTwoDark}]]);
+                    background-size: 200%;
+                }
+
+                [data-theme=dark] a.categoryButton.remen {
+                    background: linear-gradient(to right, [[${groups[1].colorOneDark}]], [[${groups[1].colorTwoDark}]]);
+                    background-size: 200%;
+                }
+
+                [data-theme=dark] a.categoryButton.shiyong {
+                    background: linear-gradient(to right, [[${groups[2].colorOneDark}]], [[${groups[2].colorTwoDark}]]);
+                    background-size: 200%;
+                }
+            </style>
+        </th:block>
     </div>
 
     <script th:inline="javascript">
