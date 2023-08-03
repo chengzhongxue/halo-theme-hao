@@ -55,9 +55,15 @@
 对 [Hexo-Theme-Butterfly](https://github.com/liuzhihang/halo-theme-hao)
 主题的魔改版本。
 
-## 🛠 安装
+## 🚨 注意事项(看我看我)
+1. **安装后请到主题设置页面，将每个设置项都保存一下！！！**
+2. **建站时间必填**
+3. 如果安装主题后报错，请仔细查阅[主题说明](https://github.com/liuzhihang/halo-theme-hao)与[更新说明](https://github.com/liuzhihang/halo-theme-hao/releases)！！！
+4. 如果还未解决，可以加群求助！！！
+5. 如果群友也解决不了，再考虑提ISSUE！！！
+6. `1.3.1`及以上版本需要`Halo`版本>=`2.8.0`
 
-> **安装后请到主题设置页面，将每个设置项都保存一下！！！**
+## 🛠 安装
 
 ### 🚗 自动安装
 
@@ -89,12 +95,12 @@
 
 - 评论功能 [plugin-comment-widget](https://github.com/halo-sigs/plugin-comment-widget/releases)
 - 搜索功能 [plugin-search-widget](https://github.com/halo-sigs/plugin-search-widget/releases)
-- 友链页面 [plugin-links](https://github.com/chengzhongxue/plugin-links)(魔改版本) 
+- 友链页面 [plugin-links](https://github.com/halo-sigs/plugin-links)
 - 瞬间页面 [plugin-moments](https://github.com/halo-sigs/plugin-moments) 
 - 代码高亮 [plugin-prismjs](https://github.com/liuzhihang/plugin-prismjs)
 - 图片懒加载 [plugin-lazyload](https://github.com/liuzhihang/plugin-lazyload)
 - 追番插件 [plugin-bilibili-bangumi](https://github.com/Roozenlz/plugin-bilibili-bangumi)
-- 图库插件 [plugin-photos](https://github.com/chengzhongxue/plugin-photos)(魔改版本)
+- 图库插件 [plugin-photos](https://github.com/halo-sigs/plugin-photos)
 
 > 更多插件请参见：https://github.com/halo-sigs/awesome-halo
 
