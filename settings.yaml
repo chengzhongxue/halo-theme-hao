@@ -517,7 +517,7 @@ spec:
         - $formkit: group
           name: widgetss
           label: 侧边栏内容
-          help: 目前提供的小部件有：profile（站点资料）, wechat（微信）, welcome（小板报）, steam（Steam卡片）, music（音乐卡片）, friend-link（通讯录）, recent-posts（近期文章）, comments（最新评论）, categories（文章分类）, tags（文章标签）, stat（统计）, tags-stat（标签&归档&统计）。你可以随意组合或排序，以逗号隔开。
+          help: 目前提供的小部件有：profile（站点资料）, wechat（微信）, welcome（小板报）, steam（Steam卡片）, music（音乐卡片）, friend-link（通讯录）, recent-posts（近期文章）, comments（最新评论）, categories（文章分类）, tags（文章标签）, stat（统计）, tags-stat（标签&归档&统计）, adbox（广告区域）。你可以随意组合或排序，以逗号隔开。
           value:
             indexWidgets:
             postWidgets:
@@ -803,7 +803,69 @@ spec:
               value: true
             - label: 隐藏
               value: false
-
+        - $formkit: group
+          name: adbox
+          label: 广告区域
+          value:
+            adType:
+          children:
+            - $formkit: select
+              name: adType
+              id: adType
+              key: adType
+              label: 广告类型
+              value: none
+              options:
+                - label: 无
+                  value: none
+                - label: Google AdSence
+                  value: google
+            - $formkit: group
+              if: $get(adType).value == 'google'
+              name: ad_google
+              label: Google AdSence
+              help: 申请地址：https://www.google.com/adsense/
+              value:
+                ad_client:
+                ad_slot:
+                ad_format:
+                full_width_responsive:
+              children:
+                - $formkit: text
+                  name: ad_client
+                  label: ad_client
+                  help: 填写Google AdSence广告代码中的ad_client(必填)，示例：ca-pub-123456789
+                - $formkit: text
+                  name: ad_slot
+                  label: ad_slot
+                  help: 填写Google AdSence单元代码中的ad_slot(必填)，示例：987654321
+                - $formkit: radio
+                  name: ad_format
+                  id: ad_format
+                  key: ad_format
+                  label: 广告尺寸
+                  value: auto
+                  options:
+                    - label: 自适应
+                      value: auto
+                    - label: 长方形/矩形
+                      value: rectangle
+                    - label: 垂直
+                      value: vertical
+                    - label: 水平横向
+                      value: horizontal
+                  help: 小于 0 则展示全部分类
+                - $formkit: radio
+                  name: full_width_responsive
+                  id: full_width_responsive
+                  key: full_width_responsive
+                  value: false
+                  label: 是否宽度自适应
+                  options:
+                    - label: 是
+                      value: true
+                    - label: 否
+                      value: false
     - group: footer
       label: 页脚
       formSchema:

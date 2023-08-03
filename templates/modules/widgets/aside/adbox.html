@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 目录 -->
+
+<th:block th:fragment="adbox">
+    <div class="card-widget" th:if="${theme.config.sidebar.adbox.adType=='google'}">
+        <div class="item-headline"><span>广告</span></div>
+        <script async th:src="${'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + theme.config.sidebar.adbox.ad_google.ad_client}"
+                crossorigin="anonymous"></script>
+        <!-- 广告2 -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             th:data-ad-client="${theme.config.sidebar.adbox.ad_google.ad_client}"
+             th:data-ad-slot="${theme.config.sidebar.adbox.ad_google.ad_slot}"
+             th:data-ad-format="${theme.config.sidebar.adbox.ad_google.ad_format}"
+             th:data-full-width-responsive="${theme.config.sidebar.adbox.ad_google.full_width_responsive}"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
+    </div>
+</th:block>
+</html>
