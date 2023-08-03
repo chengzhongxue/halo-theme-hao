@@ -26,28 +26,53 @@
     <th:block th:if="${not #strings.isEmpty(theme.config.footer.menu)}"
               th:with="footMenu = ${menuFinder.getByName(theme.config.footer.menu)}">
         <div id="heo-footer" th:if="${not #lists.isEmpty(footMenu)}">
-            <div class="footer-group" th:each="menuItem : ${footMenu.menuItems}">
-                <h3 class="footer-title" th:text="${menuItem.status.displayName}"></h3>
-                <div class="footer-links">
-                    <a class="footer-item" th:each="childMenu : ${menuItem.children}"
-                       th:href="@{${childMenu.status.href}}"
-                       th:target="${childMenu.spec.target?.value}"
-                       th:text="${childMenu.status.displayName}">
-                    </a>
+            <!-- 默认样式 -->
+            <div class="menu-style" th:if="${theme.config.footer.menu_style == 'default'}">
+                <div class="footer-group" th:each="menuItem : ${footMenu.menuItems}">
+                    <h3 class="footer-title" th:text="${menuItem.status.displayName}"></h3>
+                    <div class="footer-links">
+                        <a class="footer-item" th:each="childMenu : ${menuItem.children}"
+                           th:href="@{${childMenu.status.href}}"
+                           th:target="${childMenu.spec.target?.value}"
+                           th:text="${childMenu.status.displayName}">
+                        </a>
+                    </div>
+                </div>
+                <div th:if="${theme.config.footer.footer_group.enable_footer_group}" class="footer-group">
+                    <div class="footer-title-group">
+                        <h3 class="footer-title">友链</h3><a class="random-friends-btn"
+                                                             href="javascript:heo.addFriendLinksInFooter();"
+                                                             rel="external nofollow" title="换一批友情链接"
+                                                             data-pjax-state="external"><i
+                            class="haofont hao-icon-arrow-rotate-right"></i></a>
+                    </div>
+                    <div class="footer-links" id="friend-links-in-footer"></div>
                 </div>
             </div>
-            <div th:if="${theme.config.footer.footer_group.enable_footer_group}" class="footer-group">
-                <div class="footer-title-group">
-                    <h3 class="footer-title">友链</h3><a class="random-friends-btn"
-                                                         href="javascript:heo.addFriendLinksInFooter();"
-                                                         rel="external nofollow" title="换一批友情链接"
-                                                         data-pjax-state="external"><i
-                        class="haofont hao-icon-arrow-rotate-right"></i></a>
+            <!-- 居中样式 -->
+            <div class="menu-style" th:if="${theme.config.footer.menu_style == 'center'}">
+                <div class="footer-group" th:each="menuItem : ${footMenu.menuItems}">
+                    <h3 class="footer-title-center" th:text="${menuItem.status.displayName}"></h3>
+                    <div class="footer-links-center">
+                        <a class="footer-item-center" th:each="childMenu : ${menuItem.children}"
+                           th:href="@{${childMenu.status.href}}"
+                           th:target="${childMenu.spec.target?.value}"
+                           th:text="${childMenu.status.displayName}">
+                        </a>
+                    </div>
                 </div>
-                <div class="footer-links" id="friend-links-in-footer"></div>
+                <div th:if="${theme.config.footer.footer_group.enable_footer_group}" class="footer-group">
+                    <div class="footer-title-group-center">
+                        <h3 class="footer-title-center">友链</h3><a class="random-friends-btn"
+                                                                    href="javascript:heo.addFriendLinksInFooter();"
+                                                                    rel="external nofollow" title="换一批友情链接"
+                                                                    data-pjax-state="external"><i
+                            class="haofont hao-icon-arrow-rotate-right"></i></a>
+                    </div>
+                    <div class="footer-links-center" id="friend-links-center-in-footer"></div>
+                </div>
             </div>
         </div>
-
     </th:block>
     <!-- 底部 banner -->
 

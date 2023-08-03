@@ -928,6 +928,16 @@ spec:
           name: menu
           label: 相关链接
           help: 默认只有主菜单，可前往【外观】—>【菜单】新建菜单组
+        - $formkit: select
+          name: menu_style
+          label: 相关链接样式
+          help: 默认居左，可切换为居中
+          value: default
+          options:
+            - label: 默认
+              value: default
+            - label: 居中
+              value: center
         - $formkit: group
           name: footer_group
           label: 页脚友链

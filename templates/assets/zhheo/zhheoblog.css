@@ -15381,7 +15381,15 @@ span.hexo-douban-pagenum {
     flex-direction: column;
 }
 
-#heo-footer {
+/* 居中 */
+#heo-footer .footer-links-center {
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#heo-footer .menu-style{
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -15399,6 +15407,33 @@ span.hexo-douban-pagenum {
     margin: 0.38rem 0;
     color: var(--heo-fontcolor);
     margin-right: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+
+/* 居中 */
+#heo-footer-center {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1200px;
+    margin: 1rem auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+}
+
+/* 居中 */
+#heo-footer .footer-item-center {
+    text-align: center;
+    width: 120px;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    color: var(--heo-fontcolor);
+    margin: 0.38rem auto 0.38rem 0;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -15439,6 +15474,38 @@ span.hexo-douban-pagenum {
     margin: 0;
 }
 
+/* 居中 */
+#heo-footer .footer-title-group-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 0.7rem 0;
+}
+
+/* 居中 */
+#heo-footer .footer-title-group-center a {
+    margin-left: 8px;
+}
+
+/* 居中 */
+#heo-footer .footer-title-group-center i {
+    line-height: 1;
+    color: var(--heo-secondtext);
+    transition: 0.3s;
+    font-size: 12px;
+}
+
+/* 居中 */
+#heo-footer .footer-title-group-center a:hover i {
+    color: var(--heo-main);
+}
+
+/* 居中 */
+#heo-footer .footer-title-group-center .footer-title-center {
+    margin: 0;
+    text-align: center;
+}
+
 #heo-footer .random-friends-btn {
     display: flex;
 }
@@ -15446,6 +15513,13 @@ span.hexo-douban-pagenum {
 #heo-footer .footer-title {
     color: var(--heo-secondtext);
     font-size: 0.8rem;
+}
+
+/* 居中 */
+#heo-footer .footer-title-center {
+    color: var(--heo-secondtext);
+    font-size: 0.8rem;
+    text-align: center;
 }
 
 #footer-banner {

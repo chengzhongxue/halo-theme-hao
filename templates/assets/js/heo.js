@@ -141,12 +141,24 @@ var heo = {
         const links = GLOBAL_CONFIG.source.links.linksData
         var randomFriendLinks = getArrayItems(links, 3);
         var htmlText = '';
-        for (let i = 0; i < randomFriendLinks.length; ++i) {
-            var item = randomFriendLinks[i]
-            htmlText += `<a class='footer-item' href='${item.spec.url}'  target="_blank" rel="noopener nofollow">${item.spec.displayName}</a>`;
+        if (GLOBAL_CONFIG.isFriendLinksInMenuStyle === 'default') {
+            // 默认
+            for (let i = 0; i < randomFriendLinks.length; ++i) {
+                var item = randomFriendLinks[i]
+                htmlText += `<a class='footer-item' href='${item.spec.url}'  target="_blank" rel="noopener nofollow">${item.spec.displayName}</a>`;
+            }
+            htmlText += `<a class='footer-item' href='${linksUrl}'>更多</a>`
+            document.getElementById("friend-links-in-footer").innerHTML = htmlText;
         }
-        htmlText += `<a class='footer-item' href='${linksUrl}'>更多</a>`
-        document.getElementById("friend-links-in-footer").innerHTML = htmlText;
+        if (GLOBAL_CONFIG.isFriendLinksInMenuStyle === 'center') {
+            // 居中
+            for (let i = 0; i < randomFriendLinks.length; ++i) {
+                var item = randomFriendLinks[i]
+                htmlText += `<a class='footer-item-center' href='${item.spec.url}'  target="_blank" rel="noopener nofollow">${item.spec.displayName}</a>`;
+            }
+            htmlText += `<a class='footer-item-center' href='${linksUrl}'>更多</a>`
+            document.getElementById("friend-links-center-in-footer").innerHTML = htmlText;
+        }
     },
 
     //禁止图片右键单击
