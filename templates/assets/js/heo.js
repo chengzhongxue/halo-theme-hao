@@ -139,7 +139,8 @@ var heo = {
     addFriendLinksInFooter: function () {
         const linksUrl = GLOBAL_CONFIG.source.links.linksUrl
         const links = GLOBAL_CONFIG.source.links.linksData
-        var randomFriendLinks = getArrayItems(links, 3);
+        const num = GLOBAL_CONFIG.source.links.linksNum
+        var randomFriendLinks = getArrayItems(links, num);
         var htmlText = '';
         for (let i = 0; i < randomFriendLinks.length; ++i) {
             var item = randomFriendLinks[i]
