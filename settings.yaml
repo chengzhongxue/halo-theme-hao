@@ -125,7 +125,7 @@ spec:
               key: enable_typed_random
               id: enable_typed_random
               value: false
-              help: 如果配置了自定义文字，优先展示自定文字
+              help: 如果配置了自定义文字，优先展示自定义文字
               options:
                 - label: 启用
                   value: true
