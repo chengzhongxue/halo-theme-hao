@@ -1052,7 +1052,7 @@ spec:
           label: 页脚友链
           value:
             enable_footer_group:
-            fetchUrl:
+            num:
           children:
             - $formkit: radio
               name: enable_footer_group
@@ -1064,6 +1064,12 @@ spec:
                   value: true
                 - label: 禁用
                   value: false
+            - $formkit: number
+              if: $get(enable_footer_group).value
+              name: num
+              label: 友链数
+              value: 3
+              validation: required
         - $formkit: group
           name: footerContent
           label: 页脚内容
