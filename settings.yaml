@@ -320,8 +320,6 @@ spec:
                 todayRecommendTitle:
                 todayRecommendCover:
                 todayRecommendxTitle:
-                recommendPost:
-                recommendPostCustom:
               children:
                 - $formkit: url
                   name: todayRecommendUrl
@@ -343,33 +341,33 @@ spec:
                   label: 背景图
                   placeholder: 请输入地址
                   value: https://liuzhihang.com/upload/hao_dark.jpg
-                - $formkit: select
-                  name: recommendPost
-                  id: recommendPost
-                  key: recommendPost
-                  label: 推荐文章
+            - $formkit: select
+              name: recommendPost
+              id: recommendPost
+              key: recommendPost
+              label: 推荐文章
+              value: latest
+              options:
+                - label: 最新文章
                   value: latest
-                  options:
-                    - label: 最新文章
-                      value: latest
-                    - label: 自定义
-                      value: custom
-                - $formkit: repeater
-                  if: $get(recommendPost).value === custom
-                  name: recommendPostCustom
-                  label: 自定义文章
-                  help: 建议设置六篇文章
-                  value: [ ]
-                  children:
-                    - $formkit: url
-                      name: url
-                      label: 链接
-                    - $formkit: text
-                      name: title
-                      label: 标题
-                    - $formkit: attachment
-                      name: cover
-                      label: 封面地址
+                - label: 自定义
+                  value: custom
+            - $formkit: repeater
+              if: $get(recommendPost).value === custom
+              name: recommendPostCustom
+              label: 自定义文章
+              help: 建议设置六篇文章
+              value: [ ]
+              children:
+                - $formkit: url
+                  name: url
+                  label: 链接
+                - $formkit: text
+                  name: title
+                  label: 标题
+                - $formkit: attachment
+                  name: cover
+                  label: 封面地址
 
     - group: layout
       label: 布局
@@ -2768,3 +2766,4 @@ spec:
                   label: 结束时间
                   placeholder: 请输入结束时间(小时)
                   help: 可以与开始时间相同，表示一个小时内的问候
+

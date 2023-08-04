@@ -7,7 +7,7 @@
 >
     <div class="recent-post-item"
          th:each="post : ${topGroupPosts}"
-         th:if="${#strings.equals(theme.config.top.BannerRight.todayRecommendContent.recommendPost, 'latest')}">
+         th:if="${#strings.equals(theme.config.top.BannerRight.recommendPost, 'latest')}">
 
         <div class="post_cover">
             <a th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
@@ -29,8 +29,8 @@
     </div>
     <!-- 自定义的文章右上角的推荐文章 -->
     <div class="recent-post-item"
-         th:each="cuscomPost : ${theme.config.top.BannerRight.todayRecommendContent.recommendPostCustom}"
-         th:if="${#strings.equals(theme.config.top.BannerRight.todayRecommendContent.recommendPost, 'custom')}">
+         th:each="cuscomPost : ${theme.config.top.BannerRight.recommendPostCustom}"
+         th:if="${#strings.equals(theme.config.top.BannerRight.recommendPost, 'custom')}">
         <div class="post_cover">
             <a th:href="@{${cuscomPost.url}}" th:title="${cuscomPost.title}">
                 <span class="recent-post-top-text"
