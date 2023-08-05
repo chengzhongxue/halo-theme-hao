@@ -130,7 +130,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -156,6 +156,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
     </tr>
     <tr>
       <td align="center" valign="top" width="16.66%"><a href="http://roozen.top"><img src="https://avatars.githubusercontent.com/u/93673944?v=4?s=100" width="100px;" alt="Roozen"/><br /><sub><b>Roozen</b></sub></a><br /><a href="https://github.com/liuzhihang/halo-theme-hao/commits?author=Roozenlz" title="Code">💻</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="https://www.stonewu.com/"><img src="https://avatars.githubusercontent.com/u/25025423?v=4?s=100" width="100px;" alt="石头君"/><br /><sub><b>石头君</b></sub></a><br /><a href="https://github.com/liuzhihang/halo-theme-hao/commits?author=Stonewuu" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>
