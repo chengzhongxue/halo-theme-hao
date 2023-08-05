@@ -52,15 +52,6 @@
             updateTime();
             updateHtml();
         }, 1000);
-        setTimeout(()=>{
-            if (!(nowHour < 18 && nowHour >= 9)) {
-                // 如果是下班时间，插入"困困鱼-下班啦.svg"图片
-                let img = document.querySelector("#workboard .workSituationImg");
-                img.src = "[[${theme.config.footer.footerContent.style_one.offduty_img}]]";
-                img.title = "[[${theme.config.footer.footerContent.style_one.offduty_description}]]";
-                img.alt = "[[${theme.config.footer.footerContent.style_one.offduty_description}]]";
-            }
-        },1100)
     })();</script>
 
 </th:block>

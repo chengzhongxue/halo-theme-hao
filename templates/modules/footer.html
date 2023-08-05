@@ -104,11 +104,17 @@
             ©[[${#dates.format(new java.util.Date(), 'yyyy')}]] By [[${site.title}]]
         </div>
         <div th:if="${theme.config.footer.footerContent.style_one.runtime_enable}" id="workboard">
-            <img class="workSituationImg boardsign"
-                 th:src="${theme.config.footer.footerContent.style_one.work_img}"
-                 th:alt="${theme.config.footer.footerContent.style_one.work_description}"
-                 th:title="${theme.config.footer.footerContent.style_one.work_description}" />
-            <div id="runtimeTextTip"></div>
+            <th:block th:with="nowHour = ${#dates.hour(#dates.createNow())}">
+                <img th:if="${nowHour < 18 && nowHour >= 9}" class="workSituationImg boardsign"
+                     th:src="${theme.config.footer.footerContent.style_one.work_img}"
+                     th:alt="${theme.config.footer.footerContent.style_one.work_description}"
+                     th:title="${theme.config.footer.footerContent.style_one.work_description}" />
+                <img th:unless="${nowHour < 18 && nowHour >= 9}" class="workSituationImg boardsign"
+                     th:src="${theme.config.footer.footerContent.style_one.offduty_img}"
+                     th:alt="${theme.config.footer.footerContent.style_one.offduty_description}"
+                     th:title="${theme.config.footer.footerContent.style_one.offduty_description}" />
+                <div id="runtimeTextTip"></div>
+            </th:block>
         </div>
         <p id="ghbdages"
            th:with="bdageitem = ${theme.config.footer.footerContent.style_one.bdageitem}">
