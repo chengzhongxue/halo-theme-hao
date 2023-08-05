@@ -161,7 +161,7 @@
 
     <!-- category -->
     <div class="categoryGroup">
-        <th:block th:with="groups = ${theme.config.top.BannerLeft.categoryGroup}">
+        <th:block th:if="${not #lists.isEmpty(theme.config.top.BannerLeft.categoryGroup)}" th:with="groups = ${theme.config.top.BannerLeft.categoryGroup}">
             <div class="categoryItem">
                 <a class="categoryButton CB1 bikan" th:href="@{${groups[0].url}}">
                     <span class="categoryButtonText">[[${groups[0].title}]]</span><i th:class="${groups[0].icon}"></i>

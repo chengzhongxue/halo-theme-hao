@@ -5,14 +5,15 @@
 
     <div class="page" id="body-wrap">
         <!-- 头部导航栏 -->
-
-        <header th:class="${theme.config.top.above.enable_above ? 'full_page' : 'not-top-img'}" id="page-header">
-            <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
-            <!-- 问候语 -->
-            <th:block th:replace="~{modules/header/greeting :: greeting}"></th:block>
-            <!-- 第一屏 -->
-            <th:block th:replace="~{modules/header/index-img :: index-img}"></th:block>
-        </header>
+        <th:block th:if="${theme.config.top.above.enable_above}">
+            <header th:class="${theme.config.top.above.enable_above ? 'full_page' : 'not-top-img'}" id="page-header">
+                <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
+                <!-- 问候语 -->
+                <th:block th:replace="~{modules/header/greeting :: greeting}"></th:block>
+                <!-- 第一屏 -->
+                <th:block th:replace="~{modules/header/index-img :: index-img}"></th:block>
+            </header>
+        </th:block>
         <div id="home_top">
             <!-- 每日说说 -->
             <div th:replace="~{modules/moment :: moment}"></div>
@@ -21,12 +22,11 @@
         </div>
         <main class="layout" id="content-inner" th:classappend="${theme.config.sidebar.location}">
             <div class="recent-posts" id="recent-posts">
-
                 <!-- 分类导航栏 -->
-                <div th:replace="~{'modules/bar/' + ${theme.config.layout.navs.nav}}"></div>
-
+                <th:block th:if="${not #strings.isEmpty(theme.config.layout.navs.nav)}">
+                    <div th:replace="~{'modules/bar/' + ${theme.config.layout.navs.nav}}"></div>
+                </th:block>
                 <th:block th:replace="~{modules/post-list :: post-list}"></th:block>
-
             </div>
             <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.widgetss.indexWidgets})}"></div>
         </main>
