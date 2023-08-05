@@ -6,7 +6,7 @@
     <!-- 有子菜单则显示子菜单 -->
     <th:block th:if="${not #lists.isEmpty(menuItem.children)}">
         <!-- 子菜单 -->
-        <div class="menus_item_child">
+        <div class="menus_item_child" th:classappend="${#annotations.get(menuItem,'isVertical')=='1'?'vertical_nav':''}">
             <div class="recursion_menus_item" th:each="childMenu : ${menuItem.children}">
                 <a class="site-page child" th:target="${childMenu.spec.target?.value}" th:href="@{${childMenu.status.href}}">
                     <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(childMenu, 'icon', ''))}"
