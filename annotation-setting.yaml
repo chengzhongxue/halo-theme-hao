@@ -10,7 +10,15 @@ spec:
     - $formkit: "text"
       name: "icon"
       label: "图标"
-
+    - $formkit: "radio"
+      name: "isVertical"
+      value: 0
+      label: "该菜单的子菜单是否为垂直菜单"
+      options:
+        - label: 是
+          value: 1
+        - label: 否
+          value: 0
 ---
 
 apiVersion: v1alpha1
