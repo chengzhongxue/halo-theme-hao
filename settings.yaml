@@ -16,6 +16,7 @@ spec:
           name: siteStartTime
           label: 建站时间
           validation: required
+          value: "2023-08-05"
         - $formkit: text
           name: icp
           label: ICP 备案
@@ -39,13 +40,15 @@ spec:
           name: leftMenu
           label: 站点名左侧
           help: 默认只有主菜单，可前往【外观】—>【菜单】新建菜单组
+          value: ""
         - $formkit: group
           name: right
           label: 导航栏右侧
           value:
-            article:
             travelling:
             travellingUrl:
+            article:
+            darkMode:
           children:
             - $formkit: radio
               name: travelling
@@ -150,7 +153,7 @@ spec:
               if: $get(enable_above).value  &&  $get(enable_above_video).value
               label: 动态壁纸
               placeholder: 请填写动态壁纸地址
-              value:
+              value: ""
               help: http(s)://xxx.mp4
             - $formkit: attachment
               name: index_img
@@ -266,32 +269,39 @@ spec:
                   label: 标题
                   placeholder: 请输入内容
                   validation: required
+                  value: "必看精选"
                 - $formkit: text
                   name: icon
                   label: 图标
                   placeholder: 请输入内容
                   validation: required
+                  value: "iconfont icon-book"
                 - $formkit: url
                   name: url
                   label: 跳转地址
                   placeholder: 请输入内容
                   validation: required
+                  value: "/"
                 - $formkit: color
                   name: colorOneLight
                   label: 颜色1 (浅色)
                   validation: required
+                  value: "#358bff"
                 - $formkit: color
                   name: colorTwoLight
                   label: 颜色2 (浅色)
                   validation: required
+                  value: "#15c6ff"
                 - $formkit: color
                   name: colorOneDark
                   label: 颜色1 (深色)
                   validation: required
+                  value: "#0653b8"
                 - $formkit: color
                   name: colorTwoDark
                   label: 颜色2 (深色)
                   validation: required
+                  value: "#2fcbff"
         - $formkit: group
           name: BannerRight
           label: Banner 右侧
@@ -696,27 +706,36 @@ spec:
           label: 小板报
           value:
             key:
+            locationLng:
+            locationLat:
           children:
             - $formkit: text
               name: key
               label: 腾讯位置服务Key
+              value: "xxxx"
               help: 申请地址：https://lbs.qq.com/dev/console/application/mine
             - $formkit: text
               name: locationLng
               label: 经度坐标
+              value: "113.215456"
               help: 可访问 https://lbs.qq.com/getPoint 拾取坐标，示例：113.215456
               placeholder: 请输入经度坐标
             - $formkit: text
               name: locationLat
               label: 纬度坐标
               help: 示例：22.582401
+              value: "22.582401"
               placeholder: 请输入纬度坐标
         - $formkit: group
           name: music
           label: 音乐卡片
           help: 文档请看：https://github.com/zonemeen/netease-recent-profile
           value:
-            key:
+            musicUrl:
+            lightMsimg:
+            lightBackMsimg:
+            darkMsimg:
+            darkBackMsimg:
           children:
             - $formkit: url
               name: musicUrl
@@ -747,7 +766,8 @@ spec:
           label: Steam卡片
           help: 文档请看：https://github.com/yuyinws/steam-card
           value:
-            key:
+            steamUrl:
+            cardSteam:
           children:
             - $formkit: url
               name: steamUrl
@@ -2766,4 +2786,3 @@ spec:
                   label: 结束时间
                   placeholder: 请输入结束时间(小时)
                   help: 可以与开始时间相同，表示一个小时内的问候
-
