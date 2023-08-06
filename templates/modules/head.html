@@ -170,12 +170,13 @@
     <script th:src="${assets_link + '/libs/countup/countup.js' + theme_version}"></script>
 
     <!-- 小板报 -->
-    <script defer th:if="${not #strings.isEmpty(theme.config.sidebar.welcome.key) &&
-        #strings.contains(theme.config.sidebar.widgetss.indexWidgets,'welcome') ||
-        #strings.contains(theme.config.sidebar.widgetss.postWidgets,'welcome') ||
-        #strings.contains(theme.config.sidebar.widgetss.tagWidgets,'welcome') ||
-        #strings.contains(theme.config.sidebar.widgetss.categoryWidgets,'welcome')}"
-            th:src="${assets_link + '/libs/welcome/welcome.js' + theme_version}"></script>
+    <th:block th:if="${not #strings.isEmpty(theme.config.sidebar.welcome.key)}">
+        <script defer th:if="${#strings.contains(theme.config.sidebar.widgetss.indexWidgets,'welcome') ||
+            #strings.contains(theme.config.sidebar.widgetss.postWidgets,'welcome') ||
+            #strings.contains(theme.config.sidebar.widgetss.tagWidgets,'welcome') ||
+            #strings.contains(theme.config.sidebar.widgetss.categoryWidgets,'welcome')}"
+                th:src="${assets_link + '/libs/welcome/welcome.js' + theme_version}"></script>
+    </th:block>
 
     <!-- icon图标 -->
     <link rel="stylesheet" th:href="'https://npm.onmicrosoft.cn/hao-theme-static@'+${theme.spec.version}+'/icon/iconfont.css'">

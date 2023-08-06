@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'index')}" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'index')}"
+      xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
 
     <div class="page" id="body-wrap">
         <!-- 头部导航栏 -->
-
         <header th:class="${theme.config.top.above.enable_above ? 'full_page' : 'not-top-img'}" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
             <!-- 问候语 -->
@@ -35,5 +35,5 @@
     </div>
 
 </th:block>
-</html>
 
+</html>
