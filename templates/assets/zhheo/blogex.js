@@ -316,6 +316,11 @@ var navFn = {
             categoriesOptionNew.legend.textStyle.color = color
             categoriesChart.setOption(categoriesOptionNew)
         }
+        heo.darkModeStatus();
+        //代码块
+        if(GLOBAL_CONFIG.prism.enable){
+            halo.dataCodeTheme();
+        }
     }
 }
 
