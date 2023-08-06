@@ -14982,22 +14982,34 @@ figure.gallery-group:hover .gallery-group-name::after {
 
 /* 图片 */
 
-#bber .bber-content-img img {
+#bber .bber-container-img img {
     object-fit: cover;
     max-height: 100%;
     border-radius: 12px;
 }
 
-#bber .bber-content-img {
-    height: 100px;
-    margin: auto;
-    margin-top: 0.2rem;
+#bber .bber-container-img {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
     margin-bottom: 0.3rem;
-    margin-left: 0;
-    border-radius: 12px;
+}
+
+#bber .bber-container-img a {
+    height: 100px;
+    border-radius: 8px;
     overflow: hidden;
     display: flex;
+    justify-content: center;
     position: relative;
+    /* width:calc(100% / 4 - 5px); */
+    margin-bottom: 10px
+}
+
+#bber .bber-container-img .bber-content-noimg {
+    width: calc(100% / 4 - 5px)
 }
 
 /* 时间 */

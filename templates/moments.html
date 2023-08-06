@@ -27,17 +27,19 @@
                                     <p class="datacont" th:if="${not #strings.isEmpty(content.html)}"
                                        th:utext="${content.html}"></p>
                                 </div>
-                                <th:block th:each="momentItem : ${content.medium}"
-                                          th:if="${not #lists.isEmpty(content.medium)}">
+                                <th:block th:if="${not #lists.isEmpty(content.medium)}">
 
-                                    <div class="bber-content-img" th:if="${momentItem.type.name == 'PHOTO'}">
-                                        <img class="bber-content-image-self entered loaded" data-ll-status="loaded"
+                                    <div class="bber-container-img" th:if="${#strings.contains(content.medium,'PHOTO')}">
+                                        <img th:each="momentItem : ${content.medium}"
+                                             th:if="${momentItem.type.name == 'PHOTO'}"
                                              th:src="${momentItem.url}" title="瞬间配图">
+                                        <div class="bber-content-noimg"></div>
+                                        <div class="bber-content-noimg"></div>
+                                        <div class="bber-content-noimg"></div>
                                     </div>
-                                    <div class="bber-music" th:if="${momentItem.type.name == 'VIDEO'}">
+                                    <div th:each="momentItem : ${content.medium}" class="bber-music" th:if="${momentItem.type.name == 'VIDEO'}">
                                         <video th:src="${momentItem.url}"></video>
                                     </div>
-
                                 </th:block>
                                 <hr>
                                 <div class="bber-bottom">
