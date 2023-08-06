@@ -294,7 +294,9 @@ var heo = {
                 btf.snackbarShow("✨ 已开启评论弹幕", false, 2000)
             }
         }
-        rm.hideRightMenu();
+        if(GLOBAL_CONFIG.rightMenuEnable){
+            rm.hideRightMenu();
+        }
     },
 
     //隐藏cookie窗口
@@ -372,20 +374,26 @@ var heo = {
         let msgPause = '<i class="haofont hao-icon-pause"></i><span>暂停音乐</span>';
         if (heo_musicPlaying) {
             navMusicEl.classList.remove("playing");
-            document.getElementById("menu-music-toggle").innerHTML = msgPlay;
+            if(GLOBAL_CONFIG.rightMenuEnable){
+                document.getElementById("menu-music-toggle").innerHTML = msgPlay;
+            }
             document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停";
             document.querySelector("#consoleMusic").classList.remove("on");
             heo_musicPlaying = false;
             navMusicEl.classList.remove("stretch");
         } else {
             navMusicEl.classList.add("playing");
-            document.getElementById("menu-music-toggle").innerHTML = msgPause;
+            if(GLOBAL_CONFIG.rightMenuEnable){
+                document.getElementById("menu-music-toggle").innerHTML = msgPause;
+            }
             document.querySelector("#consoleMusic").classList.add("on");
             heo_musicPlaying = true;
             navMusicEl.classList.add("stretch");
         }
         if (changePaly) document.querySelector("#nav-music meting-js").aplayer.toggle();
-        rm.hideRightMenu();
+        if(GLOBAL_CONFIG.rightMenuEnable){
+            rm.hideRightMenu();
+        }
     },
 
     // 音乐绑定事件
