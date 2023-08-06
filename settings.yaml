@@ -544,6 +544,7 @@ spec:
           label: 个人卡片
           value:
             profileStyle: default
+            helloText: 🤖️ 数码科技爱好者, 🔍 分享与热心帮助, 🏠 智能家居小能手, 🔨 设计开发一条龙, 🤝 专修交互与设计, 🏃 脚踏实地行动派, 🧱 团队小组发动机, 💢 壮汉人狠话不多
           children:
             - $formkit: select
               name: profileStyle
@@ -570,7 +571,6 @@ spec:
               name: helloText
               label: 作者打招呼
               placeholder: 请填写作者打招呼
-              value: 🤖️ 数码科技爱好者, 🔍 分享与热心帮助, 🏠 智能家居小能手, 🔨 设计开发一条龙, 🤝 专修交互与设计, 🏃 脚踏实地行动派, 🧱 团队小组发动机, 💢 壮汉人狠话不多
               help: 注意格式 （🤖️ 数码科技爱好者, 🔍 分享与热心帮助 ） 以逗号隔开
             - $formkit: text
               name: profileName
@@ -1047,14 +1047,13 @@ spec:
           name: footer_group
           label: 页脚友链
           value:
-            enable_footer_group:
-            num:
+            enable_footer_group: true
+            num: 3
           children:
             - $formkit: radio
               name: enable_footer_group
               id: enable_footer_group
               key: enable_footer_group
-              value: true
               options:
                 - label: 启用
                   value: true
@@ -1064,7 +1063,6 @@ spec:
               if: $get(enable_footer_group).value
               name: num
               label: 友链数
-              value: 3
               validation: required
         - $formkit: group
           name: footerContent

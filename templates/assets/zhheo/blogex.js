@@ -324,6 +324,30 @@ var navFn = {
     }
 }
 
+//引用到评论
+function rightMenuCommentText(txt) {
+    if (GLOBAL_CONFIG.rightMenuEnable) {
+        rm.hideRightMenu();
+    }
+    var input = document.getElementsByClassName('el-textarea__inner')[0];
+    let evt = document.createEvent('HTMLEvents');
+    evt.initEvent('input', true, true);
+    let inputValue = replaceAll(txt, '\n', '\n> ')
+    input.value = '> ' + inputValue + '\n\n';
+    input.dispatchEvent(evt);
+    var domTop = document.querySelector("#post-comment").offsetTop;
+    window.scrollTo(0, domTop - 80);
+    input.focus();
+    input.setSelectionRange(-1, -1);
+    if (document.getElementById("comment-tips")) {
+        document.getElementById("comment-tips").classList.add("show");
+    }
+}
+//替换所有内容
+function replaceAll(string, search, replace) {
+    return string.split(search).join(replace);
+}
+
 // 移除赞赏蒙版
 function RemoveRewardMask() {
     if (!document.querySelector(".reward-main")) return;
@@ -347,10 +371,14 @@ document.addEventListener('touchstart', e => {
 
 //监听ctrl+C
 $(document).unbind('keydown').bind('keydown', function (e) {
-    if ((e.ctrlKey || e.metaKey) && (e.keyCode == 67) && (selectTextNow != '')) {
-        btf.snackbarShow('复制成功，复制和转载请标注本文地址');
-        rm.rightmenuCopyText(selectTextNow);
-        return false;
+    if (GLOBAL_CONFIG.rightMenuEnable) {
+        if ((e.ctrlKey || e.metaKey) && (e.keyCode == 67) && (selectTextNow != '')) {
+            btf.snackbarShow('复制成功，复制和转载请标注本文地址');
+            rm.rightmenuCopyText(selectTextNow);
+            return false;
+        }
+    } else {
+
     }
 })
 
