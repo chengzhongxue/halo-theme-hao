@@ -15004,7 +15004,7 @@ figure.gallery-group:hover .gallery-group-name::after {
     display: flex;
     justify-content: center;
     position: relative;
-    /* width:calc(100% / 4 - 5px); */
+    width:calc(100% / 4 - 5px); 
     margin-bottom: 10px
 }
 
