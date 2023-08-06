@@ -177,39 +177,40 @@
                     <span class="categoryButtonText">[[${groups[2].title}]]</span><i th:class="${groups[2].icon}"></i>
                 </a>
             </div>
-            <style>
-                a.categoryButton.bikan {
-                    background: linear-gradient(to right, [[${groups[0].colorOneLight}]], [[${groups[0].colorTwoLight}]]);
-                    background-size: 200%;
-                }
-
-                a.categoryButton.remen {
-                    background: linear-gradient(to right, [[${groups[1].colorOneLight}]], [[${groups[1].colorTwoLight}]]);
-                    background-size: 200%;
-                }
-
-                a.categoryButton.shiyong {
-                    background: linear-gradient(to right, [[${groups[2].colorOneLight}]], [[${groups[2].colorTwoLight}]]);
-                    background-size: 200%;
-                }
-
-                [data-theme=dark] a.categoryButton.bikan {
-                    background: linear-gradient(to right, [[${groups[0].colorOneDark}]], [[${groups[0].colorTwoDark}]]);
-                    background-size: 200%;
-                }
-
-                [data-theme=dark] a.categoryButton.remen {
-                    background: linear-gradient(to right, [[${groups[1].colorOneDark}]], [[${groups[1].colorTwoDark}]]);
-                    background-size: 200%;
-                }
-
-                [data-theme=dark] a.categoryButton.shiyong {
-                    background: linear-gradient(to right, [[${groups[2].colorOneDark}]], [[${groups[2].colorTwoDark}]]);
-                    background-size: 200%;
-                }
-            </style>
         </th:block>
     </div>
+
+    <style th:if="${not #lists.isEmpty(theme.config.top.BannerLeft.categoryGroup)}" th:with="groups = ${theme.config.top.BannerLeft.categoryGroup}">
+        a.categoryButton.bikan {
+            background: linear-gradient(to right, [[${groups[0].colorOneLight}]], [[${groups[0].colorTwoLight}]]);
+            background-size: 200%;
+        }
+
+        a.categoryButton.remen {
+            background: linear-gradient(to right, [[${groups[1].colorOneLight}]], [[${groups[1].colorTwoLight}]]);
+            background-size: 200%;
+        }
+
+        a.categoryButton.shiyong {
+            background: linear-gradient(to right, [[${groups[2].colorOneLight}]], [[${groups[2].colorTwoLight}]]);
+            background-size: 200%;
+        }
+
+        [data-theme=dark] a.categoryButton.bikan {
+            background: linear-gradient(to right, [[${groups[0].colorOneDark}]], [[${groups[0].colorTwoDark}]]);
+            background-size: 200%;
+        }
+
+        [data-theme=dark] a.categoryButton.remen {
+            background: linear-gradient(to right, [[${groups[1].colorOneDark}]], [[${groups[1].colorTwoDark}]]);
+            background-size: 200%;
+        }
+
+        [data-theme=dark] a.categoryButton.shiyong {
+            background: linear-gradient(to right, [[${groups[2].colorOneDark}]], [[${groups[2].colorTwoDark}]]);
+            background-size: 200%;
+        }
+    </style>
 
     <script th:inline="javascript">
 
