@@ -17,16 +17,17 @@ spec:
           label: 建站时间
           validation: required
           value: "2023-08-05"
+          help: 注意，此项为必填项
         - $formkit: text
           name: icp
           label: ICP 备案
           placeholder: 请输入 ICP 备案号
-          help: 皖 ICP 备 xxxxxxxx 号
+          help: 格式：皖ICP备 xxxxxxxx 号
         - $formkit: text
           name: gongan
           label: 公安备案
           placeholder: 请输入公安备案号
-          help: 皖公网安备 xxxxxxxx 号
+          help: 格式：皖公网安备 xxxxxxxx 号
         - $formkit: url
           name: copyrightAgreement
           label: 版权协议
@@ -65,9 +66,11 @@ spec:
               name: travellingUrl
               label: 开往链接
               placeholder: 请输入开往链接
+              help: 开往项目：https://github.com/travellings-link/travellings
             - $formkit: radio
               name: article
               label: 随机文章
+              help: 右上角随机文章按钮
               options:
                 - label: 打开
                   value: true
@@ -76,6 +79,7 @@ spec:
             - $formkit: radio
               name: darkMode
               label: 切换模式
+              help: 右上角切换主题模式按钮
               options:
                 - label: 打开
                   value: true
@@ -88,6 +92,7 @@ spec:
         - $formkit: group
           name: above
           label: 首页第一屏
+          help: 开启后会在页面的最上方新增一个第一屏
           value:
             enable_above: false
             typed:
@@ -166,6 +171,7 @@ spec:
           name: moment
           label: 瞬间说说
           value: true
+          help: 需要安装瞬间插件
           options:
             - label: 显示
               value: true
@@ -225,6 +231,7 @@ spec:
             - $formkit: repeater
               name: techStack
               label: 个人技术栈
+              help: 需要选择上方“个人技术栈”
               value: [ ]
               children:
                 - $formkit: text
@@ -309,6 +316,7 @@ spec:
               id: todayRecommend
               key: todayRecommend
               label: 今日推荐
+              help: 开启后会在推荐文章前显示“今日推荐”模块
               options:
                 - label: 显示
                   value: true
