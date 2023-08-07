@@ -635,6 +635,10 @@ function percent() {
     window.onscroll = percent
 }
 
+function initBlog() {
+    heo.initIndexEssay()
+}
+
 //检查是否开启快捷键
 // if (localStorage.getItem('keyboardToggle') !== 'false') {
 //     document.querySelector("#consoleKeyboard").classList.add("on");
@@ -844,7 +848,6 @@ document.addEventListener('DOMContentLoaded', function () {
     heo.onlyHome()
     
     heo.addNavBackgroundInit()
-    heo.initIndexEssay()
     // heo.changeTimeInEssay()
     heo.reflashEssayWaterFall()
     //heo.addMediumInEssay()
