@@ -8925,6 +8925,10 @@ li {
     height: 50px;
 }
 
+#bbTimeList.more-page {
+    margin-bottom: 0;
+}
+
 #bbTimeList:hover {
     border: var(--style-border-hover);
     box-shadow: var(--heo-shadow-main);
@@ -9506,6 +9510,10 @@ ins.adsbygoogle {
     overflow-x: auto;
     width: 100%;
     margin-bottom: 0rem;
+}
+
+.recent-top-post-group.more-page {
+    display: none;
 }
 
 .recent-post-top {
