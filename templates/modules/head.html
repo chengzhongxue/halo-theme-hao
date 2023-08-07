@@ -11,6 +11,7 @@
 
     <link rel="shortcut icon"
           th:href="@{${#strings.isEmpty(site.favicon) ? assets_link + '/images/hao-logo.jpg' : site.favicon}}"/>
+    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
 
     <script th:src="${assets_link + '/js/heo.js' + theme_version}"></script>
 
@@ -148,7 +149,6 @@
             }
         })(window)
     </script>
-    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- 动态加载条 -->
     <script data-pace-options='{ "restartOnRequestAfter":false,"eventLag":false}'

@@ -1,11 +1,11 @@
-let heo_cookiesTime = null;
+let heo_cookiesTime = null
 // 第一次播放音乐
-var heo_musicFirst = false;
+,heo_musicFirst = false
 // 音乐播放状态
-var heo_musicPlaying = false;
-let heo_keyboard = false;
-let heo_intype = false;
-let lastSayHello = "";
+,heo_musicPlaying = false
+,heo_keyboard = false
+,heo_intype = false
+,lastSayHello = "";
 // 私有函数
 var heo = {
     // 检测显示模式
@@ -560,4 +560,12 @@ var heo = {
         });
     },
 
-}
+};
+$(document).ready((function() {
+        initBlog()
+    }
+)),
+document.addEventListener("pjax:complete", (function() {
+         initBlog()
+     }
+));
