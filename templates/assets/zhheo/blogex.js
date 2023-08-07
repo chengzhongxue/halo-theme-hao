@@ -635,8 +635,20 @@ function percent() {
     window.onscroll = percent
 }
 
+// 首页分页隐藏置顶内容
+function checkUrlAndAddHideBanner() {
+    var e = window.location.href;
+    if (/\/page\//.test(e)) {
+        var t = document.getElementById("recent-top-post-group")
+            , o = document.getElementById("bbTimeList");
+        t && (t.classList.add("more-page"),
+        o && o.classList.add("more-page"));
+    }
+}
+
 function initBlog() {
-    heo.initIndexEssay()
+    heo.initIndexEssay(),
+    checkUrlAndAddHideBanner()
 }
 
 //检查是否开启快捷键
