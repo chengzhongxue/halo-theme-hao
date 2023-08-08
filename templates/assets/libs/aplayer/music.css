@@ -34,17 +34,17 @@ body {
     display: block;
 }
 
-body:has(#anMusic-page) #web_bg {
+body#htmlType-music #web_bg {
     display: none;
 }
-body:has(#anMusic-page) #page {
+body#htmlType-music #page {
     min-height: calc(0px)
 }
 @media screen and (max-width: 768px) {
-    body:has(#anMusic-page) .page .layout#content-inner {
+    body#htmlType-music .page .layout#content-inner {
         background: 0 0!important;
     }
-    body:has(#anMusic-page) #page-header.not-top-img:not(.nav-fixed) #nav{
+    body#htmlType-music #page-header.not-top-img:not(.nav-fixed) #nav{
         background: 0 0!important;
     }
 }
@@ -56,8 +56,8 @@ body:has(#anMusic-page) #page {
 }
 
 
-body:has(#anMusic-page) #footer,
-body:has(#anMusic-page) #nav-music {
+body#htmlType-music #footer,
+body#htmlType-music #nav-music {
     display: none;
 }
 
