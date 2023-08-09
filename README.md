@@ -54,12 +54,13 @@
 主题的魔改版本。
 
 ## 🚨 注意事项(看我看我)
-1. **安装后请到主题设置页面，将每个设置项都保存一下！！！**
-2. **建站时间必填**
-3. 如果安装主题后报错，请仔细查阅[主题说明](https://github.com/liuzhihang/halo-theme-hao)与[更新说明](https://github.com/liuzhihang/halo-theme-hao/releases)！！！
-4. 如果还未解决，可以加群求助！！！
-5. 如果群友也解决不了，再考虑提ISSUE！！！
-6. `1.3.1`及以上版本需要`Halo`版本>=`2.8.0`
+
+1. **建站时间必填**
+2. 如果安装主题后报错，请仔细查阅[主题说明](https://github.com/liuzhihang/halo-theme-hao)与[更新说明](https://github.com/liuzhihang/halo-theme-hao/releases)！！！
+3. 如果还未解决，可以加群求助！！！
+4. 如果群友也解决不了，再考虑提ISSUE！！！
+5. `1.3.1`及以上版本需要`Halo`版本>=`2.8.0`
+6. **若安装主题后出现500错误，请到主题设置页面，将每个设置项都保存一下！！！**
 
 ## 🛠 安装
 
