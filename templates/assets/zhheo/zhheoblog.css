@@ -12957,7 +12957,7 @@ img.tk-avatar-img {
     }
 
     100% {
-        top: -60px;
+        top: -55px;
         opacity: 1;
     }
 }
@@ -12980,8 +12980,8 @@ img.tk-avatar-img {
     display: none;
     /* 绝对定位 */
     position: absolute;
-    /* 向上移动60像素 */
-    top: -60px;
+    /* 向上移动55像素 */
+    top: -55px;
     /* 文字强制不换行，防止left:50%导致的文字换行 */
     white-space: nowrap;
     /* 圆角 */
@@ -13004,7 +13004,7 @@ img.tk-avatar-img {
     position: absolute;
     /* 内容大小（宽高）为0且边框大小不为0的情况下，每一条边（4个边）都是一个三角形，组成一个正方形。
   我们先将所有边框透明，再给其中的一条边添加颜色就可以实现小三角图标 */
-    border: 12px solid transparent;
+    border: 15px solid transparent;
     border-top-color: #444;
     left: 50%;
     transform: translate(-50%, -46px);
