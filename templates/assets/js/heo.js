@@ -550,14 +550,13 @@ var heo = {
         });
 
         aplayerIconMenu.addEventListener("click", function () {
-            document.getElementById("menu-mask").style.display = "block";
-            document.getElementById("menu-mask").style.animation = "0.5s ease 0s 1 normal none running to_show";
+            $(".music-mask").css("display","block")
+            $(".music-mask").css("animation","0.5s ease 0s 1 normal none running to_show")
         });
-
-        document.getElementById("menu-mask").addEventListener("click", function () {
-            if (window.location.pathname != "/music") return;
+        $(".music-mask").click(function(){
             anMusicPage.querySelector(".aplayer-list").classList.remove("aplayer-list-hide");
-        });
+            $(".music-mask").hide();
+        })
     },
 
 };

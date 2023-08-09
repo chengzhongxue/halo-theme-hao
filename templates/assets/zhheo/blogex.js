@@ -173,7 +173,7 @@ function navTitle() {
     var titlevalue = document.title;
     var postName = document.getElementsByClassName("post-title")[0];
     if(postName==null || postName==''){
-      document.getElementById("page-name-text").innerHTML = titlevalue;
+        document.getElementById("page-name-text").innerHTML = titlevalue;
     }else{
         document.getElementById("page-name-text").innerHTML = postName?.innerText;
     }
@@ -504,6 +504,50 @@ function getArrayItems(arr, num) {
     return return_array;
 }
 
+//评论增加放大功能
+function owoBig() {
+    new MutationObserver((e=>{
+            for (let t of e)
+                if ("childList" === t.type)
+                    for (let e of t.addedNodes)
+                        if (e.classList && e.classList.contains("OwO-body")) {
+                            let t = e
+                                , o = ""
+                                , n = !0
+                                , a = document.createElement("div");
+                            a.id = "owo-big",
+                                document.querySelector("body").appendChild(a),
+                                t.addEventListener("contextmenu", (e=>e.preventDefault())),
+                                t.addEventListener("mouseover", (e=>{
+                                        "LI" === e.target.tagName && n && (n = !1,
+                                            o = setTimeout((()=>{
+                                                    let t = 3 * e.target.clientWidth
+                                                        , o = e.x - e.offsetX - (t - e.target.clientWidth) / 2
+                                                        , n = e.y - e.offsetY;
+                                                    a.style.height = 3 * e.target.clientHeight + "px",
+                                                        a.style.width = t + "px",
+                                                        a.style.left = o + "px",
+                                                        a.style.top = n + "px",
+                                                        a.style.display = "flex",
+                                                        a.innerHTML = `<img src="${e.target.querySelector("img").src}">`
+                                                }
+                                            ), 300))
+                                    }
+                                )),
+                                t.addEventListener("mouseout", (e=>{
+                                        a.style.display = "none",
+                                            n = !0,
+                                            clearTimeout(o)
+                                    }
+                                ))
+                        }
+        }
+    )).observe(document.getElementById("post-comment"), {
+        childList: !0,
+        subtree: !0
+    })
+}
+
 // 检测按键
 window.onkeydown = function (e) {
     if (e.keyCode === 123) {
@@ -524,8 +568,8 @@ document.querySelector('#console').addEventListener('wheel', (e) => {
 
 //自动调整即刻短文尺寸
 window.addEventListener("resize", (function() {
-    document.querySelector("#waterfall") && heo.reflashEssayWaterFall()
-}
+        document.querySelector("#waterfall") && heo.reflashEssayWaterFall()
+    }
 ));
 
 //首页大卡片恢复显示
@@ -541,59 +585,6 @@ $(".topGroup").hover(function () {
     }
 });
 
-//评论增加放大功能
-// 如果当前页有评论就执行函数
-if (document.getElementById('post-comment')) owoBig();
-
-function owoBig() {
-    // 监听dom插入
-    document.getElementById('post-comment').addEventListener('DOMNodeInserted', (dom) => {
-        // 如果有class且值为OwO-body
-        if (dom.target.classList && dom.target.classList.value == 'OwO-body') {
-            let owo_body = dom.target
-            if (owo_body) {
-                let owo_time = ''
-                let flag = true;
-                // 创建盒子
-                let div = document.createElement('div')
-                div.id = 'owo-big'
-                document.querySelector('body').appendChild(div)
-
-                // 禁用右键（手机端长按会出现右键菜单，为了体验给禁用掉）
-                owo_body.addEventListener('contextmenu', e => e.preventDefault())
-
-                // 鼠标移入
-                owo_body.addEventListener('mouseover', (e) => {
-                    if (e.target.tagName == 'LI' && flag) {
-                        flag = false;
-                        // 移入300毫秒后显示盒子
-                        owo_time = setTimeout(() => {
-                            let m = 3 // 设置倍数
-                            let height = e.path[0].clientHeight * m // 盒子高
-                            let width = e.path[0].clientWidth * m // 盒子宽
-                            let left = (e.x - e.offsetX) - (width - e.path[0].clientWidth) / 2 // 盒子与屏幕左边距离
-                            let top = e.y - e.offsetY // 盒子与屏幕顶部距离
-
-                            div.style.height = height + 'px'
-                            div.style.width = width + 'px'
-                            div.style.left = left + 'px'
-                            div.style.top = top + 'px'
-                            div.style.display = 'flex'
-                            div.innerHTML = `<img src="${e.target.querySelector('img').src}">`
-                        }, 300);
-                    }
-                })
-
-                // 鼠标移出
-                owo_body.addEventListener('mouseout', (e) => {
-                    div.style.display = 'none';
-                    flag = true
-                    clearTimeout(owo_time)
-                })
-            }
-        }
-    });
-}
 
 //文章页面上一篇下一篇
 // document.addEventListener('scroll', btf.throttle(function () {
@@ -622,22 +613,37 @@ function owoBig() {
 // 页面百分比
 function percent() {
     let e = document.documentElement.scrollTop || window.pageYOffset
-      , t = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight) - document.documentElement.clientHeight
-      , o = Math.round(e / t * 100)
-      , n = document.querySelector("#percent");
+        , t = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight) - document.documentElement.clientHeight
+        , o = Math.round(e / t * 100)
+        , n = document.querySelector("#percent");
     var a = window.scrollY + document.documentElement.clientHeight
-      , i = document.getElementById("post-tools") || document.getElementById("footer");
+        , i = document.getElementById("post-tools") || document.getElementById("footer");
     i.offsetTop + i.offsetHeight / 2 < a || o > 90 ? (document.querySelector("#nav-totop").classList.add("long"),
-    n.innerHTML = "返回顶部") : (document.querySelector("#nav-totop").classList.remove("long"),
+        n.innerHTML = "返回顶部") : (document.querySelector("#nav-totop").classList.remove("long"),
     o >= 0 && (n.innerHTML = o)),
-    endresult = t - e,
-    endresult < 100 ? $(".needEndHide").addClass("hide") : $(".needEndHide").removeClass("hide"),
-    window.onscroll = percent
+        endresult = t - e,
+        endresult < 100 ? $(".needEndHide").addClass("hide") : $(".needEndHide").removeClass("hide"),
+        window.onscroll = percent
+}
+
+// 首页分页隐藏置顶内容
+function checkUrlAndAddHideBanner() {
+    var e = window.location.href;
+    if (/\/page\//.test(e)) {
+        var t = document.getElementById("recent-top-post-group")
+            , o = document.getElementById("bbTimeList");
+        t && (t.classList.add("more-page"),
+        o && o.classList.add("more-page"));
+    }
 }
 
 function initBlog() {
-    heo.initIndexEssay()
+    heo.initIndexEssay(),
+        checkUrlAndAddHideBanner()
 }
+
+// 如果当前页有评论就执行函数
+document.getElementById("post-comment") && owoBig()
 
 //检查是否开启快捷键
 // if (localStorage.getItem('keyboardToggle') !== 'false') {
@@ -828,7 +834,7 @@ document.addEventListener('pjax:send', function () {
         heo.showLoading();
     }
 
-    
+
 })
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -846,7 +852,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     heo.qrcodeCreate()
     heo.onlyHome()
-    
+
     heo.addNavBackgroundInit()
     // heo.changeTimeInEssay()
     heo.reflashEssayWaterFall()

@@ -7032,6 +7032,7 @@ img.footer_mini_logo:hover {
     line-height: 1.5rem;
     width: 1.5rem;
     padding: 0 0.25rem;
+    font-size: 0.9rem;
 }
 
 #rightMenu .rightMenu-line .rightMenu-item i {
@@ -8924,6 +8925,10 @@ li {
     height: 50px;
 }
 
+#bbTimeList.more-page {
+    margin-bottom: 0;
+}
+
 #bbTimeList:hover {
     border: var(--style-border-hover);
     box-shadow: var(--heo-shadow-main);
@@ -9505,6 +9510,10 @@ ins.adsbygoogle {
     overflow-x: auto;
     width: 100%;
     margin-bottom: 0rem;
+}
+
+.recent-top-post-group.more-page {
+    display: none;
 }
 
 .recent-post-top {
@@ -12878,6 +12887,11 @@ div#post-comment {
     font-weight: bold;
 }
 
+.el-input--small .el-input__inner {
+    padding: 8px;
+    padding-left: 16px
+}
+
 /* 头像 */
 .tk-avatar {
     width: 32px !important;
@@ -13003,38 +13017,64 @@ img.tk-avatar-img {
 }
 
 /* 填写项标题 */
-.el-input-group__append, .el-input-group__prepend {
-    background-color: var(--heo-card-bg) !important;
-    color: var(--heo-fontcolor) !important;
-    border-color: var(--heo-card-border) !important;
-    border: var(--style-border)!important;
-    font-weight: bold;
+.el-input-group__append,.el-input-group__prepend {
+    background-color: var(--heo-card-bg)!important;
+    color: var(--heo-fontcolor)!important;
+    border-color: var(--heo-card-border)!important;
+    border: none!important;
+    font-weight: 700
 }
 
 /* 输入框 */
 .el-input__inner {
-    background: var(--heo-background) !important;
-    border: 1px solid var(--heo-card-border) !important;
-    color: var(--heo-fontcolor) !important;
-    padding-left: 8px;
+    background: var(--heo-secondbg)!important;
+    border: none!important;
+    color: var(--heo-fontcolor)!important;
+    padding-left: 8px
+}
+
+.el-input.el-input--small.el-input-group.el-input-group--prepend {
+    border-radius: 12px;
+    background: var(--heo-secondbg);
+    border: var(--style-border-always);
+}
+
+.el-input-group--prepend .el-input__inner,.el-input-group__append {
+    border-radius: 12px!important
+}
+
+.page .el-input.el-input--small.el-input-group.el-input-group--prepend {
+    background: var(--heo-card-bg)
+}
+
+@media screen and (max-width: 769px) {
+    .el-input__inner {
+        background:var(--heo-card-bg)!important
+    }
+
+    .el-input.el-input--small.el-input-group.el-input-group--prepend {
+        background: var(--heo-card-bg);
+        margin-bottom: 0
+    }
 }
 
 .page .el-input__inner {
-    background: var(--heo-card-bg) !important;
+    background: var(--heo-card-bg)!important
 }
 
 .el-input__inner:focus {
-    border: 1px solid var(--heo-main) !important;
+    border: none!important
 }
 
 /* 评论输入框 */
 .el-textarea__inner {
-    background: var(--heo-background) !important;
+    background: var(--heo-secondbg) !important;
     color: var(--heo-fontcolor) !important;
     border-radius: 12px !important;
     min-height: 100px !important;
     padding: 16px 16px 40px 16px !important;
     border: var(--style-border-always) !important;
+    box-shadow: none!important;
 }
 
 @media screen and (max-width: 768px) {
@@ -13162,17 +13202,17 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
 
 /* 发送按钮正常状态 */
 .tk-comments .el-button--primary {
-    border-color: var(--heo-fontcolor) !important;
-    color: var(--heo-card-bg) !important;
-    border-radius: 4px !important;
+    border-color: var(--heo-fontcolor)!important;
+    color: var(--heo-card-bg)!important;
+    border-radius: 12px!important;
     box-shadow: var(--heo-shadow-black);
-    transition: 0.3s;
+    transition: .3s;
     width: 5rem;
     position: absolute;
-    top: -53px;
-    right: 0px;
-    margin-left: 0.5rem !important;
-    height: 32px;
+    top: -43px;
+    right: 0;
+    margin-left: .5rem!important;
+    height: 32px
 }
 
 /* 发送按钮禁用状态 */
@@ -13180,31 +13220,35 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
 .tk-comments .el-button--primary.is-disabled:active,
 .tk-comments .el-button--primary.is-disabled:focus,
 .tk-comments .el-button--primary.is-disabled:hover {
-    opacity: 0.4;
+    opacity: 0.2;
 }
 
 .tk-row-actions-start {
     position: absolute;
-    top: -100px;
-    left: 17px;
+    top: -84px;
+    left: 17px
+}
+
+.tk-submit {
+    margin-top: .8rem!important
 }
 
 @media screen and (max-width: 768px) {
     .tk-submit .el-button--primary {
-        width: 5rem;
-        height: 132px;
-        top: -161px;
+        width:5rem;
+        height: 122px;
+        top: -132px
     }
 
     .tk-row-actions-start {
-        top: -210px;
+        top: -176px
     }
 }
 
 .tk-comments-title {
     /* position: absolute;
     bottom: 0;
-    left: 0; */
+    left: 0 */
 }
 
 .tk-extras {
@@ -13213,24 +13257,24 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
 }
 
 .tk-icon.__comments:first-child {
-    /* display: none; */
-    width: 0.6em;
+    width: 0.6em
 }
 
 .tk-icon.__comments {
-    /* margin-left: 0 !important; */
+    /* margin-left: 0!important;
+    color: var(--heo-main)!important */
 }
 
 .tk-row.actions {
-    margin-bottom: 0.5rem !important;
-    margin-left: 0px !important;
-    margin-top: 0.5rem !important;
-    justify-content: space-around !important;
+    margin-bottom: 0!important;
+    margin-left: 0!important;
+    margin-top: 0!important;
+    justify-content: space-around!important
 }
 
 .tk-meta-input {
     position: relative !important;
-    margin-top: 0.8rem;
+    margin-top: 8px;
     width: calc(100% - 5.5rem);
 }
 
@@ -13482,6 +13526,12 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     z-index: 1003;
 }
 
+.tk-meta-input .el-input .el-input-group__prepend {
+    -webkit-user-select: none;
+    border-radius: 10px 0 0 10px;
+    border-right: var(--style-border-always)
+}
+
 @media screen and (min-width: 768px) {
     .post-reward:hover > .reward-main {
         display: flex !important;
@@ -13509,7 +13559,7 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     }
 
     .tk-meta-input .el-input .el-input-group__prepend {
-        padding: 0 0.3rem !important;
+        padding: 0 8px!important
     }
 
     .tk-meta-input {
@@ -13670,47 +13720,9 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     }
 }
 
-/* 代码高亮 */
-/*#article-container figure.highlight {*/
-/*    border-radius: 8px 8px 4px 4px;*/
-/*}*/
-
-/*#article-container figure.highlight,*/
-/*#article-container pre {*/
-/*    color: #f8f8f2;*/
-/*    background: #696969*/
-/*}*/
-
-/*#article-container figure.highlight .highlight-tools {*/
-/*    background: #3f3f3f;*/
-/*    color: var(--heo-fontcolor);*/
-/*}*/
-
-/*#article-container figure.highlight .gutter pre {*/
-/*    color: #d3d3d3 !important;*/
-/*    background: grey;*/
-/*    border-right: var(--style-border-always);*/
-/*}*/
-
-/*#article-container figure.highlight figcaption a {*/
-/*    color: #a9a9a9 !important*/
-/*}*/
-
-/*#article-container pre,*/
-/*#article-container .highlight:not(.js-file-line-container) {*/
-/*    background-color: var(--heo-card-bg) !important;*/
-/*    color: var(--heo-fontcolor);*/
-/*    box-shadow: var(--heo-shadow-border);*/
-/*    border: var(--style-border-always);*/
-/*}*/
-
-/*#article-container figure.highlight pre span::selection {*/
-/*    background: var(--heo-main) !important;*/
-/*    color: var(--heo-white) !important;*/
-/*}*/
 
 /* 表情窗口owo */
-/* .OwO .OwO-body {
+.OwO .OwO-body {
     border: var(--style-border-always) !important;
     border-radius: 8px !important;
     overflow: hidden;
@@ -13726,7 +13738,7 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
 .OwO .OwO-body .OwO-items .OwO-item:hover {
     box-shadow: var(--heo-shadow-lightblack) !important;
     border-radius: 8px;
-} */
+}
 
 #twikoo > div.tk-comments > div.tk-submit > div.tk-row.actions > div > div.tk-action-icon.OwO.OwO-open > div.OwO-body > div > ul > li > span {
     line-height: 48px;
@@ -13744,10 +13756,7 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     transition: 0.3s;
 }
 
-.OwO-packages {
-    background: var(--heo-background);
-    padding-left: 8px !important;
-}
+
 
 .OwO .OwO-body .OwO-bar .OwO-packages .OwO-package-active {
     background: var(--heo-secondbg) !important;
@@ -13757,6 +13766,15 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     margin: 12px 8px !important;
     min-height: 197px;
 } */
+.OwO .OwO-body .OwO-items-show {
+    margin: 12px 8px !important;
+    min-height: 197px;
+}
+.OwO-packages {
+    background: var(--heo-background);
+    padding-left: 8px !important;
+}
+
 
 /* 文章列表页 */
 /* ---------------------------------------------------------------- */
@@ -15004,7 +15022,7 @@ figure.gallery-group:hover .gallery-group-name::after {
     display: flex;
     justify-content: center;
     position: relative;
-    width:calc(100% / 4 - 5px); 
+    width:calc(100% / 4 - 5px);
     margin-bottom: 10px
 }
 

@@ -34,17 +34,21 @@ body {
     display: block;
 }
 
-body:has(#anMusic-page) #web_bg {
+body#htmlType-music .music-mask{
     display: none;
 }
-body:has(#anMusic-page) #page {
+
+body#htmlType-music #web_bg {
+    display: none;
+}
+body#htmlType-music #page {
     min-height: calc(0px)
 }
 @media screen and (max-width: 768px) {
-    body:has(#anMusic-page) .page .layout#content-inner {
+    body#htmlType-music .page .layout#content-inner {
         background: 0 0!important;
     }
-    body:has(#anMusic-page) #page-header.not-top-img:not(.nav-fixed) #nav{
+    body#htmlType-music #page-header.not-top-img:not(.nav-fixed) #nav{
         background: 0 0!important;
     }
 }
@@ -56,8 +60,8 @@ body:has(#anMusic-page) #page {
 }
 
 
-body:has(#anMusic-page) #footer,
-body:has(#anMusic-page) #nav-music {
+body#htmlType-music #footer,
+body#htmlType-music #nav-music {
     display: none;
 }
 
@@ -397,6 +401,7 @@ body:has(#anMusic-page) #nav-music {
 }
 
 @media screen and (max-width: 768px) {
+
     body[data-type=music] #rightside {
         display: none
     }
@@ -408,7 +413,7 @@ body:has(#anMusic-page) #nav-music {
 
     #anMusic-page meting-js .aplayer .aplayer-list {
         position: fixed;
-        z-index: 1002;
+        z-index: 100;
         width: 100%;
         bottom: -88%;
         left: 0;
@@ -560,7 +565,7 @@ body:has(#anMusic-page) #nav-music {
 
     #anMusic-page meting-js .aplayer .aplayer-body .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon-loop {
         position: absolute;
-        right: 25px
+        right: 10px
     }
 
     #anMusic-page meting-js .aplayer .aplayer-body .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon-menu {
@@ -568,5 +573,19 @@ body:has(#anMusic-page) #nav-music {
         position: absolute;
         right: 25px;
         top: -90px
+    }
+    body#htmlType-music .music-mask{
+        position: fixed;
+        z-index: 10;
+        display: none;
+        width: 100%;
+        height: 100%;
+        background: var(--heo-maskbg);
+        backdrop-filter: saturate(180%) blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        transform: translateZ(0);
+        animation: 0.6s ease 0s 1 normal none running to_show;
+        left: 0;
+        top: 0;
     }
 }
