@@ -8,7 +8,7 @@
     <title th:text="${site.title}"></title>
     <meta content="telephone=no" name="format-detection">
     <meta content="var(--heo-card-bg)" name="theme-color">
-
+    <meta name="baidu-site-verification" th:content="${theme.config.basics.siteVerification}" />
     <link rel="shortcut icon"
           th:href="@{${#strings.isEmpty(site.favicon) ? assets_link + '/images/hao-logo.jpg' : site.favicon}}"/>
     <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
