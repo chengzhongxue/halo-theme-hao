@@ -43,6 +43,7 @@
 |   困困鱼    |     https://0206.ink      |
 | Top John |    https://op-lab.top     |
 |  Roozen  |    https://roozen.top     |
+|  Lanbin  |    https://lib.lanbin.top |
 
 ## 👋 简介
 
