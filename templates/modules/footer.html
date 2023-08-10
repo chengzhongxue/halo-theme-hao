@@ -150,5 +150,36 @@
 
 
 </footer>
-
+<script>
+    (function () {
+        //百度推送
+        const page_url = window.location.href
+        console.log("current page url: " + page_url)
+        const split_url = page_url.split("//")
+        const no_http_url = split_url[1]
+        const no_http_site = no_http_url.split("/")[0]
+        const token = [[${theme.config.basics.baiduSiteToken}]]
+        const site = split_url[0] + "//" + no_http_site
+        console.log("current site url: " + site)
+        const url = "https://data.zz.cnkj.site/urls?site=" + site + "&token=" + token
+        const httpRequest = new XMLHttpRequest();//第一步：创建需要的对象
+        httpRequest.open('POST', url, true); //第二步：打开连接
+        //发送json格式文件必须设置请求头
+        httpRequest.setRequestHeader("Content-type", "text/plain");//设置请求头
+        httpRequest.send(page_url.toString());//发送请求
+        /**
+         * 获取数据后的处理程序
+         */
+        httpRequest.onreadystatechange = function () {//请求后的回调接口，可将请求成功后要执行的程序写在其中
+            if (httpRequest.readyState === 4 && httpRequest.status === 200) {//验证请求是否发送成功
+                const json = httpRequest.responseText;//获取到服务端返回的数据
+                const res = JSON.parse(json)
+                const remain = res["remain"]
+                const success = res["success"]
+                console.log("本次成功推送次数：" + success);
+                console.log("今日剩余推送次数：" + remain);
+            }
+        };
+    })();
+</script>
 </html>
