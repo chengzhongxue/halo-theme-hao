@@ -5,7 +5,7 @@
     <div class="item-headline"><i class="iconfont icon-comment-dots"></i><span>最新评论</span></div>
     <div class="aside-list" id="newcomm">
         <th:block th:if="${#strings.equals(theme.config.comments.use, 'commentWidget') }">
-            <div class="aside-list-item"  th:each="comment : ${commentFinder.list(null, 1, 10)}" th:with="post = ${postFinder.getByName(comment.spec.subjectRef.name)}" >
+            <div class="aside-list-item"  th:each="comment,iterStat : ${commentFinder.list(null, 1, 10)}" th:with="post = ${postFinder.getByName(comment.spec.subjectRef.name)}"  th:if="${iterStat.index < 5}">
                 <a class="thumbnail" th:href="${post.status.permalink + '#comment-' + comment.metadata.name}" data-pjax-state="">
                     <img loading="lazy" alt="头像" th:src="${#strings.isEmpty(comment.owner.avatar)?'https://cravatar.cn/avatar/?d=mp':comment.owner.avatar}" data-ll-status="loading" class="entered loading">
                 </a>
@@ -20,15 +20,6 @@
                     </div>
                 </div>
             </div>
-            <script data-pjax>
-                window.addEventListener('load', () => {
-                    $(".aside-list time").each(function () {
-                        var timeVal = $(this).attr("datetime");
-                        $(this).text(btf.diffDate(timeVal,true));
-                        console.log(1);
-                    })
-                });
-            </script>
         </th:block>
 
         <script th:if="${theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.twikoos.envId)}">

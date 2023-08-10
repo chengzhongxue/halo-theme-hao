@@ -16,7 +16,7 @@
         </div>
         <div class="aside-list">
           <th:block th:if="${#strings.equals(theme.config.comments.use, 'commentWidget') }">
-            <div class="aside-list-item"  th:each="comment : ${commentFinder.list(null, 1, 10)}" th:with="post = ${postFinder.getByName(comment.spec.subjectRef.name)}">
+            <div class="aside-list-item"  th:each="comment,iterStat : ${commentFinder.list(null, 1, 10)}" th:with="post = ${postFinder.getByName(comment.spec.subjectRef.name)}" th:if="${iterStat.index < 4}">
               <a th:href="${post.status.permalink + '#comment-' + comment.metadata.name}" class="thumbnail"  data-pjax-state="">
                 <img th:src="${#strings.isEmpty(comment.owner.avatar)?'https://cravatar.cn/avatar/?d=mp':comment.owner.avatar}"
                       th:alt="${comment.owner.displayName}" data-ll-status="loaded" class="entered loaded">
@@ -27,6 +27,15 @@
                 <time th:datetime="${#dates.format(comment.metadata.creationTimestamp, 'yyyy-MM-dd HH:mm:ss')}"></time>
               </div>
             </div>
+            <script data-pjax>
+              window.addEventListener('load', () => {
+                $(".aside-list time").each(function () {
+                  var timeVal = $(this).attr("datetime");
+                  $(this).text(btf.diffDateExact(timeVal,true));
+                  console.log(1);
+                })
+              });
+            </script>
           </th:block>
           <span th:if="${#strings.equals(theme.config.comments.use, 'Twikoo') }">正在加载中...</span></div>
       </div>
