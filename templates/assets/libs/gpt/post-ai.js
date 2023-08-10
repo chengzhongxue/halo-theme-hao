@@ -29,20 +29,20 @@ function HaoPostAI(AI_option) {
     post_ai_box.className = 'post-ai';
     post.insertBefore(post_ai_box, post.firstChild);
 
-    var PostAI =   `
+    var PostAI = `
     <div class="ai-title">
     <i class="haofont hao-icon-bilibili"></i>
     <div class="ai-title-text">${interface.name}</div>`
-    if(switchBtn){
-        PostAI =  PostAI+  `<div  id="ai-Toggle">${interface.aiToggle}</div> `;
+    if (switchBtn) {
+        PostAI += `<div  id="ai-Toggle">${interface.aiToggle}</div> `;
     }
-    PostAI =  PostAI+  `<i class="haofont hao-icon-arrow-rotate-right"></i> `;
-    if(modeName == 'local'){
-        PostAI =  PostAI+  `<div class="ai-tag" id="ai-tag">${gptName} GPT</div>`;
-    }else{
-        PostAI =  PostAI+  `<div class="ai-tag" id="ai-tag">${interface.version}</div>     `;
+    PostAI += `<i class="haofont hao-icon-arrow-rotate-right"></i> `;
+    if (modeName == 'local') {
+        PostAI += `<div class="ai-tag" id="ai-tag">${gptName} GPT</div>`;
+    } else {
+        PostAI += `<div class="ai-tag" id="ai-tag">${interface.version}</div>     `;
     }
-    PostAI =  PostAI+  ` 
+    PostAI += ` 
     </div>
     <div class="ai-explanation" style="display: block;">AI初始化中...</div>
     <div class="ai-btn-box">
@@ -53,7 +53,7 @@ function HaoPostAI(AI_option) {
       <div class="ai-btn-item" id="go-tianli-blog">前往tianli博客</div>
     </div>`;
 
-    post_ai_box.innerHTML =PostAI;
+    post_ai_box.innerHTML = PostAI;
     // 当前随机到的ai摘要到index
     let lastAiRandomIndex = -1;
     let animationRunning = true; // 标志变量，控制动画函数的运行
@@ -263,27 +263,35 @@ function HaoPostAI(AI_option) {
 
     function recommendList() {
         let thumbnail = document.querySelectorAll('.relatedPosts-list a');
+        var title = document.title;
+        let list = '';
+        let index = 0;
         if (!thumbnail.length) {
             const cardRecentPost = document.querySelector('.card-widget.card-recent-post');
             if (!cardRecentPost) return '';
 
             thumbnail = cardRecentPost.querySelectorAll('.aside-list-item a');
 
-            let list = '';
-            for (let i = 0; i < thumbnail.length; i++) {
-                const item = thumbnail[i];
-                list += `<div class="ai-recommend-item"><span class="index">${i + 1}：</span><a href="javascript:;" onclick="pjax.loadUrl('${item.href}')" title="${item.title}" data-pjax-state="">${item.title}</a></div>`;
+            if(thumbnail.length>0){
+                thumbnail.forEach(item => {
+                    if (item) {
+                        if(!title.includes(item.title)){
+                            index +=1;
+                            list += `<div class="ai-recommend-item"><span class="index">${i + 1}：</span><a href="javascript:;" onclick="pjax.loadUrl('${item.href}')" title="${item.title}" data-pjax-state="">${item.title}</a></div>`;
+                        }
+                    }
+                });
             }
-
             return `很抱歉，无法找到类似的文章，你也可以看看本站最新发布的文章：<br /><div class="ai-recommend">${list}</div>`;
         }
-
-        let list = '';
-        for (let i = 0; i < thumbnail.length; i++) {
-            const item = thumbnail[i];
-            list += `<div class="ai-recommend-item"><span>推荐${i + 1}：</span><a href="javascript:;" onclick="pjax.loadUrl('${item.href}')" title="${item.title}" data-pjax-state="">${item.title}</a></div>`;
-        }
-
+        thumbnail.forEach(item => {
+            if (item) {
+                if(!title.includes(item.title)){
+                    index +=1;
+                    list += `<div class="ai-recommend-item"><span>推荐${index}：</span><a href="javascript:;" onclick="pjax.loadUrl('${item.href}')" title="${item.title}" data-pjax-state="">${item.title}</a></div>`;
+                }
+            }
+        });
         return `推荐文章：<br /><div class="ai-recommend">${list}</div>`;
     }
 

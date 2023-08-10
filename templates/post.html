@@ -151,7 +151,7 @@
                     <div class="relatedPosts-list"
                          th:with="recommandPosts = ${postFinder.listByCategory(1, theme.config.post.recommendQuantity, post.categories.get(0).metadata.name)}">
                         <!-- 建议阅读，这里可以自定义文章数量，然后遍历展示 -->
-                        <div th:each="recommandPost :${recommandPosts}">
+                        <div th:each="recommandPost :${recommandPosts}" th:if="${not #strings.equals(post.spec.title, recommandPost.spec.title)}">
                             <a th:href="@{${recommandPost.status.permalink}}" th:title="${recommandPost.spec.title}">
                                 <img alt="cover" class="cover" loading="lazy" id="preimg"
                                      th:src="${#strings.isEmpty(recommandPost.spec.cover) ? theme.config.layout.postRandomImg : recommandPost.spec.cover}">
