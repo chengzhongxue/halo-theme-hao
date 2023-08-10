@@ -1,15 +1,59 @@
-(function () {
+function HaoPostAI(AI_option) {
 
-    let ai =  GLOBAL_CONFIG.source.postAi.ai;
-    let randomNum = GLOBAL_CONFIG.source.postAi.randomNum; //按钮最大的随机次数，也就是一篇文章最大随机出来几种
-    let basicWordCount = GLOBAL_CONFIG.source.postAi.basicWordCount; // 最低获取字符数, 最小1000, 最大1999
-    let btnLink = GLOBAL_CONFIG.source.postAi.btnLink;
-    let gptName = GLOBAL_CONFIG.source.postAi.gptName;
-    let modeName = GLOBAL_CONFIG.source.postAi.modeName;
-    let switchBtn = GLOBAL_CONFIG.source.postAi.switchBtn //# 可以配置是否显示切换按钮 以切换tianli/local
-    let keys = GLOBAL_CONFIG.source.postAi.keys;
-    let Referers = GLOBAL_CONFIG.source.postAi.Referers;
+    // 获取挂载元素，即文章内容所在的容器元素
+    let targetElement = document.querySelector('#post #article-container');
+    // 若el配置不存在则自动获取，如果auto_mount配置为真也自动获取
+    if (!targetElement) {
+        return;
+    };
 
+    let ai = AI_option.ai;
+    let randomNum = AI_option.randomNum; //按钮最大的随机次数，也就是一篇文章最大随机出来几种
+    let basicWordCount = AI_option.basicWordCount; // 最低获取字符数, 最小1000, 最大1999
+    let btnLink = AI_option.btnLink;
+    let gptName = AI_option.gptName;
+    let modeName = AI_option.modeName;
+    let switchBtn = AI_option.switchBtn //# 可以配置是否显示切换按钮 以切换tianli/local
+    let keys = AI_option.keys;
+    let Referers = AI_option.Referers;
+
+    let post = document.querySelector('#post')
+    const interface = {
+        name: "AI-摘要",
+        aiToggle: "切换",
+        version: "Tianli GPT",
+        button: ["介绍自己", "生成本文简介", "推荐相关文章", "前往主页"],
+    }
+    // 插入html结构
+    const post_ai_box = document.createElement('div');
+    post_ai_box.className = 'post-ai';
+    post.insertBefore(post_ai_box, post.firstChild);
+
+    var PostAI = `
+    <div class="ai-title">
+    <i class="haofont hao-icon-bilibili"></i>
+    <div class="ai-title-text">${interface.name}</div>`
+    if (switchBtn) {
+        PostAI += `<div  id="ai-Toggle">${interface.aiToggle}</div> `;
+    }
+    PostAI += `<i class="haofont hao-icon-arrow-rotate-right"></i> `;
+    if (modeName == 'local') {
+        PostAI += `<div class="ai-tag" id="ai-tag">${gptName} GPT</div>`;
+    } else {
+        PostAI += `<div class="ai-tag" id="ai-tag">${interface.version}</div>     `;
+    }
+    PostAI += ` 
+    </div>
+    <div class="ai-explanation" style="display: block;">AI初始化中...</div>
+    <div class="ai-btn-box">
+      <div class="ai-btn-item">${interface.button[0]}</div>
+      <div class="ai-btn-item">${interface.button[1]}</div>
+      <div class="ai-btn-item">${interface.button[2]}</div>
+      <div class="ai-btn-item">${interface.button[3]}</div>
+      <div class="ai-btn-item" id="go-tianli-blog">前往tianli博客</div>
+    </div>`;
+
+    post_ai_box.innerHTML = PostAI;
     // 当前随机到的ai摘要到index
     let lastAiRandomIndex = -1;
     let animationRunning = true; // 标志变量，控制动画函数的运行
@@ -119,8 +163,10 @@
                 Referer: Referers
             };
 
-            const truncateDescription =  getTitleAndContent(num);
-            const queryParams = `key=${options.key}&content=${truncateDescription}`;
+            var url = window.location.href;
+            const title = document.title;
+            const truncateDescription = getTitleAndContent(num);
+            const queryParams = `key=${options.key}&content=${truncateDescription}&url=${url}&title=${title}`;
             const requestOptions = {
                 method: "GET",
                 headers: {
@@ -217,27 +263,35 @@
 
     function recommendList() {
         let thumbnail = document.querySelectorAll('.relatedPosts-list a');
+        var title = document.title;
+        let list = '';
+        let index = 0;
         if (!thumbnail.length) {
             const cardRecentPost = document.querySelector('.card-widget.card-recent-post');
             if (!cardRecentPost) return '';
 
             thumbnail = cardRecentPost.querySelectorAll('.aside-list-item a');
 
-            let list = '';
-            for (let i = 0; i < thumbnail.length; i++) {
-                const item = thumbnail[i];
-                list += `<div class="ai-recommend-item"><span class="index">${i + 1}：</span><a href="javascript:;" onclick="pjax.loadUrl('${item.href}')" title="${item.title}" data-pjax-state="">${item.title}</a></div>`;
+            if(thumbnail.length>0){
+                thumbnail.forEach(item => {
+                    if (item) {
+                        if(!title.includes(item.title)){
+                            index +=1;
+                            list += `<div class="ai-recommend-item"><span class="index">${i + 1}：</span><a href="javascript:;" onclick="pjax.loadUrl('${item.href}')" title="${item.title}" data-pjax-state="">${item.title}</a></div>`;
+                        }
+                    }
+                });
             }
-
             return `很抱歉，无法找到类似的文章，你也可以看看本站最新发布的文章：<br /><div class="ai-recommend">${list}</div>`;
         }
-
-        let list = '';
-        for (let i = 0; i < thumbnail.length; i++) {
-            const item = thumbnail[i];
-            list += `<div class="ai-recommend-item"><span>推荐${i + 1}：</span><a href="javascript:;" onclick="pjax.loadUrl('${item.href}')" title="${item.title}" data-pjax-state="">${item.title}</a></div>`;
-        }
-
+        thumbnail.forEach(item => {
+            if (item) {
+                if(!title.includes(item.title)){
+                    index +=1;
+                    list += `<div class="ai-recommend-item"><span>推荐${index}：</span><a href="javascript:;" onclick="pjax.loadUrl('${item.href}')" title="${item.title}" data-pjax-state="">${item.title}</a></div>`;
+                }
+            }
+        });
         return `推荐文章：<br /><div class="ai-recommend">${list}</div>`;
     }
 
@@ -371,4 +425,4 @@
 
     aiAbstract();
     showAiBtn()
-})()
+}

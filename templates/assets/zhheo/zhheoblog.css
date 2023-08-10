@@ -9269,7 +9269,7 @@ canvas#universe {
     background: var(--heo-card-bg);
     border-radius: 8px;
     border: var(--style-border-always);
-    font-size: 15px;
+    font-size: 15.8px;
     line-height: 1.4;
     display: none;
 }

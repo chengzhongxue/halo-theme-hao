@@ -177,6 +177,10 @@
                 th:src="${assets_link + '/libs/welcome/welcome.js' + theme_version}"></script>
     </th:block>
 
+    <!-- 文章ai摘要 -->
+    <script data-pjax th:if="${theme.config.post.aiDescription.aiDescriptionEnable}"
+            th:src="${assets_link + '/libs/gpt/post-ai.js'}"></script>
+
     <!-- icon图标 -->
     <link rel="stylesheet" th:href="'https://npm.onmicrosoft.cn/hao-theme-static@'+${theme.spec.version}+'/icon/iconfont.css'">
 
@@ -233,17 +237,6 @@
                     locationLng: [[${theme.config.sidebar.welcome.locationLng}]],
                     locationLat: [[${theme.config.sidebar.welcome.locationLat}]],
                 },
-                postAi:{
-                    ai : '[(${post.status.excerpt})]',
-                    randomNum : [[${theme.config.post.aiDescription.randomNum}]], //按钮最大的随机次数，也就是一篇文章最大随机出来几种
-                    basicWordCount : [[${theme.config.post.aiDescription.basicWordCount}]], // 最低获取字符数, 最小1000, 最大1999
-                    btnLink : "[(${theme.config.post.aiDescription.btnLink})]",
-                    gptName : "[(${theme.config.post.aiDescription.gptName})]",
-                    modeName : [[${theme.config.post.aiDescription.mode}]],
-                    switchBtn : [[${theme.config.post.aiDescription.switchBtn}]],  //# 可以配置是否显示切换按钮 以切换tianli/local
-                    keys : "[(${theme.config.post.aiDescription.key})]",
-                    Referers : "[(${theme.config.post.aiDescription.Referer})]",
-                }
             },
             date_suffix: {
                 just: '刚刚',
