@@ -14,7 +14,21 @@
           <div class="author-content-item-tips">互动</div>
           <span class="author-content-item-title">最近评论</span>
         </div>
-        <div class="aside-list"><span>正在加载中...</span></div>
+        <div class="aside-list">
+          <th:block th:if="${#strings.equals(theme.config.comments.use, 'commentWidget') }">
+            <div class="aside-list-item"  th:each="comment : ${commentFinder.list(null, 1, 10)}" th:with="post = ${postFinder.getByName(comment.spec.subjectRef.name)}">
+              <a th:href="${post.status.permalink + '#comment-' + comment.metadata.name}" class="thumbnail"  data-pjax-state="">
+                <img th:src="${#strings.isEmpty(comment.owner.avatar)?'https://cravatar.cn/avatar/?d=mp':comment.owner.avatar}"
+                      th:alt="${comment.owner.displayName}" data-ll-status="loaded" class="entered loaded">
+                <div class="name"><span>stonewu</span></div>
+              </a>
+              <div class="content">
+                <a class="comment" th:href="${post.status.permalink + '#comment-' + comment.metadata.name}" th:title="${comment.spec.content}" data-pjax-state="" th:text="${comment.spec.content}"></a>
+                <time th:datetime="${#dates.format(comment.metadata.creationTimestamp, 'yyyy-MM-dd HH:mm:ss')}"></time>
+              </div>
+            </div>
+          </th:block>
+          <span th:if="${#strings.equals(theme.config.comments.use, 'Twikoo') }">正在加载中...</span></div>
       </div>
     </div>
     <!-- 右侧展示 tag -->
@@ -116,7 +130,7 @@
   </div>
 
   <!-- 最近评论 -->
-  <script th:replace="~{modules/widgets/cardNewestComments :: cardNewestComments}"></script>
+  <th:block th:replace="~{modules/widgets/cardNewestComments :: cardNewestComments}"></th:block>
 </div>
 
 </html>

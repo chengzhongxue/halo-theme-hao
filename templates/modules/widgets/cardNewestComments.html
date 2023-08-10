@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-
+<th:block th:fragment="cardNewestComments">
 <!-- 最近评论 -->
-<script
-        th:fragment="cardNewestComments"
-        th:if="${theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
+    <script
+        th:if="${theme.config.comments.twikooEnable
+        && #strings.equals(theme.config.comments.use, 'Twikoo')
+        && not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
     window.addEventListener('load', () => {
         const changeContent = (content) => {
             if (content === '') return content
@@ -96,4 +97,5 @@
         document.addEventListener('pjax:complete', newestCommentInit)
     })</script>
 
+</th:block>
 </html>
