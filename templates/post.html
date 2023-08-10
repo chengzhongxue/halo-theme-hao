@@ -97,34 +97,24 @@
         <main class="layout" id="content-inner" th:classappend="${theme.config.sidebar.location}">
             <div id="post">
 
-
-                <!-- 文章ai摘要 -->
-                <div class="post-ai" th:if="${theme.config.post.aiDescription.aiDescriptionEnable}">
-                    <div class="ai-title"><i class="haofont hao-icon-bilibili"></i>
-                        <div class="ai-title-text">AI-摘要</div>
-                        <div th:if="${theme.config.post.aiDescription.switchBtn}" id="ai-Toggle">切换</div>
-                        <i class="haofont hao-icon-arrow-rotate-right"></i>
-
-                        <div th:if="${#strings.equals(theme.config.post.aiDescription.mode, 'local')}" class="ai-tag" id="ai-tag">[[${theme.config.post.aiDescription.gptName}]] GPT</div>
-                        <div th:if="${#strings.equals(theme.config.post.aiDescription.mode, 'tianli')}" class="ai-tag" id="ai-tag">Tianli GPT</div>
-                    </div>
-                    <div class="ai-explanation" style="display: block;">AI初始化中...</div>
-                    <div class="ai-btn-box">
-                        <div class="ai-btn-item">介绍自己</div>
-                        <div class="ai-btn-item">生成本文简介</div>
-                        <div class="ai-btn-item">推荐相关文章</div>
-                        <div class="ai-btn-item">前往主页</div>
-                        <div class="ai-btn-item" id="go-tianli-blog">前往tianli博客</div>
-                    </div>
-                </div>
-
                 <!-- 文章内容 -->
                 <article th:class="'post-content  '+${ theme.config.code.enable_line || pluginFinder.available('PluginPrismJS') ? 'line-numbers' : ''}" id="article-container" th:utext="${post.content.content}">
                 </article>
 
                 <!-- 文章ai摘要 -->
-                <script  data-pjax th:if="${theme.config.post.aiDescription.aiDescriptionEnable}"
-                         th:src="${assets_link + '/libs/gpt/post-ai.js'}"></script>
+                <script th:if="${theme.config.post.aiDescription.aiDescriptionEnable}" data-pjax defer>
+                    new HaoPostAI({
+                        ai: '[(${post.status.excerpt})]',
+                        randomNum: [[${ theme.config.post.aiDescription.randomNum }]], //按钮最大的随机次数，也就是一篇文章最大随机出来几种
+                        basicWordCount: [[${ theme.config.post.aiDescription.basicWordCount }]], // 最低获取字符数, 最小1000, 最大1999
+                        btnLink: "[(${theme.config.post.aiDescription.btnLink})]",
+                        gptName: "[(${theme.config.post.aiDescription.gptName})]",
+                        modeName: "[[${ theme.config.post.aiDescription.mode }]]",
+                        switchBtn: [[${ theme.config.post.aiDescription.switchBtn }]],  //# 可以配置是否显示切换按钮 以切换tianli/local
+                        keys: "[(${theme.config.post.aiDescription.key})]",
+                        Referers: "[(${theme.config.post.aiDescription.Referer})]"
+                    })
+                </script>
 
                 <!-- 版权声明 -->
                 <th:block th:replace="~{modules/post/copyright :: copyright}"></th:block>
