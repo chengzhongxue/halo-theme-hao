@@ -102,7 +102,7 @@
                 </article>
 
                 <!-- 文章ai摘要 -->
-                <script th:if="${theme.config.post.aiDescription.aiDescriptionEnable}" data-pjax defer>
+                <script th:if="${theme.config.post.aiDescription.aiDescriptionEnable}" data-pjax >
                     new HaoPostAI({
                         ai: '[(${post.status.excerpt})]',
                         randomNum: [[${ theme.config.post.aiDescription.randomNum }]], //按钮最大的随机次数，也就是一篇文章最大随机出来几种
