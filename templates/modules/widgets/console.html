@@ -16,16 +16,19 @@
         </div>
         <div class="aside-list">
           <th:block th:if="${#strings.equals(theme.config.comments.use, 'commentWidget') }">
-            <div class="aside-list-item"  th:each="comment,iterStat : ${commentFinder.list(null, 1, 10)}" th:with="post = ${postFinder.getByName(comment.spec.subjectRef.name)}" th:if="${iterStat.index < 4}">
-              <a th:href="${post.status.permalink + '#comment-' + comment.metadata.name}" class="thumbnail"  data-pjax-state="">
+            <!-- BUG：由于当前的列出所有评论API无过滤功能，非文章页的评论无法查询到页面信息，所以非文章评论跳转至首页-->
+             <div class="aside-list-item" th:each="comment,iterStat : ${commentFinder.list(null, 1, 20)}"
+                  th:with="page = ${comment.spec.subjectRef.kind == 'Post' ? postFinder.getByName(comment.spec.subjectRef.name) : null}"
+                  th:if="${iterStat.index  < 6}" >
+               <a th:href="${page == null? '/' : page.status.permalink + '#comment-' + comment.metadata.name}" class="thumbnail"  data-pjax-state="">
                 <img th:src="${#strings.isEmpty(comment.owner.avatar)?'https://cravatar.cn/avatar/?d=mp':comment.owner.avatar}"
                       th:alt="${comment.owner.displayName}" data-ll-status="loaded" class="entered loaded">
                 <div class="name"><span>stonewu</span></div>
-              </a>
-              <div class="content">
-                <a class="comment" th:href="${post.status.permalink + '#comment-' + comment.metadata.name}" th:title="${comment.spec.content}" data-pjax-state="" th:text="${comment.spec.content}"></a>
-                <time th:datetime="${#dates.format(comment.metadata.creationTimestamp, 'yyyy-MM-dd HH:mm:ss')}"></time>
-              </div>
+                </a>
+                <div class="content">
+                  <a class="comment" th:href="${page == null? '/' : page.status.permalink + '#comment-' + comment.metadata.name}" th:title="${comment.spec.content}" data-pjax-state="" th:text="${comment.spec.content}"></a>
+                  <time th:datetime="${#dates.format(comment.metadata.creationTimestamp, 'yyyy-MM-dd HH:mm:ss')}"></time>
+                </div>
             </div>
             <script data-pjax>
               window.addEventListener('load', () => {
