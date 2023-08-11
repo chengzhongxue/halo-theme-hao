@@ -11,38 +11,68 @@
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-                <th:block th:each="group : ${photoFinder.groupBy()}">
-
-
-                    <th:block th:if="${#strings.equals(group.metadata.name, param.photo_group_name)}"
-                              th:with="description = ${#annotations.get(group, 'description')},
+                <th:block th:if="${#strings.equals(theme.config.photos.photosStyle, 'default')}">
+                    <th:block th:each="group : ${photoFinder.groupBy()}">
+                        <th:block th:if="${#strings.equals(group.metadata.name, param.photo_group_name)}" th:with="description = ${#annotations.get(group, 'description')},
                          background = ${#annotations.get(group, 'background')}">
-                        <th:div  th:replace="~{macro/author-content :: author-content(background = ${background},
+                            <th:div th:replace="~{macro/author-content :: author-content(background = ${background},
                         smallTitle = '相册集',
                         bigTitle = ${group.spec.displayName},
                         detail = ${description},
                         buttonUrl = '',
                         buttonTitle = '')}" />
+                        </th:block>
                     </th:block>
+                    <div id="article-container">
+                        <section class="timeline page-1 loadings">
+                            <div class="type-gallery ">
+                                <div class="gallery">
+                                    <div class="fj-gallery-item"
+                                         th:each="photo : ${photoFinder.listBy(param.photo_group_name)}">
+                                        <div class="tag-address">[[${photo.spec.displayName}]]</div>
+                                        <img th:src="${photo.spec.url}" th:alt="${photo.spec.description}"
+                                             th:title="${photo.spec.description}">
 
-                </th:block>
-
-                <div id="article-container">
-                    <section class="timeline page-1 loadings">
-                        <div class="type-gallery ">
-                            <div class="gallery">
-                                <div class="fj-gallery-item"
-                                     th:each="photo : ${photoFinder.listBy(param.photo_group_name)}">
-                                    <div class="tag-address">[[${photo.spec.displayName}]]</div>
-                                    <img th:src="${photo.spec.url}" th:alt="${photo.spec.description}"
-                                         th:title="${photo.spec.description}">
-
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
+                    </div>
+                </th:block>
+
+                <div class="gallery-groups" th:if="${#strings.equals(theme.config.photos.photosStyle, 'one')}">
+                    <th:block th:each="group : ${photoFinder.groupBy()}">
+                        <h1 style="margin: 8px 0px 20px"  th:if="${#strings.equals(group.metadata.name, param.photo_group_name)}">
+                            [[${group.spec.displayName}]]
+                        </h1>
+                    </th:block>
+                    <div id="article-container">
+                        <section class="timeline page-1 loadings">
+                            <div class="type-gallery ">
+                                <div class="gallery">
+                                    <div class="fj-gallery-item"
+                                         th:each="photo : ${photoFinder.listBy(param.photo_group_name)}">
+                                        <div class="tag-address">[[${photo.spec.displayName}]]</div>
+                                        <img th:src="${photo.spec.url}" th:alt="${photo.spec.description}"
+                                             th:title="${photo.spec.description}">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
                 </div>
                 <style>
+                    .gallery-groups {
+                        box-shadow: var(--heo-shadow-border);
+                        padding: 1rem 2rem;
+                        border-radius: 12px;
+                        background: var(--heo-card-bg);
+                        border: var(--style-border);
+                        width: 100%;
+                        align-self: flex-start;
+                        animation: slide-in 0.6s 0.1s backwards;
+                    }
 
                     #content-inner .loadings .type-gallery {
                         opacity: 0

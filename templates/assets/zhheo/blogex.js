@@ -637,9 +637,17 @@ function checkUrlAndAddHideBanner() {
     }
 }
 
+function setBodyDataType(){
+    var body = document.body;
+    var att = document.createAttribute("data-type");
+    att.value = GLOBAL_CONFIG.htmlType;
+    body.setAttributeNode(att);
+}
+
 function initBlog() {
     heo.initIndexEssay(),
-        checkUrlAndAddHideBanner()
+    checkUrlAndAddHideBanner(),
+    setBodyDataType()
 }
 
 // 如果当前页有评论就执行函数

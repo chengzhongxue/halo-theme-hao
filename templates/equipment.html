@@ -12,12 +12,12 @@
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-                <th:div  th:replace="~{macro/author-content :: author-content(background = ${theme.config.equipment.backgroundImg},
+                <div  th:replace="~{macro/author-content :: author-content(background = ${theme.config.equipment.backgroundImg},
                         smallTitle = ${theme.config.equipment.smallTitle},
                         bigTitle = ${theme.config.equipment.bigTitle},
                         detail = ${theme.config.equipment.detail},
                         buttonUrl = '',
-                        buttonTitle = '')}" />
+                        buttonTitle = '')}" ></div>
                 <div id="equipment" th:if="${not #lists.isEmpty(theme.config.equipment.category_list)}"
                      th:with="categoryList = ${theme.config.equipment.category_list}">
                     <th:block th:each="category : ${categoryList}">
