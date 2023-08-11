@@ -34,21 +34,21 @@ body {
     display: block;
 }
 
-body#htmlType-music .music-mask{
+body[data-type=music] .music-mask{
     display: none;
 }
 
-body#htmlType-music #web_bg {
+body[data-type=music] #web_bg {
     display: none;
 }
-body#htmlType-music #page {
+body[data-type=music] #page {
     min-height: calc(0px)
 }
 @media screen and (max-width: 768px) {
-    body#htmlType-music .page .layout#content-inner {
+    body[data-type=music] .page .layout#content-inner {
         background: 0 0!important;
     }
-    body#htmlType-music #page-header.not-top-img:not(.nav-fixed) #nav{
+    body[data-type=music] #page-header.not-top-img:not(.nav-fixed) #nav{
         background: 0 0!important;
     }
 }
@@ -60,8 +60,8 @@ body#htmlType-music #page {
 }
 
 
-body#htmlType-music #footer,
-body#htmlType-music #nav-music {
+body[data-type=music] #footer,
+body[data-type=music] #nav-music {
     display: none;
 }
 
@@ -574,7 +574,7 @@ body#htmlType-music #nav-music {
         right: 25px;
         top: -90px
     }
-    body#htmlType-music .music-mask{
+    body[data-type=music] .music-mask{
         position: fixed;
         z-index: 10;
         display: none;
