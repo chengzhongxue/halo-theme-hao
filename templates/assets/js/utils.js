@@ -3,7 +3,7 @@ var btf = {
 
 
     // 修改时间显示"最近"
-    diffDate: function (d, more = false) {
+    diffDateExact: function (d, more = false) {
         const dateNow = new Date();
         const datePost = new Date(d);
         const dateDiff = dateNow.getTime() - datePost.getTime();
@@ -265,11 +265,11 @@ var btf = {
             } else if (dayCount >= 1) {
                 result = parseInt(dayCount) + '' + GLOBAL_CONFIG.date_suffix.day
             } else if (hourCount >= 1) {
-                result = '最近'
-                // result = parseInt(hourCount) + ' ' + GLOBAL_CONFIG.date_suffix.hour
+                // result = '最近'
+                result = parseInt(hourCount) + ' ' + GLOBAL_CONFIG.date_suffix.hour
             } else if (minuteCount >= 1) {
-                result = '最近'
-                // result = parseInt(minuteCount) + ' ' + GLOBAL_CONFIG.date_suffix.min
+                // result = '最近'
+                result = parseInt(minuteCount) + ' ' + GLOBAL_CONFIG.date_suffix.min
             } else {
                 result = GLOBAL_CONFIG.date_suffix.just
             }
