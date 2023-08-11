@@ -12,12 +12,12 @@
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-                <th:div  th:replace="~{macro/author-content :: author-content(background = ${theme.config.todo.backgroundImg},
+                <div  th:replace="~{macro/author-content :: author-content(background = ${theme.config.todo.backgroundImg},
                         smallTitle = ${theme.config.todo.smallTitle},
                         bigTitle = ${theme.config.todo.bigTitle},
                         detail = ${theme.config.todo.detail},
                         buttonUrl = '',
-                        buttonTitle = '')}" />
+                        buttonTitle = '')}" ></div>
                 <div id="todolist-main" th:if="${not #lists.isEmpty(theme.config.todo.list)}"
                      th:with="todoList = ${theme.config.todo.list}">
 

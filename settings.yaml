@@ -1507,23 +1507,40 @@ spec:
     - group: photos
       label: 图库
       formSchema:
+        - $formkit: select
+          name: photosStyle
+          id: photosStyle
+          key: photosStyle
+          label: 样式
+          value: default
+          options:
+            - value: default
+              label: 默认
+            - value: one
+              label: 样式一
         - $formkit: attachment
+          if: $get(photosStyle).value == 'default'
           name: backgroundImg
           label: 背景图
           value: https://liuzhihang.com/upload/moments.png
-          placeholder: 请输入图片地址
         - $formkit: text
+          if: $get(photosStyle).value == 'default'
           name: smallTitle
+          key: smallTitle
           label: 小标题
           value: 相册集
         - $formkit: text
           name: bigTitle
+          key: bigTitle
           label: 大标题
           value: 这里是我的相册集哦😯
         - $formkit: text
+          if: $get(photosStyle).value == 'default'
           name: detail
           label: 描述
           value: 每一张照片都是一次美好的记忆。
+
+
 
 
     - group: todo

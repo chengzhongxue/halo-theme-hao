@@ -12,12 +12,12 @@
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-                <th:div th:replace="~{macro/author-content :: author-content(background = ${theme.config.moment.backgroundImg},
+                <div th:replace="~{macro/author-content :: author-content(background = ${theme.config.moment.backgroundImg},
                         smallTitle = ${theme.config.moment.smallTitle},
                         bigTitle = ${theme.config.moment.bigTitle},
                         detail = ${theme.config.moment.detail},
                         buttonUrl = ${theme.config.moment.buttonUrl},
-                        buttonTitle = ${theme.config.moment.buttonTitle})}" />
+                        buttonTitle = ${theme.config.moment.buttonTitle})}" ></div>
                 <div id="bber">
                     <section class="timeline page-1">
                         <ul class="list" id="waterfall">

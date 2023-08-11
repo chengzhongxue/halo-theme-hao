@@ -12,12 +12,12 @@
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-                <th:div  th:replace="~{macro/author-content :: author-content(background = ${theme.config.fcircle.backgroundImg},
+                <div  th:replace="~{macro/author-content :: author-content(background = ${theme.config.fcircle.backgroundImg},
                 smallTitle = ${theme.config.fcircle.smallTitle},
                 bigTitle = ${theme.config.fcircle.bigTitle},
                 detail = ${theme.config.fcircle.detail},
                 buttonUrl = ${theme.config.fcircle.buttonUrl},
-                buttonTitle = ${theme.config.fcircle.buttonTitle})}" />
+                buttonTitle = ${theme.config.fcircle.buttonTitle})}" ></div>
                 <!--钓鱼-->
                 <th:block th:if="${theme.config.fcircle.fcircleRandomFriendsEnable}" >
                     <div  class="title-h2-a">
