@@ -5,13 +5,16 @@
     <div class="item-headline"><i class="iconfont icon-comment-dots"></i><span>最新评论</span></div>
     <div class="aside-list" id="newcomm">
         <th:block th:if="${#strings.equals(theme.config.comments.use, 'commentWidget') }">
-            <div class="aside-list-item"  th:each="comment,iterStat : ${commentFinder.list(null, 1, 10)}" th:with="post = ${postFinder.getByName(comment.spec.subjectRef.name)}"  th:if="${iterStat.index < 5}">
-                <a class="thumbnail" th:href="${post.status.permalink + '#comment-' + comment.metadata.name}" data-pjax-state="">
+            <div class="aside-list-item" th:each="comment,iterStat : ${commentFinder.list(null, 1, 20)}"
+                 th:with="page = ${comment.spec.subjectRef.kind == 'Post' ? postFinder.getByName(comment.spec.subjectRef.name) : null}"
+                 th:if="${iterStat.index  < theme.config.sidebar.newcommentnumber}">
+                <span th:text="${commentIndex}"></span>
+                <a class="thumbnail" th:href="${page == null? '/' : page.status.permalink + '#comment-' + comment.metadata.name}" data-pjax-state="">
                     <img loading="lazy" alt="头像" th:src="${#strings.isEmpty(comment.owner.avatar)?'https://cravatar.cn/avatar/?d=mp':comment.owner.avatar}" data-ll-status="loading" class="entered loading">
                 </a>
                 <div class="content" >
                     <a class="comment" style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;"
-                       th:href="${post.status.permalink + '#comment-' + comment.metadata.name}" th:title="${comment.spec.content}" th:text="${comment.spec.content}" data-pjax-state="">
+                       th:href="${page == null? '/' : page.status.permalink + '#comment-' + comment.metadata.name}" th:title="${comment.spec.content}" th:text="${comment.spec.content}" data-pjax-state="">
 
                     </a>
                     <div class="name">
