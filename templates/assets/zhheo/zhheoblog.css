@@ -3452,21 +3452,9 @@ ul {
     font-size: 1.43em;
 }
 
-.relatedPosts > .relatedPosts-list > div {
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    margin: 3px;
-    width: calc(33.333% - 6px);
-    height: 200px;
-    background: var(--heo-main);
-    vertical-align: bottom;
-}
 
-.relatedPosts > .relatedPosts-list > div:hover .cover {
-    opacity: 0.8;
-    transform: scale(1.1);
-}
+
+
 
 @media screen and (max-width: 768px) {
     .relatedPosts > .relatedPosts-list > div {
@@ -3482,31 +3470,6 @@ ul {
     }
 }
 
-.relatedPosts > .relatedPosts-list .cover {
-    width: 100%;
-    height: 100%;
-    opacity: 0.4;
-    transition: all 0.6s ease 0s;
-    object-fit: cover;
-}
-
-.relatedPosts > .relatedPosts-list .content {
-    position: absolute;
-    top: 50%;
-    padding: 0px 1rem;
-    width: 100%;
-    transform: translate(0px, -50%);
-}
-
-.relatedPosts > .relatedPosts-list .content .date {
-    color: var(--light-grey);
-    font-size: 90%;
-}
-
-.relatedPosts > .relatedPosts-list .content .title {
-    color: var(--white);
-    -webkit-line-clamp: 2;
-}
 
 .post-reward {
     position: relative;
@@ -11493,19 +11456,6 @@ details[open]:not(.tk-admin-config-group):not(.card-friend-class-name) > summary
     letter-spacing: 0.6px;
 }
 
-/*#article-container code {*/
-/*    color: var(--heo-white);*/
-/*    padding: 0.2rem 0.4rem;*/
-/*    border-radius: 4px;*/
-/*    margin: 0px 4px;*/
-/*    background: var(--heo-pink);*/
-/*    line-height: 2;*/
-/*    box-shadow: var(--heo-shadow-border);*/
-/*}*/
-
-/*#article-container code::selection {*/
-/*    background: var(--heo-main) !important;*/
-/*}*/
 
 /* 文章表格间距 */
 .table-wrap {
@@ -11707,79 +11657,6 @@ blockquote p {
     padding: 0;
 }
 
-/* readmore插件 */
-/*
-[data-theme=dark] #read-more-mask{
-  background: -webkit-gradient(linear, 0 0%, 0 100%, from(rgba(29, 30, 31, 0)), to(rgb(29, 30, 31)))!important;
-}
-
-#read-more-btn{
-  background: var(--heo-blue)!important;
-  border: 0px solid var(--heo-white) !important;
-  color: var(--heo-white) !important;
-  text-decoration: none!important;
-  font-weight:bold!important;
-  border-radius: 8px!important;
-}
-
-#read-more-btn:hover{
-  background: var(--heo-white) !important;
-  color: var(--heo-blue)!important;
-}
-
-#btw-modal {
-  background: rgb(29, 30, 31)!important;
-}
-
-#btw-modal img {
-  border: 8px solid rgb(0, 0, 0)!important;
-  border-radius: 8px!important;
-}
-
-#btw-modal-header{
-  margin-top: 0!important;
-  color: #fff !important;
-  margin: 2rem 0 1rem 0!important;
-}
-
-#btw-modal-header strong{
-  color: var(--heo-lighttext)!important;
-}
-
-#btw-modal-input-code{
-  background: rgb(29, 30, 31)!important;
-  margin-bottom: 50px;
-}
-
-#btw-submit-btn{
-  background: rgb(66, 123, 238)!important;
-  border-radius: 8px!important;
-  color: #fff !important;
-  font-weight:bold!important;
-}
-
-#btw-submit-btn:hover{
-  background: #fff !important;
-  color: rgb(66, 123, 238)!important;
-}
-
-#btw-modal-input{
-  color: #fff!important;
-  border-radius: 8px!important;
-  background: rgb(29, 30, 31)!important;
-}
-
-#btw-modal-close-btn{
-  color: rgb(129, 132, 136)!important;
-}
-
-#btw-footer{
-  display: none;
-}
-
-#btw-mask{
-  backdrop-filter: blur(3px);
-} */
 
 /* 文章内标题 */
 #article-container .headerlink::before {
@@ -11822,9 +11699,6 @@ blockquote p {
     object-fit: cover;
 }
 
-/* #article-container img.error {
-    content: url(../images/404.gif);
-} */
 
 /* 文章视频 */
 .doge-inner-player {
@@ -11843,14 +11717,6 @@ blockquote p {
     transform: rotate(0deg);
 }
 
-/* 文章代码框 */
-/*figure {*/
-/*    margin-top: 0.5rem !important;*/
-/*}*/
-
-/*#article-container figure.highlight .highlight-tools {*/
-/*    background: var(--heo-secondbg) !important;*/
-/*}*/
 
 #article-container .gutter {
     opacity: 0.6;
@@ -11860,46 +11726,6 @@ blockquote p {
     margin-left: 6px;
 }
 
-/*#article-container .highlight-tools .code-lang {*/
-/*    text-transform: capitalize;*/
-/*    left: 1.9rem;*/
-/*}*/
-
-/*#article-container figure.highlight table::-webkit-scrollbar {*/
-/*    color: var(--heo-blue);*/
-/*    background: var(--heo-secondbg);*/
-/*    height: 8px;*/
-/*}*/
-
-/*#article-container figure.highlight table::-webkit-scrollbar-thumb {*/
-/*    background: var(--heo-gray);*/
-/*}*/
-
-/*#article-container figure.highlight table::-webkit-scrollbar-thumb:hover {*/
-/*    background: var(--heo-main);*/
-/*}*/
-
-/* 代码展开图标 */
-/*#article-container .code-expand-btn i {*/
-/*    color: var(--heo-fontcolor);*/
-/*    font-size: 1rem;*/
-/*}*/
-
-/*#article-container .code-expand-btn {*/
-/*    background-color: var(--heo-mask);*/
-/*    background: var(--heo-secondbg);*/
-/*    transition: 0.3s;*/
-/*    backdrop-filter: saturate(180%) blur(20px);*/
-/*    -webkit-backdrop-filter: blur(20px);*/
-/*}*/
-
-/*#article-container .code-expand-btn:hover {*/
-/*    background: var(--heo-main);*/
-/*}*/
-
-/*#article-container .code-expand-btn:hover i {*/
-/*    color: var(--heo-white);*/
-/*}*/
 
 /* 结尾寄语 */
 #readmore-talk {
@@ -12379,91 +12205,6 @@ a.reward-main-btn:hover {
     background: var(--heo-card-bg);
 }
 
-/* @media screen and (min-width: 1300px) {
-    #post #pagination {
-        position: fixed;
-        width: 300px;
-        bottom: -100px;
-        right: 20px;
-        z-index: 1000;
-        height: fit-content;
-        transition: cubic-bezier(0.42, 0, 0.3, 1.11) 0.3s;
-        border: var(--style-border);
-        border-radius: 12px;
-        overflow: hidden;
-        cursor: pointer;
-        opacity: 0;
-        z-index: 1002;
-    }
-
-    #post #pagination.show-window {
-        bottom: 20px;
-        opacity: 1;
-    }
-
-    #post #pagination:hover {
-        border: var(--style-border-hover);
-    }
-
-    #pagination .next-post a {
-        border: none;
-        height: fit-content;
-        padding: 0.5rem 0;
-    }
-
-    #pagination.pagination-post {
-        border-radius: 0;
-    }
-
-    #post #pagination .prev_info,
-    #pagination .next_info {
-        font-size: 14.5px;
-        font-weight: normal;
-    }
-
-    #pagination .pagination-info {
-        padding: 0.5rem 1rem;
-        transform: none;
-    }
-
-    #post #pagination {
-        background: none;
-    }
-
-    .next-post.pull-right,
-    .prev-post.pull-left,
-    #pagination .prev-post,
-    #pagination .next-post {
-        background: var(--heo-maskbgdeep);
-        -webkit-backdrop-filter: blur(5px);
-        backdrop-filter: blur(5px);
-    }
-
-    .prev-post.pull-left {
-        display: none;
-    }
-
-    .next-post.pull-right {
-        width: 100% !important;
-    }
-
-    #pagination .next-post .pagination-info {
-        text-align: left;
-        position: relative;
-    }
-
-    #post #pagination .prev-post .label,
-    #pagination .next-post .label {
-        color: var(--heo-fontcolor);
-        font-weight: bold;
-        font-size: 13px;
-        margin-bottom: 0.5rem;
-        border-bottom: var(--style-border);
-        line-height: 1;
-        padding-bottom: 0.5rem;
-    }
-} */
-
 @media screen and (max-width: 768px) {
     .prev-post.pull-left {
         border-bottom: var(--style-border-always);
@@ -12661,18 +12402,6 @@ a.reward-main-btn:hover {
 }
 
 /* 相关推荐 */
-.relatedPosts-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.relatedPosts > .relatedPosts-list > div {
-    background: #363636;
-    transition: 0.3s;
-    cursor: pointer;
-    overflow: hidden;
-}
 
 .relatedPosts > .relatedPosts-list > div:hover #preimg{
     opacity: 1;
@@ -12697,19 +12426,6 @@ a.reward-main-btn:hover {
 
 .relatedPosts > .relatedPosts-list > div:hover a .title {
     color: var(--heo-white);
-}
-
-.relatedPosts > .relatedPosts-list .content .title {
-    color: var(--heo-fontcolor);
-    font-weight: bold;
-    line-height: 1.5;
-    -webkit-line-clamp: 4;
-    font-size: 0.9rem;
-    text-align: center;
-}
-
-.relatedPosts > .relatedPosts-list .content .date {
-    color: var(--heo-fontcolor);
 }
 
 /* 分割线 */
@@ -13377,10 +13093,6 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
 }
 
 /* 文章底部推荐 */
-.relatedPosts > .relatedPosts-list > div:hover .cover {
-    transform: scale(1);
-    opacity: 0;
-}
 
 @media screen and (min-width: 768px) {
     #pagination.pagination-post {

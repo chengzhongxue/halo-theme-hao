@@ -1367,11 +1367,15 @@ spec:
               label: 声明内容
               placeholder: '本文是原创文章，采用 <a target="_blank" href="/cc">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a href="/" target="_blank" >程序员小航</a>'
               help: 支持 HTML 语法
-        - $formkit: number
+        - $formkit: select
           name: recommendQuantity
           label: 阅读建议
-          value: 4
-          help: 文章数量
+          value: six
+          options:
+            - value: two
+              label: 两篇
+            - value: six
+              label: 六篇
 
     - group: categories
       label: 分类

@@ -142,29 +142,8 @@
                         </a>
                     </div>
                 </nav>
-                <div class="relatedPosts" th:if="${not #lists.isEmpty(post.categories)}">
-
-                    <div class="headline">
-                        <i class="iconfont icon-robot"></i>
-                        <span>阅读建议</span>
-                    </div>
-                    <div class="relatedPosts-list"
-                         th:with="recommandPosts = ${postFinder.listByCategory(1, theme.config.post.recommendQuantity, post.categories.get(0).metadata.name)}">
-                        <!-- 建议阅读，这里可以自定义文章数量，然后遍历展示 -->
-                        <div th:each="recommandPost :${recommandPosts}" th:if="${not #strings.equals(post.spec.title, recommandPost.spec.title)}">
-                            <a th:href="@{${recommandPost.status.permalink}}" th:title="${recommandPost.spec.title}">
-                                <img alt="cover" class="cover" loading="lazy" id="preimg"
-                                     th:src="${#strings.isEmpty(recommandPost.spec.cover) ? theme.config.layout.postRandomImg : recommandPost.spec.cover}">
-                                <div class="content is-center" >
-                                    <div class="date" style="color: white"><i class="far fa-calendar-alt fa-fw"></i>
-                                        [[${#dates.format(recommandPost.spec.publishTime,'yyyy-MM-dd')}]]
-                                    </div>
-                                    <div class="title" style="color: white" th:text="${recommandPost.spec.title}"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <!-- 阅读建议 -->
+                <th:block th:replace="~{modules/post/relatedPosts :: relatedPosts}">
                 <hr>
                 <!--/* 评论组件 */-->
                 <th:block
