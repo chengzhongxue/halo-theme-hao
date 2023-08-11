@@ -31,23 +31,25 @@
     <div class="recent-post-item"
          th:each="cuscomPost : ${theme.config.top.BannerRight.recommendPostCustom}"
          th:if="${#strings.equals(theme.config.top.BannerRight.recommendPost, 'custom')}">
-        <div class="post_cover">
-            <a th:href="@{${cuscomPost.url}}" th:title="${cuscomPost.title}">
-                <span class="recent-post-top-text"
-                      th:attr="onclick='pjax.loadUrl(\''+ @{${cuscomPost.url}} +'\')'">荐</span>
-                <img class="post_bg" loading="lazy"
-                     th:alt="${cuscomPost.title}"
-                     th:src='${#strings.isEmpty(cuscomPost.cover) ? postRandomImg+","+cuscomPost.title : cuscomPost.cover}'
-                />
-            </a>
-        </div>
-        <div class="recent-post-info">
-            <a class="article-title"
-               th:href="@{${cuscomPost.url}}"
-               th:text="${cuscomPost.title}"
-               th:title="${cuscomPost.title}">
-            </a>
-        </div>
+        <th:block th:with="post = ${postFinder.getByName(cuscomPost.post)}">
+            <div class="post_cover">
+                <a th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
+                    <span class="recent-post-top-text"
+                          th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'">荐</span>
+                    <img class="post_bg" loading="lazy"
+                         th:alt="${post.spec.title}"
+                         th:src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+","+post.spec.title : post.spec.cover}'
+                    />
+                </a>
+            </div>
+            <div class="recent-post-info">
+                <a class="article-title"
+                   th:href="@{${post.status.permalink}}"
+                   th:text="${post.spec.title}"
+                   th:title="${post.spec.title}">
+                </a>
+            </div>
+        </th:block>
     </div>
 
     <!-- 今日推荐 -->

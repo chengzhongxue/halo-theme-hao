@@ -373,17 +373,13 @@ spec:
               name: recommendPostCustom
               label: 自定义文章
               help: 建议设置六篇文章
-              value: [ ]
+              max: 6
               children:
-                - $formkit: url
-                  name: url
-                  label: 链接
-                - $formkit: text
-                  name: title
-                  label: 标题
-                - $formkit: attachment
-                  name: cover
-                  label: 封面地址
+                - $formkit: postSelect
+                  name: post
+                  label: 文章
+                  value: ""
+                  validation: required
 
     - group: layout
       label: 布局
@@ -1540,9 +1536,6 @@ spec:
           label: 描述
           value: 每一张照片都是一次美好的记忆。
 
-
-
-
     - group: todo
       label: 待办清单
       formSchema:
@@ -1960,7 +1953,6 @@ spec:
           label: 心路历程
           value: <div class="author-content-item-tips">心路历程</div> <span class="author-content-item-title">为什么建站？</span> <br>创建这个站的时候，想要就是能够有一个自己能够<b>积累知识、积累兴趣</b>的地方。和他人分享，会让这些成为积累和沉淀。如果能够帮助到更多的人，帮助更多人解决问题，那一定是非常棒的事情。<br> 分享这件事我从很早就开始了，起初做的微信公众号，现在做的网站。因为我比较喜欢研究数码和软件，想要探究在互联网上的事物是如何被创造和发展。网络给我带来了非常多的知识和眼界，我也想力所能及的分享一些我生活的琐碎知识。<br>与大多数垂直类的技术博客不同，这里的种类会非常的繁杂，有<b>技能的教程干货</b>、有<b>生活上的吐槽和妙招</b>、有<b>话题上的思考和想法</b>。一般我研究什么、发现了什么都会分享在这里。<br> 这些就是创造这个小站的本意，<b>也是我分享生活的方式</b>。有幸能和你相遇在这里，相信我们能共同留下一段美好记忆。</p>
           help: 支持 HTML 语法
-
 
     - group: aboutReward
       label: 关于（打赏）
