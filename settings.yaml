@@ -2660,17 +2660,28 @@ spec:
           name: error_404
           label: 404 页面
           value:
-            subtitle:
-            background:
+            subtitle: 请尝试站内搜索寻找文章
+            background: /themes/theme-hao/assets/images/404s.gif
           children:
             - $formkit: text
               name: subtitle
               label: 标题
-              value: 请尝试站内搜索寻找文章
             - $formkit: attachment
               name: background
               label: 背景
-              value: /themes/theme-hao/assets/images/404s.gif
+        - $formkit: group
+          name: error_500
+          label: 500 页面
+          value:
+            subtitle: 服务器内部出现错误，请查看日志
+            background: /themes/theme-hao/assets/images/404s.gif
+          children:
+            - $formkit: text
+              name: subtitle
+              label: 标题
+            - $formkit: attachment
+              name: background
+              label: 背景
         - $formkit: radio
           name: bubbleEnable
           label: 页面卡片顶部气泡升起效果
