@@ -19,7 +19,7 @@
     margin: 3px;
     width: calc(33.333% - 6px);
     height: 200px;
-    background: var(--heo-main);
+/*     background: var(--heo-main); */
     vertical-align: bottom;
 }
 
