@@ -28,11 +28,6 @@ spec:
           label: 公安备案
           placeholder: 请输入公安备案号
           help: 格式：皖公网安备 xxxxxxxx 号
-        - $formkit: text
-          name: siteVerification
-          label: 百度收录（验证码）
-          placeholder: 格式：codeva-xxxxxxx
-          help: 申请地址：https://ziyuan.baidu.com/site/siteadd，验证网站使用HTML标签验证，代码中的content就是需要填写的验证码
         - $formkit: url
           name: copyrightAgreement
           label: 版权协议
