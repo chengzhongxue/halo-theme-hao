@@ -1534,6 +1534,16 @@ spec:
           name: detail
           label: 描述
           value: 每一张照片都是一次美好的记忆。
+        - $formkit: radio
+          name: tagEnable
+          label: 图片标签
+          value: false
+          help: 图片左上角标签
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
 
     - group: todo
       label: 待办清单

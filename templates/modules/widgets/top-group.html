@@ -31,7 +31,7 @@
     <div class="recent-post-item"
          th:each="cuscomPost : ${theme.config.top.BannerRight.recommendPostCustom}"
          th:if="${#strings.equals(theme.config.top.BannerRight.recommendPost, 'custom')}">
-        <th:block th:with="post = ${postFinder.getByName(cuscomPost.post)}">
+        <th:block th:if="${not #strings.isEmpty(cuscomPost.post)}" th:with="post = ${postFinder.getByName(cuscomPost.post)}">
             <div class="post_cover">
                 <a th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
                     <span class="recent-post-top-text"

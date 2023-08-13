@@ -29,7 +29,7 @@
                                 <div class="gallery">
                                     <div class="fj-gallery-item"
                                          th:each="photo : ${photoFinder.listBy(param.photo_group_name)}">
-                                        <div class="tag-address">[[${photo.spec.displayName}]]</div>
+                                        <div th:if="${theme.config.photos.tagEnable}" class="tag-address">[[${photo.spec.displayName}]]</div>
                                         <img th:src="${photo.spec.url}" th:alt="${photo.spec.description}"
                                              th:title="${photo.spec.description}">
 
@@ -52,7 +52,7 @@
                                 <div class="gallery">
                                     <div class="fj-gallery-item"
                                          th:each="photo : ${photoFinder.listBy(param.photo_group_name)}">
-                                        <div class="tag-address">[[${photo.spec.displayName}]]</div>
+                                        <div th:if="${theme.config.photos.tagEnable}" class="tag-address">[[${photo.spec.displayName}]]</div>
                                         <img th:src="${photo.spec.url}" th:alt="${photo.spec.description}"
                                              th:title="${photo.spec.description}">
 
