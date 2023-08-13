@@ -57,9 +57,9 @@ spec:
               key: travelling
               label: 开往按钮
               options:
-                - label: 打开
+                - label: 显示
                   value: true
-                - label: 关闭
+                - label: 隐藏
                   value: false
             - $formkit: url
               if: $get(travelling).value
@@ -72,19 +72,33 @@ spec:
               label: 随机文章
               help: 右上角随机文章按钮
               options:
-                - label: 打开
+                - label: 显示
                   value: true
-                - label: 关闭
+                - label: 隐藏
                   value: false
             - $formkit: radio
               name: darkMode
               label: 切换模式
               help: 右上角切换主题模式按钮
               options:
-                - label: 打开
+                - label: 显示
                   value: true
-                - label: 关闭
+                - label: 隐藏
                   value: false
+            - $formkit: group
+              name: console
+              label: 中控台
+              value:
+                consoleLink: false
+              children:
+                - $formkit: radio
+                  name: consoleLink
+                  label: 前往控制台
+                  options:
+                    - label: 显示
+                      value: true
+                    - label: 隐藏
+                      value: false
 
     - group: top
       label: 顶部
@@ -1534,6 +1548,16 @@ spec:
           name: detail
           label: 描述
           value: 每一张照片都是一次美好的记忆。
+        - $formkit: radio
+          name: tagEnable
+          label: 图片标签
+          value: false
+          help: 图片左上角标签
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
 
     - group: todo
       label: 待办清单

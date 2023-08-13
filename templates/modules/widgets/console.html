@@ -131,7 +131,7 @@
         <i class="haofont hao-icon-music"></i>
       </a>
     </div>
-    <div class="console-btn-item" id="consoleLink2Console" title="前往控制台">
+    <div th:if="${theme.config.nav.right.console.consoleLink}" class="console-btn-item" id="consoleLink2Console" title="前往控制台">
       <a class="console-link" data-pjax-state="" href="/console">
         <i class="iconfont icon-a-theconsole-fill"></i>
       </a>
