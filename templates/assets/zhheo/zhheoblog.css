@@ -3082,7 +3082,7 @@ ul {
     overflow-wrap: break-word;
 }
 
-#article-container a:not(.rss-plan-item) {
+#article-container a:not(.rss-plan-item):not(.cf-article-title) {
     color: rgb(48, 122, 246);
 }
 
