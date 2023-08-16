@@ -119,7 +119,7 @@ Last Modified time : 20220211 98:00 by https://immmmm.com
     justify-content: space-between;
 }
 
-#cf-container a {
+#cf-container a:not(.rss-plan-item) {
     text-decoration: none;
     display: flex;
     align-items: center;

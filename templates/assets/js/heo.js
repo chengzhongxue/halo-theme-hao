@@ -487,7 +487,11 @@ var heo = {
         $htmlDom.toggle('hide-aside')
         $htmlDom.contains("hide-aside") ? document.querySelector("#consoleHideAside").classList.add("on") : document.querySelector("#consoleHideAside").classList.remove("on")
     },
-
+    toPage: function() {
+        var e, t = document.querySelectorAll(".page-number"), o = parseInt(t[t.length - 1].innerHTML), n = document.getElementById("toPageText"), a = parseInt(n.value);
+        !isNaN(a) && a > 0 && "0" !== ("" + a)[0] && a <= o && (e = 1 === a ? "/" : "/page/" + a,
+            document.getElementById("toPageButton").href = e)
+    },
     changeSayHelloText: function() {
         const e = GLOBAL_CONFIG.helloText.length == 0 ? ["🤖️ 数码科技爱好者", "🔍 分享与热心帮助", "🏠 智能家居小能手", "🔨 设计开发一条龙", "🤝 专修交互与设计", "🏃 脚踏实地行动派", "🧱 团队小组发动机", "💢 壮汉人狠话不多"] : GLOBAL_CONFIG.helloText
             , t = document.getElementById("author-info__sayhi");

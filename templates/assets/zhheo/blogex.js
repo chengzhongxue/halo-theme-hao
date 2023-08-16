@@ -643,11 +643,27 @@ function setBodyDataType(){
     att.value = GLOBAL_CONFIG.htmlType;
     body.setAttributeNode(att);
 }
-
+function listenToPageInputPress() {
+    var e = document.getElementById("toPageText")
+        , t = document.getElementById("toPageButton");
+    e && (e.addEventListener("keydown", (e=>{
+            13 === e.keyCode && (heo.toPage(),
+                pjax.loadUrl(t.href))
+        }
+    )),
+        e.addEventListener("input", (function() {
+                "" === e.value || "0" === e.value ? t.classList.remove("haveValue") : t.classList.add("haveValue");
+                var o = document.querySelectorAll(".page-number")
+                    , n = +o[o.length - 1].innerHTML;
+                +document.getElementById("toPageText").value > n && (e.value = n)
+            }
+        )))
+}
 function initBlog() {
     heo.initIndexEssay(),
     checkUrlAndAddHideBanner(),
-    setBodyDataType()
+    setBodyDataType(),
+    listenToPageInputPress()
 }
 
 // 如果当前页有评论就执行函数
