@@ -38,7 +38,7 @@
             <div class="pagination_tips_next">下页</div>
             <i class="haofont hao-icon-chevron-right fa-fw"></i>
         </a>
-        <div th:if="${pageInfo.totalPages > 2}" class="toPageGroup">
+        <div th:if="${pageInfo.totalPages > 1}" class="toPageGroup">
             <input id="toPageText" maxlength="3" title="跳转到指定页面"
                    oninput="value=value.replace(/[^0-9]/g,'')"
                    onkeyup="if (this.value === '0') this.value = ''">
