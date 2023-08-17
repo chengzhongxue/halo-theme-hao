@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <!-- 分页 -->
-                <div th:replace="~{modules/widgets/page :: page('/archives',${archives})}"></div>
+                <div th:replace="~{modules/widgets/page :: page('/archives',${archives},false)}"></div>
             </div>
             <!-- sidebar -->
             <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.widgetss.categoryWidgets})}"></div>

@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <!-- 分页 -->
-                <div th:replace="~{modules/widgets/page :: page(${'/tags/'+tag.spec.slug},${posts})}"></div>
+                <div th:replace="~{modules/widgets/page :: page(${'/tags/'+tag.spec.slug},${posts},false)}"></div>
             </div>
             <!-- sidebar -->
             <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.widgetss.tagWidgets})}"></div>
