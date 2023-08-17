@@ -5,20 +5,21 @@
 
     @param  path       '/path/page/n' 中的 `/path` 需要保留 `/`
     @param  pageInfo   Halo类型UrlContextListResult<ListedPostVo>
+    @param  isIndex    是否主页
  -->
-<nav id="pagination" th:fragment="page(path,pageInfo)">
-    <div class="pagination">
+<nav id="pagination" th:fragment="page(path,pageInfo,isIndex)">
+    <div class="pagination" th:with="paths = ${isIndex ? path+'/' : path}">
 
         <!-- 页码按钮 -->
         <th:block th:if="${pageInfo.page > 3}">
-            <a class="page-number" th:href="${path+'/'}" th:text="1"></a>
+            <a class="page-number" th:href="${paths}" th:text="1"></a>
             <span class="space" th:if="${pageInfo.page != 4}">…</span>
         </th:block>
 
         <th:block th:each="index:${#numbers.sequence(pageInfo.page-2,pageInfo.page+2)}">
             <span class="page-number current" th:if="${pageInfo.page} == ${index}" th:text="${pageInfo.page}"></span>
             <a class="page-number" th:unless="${pageInfo.page == index}"
-               th:if="${index > 0 && index <= pageInfo.totalPages}" th:href="${#strings.equals(index, '1') ? path+'/' : path+'/page/'+index}"
+               th:if="${index > 0 && index <= pageInfo.totalPages}" th:href="${#strings.equals(index, '1') ? paths : path+'/page/'+index}"
                th:text="${index}"></a>
         </th:block>
 
@@ -38,7 +39,7 @@
             <div class="pagination_tips_next">下页</div>
             <i class="haofont hao-icon-chevron-right fa-fw"></i>
         </a>
-        <div th:if="${pageInfo.totalPages > 1}" class="toPageGroup">
+        <div th:if="${pageInfo.totalPages > 1 && isIndex}" class="toPageGroup">
             <input id="toPageText" maxlength="3" title="跳转到指定页面"
                    oninput="value=value.replace(/[^0-9]/g,'')"
                    onkeyup="if (this.value === '0') this.value = ''">

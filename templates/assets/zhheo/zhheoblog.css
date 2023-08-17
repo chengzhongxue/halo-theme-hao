@@ -1091,6 +1091,28 @@ blockquote footer cite::before {
     }
 }
 
+@keyframes slide-in {
+    from {
+        transform: translateY(20px);
+        opacity: 0
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1
+    }
+}
+
+@keyframes slide-in-op {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
 .article-sort {
     margin-left: 0.5rem;
     padding-left: 1rem;
@@ -7534,6 +7556,7 @@ li.card-archive-list-item {
 @media screen and (min-width: 1300px) {
     #aside-content {
         padding-left: 1rem;
+        animation: slide-in .6s .3s backwards
     }
 
     #aside-content .sticky_layout {
@@ -8171,6 +8194,7 @@ div#banners {
         align-content: space-between;
         width: calc(600px + 1.5rem);
         position: relative;
+        animation: slide-in .6s .1s backwards
     }
 
     div#bannerGroup {
@@ -8197,6 +8221,7 @@ div#banners {
         overflow: hidden;
         transition: 0.3s;
         clip-path: inset(0 0 0 0 round 12px);
+        animation: slide-in .6s .1s backwards;
     }
 
     div#banners:hover {
@@ -8553,6 +8578,7 @@ div#banners {
     .recent-post-top .categoryGroup {
         flex-direction: row;
         height: 24%;
+        animation: slide-in .6s .2s backwards
     }
 
     .categoryItem {
@@ -8805,6 +8831,7 @@ li {
 @media screen and (min-width: 1300px) {
     #bbTimeList {
         margin-bottom: 1rem;
+        animation: slide-in .6s 0s backwards;
     }
 }
 
@@ -9597,6 +9624,7 @@ span.recent-post-top-text {
     margin-bottom: 1rem;
     position: relative;
     overflow: hidden;
+    animation: slide-in .6s .4s backwards;
 }
 
 /* 图片在左侧 */
@@ -9659,8 +9687,13 @@ span.recent-post-top-text {
     }
 
     #category-bar {
-        margin-bottom: 0.75rem;
+        margin-bottom: .75rem;
         box-shadow: var(--heo-shadow-border);
+        animation: slide-in .6s .3s backwards
+    }
+
+    #category #category-bar {
+        animation: none
     }
 
     /* 首页文章第一个 */
@@ -13417,6 +13450,12 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     padding: 0;
 }
 
+@media screen and (min-width: 1300px) {
+    #page>div:not(.author-content-item) {
+        animation:slide-in .6s .2s backwards
+    }
+}
+
 /* 图片 */
 
 .article-sort .article-sort-item .article-sort-item-img {
@@ -16378,6 +16417,12 @@ span.hexo-douban-pagenum {
 @media screen and (max-width: 768px) {
     .author-content-item .card-content {
         padding: 1rem;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .author-content-item {
+        animation:slide-in .6s 0s backwards
     }
 }
 
