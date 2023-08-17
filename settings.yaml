@@ -2245,6 +2245,14 @@ spec:
               value: dark
             - label: 浅色
               value: light
+        - $formkit: color
+          name: themeLightSkin
+          label: 主题浅色基色
+          value: "#425AEF"
+        - $formkit: color
+          name: themeDarkSkin
+          label: 主题深色基色
+          value: "#f2b94b"
         - $formkit: radio
           name: universe
           label: 深色模式粒子效果
