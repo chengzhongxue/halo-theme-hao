@@ -2092,6 +2092,8 @@ blockquote footer cite::before {
     flex: 1 1 0%;
     padding-left: 10px;
     word-break: break-all;
+    display: flex;
+    flex-direction: column;
 }
 
 #aside-content .aside-list > .aside-list-item .content > .name {
@@ -2109,7 +2111,7 @@ blockquote footer cite::before {
 #aside-content .aside-list > .aside-list-item .content > .title {
     color: var(--heo-fontcolor);
     font-size: 95%;
-    line-height: 1.5;
+    line-height: 1.4;
     -webkit-line-clamp: 2;
 }
 
@@ -3082,7 +3084,7 @@ ul {
     overflow-wrap: break-word;
 }
 
-#article-container a:not(.rss-plan-item):not(.cf-article-title) {
+#article-container a:not(.rss-plan-item) {
     color: rgb(48, 122, 246);
 }
 
@@ -4104,6 +4106,15 @@ figure.gallery-group:hover .gallery-group-name::after {
     transform: translate3d(0, 0, 0)
 }
 
+#aside-content .aside-list>.aside-list-item .content>.comment,
+#aside-content .aside-list>.aside-list-item .content>.name,
+#aside-content .aside-list>.aside-list-item .content>.title,
+#error-wrap .error-content .error-info .error_subtitle,
+#post-info .post-title, #recent-posts>.recent-post-item>.recent-post-info>.article-title,
+#recent-posts>.recent-post-item>.recent-post-info>.content,
+.article-sort-item-title, .limit-more-line,
+.relatedPosts>.relatedPosts-list .content .title,
+figure.gallery-group .gallery-group-name,
 figure.gallery-group p {
     display: -webkit-box;
     overflow: hidden;
