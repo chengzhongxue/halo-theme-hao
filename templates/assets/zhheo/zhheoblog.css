@@ -92,7 +92,7 @@
     --heo-maskbgdeep: rgba(0, 0, 0, 0.85);
     --heo-hovertext: #0A84FF;
     --heo-ahoverbg: #fff;
-    --heo-lighttext: var(--heo-main);
+    --heo-lighttext: var(--heo-theme);
     --heo-secondtext: #a1a2b8;
     --heo-scrollbar: rgba(200, 200, 223, 0.4);
     --heo-card-btn-bg: #30343f;
