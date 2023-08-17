@@ -98,7 +98,7 @@
     --heo-card-btn-bg: #30343f;
     --heo-post-blockquote-bg: #000;
     --heo-post-tabs-bg: #121212;
-    --heo-secondbg: #30343f;
+    --heo-secondbg: #21232a;
     --heo-shadow-nav: 0 5px 20px 0px rgba(28, 28, 28, 0.4);
     --heo-card-bg: #1d1e22;
     --heo-card-bg-op: var(--heo-white-op);
@@ -17311,6 +17311,82 @@ img.rss-plan-icon {
 .rss-plan-info {
     width: fit-content;
     opacity: .6
+}
+
+/* 分页搜索框 */
+.pagination input {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: var(--style-border-always);
+    transition: .3s;
+    outline-style: none;
+    font-size: 16px;
+    padding-left: 12px;
+    background: var(--heo-secondbg);
+    color: var(--heo-fontcolor)
+}
+
+.pagination .toPageGroup input:focus,.pagination .toPageGroup:hover input {
+    border: var(--style-border-hover-always);
+    outline-style: none;
+    width: 100px
+}
+
+.toPageGroup {
+    display: flex;
+    position: relative;
+    margin: 0 .3rem
+}
+
+a#toPageButton {
+    display: flex;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 0;
+    top: 0;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+    background: var(--heo-card-bg);
+    border: var(--style-border-always);
+    cursor: text;
+    pointer-events: none
+}
+
+.toPageGroup:focus-within a#toPageButton,.toPageGroup:hover a#toPageButton {
+    width: 30px;
+    height: 30px;
+    right: 4px;
+    top: 5px;
+    background: var(--heo-card-bg);
+    border: 1px solid var(--heo-none);
+    border-radius: 4px;
+    opacity: .2
+}
+
+.toPageGroup:focus-within a#toPageButton.haveValue {
+    opacity: 1;
+    cursor: pointer
+}
+
+a#toPageButton.haveValue {
+    opacity: 1!important;
+    cursor: pointer!important;
+    pointer-events: all
+}
+
+a#toPageButton.haveValue:hover {
+    background: var(--heo-theme);
+    color: var(--heo-white)
+}
+
+@media screen and (max-width: 768px) {
+    .toPageGroup {
+        display:none
+    }
 }
 
 
