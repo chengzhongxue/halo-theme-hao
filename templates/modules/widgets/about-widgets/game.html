@@ -39,7 +39,7 @@
                     th:href="${comic.url}"
                     rel="external nofollow noreferrer" target="_blank" th:title="${comic.title}" draggable="false">
                     <div class="comic-item-cover"><img
-                            th:src="${comic.bg}"
+                            th:src="@{${comic.bg}}"
                             th:alt="${comic.title}"
                             draggable="false" >
                     </div>
