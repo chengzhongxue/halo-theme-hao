@@ -11695,7 +11695,7 @@ blockquote p {
 /* 文章内标题 */
 #article-container .headerlink::before {
     content: "\e621";
-    font-family: "Font Awesome 5 Free";
+    font-family: haofont!important;
 }
 
 #article-container .headerlink {
