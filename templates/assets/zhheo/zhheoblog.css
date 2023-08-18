@@ -8028,16 +8028,6 @@ span.fund_name {
     line-height: 19px;
 }
 
-.heo-tag-new-view {
-    color: var(--heo-white);
-    background: var(--heo-green);
-}
-
-.heo-tag-hot-view {
-    color: var(--heo-white);
-    background: var(--heo-red);
-}
-
 
 /* 主页导航栏让位偏移 */
 /* .layout_page .recent-posts{

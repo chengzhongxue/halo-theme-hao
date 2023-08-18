@@ -210,59 +210,30 @@
 
 <script data-pjax="">
 
-
-    if ([[${ theme.config.post.dynamicBackground }]]) {
-        // 图片主色
-        coverColor();
-    }
-
     if ([[${ theme.config.other.loadingBoxs.loadingBoxEnable }]]) {
         // 移除加载动画
         removeLoading();
     }
-    navTitle();
-    heo.topPostScroll();
-    heo.topCategoriesBarScroll();
-    heo.sayhi();
-    heo.addTag();
-    heo.stopImgRightDrag();
-    heo.qrcodeCreate();
-    heo.onlyHome();
-    heo.addNavBackgroundInit();
-    //heo.addMediumInEssay();
-    heo.darkModeStatus();
-    // heo.categoriesBarActive();
-    heo.initThemeColor();
     //页脚友联
     if(GLOBAL_CONFIG.isFriendLinksInFooter){
         heo.addFriendLinksInFooter()
-    }
-
-    //右下角 snackbar 弹窗
-    if ([[${ theme.config.tool.snackbar.switch }]]) {
-        heo.hidecookie()
     }
 
     //音乐页面切换歌曲调用
     if(GLOBAL_CONFIG.isMusic){
         heo.changeMusicBg(false);
     }
-
     //代码块
     if(GLOBAL_CONFIG.prism.enable){
         halo.addPrismTool()
         halo.dataCodeTheme()
     }
-
     if(document.querySelector('#danmu') &&
         document.body.clientWidth > 768 &&
         [[${theme.config.envelope_comment.enable_danmu}]]){
         halo.closeCommentBarrage();
         halo.addScript("Danmaku", "[[${assets_link + '/libs/twikoo/easy-Danmaku.js'}]]", halo.danmu("[(${theme.config.comments.twikoos.envId})]","[(${theme.config.comments.twikoos.accessToken})]",[[${theme.config.envelope_comment.maxBarrage}]]))
     }
-
-
-
 
 </script>
 </body>
