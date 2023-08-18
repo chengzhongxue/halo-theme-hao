@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-    <div class="author-content-item game-wolf"
+    <div th:if="${#strings.equals(theme.config.about.game2.game2_type, 'img')}" class="author-content-item game-wolf"
         th:style="'background: url('+ @{${theme.config.about.game2.game2_bg}} +') top / cover no-repeat'">
         <div class="card-content">
             <div class="author-content-item-tips" th:text="${theme.config.about.game2.game2_tips}">
@@ -26,6 +26,24 @@
                 th:text="${theme.config.about.game2.game2_title}"></span>
             <div class="content-bottom">
                 <div class="tips" th:text="${theme.config.about.game2.game2_uid}"></div>
+            </div>
+        </div>
+    </div>
+    <div th:if="${#strings.equals(theme.config.about.game2.game2_type, 'comic')}" class="author-content-item comic-content">
+        <div class="card-content">
+            <div class="author-content-item-tips" th:text="${theme.config.about.game2.game2_tips}"></div>
+            <div class="author-content-item-title" th:text="${theme.config.about.game2.game2_title}"></div>
+            <div class="comic-box" >
+                <a  th:each="comic : ${theme.config.about.game2.comic_list}"
+                    class="comic-item"
+                    th:href="${comic.url}"
+                    rel="external nofollow noreferrer" target="_blank" th:title="${comic.title}" draggable="false">
+                    <div class="comic-item-cover"><img
+                            th:src="${comic.bg}"
+                            th:alt="${comic.title}"
+                            draggable="false" >
+                    </div>
+                </a>
             </div>
         </div>
     </div>
