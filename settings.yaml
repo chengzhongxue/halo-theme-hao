@@ -1857,24 +1857,55 @@ spec:
           name: game2
           label: 爱好游戏 2
           value:
+            game2_type: img
             game2_tips: 爱好游戏
             game2_title: 狼人杀
             game2_uid: ID 1333E3FF
             game2_bg: https://img.zhheo.com/i/2022/08/31/630efa916a851.webp
           children:
+            - $formkit: radio
+              name: game2_type
+              id: game2_type
+              key: game2_type
+              options:
+                - label: 图片
+                  value: img
+                - label: 追番
+                  value: comic
             - $formkit: text
               name: game2_tips
               label: 提示文字
               placeholder: 请输入内容
             - $formkit: text
               name: game2_title
-              label: 游戏标题
+              label: 标题
               placeholder: 请输入内容
+            - $formkit: repeater
+              name: comic_list
+              id: comic_list
+              key: comic_list
+              if: $get(game2_type).value == 'comic'
+              label: 追番列表
+              children:
+                - $formkit: text
+                  name: title
+                  label: 标题
+                  placeholder: 请输入内容
+                - $formkit: textarea
+                  name: url
+                  label: 链接
+                  placeholder: 请输入内容
+                - $formkit: attachment
+                  name: bg
+                  label: 背景
+                  placeholder: 请输入内容
             - $formkit: text
+              if: $get(game2_type).value == 'img'
               name: game2_uid
               label: 游戏 ID
               placeholder: 请输入内容
             - $formkit: attachment
+              if: $get(game2_type).value == 'img'
               name: game2_bg
               label: 游戏背景
               placeholder: 请输入内容

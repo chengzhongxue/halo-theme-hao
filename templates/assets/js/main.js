@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // }
 
     /**
-     * fancybox和 mediumZoom
+     * fancybox
      */
     const addFancybox = function (ele) {
         const runFancybox = (ele) => {
@@ -159,16 +159,6 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             runFancybox($(ele))
         }
-    }
-
-    const addMediumZoom = () => {
-        const zoom = mediumZoom(document.querySelectorAll('#article-container :not(a)>img'))
-        zoom.on('open', e => {
-            const photoBg = document.documentElement.getAttribute('data-theme') === 'dark' ? '#121212' : '#fff'
-            zoom.update({
-                background: photoBg
-            })
-        })
     }
 
     const jqLoadAndRun = () => {
@@ -265,234 +255,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    /**
-     *  toc
-     */
-    const tocFn = function () {
-        const $cardTocLayout = document.getElementById('card-toc')
-        const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0]
-        const $tocLink = $cardToc.querySelectorAll('.toc-link')
-        const $article = document.getElementById('article-container')
-
-        // main of scroll
-        window.tocScrollFn = function () {
-            return btf.throttle(function () {
-                const currentTop = window.scrollY || document.documentElement.scrollTop
-                scrollPercent(currentTop)
-                findHeadPosition(currentTop)
-            }, 100)()
-        }
-        window.addEventListener('scroll', tocScrollFn)
-
-        const scrollPercent = function (currentTop) {
-            const docHeight = $article.clientHeight
-            const winHeight = document.documentElement.clientHeight
-            const headerHeight = $article.offsetTop
-            const contentMath = (docHeight > winHeight) ? (docHeight - winHeight) : (document.documentElement.scrollHeight - winHeight)
-            const scrollPercent = (currentTop - headerHeight) / (contentMath)
-            const scrollPercentRounded = Math.round(scrollPercent * 100)
-            const percentage = (scrollPercentRounded > 100) ? 100 : (scrollPercentRounded <= 0) ? 0 : scrollPercentRounded
-            $cardToc.setAttribute('progress-percentage', percentage)
-        }
-
-        // anchor
-        const isAnchor = GLOBAL_CONFIG.isanchor
-        const updateAnchor = function (anchor) {
-            if (window.history.replaceState && anchor !== window.location.hash) {
-                if (!anchor) anchor = location.pathname
-                const title = GLOBAL_CONFIG_SITE.title
-                window.history.replaceState({
-                    url: location.href,
-                    title: title
-                }, title, anchor)
-            }
-        }
-
-        const mobileToc = {
-            open: () => {
-                $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: 45px'
-            },
-
-            close: () => {
-                $cardTocLayout.style.animation = 'toc-close .2s'
-                setTimeout(() => {
-                    $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
-                }, 100)
-            }
-        }
-
-        document.getElementById('mobile-toc-button').addEventListener('click', () => {
-            if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
-            else mobileToc.close()
-        })
-
-        // toc元素點擊
-        $cardToc.addEventListener('click', (e) => {
-            e.preventDefault()
-            const $target = e.target.classList.contains('toc-link')
-                ? e.target
-                : e.target.parentElement
-            btf.scrollToDest(btf.getEleTop(document.getElementById(decodeURI($target.getAttribute('href')).replace('#', ''))), 300)
-            if (window.innerWidth < 900) {
-                mobileToc.close()
-            }
-        })
-
-        const autoScrollToc = function (item) {
-            const activePosition = item.getBoundingClientRect().top
-            const sidebarScrollTop = $cardToc.scrollTop
-            if (activePosition > (document.documentElement.clientHeight - 100)) {
-                $cardToc.scrollTop = sidebarScrollTop + 150
-            }
-            if (activePosition < 100) {
-                $cardToc.scrollTop = sidebarScrollTop - 150
-            }
-        }
-
-        // find head position & add active class
-        const list = $article.querySelectorAll('h1,h2,h3,h4,h5,h6')
-        let detectItem = ''
-        const findHeadPosition = function (top) {
-            if ($tocLink.length === 0 || top === 0) {
-                return false
-            }
-
-            let currentId = ''
-            let currentIndex = ''
-
-            list.forEach(function (ele, index) {
-                if (top > btf.getEleTop(ele) - 80) {
-                    currentId = '#' + encodeURI(ele.getAttribute('id'))
-                    currentIndex = index
-                }
-            })
-
-            if (detectItem === currentIndex) return
-
-            if (isAnchor) updateAnchor(currentId)
-
-            if (currentId === '') {
-                $cardToc.querySelectorAll('.active').forEach(i => { i.classList.remove('active') })
-                detectItem = currentIndex
-                return
-            }
-
-            detectItem = currentIndex
-
-            $cardToc.querySelectorAll('.active').forEach(item => { item.classList.remove('active') })
-            const currentActive = $tocLink[currentIndex]
-            currentActive.classList.add('active')
-
-            setTimeout(() => {
-                autoScrollToc(currentActive)
-            }, 0)
-
-            let parent = currentActive.parentNode
-
-            for (; !parent.matches('.toc'); parent = parent.parentNode) {
-                if (parent.matches('li')) parent.classList.add('active')
-            }
-        }
-    }
-
-    /**
-     * Rightside
-     */
-    // const rightSideFn = {
-    //     switchReadMode: () => { // read-mode
-    //         const $body = document.body
-    //         $body.classList.add('read-mode')
-    //         const newEle = document.createElement('button')
-    //         newEle.type = 'button'
-    //         newEle.className = 'fas fa-sign-out-alt exit-readmode'
-    //         $body.appendChild(newEle)
-    //
-    //         function clickFn() {
-    //             $body.classList.remove('read-mode')
-    //             newEle.remove()
-    //             newEle.removeEventListener('click', clickFn)
-    //         }
-    //
-    //         newEle.addEventListener('click', clickFn)
-    //     },
-    //     switchDarkMode: () => { // Switch Between Light And Dark Mode
-    //         const nowMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
-    //         if (nowMode === 'light') {
-    //             activateDarkMode()
-    //             saveToLocal.set('theme', 'dark', 2);
-    //             GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night, false, 2000);
-    //         } else {
-    //             activateLightMode();
-    //             saveToLocal.set('theme', 'light', 2);
-    //             GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day, false, 2000);
-    //         }
-    //         // handle some cases
-    //         typeof utterancesTheme === 'function' && utterancesTheme()
-    //         typeof FB === 'object' && window.loadFBComment()
-    //         window.DISQUS && document.getElementById('disqus_thread').children.length && setTimeout(() => window.disqusReset(), 200)
-    //     },
-    //     showOrHideBtn: () => { // rightside 點擊設置 按鈕 展開
-    //         document.getElementById('rightside-config-hide').classList.toggle('show')
-    //     },
-    //     scrollToTop: () => { // Back to top
-    //         btf.scrollToDest(0, 500)
-    //     },
-    //     hideAsideBtn: () => { // Hide aside
-    //         const $htmlDom = document.documentElement.classList
-    //         $htmlDom.contains('hide-aside')
-    //             ? saveToLocal.set('aside-status', 'show', 2)
-    //             : saveToLocal.set('aside-status', 'hide', 2)
-    //         $htmlDom.toggle('hide-aside')
-    //     },
-    //
-    //     adjustFontSize: (plus) => {
-    //         const fontSizeVal = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--global-font-size'))
-    //         let newValue = ''
-    //         if (plus) {
-    //             if (fontSizeVal >= 20) return
-    //             newValue = fontSizeVal + 1
-    //             document.documentElement.style.setProperty('--global-font-size', newValue + 'px')
-    //             !document.getElementById('nav').classList.contains('hide-menu') && adjustMenu(true)
-    //         } else {
-    //             if (fontSizeVal <= 10) return
-    //             newValue = fontSizeVal - 1
-    //             document.documentElement.style.setProperty('--global-font-size', newValue + 'px')
-    //             document.getElementById('nav').classList.contains('hide-menu') && adjustMenu(true)
-    //         }
-    //
-    //         saveToLocal.set('global-font-size', newValue, 2)
-    //         // document.getElementById('font-text').innerText = newValue
-    //     }
-    // }
-
-    // document.getElementById('rightside').addEventListener('click', function (e) {
-    //     const $target = e.target.id || e.target.parentNode.id
-    //     switch ($target) {
-    //         case 'go-up':
-    //             rightSideFn.scrollToTop()
-    //             break
-    //         case 'rightside_config':
-    //             rightSideFn.showOrHideBtn()
-    //             break
-    //         case 'readmode':
-    //             rightSideFn.switchReadMode()
-    //             break
-    //         case 'darkmode':
-    //             rightSideFn.switchDarkMode()
-    //             break
-    //         case 'hide-aside-btn':
-    //             rightSideFn.hideAsideBtn()
-    //             break
-    //         case 'font-plus':
-    //             rightSideFn.adjustFontSize(true)
-    //             break
-    //         case 'font-minus':
-    //             rightSideFn.adjustFontSize()
-    //             break
-    //         default:
-    //             break
-    //     }
-    // })
 
     /**
      * menu
@@ -661,26 +423,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // const switchComments = function () {
-    //     let switchDone = false
-    //     const $switchBtn = document.querySelector('#comment-switch > .switch-btn')
-    //     $switchBtn && $switchBtn.addEventListener('click', function () {
-    //         this.classList.toggle('move')
-    //         document.querySelectorAll('#post-comment > .comment-wrap > div').forEach(function (item) {
-    //             if (btf.isHidden(item)) {
-    //                 item.style.cssText = 'display: block;animation: tabshow .5s'
-    //             } else {
-    //                 item.style.cssText = "display: none;animation: ''"
-    //             }
-    //         })
-    //
-    //         if (!switchDone && typeof loadOtherComment === 'function') {
-    //             switchDone = true
-    //             loadOtherComment()
-    //         }
-    //     })
-    // }
-
     const addPostOutdateNotice = function () {
         const data = GLOBAL_CONFIG.noticeOutdate
         const diffDay = btf.diffDate(GLOBAL_CONFIG_SITE.postUpdate)
@@ -732,13 +474,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         GLOBAL_CONFIG.lazyload.enable && lazyloadImg()
         if (GLOBAL_CONFIG.isPost) {
-            // GLOBAL_CONFIG.isToc && tocFn()
             addRuntime();
-            // GLOBAL_CONFIG.noticeOutdate !== undefined && addPostOutdateNotice()
-            // GLOBAL_CONFIG.relativeDate.post && relativeDate(document.querySelectorAll('#post-meta time'))
         } else {
-            // GLOBAL_CONFIG.relativeDate.homepage && relativeDate(document.querySelectorAll('#recent-posts time'))
-            // GLOBAL_CONFIG.runtime && addRuntime()
             addLastPushDate()
             toggleCardCategory()
             addRuntime()
@@ -746,16 +483,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         sidebarFn()
         GLOBAL_CONFIG.isHome && scrollDownInIndex()
-        // addHighlightTool()
-        //GLOBAL_CONFIG.isPhotoFigcaption && addPhotoFigcaption()
         scrollFn()
         addTableWrap()
         clickFnOfTagHide()
         tabsFn.clickFnOfTabs()
         tabsFn.backToTop()
         jqLoadAndRun()
-        //initGallery()
-        // switchComments()
     }
 
     refreshFn()

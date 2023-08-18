@@ -8028,16 +8028,6 @@ span.fund_name {
     line-height: 19px;
 }
 
-.heo-tag-new-view {
-    color: var(--heo-white);
-    background: var(--heo-green);
-}
-
-.heo-tag-hot-view {
-    color: var(--heo-white);
-    background: var(--heo-red);
-}
-
 
 /* 主页导航栏让位偏移 */
 /* .layout_page .recent-posts{
@@ -16555,6 +16545,108 @@ span.hexo-douban-pagenum {
     height: 100%;
     top: 0;
     left: 0;
+}
+
+.author-content-item.comic-content {
+    width: 39%;
+    min-height: 300px;
+    overflow: hidden
+}
+
+.author-content-item.comic-content .comic-box {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    width: 120%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%)
+}
+
+.author-content-item.comic-content .author-content-item-tips,.author-content-item.comic-content .author-content-item-title {
+    z-index: 2;
+    color: var(--heo-white);
+    pointer-events: none
+}
+
+.author-content-item.comic-content .comic-item {
+    height: 100%;
+    color: #fff;
+    width: 20%;
+    -webkit-transform: skew(-10deg,0deg);
+    -moz-transform: skew(-10deg,0deg);
+    -o-transform: skew(-10deg,0deg);
+    -ms-transform: skew(-10deg,0deg);
+    transform: skew(-10deg,0deg);
+    -webkit-transition: .8s;
+    -moz-transition: .8s;
+    -o-transition: .8s;
+    -ms-transition: .8s;
+    transition: .8s;
+    position: relative;
+    overflow: hidden
+}
+
+.author-content-item.comic-content .comic-item:hover {
+    width: 46%
+}
+
+.author-content-item.comic-content .comic-item:hover .comic-item-cover {
+    left: 16%;
+    -webkit-transform: skew(10deg,0deg) scale(1.6);
+    -moz-transform: skew(10deg,0deg) scale(1.6);
+    -o-transform: skew(10deg,0deg) scale(1.6);
+    -ms-transform: skew(10deg,0deg) scale(1.6);
+    transform: skew(10deg,0deg) scale(1.6)
+}
+
+.author-content-item.comic-content .comic-item .comic-item-cover {
+    position: absolute;
+    top: 0;
+    left: -50%;
+    height: 100%;
+    -webkit-transform: skew(10deg,0deg);
+    -moz-transform: skew(10deg,0deg);
+    -o-transform: skew(10deg,0deg);
+    -ms-transform: skew(10deg,0deg);
+    transform: skew(10deg,0deg);
+    object-fit: cover;
+    -webkit-transition: scale .2s,all .8s;
+    -moz-transition: scale .2s,all .8s;
+    -o-transition: scale .2s,all .8s;
+    -ms-transition: scale .2s,all .8s;
+    transition: scale .2s,all .8s
+}
+
+.author-content-item.comic-content .comic-item .comic-item-cover img {
+    height: 100%;
+    -webkit-transition: .8s;
+    -moz-transition: .8s;
+    -o-transition: .8s;
+    -ms-transition: .8s;
+    transition: .8s;
+    max-width: none;
+    border-radius: 0
+}
+
+.author-content-item.comic-content::after {
+    -webkit-box-shadow: 0 -48px 203px 11px #fbe9b8 inset;
+    box-shadow: 0 -48px 203px 11px #fbe9b8 inset;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0
 }
 
 /* 关注领域 */

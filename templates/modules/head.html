@@ -236,6 +236,12 @@
                     locationLng: [[${theme.config.sidebar.welcome.locationLng}]],
                     locationLat: [[${theme.config.sidebar.welcome.locationLat}]],
                 },
+                post:{
+                    dynamicBackground: [[${ theme.config.post.dynamicBackground }]]
+                },
+                tool:{
+                    switch: [[${ theme.config.tool.snackbar.switch }]]
+                }
             },
             date_suffix: {
                 just: '刚刚',
@@ -263,6 +269,7 @@
                 prism_limit: Number([[${#strings.isEmpty(theme.config.code.height_limit) ? 300 : theme.config.code.height_limit}]])+30,
                 enable_height_limit: [[${theme.config.code.enable_height_limit}]]
             },
+
 
         };
 
