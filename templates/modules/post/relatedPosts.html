@@ -16,8 +16,10 @@ containsTitle = ${#strings.contains(recommandPosts,post.spec.title)}">
                       th:if="${not #strings.equals(post.spec.title, recommandPost.spec.title)}">
                 <div th:if="${!containsTitle ? iterStat.index <6 : true}">
                     <a th:href="@{${recommandPost.status.permalink}}" th:title="${recommandPost.spec.title}">
-                        <img alt="cover" class="cover" loading="lazy" id="preimg"
-                             th:src="${#strings.isEmpty(recommandPost.spec.cover) ? theme.config.layout.postRandomImg : recommandPost.spec.cover}">
+                        <img alt="cover" class="cover" id="preimg"
+                             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+                             th:data-lazy-src="${#strings.isEmpty(recommandPost.spec.cover) ? theme.config.layout.postRandomImg : recommandPost.spec.cover}">
                         <div class="content is-center">
                             <div class="date" style="color: white"><i class="far fa-calendar-alt fa-fw"></i>
                                 [[${#dates.format(recommandPost.spec.publishTime,'yyyy-MM-dd')}]]
@@ -35,7 +37,9 @@ containsTitle = ${#strings.contains(recommandPosts,post.spec.title)}">
                 <div th:if="${!containsTitle ? iterStat.index <2 : true}">
                     <a th:href="@{${recommandPost.status.permalink}}" th:title="${recommandPost.spec.title}">
                         <img class="cover" alt="cover"
-                             th:src="${#strings.isEmpty(recommandPost.spec.cover) ? theme.config.layout.postRandomImg : recommandPost.spec.cover}">
+                             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+                             th:data-lazy-src="${#strings.isEmpty(recommandPost.spec.cover) ? theme.config.layout.postRandomImg : recommandPost.spec.cover}">
                         <div class="content is-center">
                             <div class="date"><i class="far fa-calendar-alt fa-fw"></i>
                                 [[${#dates.format(recommandPost.spec.publishTime,'yyyy-MM-dd')}]]</div>

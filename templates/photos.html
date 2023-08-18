@@ -30,8 +30,11 @@
                                     <div class="fj-gallery-item"
                                          th:each="photo : ${photoFinder.listBy(param.photo_group_name)}">
                                         <div th:if="${theme.config.photos.tagEnable}" class="tag-address">[[${photo.spec.displayName}]]</div>
-                                        <img th:src="${photo.spec.url}" th:alt="${photo.spec.description}"
-                                             th:title="${photo.spec.description}">
+                                        <img th:title="${photo.spec.description}"
+                                             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+                                             th:data-lazy-src="${photo.spec.url}"
+                                             th:alt="${photo.spec.description}">
 
                                     </div>
                                 </div>
@@ -53,7 +56,10 @@
                                     <div class="fj-gallery-item"
                                          th:each="photo : ${photoFinder.listBy(param.photo_group_name)}">
                                         <div th:if="${theme.config.photos.tagEnable}" class="tag-address">[[${photo.spec.displayName}]]</div>
-                                        <img th:src="${photo.spec.url}" th:alt="${photo.spec.description}"
+                                        <img th:data-lazy-src="${photo.spec.url}"
+                                             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+                                             th:alt="${photo.spec.description}"
                                              th:title="${photo.spec.description}">
 
                                     </div>

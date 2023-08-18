@@ -3,12 +3,12 @@
 <!-- 爱好 -->
 <div class="author-content" th:fragment="game">
     <div class="author-content-item game-lol"
-        th:style="'background: url('+ @{${theme.config.about.game.game_bg}} +') top / cover no-repeat'">
+         th:style="'background: url('+ @{${theme.config.about.game.game_bg}} +') top / cover no-repeat'">
         <div class="card-content">
             <div class="author-content-item-tips" th:text="${theme.config.about.game.game_tips}">
 
             </div><span class="author-content-item-title"
-                th:text="${theme.config.about.game.game_title}"></span>
+                        th:text="${theme.config.about.game.game_title}"></span>
             <div class="content-bottom">
                 <div class="icon-group">
                     <div class="loading-bar" role="presentation" aria-hidden="true"></div>
@@ -18,12 +18,12 @@
         </div>
     </div>
     <div th:if="${#strings.equals(theme.config.about.game2.game2_type, 'img')}" class="author-content-item game-wolf"
-        th:style="'background: url('+ @{${theme.config.about.game2.game2_bg}} +') top / cover no-repeat'">
+         th:style="'background: url('+ @{${theme.config.about.game2.game2_bg}} +') top / cover no-repeat'">
         <div class="card-content">
             <div class="author-content-item-tips" th:text="${theme.config.about.game2.game2_tips}">
 
             </div><span class="author-content-item-title"
-                th:text="${theme.config.about.game2.game2_title}"></span>
+                        th:text="${theme.config.about.game2.game2_title}"></span>
             <div class="content-bottom">
                 <div class="tips" th:text="${theme.config.about.game2.game2_uid}"></div>
             </div>
@@ -39,7 +39,9 @@
                     th:href="${comic.url}"
                     rel="external nofollow noreferrer" target="_blank" th:title="${comic.title}" draggable="false">
                     <div class="comic-item-cover"><img
-                            th:src="@{${comic.bg}}"
+                            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                            th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+                            th:data-lazy-src="@{${comic.bg}}"
                             th:alt="${comic.title}"
                             draggable="false" >
                     </div>

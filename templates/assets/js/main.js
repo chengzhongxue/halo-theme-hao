@@ -443,9 +443,7 @@ document.addEventListener('DOMContentLoaded', function () {
         window.lazyLoadInstance = new LazyLoad({
             elements_selector: 'img',
             threshold: 0,
-            callback_error: (img) => {
-                img.setAttribute("srcset", GLOBAL_CONFIG.lazyload.error);
-            }
+            data_src: 'lazy-src'
         })
     }
 
@@ -465,14 +463,14 @@ document.addEventListener('DOMContentLoaded', function () {
         })
 
         clickFnOfSubMenu()
-
+        GLOBAL_CONFIG.lazyload.enable && lazyloadImg()
         GLOBAL_CONFIG.copyright !== undefined && addCopyright()
     }
 
     window.refreshFn = function () {
         initAdjust();
 
-        GLOBAL_CONFIG.lazyload.enable && lazyloadImg()
+
         if (GLOBAL_CONFIG.isPost) {
             addRuntime();
         } else {

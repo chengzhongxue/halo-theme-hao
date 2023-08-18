@@ -17,7 +17,9 @@
                 <a th:each="link : ${group.links}"
                    class="card-friend-item online-friend-link" th:href="${link.spec.url}" th:title="${link.spec.displayName}"
                    target="_blank"><img class="no-lightbox card-friend-avatar"
-                                        th:src="${link.spec.logo}"
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+                                        th:data-lazy-src="${link.spec.logo}"
                                         th:alt="${link.spec.displayName}">
                     <div class="card-friend-details">
                         <div class="card-friend-name">[[${link.spec.displayName}]]</div>
@@ -33,8 +35,10 @@
                 </summary>
                 <a th:each="link : ${group.links}"
                    class="card-friend-item offline-friend-link" th:href="${link.spec.url}" th:title="${link.spec.displayName}"
-                   target="_blank"><img class="no-lightbox card-friend-avatar entered loaded"
-                                        th:src="${link.spec.logo}"
+                   target="_blank"><img class="no-lightbox card-friend-avatar"
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+                                        th:data-lazy-src="${link.spec.logo}"
                                         th:alt="${link.spec.displayName}">
                     <div class="card-friend-details">
                         <div class="card-friend-name">[[${link.spec.displayName}]]</div>

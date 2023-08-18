@@ -15,9 +15,11 @@
 
         <div class="post_cover left_radius">
             <a th:attr="title=${post.spec.title}" th:href="@{${post.status.permalink}}">
-                <img class="post_bg entered loaded" loading="lazy"
+                <img class="post_bg"
                      th:alt="${post.spec.title}"
-                     th:src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+","+post.spec.title : post.spec.cover}'>
+                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                     th:attr="onerror='this.onerror=null;this.src=\''+@{${errorImg}}+'\''"
+                     th:data-lazy-src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+","+post.spec.title : post.spec.cover}'>
             </a>
         </div>
         <!-- 类别非空时 -->
