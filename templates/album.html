@@ -24,9 +24,10 @@
                         <th:block th:each="group : ${photoFinder.groupBy()}">
                             <div class="card" th:onclick="go([[${group.metadata.name}]])">
                                 <img class="card_cover"
-                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                      th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                                     th:data-lazy-src="${#annotations.get(group, 'cover')}">
+                                     th:src="${isLazyload ? dataImage : #annotations.get(group, 'cover')}"
+                                     th:data-lazy-src="${ isLazyload ? #annotations.get(group, 'cover') : ''}"
+                                     >
                                 <div class="card__content">
                                     <p class="card__category" th:text="${group.spec.displayName}"></p>
                                     <h3 class="card__heading" th:text="${#annotations.get(group, 'description')}"></h3>
@@ -44,9 +45,11 @@
                         <th:block th:each="group : ${photoFinder.groupBy()}">
                             <figure class="gallery-group">
                                 <img class="gallery-group-img no-lightbox"
-                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                      th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                                     th:data-lazy-src="${#annotations.get(group, 'cover')}" alt="Group Image Gallery">
+                                     th:src="${isLazyload ? dataImage : #annotations.get(group, 'cover')}"
+                                     th:data-lazy-src="${ isLazyload ? #annotations.get(group, 'cover') : ''}"
+
+                                     alt="Group Image Gallery">
                                 <figcaption>
                                     <div class="gallery-group-name">[[${group.spec.displayName}]]</div>
                                     <p>[[${#annotations.get(group, 'description')}]]</p><a target="_blank"

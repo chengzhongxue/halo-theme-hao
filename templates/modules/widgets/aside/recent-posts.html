@@ -8,9 +8,10 @@
         <div class="aside-list-item" th:each="post : ${posts}">
             <a class="thumbnail" th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
                 <img th:alt="${post.spec.title}"
-                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                     th:with="img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}"
                      th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                     th:data-lazy-src="${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}">
+                     th:src="${isLazyload ? dataImage : img}"
+                     th:data-lazy-src="${ isLazyload ? img : ''}">
             </a>
             <div class="content">
                 <a class="title" th:href="@{${post.status.permalink}}" th:text="${post.spec.title}" th:title="${post.spec.title}"></a>

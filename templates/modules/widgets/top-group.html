@@ -14,10 +14,12 @@
                 <span class="recent-post-top-text"
                       th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'">荐</span>
                 <img class="post_bg"
+                     th:with=' img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+","+post.spec.title : post.spec.cover}'
                      th:alt="${post.spec.title}"
-                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                      th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                     th:data-lazy-src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+","+post.spec.title : post.spec.cover}'
+                     th:src="${isLazyload ? dataImage : img}"
+                     th:data-lazy-src="${ isLazyload ? img : ''}"
+
                 />
             </a>
         </div>
@@ -39,10 +41,12 @@
                     <span class="recent-post-top-text"
                           th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'">荐</span>
                     <img class="post_bg"
+                         th:with='img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+","+post.spec.title : post.spec.cover}'
                          th:alt="${post.spec.title}"
-                         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                          th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                         th:data-lazy-src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+","+post.spec.title : post.spec.cover}'
+                         th:src="${isLazyload ? dataImage : img}"
+                         th:data-lazy-src="${ isLazyload ? img : ''}"
+
                     />
                 </a>
             </div>

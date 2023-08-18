@@ -24,11 +24,19 @@
                                 <a class="tags-group-icon" target="_blank" th:href="${linkOdd.spec.url}"
                                    th:title="${linkOdd.spec.displayName}"
                                    th:with="linkOdd = ${group.links.get(iterStat.index - 1)}">
-                                    <img th:src="@{${linkOdd.spec.logo}}" th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''" th:title="${linkOdd.spec.displayName}">
+                                    <img th:with=" img = @{${linkOdd.spec.logo}}"
+                                         th:src="${isLazyload ? dataImage : img}"
+                                         th:data-lazy-src="${ isLazyload ? img : ''}"
+                                         th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+                                         th:title="${linkOdd.spec.displayName}">
                                 </a>
                                 <a class="tags-group-icon" target="_blank" th:href="${linkEven.spec.url}"
                                    th:title="${linkEven.spec.displayName}" th:with="linkEven = ${link}">
-                                    <img th:src="@{${linkEven.spec.logo}}" th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''" th:title="${linkEven.spec.displayName}">
+                                    <img th:with="img = @{${linkEven.spec.logo}}"
+                                         th:src="${isLazyload ? dataImage : img}"
+                                         th:data-lazy-src="${ isLazyload ? img : ''}"
+                                         th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+                                         th:title="${linkEven.spec.displayName}">
                                 </a>
                             </div>
                         </th:block>
@@ -87,18 +95,19 @@
 
                         <a class="img" target="_blank" th:href="${link.spec.url}" th:title="${link.spec.displayName}">
                             <img class="flink-avatar" style="pointer-events: none;" th:alt="${link.spec.displayName}"
-                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                 th:with="img = @{${#strings.isEmpty(#annotations.get(link, 'siteshot')) ? link.spec.logo : #annotations.get(link,'siteshot') }}"
                                  th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                                 th:data-lazy-src="@{${#strings.isEmpty(#annotations.get(link, 'siteshot')) ? link.spec.logo : #annotations.get(link,'siteshot') }}">
+                                 th:src="${isLazyload ? dataImage : img}"
+                                 th:data-lazy-src="${ isLazyload ? img : ''}">
                         </a>
 
                         <a class="info cf-friends-link" target="_blank" th:href="${link.spec.url}"
                            th:title="${link.spec.displayName}">
                             <div class="site-card-avatar">
                                 <img class="flink-avatar cf-friends-avatar" th:alt="${link.spec.displayName}"
-                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                      th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                                     th:data-lazy-src="${link.spec.logo}">
+                                     th:src="${isLazyload ? dataImage : link.spec.logo}"
+                                     th:data-lazy-src="${ isLazyload ? link.spec.logo : ''}">
                             </div>
                             <div class="site-card-text">
                                 <span class="title cf-friends-name" th:text="${link.spec.displayName}"></span>
@@ -120,16 +129,16 @@
                         <a class="cf-friends-link" rel="external nofollow" target="_blank" th:href="${link.spec.url}"
                            th:title="${link.spec.displayName}">
                             <img class="flink-avatar cf-friends-avatar" th:alt="${link.spec.displayName}"
-                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                  th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                                 th:data-lazy-src="${link.spec.logo}">
+                                 th:src="${isLazyload ? dataImage : link.spec.logo}"
+                                 th:data-lazy-src="${ isLazyload ? link.spec.logo : ''}">
                             <div class="flink-item-info">
                                 <span class="flink-item-name cf-friends-name" th:text="${link.spec.displayName}"></span>
                                 <span class="flink-item-desc" th:text="${link.spec.description}"
                                       th:title="${link.spec.description}"></span>
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                     th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                                     th:data-lazy-src="${link.spec.logo}">
+                                <img th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+                                     th:src="${isLazyload ? dataImage : link.spec.logo}"
+                                     th:data-lazy-src="${ isLazyload ? link.spec.logo : ''}">
                             </div>
                         </a>
                     </div>
@@ -141,9 +150,9 @@
                         <a class="cf-friends-link" rel="external nofollow" target="_blank" th:href="${link.spec.url}"
                            th:title="${link.spec.displayName}">
                             <img class="flink-avatar cf-friends-avatar"
-                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                  th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                                 th:data-lazy-src="${link.spec.logo}"
+                                 th:src="${isLazyload ? dataImage : link.spec.logo}"
+                                 th:data-lazy-src="${ isLazyload ? link.spec.logo : ''}"
                                  th:alt="${link.spec.displayName}">
                             <div class="img-alt is-center">[[${link.spec.displayName}]]</div>
                             <div class="flink-item-info">

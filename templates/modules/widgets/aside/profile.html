@@ -13,9 +13,10 @@
                     <div class="author-info__sayhi" id="author-info__sayhi" onclick="heo.changeSayHelloText()">你好啊！我是
                     </div>
                     <img class="avatar-img"
-                         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                         th:with=" img = @{${#strings.isEmpty(site.logo) ? assets_link + '/images/hao-logo.jpg' : site.logo}}"
                          th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                         th:data-lazy-src="@{${#strings.isEmpty(site.logo) ? assets_link + '/images/hao-logo.jpg' : site.logo}}">
+                         th:src="${isLazyload ? dataImage : img}"
+                         th:data-lazy-src="${ isLazyload ? img : ''}">
                 </div>
                 <div class="author-info__name" th:if="${#strings.isEmpty(theme.config.sidebar.profile.profileName)}"
                      th:text="${site.title}"></div>
@@ -144,14 +145,16 @@
             </div>
             <div class="avatar-img-group">
                 <img class="avatar-img" alt="avatar"
-                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                     th:with="img = @{${#strings.isEmpty(site.logo) ? assets_link + '/images/hao-logo.jpg' : site.logo}}"
                      th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                     th:data-lazy-src="@{${#strings.isEmpty(site.logo) ? assets_link + '/images/hao-logo.jpg' : site.logo}}">
+                     th:src="${isLazyload ? dataImage : img}"
+                     th:data-lazy-src="${ isLazyload ? img : ''}">
                 <div class="avatar-sticker">
                     <img class="avatar-sticker-img" alt="avatar"
-                         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                         th:with="img = @{${theme.config.sidebar.profile.stickerImg}}"
                          th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                         th:data-lazy-src="@{${theme.config.sidebar.profile.stickerImg}}">
+                         th:src="${isLazyload ? dataImage : img}"
+                         th:data-lazy-src="${ isLazyload ? img : ''}">
                 </div>
             </div>
             <div class="author-info__description_group" th:utext="${theme.config.sidebar.profile.profileDesc}">

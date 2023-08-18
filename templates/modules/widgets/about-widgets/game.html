@@ -39,9 +39,10 @@
                     th:href="${comic.url}"
                     rel="external nofollow noreferrer" target="_blank" th:title="${comic.title}" draggable="false">
                     <div class="comic-item-cover"><img
-                            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                            th:with="img = @{${comic.bg}}"
                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                            th:data-lazy-src="@{${comic.bg}}"
+                            th:src="${isLazyload ? dataImage : img}"
+                            th:data-lazy-src="${ isLazyload ? img : ''}"
                             th:alt="${comic.title}"
                             draggable="false" >
                     </div>

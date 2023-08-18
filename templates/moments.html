@@ -32,9 +32,10 @@
                                     <div class="bber-container-img" th:if="${#strings.contains(content.medium,'PHOTO')}">
                                         <img th:each="momentItem : ${content.medium}"
                                              th:if="${momentItem.type.name == 'PHOTO'}"
-                                             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                             th:src="${isLazyload ? dataImage : momentItem.url}"
+                                             th:data-lazy-src="${ isLazyload ? momentItem.url : ''}"
                                              th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                                             th:data-lazy-src="${momentItem.url}" title="瞬间配图">
+                                             title="瞬间配图">
                                         <div class="bber-content-noimg"></div>
                                         <div class="bber-content-noimg"></div>
                                         <div class="bber-content-noimg"></div>

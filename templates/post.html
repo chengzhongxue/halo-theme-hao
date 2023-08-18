@@ -124,9 +124,10 @@
                     <div th:class="${postCursor.hasPrevious()==true && postCursor.hasNext()==false} ? 'prev-post2 pull-left postcarnepre' : 'prev-post pull-left'">
                         <a th:if="${postCursor.hasPrevious()}" th:href="@{${postCursor.previous.status.permalink}}">
                             <img alt="cover" id="preimg" class="nolazyload"
-                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                 th:with="img = ${#strings.isEmpty(postCursor.previous.spec.cover) ? theme.config.layout.postRandomImg : postCursor.previous.spec.cover}"
+                                 th:src="${isLazyload ? dataImage : img}"
                                  th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                                 th:data-lazy-src="${#strings.isEmpty(postCursor.previous.spec.cover) ? theme.config.layout.postRandomImg : postCursor.previous.spec.cover}">
+                                 th:data-lazy-src="${ isLazyload ? img : ''}">
                             <div class="pagination-info">
                                 <div class="label">上一篇</div>
                                 <div class="prev_info" th:text="${postCursor.previous.spec.title}"></div>
@@ -136,9 +137,10 @@
                     <div th:class="${postCursor.hasPrevious()==false && postCursor.hasNext()==true} ? 'next-post2 pull-right postcarnepre':'next-post pull-right'">
                         <a th:if="${postCursor.hasNext()}" th:href="@{${postCursor.next.status.permalink}}">
                             <img alt="cover" id="preimg" class="nolazyload"
-                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                 th:with="img = ${#strings.isEmpty(postCursor.next.spec.cover) ? theme.config.layout.postRandomImg : postCursor.next.spec.cover}"
+                                 th:src="${isLazyload ? dataImage : img}"
                                  th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                                 th:data-lazy-src="${#strings.isEmpty(postCursor.next.spec.cover) ? theme.config.layout.postRandomImg : postCursor.next.spec.cover}">
+                                 th:data-lazy-src="${ isLazyload ? img : ''}">
                             <div class="pagination-info">
                                 <div class="label">下一篇</div>
                                 <div class="next_info" th:text="${postCursor.next.spec.title}"></div>
