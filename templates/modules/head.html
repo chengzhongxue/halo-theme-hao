@@ -45,8 +45,6 @@
           rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.0/css/all.min.css" media="all" onload="this.media='all'">
-
     <!-- 代码块自动识别语言 -->
     <th:block th:replace="~{modules/common/code :: code}"/>
     <!--  代码块-->
@@ -197,7 +195,7 @@
             postUpdate: '2022-11-04 20:08:15',
             copyright: undefined,
             lightbox: 'fancybox',
-            lazyload: {enable: true, error: "/themes/theme-hao/assets/images/404s.gif"},
+            lazyload: {enable: [[${theme.config.other.vanillaLazyload.enable}]], error: "/themes/theme-hao/assets/images/404.gif"},
             isFriendLinksInFooter: [[${theme.config.footer.footer_group.enable_footer_group}]],
             loadingBox: [[${theme.config.other.loadingBoxs.loadingBoxEnable}]],
             loadProgressBar: [[${theme.config.other.loadingBoxs.loadProgressBar}]],

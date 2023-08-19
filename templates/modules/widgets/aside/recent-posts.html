@@ -7,8 +7,11 @@
         <!-- 最新文章，用户可以自定义展示数量 -->
         <div class="aside-list-item" th:each="post : ${posts}">
             <a class="thumbnail" th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
-                <img loading="lazy" th:alt="${post.spec.title}"
-                     th:src="${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}">
+                <img th:alt="${post.spec.title}"
+                     th:with="img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}"
+                     th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+                     th:src="${isLazyload ? dataImage : img}"
+                     th:data-lazy-src="${ isLazyload ? img : ''}">
             </a>
             <div class="content">
                 <a class="title" th:href="@{${post.status.permalink}}" th:text="${post.spec.title}" th:title="${post.spec.title}"></a>
