@@ -25,7 +25,7 @@
                             <div class="card" th:onclick="go([[${group.metadata.name}]])">
                                 <img class="card_cover"
                                      th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                                     th:src="${isLazyload ? dataImage : #annotations.get(group, 'cover')}"
+                                     th:src="${isLazyload ? loadingImg : #annotations.get(group, 'cover')}"
                                      th:data-lazy-src="${ isLazyload ? #annotations.get(group, 'cover') : ''}"
                                      >
                                 <div class="card__content">
@@ -46,7 +46,7 @@
                             <figure class="gallery-group">
                                 <img class="gallery-group-img no-lightbox"
                                      th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                                     th:src="${isLazyload ? dataImage : #annotations.get(group, 'cover')}"
+                                     th:src="${isLazyload ? loadingImg : #annotations.get(group, 'cover')}"
                                      th:data-lazy-src="${ isLazyload ? #annotations.get(group, 'cover') : ''}"
 
                                      alt="Group Image Gallery">

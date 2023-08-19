@@ -41,7 +41,7 @@
                     <div class="comic-item-cover"><img
                             th:with="img = @{${comic.bg}}"
                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                            th:src="${isLazyload ? dataImage : img}"
+                            th:src="${isLazyload ? loadingImg : img}"
                             th:data-lazy-src="${ isLazyload ? img : ''}"
                             th:alt="${comic.title}"
                             draggable="false" >

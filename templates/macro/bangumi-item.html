@@ -4,7 +4,7 @@
     <div class="bangumi-item">
         <div class="bangumi-picture">
             <img
-                    th:src="${isLazyload ? dataImage : spec.cover}"
+                    th:src="${isLazyload ? loadingImg : spec.cover}"
                     th:data-lazy-src="${ isLazyload ? spec.cover : ''}"
                     referrerpolicy="no-referrer" width="110"
                     th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
