@@ -191,7 +191,7 @@ let halo = {
             //折叠
             if(isEnableExpander){
                 var expander = document.createElement("i");
-                expander.className = 'fa-sharp fa-solid fhaofont hao-icon-angle-down code-expander cursor-pointer'
+                expander.className = 'fa-sharp fa-solid haofont hao-icon-angle-down code-expander cursor-pointer'
                 customItem.appendChild(expander)
 
                 expander.addEventListener('click', prismToolsFn)
