@@ -10,7 +10,7 @@
                 <img th:alt="${post.spec.title}"
                      th:with="img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}"
                      th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
-                     th:src="${isLazyload ? dataImage : img}"
+                     th:src="${isLazyload ? loadingImg : img}"
                      th:data-lazy-src="${ isLazyload ? img : ''}">
             </a>
             <div class="content">
