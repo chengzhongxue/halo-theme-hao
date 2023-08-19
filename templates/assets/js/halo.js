@@ -271,7 +271,7 @@ let halo = {
 
 
     danmu: (url,token,maxBarrage)=>{
-        const e = new EasyDanmaku({
+        const e = new EasyDanmakuMin({
             el: "#danmu",
             line: 10,
             speed: 20,

@@ -119,7 +119,7 @@
 
     <div id="js-pjax"></div>
 
-    <script th:if="${theme.config.envelope_comment.enable_danmu}" th:src="${assets_link + '/libs/twikoo/easy-Danmaku.js' + theme_version}" id="Danmaku"></script>
+    <script th:if="${theme.config.envelope_comment.enable_danmu}" th:src="${assets_link + '/libs/twikoo/easy-Danmaku.min.js' + theme_version}" id="Danmaku"></script>
 
 
     <script>
@@ -235,7 +235,7 @@
         document.body.clientWidth > 768 &&
         [[${theme.config.envelope_comment.enable_danmu}]]){
         halo.closeCommentBarrage();
-        halo.addScript("Danmaku", "[[${assets_link + '/libs/twikoo/easy-Danmaku.js'}]]", halo.danmu("[(${theme.config.comments.twikoos.envId})]","[(${theme.config.comments.twikoos.accessToken})]",[[${theme.config.envelope_comment.maxBarrage}]]))
+        halo.addScript("Danmaku", "[[${assets_link + '/libs/twikoo/easy-Danmaku.min.js'}]]", halo.danmu("[(${theme.config.comments.twikoos.envId})]","[(${theme.config.comments.twikoos.accessToken})]",[[${theme.config.envelope_comment.maxBarrage}]]))
     }
 
 </script>
