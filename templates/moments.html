@@ -34,7 +34,6 @@
                                              th:if="${momentItem.type.name == 'PHOTO'}"
                                              th:src="${isLazyload ? loadingImg : momentItem.url}"
                                              th:data-lazy-src="${ isLazyload ? momentItem.url : ''}"
-                                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
                                              title="瞬间配图">
                                         <div class="bber-content-noimg"></div>
                                         <div class="bber-content-noimg"></div>

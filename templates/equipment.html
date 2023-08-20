@@ -28,9 +28,10 @@
 
                                 <div class="equipment-item-content-item" th:each="equipment : ${equipmentList}">
                                     <div class="equipment-item-content-item-cover">
-                                        <img class="equipment-item-content-item-image entered loaded"
+                                        <img class="equipment-item-content-item-image"
                                              th:alt="${equipment.name}"
-                                             th:src="${equipment.img}">
+                                             th:src="${isLazyload ? loadingImg : equipment.img}"
+                                             th:data-lazy-src="${ isLazyload ? equipment.img : ''}">
                                     </div>
                                     <div class="equipment-item-content-item-info">
                                         <div class="equipment-item-content-item-name"

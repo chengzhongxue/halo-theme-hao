@@ -24,7 +24,6 @@
                         <th:block th:each="group : ${photoFinder.groupBy()}">
                             <div class="card" th:onclick="go([[${group.metadata.name}]])">
                                 <img class="card_cover"
-                                     th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
                                      th:src="${isLazyload ? loadingImg : #annotations.get(group, 'cover')}"
                                      th:data-lazy-src="${ isLazyload ? #annotations.get(group, 'cover') : ''}"
                                      >
@@ -45,10 +44,8 @@
                         <th:block th:each="group : ${photoFinder.groupBy()}">
                             <figure class="gallery-group">
                                 <img class="gallery-group-img no-lightbox"
-                                     th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
                                      th:src="${isLazyload ? loadingImg : #annotations.get(group, 'cover')}"
                                      th:data-lazy-src="${ isLazyload ? #annotations.get(group, 'cover') : ''}"
-
                                      alt="Group Image Gallery">
                                 <figcaption>
                                     <div class="gallery-group-name">[[${group.spec.displayName}]]</div>

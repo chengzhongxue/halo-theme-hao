@@ -18,7 +18,6 @@
                 <img class="post_bg"
                      th:with='img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+","+post.spec.title : post.spec.cover}'
                      th:alt="${post.spec.title}"
-                     th:attr="onerror='this.onerror=null;this.src=\''+@{${errorImg}}+'\''"
                      th:data-lazy-src="${ isLazyload ? img : ''}"
                      th:src="${isLazyload ? loadingImg : img}">
             </a>
