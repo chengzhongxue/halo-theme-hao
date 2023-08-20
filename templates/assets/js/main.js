@@ -443,7 +443,10 @@ document.addEventListener('DOMContentLoaded', function () {
         window.lazyLoadInstance = new LazyLoad({
             elements_selector: 'img',
             threshold: 0,
-            data_src: 'lazy-src'
+            data_src: 'lazy-src',
+            callback_error: (img) => {
+                img.setAttribute("srcset", GLOBAL_CONFIG.lazyload.error);
+            }
         })
     }
 

@@ -21,7 +21,7 @@
                     <div class="tags-group-icon" style="background:#989bf8">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/AfterEffect.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="AfterEffect">
@@ -29,7 +29,7 @@
                     <div class="tags-group-icon" style="background:#fff">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/Sketch.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="Sketch">
@@ -39,7 +39,7 @@
                     <div class="tags-group-icon" style="background:#57b6e6">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/Docker.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="Docker">
@@ -47,7 +47,7 @@
                     <div class="tags-group-icon" style="background:#4082c3">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/Photoshop.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="Photoshop">
@@ -57,7 +57,7 @@
                     <div class="tags-group-icon" style="background:#fff">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/FinalCutPro.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="FinalCutPro">
@@ -65,7 +65,7 @@
                     <div class="tags-group-icon" style="background:#fff">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/Python.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="Python">
@@ -75,7 +75,7 @@
                     <div class="tags-group-icon" style="background:#eb6840">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/Swift.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="Swift">
@@ -83,7 +83,7 @@
                     <div class="tags-group-icon" style="background:#8f55ba">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/Principle.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="Principle">
@@ -93,7 +93,7 @@
                     <div class="tags-group-icon" style="background:#f29e39">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/illustrator.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="illustrator">
@@ -101,7 +101,7 @@
                     <div class="tags-group-icon" style="background:#2c51db">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/CSS3.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="CSS3">
@@ -111,7 +111,7 @@
                     <div class="tags-group-icon" style="background:#f7cb4f">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/JS.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="JS">
@@ -119,7 +119,7 @@
                     <div class="tags-group-icon" style="background:#e9572b">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/HTML.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="HTML">
@@ -129,7 +129,7 @@
                     <div class="tags-group-icon" style="background:#df5b40">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/Git.webp'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="Git">
@@ -137,7 +137,7 @@
                     <div class="tags-group-icon" style="background:#e65164">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/Apifox.webp'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="Apifox">
@@ -147,7 +147,7 @@
                     <div class="tags-group-icon" style="background:#989bf8">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/AfterEffect.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="AfterEffect">
@@ -155,7 +155,7 @@
                     <div class="tags-group-icon" style="background:#fff">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/Sketch.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="Sketch">
@@ -165,7 +165,7 @@
                     <div class="tags-group-icon" style="background:#57b6e6">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/Docker.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="Docker">
@@ -173,7 +173,7 @@
                     <div class="tags-group-icon" style="background:#4082c3">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/Photoshop.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="Photoshop">
@@ -183,7 +183,7 @@
                     <div class="tags-group-icon" style="background:#fff">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/FinalCutPro.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="FinalCutPro">
@@ -191,7 +191,7 @@
                     <div class="tags-group-icon" style="background:#fff">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/Python.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="Python">
@@ -201,7 +201,7 @@
                     <div class="tags-group-icon" style="background:#eb6840">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/Swift.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="Swift">
@@ -209,7 +209,7 @@
                     <div class="tags-group-icon" style="background:#8f55ba">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/Principle.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="Principle">
@@ -219,7 +219,7 @@
                     <div class="tags-group-icon" style="background:#f29e39">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/illustrator.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="illustrator">
@@ -227,7 +227,7 @@
                     <div class="tags-group-icon" style="background:#2c51db">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/CSS3.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="CSS3">
@@ -237,7 +237,7 @@
                     <div class="tags-group-icon" style="background:#f7cb4f">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/JS.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="JS">
@@ -245,7 +245,7 @@
                     <div class="tags-group-icon" style="background:#e9572b">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/HTML.png'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="HTML">
@@ -255,7 +255,7 @@
                     <div class="tags-group-icon" style="background:#df5b40">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/Git.webp'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="Git">
@@ -263,7 +263,7 @@
                     <div class="tags-group-icon" style="background:#e65164">
                         <img
                              th:with=" img = ${assets_link + '/images/icons/Apifox.webp'}"
-                             th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}"
                              title="Apifox">
@@ -282,7 +282,7 @@
                              th:with="techOdd = ${techs.get(iterStat.index - 1)}">
                             <img
                                     th:with=" img = @{${techOdd.url}}"
-                                    th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                                     th:src="${isLazyload ? loadingImg : img}"
                                     th:data-lazy-src="${ isLazyload ? img : ''}"
                                     th:title="${techOdd.name}">
@@ -293,7 +293,7 @@
                              th:with="techEven = ${tech}">
                             <img
                                  th:with=" img = @{${techEven.url}}"
-                                 th:attr="onerror='this.onerror=null;this.src=\''+${errorImg}+'\''"
+
                                  th:src="${isLazyload ? loadingImg : img}"
                                  th:data-lazy-src="${ isLazyload ? img : ''}"
                                  th:title="${techEven.name}">
