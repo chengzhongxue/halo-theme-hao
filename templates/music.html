@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'music')}"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'music',title = '音乐馆' + ' | ' + site.title)}">
 
 <th:block th:fragment="content">
 
     <div class="page" id="body-wrap">
         <!-- 头部导航栏 -->
         <header class="not-top-img" id="page-header">
-            <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
+            <nav th:replace="~{modules/nav :: nav(title = '音乐馆')}"></nav>
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">

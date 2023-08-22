@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'tag')}"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content},htmlType = 'tag',title = ${'标签' + ' | ' + site.title})}">
 
 <th:block th:fragment="content">
 
     <div class="page" id="body-wrap">
         <header class="not-top-img" id="page-header">
-            <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
+            <nav th:replace="~{modules/nav :: nav(title = '标签')}"></nav>
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page"><h1 class="page-title" style="display: inline;">标签</h1>
@@ -16,7 +16,7 @@
                        th:href="@{${tagItem.status.permalink}}"
                        th:id="${tagItem.spec.displayName}" th:style="'font-size: 1em; color:' + ${tagItem.spec.color} ">
                         <span class="tags-punctuation">[[${tagItem.spec.displayName}]]</span>
-                        
+
                         <span class="tagsPageCount">[[${tagItem.status.visiblePostCount}]]</span>
                     </a>
 

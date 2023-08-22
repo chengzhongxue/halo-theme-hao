@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page')}"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page',title = ${singlePage.spec.title + ' | ' + site.title})}">
 
 <th:block th:fragment="content">
 
@@ -8,7 +8,7 @@
 
         <!-- 头部导航栏 -->
         <header class="not-top-img" id="page-header">
-            <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
+            <nav th:replace="~{modules/nav :: nav(title = ${singlePage.spec.title})}"></nav>
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
@@ -26,7 +26,7 @@
                                 <img class="card_cover"
                                      th:src="${isLazyload ? loadingImg : #annotations.get(group, 'cover')}"
                                      th:data-lazy-src="${ isLazyload ? #annotations.get(group, 'cover') : ''}"
-                                     >
+                                >
                                 <div class="card__content">
                                     <p class="card__category" th:text="${group.spec.displayName}"></p>
                                     <h3 class="card__heading" th:text="${#annotations.get(group, 'description')}"></h3>
