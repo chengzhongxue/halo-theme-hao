@@ -4433,7 +4433,7 @@ blockquote.pullquote.right {
 
 .note > .note-icon {
     position: absolute;
-    top: calc(50% - 0.4rem);
+    /*top: calc(50% - 0.4rem);*/
     left: 0.7rem;
     font-size: larger;
 }
@@ -4751,7 +4751,7 @@ blockquote.pullquote.right {
 }
 
 .note.success:not(.no-icon)::before {
-    content: "";
+    content: "\e66c";
 }
 
 .note.success:not(.no-icon):not(.modern)::before {
@@ -4789,7 +4789,7 @@ blockquote.pullquote.right {
 }
 
 .note.warning:not(.no-icon)::before {
-    content: "";
+    content: "\e61a";
 }
 
 .note.warning:not(.no-icon):not(.modern)::before {
