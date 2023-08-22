@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 公共的 head 部分，可以定义部分 links,scripts,styles -->
-<head th:fragment="head(htmlType)">
+<th:block th:fragment="head(htmlType)">
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,initial-scale=1" name="viewport">
-    <title th:text="${site.title}"></title>
     <meta content="telephone=no" name="format-detection">
     <meta content="var(--heo-card-bg)" name="theme-color">
     <link rel="shortcut icon"
@@ -271,61 +270,6 @@
 
         };
 
-        // 根据htmlType设置页面title
-        setTitle = () => {
-            let title = ''
-
-            switch ([[${ htmlType }]]) {
-                case 'post':
-                    if (GLOBAL_CONFIG.postTitle != '')
-                        title = GLOBAL_CONFIG.postTitle
-                    break;
-                case 'page':
-                    if (GLOBAL_CONFIG.postTitle != '')
-                        title = GLOBAL_CONFIG.postTitle
-                    break;
-                case 'archive':
-                    title = '归档'
-                    break;
-                case 'category':
-                    title = '分类'
-                    break;
-                case 'links':
-                    title = '友链'
-                    break;
-                case 'tag':
-                    title = '标签'
-                    break;
-                case 'moments':
-                    title = '瞬间'
-                    break;
-                case 'fcircle':
-                    title = '友链鱼塘'
-                    break;
-                case 'about':
-                    title = '关于'
-                    break;
-                case '404':
-                    title = '页面没有找到'
-                    break;
-                case 'music':
-                    title = '音乐馆'
-                    break;
-                case 'photos':
-                    title = '图库'
-                    break;
-                case 'bangumis':
-                    title = '追番'
-                    break;
-            }
-            if (title != '')
-                document.title = title + ' - ' + [[${ site.title }]]
-        }
-
-        (() => {
-            setTitle()
-        })()
-
 
 
     </script>
@@ -342,6 +286,6 @@
 
 
 
-</head>
+</th:block>
 
 </html>

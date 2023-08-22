@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page')}"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page',title = ${singlePage.spec.title + ' | ' + site.title})}">
 
 <th:block th:fragment="content">
 
@@ -8,7 +8,7 @@
 
         <!-- 头部导航栏 -->
         <header class="not-top-img" id="page-header">
-            <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
+            <nav th:replace="~{modules/nav :: nav(title = ${singlePage.spec.title})}"></nav>
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
@@ -49,7 +49,7 @@
                                             <a class="bber-reply"
                                                th:onclick="rightMenuCommentText([['&quot;'+${equipment.name}+' '+${equipment.model}+' '+${equipment.description}+'&quot;']]);"
                                                data-pjax-state="">
-                                                <i class="haofont hao-icon-message" style="font-size: 18px;"></i>
+                                                <i class="fa-solid fa-message" style="font-size: 18px;"></i>
                                             </a>
                                         </div>
                                     </div>
