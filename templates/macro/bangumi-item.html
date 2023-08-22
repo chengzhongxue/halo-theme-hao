@@ -41,7 +41,7 @@
                     </span>
                     <span class="bangumi-info-item bangumi-info-item-score">
                         <span class="bangumi-info-label">评分</span>
-                        <em>[[${spec.score}]]</em>
+                        <em th:text="${#strings.isEmpty(spec.score)? '暂无' :spec.score}"></em>
                     </span>
                 </span>
             </div>
