@@ -23,7 +23,10 @@
                     <div class="card-album">
                         <th:block th:each="group : ${photoFinder.groupBy()}">
                             <div class="card" th:onclick="go([[${group.metadata.name}]])">
-                                <img class="card_cover entered loaded" th:src="${#annotations.get(group, 'cover')}">
+                                <img class="card_cover"
+                                     th:src="${isLazyload ? loadingImg : #annotations.get(group, 'cover')}"
+                                     th:data-lazy-src="${ isLazyload ? #annotations.get(group, 'cover') : ''}"
+                                     >
                                 <div class="card__content">
                                     <p class="card__category" th:text="${group.spec.displayName}"></p>
                                     <h3 class="card__heading" th:text="${#annotations.get(group, 'description')}"></h3>
@@ -39,8 +42,11 @@
                     <h2 style="text-align:center;">[[${theme.config.photos.bigTitle}]]</h2>
                     <div class="gallery-group-main">
                         <th:block th:each="group : ${photoFinder.groupBy()}">
-                            <figure class="gallery-group"><img class="gallery-group-img no-lightbox"
-                                                               th:src="${#annotations.get(group, 'cover')}" alt="Group Image Gallery">
+                            <figure class="gallery-group">
+                                <img class="gallery-group-img no-lightbox"
+                                     th:src="${isLazyload ? loadingImg : #annotations.get(group, 'cover')}"
+                                     th:data-lazy-src="${ isLazyload ? #annotations.get(group, 'cover') : ''}"
+                                     alt="Group Image Gallery">
                                 <figcaption>
                                     <div class="gallery-group-name">[[${group.spec.displayName}]]</div>
                                     <p>[[${#annotations.get(group, 'description')}]]</p><a target="_blank"

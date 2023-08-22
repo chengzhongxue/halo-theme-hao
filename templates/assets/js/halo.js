@@ -191,7 +191,7 @@ let halo = {
             //折叠
             if(isEnableExpander){
                 var expander = document.createElement("i");
-                expander.className = 'fa-sharp fa-solid fa-caret-down code-expander cursor-pointer'
+                expander.className = 'fa-sharp fa-solid haofont hao-icon-angle-down code-expander cursor-pointer'
                 customItem.appendChild(expander)
 
                 expander.addEventListener('click', prismToolsFn)
@@ -271,7 +271,7 @@ let halo = {
 
 
     danmu: (url,token,maxBarrage)=>{
-        const e = new EasyDanmaku({
+        const e = new EasyDanmakuMin({
             el: "#danmu",
             line: 10,
             speed: 20,

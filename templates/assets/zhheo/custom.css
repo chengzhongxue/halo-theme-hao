@@ -390,3 +390,13 @@ ul li {
 #libCategories .card-wrap:hover .card-info:after {
     width: 300%
 }
+
+.fa-sharp, .fa-solid{
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: var(--fa-display,inline-block);
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto
+}

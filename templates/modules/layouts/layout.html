@@ -3,7 +3,9 @@
       th:with="assets_link=${theme.config.other.staticResource.use == 'onmicrosoft' ? 'https://npm.onmicrosoft.cn/hao-theme-static@' + theme.spec.version +'/templates/assets' :
       theme.config.other.staticResource.use == 'cbd' ? 'https://cdn.cbd.int/hao-theme-static@' + theme.spec.version +'/templates/assets' :
       theme.config.other.staticResource.use == 'custom' ? theme.config.other.staticResource.cdn_link : #theme.assets('/')},
-      theme_version = ${ theme.config.other.staticResource.use == 'local' ? '?v='+ theme.spec.version : ''}">
+      theme_version = ${ theme.config.other.staticResource.use == 'local' ? '?v='+ theme.spec.version : ''},
+      isLazyload = ${theme.config.other.vanillaLazyload.enable},
+      loadingImg = ${theme.config.other.vanillaLazyload.loadingImg}">
 
 <!-- head 中自定义的  -->
 
@@ -116,7 +118,7 @@
 
     <div id="js-pjax"></div>
 
-    <script th:if="${theme.config.envelope_comment.enable_danmu}" th:src="${assets_link + '/libs/twikoo/easy-Danmaku.js' + theme_version}" id="Danmaku"></script>
+    <script th:if="${theme.config.envelope_comment.enable_danmu}" th:src="${assets_link + '/libs/twikoo/easy-Danmaku.min.js' + theme_version}" id="Danmaku"></script>
 
 
     <script>
@@ -232,7 +234,7 @@
         document.body.clientWidth > 768 &&
         [[${theme.config.envelope_comment.enable_danmu}]]){
         halo.closeCommentBarrage();
-        halo.addScript("Danmaku", "[[${assets_link + '/libs/twikoo/easy-Danmaku.js'}]]", halo.danmu("[(${theme.config.comments.twikoos.envId})]","[(${theme.config.comments.twikoos.accessToken})]",[[${theme.config.envelope_comment.maxBarrage}]]))
+        halo.addScript("Danmaku", "[[${assets_link + '/libs/twikoo/easy-Danmaku.min.js'}]]", halo.danmu("[(${theme.config.comments.twikoos.envId})]","[(${theme.config.comments.twikoos.accessToken})]",[[${theme.config.envelope_comment.maxBarrage}]]))
     }
 
 </script>

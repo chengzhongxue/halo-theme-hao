@@ -17,7 +17,9 @@
                 <a th:each="link : ${group.links}"
                    class="card-friend-item online-friend-link" th:href="${link.spec.url}" th:title="${link.spec.displayName}"
                    target="_blank"><img class="no-lightbox card-friend-avatar"
-                                        th:src="${link.spec.logo}"
+
+                                        th:src="${isLazyload ? loadingImg : link.spec.logo}"
+                                        th:data-lazy-src="${ isLazyload ? link.spec.logo : ''}"
                                         th:alt="${link.spec.displayName}">
                     <div class="card-friend-details">
                         <div class="card-friend-name">[[${link.spec.displayName}]]</div>
@@ -33,8 +35,10 @@
                 </summary>
                 <a th:each="link : ${group.links}"
                    class="card-friend-item offline-friend-link" th:href="${link.spec.url}" th:title="${link.spec.displayName}"
-                   target="_blank"><img class="no-lightbox card-friend-avatar entered loaded"
-                                        th:src="${link.spec.logo}"
+                   target="_blank"><img class="no-lightbox card-friend-avatar"
+
+                                        th:src="${isLazyload ? loadingImg : link.spec.logo}"
+                                        th:data-lazy-src="${ isLazyload ? link.spec.logo : ''}"
                                         th:alt="${link.spec.displayName}">
                     <div class="card-friend-details">
                         <div class="card-friend-name">[[${link.spec.displayName}]]</div>

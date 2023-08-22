@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const jqLoadAndRun = () => {
         const $fancyboxEle = GLOBAL_CONFIG.lightbox === 'fancybox'
-            ? document.querySelectorAll('#article-container :not(a):not(.gallery-group):not(.site-card-avatar):not(.flink-item-info):not(.rss-plan-info-group) > img, #article-container > img,.bber-container-img > img')
+            ? document.querySelectorAll('#article-container :not(a):not(.gallery-group):not(.site-card-avatar):not(.flink-item-info):not(.rss-plan-info-group):not(.bangumi-picture) > img, #article-container > img,.bber-container-img > img')
             : []
         const fbLengthNoZero = $fancyboxEle.length > 0
         const $jgEle = document.querySelectorAll('#article-container .gallery')
@@ -443,6 +443,7 @@ document.addEventListener('DOMContentLoaded', function () {
         window.lazyLoadInstance = new LazyLoad({
             elements_selector: 'img',
             threshold: 0,
+            data_src: 'lazy-src',
             callback_error: (img) => {
                 img.setAttribute("srcset", GLOBAL_CONFIG.lazyload.error);
             }
@@ -465,14 +466,14 @@ document.addEventListener('DOMContentLoaded', function () {
         })
 
         clickFnOfSubMenu()
-
+        GLOBAL_CONFIG.lazyload.enable && lazyloadImg()
         GLOBAL_CONFIG.copyright !== undefined && addCopyright()
     }
 
     window.refreshFn = function () {
         initAdjust();
 
-        GLOBAL_CONFIG.lazyload.enable && lazyloadImg()
+
         if (GLOBAL_CONFIG.isPost) {
             addRuntime();
         } else {

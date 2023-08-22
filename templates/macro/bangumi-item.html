@@ -3,13 +3,11 @@
 <th:block th:fragment="bangumi-item(spec)">
     <div class="bangumi-item">
         <div class="bangumi-picture">
-            <a th:href="${spec.cover}" data-fancybox="gallery" data-caption=""
-               th:data-thumb="${spec.cover}">
-                <img th:src="${spec.cover}" th:data-lazy-src="${spec.cover}"
-                     referrerpolicy="no-referrer" width="110"
-                     style="width:110px;margin:20px auto;" data-ll-status="loaded"
-                     class="entered loaded">
-            </a>
+            <img
+                    th:src="${isLazyload ? loadingImg : spec.cover}"
+                    th:data-lazy-src="${ isLazyload ? spec.cover : ''}"
+                    referrerpolicy="no-referrer" width="110"
+                    style="width:110px;margin:20px auto;">
         </div>
         <div class="bangumi-info">
             <div class="bangumi-title">
