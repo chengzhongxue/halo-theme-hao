@@ -47,7 +47,6 @@ spec:
           label: 导航栏右侧
           value:
             travelling: true
-            travellingUrl: https://travellings.cn/go.html
             article: true
             darkMode: true
           children:
@@ -61,12 +60,6 @@ spec:
                   value: true
                 - label: 隐藏
                   value: false
-            - $formkit: url
-              if: $get(travelling).value
-              name: travellingUrl
-              label: 开往链接
-              placeholder: 请输入开往链接
-              help: 开往项目：https://github.com/travellings-link/travellings
             - $formkit: radio
               name: article
               label: 随机文章

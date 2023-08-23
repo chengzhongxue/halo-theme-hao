@@ -29,6 +29,7 @@
     --style-border-hover: 1px solid var(--heo-main);
     --style-border-hover-always: 1px solid var(--heo-main);
     --style-border-dashed: 1px dashed var(--heo-theme-op);
+    --heo-radius-full: 50px;
 }
 
 ::selection {
@@ -2642,6 +2643,115 @@ blockquote footer cite::before {
 #page-header.not-top-img #nav a {
     color: var(--heo-fontcolor);
     text-shadow: none;
+}
+
+#page-header.not-top-img #travellings_button::after {
+    background: var(--heo-main)!important;
+}
+
+#body-wrap .nav-fixed #travellings_button::after {
+    background: var(--heo-main)!important
+}
+
+#body-wrap #travellings_button {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex
+}
+
+#body-wrap #travellings_button:hover::after {
+    opacity: 1;
+    -ms-filter: none;
+    filter: none;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -o-transform: none;
+    -ms-transform: none;
+    transform: none;
+    visibility: visible
+}
+
+#body-wrap #travellings_button:hover a {
+    background: var(--heo-main);
+    -webkit-box-shadow: var(--heo-shadow-main);
+    -webkit-box-shadow: var(--heo-shadow-main);
+    box-shadow: var(--heo-shadow-main)
+}
+
+#body-wrap #travellings_button:hover a i {
+    color: var(--heo-white)
+}
+
+#body-wrap #travellings_button::after {
+    --height: 1.8rem;
+    content: attr(title);
+    position: fixed;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -o-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    color: var(--heo-white);
+    background: var(--heo-white-op)!important;
+    -webkit-box-shadow: var(--heo-shadow-nav);
+    box-shadow: var(--heo-shadow-nav);
+    border-radius: var(--heo-radius-full);
+    width: fit-content;
+    height: var(--height);
+    font-size: var(--global-font-size);
+    white-space: nowrap;
+    margin: auto;
+    padding: 0 4em;
+    top: calc((60px - var(--height))/ 2);
+    right: 0;
+    left: 0;
+    line-height: 0;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    z-index: 1;
+    visibility: hidden;
+    -webkit-transform: scaleX(1.1);
+    -moz-transform: scaleX(1.1);
+    -o-transform: scaleX(1.1);
+    -ms-transform: scaleX(1.1);
+    transform: scaleX(1.1);
+    pointer-events: none;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -o-transition: .5s;
+    -ms-transition: .5s;
+    transition: .5s
+}
+
+@media screen and (max-width: 900px) {
+    #body-wrap #travellings_button::after {
+        padding:0 2em;
+    }
+}
+
+#body-wrap:has(#travellings_button:hover) #nav #menus,#body-wrap:has(#travellings_button:hover) #page-name {
+    display: none
+}
+
+#body-wrap .page #travellings_button:hover::after {
+    background: var(--heo-main)!important
 }
 
 #page-header.nav-fixed #nav {
@@ -5586,6 +5696,9 @@ html {
 
     #page-header.not-top-img:not(.nav-fixed) #nav {
         background: var(--heo-background) !important;
+    }
+    div#travellings_button {
+        display: none!important
     }
 }
 
