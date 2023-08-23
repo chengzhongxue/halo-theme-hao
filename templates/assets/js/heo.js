@@ -391,9 +391,23 @@ var heo = {
     },
 
     //滚动到指定id
-    scrollTo: function (id) {
-        var domTop = document.querySelector(id).offsetTop;
-        window.scrollTo(0, domTop - 80);
+    scrollTo: function(e) {
+        const t = document.getElementById(e);
+        if (t) {
+            const e = t.getBoundingClientRect().top + window.pageYOffset - 80
+                , o = window.pageYOffset
+                , n = e - o;
+            let a = null;
+            window.requestAnimationFrame((function e(t) {
+                    a || (a = t);
+                    const l = t - a
+                        , i = (c = Math.min(l / 0, 1)) < .5 ? 2 * c * c : (4 - 2 * c) * c - 1;
+                    var c;
+                    window.scrollTo(0, o + n * i),
+                    l < 600 && window.requestAnimationFrame(e)
+                }
+            ))
+        }
     },
 
     //隐藏侧边栏

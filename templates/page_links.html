@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page')}"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page',title = ${singlePage.spec.title + ' | ' + site.title})}">
 <th:block th:fragment="content">
 
     <div class="page" id="body-wrap">
         <header class="not-top-img" id="page-header">
-            <nav th:replace="~{modules/nav :: nav(title = null)}"></nav>
+            <nav th:replace="~{modules/nav :: nav(title = ${singlePage.spec.title})}"></nav>
             <link rel="stylesheet" type="text/css" th:href="${assets_link + '/libs/fcircle/heo-fcircle3.css' + theme_version}">
 
         </header>

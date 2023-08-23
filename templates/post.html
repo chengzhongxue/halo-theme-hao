@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'post')}"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'post',title = ${post.spec.title + ' | ' + site.title})}">
 
 <th:block th:fragment="content">
     <div class="post" id="body-wrap">
