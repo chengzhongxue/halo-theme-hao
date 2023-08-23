@@ -4752,6 +4752,7 @@ blockquote.pullquote.right {
 
 .note.success:not(.no-icon)::before {
     content: "\e66c";
+    font-family: haofont!important;
 }
 
 .note.success:not(.no-icon):not(.modern)::before {
@@ -4790,6 +4791,7 @@ blockquote.pullquote.right {
 
 .note.warning:not(.no-icon)::before {
     content: "\e61a";
+    font-family: haofont!important;
 }
 
 .note.warning:not(.no-icon):not(.modern)::before {

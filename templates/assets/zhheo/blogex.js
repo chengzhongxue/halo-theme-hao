@@ -168,17 +168,6 @@ function getContrastYIQ(hexcolor) {
     }
 }
 
-//导航栏文章
-function navTitle() {
-    var titlevalue = document.title;
-    var postName = document.getElementsByClassName("post-title")[0];
-    if(postName==null || postName==''){
-        document.getElementById("page-name-text").innerHTML = titlevalue;
-    }else{
-        document.getElementById("page-name-text").innerHTML = postName?.innerText;
-    }
-}
-
 window.onload = function () {
     var copybtnlist = document.getElementsByClassName("copybtn")
     for (var i = 0; i < copybtnlist.length; i++) {
@@ -662,7 +651,6 @@ function listenToPageInputPress() {
 function initBlog() {
     // 图片主色
     GLOBAL_CONFIG.source.post.dynamicBackground && coverColor(),
-    navTitle(),
     percent(),
     heo.topCategoriesBarScroll(),
     heo.initIndexEssay(),
