@@ -234,7 +234,6 @@
     if(document.querySelector('#danmu') &&
         document.body.clientWidth > 768 &&
         [[${theme.config.envelope_comment.enable_danmu}]]){
-        halo.closeCommentBarrage();
         halo.addScript("Danmaku", "[[${assets_link + '/libs/twikoo/easy-Danmaku.min.js'}]]", halo.danmu("[(${theme.config.comments.twikoos.envId})]","[(${theme.config.comments.twikoos.accessToken})]",[[${theme.config.envelope_comment.maxBarrage}]]))
     }
 

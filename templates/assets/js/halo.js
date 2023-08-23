@@ -314,32 +314,7 @@ let halo = {
             ))
         }
         document.getElementById("danmuBtn").innerHTML = "<button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.remove('hidedanmu')\">显示弹幕</button> <button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.add('hidedanmu')\">隐藏弹幕</button>"
-    },
-    //关闭留言板评论弹幕
-    closeCommentBarrage: function () {
-        let commentBarrage = document.querySelector('.comment-barrage');
-        if (commentBarrage) {
-            if ($(".comment-barrage").is(":visible")) {
-                $(".comment-barrage").hide();
-                $(".menu-commentBarrage-text").text("显示热评");
-                document.querySelector("#consoleCommentBarrage").classList.remove("on");
-                localStorage.setItem('commentBarrageSwitch', 'false');
-            }
-        }
-    },
-    //打开评论弹幕
-    openCommentBarrage: function () {
-        let commentBarrage = document.querySelector('.comment-barrage');
-        if (commentBarrage) {
-            if ($(".comment-barrage").is(":hidden")) {
-                $(".comment-barrage").show();
-                $(".menu-commentBarrage-text").text("关闭热评");
-                document.querySelector("#consoleCommentBarrage").classList.add("on");
-                localStorage.removeItem('commentBarrageSwitch');
-                btf.snackbarShow("✨ 已开启评论弹幕", false, 2000)
-            }
-        }
-    },
+    }
 
 
 }

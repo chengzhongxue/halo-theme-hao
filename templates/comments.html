@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page',title = ${singlePage.spec.title + ' | ' + site.title})}">
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'comments',title = ${singlePage.spec.title + ' | ' + site.title})}">
 
 <th:block th:fragment="content">
 
@@ -155,12 +155,8 @@
                         #strings.equals(theme.config.comments.use, 'Twikoo') &&
                         theme.config.envelope_comment.enable_danmu }">
                     <div id="danmuBtn">
-                        <button class="hideBtn"
-                                onclick="document.getElementById('danmu').classList.remove('hidedanmu')">显示弹幕</button>
-                        <button class="hideBtn"
-                                onclick="document.getElementById('danmu').classList.add('hidedanmu')">隐藏弹幕</button>
-                    </div>
 
+                    </div>
                     <div id="danmu">
                     </div>
 
