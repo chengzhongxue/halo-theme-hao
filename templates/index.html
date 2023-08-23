@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'index', title = ${site.title})}">
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'index', title = null)}">
 
 <th:block th:fragment="content">
 
     <div class="page" id="body-wrap">
         <!-- 头部导航栏 -->
         <header th:class="${theme.config.top.above.enable_above ? 'full_page' : 'not-top-img'}" id="page-header">
-            <nav th:replace="~{modules/nav :: nav(title = ${siteSubtitle})}"></nav>
+            <nav th:replace="~{modules/nav :: nav(title = ${siteTitle})}"></nav>
             <!-- 问候语 -->
             <th:block th:replace="~{modules/header/greeting :: greeting}"></th:block>
             <!-- 第一屏 -->

@@ -6998,7 +6998,7 @@ img.footer_mini_logo:hover {
 }
 
 #rightMenu .rightMenu-line {
-    border-top: 1px dashed var(--heo-theme-op);
+    border-top: 2px dashed var(--heo-theme-op);
 }
 
 #rightMenu .rightMenu-group.rightMenu-small {
