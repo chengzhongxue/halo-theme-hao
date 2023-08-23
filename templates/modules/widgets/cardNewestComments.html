@@ -63,7 +63,10 @@
                     result += '<div class=\'aside-list-item\'>'
 
                     if (true) {
-                        const name = 'src'
+                        let name = 'src'
+                        if([[${isLazyload}]]){
+                            name = 'data-lazy-src'
+                        }
                         result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick}</span></div></a>`
                     }
 

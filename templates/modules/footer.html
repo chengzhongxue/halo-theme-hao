@@ -13,7 +13,10 @@
         </th:block>
 
         <img th:if="${not #strings.isEmpty(theme.config.footer.social_media.centerImg)}" class="footer_mini_logo"
-             th:src="@{${theme.config.footer.social_media.centerImg}}" title="返回顶部" onclick="btf.scrollToDest(0, 500)">
+             th:with="img = @{${theme.config.footer.social_media.centerImg}}"
+             th:src="${isLazyload ? '' : img}"
+             th:data-lazy-src="${ isLazyload ? img : ''}"
+             title="返回顶部" onclick="btf.scrollToDest(0, 500)">
         <th:block th:with="socialMedias = ${theme.config.footer.social_media.socialMediaRight}">
             <a class="deal_link" rel="external nofollow" target="_blank" th:each="socialMedia : ${socialMedias}"
                th:href="${socialMedia.url}" th:title="${socialMedia.name}">
@@ -109,7 +112,9 @@
             <a class="github-badge" th:each="data : ${bdageitem}" target="_blank"
                th:href="@{${data.link}}" style="margin-inline:5px"
                th:title="${data.message}">
-                <img th:src="@{${data.shields}}"
+                <img th:with=" img = @{${data.shields}}"
+                     th:src="${isLazyload ? '' : img}"
+                     th:data-lazy-src="${ isLazyload ? img : ''}"
                      th:alt="${data.message}" />
             </a>
         </p>
