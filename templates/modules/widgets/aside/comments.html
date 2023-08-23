@@ -6,15 +6,20 @@
     <div class="aside-list" id="newcomm">
         <th:block th:if="${#strings.equals(theme.config.comments.use, 'commentWidget') }">
             <div class="aside-list-item" th:each="comment,iterStat : ${commentFinder.list(null, 1, 20)}"
-                 th:with="page = ${comment.spec.subjectRef.kind == 'Post' ? postFinder.getByName(comment.spec.subjectRef.name) : null}"
+                 th:with="page = ${comment.spec.subjectRef.kind == 'Post' ? postFinder.getByName(comment.spec.subjectRef.name) :
+                 comment.spec.subjectRef.kind == 'SinglePage' ? singlePageFinder.getByName(comment.spec.subjectRef.name) : null},
+                 url = ${page == null? '/' : page.status.permalink + '#comment-' + comment.metadata.name}"
                  th:if="${iterStat.index  < theme.config.sidebar.newcommentnumber}">
                 <span th:text="${commentIndex}"></span>
-                <a class="thumbnail" th:href="${page == null? '/' : page.status.permalink + '#comment-' + comment.metadata.name}" data-pjax-state="">
-                    <img loading="lazy" alt="头像" th:src="${#strings.isEmpty(comment.owner.avatar)?'https://cravatar.cn/avatar/?d=mp':comment.owner.avatar}" data-ll-status="loading" class="entered loading">
+                <a class="thumbnail" th:href="${url}" data-pjax-state="">
+                    <img alt="头像"
+                         th:with=" img =${#strings.isEmpty(comment.owner.avatar)?'https://cravatar.cn/avatar/?d=mp':comment.owner.avatar}"
+                         th:src="${isLazyload ? loadingImg : img}"
+                         th:data-lazy-src="${ isLazyload ? img : ''}">
                 </a>
                 <div class="content" >
                     <a class="comment" style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;"
-                       th:href="${page == null? '/' : page.status.permalink + '#comment-' + comment.metadata.name}" th:title="${comment.spec.content}" th:text="${comment.spec.content}" data-pjax-state="">
+                       th:href="${url}" th:title="${comment.spec.content}" th:text="${comment.spec.content}" data-pjax-state="">
 
                     </a>
                     <div class="name">
@@ -38,10 +43,14 @@
                         includeReply: false // 是否包括最新回复，默认：false
                     }).then(function (res) {
                         let commenthtml = '';
+                        let name = 'src'
+                        if([[${isLazyload}]]){
+                            name = 'data-lazy-src'
+                        }
                         res.forEach((items)=>{
                             commenthtml += `<div class="aside-list-item">
             <a class="thumbnail" href="${items.url + '#' + items.id}">
-                <img loading="lazy" alt="dasda" src="${items.avatar}">
+                <img alt="dasda" ${name}="${items.avatar}">
             </a>
             <div class="content">
                 <a class="comment" style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;" href="${items.url + '#' + items.id}" title="test">
