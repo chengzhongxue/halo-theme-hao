@@ -435,11 +435,14 @@ function toforeverblog() {
 }
 
 //前往开往项目
-function totraveling() {
-    btf.snackbarShow('即将跳转到「开往」项目的成员博客，不保证跳转网站的安全性和可用性', false, 5000);
-    setTimeout(function () {
-        window.open('https://travellings.link/');
-    }, "5000");
+function totraveling () {
+    btf.snackbarShow("即将跳转到「开往」项目的成员博客，不保证跳转网站的安全性和可用性", function(element) {
+        element.style.opacity = 0,
+        travellingsTimer && clearTimeout(travellingsTimer)
+    }, 5000, "取消"),
+        travellingsTimer = setTimeout(function() {
+            window.open("https://www.travellings.cn/go.html", "_blank")
+        }, "5000")
 }
 
 // 移除加载动画
@@ -651,24 +654,24 @@ function listenToPageInputPress() {
 function initBlog() {
     // 图片主色
     GLOBAL_CONFIG.source.post.dynamicBackground && coverColor(),
-    percent(),
-    heo.topCategoriesBarScroll(),
-    heo.initIndexEssay(),
-    setBodyDataType(),
-    listenToPageInputPress(),
-    heo.topPostScroll(),
-    heo.sayhi(),
-    heo.qrcodeCreate(),
-    //右下角 snackbar 弹窗
+        percent(),
+        heo.topCategoriesBarScroll(),
+        heo.initIndexEssay(),
+        setBodyDataType(),
+        listenToPageInputPress(),
+        heo.topPostScroll(),
+        heo.sayhi(),
+        heo.qrcodeCreate(),
+        //右下角 snackbar 弹窗
     GLOBAL_CONFIG.source.tool.switch && heo.hidecookie(),
-    heo.stopImgRightDrag(),
-    heo.onlyHome(),
-    heo.addNavBackgroundInit(),
-    heo.darkModeStatus(),
-    heo.initThemeColor(),
-    //隐藏加载动画
+        heo.stopImgRightDrag(),
+        heo.onlyHome(),
+        heo.addNavBackgroundInit(),
+        heo.darkModeStatus(),
+        heo.initThemeColor(),
+        //隐藏加载动画
     GLOBAL_CONFIG.loadingBox &&  heo.hideLoading(),
-    checkUrlAndAddHideBanner()
+        checkUrlAndAddHideBanner()
 
 }
 

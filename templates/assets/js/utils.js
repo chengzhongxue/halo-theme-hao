@@ -192,23 +192,22 @@ var btf = {
         }
     },
 
-    snackbarShow: (text, showAction, duration) => {
-        const sa = (typeof showAction !== 'undefined') ? showAction : false
-        const dur = (typeof duration !== 'undefined') ? duration : 5000
-        const position = GLOBAL_CONFIG.Snackbar.position
-        const bg = document.documentElement.getAttribute('data-theme') === 'light' ? GLOBAL_CONFIG.Snackbar.bgLight : GLOBAL_CONFIG.Snackbar.bgDark
-        const style = document.createElement('style');
-        document.head.appendChild(style);
-        const styleSheet = style.sheet;
-        styleSheet.insertRule(`:root{--heo-snackbar-time: ${dur}ms!important}`, styleSheet.cssRules.length);
+    snackbarShow: (text, showActionFunction = false, duration = 2000, actionText = false) => {
+        const { position, bgLight, bgDark } = GLOBAL_CONFIG.Snackbar;
+        const bg = document.documentElement.getAttribute("data-theme") === "light" ? bgLight : bgDark;
+        const root = document.querySelector(":root");
+        root.style.setProperty("--heo-snackbar-time", duration + "ms");
+
         Snackbar.show({
             text: text,
             backgroundColor: bg,
-            showAction: sa,
-            duration: dur,
-            pos: position
-        })
-
+            onActionClick: showActionFunction,
+            actionText: actionText,
+            showAction: actionText,
+            duration: duration,
+            pos: position,
+            customClass: "snackbar-css",
+        });
     },
 
     initJustifiedGallery: function (selector) {

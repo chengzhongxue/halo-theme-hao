@@ -5,13 +5,13 @@
       theme.config.other.staticResource.use == 'custom' ? theme.config.other.staticResource.cdn_link : #theme.assets('/')},
       theme_version = ${ theme.config.other.staticResource.use == 'local' ? '?v='+ theme.spec.version : ''},
       isLazyload = ${theme.config.other.vanillaLazyload.enable},
-      loadingImg = ${theme.config.other.vanillaLazyload.loadingImg}">
+      loadingImg = ${theme.config.other.vanillaLazyload.loadingImg},
+      siteTitle = ${not #strings.isEmpty(title) ?  title  :  #strings.isEmpty(site.subtitle) ? site.title :  site.title +' - ' +site.subtitle }">
 
 <!-- head 中自定义的  -->
 
 <head>
     <th:block th:replace="~{modules/head :: head(htmlType = ${htmlType})}"/>
-    <title  th:text="${title}"></title>
 </head>
 
 <body>

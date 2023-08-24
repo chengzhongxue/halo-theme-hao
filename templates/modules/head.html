@@ -7,6 +7,7 @@
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <meta content="telephone=no" name="format-detection">
     <meta content="var(--heo-card-bg)" name="theme-color">
+    <title th:text="${siteTitle}"></title>
     <link rel="shortcut icon"
           th:href="@{${#strings.isEmpty(site.favicon) ? assets_link + '/images/hao-logo.jpg' : site.favicon}}"/>
     <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
