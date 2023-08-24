@@ -21,27 +21,27 @@
                     </span>
                     <span class="bangumi-info-item bangumi-area">
                         <span class="bangumi-info-label">[[${spec.type}]]</span>
-                        <em>[[${spec.area}]]</em>
+                        <em th:text="${#strings.isEmpty(spec.score)? '未知' :spec.area}"></em>
                     </span>
                     <span class="bangumi-info-item bangumi-play">
                         <span class="bangumi-info-label">总播放</span>
-                        <em>[[${spec.view}]]</em>
+                        <em th:text="${#strings.isEmpty(spec.score)? '未知' :spec.view}"></em>
                     </span>
                     <span class="bangumi-info-item bangumi-follow">
                         <span class="bangumi-info-label">追番人数</span>
-                        <em>[[${spec.follow}]]</em>
+                        <em th:text="${#strings.isEmpty(spec.score)? '未知' :spec.follow}"></em>
                     </span>
                     <span class="bangumi-info-item bangumi-coin">
                         <span class="bangumi-info-label">硬币数</span>
-                        <em>[[${spec.coin}]]</em>
+                        <em th:text="${#strings.isEmpty(spec.score)? '未知' :spec.coin}"></em>
                     </span>
                     <span class="bangumi-info-item bangumi-danmaku">
                         <span class="bangumi-info-label">弹幕总数</span>
-                        <em>[[${spec.danmaku}]]</em>
+                        <em th:text="${#strings.isEmpty(spec.score)? '未知' :spec.danmaku}"></em>
                     </span>
                     <span class="bangumi-info-item bangumi-info-item-score">
                         <span class="bangumi-info-label">评分</span>
-                        <em>[[${spec.score}]]</em>
+                        <em th:text="${#strings.isEmpty(spec.score)? '暂无' :spec.score}"></em>
                     </span>
                 </span>
             </div>
