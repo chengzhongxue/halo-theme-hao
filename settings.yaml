@@ -205,21 +205,21 @@ spec:
             bannersTitleSmall: 更多信息请关注 GitHub
             categoryGroup:
               - title: "必看精选"
-                icon: "iconfont icon-book"
+                icon: "haofont hao-icon-book"
                 url: "/"
                 colorOneLight: "#358bff"
                 colorTwoLight: "#15c6ff"
                 colorOneDark: "#0653b8"
                 colorTwoDark: "#2fcbff"
               - title: "热门文章"
-                icon: "iconfont icon-burn"
+                icon: "haofont hao-icon-fire"
                 url: "/"
                 colorOneLight: "#ff6655"
                 colorTwoLight: "#ffbf37"
                 colorOneDark: "#e22a16"
                 colorTwoDark: "#da980c"
               - title: "实用教程"
-                icon: "iconfont icon-book"
+                icon: "haofont hao-icon-book"
                 url: "/"
                 colorOneLight: "#18e7ae"
                 colorTwoLight: "#1eebeb"
@@ -278,7 +278,7 @@ spec:
                   label: 图标
                   placeholder: 请输入内容
                   validation: required
-                  value: "iconfont icon-book"
+                  value: "haofont hao-icon-book"
                 - $formkit: url
                   name: url
                   label: 跳转地址
@@ -605,61 +605,61 @@ spec:
                   label: 图标
                   options:
                     - label: 电子邮箱
-                      value: icon-mail-line
+                      value: hao-icon-envelope
                     - label: 微信
-                      value: icon-wechat2
+                      value: hao-icon-weixin
                     - label: 公众号
-                      value: icon-weixingongzhonghao
+                      value: hao-icon-weixingongzhonghao
                     - label: 腾讯 QQ
-                      value: icon-qq-line
+                      value: hao-icon-qq
                     - label: 新浪微博
-                      value: icon-weibo-line
+                      value: hao-icon-weibo
                     - label: 知乎
-                      value: icon-zhihu-line
+                      value: hao-icon-29
                     - label: 豆瓣
-                      value: icon-douban-line
+                      value: hao-icon-douban
                     - label: 哔哩哔哩
-                      value: icon-bilibili-line
+                      value: hao-icon-bilibili
                     - label: GitHub
-                      value: icon-github-line
+                      value: hao-icon-github
                     - label: GitLab
-                      value: icon-gitlab-line
+                      value: hao-icon-gitlab
                     - label: 百度
-                      value: icon-baidu-line
+                      value: hao-icon-baidu
                     - label: 掘金
-                      value: icon-juejin
+                      value: hao-icon-juejin
                     - label: 语雀
-                      value: icon-yuque
+                      value: hao-icon-yuque
                     - label: 博客园
-                      value: icon-CN_cnblogs
+                      value: hao-icon-cnblogs
                     - label: CSDN
-                      value: icon-csdn1
+                      value: hao-icon-csdn
                     - label: LeetCode
-                      value: icon-leetcode
+                      value: hao-icon-leetcode
                     - label: 头条
-                      value: icon-jinritoutiao
+                      value: hao-icon-toutiao
                     - label: 抖音 / TikTok
-                      value: icon-douyin
+                      value: hao-icon-tiktok
                     - label: Telegram
-                      value: icon-telegram-line
+                      value: hao-icon-telegram
                     - label: Facebook
-                      value: icon-facebook-box-line
+                      value: hao-icon-facebook1
                     - label: Instagram
-                      value: icon-instagram-line
+                      value: hao-icon-Instagram
                     - label: LinkedIn
-                      value: icon-linkedin-box-line
+                      value: hao-icon-linkedin
                     - label: Twitter
-                      value: icon-twitter-line
+                      value: hao-icon-dove
                     - label: Slack
-                      value: icon-slack-line
+                      value: hao-icon-slack
                     - label: Discord
-                      value: icon-discord-line
+                      value: hao-icon-discord-line
                     - label: YouTube
-                      value: icon-youtube-line
+                      value: hao-icon-youtube
                     - label: Steam
-                      value: icon-steam-fill
+                      value: hao-icon-steam
                     - label: Dribbble
-                      value: icon-dribbble-line
+                      value: hao-icon-dribbble
                 - $formkit: text
                   name: name
                   label: 名称
@@ -898,61 +898,61 @@ spec:
                   label: 图标
                   options:
                     - label: 电子邮箱
-                      value: icon-mail-line
+                      value: hao-icon-envelope
                     - label: 微信
-                      value: icon-wechat2
+                      value: hao-icon-weixin
                     - label: 公众号
-                      value: icon-weixingongzhonghao
+                      value: hao-icon-weixingongzhonghao
                     - label: 腾讯 QQ
-                      value: icon-qq-line
+                      value: hao-icon-qq
                     - label: 新浪微博
-                      value: icon-weibo-line
+                      value: hao-icon-weibo
                     - label: 知乎
-                      value: icon-zhihu-line
+                      value: hao-icon-29
                     - label: 豆瓣
-                      value: icon-douban-line
+                      value: hao-icon-douban
                     - label: 哔哩哔哩
-                      value: icon-bilibili-line
+                      value: hao-icon-bilibili
                     - label: GitHub
-                      value: icon-github-line
+                      value: hao-icon-github
                     - label: GitLab
-                      value: icon-gitlab-line
+                      value: hao-icon-gitlab
                     - label: 百度
-                      value: icon-baidu-line
+                      value: hao-icon-baidu
                     - label: 掘金
-                      value: icon-juejin
+                      value: hao-icon-juejin
                     - label: 语雀
-                      value: icon-yuque
+                      value: hao-icon-yuque
                     - label: 博客园
-                      value: icon-CN_cnblogs
+                      value: hao-icon-cnblogs
                     - label: CSDN
-                      value: icon-csdn1
+                      value: hao-icon-csdn
                     - label: LeetCode
-                      value: icon-leetcode
+                      value: hao-icon-leetcode
                     - label: 头条
-                      value: icon-jinritoutiao
+                      value: hao-icon-toutiao
                     - label: 抖音 / TikTok
-                      value: icon-douyin
+                      value: hao-icon-tiktok
                     - label: Telegram
-                      value: icon-telegram-line
+                      value: hao-icon-telegram
                     - label: Facebook
-                      value: icon-facebook-box-line
+                      value: hao-icon-facebook1
                     - label: Instagram
-                      value: icon-instagram-line
+                      value: hao-icon-Instagram
                     - label: LinkedIn
-                      value: icon-linkedin-box-line
+                      value: hao-icon-linkedin
                     - label: Twitter
-                      value: icon-twitter-line
+                      value: hao-icon-dove
                     - label: Slack
-                      value: icon-slack-line
+                      value: hao-icon-slack
                     - label: Discord
-                      value: icon-discord-line
+                      value: hao-icon-discord-line
                     - label: YouTube
-                      value: icon-youtube-line
+                      value: hao-icon-youtube
                     - label: Steam
-                      value: icon-steam-fill
+                      value: hao-icon-steam
                     - label: Dribbble
-                      value: icon-dribbble-line
+                      value: hao-icon-dribbble
                 - $formkit: text
                   name: name
                   label: 名称
@@ -979,61 +979,61 @@ spec:
                   label: 图标
                   options:
                     - label: 电子邮箱
-                      value: icon-mail-line
+                      value: hao-icon-envelope
                     - label: 微信
-                      value: icon-wechat2
+                      value: hao-icon-weixin
                     - label: 公众号
-                      value: icon-weixingongzhonghao
+                      value: hao-icon-weixingongzhonghao
                     - label: 腾讯 QQ
-                      value: icon-qq-line
+                      value: hao-icon-qq
                     - label: 新浪微博
-                      value: icon-weibo-line
+                      value: hao-icon-weibo
                     - label: 知乎
-                      value: icon-zhihu-line
+                      value: hao-icon-29
                     - label: 豆瓣
-                      value: icon-douban-line
+                      value: hao-icon-douban
                     - label: 哔哩哔哩
-                      value: icon-bilibili-line
+                      value: hao-icon-bilibili
                     - label: GitHub
-                      value: icon-github-line
+                      value: hao-icon-github
                     - label: GitLab
-                      value: icon-gitlab-line
+                      value: hao-icon-gitlab
                     - label: 百度
-                      value: icon-baidu-line
+                      value: hao-icon-baidu
                     - label: 掘金
-                      value: icon-juejin
+                      value: hao-icon-juejin
                     - label: 语雀
-                      value: icon-yuque
+                      value: hao-icon-yuque
                     - label: 博客园
-                      value: icon-CN_cnblogs
+                      value: hao-icon-cnblogs
                     - label: CSDN
-                      value: icon-csdn1
+                      value: hao-icon-csdn
                     - label: LeetCode
-                      value: icon-leetcode
+                      value: hao-icon-leetcode
                     - label: 头条
-                      value: icon-jinritoutiao
+                      value: hao-icon-toutiao
                     - label: 抖音 / TikTok
-                      value: icon-douyin
+                      value: hao-icon-tiktok
                     - label: Telegram
-                      value: icon-telegram-line
+                      value: hao-icon-telegram
                     - label: Facebook
-                      value: icon-facebook-box-line
+                      value: hao-icon-facebook1
                     - label: Instagram
-                      value: icon-instagram-line
+                      value: hao-icon-Instagram
                     - label: LinkedIn
-                      value: icon-linkedin-box-line
+                      value: hao-icon-linkedin
                     - label: Twitter
-                      value: icon-twitter-line
+                      value: hao-icon-dove
                     - label: Slack
-                      value: icon-slack-line
+                      value: hao-icon-slack
                     - label: Discord
-                      value: icon-discord-line
+                      value: hao-icon-discord-line
                     - label: YouTube
-                      value: icon-youtube-line
+                      value: hao-icon-youtube
                     - label: Steam
-                      value: icon-steam-fill
+                      value: hao-icon-steam
                     - label: Dribbble
-                      value: icon-dribbble-line
+                      value: hao-icon-dribbble
                 - $formkit: text
                   name: name
                   label: 名称

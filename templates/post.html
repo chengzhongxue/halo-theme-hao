@@ -38,7 +38,7 @@
                 <div id="post-meta">
                     <div class="meta-secondline">
                         <span class="post-meta-date">
-                            <i class="iconfont icon-calendar-alt post-meta-icon"></i>
+                            <i class="haofont hao-icon-calendar-days post-meta-icon"></i>
                             <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"
                                   th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
                                   th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
@@ -47,11 +47,11 @@
 
                         <span class="post-meta-wordcount"
                               th:with="wordCount = ${#strings.length(post.content.content)}">
-                            <i class="iconfont icon-file-word post-meta-icon" title="字数"></i>
+                            <i class="haofont hao-icon-file-word post-meta-icon" title="字数"></i>
                             <span class="post-meta-label">字数:</span>
                             <span class="word-count" th:text="${{wordCount}}"></span>
                             <span class="post-meta-separator"></span>
-                            <i class="iconfont icon-clock post-meta-icon" title="阅读耗时"></i>
+                            <i class="haofont hao-icon-clock post-meta-icon" title="阅读耗时"></i>
                             <span class="post-meta-label">阅读耗时:</span>
                             <span>[[${wordCount / 400}]] 分钟</span>
                         </span>
@@ -59,12 +59,12 @@
                         <!--<span class="post-meta-wechat" title="该文章已在公众号中更新"><i-->
                         <!--        class="fab fa-weixin post-meta-icon"></i>公众号同步</span>-->
                         <span class="post-meta-pv" data-flag-title="热度">
-                            <i class="iconfont icon-hotjar post-meta-icon"></i>
+                            <i class="haofont hao-icon-fire post-meta-icon"></i>
                             <span class="post-meta-label">热度:</span>
                             <span id="visit" th:text="${post.stats.visit}"></span>
                         </span>
                         <span th:if="${post.spec.allowComment}" class="post-meta-commentcount" onclick="heo.scrollTo('#post-comment');" title="评论数">
-                            <i class="iconfont icon-comment-alt"></i>
+                            <i class="haofont hao-icon-comments post-meta-icon"></i>
                             <span class="post-meta-label">评论:</span>
                             <a th:if="${#strings.equals(theme.config.comments.use, 'commentWidget')}"
                                href="#post-comment"><span id="comment-count"
@@ -102,19 +102,8 @@
                 </article>
 
                 <!-- 文章ai摘要 -->
-                <script th:if="${theme.config.post.aiDescription.aiDescriptionEnable}" data-pjax >
-                    new HaoPostAI({
-                        ai: '[(${post.status.excerpt})]',
-                        randomNum: [[${ theme.config.post.aiDescription.randomNum }]], //按钮最大的随机次数，也就是一篇文章最大随机出来几种
-                        basicWordCount: [[${ theme.config.post.aiDescription.basicWordCount }]], // 最低获取字符数, 最小1000, 最大1999
-                        btnLink: "[(${theme.config.post.aiDescription.btnLink})]",
-                        gptName: "[(${theme.config.post.aiDescription.gptName})]",
-                        modeName: "[[${ theme.config.post.aiDescription.mode }]]",
-                        switchBtn: [[${ theme.config.post.aiDescription.switchBtn }]],  //# 可以配置是否显示切换按钮 以切换tianli/local
-                        keys: "[(${theme.config.post.aiDescription.key})]",
-                        Referers: "[(${theme.config.post.aiDescription.Referer})]"
-                    })
-                </script>
+                <script data-pjax th:if="${theme.config.post.aiDescription.aiDescriptionEnable}"
+                        th:src="${assets_link + '/libs/gpt/post-ai.js'}"></script>
 
                 <!-- 版权声明 -->
                 <th:block th:replace="~{modules/post/copyright :: copyright}"></th:block>

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 最新评论 -->
 <div class="card-widget card-recent-post"  th:fragment="comments">
-    <div class="item-headline"><i class="iconfont icon-comment-dots"></i><span>最新评论</span></div>
+    <div class="item-headline"><i class="haofont hao-icon-comments"></i><span>最新评论</span></div>
     <div class="aside-list" id="newcomm">
         <th:block th:if="${#strings.equals(theme.config.comments.use, 'commentWidget') }">
             <div class="aside-list-item" th:each="comment,iterStat : ${commentFinder.list(null, 1, 20)}"

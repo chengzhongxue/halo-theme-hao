@@ -9,14 +9,14 @@ code[class*=" language-"], pre[class*=" language-"]{
 }
 
 /* banner 字体图标大小及位置 */
-i.iconfont.icon-arrow-right.banner-righticon{
-    font-size: 66px;
+i.haofont.hao-icon-arrow-right.banner-righticon{
+    font-size: 80px;
 }
 
-span.bannerText{
-    display: block;
-    margin-top: 35px;
-}
+/*span.bannerText{*/
+/*    display: block;*/
+/*    margin-top: 35px;*/
+/*}*/
 
 /* 自我介绍渐变色背景 */
 #aside-content > .card-widget.card-info::before {

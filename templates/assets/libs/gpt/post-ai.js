@@ -1,4 +1,4 @@
-function HaoPostAI(AI_option) {
+(function () {
 
     // 获取挂载元素，即文章内容所在的容器元素
     let targetElement = document.querySelector('#post #article-container');
@@ -7,15 +7,15 @@ function HaoPostAI(AI_option) {
         return;
     };
 
-    let ai = AI_option.ai;
-    let randomNum = AI_option.randomNum; //按钮最大的随机次数，也就是一篇文章最大随机出来几种
-    let basicWordCount = AI_option.basicWordCount; // 最低获取字符数, 最小1000, 最大1999
-    let btnLink = AI_option.btnLink;
-    let gptName = AI_option.gptName;
-    let modeName = AI_option.modeName;
-    let switchBtn = AI_option.switchBtn //# 可以配置是否显示切换按钮 以切换tianli/local
-    let keys = AI_option.keys;
-    let Referers = AI_option.Referers;
+    let ai =  GLOBAL_CONFIG.source.postAi.ai;
+    let randomNum = GLOBAL_CONFIG.source.postAi.randomNum; //按钮最大的随机次数，也就是一篇文章最大随机出来几种
+    let basicWordCount = GLOBAL_CONFIG.source.postAi.basicWordCount; // 最低获取字符数, 最小1000, 最大1999
+    let btnLink = GLOBAL_CONFIG.source.postAi.btnLink;
+    let gptName = GLOBAL_CONFIG.source.postAi.gptName;
+    let modeName = GLOBAL_CONFIG.source.postAi.modeName;
+    let switchBtn = GLOBAL_CONFIG.source.postAi.switchBtn //# 可以配置是否显示切换按钮 以切换tianli/local
+    let keys = GLOBAL_CONFIG.source.postAi.keys;
+    let Referers = GLOBAL_CONFIG.source.postAi.Referers;
 
     let post = document.querySelector('#post')
     const interface = {
@@ -163,16 +163,19 @@ function HaoPostAI(AI_option) {
                 Referer: Referers
             };
 
-            var url = window.location.href;
-            const title = document.title;
             const truncateDescription = getTitleAndContent(num);
-            const queryParams = `key=${options.key}&content=${truncateDescription}&url=${url}&title=${title}`;
+            const requestBody = {
+                key: options.key,
+                content: truncateDescription,
+                url: location.href,
+            };
             const requestOptions = {
-                method: "GET",
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     Referer: options.Referer
                 },
+                body: JSON.stringify(requestBody),
             };
             try {
                 let animationInterval = null
@@ -182,7 +185,7 @@ function HaoPostAI(AI_option) {
                     explanation.innerHTML = animationText;
                     j = (j % 3) + 1; // 在 1、2、3 之间循环
                 }, 500);
-                const response = await fetch(`https://summary.tianli0.top/?${queryParams}`, requestOptions);
+                const response = await fetch(`https://summary.tianli0.top/`, requestOptions);
                 let result;
                 if (response.status === 403) {
                     result = {
@@ -199,11 +202,16 @@ function HaoPostAI(AI_option) {
                 setTimeout(() => {
                     aiTitleRefreshIcon.style.opacity = "1";
                 }, 300)
-                startAI(summary);
+                if (summary) {
+                    startAI(summary);
+                } else {
+                    startAI("摘要获取失败!!!请检查Tianli服务是否正常!!!");
+                }
                 clearInterval(animationInterval)
 
             } catch (error) {
                 console.error(error);
+                explanation.innerHTML = "发生异常" + error;
             }
         } else {
             const strArr = ai.split(",").map(item => item.trim()); // 将字符串转换为数组，去除每个字符串前后的空格
@@ -424,5 +432,5 @@ function HaoPostAI(AI_option) {
     }
 
     aiAbstract();
-    showAiBtn()
-}
+    showAiBtn();
+})()

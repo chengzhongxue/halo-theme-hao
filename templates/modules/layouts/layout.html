@@ -70,31 +70,31 @@
 
     <!-- 深色模式下添加粒子效果canvas -->
     <canvas th:if="${theme.config.style.universe}" id="universe" width="1312" height="880"></canvas>
-    <script th:if="${theme.config.style.universe}" async="" th:src="${assets_link + '/libs/canvas/dark.js' + theme_version}"></script>
+    <script th:if="${theme.config.style.universe}" async="" th:src="${assets_link + '/libs/canvas/dark.js'}"></script>
 
     <!-- https://davidshimjs.github.io/qrcodejs/ 生成二维码 -->
     <!-- 应该是文章页分享使用 -->
     <script data-pjax src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
-    <script th:src="${assets_link + '/libs/waterfall/waterfall.min.js' + theme_version}"></script>
+    <script th:src="${assets_link + '/libs/waterfall/waterfall.min.js'}"></script>
 
     <!-- 获取主色 https://lokeshdhakar.com/projects/color-thief/ -->
     <!--<script th:src="@{/assets/libs/color-thief/color-thief.umd.js}"></script>-->
-    <script th:src="${assets_link + '/libs/fast-average-color/index.browser.min.js' + theme_version}"></script>
+    <script th:src="${assets_link + '/libs/fast-average-color/index.browser.min.js'}"></script>
 
-    <script th:src="${assets_link + '/libs/view-image/view-image.min.js' + theme_version}"></script>
+    <script th:src="${assets_link + '/libs/view-image/view-image.min.js'}"></script>
 
     <!--左下角音乐-->
     <script>var meting_api = '[[${theme.config.tool.nav_music.meting_api}]]'; </script>
 
     <link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="all" onload="this.media='all'">
 
-    <script th:src="${assets_link + '/libs/aplayer/APlayer.min.js' + theme_version}"></script>
+    <script th:src="${assets_link + '/libs/aplayer/APlayer.min.js'}"></script>
 
-    <script th:src="${assets_link + '/libs/aplayer/Meting2.min.js' + theme_version}"></script>
+    <script th:src="${assets_link + '/libs/aplayer/Meting2.min.js'}"></script>
 
-    <script th:src="${assets_link + '/libs/pjax/pjax.min.js' + theme_version}"></script>
+    <script th:src="${assets_link + '/libs/pjax/pjax.min.js'}"></script>
 
     <!-- swiper 在瞬间滚动时会使用 -->
     <script data-pjax  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/6.6.2/swiper-bundle.min.js"></script>
@@ -103,7 +103,7 @@
     <script  th:if="${theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') &&
         not #strings.isEmpty(theme.config.comments.twikoos.envId) &&
         not #strings.isEmpty(theme.config.comments.twikoos.accessToken)}"  data-pjax=""
-             th:src="${assets_link + '/libs/twikoo/commentBarrage.js' + theme_version}"></script>
+             th:src="${assets_link + '/libs/twikoo/commentBarrage.js'}"></script>
 
     <!-- Tocbot 目录生成 start -->
     <th:block th:replace="~{modules/common/toc-bot :: toc-bot}"></th:block>
@@ -119,7 +119,7 @@
         <script th:replace="~{modules/common/diytitle :: diytitle}"></script>
     </div>
 
-    <script th:if="${theme.config.envelope_comment.enable_danmu}" th:src="${assets_link + '/libs/twikoo/easy-Danmaku.min.js' + theme_version}" id="Danmaku"></script>
+    <script th:if="${theme.config.envelope_comment.enable_danmu}" th:src="${assets_link + '/libs/twikoo/easy-Danmaku.min.js'}" id="Danmaku"></script>
 
 
     <script>

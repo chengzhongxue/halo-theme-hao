@@ -8,7 +8,7 @@
         <th:block th:with="socialMedias = ${theme.config.footer.social_media.socialMediaLeft}">
             <a class="deal_link" rel="external nofollow" target="_blank" th:each="socialMedia : ${socialMedias}"
                th:href="${socialMedia.url}" th:title="${socialMedia.name}">
-                <i class="iconfont " th:classappend="${socialMedia.icon}"></i>
+                <i class="haofont " th:classappend="${socialMedia.icon}"></i>
             </a>
         </th:block>
 
@@ -20,7 +20,7 @@
         <th:block th:with="socialMedias = ${theme.config.footer.social_media.socialMediaRight}">
             <a class="deal_link" rel="external nofollow" target="_blank" th:each="socialMedia : ${socialMedias}"
                th:href="${socialMedia.url}" th:title="${socialMedia.name}">
-                <i class="iconfont " th:classappend="${socialMedia.icon}"></i>
+                <i class="haofont " th:classappend="${socialMedia.icon}"></i>
             </a>
         </th:block>
     </div>
@@ -89,10 +89,10 @@
                 </a>
                 <a class="footer-banner-link cc" th:href="${theme.config.basics.copyrightAgreement}"
                    th:if="${not #strings.isEmpty(theme.config.basics.copyrightAgreement)}" title="cc协议">
-                    <i class="iconfont icon-cc"></i>
-                    <i class="iconfont icon-by"></i>
-                    <i class="iconfont icon-nc"></i>
-                    <i class="iconfont icon-nd"></i>
+                    <i class="haofont hao-icon-copyright"></i>
+                    <i class="haofont hao-icon-creative-commons-by-line"></i>
+                    <i class="haofont hao-icon-creative-commons-nc-line"></i>
+                    <i class="haofont hao-icon-creative-commons-nd-line"></i>
                 </a>
             </div>
         </div>
