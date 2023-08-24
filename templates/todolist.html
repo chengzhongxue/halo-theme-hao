@@ -31,8 +31,8 @@
                                         <th:block th:if="${not #lists.isEmpty(todo.todo_list)}"
                                                   th:each="data : ${todo.todo_list}">
                                             <li th:class="${data.completed ? 'achieve' : ''}">
-                                                <i style="margin-right: 5px;"
-                                                   th:class="${data.completed ? 'fa-regular fa-circle-check' : 'fa-regular fa-circle'}">
+                                                <i style="font-size: 19px;margin-right: 5px;"
+                                                   th:class="${data.completed ? 'haofont  hao-icon-check-circle' : 'haofont hao-icon-yuan'}">
                                                 </i>[[${data.content}]]
                                             </li>
                                         </th:block>
@@ -50,8 +50,8 @@
                                         <th:block th:if="${not #lists.isEmpty(todo.todo_list)}"
                                                   th:each="data : ${todo.todo_list}">
                                             <li th:class="${data.completed ? 'achieve' : ''}">
-                                                <i style="margin-right: 5px;"
-                                                   th:class="${data.completed ? 'fa-regular fa-circle-check' : 'fa-regular fa-circle'}">
+                                                <i style="font-size: 19px;margin-right: 5px;"
+                                                   th:class="${data.completed ? 'haofont  hao-icon-check-circle' : 'haofont hao-icon-yuan'}">
                                                 </i>[[${data.content}]]
                                             </li>
                                         </th:block>
@@ -72,6 +72,10 @@
 
                     [data-theme=dark] {
                         --todo-border: 1px solid #51908b;
+                    }
+
+                    .todolist-item i.haofont {
+                        display: var(--fa-display,inline-block);
                     }
 
                     #todolist-main {
