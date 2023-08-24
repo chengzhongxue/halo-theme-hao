@@ -163,16 +163,19 @@ function HaoPostAI(AI_option) {
                 Referer: Referers
             };
 
-            var url = window.location.href;
-            const title = document.title;
             const truncateDescription = getTitleAndContent(num);
-            const queryParams = `key=${options.key}&content=${truncateDescription}&url=${url}&title=${title}`;
+            const requestBody = {
+                key: options.key,
+                content: truncateDescription,
+                url: location.href,
+            };
             const requestOptions = {
-                method: "GET",
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     Referer: options.Referer
                 },
+                body: JSON.stringify(requestBody),
             };
             try {
                 let animationInterval = null
@@ -182,7 +185,7 @@ function HaoPostAI(AI_option) {
                     explanation.innerHTML = animationText;
                     j = (j % 3) + 1; // 在 1、2、3 之间循环
                 }, 500);
-                const response = await fetch(`https://summary.tianli0.top/?${queryParams}`, requestOptions);
+                const response = await fetch(`https://summary.tianli0.top/`, requestOptions);
                 let result;
                 if (response.status === 403) {
                     result = {
@@ -199,11 +202,16 @@ function HaoPostAI(AI_option) {
                 setTimeout(() => {
                     aiTitleRefreshIcon.style.opacity = "1";
                 }, 300)
-                startAI(summary);
+                if (summary) {
+                    startAI(summary);
+                } else {
+                    startAI("摘要获取失败!!!请检查Tianli服务是否正常!!!");
+                }
                 clearInterval(animationInterval)
 
             } catch (error) {
                 console.error(error);
+                explanation.innerHTML = "发生异常" + error;
             }
         } else {
             const strArr = ai.split(",").map(item => item.trim()); // 将字符串转换为数组，去除每个字符串前后的空格
