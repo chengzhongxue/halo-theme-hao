@@ -28,13 +28,14 @@
             <div class="content-bottom">
                 <div class="tips">跟 [[${site.title}]] 一起欣赏更多音乐</div>
             </div>
-            <!-- <div class="banner-button-group"><a class="banner-button"
-                onclick="pjax.loadUrl('/music')"
+            <div th:if="${not #strings.isEmpty(theme.config.about.music.music_link)}" class="banner-button-group">
+                <a class="banner-button"
+                   th:href="${theme.config.about.music.music_link}"
                    target="_blank"
-                    rel="noopener nofollow">
-                    <i class="haofont hao-icon-arrow-circle-right"></i>
-                    <span class="banner-button-text">更多推荐</span></a>
-            </div> -->
+                   rel="noopener nofollow">
+                <i class="haofont hao-icon-arrow-circle-right"></i>
+                <span class="banner-button-text">更多推荐</span></a>
+            </div>
         </div>
     </div>
 

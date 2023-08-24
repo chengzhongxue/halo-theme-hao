@@ -30,11 +30,6 @@
         }
     </style>
 
-    <link media="print"
-          onload='this.media="all"'
-          rel="stylesheet"
-          th:href="${assets_link + '/libs/iconfont/iconfont.css'}">
-
     <!-- swiper 在瞬间滚动时会使用 -->
     <link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.css"/>
 
@@ -239,6 +234,17 @@
                 },
                 tool:{
                     switch: [[${ theme.config.tool.snackbar.switch }]]
+                },
+                postAi:{
+                    ai : '[(${post.status.excerpt})]',
+                    randomNum : [[${theme.config.post.aiDescription.randomNum}]],
+                    basicWordCount : [[${theme.config.post.aiDescription.basicWordCount}]],
+                    btnLink : "[(${theme.config.post.aiDescription.btnLink})]",
+                    gptName : "[(${theme.config.post.aiDescription.gptName})]",
+                    modeName : [[${theme.config.post.aiDescription.mode}]],
+                    switchBtn : [[${theme.config.post.aiDescription.switchBtn}]],
+                    keys : "[(${theme.config.post.aiDescription.key})]",
+                    Referers : "[(${theme.config.post.aiDescription.Referer})]",
                 }
             },
             date_suffix: {
@@ -267,6 +273,7 @@
                 prism_limit: Number([[${#strings.isEmpty(theme.config.code.height_limit) ? 300 : theme.config.code.height_limit}]])+30,
                 enable_height_limit: [[${theme.config.code.enable_height_limit}]]
             },
+
 
 
         };

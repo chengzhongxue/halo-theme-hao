@@ -49,7 +49,7 @@
                      th:if="${theme.config.post.share_right.mobile_edit  || theme.config.post.share_right.weibo_edit || theme.config.post.share_right.copyurl_edit}">
                     <div class="share-link mobile" th:if="${theme.config.post.share_right.mobile_edit}">
                         <div class="share-qrcode">
-                            <div class="share-button" title="使用手机访问这篇文章"><i class="iconfont icon-qrcode"></i>
+                            <div class="share-button" title="使用手机访问这篇文章"><i class="haofont hao-icon-qrcode"></i>
                             </div>
                             <div class="share-main">
                                 <div class="share-main-all">
@@ -63,11 +63,11 @@
                         <a class="share-button" rel="noopener external nofollow noreferrer noopener" target="_blank"
                            th:href="'https://service.weibo.com/share/share.php?title=' + ${post.spec.title}"
                            title="分享到微博">
-                            <i class="iconfont icon-weibo" style="font-size:22px"></i></a>
+                            <i class="haofont hao-icon-weibo" style="font-size:22px"></i></a>
                     </div>
                     <div class="share-link copyurl" th:if="${theme.config.post.share_right.copyurl_edit}">
                         <div class="share-button" id="post-share-url" onclick="rm.copyPageUrl()" title="复制链接"><i
-                                class="iconfont icon-link"></i></div>
+                                class="haofont hao-icon-link"></i></div>
                     </div>
                 </div>
             </div>

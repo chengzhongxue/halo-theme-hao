@@ -31,7 +31,7 @@
         <!-- 跳转信息 -->
         <div class="banner-button-group">
             <a class="banner-button" href="/about">
-                <i class="iconfont icon-arrow-circle-right"></i>
+                <i class="haofont hao-icon-circle-arrow-right"></i>
                 <span class="banner-button-text">了解更多</span>
             </a>
         </div>
@@ -42,7 +42,7 @@
 
             <a class="social-icon" rel="external nofollow" target="_blank" th:each="socialMedia : ${socialMedias}"
                th:href="${socialMedia.url}" th:title="${socialMedia.name}">
-                <i class="iconfont " th:classappend="${socialMedia.icon}"></i>
+                <i class="haofont " th:classappend="${socialMedia.icon}"></i>
             </a>
         </div>
 
@@ -171,7 +171,7 @@
                     <a class="social-icon" rel="external nofollow" target="_blank"
                        th:each="socialMedia : ${socialMedias}" th:href="${socialMedia.url}"
                        th:title="${socialMedia.name}">
-                        <i class="iconfont " th:classappend="${socialMedia.icon}"></i>
+                        <i class="haofont " th:classappend="${socialMedia.icon}"></i>
                     </a>
                 </div>
             </div>

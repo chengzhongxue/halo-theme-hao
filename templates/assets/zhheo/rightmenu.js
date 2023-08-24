@@ -54,6 +54,7 @@ window.oncontextmenu = function (event) {
         let $rightMenuPasteText = $('#menu-pastetext');
         let $rightMenuCommentText = $('#menu-commenttext');
         let $rightMenuNewWindow = $('#menu-newwindow');
+        let $rightMenuNewWindowImg = $('#menu-newwindowimg');
         let $rightMenuCopyLink = $('#menu-copylink');
         let $rightMenuCopyImg = $('#menu-copyimg');
         let $rightMenuDownloadImg = $('#menu-downloadimg');
@@ -102,10 +103,12 @@ window.oncontextmenu = function (event) {
             pluginMode = true;
             $rightMenuCopyImg.show();
             $rightMenuDownloadImg.show();
+            $rightMenuNewWindowImg.show();
             domImgSrc = imgsrc;
         } else {
             $rightMenuCopyImg.hide();
             $rightMenuDownloadImg.hide();
+            $rightMenuNewWindowImg.hide();
         }
 
         // 判断是否为输入框
@@ -404,6 +407,10 @@ function addRightMenuClickEvent() {
     $('#menu-copylink').on('click', rm.copyLink);
     $('#menu-downloadimg').on('click', function () {
         heo.downloadImage(domImgSrc, 'kunkunyu');
+    });
+    $('#menu-newwindowimg').on('click', function () {
+        window.open(domImgSrc, "_blank");
+        rm.hideRightMenu();
     });
     $('#menu-copyimg').on('click', function () {
         rm.writeClipImg(domImgSrc);

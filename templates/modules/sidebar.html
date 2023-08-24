@@ -10,7 +10,7 @@
         <div class="sidebar-menu-item">
             <a class="darkmode_switchbutton menu-child" href="javascript:void(0);" onclick="rm.switchDarkMode()"
                rel="external nofollow" title="显示模式切换">
-                <i class="iconfont icon-moon" style="font-size: 0.9rem;"></i>
+                <i class="haofont hao-icon-moon" style="font-size: 0.9rem;"></i>
                 <span>显示模式</span>
             </a>
         </div>
@@ -63,38 +63,10 @@
                 </div>
             </div>
         </th:block>
-        <!-- <div class="menus_items">
-            <div class="menus_item">
-                <a class="site-page" href="javascript:void(0);" rel="external nofollow">
-                    <span>文章</span>
-                
-                </a>
-                <ul class="menus_item_child">
-                    <li>
-                        <a class="site-page child" href="/archives">
-                            <i class="iconfont icon-list-ul"></i>
-                            <span>文章归档</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="site-page child" href="/categories">
-                            <i class="iconfont icon-folder-open"></i>
-                            <span>全部分类</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="site-page child" href="/tags">
-                            <i class="iconfont icon-tags"></i>
-                            <span>全部标签</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div> -->
         <span class="sidebar-menu-item-title">标签</span>
         <div class="card-widget card-tags card-archives card-webinfo card-allinfo"
              th:with="tags = ${tagFinder.listAll()}">
-            <div class="item-headline"><i class="iconfont icon-tags"></i><span>标签</span></div>
+            <div class="item-headline"></div>
             <div class="card-tag-cloud">
                 <a style="font-size:14.3px;color:#d3d3d3" th:each="tag : ${tags}"
                    th:href="@{${tag.status.permalink}}"

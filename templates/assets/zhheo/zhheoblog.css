@@ -142,6 +142,10 @@
     }
 }
 
+i.haofont {
+    line-height: 1;
+}
+
 /* 旧版css */
 html {
     line-height: 1.15;
@@ -2844,17 +2848,6 @@ blockquote footer cite::before {
     }
 }
 
-#post-info #post-meta .post-meta-separator {
-    margin: 0px 0.25rem;
-}
-
-#post-info #post-meta .post-meta-icon {
-    margin-right: 0.2rem;
-}
-
-#post-info #post-meta .post-meta-label {
-    margin-right: 0.2rem;
-}
 
 #post-info #post-meta a {
     color: var(--light-grey);
@@ -8372,7 +8365,7 @@ div#banners {
 
     #banners .banner-button i {
         margin-right: 8px;
-        font-size: 1rem;
+        /*font-size: 1rem;*/
     }
 
     .banners-title {
@@ -8441,6 +8434,11 @@ div#banners {
         transition: 0.3s;
         background-size: 200%;
         cursor: pointer;
+    }
+
+    #banners #banner-hover i {
+        font-size: 80px;
+        opacity: .4
     }
 
     .topGroup .todayCard {
@@ -11191,7 +11189,7 @@ span.post-meta-position {
 
 /* 图标数字间距 */
 #post-info #post-meta .post-meta-icon {
-    margin-right: 0.4rem;
+    margin-right: 0.2rem;
 }
 
 /* 每组间距 */
