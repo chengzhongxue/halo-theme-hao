@@ -1451,6 +1451,12 @@ spec:
               value: true
             - label: 关闭
               value: false
+        - $formkit: code
+          name: linksArticle
+          height: 200
+          label: 底部显示内容
+          value: ""
+          language: html
 
     - group: fcircle
       label: 友链鱼塘

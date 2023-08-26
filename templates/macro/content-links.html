@@ -164,6 +164,22 @@
 
             </th:block>
 
+            <th:block th:if="${not #strings.isEmpty(theme.config.link.linksArticle)}"
+                      th:utext="${theme.config.link.linksArticle}"> </th:block>
+
+            <script>
+                var fdataUser = {
+                    jsonurl: '',
+                    apiurl: "[(${theme.config.fcircle.apiurl})]",
+                    apipublicurl: '', //默认公共库
+                    initnumber: 20,  //首次加载文章数
+                    stepnumber: 20,  //更多加载文章数
+                    article_sort: 'created', //文章排序 updated or created
+                    error_img: 'https://sdn.geekzu.org/avatar/57d8260dfb55501c37dde588e7c3852c'
+                }
+            </script>
+            <script  th:src="@{/assets/libs/fcircle/heo-fcircle3mini.js}"></script>
+
             <th:block th:if="${htmlType == 'page'}" th:utext="${singlePage.content.content}">
             </th:block>
 
