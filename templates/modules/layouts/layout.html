@@ -55,6 +55,7 @@
 <div th:replace="~{modules/right-menu :: right-menu}"></div>
 
 <div>
+    <script th:src="${assets_link + '/js/custom.js'}"></script>
     <script th:src="${assets_link + '/js/utils.js' + theme_version}"></script>
     <script th:src="${assets_link + '/js/main.js' + theme_version}"></script>
     <script charset="utf-8" data-pjax th:src="${assets_link + '/zhheo/blogex.js' + theme_version}"></script>
@@ -120,6 +121,7 @@
     </div>
 
     <script th:if="${theme.config.envelope_comment.enable_danmu}" th:src="${assets_link + '/libs/twikoo/easy-Danmaku.min.js'}" id="Danmaku"></script>
+
 
 
     <script>

@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const jqLoadAndRun = () => {
         const $fancyboxEle = GLOBAL_CONFIG.lightbox === 'fancybox'
-            ? document.querySelectorAll('#article-container :not(a):not(.gallery-group):not(.site-card-avatar):not(.flink-item-info):not(.rss-plan-info-group):not(.bangumi-picture) > img, #article-container > img,.bber-container-img > img')
+            ? document.querySelectorAll('#article-container :not(a):not(.gallery-group):not(.site-card-avatar):not(.flink-item-info):not(.rss-plan-info-group):not(.bangumi-picture):not(.introduction-card) > img, #article-container > img,.bber-container-img > img')
             : []
         const fbLengthNoZero = $fancyboxEle.length > 0
         const $jgEle = document.querySelectorAll('#article-container .gallery')

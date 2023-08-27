@@ -358,4 +358,6 @@ function initFriendCircle(sortNow, changeUrl) {
 }
 
 // 执行初始化
-initFriendCircle(sortNow);
+if(document.getElementById('cf-container')){
+    initFriendCircle(sortNow);
+}
