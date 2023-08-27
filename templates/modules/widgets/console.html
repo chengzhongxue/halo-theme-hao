@@ -19,7 +19,7 @@
             <!-- BUG：由于当前的列出所有评论API无过滤功能，非文章页的评论无法查询到页面信息，所以非文章评论跳转至首页-->
             <div class="aside-list-item" th:each="comment,iterStat : ${commentFinder.list(null, 1, 20)}"
                  th:with="page = ${comment.spec.subjectRef.kind == 'Post' ? postFinder.getByName(comment.spec.subjectRef.name) :
-                  comment.spec.subjectRef.kind == 'SinglePage' ? singlePageFinder.getByName(comment.spec.subjectRef.name) : null},
+                  comment.spec.subjectRef.kind == 'SinglePage' && not #strings.contains('photos,links,moments', comment.spec.subjectRef.name) ? singlePageFinder.getByName(comment.spec.subjectRef.name) : null},
                   url = ${page == null? '/' : page.status.permalink + '#comment-' + comment.metadata.name}"
                  th:if="${iterStat.index  < 6}" >
               <a th:href="${url}" class="thumbnail"  data-pjax-state="">
