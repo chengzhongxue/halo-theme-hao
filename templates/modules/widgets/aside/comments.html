@@ -7,7 +7,7 @@
         <th:block th:if="${#strings.equals(theme.config.comments.use, 'commentWidget') }">
             <div class="aside-list-item" th:each="comment,iterStat : ${commentFinder.list(null, 1, 20)}"
                  th:with="page = ${comment.spec.subjectRef.kind == 'Post' ? postFinder.getByName(comment.spec.subjectRef.name) :
-                 comment.spec.subjectRef.kind == 'SinglePage' ? singlePageFinder.getByName(comment.spec.subjectRef.name) : null},
+                 comment.spec.subjectRef.kind == 'SinglePage' && not #strings.contains('photos,links,moments', comment.spec.subjectRef.name) ? singlePageFinder.getByName(comment.spec.subjectRef.name) : null},
                  url = ${page == null? '/' : page.status.permalink + '#comment-' + comment.metadata.name}"
                  th:if="${iterStat.index  < theme.config.sidebar.newcommentnumber}">
                 <span th:text="${commentIndex}"></span>
