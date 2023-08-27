@@ -1195,8 +1195,8 @@ spec:
           value:
             aiDescriptionEnable: false
             gptName:
-            mode:
-            switchBtn:
+            mode: local
+            switchBtn: false
             btnLink:
             randomNum:
             basicWordCount:
