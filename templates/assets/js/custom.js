@@ -30,13 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 let innerHTMLs =  `
 					<div class="introduction-card" style="${style1}">
-						<div class="introduction-card-top" style="${style2}">
+						<div class="introduction-card-top no-lightbox" style="${style2}">
 							<div class="int-card-info">
 								<div class="int-tip">${this.options.tip}</div>
 								<div class="int-cardTitle">${this.options.cardTitle}</div>
 							</div>
-							<img src="${this.options.img}"
-								class="no-lightbox" alt="introduction">
+							<img src="${this.options.img}" alt="introduction">
 
 						</div>
 				`;
@@ -44,9 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     innerHTMLs += `
 					
 						<div class="introduction-card-bottom">
-							<div class="left">
-								<img src="${this.options.logo}"
-								class="no-lightbox" alt="introduction">
+							<div class="left no-lightbox">
+								<img src="${this.options.logo}" alt="introduction">
 								<div class="info">
 									<div class="title">${this.options.title}</div>
 									<div class="subTitle">${this.options.subTitle}</div>
