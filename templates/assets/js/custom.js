@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     style: this.getAttribute("style") || ''
                 };
                 let htmlStr = `
-				<div class="note ${this.options.class} ${this.options.noIcon} ${this.options.style}">${this.innerHTML}</div>
+				<div class="note ${this.options.class} ${this.options.noIcon} ${this.options.style}">${this.innerHTML.trim().replace(/^(<br>)|(<br>)$/g, "")}</div>
             `;
                 this.innerHTML = htmlStr;
             }
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     noIcon: this.getAttribute("noIcon") || ''
                 };
                 let htmlStr = `
-				<div class="tip ${this.options.class} ${this.options.noIcon}">${this.innerHTML}</div>
+				<div class="tip ${this.options.class} ${this.options.noIcon}">${this.innerHTML.trim().replace(/^(<br>)|(<br>)$/g, "")}</div>
             `;
                 this.innerHTML = htmlStr;
             }
