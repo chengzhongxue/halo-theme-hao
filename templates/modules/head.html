@@ -182,7 +182,6 @@
             isPost: [[${htmlType == 'post'}]],
             isHome: [[${ htmlType == 'index'}]],
             isHighlightShrink: false,
-            //isToc: [[${ htmlType == 'post'}]] && document.getElementById("card-toc"),
             postUpdate: '2022-11-04 20:08:15',
             copyright: undefined,
             lightbox: 'fancybox',
@@ -244,7 +243,11 @@
                     switchBtn : [[${theme.config.post.aiDescription.switchBtn}]],
                     keys : "[(${theme.config.post.aiDescription.key})]",
                     Referers : "[(${theme.config.post.aiDescription.Referer})]",
+                },
+                img:{
+                    src: [[${isLazyload ? 'data-lazy-src' : 'src' }]]
                 }
+
             },
             date_suffix: {
                 just: '刚刚',
