@@ -139,11 +139,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 this.options = {
                     class: this.getAttribute("class") || '',
                     noIcon: this.getAttribute("noIcon") || '',
-                    style: this.getAttribute("style") || '',
-                    content: this.getAttribute("content") || '',
+                    style: this.getAttribute("style") || ''
                 };
                 let htmlStr = `
-				<div class="note ${this.options.class} ${this.options.noIcon} ${this.options.style}"><p>${this.options.content}</p></div>
+				<div class="note ${this.options.class} ${this.options.noIcon} ${this.options.style}">${this.innerHTML.trim().replace(/^(<br>)|(<br>)$/g, "")}</div>
             `;
                 this.innerHTML = htmlStr;
             }
@@ -158,12 +157,11 @@ document.addEventListener("DOMContentLoaded", () => {
             constructor() {
                 super();
                 this.options = {
-                    class: this.getAttribute("class") || '',
-                    noIcon: this.getAttribute("noIcon") || '',
-                    content: this.getAttribute("content") || '',
+                    class: this.getAttribute("class") || 'info',
+                    noIcon: this.getAttribute("noIcon") || ''
                 };
                 let htmlStr = `
-				<div class="tip ${this.options.class} ${this.options.noIcon}"><p>${this.options.content}</p></div>
+				<div class="tip ${this.options.class} ${this.options.noIcon}">${this.innerHTML.trim().replace(/^(<br>)|(<br>)$/g, "")}</div>
             `;
                 this.innerHTML = htmlStr;
             }
@@ -196,9 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						</div>
 						</div>
 						<div class="timeline-item-content">
-						<p>${$2
-                            .trim()
-                            .replace(/^(<br>)|(<br>)$/g, "")}</p>
+						${$2.trim().replace(/^(<br>)|(<br>)$/g, "")}
 						</div>
 					</div>	
 				`;
@@ -241,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let content = "";
                 if(this.options.class == 'rounded'){
                     _innerHTML.replace(
-                        /{btns-item([^}]*)}/g,
+                        /{([^}]*)}/g,
                         function ($0, $1) {
                             var str = $1.split(",", 5);
                             if(str.length==5){
@@ -267,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if(this.options.class == 'circle'){
                     _innerHTML.replace(
-                        /{btns-item([^}]*)}/g,
+                        /{([^}]*)}/g,
                         function ($0, $1) {
                             var str = $1.split(",", 5);
                             if(str.length==5){
@@ -316,6 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const id = this.options.id
                 const index = this.options.index
                 const _temp = getChildren(this, "_tpl");
+
                 let _innerHTML = _temp.innerHTML.trim().replace(/^(<br>)|(<br>)$/g, "");
                 let navs = "";
                 let contents = "";
@@ -368,7 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let _innerHTML = _temp.innerHTML.trim().replace(/^(<br>)|(<br>)$/g, "");
                 let contents = "";
                 _innerHTML.replace(
-                    /{gallery-group-item([^}]*)}/g,
+                    /{([^}]*)}/g,
                     function ($0, $1) {
                         var str = $1.split(",",4);
                         contents += `
