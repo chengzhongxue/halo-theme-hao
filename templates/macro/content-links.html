@@ -101,7 +101,7 @@
 
                         <a class="info cf-friends-link" target="_blank" th:href="${link.spec.url}"
                            th:title="${link.spec.displayName}">
-                            <div class="site-card-avatar">
+                            <div class="site-card-avatar no-lightbox">
                                 <img class="flink-avatar cf-friends-avatar" th:alt="${link.spec.displayName}"
 
                                      th:src="${isLazyload ? loadingImg : link.spec.logo}"
@@ -130,7 +130,7 @@
 
                                  th:src="${isLazyload ? loadingImg : link.spec.logo}"
                                  th:data-lazy-src="${ isLazyload ? link.spec.logo : ''}">
-                            <div class="flink-item-info">
+                            <div class="flink-item-info no-lightbox">
                                 <span class="flink-item-name cf-friends-name" th:text="${link.spec.displayName}"></span>
                                 <span class="flink-item-desc" th:text="${link.spec.description}"
                                       th:title="${link.spec.description}"></span>

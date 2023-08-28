@@ -89,9 +89,6 @@ var btf = {
             }
         }
 
-
-
-
         /**
          * fancybox
          */
@@ -100,14 +97,8 @@ var btf = {
                 ele.each(function (i, o) {
                     const $this = $(o)
                     const lazyloadSrc = $this.attr('data-lazy-src') || $this.attr('src')
-                    const lazyloadSrc1600 = lazyloadSrc + '_1600w'
                     const dataCaption = $this.attr('alt') || ''
-                    if (lazyloadSrc.indexOf('!blogimg') != -1) {
-                        $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="images" data-caption="${dataCaption}" class="fancybox" data-srcset="${lazyloadSrc1600} 1600w"></a>`)
-                    } else {
-                        $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="images" data-caption="${dataCaption}" class="fancybox" data-srcset="${lazyloadSrc} 1600w"></a>`)
-                    }
-
+                    $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="images" data-caption="${dataCaption}" class="fancybox" data-srcset="${lazyloadSrc}"></a>`)
                 })
 
                 $().fancybox({

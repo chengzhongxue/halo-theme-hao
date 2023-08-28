@@ -374,8 +374,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     function ($0, $1) {
                         var str = $1.split(",",4);
                         contents += `
-							<figure class="gallery-group group-two"">
-								<img class="gallery-group-img no-lightbox" 
+							<figure class="gallery-group no-lightbox group-two"">
+								<img class="gallery-group-img" 
 								src="${str[3]}" 
 								alt="Group Image Gallery" >
 								<figcaption>

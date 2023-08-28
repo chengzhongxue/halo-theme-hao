@@ -42,7 +42,7 @@
                     <h2 style="text-align:center;">[[${theme.config.photos.bigTitle}]]</h2>
                     <div class="gallery-group-main">
                         <th:block th:each="group : ${photoFinder.groupBy()}">
-                            <figure class="gallery-group">
+                            <figure class="gallery-group no-lightbox">
                                 <img class="gallery-group-img no-lightbox"
                                      th:src="${isLazyload ? loadingImg : #annotations.get(group, 'cover')}"
                                      th:data-lazy-src="${ isLazyload ? #annotations.get(group, 'cover') : ''}"
