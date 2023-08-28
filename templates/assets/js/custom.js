@@ -30,13 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 let innerHTMLs =  `
 					<div class="introduction-card" style="${style1}">
-						<div class="introduction-card-top" style="${style2}">
+						<div class="introduction-card-top no-lightbox" style="${style2}">
 							<div class="int-card-info">
 								<div class="int-tip">${this.options.tip}</div>
 								<div class="int-cardTitle">${this.options.cardTitle}</div>
 							</div>
-							<img src="${this.options.img}"
-								class="no-lightbox" alt="introduction">
+							<img ${GLOBAL_CONFIG.source.img.src}="${this.options.img}" alt="introduction">
 
 						</div>
 				`;
@@ -44,9 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     innerHTMLs += `
 					
 						<div class="introduction-card-bottom">
-							<div class="left">
-								<img src="${this.options.logo}"
-								class="no-lightbox" alt="introduction">
+							<div class="left no-lightbox">
+								<img ${GLOBAL_CONFIG.source.img.src}="${this.options.logo}" alt="introduction">
 								<div class="info">
 									<div class="title">${this.options.title}</div>
 									<div class="subTitle">${this.options.subTitle}</div>
@@ -252,7 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
 										href="${str[2]}"
 										class="no-text-decoration"><i class="${str[4]}"></i> <b>${str[0]}</b>
 										<p class="p red">${str[1]}</p><img
-											src="${str[3]}">
+											${GLOBAL_CONFIG.source.img.src}="${str[3]}">
 									</a>
 								`;
                             }else{
@@ -278,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
 										href="${str[2]}"
 										class="no-text-decoration"><i class="${str[4]}"></i> <b>${str[0]}</b>
 										<p class="p red">${str[1]}</p><img
-											src="${str[3]}">
+											${GLOBAL_CONFIG.source.img.src}="${str[3]}">
 									</a>
 								`;
                             }else{
@@ -286,7 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
 									<a class="button no-text-decoration" target="_blank" rel="noopener external nofollow noreferrer"
 										href="${str[1]}" title="${str[0]}">
 										<img
-											src="${str[2]}"/>${str[0]}
+											${GLOBAL_CONFIG.source.img.src}="${str[2]}"/>${str[0]}
 									</a>
 								`;
                             }
@@ -374,9 +372,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     function ($0, $1) {
                         var str = $1.split(",",4);
                         contents += `
-							<figure class="gallery-group group-two"">
-								<img class="gallery-group-img no-lightbox" 
-								src="${str[3]}" 
+							<figure class="gallery-group no-lightbox group-two"">
+								<img class="gallery-group-img" 
+								${GLOBAL_CONFIG.source.img.src}="${str[3]}" 
 								alt="Group Image Gallery" >
 								<figcaption>
 									<div class="gallery-group-name">${str[0]}</div>

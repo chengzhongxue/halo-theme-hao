@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="bangumi-item(spec)">
     <div class="bangumi-item">
-        <div class="bangumi-picture">
+        <div class="bangumi-picture no-lightbox">
             <img
                     th:src="${isLazyload ? loadingImg : spec.cover}"
                     th:data-lazy-src="${ isLazyload ? spec.cover : ''}"

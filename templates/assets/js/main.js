@@ -131,13 +131,8 @@ document.addEventListener('DOMContentLoaded', function () {
             ele.each(function (i, o) {
                 const $this = $(o)
                 const lazyloadSrc = $this.attr('data-lazy-src') || $this.attr('src')
-                const lazyloadSrc1600 = lazyloadSrc + '_1600w'
                 const dataCaption = $this.attr('alt') || ''
-                if (lazyloadSrc.indexOf('!blogimg') != -1) {
-                    $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="images" data-caption="${dataCaption}" class="fancybox" data-srcset="${lazyloadSrc1600} 1600w"></a>`)
-                } else {
-                    $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="images" data-caption="${dataCaption}" class="fancybox" data-srcset="${lazyloadSrc} 1600w"></a>`)
-                }
+                $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="images" data-caption="${dataCaption}" class="fancybox" data-srcset="${lazyloadSrc}"></a>`)
 
             })
 
@@ -163,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const jqLoadAndRun = () => {
         const $fancyboxEle = GLOBAL_CONFIG.lightbox === 'fancybox'
-            ? document.querySelectorAll('#article-container :not(a):not(.gallery-group):not(.site-card-avatar):not(.flink-item-info):not(.rss-plan-info-group):not(.bangumi-picture):not(.introduction-card) > img, #article-container > img,.bber-container-img > img')
+            ? document.querySelectorAll('#article-container :not(a):not(.rss-plan-info-group):not(.no-lightbox) > img, #article-container > img,.bber-container-img > img')
             : []
         const fbLengthNoZero = $fancyboxEle.length > 0
         const $jgEle = document.querySelectorAll('#article-container .gallery')
