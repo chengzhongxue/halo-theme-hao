@@ -201,19 +201,6 @@ var btf = {
         });
     },
 
-    initJustifiedGallery: function (selector) {
-        if (!(selector instanceof jQuery)) {
-            selector = $(selector)
-        }
-        selector.each(function (i, o) {
-            if ($(this).is(':visible')) {
-                $(this).justifiedGallery({
-                    rowHeight: 220,
-                    margins: 4
-                })
-            }
-        })
-    },
     initJustifiedGallerys: function (selector) {
         selector.forEach((function(t) {
                 btf.isHidden(t) || fjGallery(t, {
