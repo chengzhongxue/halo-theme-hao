@@ -539,6 +539,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
+    // tag-hide
+    customElements.define(
+        "hao-tag-hide",
+        class HaoCheckbox extends HTMLElement {
+            constructor() {
+                super();
+                this.options = {
+                    display: this.getAttribute("display") || '查看',
+                    bg: this.getAttribute("bg") || '',
+                    color: this.getAttribute("color") || ''
+                };
+                let htmlStr = `
+                    <span class="hide-inline">
+                        <button type="button" class="hide-button" style="background-color:${this.options.bg};color:${this.options.color}">
+                        ${this.options.display}<br>
+                        </button>
+                        <span class="hide-content">${this.innerHTML.trim().replace(/^(<br>)|(<br>)$/g, "")}</span>
+                    </span>
+                `;
+                this.innerHTML = htmlStr;
+            }
+
+        }
+    );
+
     customElements.define(
         "hao-dplayer",
         class HaoDplayer extends HTMLElement {

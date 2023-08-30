@@ -2425,3 +2425,46 @@ p.p.gray,span.p.gray {
     content: "";
     background: #fff
 }
+
+.hide-block>.hide-button,.hide-inline>.hide-button {
+    display: inline-block;
+    padding: 5px 18px;
+    background: #3b70fc;
+    color: var(--white)
+}
+
+.hide-block>.hide-button:hover,.hide-inline>.hide-button:hover {
+    background-color: var(--btn-hover-color)
+}
+
+.hide-block>.hide-button.open,.hide-inline>.hide-button.open {
+    display: none
+}
+
+.hide-block>.hide-button.open+div,.hide-inline>.hide-button.open+div {
+    display: block
+}
+
+.hide-block>.hide-button.open+span,.hide-inline>.hide-button.open+span {
+    display: inline
+}
+
+.hide-block>.hide-content,.hide-inline>.hide-content {
+    display: none
+}
+
+.hide {
+    display: none
+}
+
+.hide-inline>.hide-button {
+    margin: 0 6px
+}
+
+.hide-inline>.hide-content {
+    margin: 0 6px
+}
+
+.hide-block {
+    margin: 0 0 16px
+}
