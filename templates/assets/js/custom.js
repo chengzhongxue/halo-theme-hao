@@ -518,6 +518,27 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+    // 复选列表 checkbox
+    customElements.define(
+        "hao-checkbox",
+        class HaoCheckbox extends HTMLElement {
+            constructor() {
+                super();
+                this.options = {
+                    class: this.getAttribute("class") || '',
+                    colour: this.getAttribute("colour") || '',
+                    status: this.getAttribute("status") || ''
+
+                };
+                let htmlStr = `
+                <div class="checkbox ${this.options.class} ${this.options.colour} ${this.options.status}"><input type="checkbox" ${this.options.status}><p>${this.innerHTML.trim().replace(/^(<br>)|(<br>)$/g, "")}</p></div>
+            `;
+                this.innerHTML = htmlStr;
+            }
+
+        }
+    );
+
     customElements.define(
         "hao-dplayer",
         class HaoDplayer extends HTMLElement {
