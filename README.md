@@ -100,6 +100,7 @@
 - 图片懒加载 [plugin-lazyload](https://github.com/liuzhihang/plugin-lazyload)
 - 追番插件 [plugin-bilibili-bangumi](https://github.com/Roozenlz/plugin-bilibili-bangumi)
 - 图库插件 [plugin-photos](https://github.com/halo-sigs/plugin-photos)
+- Tool-Bench [Tool-Bench](https://github.com/DioxideCN/Tool-Bench)
 
 > 更多插件请参见：https://github.com/halo-sigs/awesome-halo
 

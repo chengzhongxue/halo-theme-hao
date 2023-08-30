@@ -2560,11 +2560,12 @@ spec:
                   value: false
         - $formkit: group
           name: nav_music
-          label: 左下角音乐
+          label: 音乐
           value:
             nav_musicEnable: false
           children:
             - $formkit: radio
+              label: 左下角音乐
               name: nav_musicEnable
               id: nav_musicEnable
               key: nav_musicEnable
@@ -2590,7 +2591,7 @@ spec:
               value: https://y.qq.com/n/ryqq/playlist/xxxxx
             - $formkit: url
               name: meting_api
-              label: 音乐图片api
+              label: 音乐api
               value: https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&r=:r
         - $formkit: group
           name: snackbar

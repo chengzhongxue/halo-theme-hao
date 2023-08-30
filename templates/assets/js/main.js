@@ -98,31 +98,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // let detectJgJsLoad = false
-    // const runJustifiedGallery = function (ele) {
-    //     const $justifiedGallery = $(ele)
-    //     const $imgList = $justifiedGallery.find('img')
-    //     $imgList.unwrap()
-    //     if ($imgList.length) {
-    //         $imgList.each(function (i, o) {
-    //             if ($(o).attr('data-lazy-src')) $(o).attr('src', $(o).attr('data-lazy-src'))
-    //             $(o).wrap('<div class="fj-gallery-item"></div>')
-    //         })
-    //     }
-
-    //     const $gallery = document.querySelectorAll('.gallery')
-
-    //     if (detectJgJsLoad) btf.initJustifiedGallerys($gallery)
-    //     else {
-    //         $('head').append(`<link rel="stylesheet" type="text/css" href="${GLOBAL_CONFIG.source.justifiedGallery.css}">`)
-    //         $.getScript(`${GLOBAL_CONFIG.source.justifiedGallery.js}`, function () {
-
-    //             btf.initJustifiedGallerys($gallery)
-    //         })
-    //         detectJgJsLoad = true
-    //     }
-    // }
-
     /**
      * fancybox
      */
@@ -169,6 +144,29 @@ document.addEventListener('DOMContentLoaded', function () {
                 jgLengthNoZero && runJustifiedGallery($jgEle)
                 fbLengthNoZero && addFancybox($fancyboxEle)
             })
+        }
+    }
+
+    /**
+     *  toc
+     */
+    const tocFn = function () {
+        const postContent = document.querySelector('.post-content');
+
+        if (postContent == null) return;
+
+        const headers = postContent.querySelectorAll('h1,h2,h3,h4,h5,h6');
+        // 没有 toc 目录，则直接移除
+        if (headers.length === 0) {
+            document.getElementById("card-toc").remove();
+        } else {
+            tocbot.init({
+                tocSelector: '.toc-content',
+                contentSelector: '.post-content',
+                headingSelector: 'h1,h2,h3,h4,h5,h6',
+                hasInnerContainers: true
+            });
+
         }
     }
 
@@ -355,8 +353,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     const $hideContent = $this.nextElementSibling
                     $this.classList.toggle('open')
                     if ($this.classList.contains('open')) {
-                        if ($hideContent.querySelectorAll('.justified-gallery').length > 0) {
-                            btf.initJustifiedGallery($hideContent.querySelectorAll('.justified-gallery'))
+                        if ($hideContent.querySelectorAll('.gallery').length > 0) {
+                            btf.initJustifiedGallerys($hideContent.querySelectorAll('.gallery'))
                         }
                     }
                 })
@@ -382,9 +380,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             if (item.id === tabId) item.classList.add('active')
                             else item.classList.remove('active')
                         })
-                        const $isTabJustifiedGallery = $tabContent.querySelectorAll(`#${tabId} .justified-gallery`)
+                        const $isTabJustifiedGallery = $tabContent.querySelectorAll(`#${tabId} .gallery`)
                         if ($isTabJustifiedGallery.length > 0) {
-                            btf.initJustifiedGallery($isTabJustifiedGallery)
+                            btf.initJustifiedGallerys($isTabJustifiedGallery)
                         }
                     }
                 })
@@ -471,6 +469,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (GLOBAL_CONFIG.isPost) {
             addRuntime();
+            tocFn();
         } else {
             addLastPushDate()
             toggleCardCategory()
