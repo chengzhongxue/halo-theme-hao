@@ -2103,3 +2103,12 @@ p.p.purple,span.p.purple {
 p.p.gray,span.p.gray {
     color: #999
 }
+
+.flink-name {
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-size: 1.5em
+}
+.flink-desc {
+    margin: .2rem 0 .5rem
+}

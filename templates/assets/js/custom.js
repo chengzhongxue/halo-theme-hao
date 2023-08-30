@@ -428,6 +428,96 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
+
+    // flink 友链标签
+    customElements.define(
+        "hao-flink",
+        class HaoGalleryGroup extends HTMLElement {
+            constructor() {
+                super();
+                this.options = {
+                    name: this.getAttribute("name"),
+                    desc: this.getAttribute("desc"),
+                    style: this.getAttribute("style"),
+                };
+                const _temp = getChildren(this, "_tpl");
+                let _innerHTML = _temp.innerHTML.trim().replace(/^(<br>)|(<br>)$/g, "");
+                let style = this.options.style;
+                let content = "";
+                let contents = "";
+                let class_desc = "";
+                _innerHTML.replace(
+                    /{([^}]*)}/g,
+                    function ($0, $1) {
+                        var flink = $1.split(",",5);
+                        if(style=='beautify'){
+                            contents +=`
+                                <div class="site-card">
+                                    <a class="img" target="_blank" href="${flink[1]}" title="${flink[0]}">
+                                        <img class="flink-avatar entered loaded" style="pointer-events: none;" alt="${flink[0]}" ${GLOBAL_CONFIG.source.img.src}="${flink[4] || flink[2]}" >
+                                    </a>
+
+                                    <a class="info cf-friends-link" target="_blank" href="${flink[1]}" title="${flink[0]}">
+                                        <div class="site-card-avatar no-lightbox">
+                                            <img class="flink-avatar cf-friends-avatar" alt="${flink[0]}" ${GLOBAL_CONFIG.source.img.src}="${flink[2]}">
+                                        </div>
+                                        <div class="site-card-text">
+                                            <span class="title cf-friends-name">${flink[0]}</span>
+                                            <span class="desc" title="${flink[3]}">${flink[3]}</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            `
+                        }
+                        if(style=='default'){
+                            contents +=`
+                                <div class="flink-list-item">
+                                    <a class="cf-friends-link" rel="external nofollow" target="_blank" href="${flink[1]}" title="${flink[0]}">
+                                        <img class="flink-avatar cf-friends-avatar" alt="${flink[0]}" ${GLOBAL_CONFIG.source.img.src}="${flink[2]}">
+                                        <div class="flink-item-info no-lightbox">
+                                            <span class="flink-item-name cf-friends-name">${flink[0]}</span>
+                                            <span class="flink-item-desc" title="${flink[3]}">${flink[3]}</span>
+                                            <img ${GLOBAL_CONFIG.source.img.src}="${flink[2]}">
+                                        </div>
+                                    </a>
+                                </div>
+                            `
+                        }
+                    }
+
+                );
+                if(this.options.desc!=null && this.options.desc!=''){
+                    class_desc =`
+                     <div class="flink-desc">${this.options.desc}</div>
+                    `
+                }
+                if(this.options.style=='beautify'){
+                    content =`
+                        <div class="site-card-group">
+                          ${contents}
+                        </div>
+                    `
+                }
+                if(this.options.style=='default'){
+                    content =`
+                        <div class="flink-list">
+                           ${contents}
+                        </div>
+                    `
+                }
+                let htmlStr = `
+                    <div class="flink" id="article-container">
+                       <div class="flink-name">${this.options.name}</div>
+					   ${class_desc}
+                       ${content}
+					</div>
+				`;
+                this.innerHTML = htmlStr;
+            }
+        }
+    );
+
+
     customElements.define(
         "hao-dplayer",
         class HaoDplayer extends HTMLElement {
