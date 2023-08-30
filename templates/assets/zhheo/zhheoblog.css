@@ -15788,6 +15788,7 @@ span.hexo-douban-pagenum {
     align-items: center;
     justify-content: center;
     margin-right: 8px;
+    user-select: none
 }
 
 .author-content-item.skills .skill-icon img {
@@ -15797,6 +15798,7 @@ span.hexo-douban-pagenum {
 
 .author-content-item.skills .skill-name {
     font-weight: bold;
+    line-height: 1
 }
 
 /* 关于页面滚动 */

@@ -9,168 +9,164 @@
             <span class="author-content-item-title">开启创造力</span>
             <div class="skills-style-group">
                 <div class="tags-group-all">
-                    <div class="tags-group-wrapper">
-                        <div class="tags-group-all">
-                            <!--  banners 使用默认值-->
-                            <div class="tags-group-wrapper"
-                                 th:if="${#strings.equals(theme.config.top.BannerLeft.bannersBackground, 'default')}">
-                                <div class="tags-group-icon-pair">
-                                    <div class="tags-group-icon" style="background:#989bf8">
-                                        <img th:src="${assets_link + '/images/icons/AfterEffect.png'}"
-                                             title="AfterEffect">
-                                    </div>
-                                    <div class="tags-group-icon" style="background:#fff">
-                                        <img th:src="${assets_link + '/images/icons/Sketch.png'}"
-                                             title="Sketch">
-                                    </div>
-                                </div>
-                                <div class="tags-group-icon-pair">
-                                    <div class="tags-group-icon" style="background:#57b6e6">
-                                        <img th:src="${assets_link + '/images/icons/Docker.png'}"
-                                             title="Docker">
-                                    </div>
-                                    <div class="tags-group-icon" style="background:#4082c3">
-                                        <img th:src="${assets_link + '/images/icons/Photoshop.png'}"
-                                             title="Photoshop">
-                                    </div>
-                                </div>
-                                <div class="tags-group-icon-pair">
-                                    <div class="tags-group-icon" style="background:#fff">
-                                        <img th:src="${assets_link + '/images/icons/FinalCutPro.png'}"
-                                             title="FinalCutPro">
-                                    </div>
-                                    <div class="tags-group-icon" style="background:#fff">
-                                        <img th:src="${assets_link + '/images/icons/Python.png'}"
-                                             title="Python">
-                                    </div>
-                                </div>
-                                <div class="tags-group-icon-pair">
-                                    <div class="tags-group-icon" style="background:#eb6840">
-                                        <img th:src="${assets_link + '/images/icons/Swift.png'}"
-                                             title="Swift">
-                                    </div>
-                                    <div class="tags-group-icon" style="background:#8f55ba">
-                                        <img th:src="${assets_link + '/images/icons/Principle.png'}"
-                                             title="Principle">
-                                    </div>
-                                </div>
-                                <div class="tags-group-icon-pair">
-                                    <div class="tags-group-icon" style="background:#f29e39">
-                                        <img th:src="${assets_link + '/images/icons/illustrator.png'}"
-                                             title="illustrator">
-                                    </div>
-                                    <div class="tags-group-icon" style="background:#2c51db">
-                                        <img th:src="${assets_link + '/images/icons/CSS3.png'}" title="CSS3">
-                                    </div>
-                                </div>
-                                <div class="tags-group-icon-pair">
-                                    <div class="tags-group-icon" style="background:#f7cb4f">
-                                        <img th:src="${assets_link + '/images/icons/JS.png'}" title="JS">
-                                    </div>
-                                    <div class="tags-group-icon" style="background:#e9572b">
-                                        <img th:src="${assets_link + '/images/icons/HTML.png'}" title="HTML">
-                                    </div>
-                                </div>
-                                <div class="tags-group-icon-pair">
-                                    <div class="tags-group-icon" style="background:#df5b40">
-                                        <img th:src="${assets_link + '/images/icons/Git.webp'}" title="Git">
-                                    </div>
-                                    <div class="tags-group-icon" style="background:#e65164">
-                                        <img th:src="${assets_link + '/images/icons/Apifox.webp'}"
-                                             title="Apifox">
-                                    </div>
-                                </div>
-                                <div class="tags-group-icon-pair">
-                                    <div class="tags-group-icon" style="background:#989bf8">
-                                        <img th:src="${assets_link + '/images/icons/AfterEffect.png'}"
-                                             title="AfterEffect">
-                                    </div>
-                                    <div class="tags-group-icon" style="background:#fff">
-                                        <img th:src="${assets_link + '/images/icons/Sketch.png'}"
-                                             title="Sketch">
-                                    </div>
-                                </div>
-                                <div class="tags-group-icon-pair">
-                                    <div class="tags-group-icon" style="background:#57b6e6">
-                                        <img th:src="${assets_link + '/images/icons/Docker.png'}"
-                                             title="Docker">
-                                    </div>
-                                    <div class="tags-group-icon" style="background:#4082c3">
-                                        <img th:src="${assets_link + '/images/icons/Photoshop.png'}"
-                                             title="Photoshop">
-                                    </div>
-                                </div>
-                                <div class="tags-group-icon-pair">
-                                    <div class="tags-group-icon" style="background:#fff">
-                                        <img th:src="${assets_link + '/images/icons/FinalCutPro.png'}"
-                                             title="FinalCutPro">
-                                    </div>
-                                    <div class="tags-group-icon" style="background:#fff">
-                                        <img th:src="${assets_link + '/images/icons/Python.png'}"
-                                             title="Python">
-                                    </div>
-                                </div>
-                                <div class="tags-group-icon-pair">
-                                    <div class="tags-group-icon" style="background:#eb6840">
-                                        <img th:src="${assets_link + '/images/icons/Swift.png'}"
-                                             title="Swift">
-                                    </div>
-                                    <div class="tags-group-icon" style="background:#8f55ba">
-                                        <img th:src="${assets_link + '/images/icons/Principle.png'}"
-                                             title="Principle">
-                                    </div>
-                                </div>
-                                <div class="tags-group-icon-pair">
-                                    <div class="tags-group-icon" style="background:#f29e39">
-                                        <img th:src="${assets_link + '/images/icons/illustrator.png'}"
-                                             title="illustrator">
-                                    </div>
-                                    <div class="tags-group-icon" style="background:#2c51db">
-                                        <img th:src="${assets_link + '/images/icons/CSS3.png'}" title="CSS3">
-                                    </div>
-                                </div>
-                                <div class="tags-group-icon-pair">
-                                    <div class="tags-group-icon" style="background:#f7cb4f">
-                                        <img th:src="${assets_link + '/images/icons/JS.png'}" title="JS">
-                                    </div>
-                                    <div class="tags-group-icon" style="background:#e9572b">
-                                        <img th:src="${assets_link + '/images/icons/HTML.png'}" title="HTML">
-                                    </div>
-                                </div>
-                                <div class="tags-group-icon-pair">
-                                    <div class="tags-group-icon" style="background:#df5b40">
-                                        <img th:src="${assets_link + '/images/icons/Git.webp'}" title="Git">
-                                    </div>
-                                    <div class="tags-group-icon" style="background:#e65164">
-                                        <img th:src="${assets_link + '/images/icons/Apifox.webp'}"
-                                             title="Apifox">
-                                    </div>
-                                </div>
+                    <!--  banners 使用默认值-->
+                    <div class="tags-group-wrapper"
+                         th:if="${#strings.equals(theme.config.top.BannerLeft.bannersBackground, 'default')}">
+                        <div class="tags-group-icon-pair">
+                            <div class="tags-group-icon" style="background:#989bf8">
+                                <img th:src="${assets_link + '/images/icons/AfterEffect.png'}"
+                                     title="AfterEffect">
                             </div>
-
-                            <!--  banners 使用默认值-->
-                            <div class="tags-group-wrapper"
-                                 th:if="${#strings.equals(theme.config.top.BannerLeft.bannersBackground, 'techStack')}"
-                                 th:with="techs = ${theme.config.top.BannerLeft.techStack}">
-                                <th:block th:each="tech,iterStat : ${techs}">
-                                    <div class="tags-group-icon-pair" th:if="${iterStat.odd}">
-                                        <div class="tags-group-icon"
-                                             th:style="'background:' + ${techOdd.background}"
-                                             th:with="techOdd = ${techs.get(iterStat.index - 1)}">
-                                            <img th:src="@{${techOdd.url}}"
-                                                 th:title="${techOdd.name}">
-                                        </div>
-
-                                        <div class="tags-group-icon"
-                                             th:style="'background:' + ${techEven.background}"
-                                             th:with="techEven = ${tech}">
-                                            <img th:src="@{${techEven.url}}"
-                                                 th:title="${techEven.name}">
-                                        </div>
-                                    </div>
-                                </th:block>
+                            <div class="tags-group-icon" style="background:#fff">
+                                <img th:src="${assets_link + '/images/icons/Sketch.png'}"
+                                     title="Sketch">
                             </div>
                         </div>
+                        <div class="tags-group-icon-pair">
+                            <div class="tags-group-icon" style="background:#57b6e6">
+                                <img th:src="${assets_link + '/images/icons/Docker.png'}"
+                                     title="Docker">
+                            </div>
+                            <div class="tags-group-icon" style="background:#4082c3">
+                                <img th:src="${assets_link + '/images/icons/Photoshop.png'}"
+                                     title="Photoshop">
+                            </div>
+                        </div>
+                        <div class="tags-group-icon-pair">
+                            <div class="tags-group-icon" style="background:#fff">
+                                <img th:src="${assets_link + '/images/icons/FinalCutPro.png'}"
+                                     title="FinalCutPro">
+                            </div>
+                            <div class="tags-group-icon" style="background:#fff">
+                                <img th:src="${assets_link + '/images/icons/Python.png'}"
+                                     title="Python">
+                            </div>
+                        </div>
+                        <div class="tags-group-icon-pair">
+                            <div class="tags-group-icon" style="background:#eb6840">
+                                <img th:src="${assets_link + '/images/icons/Swift.png'}"
+                                     title="Swift">
+                            </div>
+                            <div class="tags-group-icon" style="background:#8f55ba">
+                                <img th:src="${assets_link + '/images/icons/Principle.png'}"
+                                     title="Principle">
+                            </div>
+                        </div>
+                        <div class="tags-group-icon-pair">
+                            <div class="tags-group-icon" style="background:#f29e39">
+                                <img th:src="${assets_link + '/images/icons/illustrator.png'}"
+                                     title="illustrator">
+                            </div>
+                            <div class="tags-group-icon" style="background:#2c51db">
+                                <img th:src="${assets_link + '/images/icons/CSS3.png'}" title="CSS3">
+                            </div>
+                        </div>
+                        <div class="tags-group-icon-pair">
+                            <div class="tags-group-icon" style="background:#f7cb4f">
+                                <img th:src="${assets_link + '/images/icons/JS.png'}" title="JS">
+                            </div>
+                            <div class="tags-group-icon" style="background:#e9572b">
+                                <img th:src="${assets_link + '/images/icons/HTML.png'}" title="HTML">
+                            </div>
+                        </div>
+                        <div class="tags-group-icon-pair">
+                            <div class="tags-group-icon" style="background:#df5b40">
+                                <img th:src="${assets_link + '/images/icons/Git.webp'}" title="Git">
+                            </div>
+                            <div class="tags-group-icon" style="background:#e65164">
+                                <img th:src="${assets_link + '/images/icons/Apifox.webp'}"
+                                     title="Apifox">
+                            </div>
+                        </div>
+                        <div class="tags-group-icon-pair">
+                            <div class="tags-group-icon" style="background:#989bf8">
+                                <img th:src="${assets_link + '/images/icons/AfterEffect.png'}"
+                                     title="AfterEffect">
+                            </div>
+                            <div class="tags-group-icon" style="background:#fff">
+                                <img th:src="${assets_link + '/images/icons/Sketch.png'}"
+                                     title="Sketch">
+                            </div>
+                        </div>
+                        <div class="tags-group-icon-pair">
+                            <div class="tags-group-icon" style="background:#57b6e6">
+                                <img th:src="${assets_link + '/images/icons/Docker.png'}"
+                                     title="Docker">
+                            </div>
+                            <div class="tags-group-icon" style="background:#4082c3">
+                                <img th:src="${assets_link + '/images/icons/Photoshop.png'}"
+                                     title="Photoshop">
+                            </div>
+                        </div>
+                        <div class="tags-group-icon-pair">
+                            <div class="tags-group-icon" style="background:#fff">
+                                <img th:src="${assets_link + '/images/icons/FinalCutPro.png'}"
+                                     title="FinalCutPro">
+                            </div>
+                            <div class="tags-group-icon" style="background:#fff">
+                                <img th:src="${assets_link + '/images/icons/Python.png'}"
+                                     title="Python">
+                            </div>
+                        </div>
+                        <div class="tags-group-icon-pair">
+                            <div class="tags-group-icon" style="background:#eb6840">
+                                <img th:src="${assets_link + '/images/icons/Swift.png'}"
+                                     title="Swift">
+                            </div>
+                            <div class="tags-group-icon" style="background:#8f55ba">
+                                <img th:src="${assets_link + '/images/icons/Principle.png'}"
+                                     title="Principle">
+                            </div>
+                        </div>
+                        <div class="tags-group-icon-pair">
+                            <div class="tags-group-icon" style="background:#f29e39">
+                                <img th:src="${assets_link + '/images/icons/illustrator.png'}"
+                                     title="illustrator">
+                            </div>
+                            <div class="tags-group-icon" style="background:#2c51db">
+                                <img th:src="${assets_link + '/images/icons/CSS3.png'}" title="CSS3">
+                            </div>
+                        </div>
+                        <div class="tags-group-icon-pair">
+                            <div class="tags-group-icon" style="background:#f7cb4f">
+                                <img th:src="${assets_link + '/images/icons/JS.png'}" title="JS">
+                            </div>
+                            <div class="tags-group-icon" style="background:#e9572b">
+                                <img th:src="${assets_link + '/images/icons/HTML.png'}" title="HTML">
+                            </div>
+                        </div>
+                        <div class="tags-group-icon-pair">
+                            <div class="tags-group-icon" style="background:#df5b40">
+                                <img th:src="${assets_link + '/images/icons/Git.webp'}" title="Git">
+                            </div>
+                            <div class="tags-group-icon" style="background:#e65164">
+                                <img th:src="${assets_link + '/images/icons/Apifox.webp'}"
+                                     title="Apifox">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  banners 使用默认值-->
+                    <div class="tags-group-wrapper"
+                         th:if="${#strings.equals(theme.config.top.BannerLeft.bannersBackground, 'techStack')}"
+                         th:with="techs = ${theme.config.top.BannerLeft.techStack}">
+                        <th:block th:each="tech,iterStat : ${techs}">
+                            <div class="tags-group-icon-pair" th:if="${iterStat.odd}">
+                                <div class="tags-group-icon"
+                                     th:style="'background:' + ${techOdd.background}"
+                                     th:with="techOdd = ${techs.get(iterStat.index - 1)}">
+                                    <img th:src="@{${techOdd.url}}"
+                                         th:title="${techOdd.name}">
+                                </div>
+
+                                <div class="tags-group-icon"
+                                     th:style="'background:' + ${techEven.background}"
+                                     th:with="techEven = ${tech}">
+                                    <img th:src="@{${techEven.url}}"
+                                         th:title="${techEven.name}">
+                                </div>
+                            </div>
+                        </th:block>
                     </div>
                 </div>
 
