@@ -148,6 +148,29 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /**
+     *  toc
+     */
+    const tocFn = function () {
+        const postContent = document.querySelector('.post-content');
+
+        if (postContent == null) return;
+
+        const headers = postContent.querySelectorAll('h1,h2,h3,h4,h5,h6');
+        // 没有 toc 目录，则直接移除
+        if (headers.length === 0) {
+            document.getElementById("card-toc").remove();
+        } else {
+            tocbot.init({
+                tocSelector: '.toc-content',
+                contentSelector: '.post-content',
+                headingSelector: 'h1,h2,h3,h4,h5,h6',
+                hasInnerContainers: true
+            });
+
+        }
+    }
+
+    /**
      * 滾動處理
      */
     const scrollFn = function () {
@@ -446,6 +469,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (GLOBAL_CONFIG.isPost) {
             addRuntime();
+            tocFn();
         } else {
             addLastPushDate()
             toggleCardCategory()

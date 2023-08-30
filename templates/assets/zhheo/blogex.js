@@ -452,13 +452,6 @@ function removeLoading() {
     }, 3000)
 }
 
-//移除pwa
-navigator.serviceWorker.getRegistrations().then(function (registrations) {
-    for (let registration of registrations) {
-        registration.unregister()
-    }
-})
-
 function addFriendLink() {
     var input = document.getElementsByClassName('el-textarea__inner')[0];
     let evt = document.createEvent('HTMLEvents');
@@ -672,7 +665,6 @@ function initBlog() {
         //隐藏加载动画
     GLOBAL_CONFIG.loadingBox &&  heo.hideLoading(),
         checkUrlAndAddHideBanner()
-
 }
 
 // 如果当前页有评论就执行函数
