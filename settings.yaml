@@ -16,7 +16,7 @@ spec:
           name: siteStartTime
           label: 建站时间
           validation: required
-          value: '2023-08-05'
+          value: "2023-08-05"
           help: 注意，此项为必填项
         - $formkit: text
           name: icp
@@ -41,7 +41,7 @@ spec:
           name: leftMenu
           label: 站点名左侧
           help: 默认只有主菜单，可前往【外观】—>【菜单】新建菜单组
-          value: ''
+          value: ""
         - $formkit: group
           name: right
           label: 导航栏右侧
@@ -122,7 +122,7 @@ spec:
               name: typed
               if: $get(enable_above).value
               label: 打字机显示的文字
-              value: []
+              value: [ ]
               children:
                 - $formkit: text
                   name: text
@@ -160,7 +160,7 @@ spec:
               if: $get(enable_above).value  &&  $get(enable_above_video).value
               label: 动态壁纸
               placeholder: 请填写动态壁纸地址
-              value: ''
+              value: ""
               help: http(s)://xxx.mp4
             - $formkit: attachment
               name: index_img
@@ -204,27 +204,27 @@ spec:
             bannersTitleBig: Halo Theme Hao
             bannersTitleSmall: 更多信息请关注 GitHub
             categoryGroup:
-              - title: '必看精选'
-                icon: 'haofont hao-icon-book'
-                url: '/'
-                colorOneLight: '#358bff'
-                colorTwoLight: '#15c6ff'
-                colorOneDark: '#0653b8'
-                colorTwoDark: '#2fcbff'
-              - title: '热门文章'
-                icon: 'haofont hao-icon-fire'
-                url: '/'
-                colorOneLight: '#ff6655'
-                colorTwoLight: '#ffbf37'
-                colorOneDark: '#e22a16'
-                colorTwoDark: '#da980c'
-              - title: '实用教程'
-                icon: 'haofont hao-icon-book'
-                url: '/'
-                colorOneLight: '#18e7ae'
-                colorTwoLight: '#1eebeb'
-                colorOneDark: '#099e74'
-                colorTwoDark: '#0ea4a4'
+              - title: "必看精选"
+                icon: "haofont hao-icon-book"
+                url: "/"
+                colorOneLight: "#358bff"
+                colorTwoLight: "#15c6ff"
+                colorOneDark: "#0653b8"
+                colorTwoDark: "#2fcbff"
+              - title: "热门文章"
+                icon: "haofont hao-icon-fire"
+                url: "/"
+                colorOneLight: "#ff6655"
+                colorTwoLight: "#ffbf37"
+                colorOneDark: "#e22a16"
+                colorTwoDark: "#da980c"
+              - title: "实用教程"
+                icon: "haofont hao-icon-book"
+                url: "/"
+                colorOneLight: "#18e7ae"
+                colorTwoLight: "#1eebeb"
+                colorOneDark: "#099e74"
+                colorTwoDark: "#0ea4a4"
             techStack:
           children:
             - $formkit: select
@@ -239,7 +239,7 @@ spec:
               name: techStack
               label: 个人技术栈
               help: 需要选择上方“个人技术栈”
-              value: []
+              value: [ ]
               children:
                 - $formkit: text
                   name: name
@@ -272,39 +272,39 @@ spec:
                   label: 标题
                   placeholder: 请输入内容
                   validation: required
-                  value: '必看精选'
+                  value: "必看精选"
                 - $formkit: text
                   name: icon
                   label: 图标
                   placeholder: 请输入内容
                   validation: required
-                  value: 'haofont hao-icon-book'
+                  value: "haofont hao-icon-book"
                 - $formkit: url
                   name: url
                   label: 跳转地址
                   placeholder: 请输入内容
                   validation: required
-                  value: '/'
+                  value: "/"
                 - $formkit: color
                   name: colorOneLight
                   label: 颜色1 (浅色)
                   validation: required
-                  value: '#358bff'
+                  value: "#358bff"
                 - $formkit: color
                   name: colorTwoLight
                   label: 颜色2 (浅色)
                   validation: required
-                  value: '#15c6ff'
+                  value: "#15c6ff"
                 - $formkit: color
                   name: colorOneDark
                   label: 颜色1 (深色)
                   validation: required
-                  value: '#0653b8'
+                  value: "#0653b8"
                 - $formkit: color
                   name: colorTwoDark
                   label: 颜色2 (深色)
                   validation: required
-                  value: '#2fcbff'
+                  value: "#2fcbff"
         - $formkit: group
           name: BannerRight
           label: Banner 右侧
@@ -380,7 +380,7 @@ spec:
                 - $formkit: postSelect
                   name: post
                   label: 文章
-                  value: ''
+                  value: ""
                   validation: required
 
     - group: layout
@@ -416,7 +416,7 @@ spec:
               if: $get(nav).value === 'custom-category'
               name: navCustomCategory
               label: 自定义分类
-              value: []
+              value: [ ]
               children:
                 - $formkit: categorySelect
                   name: category
@@ -425,7 +425,7 @@ spec:
               if: $get(nav).value === 'custom-tag'
               name: navCustomTag
               label: 自定义标签
-              value: []
+              value: [ ]
               children:
                 - $formkit: tagSelect
                   name: tag
@@ -434,7 +434,7 @@ spec:
               if: $get(nav).value === 'custom-url'
               name: navCustomUrl
               label: 自定义路径
-              value: []
+              value: [ ]
               children:
                 - $formkit: text
                   name: title
@@ -531,7 +531,7 @@ spec:
             postWidgets: profile,wechat,toc,comments,recent-posts,categories,tags-stat
             tagWidgets: profile,wechat,comments,recent-posts,categories,tags-stat
             categoryWidgets: profile,wechat,comments,recent-posts,categories,tags-stat
-            pageWidgets: ''
+            pageWidgets: ""
           children:
             - $formkit: textarea
               name: indexWidgets
@@ -576,7 +576,7 @@ spec:
             - $formkit: text
               if: $get(profileStyle).value == 'one'
               name: desc
-              value: '分享设计与科技生活'
+              value: "分享设计与科技生活"
               label: 卡片名称下面的描述
             - $formkit: text
               name: helloText
@@ -598,7 +598,7 @@ spec:
               label: 社交媒体
               help: 此处社交媒体最多设置两个
               max: 2
-              value: []
+              value: [ ]
               children:
                 - $formkit: select
                   name: icon
@@ -701,19 +701,19 @@ spec:
             - $formkit: text
               name: key
               label: 腾讯位置服务Key
-              value: 'xxxx'
+              value: "xxxx"
               help: 申请地址：https://lbs.qq.com/dev/console/application/mine
             - $formkit: text
               name: locationLng
               label: 经度坐标
-              value: '113.215456'
+              value: "113.215456"
               help: 可访问 https://lbs.qq.com/getPoint 拾取坐标，示例：113.215456
               placeholder: 请输入经度坐标
             - $formkit: text
               name: locationLat
               label: 纬度坐标
               help: 示例：22.582401
-              value: '22.582401'
+              value: "22.582401"
               placeholder: 请输入纬度坐标
         - $formkit: group
           name: music
@@ -891,7 +891,7 @@ spec:
             - $formkit: repeater
               name: socialMediaLeft
               label: 左侧
-              value: []
+              value: [ ]
               children:
                 - $formkit: select
                   name: icon
@@ -972,7 +972,7 @@ spec:
             - $formkit: repeater
               name: socialMediaRight
               label: 右侧
-              value: []
+              value: [ ]
               children:
                 - $formkit: select
                   name: icon
@@ -1120,51 +1120,51 @@ spec:
                   name: work_img
                   label: 上班时间的徽标
                   placeholder: 请输入内容
-                  value: 'https://0206.ink/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg'
+                  value: "https://0206.ink/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
                 - $formkit: text
                   if: $get(runtime_enable).value
                   name: work_description
                   label: 上班时间的 title 描述
                   placeholder: 请输入内容
-                  value: '距离月入25k也就还差一个大佬带我~'
+                  value: "距离月入25k也就还差一个大佬带我~"
                 - $formkit: attachment
                   if: $get(runtime_enable).value
                   name: offduty_img
                   label: 下班时间的徽标
                   placeholder: 请输入内容
-                  value: 'https://0206.ink/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg'
+                  value: "https://0206.ink/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
                 - $formkit: text
                   if: $get(runtime_enable).value
                   name: offduty_description
                   label: 下班时间的 title 描述
                   placeholder: 请输入内容
-                  value: '下班了就该开开心心的玩耍，嘿嘿~'
+                  value: "下班了就该开开心心的玩耍，嘿嘿~"
                 - $formkit: repeater
                   name: bdageitem
                   label: 徽标配置项
                   value:
-                    - link: 'https://halo.run/'
-                      shields: 'https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/Frame-Halo-blue.svg'
-                      message: '博客框架为halo2.x'
+                    - link: "https://halo.run/"
+                      shields: "https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/Frame-Halo-blue.svg"
+                      message: "博客框架为halo2.x"
                   children:
                     - $formkit: url
                       name: link
                       label: 链接
                       placeholder: 请输入内容
-                      value: 'https://halo.run/'
+                      value: "https://halo.run/"
                       validation: required
                     - $formkit: attachment
                       name: shields
                       label: 徽标
                       placeholder: 请输入内容
                       validation: required
-                      value: 'https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/Frame-Halo-blue.svg'
+                      value: "https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/Frame-Halo-blue.svg"
                     - $formkit: text
                       name: message
                       label: 徽标 title
                       placeholder: 请输入内容
                       validation: required
-                      value: '博客框架为halo2.x'
+                      value: "博客框架为halo2.x"
 
     - group: post
       label: 文章
@@ -1284,7 +1284,7 @@ spec:
         - $formkit: text
           if: $get(copyrightsStyle).value == 'one'
           name: desc
-          value: '分享设计与科技生活'
+          value: "分享设计与科技生活"
           label: 版权样式一(描述)
         - $formkit: group
           name: post_edit
@@ -1436,11 +1436,11 @@ spec:
           value: 我和我的小伙伴们
         - $formkit: url
           name: fcircleUrl
-          value: '/fcircle'
+          value: "/fcircle"
           label: 鱼塘链接
         - $formkit: url
           name: linksUrl
-          value: '/links'
+          value: "/links"
           label: 友链链接
         - $formkit: radio
           name: linksCanvas
@@ -1455,7 +1455,7 @@ spec:
           name: linksArticle
           height: 200
           label: 底部显示内容
-          value: ''
+          value: ""
           language: html
 
     - group: fcircle
@@ -1490,7 +1490,7 @@ spec:
           placeholder: 请输入跳转 url
         - $formkit: url
           name: apiurl
-          value: 'https://moments.0206.ink/'
+          value: "https://moments.0206.ink/"
           label: token地址
           placeholder: 请输入token地址
         - $formkit: radio
@@ -1581,7 +1581,7 @@ spec:
         - $formkit: repeater
           name: list
           label: 待办清单
-          value: []
+          value: [ ]
           children:
             - $formkit: text
               name: class_name
@@ -1599,7 +1599,7 @@ spec:
             - $formkit: repeater
               name: todo_list
               label: 内容列表
-              value: []
+              value: [ ]
               children:
                 - $formkit: textarea
                   name: content
@@ -1638,7 +1638,7 @@ spec:
         - $formkit: repeater
           name: category_list
           label: 我的装备
-          value: []
+          value: [ ]
           children:
             - $formkit: text
               name: category_name
@@ -1653,7 +1653,7 @@ spec:
             - $formkit: repeater
               name: equipment_list
               label: 装备列表
-              value: []
+              value: [ ]
               children:
                 - $formkit: attachment
                   name: img
@@ -1692,12 +1692,12 @@ spec:
           name: widgets
           label: 小部件
           value: content-idea,hello-about,authorCareers,personalities-photo,textarea,game,like-music,statistics-map
-          help: content-idea（我的介绍&我的想法）, hello-about（我的问候）, authorCareers（技能&职业生涯）, personalities-photo（性格&图片）, textarea（座右铭）, game（爱好）, like-music（关注偏好&音乐偏好）, statistics-map（数据统计&地图位置）。你可以随意组合或排序，以逗号隔开。
+          help: content-idea（我的介绍&我的想法）, hello-about（我的问候）, authorCareers（技能&职业生涯）, personalities-photo（性格&图片）, textarea（座右铭）, game（爱好）, like-music（关注偏好&音乐偏好）, statistics-map（数据统计&音乐偏好）。你可以随意组合或排序，以逗号隔开。
         - $formkit: repeater
           name: authorInfoLeftTags
           label: 个人标签-左
           help: 头像左侧个人标签
-          value: []
+          value: [ ]
           children:
             - $formkit: text
               name: tag
@@ -1707,7 +1707,7 @@ spec:
           name: authorInfoRightTags
           label: 个人标签-右
           help: 头像右侧个人标签
-          value: []
+          value: [ ]
           children:
             - $formkit: text
               name: tag
@@ -1742,7 +1742,7 @@ spec:
             - $formkit: repeater
               name: authorCareersTags
               label: 标签
-              value: []
+              value: [ ]
               children:
                 - $formkit: color
                   name: background
@@ -2072,7 +2072,7 @@ spec:
         - $formkit: repeater
           name: reward_list
           label: 打赏名单
-          value: []
+          value: [ ]
           children:
             - $formkit: text
               name: name
@@ -2145,37 +2145,37 @@ spec:
               name: cover
               label: 头部图片
               placeholder: 请输入内容
-              value: 'https://npm.elemecdn.com/hexo-butterfly-envelope/lib/violet.jpg'
+              value: "https://npm.elemecdn.com/hexo-butterfly-envelope/lib/violet.jpg"
             - $formkit: attachment
               name: line
               label: 底部图片
               placeholder: 请输入内容
-              value: 'https://npm.elemecdn.com/hexo-butterfly-envelope/lib/line.png'
+              value: "https://npm.elemecdn.com/hexo-butterfly-envelope/lib/line.png"
             - $formkit: attachment
               name: beforeimg
               label: 前半部分图片
               placeholder: 请输入内容
-              value: 'https://npm.elemecdn.com/hexo-butterfly-envelope/lib/before.png'
+              value: "https://npm.elemecdn.com/hexo-butterfly-envelope/lib/before.png"
             - $formkit: attachment
               name: afterimg
               label: 后半部分图片
               placeholder: 请输入内容
-              value: 'https://npm.elemecdn.com/hexo-butterfly-envelope/lib/after.png'
+              value: "https://npm.elemecdn.com/hexo-butterfly-envelope/lib/after.png"
         - $formkit: repeater
           name: messageList
           if: $get(enable_envelope_comment).value
           label: 正文
           value:
-            - content: '有什么想问的？'
-            - content: '有什么想说的？'
-            - content: '有什么想吐槽的？'
-            - content: '哪怕是有什么想吃的，都可以告诉我哦~'
+            - content: "有什么想问的？"
+            - content: "有什么想说的？"
+            - content: "有什么想吐槽的？"
+            - content: "哪怕是有什么想吃的，都可以告诉我哦~"
           children:
             - $formkit: text
               name: content
               label: 内容
               placeholder: 请输入内容
-              value: '有什么想问的？'
+              value: "有什么想问的？"
         - $formkit: text
           name: bottom
           if: $get(enable_envelope_comment).value
@@ -2278,11 +2278,11 @@ spec:
         - $formkit: color
           name: themeLightSkin
           label: 主题浅色基色
-          value: '#425AEF'
+          value: "#425AEF"
         - $formkit: color
           name: themeDarkSkin
           label: 主题深色基色
-          value: '#f2b94b'
+          value: "#f2b94b"
         - $formkit: radio
           name: universe
           label: 深色模式粒子效果
@@ -2391,156 +2391,156 @@ spec:
           label: 代码块主题（浅色）随着系统主题变化
           value: one-light
           options:
-            - value: 'one-dark'
-              label: 'one-dark'
-            - value: 'one-light'
-              label: 'one-light'
-            - value: 'a11y-dark'
-              label: 'a11y-dark'
-            - value: 'atom-dark'
-              label: 'atom-dark'
-            - value: 'base16-ateliersulphurpool.light'
-              label: 'base16-ateliersulphurpool.light'
-            - value: 'cb'
-              label: 'cb'
-            - value: 'coldark-cold'
-              label: 'coldark-cold'
-            - value: 'coldark-dark'
-              label: 'coldark-dark'
-            - value: 'coy-without-shadows'
-              label: 'coy-without-shadows'
-            - value: 'darcula'
-              label: 'darcula'
-            - value: 'dracula'
-              label: 'dracula'
-            - value: 'duotone-dark'
-              label: 'duotone-dark'
-            - value: 'duotone-earth'
-              label: 'duotone-earth'
-            - value: 'duotone-forest'
-              label: 'duotone-forest'
-            - value: 'duotone-light'
-              label: 'duotone-light'
-            - value: 'duotone-sea'
-              label: 'duotone-sea'
-            - value: 'duotone-space'
-              label: 'duotone-space'
-            - value: 'ghcolors'
-              label: 'ghcolors'
-            - value: 'gruvbox-dark'
-              label: 'gruvbox-dark'
-            - value: 'gruvbox-light'
-              label: 'gruvbox-light'
-            - value: 'holi-theme'
-              label: 'holi-theme'
-            - value: 'hopscotch'
-              label: 'hopscotch'
-            - value: 'lucario'
-              label: 'lucario'
-            - value: 'material-dark'
-              label: 'material-dark'
-            - value: 'material-light'
-              label: 'material-light'
-            - value: 'material-oceanic'
-              label: 'material-oceanic'
-            - value: 'night-owl'
-              label: 'night-owl'
-            - value: 'nord'
-              label: 'nord'
-            - value: 'pojoaque'
-              label: 'pojoaque'
-            - value: 'shades-of-purple'
-              label: 'shades-of-purple'
-            - value: 'solarized-dark-atom'
-              label: 'solarized-dark-atom'
-            - value: 'synthwave84'
-              label: 'synthwave84'
-            - value: 'vs'
-              label: 'vs'
-            - value: 'vsc-dark-plus'
-              label: 'vsc-dark-plus'
-            - value: 'xonokai'
-              label: 'xonokai'
-            - value: 'z-touch'
-              label: 'z-touch'
+            - value: "one-dark"
+              label: "one-dark"
+            - value: "one-light"
+              label: "one-light"
+            - value: "a11y-dark"
+              label: "a11y-dark"
+            - value: "atom-dark"
+              label: "atom-dark"
+            - value: "base16-ateliersulphurpool.light"
+              label: "base16-ateliersulphurpool.light"
+            - value: "cb"
+              label: "cb"
+            - value: "coldark-cold"
+              label: "coldark-cold"
+            - value: "coldark-dark"
+              label: "coldark-dark"
+            - value: "coy-without-shadows"
+              label: "coy-without-shadows"
+            - value: "darcula"
+              label: "darcula"
+            - value: "dracula"
+              label: "dracula"
+            - value: "duotone-dark"
+              label: "duotone-dark"
+            - value: "duotone-earth"
+              label: "duotone-earth"
+            - value: "duotone-forest"
+              label: "duotone-forest"
+            - value: "duotone-light"
+              label: "duotone-light"
+            - value: "duotone-sea"
+              label: "duotone-sea"
+            - value: "duotone-space"
+              label: "duotone-space"
+            - value: "ghcolors"
+              label: "ghcolors"
+            - value: "gruvbox-dark"
+              label: "gruvbox-dark"
+            - value: "gruvbox-light"
+              label: "gruvbox-light"
+            - value: "holi-theme"
+              label: "holi-theme"
+            - value: "hopscotch"
+              label: "hopscotch"
+            - value: "lucario"
+              label: "lucario"
+            - value: "material-dark"
+              label: "material-dark"
+            - value: "material-light"
+              label: "material-light"
+            - value: "material-oceanic"
+              label: "material-oceanic"
+            - value: "night-owl"
+              label: "night-owl"
+            - value: "nord"
+              label: "nord"
+            - value: "pojoaque"
+              label: "pojoaque"
+            - value: "shades-of-purple"
+              label: "shades-of-purple"
+            - value: "solarized-dark-atom"
+              label: "solarized-dark-atom"
+            - value: "synthwave84"
+              label: "synthwave84"
+            - value: "vs"
+              label: "vs"
+            - value: "vsc-dark-plus"
+              label: "vsc-dark-plus"
+            - value: "xonokai"
+              label: "xonokai"
+            - value: "z-touch"
+              label: "z-touch"
         - $formkit: select
           name: theme_dark
           if: $get(enable).value
           label: 代码块主题（深色）随着系统主题变化
           value: one-dark
           options:
-            - value: 'one-dark'
-              label: 'one-dark'
-            - value: 'one-light'
-              label: 'one-light'
-            - value: 'a11y-dark'
-              label: 'a11y-dark'
-            - value: 'atom-dark'
-              label: 'atom-dark'
-            - value: 'base16-ateliersulphurpool.light'
-              label: 'base16-ateliersulphurpool.light'
-            - value: 'cb'
-              label: 'cb'
-            - value: 'coldark-cold'
-              label: 'coldark-cold'
-            - value: 'coldark-dark'
-              label: 'coldark-dark'
-            - value: 'coy-without-shadows'
-              label: 'coy-without-shadows'
-            - value: 'darcula'
-              label: 'darcula'
-            - value: 'dracula'
-              label: 'dracula'
-            - value: 'duotone-dark'
-              label: 'duotone-dark'
-            - value: 'duotone-earth'
-              label: 'duotone-earth'
-            - value: 'duotone-forest'
-              label: 'duotone-forest'
-            - value: 'duotone-light'
-              label: 'duotone-light'
-            - value: 'duotone-sea'
-              label: 'duotone-sea'
-            - value: 'duotone-space'
-              label: 'duotone-space'
-            - value: 'ghcolors'
-              label: 'ghcolors'
-            - value: 'gruvbox-dark'
-              label: 'gruvbox-dark'
-            - value: 'gruvbox-light'
-              label: 'gruvbox-light'
-            - value: 'holi-theme'
-              label: 'holi-theme'
-            - value: 'hopscotch'
-              label: 'hopscotch'
-            - value: 'lucario'
-              label: 'lucario'
-            - value: 'material-dark'
-              label: 'material-dark'
-            - value: 'material-light'
-              label: 'material-light'
-            - value: 'material-oceanic'
-              label: 'material-oceanic'
-            - value: 'night-owl'
-              label: 'night-owl'
-            - value: 'nord'
-              label: 'nord'
-            - value: 'pojoaque'
-              label: 'pojoaque'
-            - value: 'shades-of-purple'
-              label: 'shades-of-purple'
-            - value: 'solarized-dark-atom'
-              label: 'solarized-dark-atom'
-            - value: 'synthwave84'
-              label: 'synthwave84'
-            - value: 'vs'
-              label: 'vs'
-            - value: 'vsc-dark-plus'
-              label: 'vsc-dark-plus'
-            - value: 'xonokai'
-              label: 'xonokai'
-            - value: 'z-touch'
-              label: 'z-touch'
+            - value: "one-dark"
+              label: "one-dark"
+            - value: "one-light"
+              label: "one-light"
+            - value: "a11y-dark"
+              label: "a11y-dark"
+            - value: "atom-dark"
+              label: "atom-dark"
+            - value: "base16-ateliersulphurpool.light"
+              label: "base16-ateliersulphurpool.light"
+            - value: "cb"
+              label: "cb"
+            - value: "coldark-cold"
+              label: "coldark-cold"
+            - value: "coldark-dark"
+              label: "coldark-dark"
+            - value: "coy-without-shadows"
+              label: "coy-without-shadows"
+            - value: "darcula"
+              label: "darcula"
+            - value: "dracula"
+              label: "dracula"
+            - value: "duotone-dark"
+              label: "duotone-dark"
+            - value: "duotone-earth"
+              label: "duotone-earth"
+            - value: "duotone-forest"
+              label: "duotone-forest"
+            - value: "duotone-light"
+              label: "duotone-light"
+            - value: "duotone-sea"
+              label: "duotone-sea"
+            - value: "duotone-space"
+              label: "duotone-space"
+            - value: "ghcolors"
+              label: "ghcolors"
+            - value: "gruvbox-dark"
+              label: "gruvbox-dark"
+            - value: "gruvbox-light"
+              label: "gruvbox-light"
+            - value: "holi-theme"
+              label: "holi-theme"
+            - value: "hopscotch"
+              label: "hopscotch"
+            - value: "lucario"
+              label: "lucario"
+            - value: "material-dark"
+              label: "material-dark"
+            - value: "material-light"
+              label: "material-light"
+            - value: "material-oceanic"
+              label: "material-oceanic"
+            - value: "night-owl"
+              label: "night-owl"
+            - value: "nord"
+              label: "nord"
+            - value: "pojoaque"
+              label: "pojoaque"
+            - value: "shades-of-purple"
+              label: "shades-of-purple"
+            - value: "solarized-dark-atom"
+              label: "solarized-dark-atom"
+            - value: "synthwave84"
+              label: "synthwave84"
+            - value: "vs"
+              label: "vs"
+            - value: "vsc-dark-plus"
+              label: "vsc-dark-plus"
+            - value: "xonokai"
+              label: "xonokai"
+            - value: "z-touch"
+              label: "z-touch"
 
     - group: tool
       label: 小部件
@@ -2577,12 +2577,12 @@ spec:
               name: id
               label: 音乐的id
               help: 歌单的id，可以从音乐歌单分享的链接中获取
-              value: 'xxxxxx'
+              value: "xxxxxx"
             - $formkit: text
               name: server
               label: 服务
               help: 歌单的服务商，例如netease（网易云音乐）,tencent（腾讯）,kugou（酷狗）,xiami（小米音乐）,baidu（百度音乐）
-              value: 'tencent'
+              value: "tencent"
             - $formkit: url
               name: all_playlist
               label: 播放列表地址
@@ -2665,7 +2665,7 @@ spec:
           label: 懒加载
           value:
             enable: true
-            errorImg: '/themes/theme-hao/assets/images/404.gif'
+            errorImg: "/themes/theme-hao/assets/images/404.gif"
             loadingImg: /themes/theme-hao/assets/images/404s.gif
           children:
             - $formkit: radio
