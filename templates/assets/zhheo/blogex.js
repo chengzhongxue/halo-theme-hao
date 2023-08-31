@@ -660,6 +660,7 @@ function initBlog() {
     heo.stopImgRightDrag(),
     heo.onlyHome(),
     heo.addNavBackgroundInit(),
+    heo.reflashEssayWaterFall(),
     heo.darkModeStatus(),
     heo.initThemeColor(),
     //隐藏加载动画
@@ -859,8 +860,13 @@ document.addEventListener('pjax:send', function () {
         heo.showLoading();
     }
 
-})
-document.addEventListener('DOMContentLoaded', function () {
-    heo.reflashEssayWaterFall()
+
 })
 
+document.addEventListener('DOMContentLoaded', function () {
+    //页脚友联
+    if(GLOBAL_CONFIG.isFriendLinksInFooter){
+        heo.addFriendLinksInFooter()
+    }
+    heo.reflashEssayWaterFall()
+})
