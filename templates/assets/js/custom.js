@@ -432,7 +432,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // flink 友链标签
     customElements.define(
         "hao-flink",
-        class HaoGalleryGroup extends HTMLElement {
+        class HaoFlink extends HTMLElement {
             constructor() {
                 super();
                 this.options = {
