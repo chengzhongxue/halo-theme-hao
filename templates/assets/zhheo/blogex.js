@@ -864,9 +864,5 @@ document.addEventListener('pjax:send', function () {
 })
 
 document.addEventListener('DOMContentLoaded', function () {
-    //页脚友联
-    if(GLOBAL_CONFIG.isFriendLinksInFooter){
-        heo.addFriendLinksInFooter()
-    }
     heo.reflashEssayWaterFall()
 })
