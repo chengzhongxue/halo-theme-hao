@@ -220,10 +220,7 @@
         removeLoading();
     }
     //页脚友联
-    if(GLOBAL_CONFIG.isFriendLinksInFooter){
-        heo.addFriendLinksInFooter()
-    }
-
+    GLOBAL_CONFIG.isFriendLinksInFooter && heo.addFriendLinksInFooter()
     //音乐页面切换歌曲调用
     if(GLOBAL_CONFIG.isMusic){
         heo.changeMusicBg(false);
