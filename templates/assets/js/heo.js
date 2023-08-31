@@ -78,6 +78,9 @@ var heo = {
         }
         htmlText += `<a class='footer-item' href='${linksUrl}'>更多</a>`
         document.getElementById("friend-links-in-footer").innerHTML = htmlText;
+        if(document.getElementById("friend-links-in-footer")){
+            document.getElementById("friend-links-in-footer").innerHTML = htmlText;
+        }
     },
 
     //禁止图片右键单击
