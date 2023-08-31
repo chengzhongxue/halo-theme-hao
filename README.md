@@ -15,7 +15,7 @@
 <!-- 快捷导航 -->
 <p align="center">
 
-[主题预览](#-预览) | [快速上手](#-安装) | [使用文档](https://docs.liuzhihang.com) | [加入我们](#-讨论)
+[主题预览](#-预览) | [快速上手](#-安装) | [使用文档](https://www.yuque.com/liuzhihangs/halo-theme-hao) | [加入我们](#-讨论)
 
 </p>
 </div>
