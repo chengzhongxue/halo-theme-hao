@@ -647,24 +647,25 @@ function listenToPageInputPress() {
 function initBlog() {
     // 图片主色
     GLOBAL_CONFIG.source.post.dynamicBackground && coverColor(),
-        percent(),
-        heo.topCategoriesBarScroll(),
-        heo.initIndexEssay(),
-        setBodyDataType(),
-        listenToPageInputPress(),
-        heo.topPostScroll(),
-        heo.sayhi(),
-        heo.qrcodeCreate(),
-        //右下角 snackbar 弹窗
+    percent(),
+    heo.topCategoriesBarScroll(),
+    heo.initIndexEssay(),
+    setBodyDataType(),
+    listenToPageInputPress(),
+    heo.topPostScroll(),
+    heo.sayhi(),
+    heo.qrcodeCreate(),
+    //右下角 snackbar 弹窗
     GLOBAL_CONFIG.source.tool.switch && heo.hidecookie(),
-        heo.stopImgRightDrag(),
-        heo.onlyHome(),
-        heo.addNavBackgroundInit(),
-        heo.darkModeStatus(),
-        heo.initThemeColor(),
-        //隐藏加载动画
+    heo.stopImgRightDrag(),
+    heo.onlyHome(),
+    heo.addNavBackgroundInit(),
+    heo.reflashEssayWaterFall(),
+    heo.darkModeStatus(),
+    heo.initThemeColor(),
+    //隐藏加载动画
     GLOBAL_CONFIG.loadingBox &&  heo.hideLoading(),
-        checkUrlAndAddHideBanner()
+    checkUrlAndAddHideBanner()
 }
 
 // 如果当前页有评论就执行函数
@@ -860,12 +861,4 @@ document.addEventListener('pjax:send', function () {
     }
 
 
-})
-
-document.addEventListener('DOMContentLoaded', function () {
-    //页脚友联
-    if(GLOBAL_CONFIG.isFriendLinksInFooter){
-        heo.addFriendLinksInFooter()
-    }
-    heo.reflashEssayWaterFall()
 })
