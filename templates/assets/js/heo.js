@@ -70,10 +70,6 @@ var heo = {
         const linksUrl = GLOBAL_CONFIG.source.links.linksUrl
         const links = GLOBAL_CONFIG.source.links.linksData
         const num = GLOBAL_CONFIG.source.links.linksNum
-        console.log()
-        if(links){
-
-        }
         var randomFriendLinks = getArrayItems(links, num);
         var htmlText = '';
         for (let i = 0; i < randomFriendLinks.length; ++i) {
