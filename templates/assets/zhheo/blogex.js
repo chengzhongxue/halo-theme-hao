@@ -660,7 +660,6 @@ function initBlog() {
     heo.stopImgRightDrag(),
     heo.onlyHome(),
     heo.addNavBackgroundInit(),
-    heo.reflashEssayWaterFall(),
     heo.darkModeStatus(),
     heo.initThemeColor(),
     //隐藏加载动画
