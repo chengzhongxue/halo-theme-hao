@@ -13,6 +13,7 @@
         var nowHour;
         var t;
         var n;
+        var currentImg;   // 记录上一次修改图片地址
 
         // 计算并更新天数、小时数、分钟数和秒数
         function updateTime() {
@@ -55,10 +56,20 @@
                 img = "[(${theme.config.footer.footerContent.style_one.offduty_img})]";
                 description = "[(${theme.config.footer.footerContent.style_one.offduty_description})]";
             }
-            if (document.getElementById("workboard")) {
-                currentTimeHtml =  `<img class="workSituationImg boardsign" src="${img}" alt="${description}" title="${description}">
-                <div id="runtimeTextTip"> 本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='haofont hao-icon-heartbeat' style='color:red'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${n} 个天文单位 🚀 </div>`
-                document.getElementById("workboard").innerHTML = currentTimeHtml;
+            
+            // 1s一次图片会不停闪动，如果判断上下班图片未改变，只修改时间，图片改变再全部更新。并且给图片和时间加上固定高度，因为innerHTML渲染时宽高重新渲染导致整体页面抖动，触发滚动条以及页面头部站点名称闪动
+            if (currentImg != img) {
+                currentImg = img;
+                if (document.getElementById("workboard")) {
+                    currentTimeHtml = `<img style="height: 20px" class="workSituationImg boardsign" src="${img}" alt="${description}" title="${description}">
+                        <div  style="height: 46px" id="runtimeTextTip"> 本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='haofont hao-icon-heartbeat' style='color:red'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${n} 个天文单位 🚀 </div>`
+                    document.getElementById("workboard").innerHTML = currentTimeHtml;
+                }
+            } else {
+                if (document.getElementById("runtimeTextTip")) {
+                    currentTimeHtml = ` 本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='haofont hao-icon-heartbeat' style='color:red'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${n} 个天文单位 🚀 `
+                    document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+                }
             }
         }
         setInterval(() => {
