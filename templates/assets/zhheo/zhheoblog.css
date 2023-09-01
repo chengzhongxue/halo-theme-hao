@@ -2328,8 +2328,8 @@ blockquote footer cite::before {
 #aside-content .card-more-btn:hover {
     animation: 1s ease 0s infinite normal none running more-btn-move;
 }
-
-@media screen and (min-width: 900px) {
+/* 小于900px判断使用max-width */
+@media screen and (max-width: 900px) { 
     html.hide-aside .layout {
         -webkit-box-pack: center;
         justify-content: center;
