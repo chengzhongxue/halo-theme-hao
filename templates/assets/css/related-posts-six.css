@@ -3,7 +3,6 @@
 .relatedPosts-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 .relatedPosts>.relatedPosts-list>div {
     background: #363636;
