@@ -97,6 +97,26 @@
         <main class="layout" id="content-inner" th:classappend="${theme.config.sidebar.location}">
             <div id="post">
 
+
+                <!-- 文章ai摘要 -->
+                <div class="post-ai" th:if="${theme.config.post.aiDescription.aiDescriptionEnable}">
+                    <div class="ai-title"><i class="haofont hao-icon-bilibili"></i>
+                        <div class="ai-title-text">AI-摘要</div>
+                        <div th:if="${theme.config.post.aiDescription.switchBtn}" id="ai-Toggle">切换</div>
+                        <i class="haofont hao-icon-arrow-rotate-right"></i>
+                        <div th:if="${#strings.equals(theme.config.post.aiDescription.mode, 'local')}" class="ai-tag" id="ai-tag">[[${theme.config.post.aiDescription.gptName}]] GPT</div>
+                        <div th:if="${#strings.equals(theme.config.post.aiDescription.mode, 'tianli')}" class="ai-tag" id="ai-tag">Tianli GPT</div>
+                    </div>
+                    <div class="ai-explanation" style="display: block;">AI初始化中...</div>
+                    <div class="ai-btn-box">
+                        <div class="ai-btn-item">介绍自己</div>
+                        <div class="ai-btn-item">生成本文简介</div>
+                        <div class="ai-btn-item">推荐相关文章</div>
+                        <div class="ai-btn-item">前往主页</div>
+                        <div class="ai-btn-item" id="go-tianli-blog">前往tianli博客</div>
+                    </div>
+                </div>
+
                 <!-- 文章内容 -->
                 <article th:class="'post-content  '+${ theme.config.code.enable_line || pluginFinder.available('PluginPrismJS') ? 'line-numbers' : ''}" id="article-container" th:utext="${post.content.content}">
                 </article>
@@ -109,11 +129,12 @@
                 <th:block th:replace="~{modules/post/copyright :: copyright}"></th:block>
 
                 <nav class="pagination-post" id="pagination"
-                     th:with="postCursor = ${postFinder.cursor(post.metadata.name)}">
+                     th:with="postCursor = ${postFinder.cursor(post.metadata.name)},
+                     postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,'?') ? theme.config.layout.postRandomImg+'&' : theme.config.layout.postRandomImg+'?'}">
                     <div th:class="${postCursor.hasPrevious()==true && postCursor.hasNext()==false} ? 'prev-post2 pull-left postcarnepre' : 'prev-post pull-left'">
                         <a th:if="${postCursor.hasPrevious()}" th:href="@{${postCursor.previous.status.permalink}}">
                             <img alt="cover" id="preimg" class="nolazyload"
-                                 th:with="img = ${#strings.isEmpty(postCursor.previous.spec.cover) ? theme.config.layout.postRandomImg : postCursor.previous.spec.cover}"
+                                 th:with="img = ${#strings.isEmpty(postCursor.previous.spec.cover) ? postRandomImg+postCursor.previous.spec.title : postCursor.previous.spec.cover}"
                                  th:src="${isLazyload ? loadingImg : img}"
 
                                  th:data-lazy-src="${ isLazyload ? img : ''}">
@@ -126,7 +147,7 @@
                     <div th:class="${postCursor.hasPrevious()==false && postCursor.hasNext()==true} ? 'next-post2 pull-right postcarnepre':'next-post pull-right'">
                         <a th:if="${postCursor.hasNext()}" th:href="@{${postCursor.next.status.permalink}}">
                             <img alt="cover" id="preimg" class="nolazyload"
-                                 th:with="img = ${#strings.isEmpty(postCursor.next.spec.cover) ? theme.config.layout.postRandomImg : postCursor.next.spec.cover}"
+                                 th:with="img = ${#strings.isEmpty(postCursor.next.spec.cover) ? postRandomImg+postCursor.next.spec.title : postCursor.next.spec.cover}"
                                  th:src="${isLazyload ? loadingImg : img}"
                                  th:data-lazy-src="${ isLazyload ? img : ''}">
                             <div class="pagination-info">

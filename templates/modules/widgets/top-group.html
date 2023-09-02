@@ -3,7 +3,7 @@
 
 <!-- 推荐文章 -->
 <div class="topGroup" th:fragment="top-group" th:with='topGroupPosts = ${postFinder.list(1,6)},
-    postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg : theme.config.layout.postRandomImg+"?"}'
+    postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"&" : theme.config.layout.postRandomImg+"?"}'
 >
     <div class="recent-post-item"
          th:each="post : ${topGroupPosts}"
@@ -14,7 +14,7 @@
                 <span class="recent-post-top-text"
                       th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'">荐</span>
                 <img class="post_bg"
-                     th:with=' img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+","+post.spec.title : post.spec.cover}'
+                     th:with=' img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}'
                      th:alt="${post.spec.title}"
 
                      th:src="${isLazyload ? loadingImg : img}"
@@ -41,7 +41,7 @@
                     <span class="recent-post-top-text"
                           th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'">荐</span>
                     <img class="post_bg"
-                         th:with='img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+","+post.spec.title : post.spec.cover}'
+                         th:with='img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}'
                          th:alt="${post.spec.title}"
 
                          th:src="${isLazyload ? loadingImg : img}"

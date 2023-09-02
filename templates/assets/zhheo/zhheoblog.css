@@ -1369,9 +1369,9 @@ blockquote footer cite::before {
     transition: all 0.3s ease 0s;
 }
 
-@media screen and (max-width: 900px) {
-    .layout > div:first-child {
-        width: 100% !important;
+@media screen and (max-width: 1200px) {
+    .layout>div:first-child {
+        width:100%!important
     }
 }
 
@@ -6754,9 +6754,9 @@ a.console_switchbutton {
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1200px) {
     #aside-content {
-        display: none;
+        display:none
     }
 }
 

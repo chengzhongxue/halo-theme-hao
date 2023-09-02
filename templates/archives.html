@@ -13,7 +13,7 @@
             <div id="archive">
                 <div class="article-sort-title">文章 - [[${siteStatsFinder.getStats().post}]]</div>
                 <div class="article-sort" th:each="archive : ${archives.items}"
-                     th:with='postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"," : theme.config.layout.postRandomImg+"?"}'>
+                     th:with='postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"&" : theme.config.layout.postRandomImg+"?"}'>
                     <div class="article-sort-item year" th:text="${archive.year}"></div>
                     <div class="article-sort" th:each="month : ${archive.months}">
                         <!-- 月份没有样式所以不显示 -->

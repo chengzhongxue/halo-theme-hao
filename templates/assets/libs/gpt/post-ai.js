@@ -17,43 +17,44 @@
     let keys = GLOBAL_CONFIG.source.postAi.keys;
     let Referers = GLOBAL_CONFIG.source.postAi.Referers;
 
-    let post = document.querySelector('#post')
-    const interface = {
-        name: "AI-摘要",
-        aiToggle: "切换",
-        version: "Tianli GPT",
-        button: ["介绍自己", "生成本文简介", "推荐相关文章", "前往主页"],
-    }
-    // 插入html结构
-    const post_ai_box = document.createElement('div');
-    post_ai_box.className = 'post-ai';
-    post.insertBefore(post_ai_box, post.firstChild);
+    // let post = document.querySelector('#post')
+    // const interface = {
+    //     name: "AI-摘要",
+    //     aiToggle: "切换",
+    //     version: "Tianli GPT",
+    //     button: ["介绍自己", "生成本文简介", "推荐相关文章", "前往主页"],
+    // }
+    // // 插入html结构
+    // const post_ai_box = document.createElement('div');
+    // post_ai_box.className = 'post-ai';
+    // post.insertBefore(post_ai_box, post.firstChild);
+    //
+    // var PostAI = `
+    // <div class="ai-title">
+    // <i class="haofont hao-icon-bilibili"></i>
+    // <div class="ai-title-text">${interface.name}</div>`
+    // if (switchBtn) {
+    //     PostAI += `<div  id="ai-Toggle">${interface.aiToggle}</div> `;
+    // }
+    // PostAI += `<i class="haofont hao-icon-arrow-rotate-right"></i> `;
+    // if (modeName == 'local') {
+    //     PostAI += `<div class="ai-tag" id="ai-tag">${gptName} GPT</div>`;
+    // } else {
+    //     PostAI += `<div class="ai-tag" id="ai-tag">${interface.version}</div>     `;
+    // }
+    // PostAI += `
+    // </div>
+    // <div class="ai-explanation" style="display: block;">AI初始化中...</div>
+    // <div class="ai-btn-box">
+    //   <div class="ai-btn-item">${interface.button[0]}</div>
+    //   <div class="ai-btn-item">${interface.button[1]}</div>
+    //   <div class="ai-btn-item">${interface.button[2]}</div>
+    //   <div class="ai-btn-item">${interface.button[3]}</div>
+    //   <div class="ai-btn-item" id="go-tianli-blog">前往tianli博客</div>
+    // </div>`;
+    //
+    // post_ai_box.innerHTML = PostAI;
 
-    var PostAI = `
-    <div class="ai-title">
-    <i class="haofont hao-icon-bilibili"></i>
-    <div class="ai-title-text">${interface.name}</div>`
-    if (switchBtn) {
-        PostAI += `<div  id="ai-Toggle">${interface.aiToggle}</div> `;
-    }
-    PostAI += `<i class="haofont hao-icon-arrow-rotate-right"></i> `;
-    if (modeName == 'local') {
-        PostAI += `<div class="ai-tag" id="ai-tag">${gptName} GPT</div>`;
-    } else {
-        PostAI += `<div class="ai-tag" id="ai-tag">${interface.version}</div>     `;
-    }
-    PostAI += ` 
-    </div>
-    <div class="ai-explanation" style="display: block;">AI初始化中...</div>
-    <div class="ai-btn-box">
-      <div class="ai-btn-item">${interface.button[0]}</div>
-      <div class="ai-btn-item">${interface.button[1]}</div>
-      <div class="ai-btn-item">${interface.button[2]}</div>
-      <div class="ai-btn-item">${interface.button[3]}</div>
-      <div class="ai-btn-item" id="go-tianli-blog">前往tianli博客</div>
-    </div>`;
-
-    post_ai_box.innerHTML = PostAI;
     // 当前随机到的ai摘要到index
     let lastAiRandomIndex = -1;
     let animationRunning = true; // 标志变量，控制动画函数的运行
