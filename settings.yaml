@@ -1453,9 +1453,8 @@ spec:
               value: false
         - $formkit: code
           name: linksArticle
-          height: 200
+          height: 200px
           label: 底部显示内容
-          value: ""
           language: html
 
     - group: fcircle
@@ -2228,6 +2227,7 @@ spec:
             envId:
             accessToken:
             mailMd5:
+            js: ""
           children:
             - $formkit: number
               name: maxBarrage
@@ -2256,6 +2256,11 @@ spec:
               label: Twikoo评论 - 博主邮箱MD5值
               placeholder: 请输入md5值
               help: 用于验证博主评论，可前往cmd5.com加密自己使用的邮箱，选择32位小写
+            - $formkit: text
+              name: js
+              label: Twikoo评论 - js
+              placeholder: 请输入js文件地址
+              help: twikoo版本不是最新版本可以自己引入js文件
 
     - group: style
       label: 样式
