@@ -212,7 +212,7 @@
                     css: 'https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css'
                 },
                 twikoo:{
-                    js: [[${assets_link}]]+'/libs/twikoo/twikoo.all.min.js',
+                    js:[[${not #strings.isEmpty(theme.config.comments.twikoos.js) ? theme.config.comments.twikoos.js : assets_link +'/libs/twikoo/twikoo.all.min.js' }]],
                     maxBarrage: [[${ theme.config.comments.twikoos.maxBarrage }]],
                     barrageTime: [[${ theme.config.comments.twikoos.barrageTime }]],
                     twikooUrl: "[(${theme.config.comments.twikoos.envId})]",
