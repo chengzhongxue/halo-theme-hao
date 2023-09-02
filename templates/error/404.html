@@ -30,12 +30,12 @@
             <div class="aside-list">
                 <div class="aside-list-group"
                      th:with='topGroupPosts = ${postFinder.list(1,6)},
-                postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg : theme.config.layout.postRandomImg+"?"}'>
+                postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"&" : theme.config.layout.postRandomImg+"?"}'>
                     <div th:each="post : ${topGroupPosts}" class="aside-list-item"><a class="thumbnail"
                                                                                       th:href="@{${post.status.permalink}}"
                                                                                       th:title="${post.spec.title}"><img
                             loading="lazy"
-                            th:src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+","+post.spec.title : post.spec.cover}'
+                            th:src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}'
                             th:alt="${post.spec.title}"></a>
                         <div class="content"><a class="title" th:href="@{${post.status.permalink}}"
                                                 th:title="${post.spec.title}"

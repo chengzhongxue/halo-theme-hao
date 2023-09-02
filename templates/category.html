@@ -35,7 +35,7 @@
                     <!-- TODO 按照年份分组 需要 halo 提供归档数据-->
                     <!--<div class="article-sort-item year">2022</div>-->
                     <div class="article-sort-item" th:each="post : ${posts.items}"
-                         th:with='postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"," : theme.config.layout.postRandomImg+"?"}'>
+                         th:with='postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"&" : theme.config.layout.postRandomImg+"?"}'>
                         <a class="article-sort-item-img" th:href="@{${post.status.permalink}}"
                            th:title="${post.spec.title}">
                             <img th:alt="${post.spec.title}"
