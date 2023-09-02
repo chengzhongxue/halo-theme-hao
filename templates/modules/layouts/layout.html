@@ -12,6 +12,7 @@
 
 <head>
     <th:block th:replace="~{modules/head :: head(htmlType = ${htmlType})}"/>
+    <script th:src="${assets_link + '/js/custom.js'}"></script>
 </head>
 
 <body>
@@ -55,7 +56,6 @@
 <div th:replace="~{modules/right-menu :: right-menu}"></div>
 
 <div>
-    <script th:src="${assets_link + '/js/custom.js'}"></script>
     <script th:src="${assets_link + '/js/utils.js' + theme_version}"></script>
     <script th:src="${assets_link + '/js/main.js' + theme_version}"></script>
     <script charset="utf-8" data-pjax th:src="${assets_link + '/zhheo/blogex.js' + theme_version}"></script>
