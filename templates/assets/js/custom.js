@@ -300,60 +300,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // 分栏 tab
-    customElements.define(
-        "hao-tabs",
-        class HaoTabs extends HTMLElement {
-            constructor() {
-                super();
-                this.options = {
-                    id: this.getAttribute("id") || '',
-                    index: this.getAttribute("index") || ''
-                };
-                const id = this.options.id
-                const index = this.options.index
-                const _temp = getChildren(this, "_tpl");
-
-                let _innerHTML = _temp.innerHTML.trim().replace(/^(<br>)|(<br>)$/g, "");
-                let navs = "";
-                let contents = "";
-                let newIndex = 0;
-
-                _innerHTML.replace(
-                    /{tabs-item([^}]*)}([\s\S]*?){\/tabs-item}/g,
-                    function ($0, $1, $2) {
-                        newIndex +=1;
-                        let active =''
-                        if(index!='' && index!=null){
-                            if(newIndex == index){
-                                active = 'active';
-                            }
-                        }else{
-                            if(newIndex==1){
-                                active = 'active'
-                            }
-                        }
-                        navs += `
-						 	<li class="tab ${active}"><button type="button" data-href="#${id}-${newIndex}">${$1}</button></li>
-						`;
-                        contents += `
-							<div class="tab-item-content  ${active}" id="${id}-${newIndex}">
-							 ${$2.trim().replace(/^(<br>)|(<br>)$/g, "")}
-							   <button type="button" class="tab-to-top" aria-label="scroll to top"><i class="haofont hao-icon-arrow-up"></i></button>
-							</div>
-						`;
-                    }
-                );
-                let htmlStr = `
-					<div class="tabs" id="${this.options.id}">
-					   <ul class="nav-tabs">${navs}</ul>
-					   <div class="tab-contents">${contents}</div>
-					</div>
-			
-				`;
-                this.innerHTML = htmlStr;
-            }
-        }
-    );
+    // customElements.define(
+    //     "hao-tabs",
+    //     class HaoTabs extends HTMLElement {
+    //         constructor() {
+    //             super();
+    //             this.options = {
+    //                 id: this.getAttribute("id") || '',
+    //                 index: this.getAttribute("index") || ''
+    //             };
+    //             const id = this.options.id
+    //             const index = this.options.index
+    //             const _temp = getChildren(this, "_tpl");
+    //
+    //             let _innerHTML = _temp.innerHTML.trim().replace(/^(<br>)|(<br>)$/g, "");
+    //             let navs = "";
+    //             let contents = "";
+    //             let newIndex = 0;
+    //
+    //             _innerHTML.replace(
+    //                 /{tabs-item([^}]*)}([\s\S]*?){\/tabs-item}/g,
+    //                 function ($0, $1, $2) {
+    //                     newIndex +=1;
+    //                     let active =''
+    //                     if(index!='' && index!=null){
+    //                         if(newIndex == index){
+    //                             active = 'active';
+    //                         }
+    //                     }else{
+    //                         if(newIndex==1){
+    //                             active = 'active'
+    //                         }
+    //                     }
+    //                     navs += `
+	// 					 	<li class="tab ${active}"><button type="button" data-href="#${id}-${newIndex}">${$1}</button></li>
+	// 					`;
+    //                     contents += `
+	// 						<div class="tab-item-content  ${active}" id="${id}-${newIndex}">
+	// 						 ${$2.trim().replace(/^(<br>)|(<br>)$/g, "")}
+	// 						   <button type="button" class="tab-to-top" aria-label="scroll to top"><i class="haofont hao-icon-arrow-up"></i></button>
+	// 						</div>
+	// 					`;
+    //                 }
+    //             );
+    //             let htmlStr = `
+	// 				<div class="tabs" id="${this.options.id}">
+	// 				   <ul class="nav-tabs">${navs}</ul>
+	// 				   <div class="tab-contents">${contents}</div>
+	// 				</div>
+	//
+	// 			`;
+    //             this.innerHTML = htmlStr;
+    //         }
+    //     }
+    // );
 
     // gallerygroup 相册图库
     customElements.define(
@@ -590,48 +590,5 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     );
-
-    customElements.define(
-        "hao-bilibili",
-        class HaoBilibili extends HTMLElement {
-            constructor() {
-                super();
-                this.options = {
-                    bvid: this.getAttribute("bvid"),
-                    page: +(this.getAttribute("page") || "1"),
-                    width: this.getAttribute("width") || "100%",
-                    height: this.getAttribute("height") || "500px",
-                };
-                this.render();
-            }
-            render() {
-                if (this.options.bvid)
-                    this.innerHTML = `<iframe allowfullscreen="true" class="hao_vplayer" src="//player.bilibili.com/player.html?bvid=${this.options.bvid}&page=${this.options.page}" style="width:${this.options.width};height:${this.options.height}"></iframe>`;
-                else this.innerHTML = "bvid未填写！";
-            }
-        }
-    );
-
-    // customElements.define(
-    //     "hao-pdf",
-    //     class HaoPdf extends HTMLElement {
-    //         constructor() {
-    //             super();
-    //             this.options = {
-    //                 src: this.getAttribute("src") || "",
-    //                 width: this.getAttribute("width") || "100%",
-    //                 height: this.getAttribute("height") || "500px",
-    //             };
-    //             this.render();
-    //         }
-    //         render() {
-    //             if (!this.options.src) return (this.innerHTML = "pdf地址未填写！");
-    //             this.innerHTML = `
-    // 			<div >
-    // 				<iframe src="/themes/theme-hao/assets/libs/pdfjs/web/viewer.html?file=${this.options.src}" style="width:${this.options.width};height:${this.options.height}"></iframe>
-    // 			</div>`;
-    //         }
-    //     }
-    // );
 
 });
