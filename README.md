@@ -97,10 +97,9 @@
 - 友链页面 [plugin-links](https://github.com/halo-sigs/plugin-links)
 - 瞬间页面 [plugin-moments](https://github.com/halo-sigs/plugin-moments) 
 - 代码高亮 [plugin-prismjs](https://github.com/liuzhihang/plugin-prismjs)
-- 图片懒加载 [plugin-lazyload](https://github.com/liuzhihang/plugin-lazyload)
 - 追番插件 [plugin-bilibili-bangumi](https://github.com/Roozenlz/plugin-bilibili-bangumi)
 - 图库插件 [plugin-photos](https://github.com/halo-sigs/plugin-photos)
-- Tool-Bench [Tool-Bench](https://github.com/DioxideCN/Tool-Bench)
+- 主题标签 [plugin-haotag](https://github.com/chengzhongxue/plugin-haotag)
 
 > 更多插件请参见：https://github.com/halo-sigs/awesome-halo
 
