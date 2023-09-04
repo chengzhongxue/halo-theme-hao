@@ -3,7 +3,7 @@
 
 <th:block th:fragment="footer-style-one">
 
-    <script th:if="${theme.config.footer.footerContent.footerStyle == 'one'}" async="async">(function () {
+    <script th:if="${theme.config.footer.footerContent.style_one.runtime_enable}" async="async">(function () {
         var grt = new Date("[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[1]}]]/[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[2]}]]/[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] 00:00:00"); //设置网站上线时间
         var now = new Date();
         var dnum;
