@@ -1079,36 +1079,43 @@ spec:
           name: footerContent
           label: 页脚内容
           value:
-            footerStyle: default
+            style_one:
+              owner_enable: false
+              runtime_enable: true
+              work_img: "https://0206.ink/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
+              work_description: "距离月入25k也就还差一个大佬带我~"
+              offduty_img: "https://0206.ink/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
+              offduty_description: "下班了就该开开心心的玩耍，嘿嘿~"
+              bdageitem:
+                - link: "https://halo.run/"
+                  shields: "https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/Frame-Halo-blue.svg"
+                  message: "博客框架为halo2.x"
+            default_enable: true
           children:
-            - $formkit: select
-              name: footerStyle
-              id: footeStyle
-              key: footeStyle
-              label: 样式
-              value: default
+            - $formkit: radio
+              name: default_enable
+              label: 底部
               options:
-                - value: default
-                  label: 默认
-                - value: one
-                  label: 样式一
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
             - $formkit: group
-              if: $get(footeStyle).value == 'one'
               name: style_one
-              label: 样式一
+              label: 中间
               value:
-                runtime_enable:
-                work_img:
-                work_description:
-                offduty_img:
-                offduty_description:
-                bdageitem:
               children:
+                - $formkit: radio
+                  name: owner_enable
+                  label: 网站所有者
+                  options:
+                    - label: 显示
+                      value: true
+                    - label: 隐藏
+                      value: false
                 - $formkit: radio
                   name: runtime_enable
                   id: runtime_enable
-                  key: runtime_enable
-                  value: true
                   label: 运行时间
                   options:
                     - label: 显示
@@ -1120,32 +1127,25 @@ spec:
                   name: work_img
                   label: 上班时间的徽标
                   placeholder: 请输入内容
-                  value: "https://0206.ink/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
                 - $formkit: text
                   if: $get(runtime_enable).value
                   name: work_description
                   label: 上班时间的 title 描述
                   placeholder: 请输入内容
-                  value: "距离月入25k也就还差一个大佬带我~"
                 - $formkit: attachment
                   if: $get(runtime_enable).value
                   name: offduty_img
                   label: 下班时间的徽标
                   placeholder: 请输入内容
-                  value: "https://0206.ink/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
                 - $formkit: text
                   if: $get(runtime_enable).value
                   name: offduty_description
                   label: 下班时间的 title 描述
                   placeholder: 请输入内容
-                  value: "下班了就该开开心心的玩耍，嘿嘿~"
                 - $formkit: repeater
                   name: bdageitem
                   label: 徽标配置项
                   value:
-                    - link: "https://halo.run/"
-                      shields: "https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/Frame-Halo-blue.svg"
-                      message: "博客框架为halo2.x"
                   children:
                     - $formkit: url
                       name: link

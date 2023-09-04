@@ -53,10 +53,45 @@
 
     </th:block>
     <!-- 底部 banner -->
-
     <halo:footer />
 
-    <div th:if="${theme.config.footer.footerContent.footerStyle == 'default'}" id="footer-banner">
+    <div class="copyright" th:if="${not #strings.isEmpty(theme.config.basics.siteStartTime) && theme.config.footer.footerContent.style_one.owner_enable}">
+        ©[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] - [[${#dates.format(new
+        java.util.Date(), 'yyyy')}]] By [[${site.title}]]
+    </div>
+    <div class="copyright" th:if="${#strings.isEmpty(theme.config.basics.siteStartTime) && theme.config.footer.footerContent.style_one.owner_enable}">
+        ©[[${#dates.format(new java.util.Date(), 'yyyy')}]] By [[${site.title}]]
+    </div>
+    <div th:if="${theme.config.footer.footerContent.style_one.runtime_enable}" id="workboard"></div>
+    <p id="ghbdages"
+       th:with="bdageitem = ${theme.config.footer.footerContent.style_one.bdageitem}">
+        <a class="github-badge" th:each="data : ${bdageitem}" target="_blank"
+           th:href="@{${data.link}}" style="margin-inline:5px"
+           th:title="${data.message}">
+            <img th:with=" img = @{${data.shields}}"
+                 th:src="${isLazyload ? '' : img}"
+                 th:data-lazy-src="${ isLazyload ? img : ''}"
+                 th:alt="${data.message}" />
+        </a>
+    </p>
+    <span th:if="${!theme.config.footer.footerContent.default_enable}"  style="padding: 20px 20px;">
+
+    </span>
+
+    <style>
+        .copyright,#ghbdages,#workboard {
+            text-align: center;
+        }
+
+    </style>
+
+    <style th:if="${(theme.config.footer.footerContent.style_one.owner_enable || not #lists.isEmpty(theme.config.footer.footerContent.style_one.bdageitem)) && theme.config.footer.footerContent.default_enable}">
+        #heo-footer {
+            margin-bottom: 1rem;
+        }
+    </style>
+
+    <div th:if="${theme.config.footer.footerContent.default_enable}" id="footer-banner">
         <div class="footer-banner-links">
             <div class="footer-banner-left">
                 <div id="footer-banner-tips">
@@ -98,41 +133,6 @@
         </div>
     </div>
 
-    <th:block  th:if="${theme.config.footer.footerContent.footerStyle == 'one'}">
-        <div class="copyright" th:if="${not #strings.isEmpty(theme.config.basics.siteStartTime)}">
-            ©[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] - [[${#dates.format(new
-            java.util.Date(), 'yyyy')}]] By [[${site.title}]]
-        </div>
-        <div class="copyright" th:if="${#strings.isEmpty(theme.config.basics.siteStartTime)}">
-            ©[[${#dates.format(new java.util.Date(), 'yyyy')}]] By [[${site.title}]]
-        </div>
-        <div th:if="${theme.config.footer.footerContent.style_one.runtime_enable}" id="workboard"></div>
-        <p id="ghbdages"
-           th:with="bdageitem = ${theme.config.footer.footerContent.style_one.bdageitem}">
-            <a class="github-badge" th:each="data : ${bdageitem}" target="_blank"
-               th:href="@{${data.link}}" style="margin-inline:5px"
-               th:title="${data.message}">
-                <img th:with=" img = @{${data.shields}}"
-                     th:src="${isLazyload ? '' : img}"
-                     th:data-lazy-src="${ isLazyload ? img : ''}"
-                     th:alt="${data.message}" />
-            </a>
-        </p>
-        <span style="padding: 20px 20px;">
-
-        </span>
-
-        <style>
-            [data-theme="light"] .copyright,#ghbdages,#workboard{
-                color: var(--font-color);
-            }
-            .copyright,#ghbdages,#workboard {
-                position: relative;
-                padding: 0px 20px;
-                text-align: center;
-            }
-        </style>
-    </th:block>
 
     <!-- 右下角 snackbar 弹窗 -->
     <div th:if="${theme.config.tool.snackbar.switch}" class="needEndHide" id="cookies-window">

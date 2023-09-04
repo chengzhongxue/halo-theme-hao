@@ -67,19 +67,23 @@ var heo = {
 
     // 页脚友链
     addFriendLinksInFooter: function () {
+        const fetchUrl = "/apis/api.plugin.halo.run/v1alpha1/plugins/PluginLinks/links?keyword=&sort=priority,asc"
         const linksUrl = GLOBAL_CONFIG.source.links.linksUrl
-        const links = GLOBAL_CONFIG.source.links.linksData
         const num = GLOBAL_CONFIG.source.links.linksNum
-        var randomFriendLinks = getArrayItems(links, num);
-        var htmlText = '';
-        for (let i = 0; i < randomFriendLinks.length; ++i) {
-            var item = randomFriendLinks[i]
-            htmlText += `<a class='footer-item' href='${item.spec.url}'  target="_blank" rel="noopener nofollow">${item.spec.displayName}</a>`;
-        }
-        htmlText += `<a class='footer-item' href='${linksUrl}'>更多</a>`
-        if(document.getElementById("friend-links-in-footer")){
-            document.getElementById("friend-links-in-footer").innerHTML = htmlText;
-        }
+        fetch(fetchUrl)
+            .then(res => res.json())
+            .then(json => {
+                var randomFriendLinks = getArrayItems(json.items, num);
+                var htmlText = '';
+                for (let i = 0; i < randomFriendLinks.length; ++i) {
+                    var item = randomFriendLinks[i]
+                    htmlText += `<a class='footer-item' href='${item.spec.url}'  target="_blank" rel="noopener nofollow">${item.spec.displayName}</a>`;
+                }
+                htmlText += `<a class='footer-item' href='${linksUrl}'>更多</a>`
+                if(document.getElementById("friend-links-in-footer")){
+                    document.getElementById("friend-links-in-footer").innerHTML = htmlText;
+                }
+            })
     },
 
     //禁止图片右键单击

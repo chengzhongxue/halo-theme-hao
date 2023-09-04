@@ -406,7 +406,7 @@ function addRightMenuClickEvent() {
     });
     $('#menu-copylink').on('click', rm.copyLink);
     $('#menu-downloadimg').on('click', function () {
-        heo.downloadImage(domImgSrc, 'kunkunyu');
+        heo.downloadImage(domImgSrc, 'hao');
     });
     $('#menu-newwindowimg').on('click', function () {
         window.open(domImgSrc, "_blank");
