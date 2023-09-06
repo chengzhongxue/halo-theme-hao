@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="rightside">
+    <div id="rightside">
+        <div id="rightside-config-hide">
+            <button th:if="${htmlType == 'post' && theme.config.tool.rightside.readmode}" id="readmode" type="button" title="阅读模式"><i class="haofont hao-icon-book-open"></i></button>
+            <!-- <button id="translateLink" type="button" title="简繁转换">繁</button> -->
+            <button id="darkmode" type="button" title="浅色和深色模式转换"><i class="haofont hao-icon-circle-half-stroke"></i></button>
+            <button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="haofont hao-icon-arrows-left-right"></i></button>
+        </div>
+        <div id="rightside-config-show">
+            <button id="rightside-config" type="button" title="设置"><i class="haofont hao-icon-gear"></i></button>
+            <a id="to_comment" href="javascript:heo.scrollTo('post-comment')" title="直达评论" ><i class="haofont hao-icon-comments"></i></a>
+            <a id="switch-commentBarrage" href="javascript:heo.switchCommentBarrage();" rel="external nofollow noreferrer" title="开关弹幕" draggable="false" data-pjax-state="external"><i class="haofont hao-icon-danmu"></i></a>
+            <button id="go-up" type="button" title="回到顶部"><i class="haofont hao-icon-arrow-up"></i></button>
+        </div>
+    </div>
+    <style th:if="${!theme.config.tool.rightside.rightsideEnable}">
+        #rightside {
+            display: none;
+        }
+    </style>
+
+    <link th:if="${theme.config.tool.rightside.readmode && theme.config.tool.rightside.rightsideEnable}"
+          rel="stylesheet" th:href="${assets_link + '/css/read-mode.css' + theme_version}">
+</th:block>
+</html>
