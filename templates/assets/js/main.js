@@ -237,18 +237,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-
-    function setFixed(el) {
-        if (!el) return
-        const currentTop = window.scrollY || document.documentElement.scrollTop
-        if (currentTop > 0) {
-            el.classList.add('nav-fixed')
-        } else {
-            el.classList.remove('nav-fixed')
-        }
-    }
-
-
     /**
      * menu
      * 側邊欄sub-menu 展開/收縮
@@ -440,15 +428,6 @@ document.addEventListener('DOMContentLoaded', function () {
             callback_error: (img) => {
                 img.setAttribute("srcset", GLOBAL_CONFIG.lazyload.error);
             }
-        })
-    }
-
-    const relativeDate = function (selector) {
-        selector.forEach(item => {
-            const $this = item
-            const timeVal = $this.getAttribute('datetime')
-            $this.innerText = btf.diffDate(timeVal, true)
-            $this.style.display = 'inline'
         })
     }
 

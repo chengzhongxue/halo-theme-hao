@@ -1691,8 +1691,8 @@ blockquote footer cite::before {
 }
 
 #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap {
-    color: rgb(133, 133, 133);
-    font-size: 90%;
+    color: var(--heo-fontcolor);
+    font-size: .7rem;
 }
 
 #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap > .post-meta-date {
@@ -8348,7 +8348,7 @@ li {
     }
 
     .recent-post-item .recent-post-info .recent-post-info-top .article-title {
-        font-size: 22px;
+        font-size: 20px;
         -webkit-line-clamp: 2;
     }
 
@@ -9345,14 +9345,10 @@ a.article-meta__category:hover {
     }
 }
 
-/* 文章卡片标签边距 */
-.article-meta-wrap {
-    color: var(--heo-secondtext) !important;
-}
+
 
 /* 日期右侧显示 */
 #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap > .post-meta-date {
-    /* display: none; */
     right: 0px;
     text-align: right;
 }
@@ -9367,10 +9363,6 @@ a.article-meta__category:hover {
 
 .post-meta-date .article-meta-label {
     display: none;
-}
-
-.post-meta-date {
-    margin-right: 0.8rem;
 }
 
 /* 文章目录 */
@@ -10562,10 +10554,6 @@ span.post-meta-position {
     .post-meta-wordcount {
         margin-left: 0;
     }
-}
-
-.post-meta-date {
-    opacity: 0.6;
 }
 
 .post-meta-pv-cv {

@@ -46,7 +46,7 @@ var heo = {
     //是否在首页
     is_Post: function () {
         var url = window.location.href;  //获取url
-        if (url.indexOf("/p/") >= 0) { //判断url地址中是否包含code字符串
+        if (url.indexOf("/archives/") >= 0) { //判断url地址中是否包含code字符串
             return true;
         } else {
             return false;
@@ -159,13 +159,6 @@ var heo = {
                     document.getElementById("waterfall") && document.getElementById("waterfall").classList.add("show")
             }
         ), 500)
-    },
-
-    // 即刻短文添加灯箱
-    addMediumInEssay: function () {
-        if (document.querySelector('#waterfall')) {
-            mediumZoom(document.querySelectorAll('[data-zoomable]'))
-        }
     },
 
     // 下载图片
