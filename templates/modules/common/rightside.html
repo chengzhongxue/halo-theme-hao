@@ -21,7 +21,7 @@
         }
     </style>
 
-    <link th:if="${htmlType == 'post' && theme.config.tool.rightside.readmode && theme.config.tool.rightside.rightsideEnable}"
+    <link th:if="${theme.config.tool.rightside.readmode && theme.config.tool.rightside.rightsideEnable}"
           rel="stylesheet" th:href="${assets_link + '/css/read-mode.css' + theme_version}">
 </th:block>
 </html>
