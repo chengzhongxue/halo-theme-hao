@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
             $body.classList.add('read-mode')
             const newEle = document.createElement('button')
             newEle.type = 'button'
-            newEle.className = 'fas fa-sign-out-alt exit-readmode'
+            newEle.className = 'haofont hao-icon-sign-out-alt exit-readmode'
             $body.appendChild(newEle)
 
             function clickFn () {
