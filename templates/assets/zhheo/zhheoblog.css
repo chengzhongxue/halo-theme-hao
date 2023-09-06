@@ -10247,6 +10247,11 @@ a.extend.prev {
         z-index: 10;
     }
 
+    #post {
+        background:var(--heo-background)!important;
+        border: none;
+    }
+
     .post .layout > div:first-child:not(.recent-posts) {
         border-radius: 12px 12px 0 0;
     }
