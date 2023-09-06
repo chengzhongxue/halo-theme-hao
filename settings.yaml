@@ -876,6 +876,33 @@ spec:
       label: 页脚
       formSchema:
         - $formkit: group
+          name: footer_bar
+          label: 了解更多
+          value:
+            footer_bar_enable: false
+            logo: "困困鱼"
+            description: "来自 困困鱼 最新设计与科技的文章"
+          children:
+            - $formkit: radio
+              name: footer_bar_enable
+              id: footer_bar_enable
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
+            - $formkit: textarea
+              if: $get(footer_bar_enable).value
+              name: logo
+              label: logo
+              placeholder:
+              help: 支持 HTML 语法
+            - $formkit: textarea
+              if: $get(footer_bar_enable).value
+              name: description
+              label: 描述
+              placeholder: 请填写描述内容
+        - $formkit: group
           name: social_media
           label: 社交媒体
           value:
@@ -1079,6 +1106,7 @@ spec:
           name: footerContent
           label: 页脚内容
           value:
+            default_enable: true
             style_one:
               owner_enable: false
               runtime_enable: true
@@ -1086,11 +1114,11 @@ spec:
               work_description: "距离月入25k也就还差一个大佬带我~"
               offduty_img: "https://0206.ink/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
               offduty_description: "下班了就该开开心心的玩耍，嘿嘿~"
+              bdageitem_enable: false
               bdageitem:
                 - link: "https://halo.run/"
                   shields: "https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/Frame-Halo-blue.svg"
                   message: "博客框架为halo2.x"
-            default_enable: true
           children:
             - $formkit: radio
               name: default_enable
@@ -1124,27 +1152,41 @@ spec:
                       value: false
                 - $formkit: attachment
                   if: $get(runtime_enable).value
+                  key: work_img
                   name: work_img
                   label: 上班时间的徽标
                   placeholder: 请输入内容
                 - $formkit: text
                   if: $get(runtime_enable).value
+                  key: work_description
                   name: work_description
                   label: 上班时间的 title 描述
                   placeholder: 请输入内容
                 - $formkit: attachment
                   if: $get(runtime_enable).value
+                  key: offduty_img
                   name: offduty_img
                   label: 下班时间的徽标
                   placeholder: 请输入内容
                 - $formkit: text
                   if: $get(runtime_enable).value
+                  key: offduty_description
                   name: offduty_description
                   label: 下班时间的 title 描述
                   placeholder: 请输入内容
+                - $formkit: radio
+                  name: bdageitem_enable
+                  id: bdageitem_enable
+                  label: 徽标配置项
+                  options:
+                    - label: 显示
+                      value: true
+                    - label: 隐藏
+                      value: false
                 - $formkit: repeater
                   name: bdageitem
                   label: 徽标配置项
+                  if: $get(bdageitem_enable).value
                   value:
                   children:
                     - $formkit: url
