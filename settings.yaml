@@ -2606,6 +2606,30 @@ spec:
                 - label: 关闭
                   value: false
         - $formkit: group
+          name: rightside
+          label: 右下角悬浮操作按钮
+          value:
+            rightsideEnable: false
+            readmode: false
+          children:
+            - $formkit: radio
+              name: rightsideEnable
+              id: rightsideEnable
+              options:
+                - label: 打开
+                  value: true
+                - label: 关闭
+                  value: false
+            - $formkit: radio
+              name: readmode
+              if: $get(rightsideEnable).value
+              label: 阅读模式
+              options:
+                - label: 打开
+                  value: true
+                - label: 关闭
+                  value: false
+        - $formkit: group
           name: nav_music
           label: 音乐
           value:

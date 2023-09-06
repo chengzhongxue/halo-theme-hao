@@ -3672,48 +3672,6 @@ ul {
     color: rgb(133, 133, 133);
 }
 
-#rightside #rightside-config-hide {
-    transition: transform 0.4s ease 0s;
-    transform: translate(35px, 0px);
-}
-
-#rightside #rightside-config-hide.show {
-    transform: translate(0px, 0px) !important;
-}
-
-#rightside > div > a,
-#rightside > div > button {
-    display: block;
-    margin-bottom: 2px;
-    width: 30px;
-    height: 30px;
-    background-color: var(--btn-bg);
-    color: var(--btn-color);
-    text-align: center;
-    font-size: 16px;
-}
-
-#rightside > div > a:hover,
-#rightside > div > button:hover {
-    background-color: var(--btn-hover-color);
-}
-
-#rightside #mobile-toc-button {
-    display: none;
-}
-
-@media screen and (max-width: 900px) {
-    #rightside #mobile-toc-button {
-        display: block;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    #rightside #hide-aside-btn {
-        display: none;
-    }
-}
-
 #sidebar #menu-mask {
     position: fixed;
     z-index: 1001;
@@ -6481,30 +6439,104 @@ a.console_switchbutton {
 
 /* 右下角设置按钮间距 */
 #rightside {
-    display: none;
-    padding-right: 8px;
     position: fixed;
-    right: -38px;
-    bottom: 40px;
+    right: -48px;
+    bottom: 100px;
     z-index: 100;
     opacity: 0;
-    transition: all 0.5s ease 0s;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    -ms-transition: all .5s;
+    transition: all .5s
 }
 
-#rightside > div > button,
-#rightside > div > a {
-    margin-bottom: 8px;
-    transition: 0.3s;
+@media screen and (max-width: 768px) {
+    #rightside #switch-commentBarrage {
+        display:none
+    }
 }
 
-#rightside > div > button,
-#rightside > div > a:hover {
-    transition: 0.3s;
-}
 
 #rightside #rightside-config-hide {
-    transform: translate(42px, 0);
+    height: 0;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    -webkit-transition: -webkit-transform .4s;
+    -moz-transition: -moz-transform .4s;
+    -o-transition: -o-transform .4s;
+    -ms-transition: -ms-transform .4s;
+    transition: transform .4s;
+    -webkit-transform: translate(45px,0);
+    -moz-transform: translate(45px,0);
+    -o-transform: translate(45px,0);
+    -ms-transform: translate(45px,0);
+    transform: translate(45px,0)
 }
+
+#rightside #rightside-config-hide.show {
+    height: auto;
+    opacity: 1;
+    -ms-filter: none;
+    filter: none;
+    -webkit-transform: translate(0,0);
+    -moz-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0)
+}
+
+#rightside #rightside-config-hide.status {
+    height: auto;
+    opacity: 1;
+    -ms-filter: none;
+    filter: none
+}
+
+#rightside>div>a,#rightside>div>button {
+    display: block;
+    margin-bottom: 5px;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    text-align: center;
+    font-size: 16px;
+    line-height: 35px
+}
+
+#rightside>div>a:hover,#rightside>div>button:hover {
+    background-color: var(--btn-hover-color)
+}
+
+#rightside #mobile-toc-button {
+    display: none
+}
+
+@media screen and (max-width: 900px) {
+    #rightside #mobile-toc-button {
+        display:block
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #rightside #hide-aside-btn {
+        display:none
+    }
+}
+
+.read-mode #rightside{
+    display: none!important
+}
+
+#rightside>div>button {
+    border-radius: 5px
+}
+
 
 /* footer背景色 */
 #footer {
@@ -9216,10 +9248,7 @@ span.recent-post-top-text {
         right: 0;
     }
 
-    /* 右下角设置按钮 */
-    #rightside {
-        display: none;
-    }
+
 
     /* 背景 */
     #web_bg {
