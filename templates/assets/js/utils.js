@@ -36,44 +36,6 @@ var btf = {
         return result;
     },
 
-    // loadLightbox: ele => {
-    //     const service = GLOBAL_CONFIG.lightbox;
-
-    //     if (service === "mediumZoom") {
-    //       const zoom = mediumZoom(ele);
-    //       zoom.on("open", e => {
-    //         const photoBg = document.documentElement.getAttribute("data-theme") === "dark" ? "#121212" : "#fff";
-    //         zoom.update({
-    //           background: photoBg,
-    //         });
-    //       });
-    //     }
-
-    //     if (service === "fancybox") {
-    //       ele.forEach(i => {
-    //         if (i.parentNode.tagName !== "A") {
-    //           const dataSrc = i.dataset.lazySrc || i.src;
-    //           const dataCaption = i.title || i.alt || "";
-    //           btf.wrap(i, "a", {
-    //             href: dataSrc,
-    //             "data-fancybox": "gallery",
-    //             "data-caption": dataCaption,
-    //             "data-thumb": dataSrc,
-    //           });
-    //         }
-    //       });
-
-    //       if (!window.fancyboxRun) {
-    //         Fancybox.bind("[data-fancybox]", {
-    //           Hash: false,
-    //           Thumbs: {
-    //             autoStart: false,
-    //           },
-    //         });
-    //         window.fancyboxRun = true;
-    //       }
-    //     }
-    // },
     loadLightbox: ele => {
 
         const jqLoadAndRun = () => {

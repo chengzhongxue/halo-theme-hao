@@ -1691,8 +1691,8 @@ blockquote footer cite::before {
 }
 
 #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap {
-    color: rgb(133, 133, 133);
-    font-size: 90%;
+    color: var(--heo-fontcolor);
+    font-size: .7rem;
 }
 
 #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap > .post-meta-date {
@@ -3670,48 +3670,6 @@ ul {
     padding-top: 0.4rem;
     width: 130px;
     color: rgb(133, 133, 133);
-}
-
-#rightside #rightside-config-hide {
-    transition: transform 0.4s ease 0s;
-    transform: translate(35px, 0px);
-}
-
-#rightside #rightside-config-hide.show {
-    transform: translate(0px, 0px) !important;
-}
-
-#rightside > div > a,
-#rightside > div > button {
-    display: block;
-    margin-bottom: 2px;
-    width: 30px;
-    height: 30px;
-    background-color: var(--btn-bg);
-    color: var(--btn-color);
-    text-align: center;
-    font-size: 16px;
-}
-
-#rightside > div > a:hover,
-#rightside > div > button:hover {
-    background-color: var(--btn-hover-color);
-}
-
-#rightside #mobile-toc-button {
-    display: none;
-}
-
-@media screen and (max-width: 900px) {
-    #rightside #mobile-toc-button {
-        display: block;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    #rightside #hide-aside-btn {
-        display: none;
-    }
 }
 
 #sidebar #menu-mask {
@@ -6481,30 +6439,104 @@ a.console_switchbutton {
 
 /* 右下角设置按钮间距 */
 #rightside {
-    display: none;
-    padding-right: 8px;
     position: fixed;
-    right: -38px;
-    bottom: 40px;
+    right: -48px;
+    bottom: 100px;
     z-index: 100;
     opacity: 0;
-    transition: all 0.5s ease 0s;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    -ms-transition: all .5s;
+    transition: all .5s
 }
 
-#rightside > div > button,
-#rightside > div > a {
-    margin-bottom: 8px;
-    transition: 0.3s;
+@media screen and (max-width: 768px) {
+    #rightside #switch-commentBarrage {
+        display:none
+    }
 }
 
-#rightside > div > button,
-#rightside > div > a:hover {
-    transition: 0.3s;
-}
 
 #rightside #rightside-config-hide {
-    transform: translate(42px, 0);
+    height: 0;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    -webkit-transition: -webkit-transform .4s;
+    -moz-transition: -moz-transform .4s;
+    -o-transition: -o-transform .4s;
+    -ms-transition: -ms-transform .4s;
+    transition: transform .4s;
+    -webkit-transform: translate(45px,0);
+    -moz-transform: translate(45px,0);
+    -o-transform: translate(45px,0);
+    -ms-transform: translate(45px,0);
+    transform: translate(45px,0)
 }
+
+#rightside #rightside-config-hide.show {
+    height: auto;
+    opacity: 1;
+    -ms-filter: none;
+    filter: none;
+    -webkit-transform: translate(0,0);
+    -moz-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0)
+}
+
+#rightside #rightside-config-hide.status {
+    height: auto;
+    opacity: 1;
+    -ms-filter: none;
+    filter: none
+}
+
+#rightside>div>a,#rightside>div>button {
+    display: block;
+    margin-bottom: 5px;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    text-align: center;
+    font-size: 16px;
+    line-height: 35px
+}
+
+#rightside>div>a:hover,#rightside>div>button:hover {
+    background-color: var(--btn-hover-color)
+}
+
+#rightside #mobile-toc-button {
+    display: none
+}
+
+@media screen and (max-width: 900px) {
+    #rightside #mobile-toc-button {
+        display:block
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #rightside #hide-aside-btn {
+        display:none
+    }
+}
+
+.read-mode #rightside{
+    display: none!important
+}
+
+#rightside>div>button {
+    border-radius: 5px
+}
+
 
 /* footer背景色 */
 #footer {
@@ -8348,7 +8380,7 @@ li {
     }
 
     .recent-post-item .recent-post-info .recent-post-info-top .article-title {
-        font-size: 22px;
+        font-size: 20px;
         -webkit-line-clamp: 2;
     }
 
@@ -9216,10 +9248,7 @@ span.recent-post-top-text {
         right: 0;
     }
 
-    /* 右下角设置按钮 */
-    #rightside {
-        display: none;
-    }
+
 
     /* 背景 */
     #web_bg {
@@ -9345,14 +9374,10 @@ a.article-meta__category:hover {
     }
 }
 
-/* 文章卡片标签边距 */
-.article-meta-wrap {
-    color: var(--heo-secondtext) !important;
-}
+
 
 /* 日期右侧显示 */
 #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap > .post-meta-date {
-    /* display: none; */
     right: 0px;
     text-align: right;
 }
@@ -9367,10 +9392,6 @@ a.article-meta__category:hover {
 
 .post-meta-date .article-meta-label {
     display: none;
-}
-
-.post-meta-date {
-    margin-right: 0.8rem;
 }
 
 /* 文章目录 */
@@ -10218,6 +10239,11 @@ a.extend.prev {
         z-index: 10;
     }
 
+    #post {
+        background:var(--heo-background)!important;
+        border: none;
+    }
+
     .post .layout > div:first-child:not(.recent-posts) {
         border-radius: 12px 12px 0 0;
     }
@@ -10562,10 +10588,6 @@ span.post-meta-position {
     .post-meta-wordcount {
         margin-left: 0;
     }
-}
-
-.post-meta-date {
-    opacity: 0.6;
 }
 
 .post-meta-pv-cv {
@@ -11601,12 +11623,6 @@ a.reward-main-btn:hover {
         margin: auto;
         height: 100%;
     }
-
-    #pagination .prev-post a:hover,
-    #pagination .next-post a:hover {
-        background: var(--heo-main);
-    }
-
     #pagination .prev-post a:hover div,
     #pagination .next-post a:hover div {
         color: var(--heo-white) !important;
@@ -11692,13 +11708,6 @@ a.reward-main-btn:hover {
     #post #pagination .prev_info,
     #pagination .next_info {
         text-align: left;
-    }
-
-    .next-post.pull-right,
-    .prev-post.pull-left,
-    #pagination .prev-post,
-    #pagination .next-post {
-        background: var(--heo-card-bg);
     }
 }
 
@@ -12157,8 +12166,9 @@ img.tk-avatar-img {
 
 @media screen and (max-width: 768px) {
     .el-textarea__inner {
-        border-radius: 4px !important;
         background: var(--card-bg) !important;
+        overflow: hidden;
+        resize: none!important;
     }
 }
 
@@ -13717,7 +13727,6 @@ figure.gallery-group:hover .gallery-group-name::after {
 #workboard {
     font-size: 12px;
 }
-/*页脚样式一*/
 
 /* 页脚底层背景 */
 #footer:before {
@@ -13728,8 +13737,45 @@ figure.gallery-group:hover .gallery-group-name::after {
     z-index: -1;
 }
 
-/* 404页面 */
 
+div#heo-footer-bar {
+    display: none
+}
+
+.post div#heo-footer-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 16px
+}
+
+div#heo-footer-bar a.footer-bar-link {
+    padding: 4px 16px;
+    background: var(--heo-secondbg);
+    border-radius: 20px;
+    margin-top: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    border: var(--style-border-always)
+}
+
+div#heo-footer-bar a.footer-bar-link:hover {
+    background: var(--heo-main);
+    color: var(--heo-white);
+    transform: scale(1.1);
+    border-color: var(--heo-main)
+}
+
+div#heo-footer-bar .footer-logo {
+    font-size: 24px
+}
+
+div#heo-footer-bar .footer-bar-description {
+    color: var(--heo-secondtext);
+    font-weight: 700
+}
+
+/* 404页面 */
 #error-wrap .error-content {
     box-shadow: none !important;
     border-radius: 12px;

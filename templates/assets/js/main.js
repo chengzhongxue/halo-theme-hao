@@ -171,16 +171,96 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /**
+     * Rightside
+     */
+    const rightSideFn = {
+        switchReadMode: () => { // read-mode
+            const $body = document.body
+            $body.classList.add('read-mode')
+            const newEle = document.createElement('button')
+            newEle.type = 'button'
+            newEle.className = 'haofont hao-icon-sign-out-alt exit-readmode'
+            $body.appendChild(newEle)
+
+            function clickFn () {
+                $body.classList.remove('read-mode')
+                newEle.remove()
+                newEle.removeEventListener('click', clickFn)
+            }
+
+            newEle.addEventListener('click', clickFn)
+        },
+        switchDarkMode: () => { // Switch Between Light And Dark Mode
+            const nowMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+            if (nowMode === 'light') {
+                activateDarkMode()
+                saveToLocal.set('theme', 'dark', 2);
+                GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night,false,2000);
+            } else {
+                activateLightMode();
+                saveToLocal.set('theme', 'light', 2);
+                GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day,false,2000);
+            }
+            // handle some cases
+            typeof utterancesTheme === 'function' && utterancesTheme()
+            typeof FB === 'object' && window.loadFBComment()
+            window.DISQUS && document.getElementById('disqus_thread').children.length && setTimeout(() => window.disqusReset(), 200)
+        },
+        showOrHideBtn: () => { // rightside 點擊設置 按鈕 展開
+            document.getElementById('rightside-config-hide').classList.toggle('show')
+        },
+        scrollToTop: () => { // Back to top
+            btf.scrollToDest(0, 500)
+        },
+        hideAsideBtn: () => { // Hide aside
+            const $htmlDom = document.documentElement.classList
+            $htmlDom.contains('hide-aside')
+                ? saveToLocal.set('aside-status', 'show', 2)
+                : saveToLocal.set('aside-status', 'hide', 2)
+            $htmlDom.toggle('hide-aside')
+        }
+    }
+
+    document.getElementById('rightside').addEventListener('click', function (e) {
+        const $target = e.target.id || e.target.parentNode.id
+        switch ($target) {
+            case 'go-up':
+                rightSideFn.scrollToTop()
+                break
+            case 'rightside-config':
+                rightSideFn.showOrHideBtn()
+                break
+            case 'readmode':
+                rightSideFn.switchReadMode()
+                break
+            case 'darkmode':
+                rightSideFn.switchDarkMode()
+                break
+            case 'hide-aside-btn':
+                rightSideFn.hideAsideBtn()
+                break
+            default:
+                break
+        }
+    })
+
+    /**
      * 滾動處理
      */
     const scrollFn = function () {
+        const $postComment = document.getElementById('post-comment')
         const $rightside = document.getElementById('rightside')
         const innerHeight = window.innerHeight + 0
-        // console.log("滚动处理运行");
+
+        if ($postComment) {
+            $('#to_comment').attr('style', 'display: block');
+        } else {
+            $('#to_comment').attr('style', 'display: none');
+        }
 
         // 當滾動條小于 0 的時候
         if (document.body.scrollHeight <= innerHeight) {
-            $rightside.style.cssText = 'opacity: 1; transform: translateX(-38px)'
+            $rightside.style.cssText = 'opacity: 1; transform: translateX(-58px)'
             return
         }
 
@@ -215,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     $cookies_window.classList.add('cw-hide')
                 }
                 if (window.getComputedStyle($rightside).getPropertyValue('opacity') === '0') {
-                    $rightside.style.cssText = 'opacity: 1; transform: translateX(-38px)'
+                    $rightside.style.cssText = 'opacity: 0.8; transform: translateX(-58px)'
                 }
             } else {
                 if (currentTop === 0) {
@@ -225,7 +305,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             if (document.body.scrollHeight <= innerHeight) {
-                $rightside.style.cssText = 'opacity: 1; transform: translateX(-38px)'
+                $rightside.style.cssText = 'opacity: 0.8; transform: translateX(-58px)'
             }
         }, 200))
 
@@ -236,18 +316,6 @@ document.addEventListener('DOMContentLoaded', function () {
             return result
         }
     }
-
-
-    function setFixed(el) {
-        if (!el) return
-        const currentTop = window.scrollY || document.documentElement.scrollTop
-        if (currentTop > 0) {
-            el.classList.add('nav-fixed')
-        } else {
-            el.classList.remove('nav-fixed')
-        }
-    }
-
 
     /**
      * menu
@@ -418,7 +486,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const addPostOutdateNotice = function () {
         const data = GLOBAL_CONFIG.noticeOutdate
-        const diffDay = btf.diffDate(GLOBAL_CONFIG_SITE.postUpdate)
+        const diffDay = btf.diffDate("2022-11-04 20:08:15")
         if (diffDay >= data.limitDay) {
             const ele = document.createElement('div')
             ele.className = 'post-outdate-notice'
@@ -440,15 +508,6 @@ document.addEventListener('DOMContentLoaded', function () {
             callback_error: (img) => {
                 img.setAttribute("srcset", GLOBAL_CONFIG.lazyload.error);
             }
-        })
-    }
-
-    const relativeDate = function (selector) {
-        selector.forEach(item => {
-            const $this = item
-            const timeVal = $this.getAttribute('datetime')
-            $this.innerText = btf.diffDate(timeVal, true)
-            $this.style.display = 'inline'
         })
     }
 

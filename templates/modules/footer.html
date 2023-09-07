@@ -3,6 +3,12 @@
 <!-- 页脚模块 -->
 <footer id="footer" th:fragment="footer">
 
+    <div id="heo-footer-bar" th:if="${theme.config.footer.footer_bar.footer_bar_enable}">
+        <div class="footer-logo">[[${theme.config.footer.footer_bar.logo}]]</div>
+        <div class="footer-bar-description">[[${theme.config.footer.footer_bar.description}]]</div>
+        <a class="footer-bar-link" href="/" data-pjax-state="">了解更多</a>
+    </div>
+
     <!-- 社交链接，需要填入 href class title -->
     <div id="footer_deal">
         <th:block th:with="socialMedias = ${theme.config.footer.social_media.socialMediaLeft}">
@@ -13,10 +19,8 @@
         </th:block>
 
         <img th:if="${not #strings.isEmpty(theme.config.footer.social_media.centerImg)}" class="footer_mini_logo"
-             th:with="img = @{${theme.config.footer.social_media.centerImg}}"
-             th:src="${isLazyload ? '' : img}"
-             th:data-lazy-src="${ isLazyload ? img : ''}"
-             title="返回顶部" onclick="btf.scrollToDest(0, 500)">
+             th:with="img = @{${theme.config.footer.social_media.centerImg}}" th:src="${isLazyload ? '' : img}"
+             th:data-lazy-src="${ isLazyload ? img : ''}" title="返回顶部" onclick="btf.scrollToDest(0, 500)">
         <th:block th:with="socialMedias = ${theme.config.footer.social_media.socialMediaRight}">
             <a class="deal_link" rel="external nofollow" target="_blank" th:each="socialMedia : ${socialMedias}"
                th:href="${socialMedia.url}" th:title="${socialMedia.name}">
@@ -33,19 +37,17 @@
                 <h3 class="footer-title" th:text="${menuItem.status.displayName}"></h3>
                 <div class="footer-links">
                     <a class="footer-item" th:each="childMenu : ${menuItem.children}"
-                       th:href="@{${childMenu.status.href}}"
-                       th:target="${childMenu.spec.target?.value}"
+                       th:href="@{${childMenu.status.href}}" th:target="${childMenu.spec.target?.value}"
                        th:text="${childMenu.status.displayName}">
                     </a>
                 </div>
             </div>
             <div th:if="${theme.config.footer.footer_group.enable_footer_group}" class="footer-group">
                 <div class="footer-title-group">
-                    <h3 class="footer-title">友链</h3><a class="random-friends-btn"
-                                                         href="javascript:heo.addFriendLinksInFooter();"
-                                                         rel="external nofollow" title="换一批友情链接"
-                                                         data-pjax-state="external"><i
-                        class="haofont hao-icon-arrow-rotate-right"></i></a>
+                    <h3 class="footer-title">友链</h3>
+                    <a class="random-friends-btn"
+                       href="javascript:heo.addFriendLinksInFooter();" rel="external nofollow" title="换一批友情链接"
+                       data-pjax-state="external"><i class="haofont hao-icon-arrow-rotate-right"></i></a>
                 </div>
                 <div class="footer-links" id="friend-links-in-footer"></div>
             </div>
@@ -55,37 +57,42 @@
     <!-- 底部 banner -->
     <halo:footer />
 
-    <div class="copyright" th:if="${not #strings.isEmpty(theme.config.basics.siteStartTime) && theme.config.footer.footerContent.style_one.owner_enable}">
+    <div class="copyright"
+         th:if="${not #strings.isEmpty(theme.config.basics.siteStartTime) && theme.config.footer.footerContent.style_one.owner_enable}">
         ©[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] - [[${#dates.format(new
         java.util.Date(), 'yyyy')}]] By [[${site.title}]]
     </div>
-    <div class="copyright" th:if="${#strings.isEmpty(theme.config.basics.siteStartTime) && theme.config.footer.footerContent.style_one.owner_enable}">
+    <div class="copyright"
+         th:if="${#strings.isEmpty(theme.config.basics.siteStartTime) && theme.config.footer.footerContent.style_one.owner_enable}">
         ©[[${#dates.format(new java.util.Date(), 'yyyy')}]] By [[${site.title}]]
     </div>
     <div th:if="${theme.config.footer.footerContent.style_one.runtime_enable}" id="workboard"></div>
-    <p id="ghbdages"
-       th:with="bdageitem = ${theme.config.footer.footerContent.style_one.bdageitem}">
-        <a class="github-badge" th:each="data : ${bdageitem}" target="_blank"
-           th:href="@{${data.link}}" style="margin-inline:5px"
-           th:title="${data.message}">
-            <img th:with=" img = @{${data.shields}}"
-                 th:src="${isLazyload ? '' : img}"
-                 th:data-lazy-src="${ isLazyload ? img : ''}"
-                 th:alt="${data.message}" />
+    <p th:if="${theme.config.footer.footerContent.style_one.bdageitem_enable && not #lists.isEmpty(theme.config.footer.footerContent.style_one.bdageitem)}"
+       th:with="bdageitem = ${theme.config.footer.footerContent.style_one.bdageitem}"
+       id="ghbdages" >
+        <a class="github-badge" th:each="data : ${bdageitem}" target="_blank" th:href="@{${data.link}}"
+           style="margin-inline:5px" th:title="${data.message}">
+            <img th:with=" img = @{${data.shields}}" th:src="${isLazyload ? '' : img}"
+                 th:data-lazy-src="${ isLazyload ? img : ''}" th:alt="${data.message}" />
         </a>
     </p>
-    <span th:if="${!theme.config.footer.footerContent.default_enable}"  style="padding: 20px 20px;">
+    <span th:if="${!theme.config.footer.footerContent.default_enable}" style="padding: 20px 20px;">
 
     </span>
 
     <style>
-        .copyright,#ghbdages,#workboard {
+        .copyright,
+        #ghbdages,
+        #workboard {
             text-align: center;
         }
-
     </style>
 
-    <style th:if="${(theme.config.footer.footerContent.style_one.owner_enable || not #lists.isEmpty(theme.config.footer.footerContent.style_one.bdageitem)) && theme.config.footer.footerContent.default_enable}">
+    <style
+            th:if="${(theme.config.footer.footerContent.style_one.owner_enable
+            || (not #lists.isEmpty(theme.config.footer.footerContent.style_one.bdageitem) && theme.config.footer.footerContent.style_one.bdageitem_enable )
+            || theme.config.footer.footerContent.style_one.runtime_enable)
+        && theme.config.footer.footerContent.default_enable}">
         #heo-footer {
             margin-bottom: 1rem;
         }
@@ -139,10 +146,10 @@
         <div class="cookies-window-title" th:text="${theme.config.tool.snackbar.introductionTitle}"></div>
         <div class="cookies-window-content"><span class="cookies-tip"
                                                   th:text="${theme.config.tool.snackbar.introductionTip}"></span>
-            <a class="cookies-link"
-               th:href="@{${theme.config.tool.snackbar.introductionUrl}}"
+            <a class="cookies-link" th:href="@{${theme.config.tool.snackbar.introductionUrl}}"
                th:title="${theme.config.tool.snackbar.introductionName}" data-pjax-state=""><i
-                    class="bber-gotobb haofont hao-icon-circle-arrow-right"></i></a></div>
+                    class="bber-gotobb haofont hao-icon-circle-arrow-right"></i></a>
+        </div>
     </div>
     <div id="quit-box" onclick="RemoveRewardMask()"></div>
 

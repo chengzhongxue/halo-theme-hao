@@ -38,18 +38,9 @@
 <!-- 内容 -->
 <th:block th:replace="${content}"></th:block>
 
-<!-- todo 暂时没显示，是右下角悬浮操作按钮 -->
-<div id="rightside">
-    <div id="rightside-config-hide">
-        <button id="translateLink" title="简繁转换" type="button">简</button>
-        <button id="darkmode" title="浅色和深色模式转换" type="button"><i class="fas fa-adjust"></i></button>
-        <button id="hide-aside-btn" title="单栏和双栏切换" type="button"><i class="fas fa-arrows-alt-h"></i></button>
-    </div>
-    <div id="rightside-config-show">
-        <button id="rightside_config" title="设置" type="button"><i class="fas fa-cog fa-spin"></i></button>
-        <button id="go-up" title="回到顶部" type="button"><i class="fas fa-arrow-up"></i></button>
-    </div>
-</div>
+
+<!-- todo 右下角悬浮操作按钮 -->
+<th:block th:replace="~{modules/common/rightside :: rightside}"></th:block>
 
 
 <div th:replace="~{modules/right-menu :: right-menu}"></div>
