@@ -49,7 +49,7 @@
     <script th:src="${assets_link + '/js/utils.js' + theme_version}"></script>
     <script th:src="${assets_link + '/js/main.js' + theme_version}"></script>
     <script charset="utf-8" data-pjax th:src="${assets_link + '/zhheo/blogex.js' + theme_version}"></script>
-
+    <script th:src="${assets_link + '/js/tw_cn.js' + theme_version}"></script>
     <!-- https://instant.page/ 网站预加载， 放在 </body> 之前 -->
     <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script>
 
@@ -66,6 +66,9 @@
     <!-- https://davidshimjs.github.io/qrcodejs/ 生成二维码 -->
     <!-- 应该是文章页分享使用 -->
     <script data-pjax src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <!-- 最近评论 -->
+    <th:block th:replace="~{modules/widgets/cardNewestComments :: cardNewestComments}"></th:block>
 
     <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
     <script th:src="${assets_link + '/libs/waterfall/waterfall.min.js'}"></script>
@@ -90,11 +93,14 @@
     <!-- swiper 在瞬间滚动时会使用 -->
     <script data-pjax  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/6.6.2/swiper-bundle.min.js"></script>
 
+    <!-- 右键菜单 -->
+    <script th:if="${theme.config.tool.rightMenu.rightMenuEnable}" th:src="${assets_link + '/zhheo/rightmenu.js'}"></script>
+
     <!-- 评论弹幕 -->
     <script  th:if="${theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') &&
         not #strings.isEmpty(theme.config.comments.twikoos.envId) &&
         not #strings.isEmpty(theme.config.comments.twikoos.accessToken)}"  data-pjax=""
-             th:src="${assets_link + '/libs/twikoo/commentBarrage.js'}"></script>
+             th:src="${assets_link + '/zhheo/commentBarrage.js'}"></script>
 
     <!-- Tocbot 目录生成 start -->
     <th:block th:replace="~{modules/common/toc-bot :: toc-bot}"></th:block>

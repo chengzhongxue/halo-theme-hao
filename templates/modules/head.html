@@ -20,7 +20,7 @@
 
     <link rel="stylesheet" th:href="${assets_link + '/zhheo/custom.css' + theme_version}">
 
-    <link rel="stylesheet" th:href="${assets_link + '/libs/twikoo/commentBarrage.css'}">
+    <link rel="stylesheet" th:href="${assets_link + '/zhheo/commentBarrage.css'}">
 
     <style th:if="${theme.config.other.scrollbarLinearGradientEnable}">
         *::-webkit-scrollbar-thumb {
@@ -258,6 +258,14 @@
                 bgLight: "[(${theme.config.style.themeLightSkin})]",
                 bgDark: "[(${theme.config.style.themeDarkSkin})]",
                 position: "top-center",
+            },
+            translate: {
+                defaultEncoding:[[${theme.config.style.translate.defaultEncoding}]],
+                translateDelay:0,
+                msgToTraditionalChinese:"繁",
+                msgToSimplifiedChinese:"简",
+                rightMenuMsgToTraditionalChinese:"轉為繁體",
+                rightMenuMsgToSimplifiedChinese:"转为简体"
             },
             prism: {
                 enable: [[${ theme.config.code.enable }]],
