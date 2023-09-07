@@ -128,10 +128,10 @@
                 <!-- 版权声明 -->
                 <th:block th:replace="~{modules/post/copyright :: copyright}"></th:block>
 
-                <nav class="pagination-post" id="pagination"
+                <nav class="pagination-post needEndHide" id="pagination"
                      th:with="postCursor = ${postFinder.cursor(post.metadata.name)},
                      postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,'?') ? theme.config.layout.postRandomImg+'&' : theme.config.layout.postRandomImg+'?'}">
-                    <div th:class="${postCursor.hasPrevious()==true && postCursor.hasNext()==false} ? 'prev-post2 pull-left postcarnepre' : 'prev-post pull-left'">
+                    <div th:if="${postCursor.hasPrevious()}" th:class="${postCursor.hasNext()==false} ? 'prev-post pull-full ' : 'prev-post pull-left'">
                         <a th:if="${postCursor.hasPrevious()}" th:href="@{${postCursor.previous.status.permalink}}">
                             <img alt="cover" id="preimg" class="nolazyload"
                                  th:with="img = ${#strings.isEmpty(postCursor.previous.spec.cover) ? postRandomImg+postCursor.previous.spec.title : postCursor.previous.spec.cover}"
@@ -144,7 +144,7 @@
                             </div>
                         </a>
                     </div>
-                    <div th:class="${postCursor.hasPrevious()==false && postCursor.hasNext()==true} ? 'next-post2 pull-right postcarnepre':'next-post pull-right'">
+                    <div th:if="${postCursor.hasNext()}" th:class="${postCursor.hasPrevious()==false} ? 'next-post pull-full ':'next-post pull-right'">
                         <a th:if="${postCursor.hasNext()}" th:href="@{${postCursor.next.status.permalink}}">
                             <img alt="cover" id="preimg" class="nolazyload"
                                  th:with="img = ${#strings.isEmpty(postCursor.next.spec.cover) ? postRandomImg+postCursor.next.spec.title : postCursor.next.spec.cover}"

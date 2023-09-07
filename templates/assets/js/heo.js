@@ -5,7 +5,8 @@ let heo_cookiesTime = null
 ,heo_musicPlaying = false
 ,heo_keyboard = false
 ,heo_intype = false
-,lastSayHello = "";
+,lastSayHello = ""
+,refreshNum = 1;
 // 私有函数
 var heo = {
     // 检测显示模式
@@ -67,6 +68,12 @@ var heo = {
 
     // 页脚友链
     addFriendLinksInFooter: function () {
+        var footerRandomFriendsBtn = document.getElementById("footer-random-friends-btn");
+        if(!footerRandomFriendsBtn) return;
+        footerRandomFriendsBtn.style.opacity = "0.2";
+        footerRandomFriendsBtn.style.transitionDuration = "0.3s";
+        footerRandomFriendsBtn.style.transform = "rotate(" + 360 * refreshNum++ + "deg)";
+
         const fetchUrl = "/apis/api.plugin.halo.run/v1alpha1/plugins/PluginLinks/links?keyword=&sort=priority,asc"
         const linksUrl = GLOBAL_CONFIG.source.links.linksUrl
         const num = GLOBAL_CONFIG.source.links.linksNum
@@ -84,6 +91,9 @@ var heo = {
                     document.getElementById("friend-links-in-footer").innerHTML = htmlText;
                 }
             })
+        setTimeout(()=>{
+            footerRandomFriendsBtn.style.opacity = "1";
+        }, 300)
     },
 
     //禁止图片右键单击

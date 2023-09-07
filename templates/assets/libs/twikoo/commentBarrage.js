@@ -137,29 +137,6 @@ if(GLOBAL_CONFIG.htmlType!='comments') {
         }, 1000)
     }
 
-
-// 自动隐藏
-    document.addEventListener('scroll', btf.throttle(function () {
-        //滚动条高度+视窗高度 = 可见区域底部高度
-        var visibleBottom = window.scrollY + document.documentElement.clientHeight;
-        //可见区域顶部高度
-        var visibleTop = window.scrollY;
-        // 获取翻页按钮容器
-        var pagination = document.querySelector('.comment-barrage');
-        // 获取位置监测容器，此处采用评论区
-        var eventlistner = document.getElementById('post-comment');
-        if (eventlistner && pagination) {
-            var centerY = eventlistner.offsetTop + 200;
-            if (document.body.clientWidth > 768) {
-                if (centerY > visibleBottom) {
-                    pagination.style.bottom = '0';
-                } else {
-                    pagination.style.bottom = '-200px';
-                }
-            }
-        }
-    }, 200))
-
     initCommentBarrage();
 
     if (localStorage.getItem('commentBarrageSwitch') !== 'false') {

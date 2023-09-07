@@ -3187,14 +3187,6 @@ ul {
     height: 150px;
 }
 
-#pagination .next-post2 a,
-#pagination .prev-post2 a {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    height: 150px;
-}
-
 #pagination .next-post:hover img.next-cover,
 #pagination .next-post:hover img.prev-cover,
 #pagination .prev-post:hover img.next-cover,
@@ -11553,13 +11545,6 @@ a.reward-main-btn:hover {
     background: #363636;
 }
 
-.next-post2.pull-right,
-.prev-post2.pull-left,
-#pagination .prev-post2,
-#pagination .next-post2 {
-    background: #363636;
-}
-
 #preimg{
     position: absolute;
     width: 100%;
@@ -11573,10 +11558,7 @@ a.reward-main-btn:hover {
     object-fit: cover;
     border-radius: 0;
 }
-.prev-post2.pull-left:hover #preimg {
-    opacity: 1;
-    transform: scale(1.1);
-}
+
 .prev-post.pull-left:hover #preimg {
     opacity: 1;
     transform: scale(1.1);
@@ -11587,15 +11569,10 @@ a.reward-main-btn:hover {
     transform: scale(1.1);
 }
 
-.next-post2.pull-right:hover #preimg {
-    opacity: 1;
-    transform: scale(1.1);
-}
-
 @media screen and (min-width: 768px) {
     #pagination .next-post a {
-        border-left: var(--heo-card-bg);
-        border-left-width: 3px;
+        border-left:var(--heo-main-op);
+        border-left-width: .5px;
         border-left-style: solid;
         display: flex;
         align-items: flex-start;
@@ -11607,9 +11584,9 @@ a.reward-main-btn:hover {
     }
 
     #pagination .prev-post a {
-        border-right: var(--heo-card-bg);
-        border-right-width: 3px;
-        border-right-style: solid;
+        border-right: var(--heo-main-op);
+        border-right-width: .5px;
+        border-right-style: solid
     }
 
     #pagination .pagination-info {
@@ -11623,17 +11600,16 @@ a.reward-main-btn:hover {
         margin: auto;
         height: 100%;
     }
-    #pagination .prev-post a:hover div,
-    #pagination .next-post a:hover div {
-        color: var(--heo-white) !important;
+
+    #pagination .next-post a:hover div,#pagination .prev-post a:hover div {
+        color: var(--heo-white)!important
     }
 }
 
 @media screen and (max-width: 768px) {
 
-    #pagination .prev-post a:hover,
-    #pagination .next-post a:hover {
-        background: var(--heo-none);
+    #pagination .next-post a:hover,#pagination .prev-post a:hover {
+        background:var(--heo-none)
     }
 
 }
@@ -11658,35 +11634,135 @@ a.reward-main-btn:hover {
     filter: blur(5px);
 }
 
-#post #pagination .prev-post .label,
-#pagination .next-post .label {
-    color: white;
-}
-
-#post #pagination .prev-post2 .label,
-#pagination .next-post2 .label {
-    color: white;
-}
-
-#post #pagination .prev_info,
-#pagination .next_info {
-    color: white;
-    font-weight: bold;
+#pagination .next_info,#post #pagination .prev_info {
+    font-weight: 700;
     -webkit-line-clamp: 2;
     white-space: normal;
     line-height: 1.3;
-    font-size: 0.9rem;
+    font-size: .9rem;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 10px
 }
 
 #post #pagination {
     overflow: hidden;
     position: inherit;
+    border: var(--style-border-always)
 }
 
 #pagination.pagination-post {
     background: var(--heo-card-bg);
+}
+
+@media screen and (min-width: 1300px) {
+    #post #pagination {
+        position:fixed;
+        width: 300px;
+        bottom: -100px;
+        right: 60px;
+        z-index: 1000;
+        height: fit-content;
+        transition: cubic-bezier(.42,0,.3,1.11) .3s;
+        border: var(--style-border);
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        opacity: 0;
+        z-index: 1002
+    }
+
+
+
+    #post #pagination.show-window {
+        bottom: 20px;
+        opacity: 1
+    }
+
+    #post #pagination:hover {
+        border: var(--style-border-hover)
+    }
+
+    #pagination .next-post a,#pagination .prev-post a {
+        border: none;
+        height: fit-content;
+        padding: .5rem 0
+    }
+
+    #pagination.pagination-post {
+        border-radius: 0
+    }
+
+    #pagination .next_info,#post #pagination .prev_info {
+        font-size: 14px;
+        font-weight: 400;
+        margin-bottom: 0
+    }
+
+    #pagination .pagination-info {
+        padding: .5rem 1rem;
+        transform: none
+    }
+
+    #post #pagination {
+        background: 0 0
+    }
+
+    #pagination .next_info,#post #pagination .prev_info {
+        color: var(--heo-fontcolor);
+    }
+
+    #pagination .next-post,#pagination .prev-post,.next-post.pull-right,.prev-post.pull-left {
+        background: var(--heo-maskbgdeep);
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+        transform: translateZ(0)
+    }
+
+    #pagination .next-post a:hover,#pagination .prev-post a:hover {
+        background: var(--heo-main);
+    }
+
+    #pagination .next-post .label,#post #pagination .prev-post .label {
+        color: var(--heo-fontcolor)
+    }
+
+    #pagination.pagination-post .next-post.pull-full img,#pagination.pagination-post .next-post.pull-right img,#pagination.pagination-post .prev-post.pull-full img,#pagination.pagination-post .prev-post.pull-left img {
+        display: none;
+        top: 0
+    }
+
+
+    #post #pagination .prev-post .label,
+    #pagination .next-post .label {
+        color: var(--heo-fontcolor)
+    }
+
+
+    .prev-post.pull-left {
+        display: none
+    }
+
+    .next-post.pull-right {
+        width: 100%!important
+    }
+
+    #pagination .next-post .pagination-info {
+        text-align: left;
+        position: relative
+    }
+
+    #pagination .next-post .label,#post #pagination .prev-post .label {
+        color: var(--heo-fontcolor);
+        font-weight: 700;
+        font-size: 12px;
+        margin-bottom: .5rem;
+        border-bottom: var(--style-border);
+        line-height: 1;
+        padding-bottom: .5rem
+    }
+
 }
 
 @media screen and (max-width: 768px) {
