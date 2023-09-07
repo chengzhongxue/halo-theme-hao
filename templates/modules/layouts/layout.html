@@ -67,6 +67,9 @@
     <!-- 应该是文章页分享使用 -->
     <script data-pjax src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
 
+    <!-- 最近评论 -->
+    <th:block th:replace="~{modules/widgets/cardNewestComments :: cardNewestComments}"></th:block>
+
     <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
     <script th:src="${assets_link + '/libs/waterfall/waterfall.min.js'}"></script>
 
