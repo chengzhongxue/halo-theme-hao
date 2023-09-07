@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     function translatePage() {
-        if (rm) rm.hideRightMenu();
+        if (rm && GLOBAL_CONFIG.rightMenuEnable) rm.hideRightMenu();
         if (targetEncoding === 1) {
             currentEncoding = 1;
             targetEncoding = 2;

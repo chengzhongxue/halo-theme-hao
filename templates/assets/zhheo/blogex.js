@@ -617,6 +617,7 @@ function listenToPageInputPress() {
 function initBlog() {
     // 图片主色
     GLOBAL_CONFIG.source.post.dynamicBackground && coverColor(),
+    GLOBAL_CONFIG.rightMenuEnable && addRightMenuClickEvent(),
     percent(),
     heo.topCategoriesBarScroll(),
     heo.initIndexEssay(),
