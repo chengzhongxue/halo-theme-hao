@@ -1,12 +1,5 @@
-// var full_page = document.getElementsByClassName("full_page");
-// if (full_page.length != 0) {
-//   full_page[0].style.background = "transparent";
-// }
 
-
-function checkOpen() {
-}
-
+function checkOpen() {}
 checkOpen.toString = function () {
     this.opened = true;
 };
@@ -191,24 +184,6 @@ function showcopy() {
     }
 }
 
-//导航栏上显示标题
-// var OriginTitile = document.title;
-// var titleTime;
-// document.addEventListener('visibilitychange', function () {
-//     if (document.hidden) {
-//         // $('[rel="shortcut icon"]').attr('href', "https://cdn.jsdelivr.net/gh/Akilarlxh/Akilarlxh.github.io@v3.3.3_3/img/siteicon/favicon.png");
-//         document.title = '张洪Heo';
-//         clearTimeout(titleTime);
-//     }
-//     else {
-//         // $('[rel="shortcut icon"]').attr('href', "https://cdn.jsdelivr.net/gh/Akilarlxh/Akilarlxh.github.io@v3.3.3_3/img/siteicon/favicon.png");
-//         document.title = OriginTitile;
-//         // titleTime = setTimeout(function () {
-//         //     document.title = OriginTitile;
-//         // }, 2000);
-//     }
-// });
-
 // 早上好问好
 // 获取时间
 var getTimeState = () => {
@@ -390,7 +365,6 @@ document.addEventListener('scroll', btf.throttle(function () {
     heo.initThemeColor()
 }, 200))
 
-//友链随机传送
 //友链随机传送
 function travelling() {
     const links = "/apis/api.plugin.halo.run/v1alpha1/plugins/PluginLinks/links?keyword=&sort=priority,asc"
@@ -577,29 +551,19 @@ $(".topGroup").hover(function () {
 });
 
 
-//文章页面上一篇下一篇
-// document.addEventListener('scroll', btf.throttle(function () {
-//     //滚动条高度+视窗高度 = 可见区域底部高度
-//     var visibleBottom = window.scrollY + document.documentElement.clientHeight;
-//     //可见区域顶部高度
-//     var visibleTop = window.scrollY;
-//     // 获取翻页按钮容器
-//     var pagination = document.getElementById('pagination');
-//     // 获取位置监测容器，此处采用评论区
-//     var eventlistner = document.getElementById('post-tools');
-//     if (eventlistner && pagination) {
-//         var centerY = eventlistner.offsetTop + (eventlistner.offsetHeight / 2);
-//         if (document.body.clientWidth > 1300) {
-//             if (centerY < visibleTop) {
-//                 pagination.classList.add("show-window");
-//             } else {
-//                 pagination.classList.remove("show-window");
-//             }
-//         }
-//     }
-// }, 200));
-
-
+function initObserver() {
+    var e = document.getElementById("post-comment")
+        , t = document.getElementById("pagination");
+    e && new IntersectionObserver((function(e) {
+            e.forEach((function(e) {
+                    e.isIntersecting ? (t && t.classList.add("show-window"),
+                        document.querySelector(".comment-barrage").style.bottom = "-200px") : (t && t.classList.remove("show-window"),
+                        document.querySelector(".comment-barrage").style.bottom = "0px")
+                }
+            ))
+        }
+    )).observe(e)
+}
 
 // 页面百分比
 function percent() {
@@ -670,6 +634,7 @@ function initBlog() {
     heo.initThemeColor(),
     //隐藏加载动画
     GLOBAL_CONFIG.loadingBox &&  heo.hideLoading(),
+    initObserver(),
     checkUrlAndAddHideBanner()
 }
 
