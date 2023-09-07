@@ -4,7 +4,7 @@
     <div id="rightside">
         <div id="rightside-config-hide">
             <button th:if="${htmlType == 'post' && theme.config.tool.rightside.readmode}" id="readmode" type="button" title="阅读模式"><i class="haofont hao-icon-book-open"></i></button>
-            <!-- <button id="translateLink" type="button" title="简繁转换">繁</button> -->
+            <button th:if="${theme.config.style.translate.translateEnable}" id="translateLink" type="button" title="简繁转换">繁</button>
             <button id="darkmode" type="button" title="浅色和深色模式转换"><i class="haofont hao-icon-circle-half-stroke"></i></button>
             <button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="haofont hao-icon-arrows-left-right"></i></button>
         </div>

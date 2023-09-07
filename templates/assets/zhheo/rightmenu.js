@@ -389,7 +389,6 @@ function addRightMenuClickEvent() {
     });
     $('#menu-translate').on('click', function () {
         rm.hideRightMenu();
-        translateInitialization();
     });
     $('#menu-copy').on('click', rm.copyPageUrl);
     $('#menu-pastetext').on('click', rm.pasteText);

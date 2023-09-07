@@ -110,7 +110,11 @@
             </div>
             <div class="rightMenu-item" id="menu-darkmode">
                 <i class="haofont hao-icon-circle-half-stroke"></i>
-                <span class="menu-darkmode-text">显示模式</span>
+                <span class="menu-darkmode-text">深色模式</span>
+            </div>
+            <div th:if="${theme.config.style.translate.translateEnable}" class="rightMenu-item" id="menu-translate">
+                <i class="haofont hao-icon-language"></i>
+                <span>轉為繁體</span>
             </div>
         </div>
     </div>

@@ -2339,6 +2339,29 @@ spec:
               value: true
             - label: 关闭
               value: false
+        - $formkit: group
+          name: translate
+          label: 简繁转换
+          value:
+            defaultEncoding: 2
+            translateEnable: true
+          children:
+            - $formkit: radio
+              name: defaultEncoding
+              label: 默认语言
+              options:
+                - label: 简体中文
+                  value: 2
+                - label: 繁體中文
+                  value: 1
+            - $formkit: radio
+              name: translateEnable
+              label: 允许切换语言
+              options:
+                - label: 打开
+                  value: true
+                - label: 关闭
+                  value: false
         - $formkit: textarea
           name: fontFamily
           label: 全局字体
