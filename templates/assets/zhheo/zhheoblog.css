@@ -12624,7 +12624,7 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     margin: 0px !important;
 }
 
-.tk-replies .tk-content span:first-child {
+.tk-replies .tk-content span:first-child:not(.token) {
     font-size: 0.5rem;
     color: var(--heo-secondtext);
 }
