@@ -38,6 +38,10 @@ body[data-type=music] .music-mask{
     display: none;
 }
 
+body[data-type=music] #rightside{
+    display: none;
+}
+
 body[data-type=music] #web_bg {
     display: none;
 }
@@ -401,10 +405,6 @@ body[data-type=music] #nav-music {
 }
 
 @media screen and (max-width: 768px) {
-
-    body[data-type=music] #rightside {
-        display: none
-    }
 
     body[data-type=music] #content-inner,
     body[data-type=music] #page {
