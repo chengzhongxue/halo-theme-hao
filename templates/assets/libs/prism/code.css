@@ -207,7 +207,7 @@
 
 #article-container .code-expand-btn i ,
 #post-comment .code-expand-btn i{
-    color: var(--hlnumber-color);
+    color: var(--heo-main);
     font-size: 14px;
     line-height: 1;
 }
