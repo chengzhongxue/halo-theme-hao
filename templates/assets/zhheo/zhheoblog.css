@@ -6530,7 +6530,7 @@ a.console_switchbutton {
     width: 35px;
     height: 35px;
     border-radius: 5px;
-    background-color: var(--btn-bg);
+    background-color: var(--heo-main);
     color: var(--btn-color);
     text-align: center;
     font-size: 16px;
