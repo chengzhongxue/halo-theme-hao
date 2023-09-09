@@ -16,12 +16,13 @@
     position: absolute;
     right: 22px;
     top: -77px;
-    content: "\f25e";
+    content: "\e668";
+    font-family: "haofont" !important;
     font-size: 180px;
     font-family: "Font Awesome 5 Brands";
     color: var(--heo-fontcolor);
     opacity: 0.1;
-    filter: blur(7px);
+    /*filter: blur(7px);*/
 }
 
 @media screen and (max-width: 768px) {
