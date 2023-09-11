@@ -9422,6 +9422,12 @@ a.article-meta__category:hover {
     display: none;
 }
 
+#post-meta .post-meta-date {
+    opacity: .6;
+    margin-right: .8rem
+}
+
+
 /* 文章目录 */
 #aside-content #card-toc .toc-content .toc-link.active {
     line-height: 1.2;
@@ -10631,6 +10637,7 @@ span.post-meta-position {
     opacity: 0.6;
     cursor: pointer;
     transition: 0.3s;
+    margin-right: 0.8rem;
 }
 
 .post-meta-commentcount:hover {

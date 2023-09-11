@@ -73,6 +73,12 @@
                             <a th:if="${#strings.equals(theme.config.comments.use, 'Twikoo')}" href="#post-comment">
                                 <span id="twikoo-count"></span></a>
                         </span>
+                        <span  class="post-meta-commentcount" sec:authorize="isAuthenticated()"
+                               data-flag-title="编辑文章"
+                               th:attr="onclick='javascript:window.open(\''+ '/console/posts/editor?name='+${post.metadata.name}+'&returnToView=true' +'\')'">
+                            <i style="margin-top: 2px;" class="haofont hao-icon-bianji post-meta-icon"></i>
+                            <span>编辑</span>
+                        </span>
                     </div>
 
                 </div>
