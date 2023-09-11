@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'music',title = '音乐馆' + ' | ' + site.title)}">
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'music',title = ${singlePage.spec.title + ' | ' + site.title})}">
 
 <th:block th:fragment="content">
 

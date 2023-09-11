@@ -8,7 +8,8 @@
 }
 
 
-#article-container .code-toolbar {
+#article-container .code-toolbar,
+#post-comment .code-toolbar{
     margin: 18px 0;
     overflow: hidden;
     -webkit-box-shadow: var(--rl-code-bar-shadow);
@@ -16,7 +17,8 @@
     border-radius: 7px
 }
 
-#article-container .code-toolbar:before {
+#article-container .code-toolbar:before,
+#post-comment .code-toolbar:before{
     content: "";
     position: absolute;
     top: 11px;
@@ -30,7 +32,8 @@
     box-shadow: 20px 0 #fdbc40,40px 0 #35cd4b
 }
 
-#article-container .code-toolbar .toolbar {
+#article-container .code-toolbar .toolbar,
+#post-comment .code-toolbar .toolbar{
     position: absolute;
     pointer-events: none;
     opacity: 1;
@@ -43,11 +46,13 @@
     text-align: center
 }
 
-#article-container .code-toolbar .toolbar-item:first-child {
+#article-container .code-toolbar .toolbar-item:first-child,
+#post-comment .code-toolbar .toolbar-item:first-child{
     display: none
 }
 
-#article-container .code-toolbar .toolbar-item:first-child span {
+#article-container .code-toolbar .toolbar-item:first-child span,
+#post-comment .code-toolbar .toolbar-item:first-child span{
     background-color: transparent;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -56,7 +61,8 @@
 
 }
 
-#article-container .code-toolbar .toolbar .custom-item {
+#article-container .code-toolbar .toolbar .custom-item,
+#post-comment .code-toolbar .toolbar .custom-item{
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -67,7 +73,8 @@
     pointer-events: all
 }
 
-#article-container .code-toolbar .toolbar .custom-item>i {
+#article-container .code-toolbar .toolbar .custom-item>i,
+#post-comment .code-toolbar .toolbar .custom-item>i {
     cursor: pointer;
     margin-left: 8px;
     -webkit-transition: -webkit-transform .2s;
@@ -75,32 +82,39 @@
     transition: transform .2s,-webkit-transform .2s
 }
 
-#article-container .code-toolbar .toolbar .custom-item>i:hover {
+#article-container .code-toolbar .toolbar .custom-item>i:hover,
+#post-comment .code-toolbar .toolbar .custom-item>i:hover{
     -webkit-filter: brightness(1.2);
     filter: brightness(1.2)
 }
 
 #article-container .toolbar .copy-button:hover,
-#article-container .toolbar .code-expander:hover{
+#article-container .toolbar .code-expander:hover,
+#post-comment  .toolbar .copy-button:hover,
+#post-comment  .toolbar .code-expander:hover{
     color: var(--heo-main);
 }
 
 
-#article-container .code-toolbar .toolbar.c-expander i.code-expander {
+#article-container .code-toolbar .toolbar.c-expander i.code-expander,
+#post-comment .code-toolbar .toolbar.c-expander i.code-expander{
     -webkit-transform: rotate(90deg);
     transform: rotate(90deg)
 }
 
 
-#article-container .code-toolbar .toolbar.c-title .toolbar-item:first-child {
+#article-container .code-toolbar .toolbar.c-title .toolbar-item:first-child,
+#post-comment .code-toolbar .toolbar.c-title .toolbar-item:first-child{
     display: block
 }
 
-#article-container .code-toolbar .toolbar.c-hr {
+#article-container .code-toolbar .toolbar.c-hr ,
+#post-comment .code-toolbar .toolbar.c-hr{
     border-bottom: 1px solid #b2a8a84d
 }
 
-#article-container .code-toolbar pre[class*=language-] {
+#article-container .code-toolbar pre[class*=language-],
+#post-comment .code-toolbar pre[class*=language-]{
     position: relative;
     margin: 0;
     padding: 35px 0 0;
@@ -110,7 +124,8 @@
     border-radius: 5px
 }
 
-#article-container .code-toolbar pre[class*=language-] .line-numbers-rows {
+#article-container .code-toolbar pre[class*=language-] .line-numbers-rows,
+#post-comment .code-toolbar pre[class*=language-] .line-numbers-rows{
     border-right: none;
     left: 0;
     top: 0;
@@ -119,7 +134,8 @@
     width: 2.7em;
 }
 
-#article-container .code-toolbar pre[class*=language-] code[class*=language-] {
+#article-container .code-toolbar pre[class*=language-] code[class*=language-],
+#post-comment .code-toolbar pre[class*=language-] code[class*=language-]{
     display: block;
     margin-bottom: 0;
     overflow-x: auto;
@@ -128,16 +144,27 @@
     text-shadow: none
 }
 
-#article-container .code-toolbar pre[class*=language-] code[class*=language-]::-webkit-scrollbar {
+#article-container .code-toolbar pre[class*=language-] code[class*=language-]::-webkit-scrollbar,
+#post-comment .code-toolbar pre[class*=language-] code[class*=language-]::-webkit-scrollbar{
     width: 5px;
     height: 5px
 }
 
-#article-container .code-toolbar pre[class*=language-] code[class*=language-] .style .token.string,#article-container .code-toolbar pre[class*=language-] code[class*=language-] .token.entity,#article-container .code-toolbar pre[class*=language-] code[class*=language-] .token.operator,#article-container .code-toolbar pre[class*=language-] code[class*=language-] .token.string,#article-container .code-toolbar pre[class*=language-] code[class*=language-] .token.url {
+#article-container .code-toolbar pre[class*=language-] code[class*=language-] .style .token.string,
+#article-container .code-toolbar pre[class*=language-] code[class*=language-] .token.entity,
+#article-container .code-toolbar pre[class*=language-] code[class*=language-] .token.operator,
+#article-container .code-toolbar pre[class*=language-] code[class*=language-] .token.string,
+#article-container .code-toolbar pre[class*=language-] code[class*=language-] .token.url,
+#post-comment .code-toolbar pre[class*=language-] code[class*=language-] .style .token.string,
+#post-comment .code-toolbar pre[class*=language-] code[class*=language-] .token.entity,
+#post-comment .code-toolbar pre[class*=language-] code[class*=language-] .token.operator,
+#post-comment .code-toolbar pre[class*=language-] code[class*=language-] .token.string,
+#post-comment .code-toolbar pre[class*=language-] code[class*=language-] .token.url {
     background-color: transparent
 }
 
-#article-container .code-toolbar pre[class*=language-].line-numbers code[class*=language-] {
+#article-container .code-toolbar pre[class*=language-].line-numbers code[class*=language-] ,
+#post-comment .code-toolbar pre[class*=language-].line-numbers code[class*=language-]{
     padding: 10px 20px 10px 48px;
 }
 
@@ -148,12 +175,14 @@
     top: 0;
 }
 
-#article-container .code-toolbar pre[class*=language-] code[class*=language-].c-toggle{
+#article-container .code-toolbar pre[class*=language-] code[class*=language-].c-toggle,
+#post-comment .code-toolbar pre[class*=language-] code[class*=language-].c-toggle{
     display: none;
 }
 
 /* 代码展开图标 */
-#article-container .code-expand-btn {
+#article-container .code-expand-btn ,
+#post-comment .code-expand-btn{
     transition: 0.3s;
     backdrop-filter: saturate(180%) blur(500px);
     -webkit-backdrop-filter: blur(20px);
@@ -171,18 +200,21 @@
     height: 32px;
 }
 
-#article-container .code-expand-btn:hover i {
+#article-container .code-expand-btn:hover i,
+#post-comment .code-expand-btn:hover i {
     color: var(--heo-white);
 }
 
-#article-container .code-expand-btn i {
-    color: var(--hlnumber-color);
+#article-container .code-expand-btn i ,
+#post-comment .code-expand-btn i{
+    color: var(--heo-main);
     font-size: 14px;
     line-height: 1;
 }
 
 
-#article-container .code-expand-btn.expand-done {
+#article-container .code-expand-btn.expand-done,
+#post-comment .code-expand-btn.expand-done{
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -o-transform: rotate(180deg);
@@ -190,22 +222,27 @@
     transform: rotate(180deg);
 }
 
-#article-container pre{
+#article-container pre,
+#post-comment pre{
     border:0px;
 }
 
-#article-container .code-expand-btn:hover {
+#article-container .code-expand-btn:hover,
+#post-comment .code-expand-btn:hover{
     background: var(--heo-main);
 }
 
-#article-container .code-expand-btn:hover i {
+#article-container .code-expand-btn:hover i ,
+#post-comment .code-expand-btn:hover i {
     color: var(--heo-white);
 }
 
-#article-container .code-toolbar pre.close.expand-done{
+#article-container .code-toolbar pre.close.expand-done,
+#post-comment .code-toolbar pre.close.expand-done{
     height: 100%;
 }
-#article-container .code-toolbar pre.close.expand-done-expander{
+#article-container .code-toolbar pre.close.expand-done-expander,
+#post-comment .code-toolbar pre.close.expand-done-expander{
     height: 100%;
 }
 

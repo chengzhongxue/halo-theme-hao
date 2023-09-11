@@ -159,6 +159,10 @@ document.addEventListener('DOMContentLoaded', function () {
         // 没有 toc 目录，则直接移除
         if (headers.length === 0) {
             document.getElementById("card-toc").remove();
+            const $mobileTocButton = document.getElementById("mobile-toc-button")
+            if($mobileTocButton){
+                $('#mobile-toc-button').attr('style', 'display: none');
+            }
         } else {
             tocbot.init({
                 tocSelector: '.toc-content',
@@ -218,7 +222,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 ? saveToLocal.set('aside-status', 'show', 2)
                 : saveToLocal.set('aside-status', 'hide', 2)
             $htmlDom.toggle('hide-aside')
-        }
+        },
+        runMobileToc: () => {
+            const $cardToc = document.getElementById("card-toc")
+            if ($cardToc.classList.contains("open")) {
+                $cardToc.classList.remove("open");
+            } else {
+                $cardToc.classList.add("open");
+            }
+        },
     }
 
     document.getElementById('rightside').addEventListener('click', function (e) {
@@ -230,6 +242,9 @@ document.addEventListener('DOMContentLoaded', function () {
             case 'rightside-config':
                 rightSideFn.showOrHideBtn()
                 break
+            case "mobile-toc-button":
+                rightSideFn.runMobileToc();
+                break;
             case 'readmode':
                 rightSideFn.switchReadMode()
                 break
