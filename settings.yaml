@@ -2302,7 +2302,7 @@ spec:
               name: js
               label: Twikoo评论 - js
               placeholder: 请输入js文件地址
-              help: twikoo版本不是最新版本可以自己引入js文件
+              help: 主题的twikoo版本是最新版本(如果你使用的不是最新版本请自己引入js文件)
 
     - group: style
       label: 样式

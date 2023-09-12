@@ -247,12 +247,12 @@
         }, 600);
     }
     function aiGoHome() {
-        startAI("正在前往博客主页...", false);
+        startAI("前往爱发电购买...", false);
         sto[2] = setTimeout(() => {
             pjax.loadUrl("/");
         }, 1000);
     }
-    const ai_btn_item = document.querySelectorAll(".ai-btn-item");
+
     function Introduce() {
         if (mode == "tianli") {
             startAI("我是文章辅助AI: TianliGPT，点击下方的按钮，让我生成本文简介、推荐相关文章等。")
@@ -263,8 +263,10 @@
     function aiTitleRefreshIconClick() {
         aiTitleRefreshIcon.click()
     }
+    const aiBtnList = document.querySelectorAll(".ai-btn-item");
     const aiFunctions = [Introduce, aiTitleRefreshIconClick, aiRecommend, aiGoHome];
-    ai_btn_item.forEach((item, index) => {
+    const filteredHeadings = Array.from(aiBtnList).filter(heading => heading.id !== "go-tianli-blog");
+    filteredHeadings.forEach((item, index) => {
         item.addEventListener("click", () => {
             aiFunctions[index]();
         });
@@ -309,6 +311,10 @@
         if (mode === "tianli") {
             mode = "local";
             document.getElementById("ai-tag").innerHTML = gptName + " GPT";
+            if ((document.getElementById("go-tianli-blog").style.display = "block")) {
+                document.querySelectorAll(".ai-btn-item").forEach(item => (item.style.display = "block"));
+                document.getElementById("go-tianli-blog").style.display = "none";
+            }
             aiAbstract(basicWordCount);
         } else {
             mode = "tianli";

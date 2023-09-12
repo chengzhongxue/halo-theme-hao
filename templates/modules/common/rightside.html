@@ -14,6 +14,13 @@
             <a id="to_comment" href="javascript:heo.scrollTo('post-comment')" title="直达评论" ><i class="haofont hao-icon-comments"></i></a>
             <a id="switch-commentBarrage" href="javascript:heo.switchCommentBarrage();" rel="external nofollow noreferrer" title="开关弹幕" draggable="false" data-pjax-state="external"><i class="haofont hao-icon-danmu"></i></a>
             <button id="go-up" type="button" title="回到顶部"><i class="haofont hao-icon-arrow-up"></i></button>
+            <a th:if="${htmlType == 'post' || htmlType == 'page'}"
+               th:with="editor = ${htmlType == 'post' ? 'posts/editor?name='+ post.metadata.name : htmlType == 'page' ? 'single-pages/editor?name='+ singlePage.metadata.name : '' }"
+               sec:authorize="isAuthenticated()"
+               th:href="|/console/${editor}&returnToView=true|"
+               title="编辑文章" >
+                <i class="haofont hao-icon-pencil"></i>
+            </a>
         </div>
     </div>
     <style th:if="${!theme.config.tool.rightside.rightsideEnable}">

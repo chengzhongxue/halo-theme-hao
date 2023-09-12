@@ -91,7 +91,7 @@
     <script th:src="${assets_link + '/libs/pjax/pjax.min.js'}"></script>
 
     <!-- swiper 在瞬间滚动时会使用 -->
-    <script data-pjax  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/6.6.2/swiper-bundle.min.js"></script>
+    <script th:if="${theme.config.top.moment}" data-pjax  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/6.6.2/swiper-bundle.min.js"></script>
 
     <!-- 右键菜单 -->
     <script th:if="${theme.config.tool.rightMenu.rightMenuEnable}" th:src="${assets_link + '/zhheo/rightmenu.js'}"></script>
