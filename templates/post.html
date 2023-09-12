@@ -37,11 +37,14 @@
                 <h1 class="post-title" th:text="${post.spec.title}"></h1>
                 <div id="post-meta">
                     <div class="meta-secondline">
+                        <span class="post-meta-wechat" data-flag-title="文章作者" title="文章作者">
+                            <i class="haofont hao-icon-zuozhe post-meta-icon"></i>[[${post.owner.displayName}]]
+                        </span>
                         <span class="post-meta-date">
                             <i class="haofont hao-icon-calendar-days post-meta-icon"></i>
                             <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"
-                                  th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
-                                  th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
+                                  th:text="${#dates.format(post.spec.publishTime,'yyyy/MM/dd')}"
+                                  th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">
                             </time>
                         </span>
 
@@ -56,9 +59,18 @@
                             <span>[[${wordCount / 400}]] 分钟</span>
                         </span>
 
-                        <!--<span class="post-meta-wechat" title="该文章已在公众号中更新"><i-->
-                        <!--        class="fab fa-weixin post-meta-icon"></i>公众号同步</span>-->
-                        <span class="post-meta-pv" data-flag-title="热度">
+                        <span th:with="syncStatus=${#strings.isEmpty(#annotations.get(post, 'sync_status')) ? '未同步': #annotations.get(post, 'sync_status')}"
+                              class="post-meta-wechat" th:title=" ${pluginFinder.available('plugin-platforms-sync') &&  syncStatus == '已同步' ? '该文章已在公众号中更新' : '该文章在博客首发'}">
+                            <th:block th:if="${!pluginFinder.available('plugin-platforms-sync') || syncStatus != '已同步'}">
+                                <i class="haofont hao-icon-rss post-meta-icon"></i>博客独享
+                            </th:block>
+
+                            <th:block th:if="${pluginFinder.available('plugin-platforms-sync') && syncStatus == '已同步'}">
+                                <i class="haofont hao-icon-weixin1 post-meta-icon"></i>公众号同步
+                            </th:block>
+
+                        </span>
+                        <span class="post-meta-pv" data-flag-title="热度" title="热度">
                             <i class="haofont hao-icon-fire post-meta-icon"></i>
                             <span class="post-meta-label">热度:</span>
                             <span id="visit" th:text="${post.stats.visit}"></span>
@@ -75,6 +87,7 @@
                         </span>
                         <span  class="post-meta-commentcount" sec:authorize="isAuthenticated()"
                                data-flag-title="编辑文章"
+                               title="编辑文章"
                                th:attr="onclick='javascript:window.open(\''+ '/console/posts/editor?name='+${post.metadata.name}+'&returnToView=true' +'\')'">
                             <i style="margin-top: 2px;" class="haofont hao-icon-bianji post-meta-icon"></i>
                             <span>编辑</span>
