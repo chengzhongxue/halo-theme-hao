@@ -49,6 +49,9 @@ spec:
             travelling: true
             article: true
             darkMode: true
+            navLogin: false
+            console:
+              consoleEnable: true
           children:
             - $formkit: radio
               name: travelling
@@ -78,15 +81,21 @@ spec:
                   value: true
                 - label: 隐藏
                   value: false
+            - $formkit: radio
+              name: navLogin
+              label: 登入按钮
+              help: 右上角登入按钮
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
             - $formkit: group
               name: console
               label: 中控台
-              value:
-                consoleLink: false
               children:
                 - $formkit: radio
-                  name: consoleLink
-                  label: 前往控制台
+                  name: consoleEnable
                   options:
                     - label: 显示
                       value: true

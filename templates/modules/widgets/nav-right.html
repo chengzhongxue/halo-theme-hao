@@ -36,9 +36,33 @@
         </a>
     </div>
 
-    <div class="nav-button" id="nav-console">
-        <a class="console_switchbutton" href="javascript:void(0);"
-           onclick="heo.showConsole()" rel="external nofollow" title="显示中控台">
+    <div th:if="${theme.config.nav.right.navLogin}" class="console-button" tabindex="-1"
+         th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}">
+        <span class="site-page nav-login">
+            <i sec:authorize="isAnonymous()" class="haofont hao-icon-zhanghao1 " style="font-size: 1rem;font-weight: 700;"></i>
+            <img sec:authorize="isAuthenticated()"  th:src="${currentUser.avatar ?: #theme.assets('/images/none.png')}"
+                 th:alt="${currentUser.displayName}"
+                 style=" width: 24px; height: 24px; border-radius: 9999px" />
+        </span>
+        <div class="back-menu-list-groups">
+            <div class="back-menu-list-group" style="margin: -4px -9px -4px -18px">
+                <div class="back-menu-list">
+                    <a sec:authorize="isAuthenticated()" class="back-menu-item" rel="external nofollow" target="_blank" href="/console">
+                        <span class="back-menu-item-text">控制台</span>
+                    </a>
+                    <!-- <a sec:authorize="isAuthenticated()" class="back-menu-item" rel="external nofollow" href="/logout">
+                        <span class="back-menu-item-text">退出登录</span>
+                    </a> -->
+                    <a sec:authorize="isAnonymous()" class="back-menu-item" rel="external nofollow" target="_blank" href="/console/login">
+                        <span class="back-menu-item-text">登录</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:if="${theme.config.nav.right.console.consoleEnable}" class="nav-button" id="nav-console">
+        <a class="console_switchbutton" href="javascript:void(0);" onclick="heo.showConsole()" rel="external nofollow"
+           title="显示中控台">
             <i class="haofont hao-icon-dashboard" style="font-size: 1.12rem;"></i>
         </a>
     </div>
