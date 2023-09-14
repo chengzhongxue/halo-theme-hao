@@ -199,7 +199,7 @@ spec:
           help: 需要瞬间丶顶部 Banner显示
           value:
             climbEnable: true
-            climbImg: http://animals.yyds.pink/
+            climbImg: https://imgapi.yyds.pink/random?sort=animals
           children:
             - $formkit: radio
               name: climbEnable
@@ -214,7 +214,6 @@ spec:
               name: climbImg
               if: $get(climbEnable).value
               label: 图片
-              value: https://imgapi.yyds.pink/random?sort=animals
               help: 随机图地址：https://imgapi.yyds.pink/random?sort=animals
         - $formkit: radio
           name: recentTop
@@ -750,7 +749,7 @@ spec:
         - $formkit: group
           name: music
           label: 音乐卡片
-          help: 文档请看：https://github.com/zonemeen/netease-recent-profile
+          help: 文档请看：https://githubfast.com/zonemeen/netease-recent-profile
           value:
             musicUrl:
             lightMsimg:
@@ -785,7 +784,7 @@ spec:
         - $formkit: group
           name: steam
           label: Steam卡片
-          help: 文档请看：https://github.com/yuyinws/steam-card
+          help: 文档请看：https://githubfast.com/yuyinws/steam-card
           value:
             steamUrl:
             cardSteam:
@@ -1493,7 +1492,7 @@ spec:
         - $formkit: url
           name: buttonUrl
           validation: url
-          value: https://github.com/halo-sigs/plugin-moments
+          value: https://githubfast.com/halo-sigs/plugin-moments
           label: 按钮跳转连链接
           placeholder: 请输入跳转 url
 
@@ -1558,7 +1557,7 @@ spec:
         - $formkit: url
           name: buttonUrl
           validation: url
-          value: https://github.com/Rock-Candy-Tea/hexo-circle-of-friends
+          value: https://githubfast.com/Rock-Candy-Tea/hexo-circle-of-friends
           label: 按钮跳转连链接
           placeholder: 请输入跳转 url
         - $formkit: url
