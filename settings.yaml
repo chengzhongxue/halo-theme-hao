@@ -49,6 +49,9 @@ spec:
             travelling: true
             article: true
             darkMode: true
+            navLogin: false
+            console:
+              consoleEnable: true
           children:
             - $formkit: radio
               name: travelling
@@ -78,15 +81,21 @@ spec:
                   value: true
                 - label: 隐藏
                   value: false
+            - $formkit: radio
+              name: navLogin
+              label: 登入按钮
+              help: 右上角登入按钮
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
             - $formkit: group
               name: console
               label: 中控台
-              value:
-                consoleLink: false
               children:
                 - $formkit: radio
-                  name: consoleLink
-                  label: 前往控制台
+                  name: consoleEnable
                   options:
                     - label: 显示
                       value: true
@@ -184,6 +193,28 @@ spec:
               value: true
             - label: 隐藏
               value: false
+        - $formkit: group
+          name: climb
+          label: 宠物挂件
+          help: 需要瞬间丶顶部 Banner显示
+          value:
+            climbEnable: true
+            climbImg: https://imgapi.yyds.pink/random?sort=animals
+          children:
+            - $formkit: radio
+              name: climbEnable
+              key: climbEnable
+              id: climbEnable
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
+            - $formkit: url
+              name: climbImg
+              if: $get(climbEnable).value
+              label: 图片
+              help: 随机图地址：https://imgapi.yyds.pink/random?sort=animals
         - $formkit: radio
           name: recentTop
           id: recentTop
@@ -718,7 +749,7 @@ spec:
         - $formkit: group
           name: music
           label: 音乐卡片
-          help: 文档请看：https://github.com/zonemeen/netease-recent-profile
+          help: 文档请看：https://githubfast.com/zonemeen/netease-recent-profile
           value:
             musicUrl:
             lightMsimg:
@@ -753,7 +784,7 @@ spec:
         - $formkit: group
           name: steam
           label: Steam卡片
-          help: 文档请看：https://github.com/yuyinws/steam-card
+          help: 文档请看：https://githubfast.com/yuyinws/steam-card
           value:
             steamUrl:
             cardSteam:
@@ -1461,7 +1492,7 @@ spec:
         - $formkit: url
           name: buttonUrl
           validation: url
-          value: https://github.com/halo-sigs/plugin-moments
+          value: https://githubfast.com/halo-sigs/plugin-moments
           label: 按钮跳转连链接
           placeholder: 请输入跳转 url
 
@@ -1526,7 +1557,7 @@ spec:
         - $formkit: url
           name: buttonUrl
           validation: url
-          value: https://github.com/Rock-Candy-Tea/hexo-circle-of-friends
+          value: https://githubfast.com/Rock-Candy-Tea/hexo-circle-of-friends
           label: 按钮跳转连链接
           placeholder: 请输入跳转 url
         - $formkit: url

@@ -586,9 +586,11 @@ function checkUrlAndAddHideBanner() {
     var e = window.location.href;
     if (/\/page\//.test(e)) {
         var t = document.getElementById("recent-top-post-group")
-            , o = document.getElementById("bbTimeList");
+            , o = document.getElementById("bbTimeList")
+            , c = document.getElementById("climb");
         t && (t.classList.add("more-page"),
-        o && o.classList.add("more-page"));
+        o && o.classList.add("more-page"),
+        c && c.classList.add("more-page"));
     }
 }
 
