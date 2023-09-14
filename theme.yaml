@@ -41,6 +41,10 @@ spec:
         description: 相册页面
         screenshot:
         file: album.html
+      - name: 我的老婆页面模版
+        description: 我的老婆页面
+        screenshot:
+        file: lovely_girls.html
   description: Halo 2.x Theme base on Thymeleaf, Referring to Butterfly and Heo
   logo: https://liuzhihang.com/upload/logo.jpg
   website: https://liuzhihang.com

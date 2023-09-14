@@ -1756,7 +1756,42 @@ spec:
                   label: 左下角按钮跳转链接
                   placeholder: 请输入左下角按钮跳转链接
                   value: https://www.apple.com.cn/macbook-pro/
-
+    - group: lovely_girls
+      label: 我的老婆
+      formSchema:
+        - $formkit: text
+          name: bigTitle
+          label: 大标题
+          value: Lovely Girls
+        - $formkit: text
+          name: icon
+          label: 图标
+          value: haofont hao-icon-heartbeat-bold
+        - $formkit: text
+          name: smallTitle
+          label: 小标题
+          value: 大家都是我的天使
+        - $formkit: repeater
+          name: girls_list
+          label: 我的老婆
+          value: [ ]
+          children:
+            - $formkit: attachment
+              name: girl_avatar
+              label: 头像
+              value: https://s4.anilist.co/file/anilistcdn/character/medium/b88575-CjdhrvYLrToO.png
+            - $formkit: text
+              name: girl_name
+              label: 姓名
+              value: 雷姆(Re:从零开始的异世界生活)
+            - $formkit: text
+              name: work_name
+              label: 作品名称
+              value: Re:从零开始的异世界生活
+            - $formkit: text
+              name: girl_link
+              label: 链接
+              help: 为空时链接为"https://zh.moegirl.org.cn/"+姓名，例如：https://zh.moegirl.org.cn/雷姆(Re:从零开始的异世界生活)
     - group: about
       label: 关于
       formSchema:

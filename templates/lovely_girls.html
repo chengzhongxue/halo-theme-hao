@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page',title = ${singlePage.spec.title + ' | ' + site.title})}">
+
+<th:block th:fragment="content">
+
+    <div class="page" id="body-wrap">
+
+        <!-- 头部导航栏 -->
+        <header class="not-top-img" id="page-header">
+            <nav th:replace="~{modules/nav :: nav(title = ${singlePage.spec.title})}"></nav>
+        </header>
+        <main class="layout hide-aside" id="content-inner">
+            <div id="page">
+                <h1 class="page-title" style="display: inline;"><span style="font-size: 1em;margin-right: 10px;" th:class="${theme.config.lovely_girls.icon}"></span>[[${theme.config.lovely_girls.bigTitle}]]</h1>
+                <blockquote>
+                    <p title="小孩子才做选择，我全都要！" th:text="${theme.config.lovely_girls.smallTitle}"></p>
+                </blockquote>
+                <div class="girls"
+                     th:if="${not #lists.isEmpty(theme.config.lovely_girls.girls_list)}"
+                     th:with="girlsList = ${theme.config.lovely_girls.girls_list}">
+                    <ul class="girl-items">
+                        <li class="girl-item"
+                            th:each="girl : ${girlsList}">
+                            <a class="girl-item-link"
+                               th:href="${#strings.isEmpty(girl.girl_link) ? 'https://zh.moegirl.org.cn/'+girl.girl_name : girl.girl_link}"
+                               alt="portrait" target="_blank" rel="noopener">
+                                <figure class="girl-info">
+                                    <img class="girl-avatar"
+                                         th:src="${girl.girl_avatar}"
+                                         th:alt="${girl.girl_name}">
+                                    <figcaption class="girl-name"
+                                                th:text="${girl.girl_name}"></figcaption>
+                                    <figcaption class="girl-from"
+                                                th:text="${girl.work_name}"></figcaption>
+                                </figure>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <style>
+                    .girls {
+                        text-align: center
+                    }
+
+                    .girls .girl-items {
+                        display: flex;
+                        justify-content: center;
+                        flex-wrap: wrap;
+                        padding-left: 0
+                    }
+
+                    .girl-item {
+                        display: inline-flex;
+                        text-align: center;
+                        justify-content: center;
+                        width: 7rem;
+                        margin: 1rem
+                    }
+
+                    .girl-item .girl-info {
+                        width: 100%;
+                        padding: 0;
+                        margin: 0
+                    }
+
+                    .girl-item .girl-avatar {
+                        object-fit: cover;
+                        object-position: center top;
+                        width: 4rem;
+                        height: 4rem;
+                        border-radius: 50%;
+                        padding: .2rem;
+                        background-color: #fff;
+                        box-shadow: 0 0 1rem #0000001f;
+                        transition: .5s
+                    }
+
+                    .girl-item .girl-avatar:hover {
+                        box-shadow: 0 0 2rem #0000001f
+                    }
+
+                    .girl-item .girl-name {
+                        font-size: .9rem
+                    }
+
+                    .girl-item .girl-from {
+                        font-size: 12px;
+                        font-family: "Noto Serif SC", STZhongsong, STKaiti, KaiTi, Roboto, serif;
+                        font-weight: 700;
+                        color: var(--heo-fontcolor)
+                    }
+
+                    .girl-item .girl-from:before {
+                        content: "「"
+                    }
+
+                    .girl-item .girl-from:after {
+                        content: "」"
+                    }
+
+                </style>
+                <!--/* 评论组件 */-->
+                <th:block
+                        th:replace="~{modules/comment :: comment(group = 'content.halo.run',
+                  kind = 'SinglePage',
+                  name = ${singlePage.metadata.name},
+                  allowComment = ${singlePage.spec.allowComment})}"/>
+            </div>
+
+        </main>
+        <!-- 底部 -->
+        <footer th:replace="~{modules/footer :: footer}"></footer>
+        <!-- 卡片顶部气泡效果 -->
+        <script th:if="${theme.config.other.bubbleEnable}" async data-pjax
+                th:src="${assets_link + '/libs/canvas/bubble.js'}"></script>
+    </div>
+
+</th:block>
+
+</html>
