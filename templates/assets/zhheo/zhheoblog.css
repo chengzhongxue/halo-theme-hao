@@ -5065,6 +5065,7 @@ html {
 #page-header #nav #nav-left div {
     margin-left: 0.5rem;
     padding: 0;
+    position: relative;
 }
 
 
@@ -5273,6 +5274,14 @@ html {
 
 
 /* 登入按钮 */
+
+#page-header #nav #nav-right div .back-menu-list-groups{
+    position: absolute;
+    right: 0;
+    left: auto;
+    top: 34px;
+}
+
 #page-header #nav #nav-right .console-button .nav-login{
     width: 35px;
     display: flex;
@@ -8466,6 +8475,23 @@ li {
     color: var(--heo-theme);
 }
 
+/*宠物挂件*/
+.climb {
+    display: block;
+    position: absolute;
+    max-width: 270px;
+    z-index: 1;
+    margin-top: -26.6px;
+    margin-left: 5px;
+    cursor: pointer
+}
+@media screen and (max-width: 1200px) {
+    .climb {
+        display:none!important
+    }
+}
+
+
 /* 文章卡片相关 */
 #recent-posts > .recent-post-item > .recent-post-info {
     padding: 0;
@@ -9010,7 +9036,7 @@ ins.adsbygoogle {
     margin-bottom: 0rem;
 }
 
-.recent-top-post-group.more-page {
+.recent-top-post-group.more-page,.climb.more-page {
     display: none;
 }
 

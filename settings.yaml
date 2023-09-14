@@ -193,6 +193,29 @@ spec:
               value: true
             - label: 隐藏
               value: false
+        - $formkit: group
+          name: climb
+          label: 宠物挂件
+          help: 需要瞬间丶顶部 Banner显示
+          value:
+            climbEnable: true
+            climbImg: http://animals.yyds.pink/
+          children:
+            - $formkit: radio
+              name: climbEnable
+              key: climbEnable
+              id: climbEnable
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
+            - $formkit: url
+              name: climbImg
+              if: $get(climbEnable).value
+              label: 图片
+              value: https://imgapi.yyds.pink/random?sort=animals
+              help: 随机图地址：https://imgapi.yyds.pink/random?sort=animals
         - $formkit: radio
           name: recentTop
           id: recentTop
