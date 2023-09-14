@@ -33,6 +33,7 @@
     </th:block>
     <img th:if="${theme.config.top.climb.climbEnable && theme.config.top.recentTop} " class="climb"  id="climb"
          th:src="${isLazyload ? loadingImg : theme.config.top.climb.climbImg}"
+         onclick="halo.changeMarginLeft(this)"
          th:data-lazy-src="${ isLazyload ? theme.config.top.climb.climbImg : ''}">
 
 </div>
