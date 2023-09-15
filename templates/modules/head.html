@@ -147,7 +147,7 @@
             th:if="${theme.config.other.loadingBoxs.loadProgressBar}">
     </script>
 
-    <!-- 复制 https://github.com/zenorocha/clipboard.js -->
+    <!-- 复制 https://githubfast.com/zenorocha/clipboard.js -->
     <script th:src="${assets_link + '/libs/clipboard/clipboard.min.js'}"></script>
 
     <!-- 全局图片预览-->
@@ -170,7 +170,7 @@
     </th:block>
 
     <!-- icon图标 -->
-    <link rel="stylesheet" th:href="'https://cdn.cbd.int/hao-theme-static@1.3.4/icon/iconfont.css'">
+    <link rel="stylesheet" th:href="'https://cdn.cbd.int/hao-theme-static@'+${theme.spec.version}+'/icon/iconfont.css'">
 
     <!-- 声明一些公共信息 -->
     <script id="site-config" th:inline="javascript">
