@@ -2468,3 +2468,31 @@ p.p.gray,span.p.gray {
 .hide-block {
     margin: 0 0 16px
 }
+
+
+/*适配GitHub仓库*/
+#article-container a:not(.fancybox).mr-3:hover{
+    text-decoration: none;
+    border-bottom: 0px;
+    color: rgb(48 122 246 / 0%);
+    background: rgb(48 122 246 / 0%);
+}
+
+#article-container a.mr-3 {
+    border-bottom: 0;
+    padding: 0;
+    width: fit-content;
+}
+
+#article-container a:not(.fancybox).repo-title:hover{
+    text-decoration: none;
+    border-bottom: 0px;
+    color: rgb(48 122 246 / 0%);
+    background: rgb(48 122 246 / 0%);
+}
+
+#article-container a.repo-title {
+    border-bottom: 0;
+    padding: 0;
+    width: fit-content;
+}

@@ -34,9 +34,6 @@ let halo = {
             return;
         }
 
-
-
-
         const enable = GLOBAL_CONFIG.prism.enable;
         if (!enable) return;
         const isEnableTitle = GLOBAL_CONFIG.prism.enable_title;
@@ -133,9 +130,6 @@ let halo = {
             return settings;
         }
 
-
-
-
         var r = Prism.plugins.toolbar.hook = function (a) {
 
 
@@ -181,8 +175,6 @@ let halo = {
 
             }
 
-
-
             const prismToolsFn = function (e) {
                 const $target = e.target.classList;
                 if ($target.contains("code-expander")) prismShrinkFn(this);
@@ -200,7 +192,6 @@ let halo = {
 
             }
 
-
             const expandCode = function () {
                 this.classList.toggle("expand-done");
                 this.style.display = "none";
@@ -216,9 +207,6 @@ let halo = {
                 ele.addEventListener("click", expandCode);
                 r.offsetParent.appendChild(ele);
             }
-
-
-
 
             const prismShrinkFn = ele => {
                 const $nextEle = r.offsetParent.lastElementChild.classList
@@ -269,7 +257,6 @@ let halo = {
             document.head.appendChild(a)
     },
 
-
     danmu: (url,token,maxBarrage)=>{
         const e = new EasyDanmakuMin({
             el: "#danmu",
@@ -314,6 +301,11 @@ let halo = {
             ))
         }
         document.getElementById("danmuBtn").innerHTML = "<button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.remove('hidedanmu')\">显示弹幕</button> <button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.add('hidedanmu')\">隐藏弹幕</button>"
+    },
+
+    changeMarginLeft(element) {
+        var randomMargin = Math.floor(Math.random() * 901) + 100; // 生成100-1000之间的随机数
+        element.style.marginLeft = randomMargin + 'px';
     }
 
 
