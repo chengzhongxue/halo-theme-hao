@@ -1148,7 +1148,7 @@ spec:
               bdageitem_enable: false
               bdageitem:
                 - link: "https://halo.run/"
-                  shields: "https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/Frame-Halo-blue.svg"
+                  shields: "https://npm.onmicrosoft.cn/hao-theme-static@1.3.6/images/Frame-Halo-blue.svg"
                   message: "博客框架为halo2.x"
           children:
             - $formkit: radio
@@ -1231,7 +1231,7 @@ spec:
                       label: 徽标
                       placeholder: 请输入内容
                       validation: required
-                      value: "https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/Frame-Halo-blue.svg"
+                      value: "https://npm.onmicrosoft.cn/hao-theme-static@1.3.6/images/Frame-Halo-blue.svg"
                     - $formkit: text
                       name: message
                       label: 徽标 title
@@ -1536,7 +1536,7 @@ spec:
         - $formkit: attachment
           name: backgroundImg
           label: 背景图
-          value: https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/64624940e3623.jpeg
+          value: https://npm.onmicrosoft.cn/hao-theme-static@1.3.6/images/64624940e3623.jpeg
           placeholder: 请输入图片地址
         - $formkit: text
           name: smallTitle
@@ -1636,7 +1636,7 @@ spec:
         - $formkit: attachment
           name: backgroundImg
           label: 背景图
-          value: https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/64624940e3623.jpeg
+          value: https://npm.onmicrosoft.cn/hao-theme-static@1.3.6/images/64624940e3623.jpeg
           placeholder: 请输入图片地址
         - $formkit: text
           name: smallTitle
@@ -1902,7 +1902,7 @@ spec:
             game_title: 英雄联盟
             game_uid: 比尔吉沃特
             game_bg: https://img.zhheo.com/i/2022/08/31/630efa7ae39fe.webp
-            loading_bar: https://npm.elemecdn.com/hao-theme-static@1.2.0/templates/images/64795eaece0fc.png
+            loading_bar: https://npm.onmicrosoft.cn/hao-theme-static@1.3.6/images/64795eaece0fc.png
           children:
             - $formkit: text
               name: game_tips
@@ -2784,7 +2784,7 @@ spec:
               if: "$get(use).value == 'custom'"
               label: cdn地址，外链地址
               validation: required
-              value: 'https://npm.onmicrosoft.cn/hao-theme-static@1.3.0/templates/assets'
+              value: 'https://npm.onmicrosoft.cn/hao-theme-static@1.3.7/templates/assets'
               help: '默认为npmJs的onmicrosoft加速地址，如果你有自己的cdn地址（请确保链接下assets文件夹下主题静态资源文件），可以填写，否则请勿修改！ '
         - $formkit: group
           name: vanillaLazyload
