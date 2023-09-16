@@ -330,6 +330,26 @@ let halo = {
                     }
                 ))
             }
+            if(GLOBAL_CONFIG.source.comments.use == 'Waline'){
+                const loadWaline = () => {
+                    Waline.RecentComments({
+                        serverURL: GLOBAL_CONFIG.source.waline.serverURL,
+                        count: 50
+                    }).then(({ comments }) => {
+                        const walineArray = comments.map(e => {
+                            return {
+                                'content': e.nick + "：" + a(e.comment),
+                                'avatar': e.avatar,
+                                'href': e.url + '#' + e.objectId,
+                            }
+                        })
+                        e.batchSend(walineArray, !0),
+                            saveToLocal.set("danmu", walineArray, .02)
+                    })
+                }
+                if (typeof Waline === 'object') loadWaline()
+                else getScript(GLOBAL_CONFIG.source.waline.js).then(loadWaline)
+            }
 
         }
         document.getElementById("danmuBtn").innerHTML = "<button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.remove('hidedanmu')\">显示弹幕</button> <button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.add('hidedanmu')\">隐藏弹幕</button>"

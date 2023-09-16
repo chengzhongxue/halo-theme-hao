@@ -8,6 +8,7 @@ if(GLOBAL_CONFIG.htmlType!='comments' && document.querySelector('#post-comment')
         //twikoo部署地址腾讯云的为环境ID
         twikooUrl: GLOBAL_CONFIG.source.twikoo.twikooUrl,
         artalkUrl: GLOBAL_CONFIG.source.artalk.artalkUrl,
+        walineUrl: GLOBAL_CONFIG.source.waline.serverURL,
         //token获取见上方
         accessToken: GLOBAL_CONFIG.source.twikoo.accessToken,
         mailMd5: GLOBAL_CONFIG.source.comments.mailMd5,
@@ -75,7 +76,16 @@ if(GLOBAL_CONFIG.htmlType!='comments' && document.querySelector('#post-comment')
             xhr.send(query);
         }
 
-
+        if(commentBarrageConfig.use=='Waline'){
+            fetch( commentBarrageConfig.walineUrl+`/comment?path=${commentBarrageConfig.pageUrl}&pageSize=100&page=1&lang=zh-CN&sortBy=insertedAt_desc`)
+                .then((e=>e.json())).then((({data: t})=>{
+                    if(t.length>0){
+                        commentBarrageConfig.barrageList = commentLinkFilter(t);
+                        commentBarrageConfig.dom.innerHTML = '';
+                    }
+                }
+            ))
+        }
 
         clearInterval(commentInterval);
         commentInterval = null;
@@ -112,6 +122,14 @@ if(GLOBAL_CONFIG.htmlType!='comments' && document.querySelector('#post-comment')
                 newData.push(item);
             });
         }
+        if(commentBarrageConfig.use=='Waline'){
+            data.sort((a, b) => {
+                return a.time - b.time;
+            })
+            data.forEach(item => {
+                newData.push(...getCommentWalineReplies(item));
+            });
+        }
         return newData;
     }
 
@@ -126,16 +144,35 @@ if(GLOBAL_CONFIG.htmlType!='comments' && document.querySelector('#post-comment')
             return [];
         }
     }
+    function getCommentWalineReplies(item) {
+        if (item.children) {
+            let children = [item];
+            item.children.forEach(item => {
+                children.push(...getCommentReplies(item));
+            })
+            return children;
+        } else {
+            return [];
+        }
+    }
 
     function popCommentBarrage(data) {
-        let isTwikoo = commentBarrageConfig.use=='Twikoo';
+        let isTwikoo = commentBarrageConfig.use=='Twikoo'
         let isArtalk = commentBarrageConfig.use=='Artalk';
+        let isWaline = commentBarrageConfig.use=='Waline';
         let nick = data.nick;
-        let avatar = isTwikoo ? `https://cravatar.cn/avatar/${data.mailMd5}` : isArtalk ? `https://cravatar.cn/avatar/${data.email_encrypted}?d=mp&s=240` : 'https://cravatar.cn/avatar/';
-        let barrageBlogger = isTwikoo ? data.mailMd5 === commentBarrageConfig.mailMd5 : isArtalk ? data.email_encrypted === commentBarrageConfig.mailMd5 : false;
-        let id = isTwikoo ?  data.id : isArtalk ?  'atk-comment-'+data.id  : 'post-comment';
-        let comment = isTwikoo ? data.comment : isArtalk ? data.content : '';
-
+        let avatar = isTwikoo ? `https://cravatar.cn/avatar/${data.mailMd5}` :
+            isArtalk ?  `https://cravatar.cn/avatar/${data.email_encrypted}?d=mp&s=240` :
+                isWaline ? data.avatar :'https://cravatar.cn/avatar/';
+        let barrageBlogger = isTwikoo ? data.mailMd5 === commentBarrageConfig.mailMd5 :
+            isArtalk ? data.email_encrypted === commentBarrageConfig.mailMd5 :
+                isWaline ?  data.type === 'administrator' :false;
+        let id = isTwikoo ?  data.id :
+            isArtalk ?  'atk-comment-'+data.id  :
+                isWaline ? data.objectId : 'post-comment';
+        let comment = isTwikoo ? data.comment :
+            isArtalk ? data.content :
+                isWaline ? data.comment : '';
         let barrage = document.createElement('div');
         let width = commentBarrageConfig.dom.clientWidth;
         let height = commentBarrageConfig.dom.clientHeight;

@@ -198,7 +198,7 @@ spec:
           label: 宠物挂件
           help: 需要瞬间丶顶部 Banner显示
           value:
-            climbEnable: true
+            climbEnable: false
             climbImg: https://imgapi.yyds.pink/random?sort=animals
           children:
             - $formkit: radio
@@ -2274,6 +2274,8 @@ spec:
               value: Twikoo
             - label: Artalk
               value: Artalk
+            - label: Waline
+              value: Waline
         - $formkit: radio
           if: $get(use).value == 'Twikoo'
           name: twikooEnable
@@ -2290,7 +2292,7 @@ spec:
         - $formkit: group
           if: $get(twikooEnable).value
           name: twikoos
-          label: Twikoo评论配置
+          label: Twikoo评论配置 (文档：https://twikoo.js.org/)
           value:
             envId:
             accessToken:
@@ -2301,7 +2303,7 @@ spec:
               key: envId
               label: Twikoo评论 - 环境id/后端URL
               placeholder: 请输入环境id或URL
-              help: 详情请查看文档
+              help: 详情请查看文档 (后缀带 / )
               validation: required
             - $formkit: text
               name: accessToken
@@ -2332,7 +2334,7 @@ spec:
         - $formkit: group
           if: $get(artalkEnable).value
           name: artalks
-          label: Artalk评论配置
+          label: Artalk评论配置 (文档：https://artalk.js.org/)
           value:
             siteName: ""
             server: ""
@@ -2344,30 +2346,72 @@ spec:
               key: artalkServer
               label: Artalk评论 - 后端URL
               placeholder: 请输入后端URL
-              help: 详情请查看文档
+              help: 详情请查看文档 (后缀带 / )
               validation: required
             - $formkit: text
               name: siteName
               key: siteName
               label: 标题
               placeholder: 请输入标题
-              help: 详情请查看文档
               validation: required
             - $formkit: text
-              name: js
+              name: artalkJs
               key: artalkJs
               label: Artalk评论 - js
               placeholder: 请输入js文件地址
               help: 主题的Artalk版本是最新版本(如果你使用的不是最新版本请自己引入js文件)
             - $formkit: text
-              name: css
+              name: artalkCss
               key: artalkCss
               label: Artalk评论 - css
               placeholder: 请输入css文件地址
               help: 主题的Artalk版本是最新版本(如果你使用的不是最新版本请自己引入css文件)
+        - $formkit: radio
+          if: $get(use).value == 'Waline'
+          name: walineEnable
+          id: walineEnable
+          key: walineEnable
+          label: Waline
+          value: true
+          help: Waline评论需要填写下方配置
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
+        - $formkit: group
+          if: $get(walineEnable).value
+          name: walines
+          label: Waline评论配置 (文档：https://waline.js.org/)
+          value:
+            serverURL: ""
+            walinesJs: ""
+            walinesCss: ""
+          children:
+            - $formkit: url
+              name: serverURL
+              key: serverURL
+              label: Waline评论 - 后端URL
+              placeholder: 请输入后端URL
+              help: 详情请查看文档 (后缀不带 / )
+              validation: required
+            - $formkit: text
+              name: walinesJs
+              key: walinesJs
+              label: Waline评论 - js
+              placeholder: 请输入js文件地址
+              help: 主题的walines版本是最新版本(如果你使用的不是最新版本请自己引入js文件)
+            - $formkit: text
+              name: walinesCss
+              key: walinesCss
+              label: Waline评论 - css
+              placeholder: 请输入css文件地址
+              help: 主题的walines版本是最新版本(如果你使用的不是最新版本请自己引入css文件)
         - $formkit: group
           name: commentBarrageConfig
-          if: $get(use).value == 'Artalk' || $get(use).value == 'Twikoo'
+          if: ($get(use).value == 'Artalk' && $get(twikooEnable).value) || 
+              ($get(use).value == 'Twikoo' && $get(twikooEnable).value) || 
+              ($get(use).value == 'Waline' && $get(twikooEnable).value)
           label: 留言弹幕配置
           value:
             commentBarrageEnable: true
@@ -2401,13 +2445,14 @@ spec:
               help: 右下角弹出热评弹幕的间隔时间
               validation: required
             - $formkit: text
-              if: $get(commentBarrageEnable).value
+              if: $get(commentBarrageEnable).value && $get(use).value != 'Waline'
               name: mailMd5
               key: mailMd5
               label: 评论 - 博主邮箱MD5值
               placeholder: 请输入md5值
               help: 用于验证博主评论，可前往cmd5.com加密自己使用的邮箱，选择32位小写
               validation: required
+
 
     - group: style
       label: 样式
@@ -2481,7 +2526,7 @@ spec:
           key: enable
           label: 启用代码块
           help: 如果安装代码块插件，可关闭此功能
-          value: false
+          value: true
           options:
             - label: 启用
               value: true

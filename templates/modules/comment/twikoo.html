@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 导航栏菜单栏 -->
-<div id="post-comment" th:fragment="twikoo">
+<div id="post-comment" th:fragment="twikoo" th:if="${theme.config.comments.twikooEnable &&
+#strings.equals(theme.config.comments.use, 'Twikoo') &&
+not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
     <div class="comment-head">
         <div class="comment-headline"><i class="haofont hao-icon-comments"></i> <span>评论</span></div>
         <div class="comment-privacy"><a href="/privacy">隐私政策</a></div>

@@ -6,45 +6,54 @@
   && not #strings.isEmpty(theme.config.comments.artalks.server)}">
     <div class="js-pjax">
         <script>
+
             if (document.querySelector('#post-comment')) {
-                function addArtalkSource() {
-                    const ele = document.createElement('link')
-                    ele.rel = 'stylesheet'
-                    ele.href = `${GLOBAL_CONFIG.source.artalk.css}`
-                    document.getElementsByTagName('head')[0].appendChild(ele)
+                (() => {
+                const initArtalk = () => {
+                    window.artalkItem = new Artalk(Object.assign({
+                        el: '#artalk-wrap',
+                        server: "[(${theme.config.comments.artalks.server})]",
+                        site: GLOBAL_CONFIG.source.artalk.siteName,
+                        pageKey: location.pathname,
+                        darkMode: document.documentElement.getAttribute('data-theme') === 'dark',
+                        countEl: '#twikoo-count'
+                    }, null))
+
+                    if (GLOBAL_CONFIG.lightbox === 'null') return
+                    window.artalkItem.use(ctx => {
+                        ctx.on('list-loaded', () => {
+                            ctx.getCommentList().forEach(comment => {
+                                const $content = comment.getRender().$content
+                                btf.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
+                            })
+                        })
+                    })
                 }
 
-                function loadArtalk() {
-                    function initArtalk() {
-                        window.artalkItem = new Artalk(Object.assign({
-                            el: '#artalk-wrap',
-                            server: "[(${theme.config.comments.artalks.server})]",
-                            site: GLOBAL_CONFIG.source.artalk.siteName,
-                            pageKey: location.pathname,
-                            darkMode: document.documentElement.getAttribute('data-theme') === 'dark',
-                            countEl: '#twikoo-count'
-                        }, null))
-                    }
-                    function initLightbox() {
-                        window.ATK_LIGHTBOX_CONF = {
-                            groupAll: true,
-                        }
-                    }
 
-                    if (typeof window.artalkItem === 'object') setTimeout(() => { initArtalk() }, 200)
+                const loadArtalk = async () => {
+                    if (typeof window.artalkItem === 'object') initArtalk()
                     else {
-                        addArtalkSource()
-                        typeof Artalk !== 'function' ? getScript(`${GLOBAL_CONFIG.source.artalk.js}`).then(initArtalk)
-                            : setTimeout(() => { initArtalk() }, 200)
+                        await getCSS(GLOBAL_CONFIG.source.artalk.css)
+                        await getScript(GLOBAL_CONFIG.source.artalk.js)
+                        initArtalk()
                     }
-
                 }
 
-                document.getElementById('darkmode').addEventListener('click', () => {
+                document.getElementById('darkmode') && document.getElementById('darkmode').addEventListener('click', () => {
+                    setDarkMode()
+                })
+                document.getElementById('menu-darkmode') && document.getElementById('menu-darkmode').addEventListener('click', () => {
+                    setDarkMode()
+                })
+                document.getElementById('darkmode_switchbutton') && document.getElementById('darkmode_switchbutton').addEventListener('click', () => {
+                    setDarkMode()
+                })
+                function setDarkMode() {
                     if (typeof window.artalkItem !== 'object') return
                     let isDark = document.documentElement.getAttribute('data-theme') === 'dark'
                     window.artalkItem.setDarkMode(!isDark)
-                })
+                }
                 if ('Artalk' === 'Artalk' || !false) {
                     if (false) btf.loadComment(document.getElementById('artalk-wrap'), loadArtalk)
                     else loadArtalk()
@@ -53,6 +62,7 @@
                         loadArtalk()
                     }
                 }
+                })()
             }
         </script>
         <input type="hidden" name="page-type" id="page-type" value="album">

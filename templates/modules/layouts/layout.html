@@ -68,8 +68,10 @@
     <script data-pjax src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <!-- 评论 -->
-    <th:block th:replace="~{modules/comment/newest-comments/artalk :: artalk}"></th:block>
-    <th:block th:replace="~{modules/comment/newest-comments/twikoo :: twikoo}"></th:block>
+    <th:block th:if="${theme.config.comments.use!='commentWidget'}"
+              th:with="use = ${theme.config.comments.use}">
+        <th:block th:replace="~{'modules/comment/newest-comments/' + ${use}}"></th:block>
+    </th:block>
 
     <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
     <script th:src="${assets_link + '/libs/waterfall/waterfall.min.js'}"></script>

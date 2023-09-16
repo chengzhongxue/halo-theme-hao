@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 导航栏菜单栏 -->
-<div id="post-comment" th:fragment="artalk"
-     th:if="${theme.config.comments.artalkEnable && #strings.equals(theme.config.comments.use, 'Artalk') && not #strings.isEmpty(theme.config.comments.artalks.server)}">
+<div id="post-comment" th:fragment="waline" th:if="${theme.config.comments.walineEnable
+  && #strings.equals(theme.config.comments.use, 'Waline')
+  && not #strings.isEmpty(theme.config.comments.walines.serverURL)}">
     <div class="comment-head">
         <div class="comment-headline"><i class="haofont hao-icon-comments"></i> <span>评论</span></div>
         <div class="comment-privacy"><a href="/privacy">隐私政策</a></div>
@@ -10,6 +11,6 @@
             <span>你无需删除空行，直接评论以获取最佳展示效果</span>
         </div>
     </div>
-    <div id="artalk-wrap"></div>
+    <div id="waline-wrap"></div>
 </div>
 </html>
