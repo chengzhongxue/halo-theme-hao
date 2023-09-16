@@ -82,7 +82,7 @@
                                href="#post-comment"><span id="comment-count"
                                                           th:text="${post.stats.comment}"></span></a>
 
-                            <a th:if="${#strings.equals(theme.config.comments.use, 'Twikoo')}" href="#post-comment">
+                            <a th:if="${#strings.contains('Twikoo,Artalk',theme.config.comments.use)}" href="#post-comment">
                                 <span id="twikoo-count"></span></a>
                         </span>
                         <span  class="post-meta-commentcount" sec:authorize="isAuthenticated()"

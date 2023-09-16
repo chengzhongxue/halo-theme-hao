@@ -205,13 +205,23 @@
                     js: 'https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js',
                     css: 'https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css'
                 },
+                comments:{
+                    use: [[${theme.config.comments.use}]],
+                    maxBarrage: [[${ theme.config.comments.commentBarrageConfig.maxBarrage }]],
+                    barrageTime: [[${ theme.config.comments.commentBarrageConfig.barrageTime }]],
+                    mailMd5: "[(${theme.config.comments.commentBarrageConfig.mailMd5})]",
+                },
                 twikoo:{
                     js:[[${not #strings.isEmpty(theme.config.comments.twikoos.js) ? theme.config.comments.twikoos.js : assets_link +'/libs/twikoo/twikoo.all.min.js' }]],
-                    maxBarrage: [[${ theme.config.comments.twikoos.maxBarrage }]],
-                    barrageTime: [[${ theme.config.comments.twikoos.barrageTime }]],
                     twikooUrl: "[(${theme.config.comments.twikoos.envId})]",
                     accessToken: "[(${theme.config.comments.twikoos.accessToken})]",
-                    mailMd5: "[(${theme.config.comments.twikoos.mailMd5})]",
+
+                },
+                artalk:{
+                    js:[[${not #strings.isEmpty(theme.config.comments.artalks.js) ? theme.config.comments.artalks.js : 'https://cdn.bootcdn.net/ajax/libs/artalk/2.6.2/Artalk.js' }]],
+                    css:[[${not #strings.isEmpty(theme.config.comments.artalks.css) ? theme.config.comments.artalks.css : 'https://cdn.bootcdn.net/ajax/libs/artalk/2.6.2/Artalk.css' }]],
+                    artalkUrl: "[(${theme.config.comments.artalks.server})]",
+                    siteName: "[(${theme.config.comments.artalks.siteName})]",
                 },
                 welcome:{
                     key:"[(${theme.config.sidebar.welcome.key})]",

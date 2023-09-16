@@ -5,6 +5,10 @@
             th:if="${theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
         <div th:replace="~{modules/comment/twikoo :: twikoo}"></div>
     </th:block>
+    <th:block
+            th:if="${theme.config.comments.artalkEnable && #strings.equals(theme.config.comments.use, 'Artalk') && not #strings.isEmpty(theme.config.comments.artalks.server)}">
+        <div th:replace="~{modules/comment/artalk :: artalk}"></div>
+    </th:block>
     <!-- 已知问题 PJAX 下，comment 首次请求会出错。当前的临时解决办法是使用 js 重试 -->
     <div id="post-comment"
          th:if="${pluginFinder.available('PluginCommentWidget') && #strings.equals(theme.config.comments.use, 'commentWidget')}">
