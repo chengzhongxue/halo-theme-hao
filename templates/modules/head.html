@@ -93,6 +93,21 @@
                 document.head.appendChild(script)
             })
 
+            win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+                const link = document.createElement('link')
+                link.rel = 'stylesheet'
+                link.href = url
+                if (id) link.id = id
+                link.onerror = reject
+                link.onload = link.onreadystatechange = function() {
+                    const loadState = this.readyState
+                    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                    link.onload = link.onreadystatechange = null
+                    resolve()
+                }
+                document.head.appendChild(link)
+            })
+
             win.activateDarkMode = function () {
                 document.documentElement.setAttribute('data-theme', 'dark')
                 heo.initThemeColor()
@@ -205,13 +220,28 @@
                     js: 'https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js',
                     css: 'https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css'
                 },
+                comments:{
+                    use: [[${theme.config.comments.use}]],
+                    maxBarrage: [[${ theme.config.comments.commentBarrageConfig.maxBarrage }]],
+                    barrageTime: [[${ theme.config.comments.commentBarrageConfig.barrageTime }]],
+                    mailMd5: "[(${theme.config.comments.commentBarrageConfig.mailMd5})]",
+                },
                 twikoo:{
                     js:[[${not #strings.isEmpty(theme.config.comments.twikoos.js) ? theme.config.comments.twikoos.js : assets_link +'/libs/twikoo/twikoo.all.min.js' }]],
-                    maxBarrage: [[${ theme.config.comments.twikoos.maxBarrage }]],
-                    barrageTime: [[${ theme.config.comments.twikoos.barrageTime }]],
                     twikooUrl: "[(${theme.config.comments.twikoos.envId})]",
                     accessToken: "[(${theme.config.comments.twikoos.accessToken})]",
-                    mailMd5: "[(${theme.config.comments.twikoos.mailMd5})]",
+
+                },
+                artalk:{
+                    js:[[${not #strings.isEmpty(theme.config.comments.artalks.artalkJs) ? theme.config.comments.artalks.artalkJs : 'https://cdn.bootcdn.net/ajax/libs/artalk/2.6.2/Artalk.js' }]],
+                    css:[[${not #strings.isEmpty(theme.config.comments.artalks.artalkCss) ? theme.config.comments.artalks.artalkCss : 'https://cdn.bootcdn.net/ajax/libs/artalk/2.6.2/Artalk.css' }]],
+                    artalkUrl: "[(${theme.config.comments.artalks.server})]",
+                    siteName: "[(${theme.config.comments.artalks.siteName})]",
+                },
+                waline:{
+                    js:[[${not #strings.isEmpty(theme.config.comments.walines.walinesJs) ? theme.config.comments.walines.walinesJs : 'https://cdn.cbd.int/@waline/client@2.15.7/dist/waline.js' }]],
+                    css:[[${not #strings.isEmpty(theme.config.comments.walines.walinesCss) ? theme.config.comments.walines.walinesCss : 'https://cdn.cbd.int/@waline/client@2.15.7/dist/waline.css' }]],
+                    serverURL: "[(${theme.config.comments.walines.serverURL})]",
                 },
                 welcome:{
                     key:"[(${theme.config.sidebar.welcome.key})]",

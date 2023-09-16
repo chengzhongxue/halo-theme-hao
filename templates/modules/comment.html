@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="comment(group, kind, name, allowComment)" th:if="${allowComment}">
-    <th:block
-            th:if="${theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') && not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
-        <div th:replace="~{modules/comment/twikoo :: twikoo}"></div>
+    <th:block th:if="${theme.config.comments.use!='commentWidget'}"
+              th:with="use = ${theme.config.comments.use}">
+        <th:block th:replace="~{'modules/comment/'+ ${use}}"/>
     </th:block>
     <!-- 已知问题 PJAX 下，comment 首次请求会出错。当前的临时解决办法是使用 js 重试 -->
     <div id="post-comment"

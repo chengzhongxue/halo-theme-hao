@@ -293,7 +293,8 @@ function rightMenuCommentText(txt) {
     if (GLOBAL_CONFIG.rightMenuEnable) {
         rm.hideRightMenu();
     }
-    var input = document.getElementsByClassName('el-textarea__inner')[0];
+    var input =  GLOBAL_CONFIG.source.comments.use=='Twikoo' ? document.getElementsByClassName('el-textarea__inner')[0] :
+        GLOBAL_CONFIG.source.comments.use=='Artalk' ? document.getElementsByClassName('atk-textarea')[0] : document.getElementsByClassName('appearance-none')[0];
     let evt = document.createEvent('HTMLEvents');
     evt.initEvent('input', true, true);
     let inputValue = replaceAll(txt, '\n', '\n> ')

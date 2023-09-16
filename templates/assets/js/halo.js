@@ -257,7 +257,7 @@ let halo = {
             document.head.appendChild(a)
     },
 
-    danmu: (url,token,maxBarrage)=>{
+    danmu: ()=>{
         const e = new EasyDanmakuMin({
             el: "#danmu",
             line: 10,
@@ -273,32 +273,84 @@ let halo = {
             function a(e) {
                 return e = (e = (e = (e = (e = e.replace(/<\/*br>|[\s\uFEFF\xA0]+/g, "")).replace(/<img.*?>/g, "[图片]")).replace(/<a.*?>.*?<\/a>/g, "[链接]")).replace(/<pre.*?>.*?<\/pre>/g, "[代码块]")).replace(/<.*?>/g, "")
             }
-            fetch(url, {
-                method: "POST",
-                body: JSON.stringify({
-                    event: "GET_RECENT_COMMENTS",
-                    accessToken: token,
-                    includeReply: !1,
-                    pageSize: maxBarrage
-                }),
-                headers: {
-                    "Content-Type": "application/json"
+            if(GLOBAL_CONFIG.source.comments.use == 'Twikoo'){
+                fetch(GLOBAL_CONFIG.source.twikoo.twikooUrl, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        event: "GET_RECENT_COMMENTS",
+                        accessToken: GLOBAL_CONFIG.source.twikoo.accessToken,
+                        includeReply: !1,
+                        pageSize: 5
+                    }),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                }).then((e=>e.json())).then((({data: t})=>{
+                        t.forEach((e=>{
+                                null == e.avatar && (e.avatar = "https://cravatar.cn/avatar/d615d5793929e8c7d70eab5f00f7f5f1?d=mp"),
+                                    n.push({
+                                        avatar: e.avatar,
+                                        content: e.nick + "：" + a(e.comment),
+                                        href: e.url + '#' + e.id
+
+                                    })
+                            }
+                        )),
+                            e.batchSend(n, !0),
+                            saveToLocal.set("danmu", n, .02)
+                    }
+                ))
+            }
+            if(GLOBAL_CONFIG.source.comments.use == 'Artalk'){
+                const statheaderList = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Origin': window.location.origin
+                    },
+                    body: new URLSearchParams({
+                        'site_name': GLOBAL_CONFIG.source.artalk.siteName,
+                        'limit': '100',
+                        'type':'latest_comments'
+                    })
                 }
-            }).then((e=>e.json())).then((({data: t})=>{
-                    t.forEach((e=>{
-                            null == e.avatar && (e.avatar = "https://cravatar.cn/avatar/d615d5793929e8c7d70eab5f00f7f5f1?d=mp"),
+                fetch(GLOBAL_CONFIG.source.artalk.artalkUrl + 'api/stat', statheaderList)
+                    .then((e=>e.json())).then((({data: t})=>{
+                        t.forEach((e=>{
                                 n.push({
-                                    avatar: e.avatar,
-                                    content: e.nick + "：" + a(e.comment),
-                                    href: e.url + '#' + e.id
+                                    avatar: 'https://cravatar.cn/avatar/' + e.email_encrypted + '?d=mp&s=240',
+                                    content: e.nick + "：" + a(e.content_marked),
+                                    href: e.page_url + '#atk-comment-' + e.id
 
                                 })
-                        }
-                    )),
-                        e.batchSend(n, !0),
-                        saveToLocal.set("danmu", n, .02)
+                            }
+                        )),
+                            e.batchSend(n, !0),
+                            saveToLocal.set("danmu", n, .02)
+                    }
+                ))
+            }
+            if(GLOBAL_CONFIG.source.comments.use == 'Waline'){
+                const loadWaline = () => {
+                    Waline.RecentComments({
+                        serverURL: GLOBAL_CONFIG.source.waline.serverURL,
+                        count: 50
+                    }).then(({ comments }) => {
+                        const walineArray = comments.map(e => {
+                            return {
+                                'content': e.nick + "：" + a(e.comment),
+                                'avatar': e.avatar,
+                                'href': e.url + '#' + e.objectId,
+                            }
+                        })
+                        e.batchSend(walineArray, !0),
+                            saveToLocal.set("danmu", walineArray, .02)
+                    })
                 }
-            ))
+                if (typeof Waline === 'object') loadWaline()
+                else getScript(GLOBAL_CONFIG.source.waline.js).then(loadWaline)
+            }
+
         }
         document.getElementById("danmuBtn").innerHTML = "<button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.remove('hidedanmu')\">显示弹幕</button> <button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.add('hidedanmu')\">隐藏弹幕</button>"
     },

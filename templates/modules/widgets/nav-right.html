@@ -22,7 +22,7 @@
 
     <!-- 切换模式 -->
     <div class="nav-button" th:if="${theme.config.nav.right.darkMode}">
-        <a class="console_switchbutton" href="javascript:void(0);"  onclick="navFn.switchDarkMode();" rel="external nofollow"
+        <a class="console_switchbutton" id="darkmode_switchbutton" href="javascript:void(0);"  onclick="navFn.switchDarkMode();" rel="external nofollow"
            title="切换模式 - 日夜交替，黑白互换。">
             <i class="haofont hao-icon-circle-half-stroke" style="font-size: 1rem; font-weight: 700;"></i>
         </a>
@@ -40,7 +40,7 @@
          th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}">
         <span class="site-page nav-login">
             <i sec:authorize="isAnonymous()" class="haofont hao-icon-zhanghao1 " style="font-size: 1rem;font-weight: 700;"></i>
-            <img sec:authorize="isAuthenticated()"  th:src="${currentUser.avatar ?: #theme.assets('/images/none.png')}"
+            <img sec:authorize="isAuthenticated()"  th:src="${currentUser.avatar}"
                  th:alt="${currentUser.displayName}"
                  style=" width: 24px; height: 24px; border-radius: 9999px" />
         </span>

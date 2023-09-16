@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="artalk" th:if="${theme.config.comments.artalkEnable
+  && #strings.equals(theme.config.comments.use, 'Artalk')
+  && not #strings.isEmpty(theme.config.comments.artalks.server)}">
+    <div class="js-pjax">
+        <script>
+
+            if (document.querySelector('#post-comment')) {
+                (() => {
+                const initArtalk = () => {
+                    window.artalkItem = new Artalk(Object.assign({
+                        el: '#artalk-wrap',
+                        server: "[(${theme.config.comments.artalks.server})]",
+                        site: GLOBAL_CONFIG.source.artalk.siteName,
+                        pageKey: location.pathname,
+                        darkMode: document.documentElement.getAttribute('data-theme') === 'dark',
+                        countEl: '#twikoo-count'
+                    }, null))
+
+                    if (GLOBAL_CONFIG.lightbox === 'null') return
+                    window.artalkItem.use(ctx => {
+                        ctx.on('list-loaded', () => {
+                            ctx.getCommentList().forEach(comment => {
+                                const $content = comment.getRender().$content
+                                btf.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
+                            })
+                        })
+                    })
+                }
+
+
+                const loadArtalk = async () => {
+                    if (typeof window.artalkItem === 'object') initArtalk()
+                    else {
+                        await getCSS(GLOBAL_CONFIG.source.artalk.css)
+                        await getScript(GLOBAL_CONFIG.source.artalk.js)
+                        initArtalk()
+                    }
+                }
+
+                document.getElementById('darkmode') && document.getElementById('darkmode').addEventListener('click', () => {
+                    setDarkMode()
+                })
+                document.getElementById('menu-darkmode') && document.getElementById('menu-darkmode').addEventListener('click', () => {
+                    setDarkMode()
+                })
+                document.getElementById('darkmode_switchbutton') && document.getElementById('darkmode_switchbutton').addEventListener('click', () => {
+                    setDarkMode()
+                })
+                function setDarkMode() {
+                    if (typeof window.artalkItem !== 'object') return
+                    let isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+                    window.artalkItem.setDarkMode(!isDark)
+                }
+                if ('Artalk' === 'Artalk' || !false) {
+                    if (false) btf.loadComment(document.getElementById('artalk-wrap'), loadArtalk)
+                    else loadArtalk()
+                } else {
+                    function loadOtherComment() {
+                        loadArtalk()
+                    }
+                }
+                })()
+            }
+        </script>
+        <input type="hidden" name="page-type" id="page-type" value="album">
+    </div>
+    <!-- 最近评论 -->
+    <script>
+        window.addEventListener('load', () => {
+            const changeContent = (content) => {
+                if (content === '') return content
+
+                content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+                content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+                content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+                content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+                if (content.length > 150) {
+                    content = content.substring(0, 150) + '...'
+                }
+                return content
+            }
+            const generateHtml = array => {
+                let result = ''
+
+                if (array.length) {
+                    for (let i = 0; i < array.length; i++) {
+                        if (i == 6) {
+                            break;
+                        }
+                        result += '<div class=\'aside-list-item\'>'
+
+                        if (true) {
+                            let name = 'src'
+                            if ([[${ isLazyload }]]) {
+                                name = 'data-lazy-src'
+                            }
+                            result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick}</span></div></a>`
+                        }
+
+                        result += `<div class='content'>
+                                <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+                                <time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+                                </div>`
+                    }
+                } else {
+                    result += '没有评论'
+                }
+
+                let $dom = document.querySelector('#card-newest-comments .aside-list')
+                $dom.innerHTML = result
+                window.lazyLoadInstance && window.lazyLoadInstance.update()
+                window.pjax && window.pjax.refresh($dom)
+            }
+
+            const necommHtml = array => {
+                let result = ''
+
+                const pagesize = [[${ theme.config.sidebar.newcommentnumber }]];
+                const defaultpagesize = 5;
+                const finalpagesize = pagesize <= 0 ? defaultpagesize : pagesize;
+
+                if (array.length) {
+                    for (let i = 0; i < array.length; i++) {
+
+                        if (i == finalpagesize) {
+                            break;
+                        }
+                        result += '<div class="aside-list-item">'
+
+                        if (true) {
+                            let name = 'src'
+                            if ([[${ isLazyload }]]) {
+                                name = 'data-lazy-src'
+                            }
+                            result += `
+                            <a class="thumbnail" href="${array[i].url}">
+                                <img alt="dasda" ${name}="${array[i].avatar}">
+                            </a>
+                        `
+                        }
+
+                        result += `
+                        <div class="content">
+                            <a class="comment" style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;"
+                            href="${array[i].url}" title="${array[i].content}">
+                            ${array[i].content}
+                            </a>
+                            <div class="name">
+                                <span>${array[i].nick} / </span>
+                                <time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time>
+                            </div>
+                        </div>
+                    </div>
+                  `
+                    }
+                } else {
+                    result += '没有评论'
+                }
+
+                let $dom = document.querySelector('#newcomm')
+                $dom.innerHTML = result
+                window.lazyLoadInstance && window.lazyLoadInstance.update()
+                window.pjax && window.pjax.refresh($dom)
+            }
+
+            const getComment = () => {
+                const statheaderList = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Origin': window.location.origin
+                    },
+                    body: new URLSearchParams({
+                        'site_name': GLOBAL_CONFIG.source.artalk.siteName,
+                        'limit': '20',
+                        'type':'latest_comments'
+                    })
+                }
+                fetch("[(${theme.config.comments.artalks.server})]" + 'api/stat', statheaderList)
+                    .then(response => response.json())
+                    .then(d => {
+                        const artalk = d.data.map(function (e) {
+                            return {
+                                'avatar': 'https://cravatar.cn/avatar/' + e.email_encrypted + '?d=mp&s=240',
+                                'content': changeContent(e.content_marked),
+                                'nick': e.nick,
+                                'url': e.page_url + '#atk-comment-' +  e.id,
+                                'date': e.date,
+                            }
+                        })
+                        saveToLocal.set('artalk-newest-comments', JSON.stringify(artalk), 10 / (60 * 24))
+                        generateHtml(artalk)
+                        document.querySelector('#newcomm') && necommHtml(artalk)
+                    }).catch(e => {
+                    const $dom = document.querySelector('#card-newest-comments .aside-list')
+                    $dom.innerHTML = "无法获取评论，请确认相关配置是否正确"
+                })
+            }
+            const newestCommentInit = () => {
+                if (document.querySelector('#card-newest-comments .aside-list')) {
+                    const data = saveToLocal.get('artalk-newest-comments')
+                    if (data) {
+                        generateHtml(JSON.parse(data))
+                        document.querySelector('#newcomm') && necommHtml(JSON.parse(data))
+                    } else {
+                        getComment()
+                    }
+                }
+            }
+
+            newestCommentInit()
+            document.addEventListener('pjax:complete', newestCommentInit)
+        })
+    </script>
+
+</th:block>
+
+</html>

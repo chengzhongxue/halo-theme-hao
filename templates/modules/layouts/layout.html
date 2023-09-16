@@ -67,8 +67,11 @@
     <!-- 应该是文章页分享使用 -->
     <script data-pjax src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-    <!-- 最近评论 -->
-    <th:block th:replace="~{modules/widgets/cardNewestComments :: cardNewestComments}"></th:block>
+    <!-- 评论 -->
+    <th:block th:if="${theme.config.comments.use!='commentWidget'}"
+              th:with="use = ${theme.config.comments.use}">
+        <th:block th:replace="~{'modules/comment/newest-comments/' + ${use}}"></th:block>
+    </th:block>
 
     <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
     <script th:src="${assets_link + '/libs/waterfall/waterfall.min.js'}"></script>
@@ -97,10 +100,13 @@
     <script th:if="${theme.config.tool.rightMenu.rightMenuEnable}" th:src="${assets_link + '/zhheo/rightmenu.js'}"></script>
 
     <!-- 评论弹幕 -->
-    <script  th:if="${theme.config.comments.twikooEnable && #strings.equals(theme.config.comments.use, 'Twikoo') &&
+    <script  th:if="${ ((theme.config.comments.twikooEnable &&
         not #strings.isEmpty(theme.config.comments.twikoos.envId) &&
-        not #strings.isEmpty(theme.config.comments.twikoos.accessToken)}"  data-pjax=""
+        not #strings.isEmpty(theme.config.comments.twikoos.accessToken) ) ||
+        (theme.config.comments.artalkEnable &&
+        not #strings.isEmpty(theme.config.comments.artalks.server))) && theme.config.comments.commentBarrageConfig.commentBarrageEnable}"  data-pjax=""
              th:src="${assets_link + '/zhheo/commentBarrage.js'}"></script>
+
 
     <!-- Tocbot 目录生成 start -->
     <th:block th:replace="~{modules/common/toc-bot :: toc-bot}"></th:block>
@@ -229,7 +235,7 @@
     if(document.querySelector('#danmu') &&
         document.body.clientWidth > 768 &&
         [[${theme.config.envelope_comment.enable_danmu}]]){
-        halo.addScript("Danmaku", "[[${assets_link + '/libs/twikoo/easy-Danmaku.min.js'}]]", halo.danmu("[(${theme.config.comments.twikoos.envId})]","[(${theme.config.comments.twikoos.accessToken})]",[[${theme.config.envelope_comment.maxBarrage}]]))
+        halo.addScript("Danmaku", "[[${assets_link + '/libs/twikoo/easy-Danmaku.min.js'}]]", halo.danmu())
     }
 
 </script>

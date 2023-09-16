@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<th:block th:fragment="cardNewestComments">
+<th:block th:fragment="twikoo" th:if="${theme.config.comments.twikooEnable &&
+#strings.equals(theme.config.comments.use, 'Twikoo') &&
+not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
     <!-- 最近评论 -->
-    <script
-            th:if="${theme.config.comments.twikooEnable
-        && #strings.equals(theme.config.comments.use, 'Twikoo')
-        && not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
+    <script>
         window.addEventListener('load', () => {
             const changeContent = (content) => {
                 if (content === '') return content
