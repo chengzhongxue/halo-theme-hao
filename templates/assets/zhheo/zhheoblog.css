@@ -10772,7 +10772,7 @@ span.post-meta-position {
     opacity: 1;
 }
 
-#twikoo-count {
+#twikoo-count,#ArtalkCount {
     font-weight: 800;
     color: var(--heo-white);
 }

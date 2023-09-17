@@ -2292,6 +2292,7 @@ spec:
         - $formkit: group
           if: $get(twikooEnable).value
           name: twikoos
+          key: twikoos
           label: Twikoo评论配置 (文档：https://twikoo.js.org/)
           value:
             envId:
@@ -2334,6 +2335,7 @@ spec:
         - $formkit: group
           if: $get(artalkEnable).value
           name: artalks
+          key: artalks
           label: Artalk评论配置 (文档：https://artalk.js.org/)
           value:
             siteName: ""
@@ -2382,6 +2384,7 @@ spec:
         - $formkit: group
           if: $get(walineEnable).value
           name: walines
+          key: walines
           label: Waline评论配置 (文档：https://waline.js.org/)
           value:
             serverURL: ""
@@ -2409,9 +2412,9 @@ spec:
               help: 主题的walines版本是最新版本(如果你使用的不是最新版本请自己引入css文件)
         - $formkit: group
           name: commentBarrageConfig
-          if: ($get(use).value == 'Artalk' && $get(twikooEnable).value) || 
+          if: ($get(use).value == 'Artalk' && $get(artalkEnable).value) || 
               ($get(use).value == 'Twikoo' && $get(twikooEnable).value) || 
-              ($get(use).value == 'Waline' && $get(twikooEnable).value)
+              ($get(use).value == 'Waline' && $get(walineEnable).value)
           label: 留言弹幕配置
           value:
             commentBarrageEnable: true

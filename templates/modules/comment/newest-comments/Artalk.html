@@ -5,66 +5,7 @@
   && #strings.equals(theme.config.comments.use, 'Artalk')
   && not #strings.isEmpty(theme.config.comments.artalks.server)}">
     <div class="js-pjax">
-        <script>
-
-            if (document.querySelector('#post-comment')) {
-                (() => {
-                const initArtalk = () => {
-                    window.artalkItem = new Artalk(Object.assign({
-                        el: '#artalk-wrap',
-                        server: "[(${theme.config.comments.artalks.server})]",
-                        site: GLOBAL_CONFIG.source.artalk.siteName,
-                        pageKey: location.pathname,
-                        darkMode: document.documentElement.getAttribute('data-theme') === 'dark',
-                        countEl: '#twikoo-count'
-                    }, null))
-
-                    if (GLOBAL_CONFIG.lightbox === 'null') return
-                    window.artalkItem.use(ctx => {
-                        ctx.on('list-loaded', () => {
-                            ctx.getCommentList().forEach(comment => {
-                                const $content = comment.getRender().$content
-                                btf.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
-                            })
-                        })
-                    })
-                }
-
-
-                const loadArtalk = async () => {
-                    if (typeof window.artalkItem === 'object') initArtalk()
-                    else {
-                        await getCSS(GLOBAL_CONFIG.source.artalk.css)
-                        await getScript(GLOBAL_CONFIG.source.artalk.js)
-                        initArtalk()
-                    }
-                }
-
-                document.getElementById('darkmode') && document.getElementById('darkmode').addEventListener('click', () => {
-                    setDarkMode()
-                })
-                document.getElementById('menu-darkmode') && document.getElementById('menu-darkmode').addEventListener('click', () => {
-                    setDarkMode()
-                })
-                document.getElementById('darkmode_switchbutton') && document.getElementById('darkmode_switchbutton').addEventListener('click', () => {
-                    setDarkMode()
-                })
-                function setDarkMode() {
-                    if (typeof window.artalkItem !== 'object') return
-                    let isDark = document.documentElement.getAttribute('data-theme') === 'dark'
-                    window.artalkItem.setDarkMode(!isDark)
-                }
-                if ('Artalk' === 'Artalk' || !false) {
-                    if (false) btf.loadComment(document.getElementById('artalk-wrap'), loadArtalk)
-                    else loadArtalk()
-                } else {
-                    function loadOtherComment() {
-                        loadArtalk()
-                    }
-                }
-                })()
-            }
-        </script>
+        <script th:src="${assets_link + '/js/comment/artalk.js'}"></script>
         <input type="hidden" name="page-type" id="page-type" value="album">
     </div>
     <!-- 最近评论 -->
@@ -177,7 +118,7 @@
                     body: new URLSearchParams({
                         'site_name': GLOBAL_CONFIG.source.artalk.siteName,
                         'limit': '20',
-                        'type':'latest_comments'
+                        'type': 'latest_comments'
                     })
                 }
                 fetch("[(${theme.config.comments.artalks.server})]" + 'api/stat', statheaderList)
@@ -188,7 +129,7 @@
                                 'avatar': 'https://cravatar.cn/avatar/' + e.email_encrypted + '?d=mp&s=240',
                                 'content': changeContent(e.content_marked),
                                 'nick': e.nick,
-                                'url': e.page_url + '#atk-comment-' +  e.id,
+                                'url': e.page_url + '#atk-comment-' + e.id,
                                 'date': e.date,
                             }
                         })
