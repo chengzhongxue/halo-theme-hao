@@ -75,15 +75,18 @@
                             <span class="post-meta-label">热度:</span>
                             <span id="visit" th:text="${post.stats.visit}"></span>
                         </span>
-                        <span th:if="${post.spec.allowComment}" class="post-meta-commentcount" onclick="heo.scrollTo('#post-comment');" title="评论数">
+                        <span th:if="${post.spec.allowComment && #strings.contains('Twikoo,Artalk,commentWidget',theme.config.comments.use)}" class="post-meta-commentcount"
+                              onclick="heo.scrollTo('#post-comment');" title="评论数">
                             <i class="haofont hao-icon-comments post-meta-icon"></i>
                             <span class="post-meta-label">评论:</span>
-                            <a th:if="${#strings.equals(theme.config.comments.use, 'commentWidget')}"
-                               href="#post-comment"><span id="comment-count"
-                                                          th:text="${post.stats.comment}"></span></a>
-
-                            <a th:if="${#strings.contains('Twikoo',theme.config.comments.use)}" href="#post-comment">
-                                <span id="twikoo-count"></span></a>
+                            <a  href="#post-comment">
+                                <span th:if="${#strings.equals(theme.config.comments.use, 'commentWidget')}"
+                                      id="comment-count" th:text="${post.stats.comment}"></span>
+                                <span th:if="${#strings.equals(theme.config.comments.use, 'Twikoo')}"
+                                      id="twikoo-count"></span>
+                                <span th:if="${#strings.equals(theme.config.comments.use, 'Artalk')}"
+                                      id="ArtalkCount"></span>
+                            </a>
                         </span>
                         <span  class="post-meta-commentcount" sec:authorize="isAuthenticated()"
                                data-flag-title="编辑文章"
