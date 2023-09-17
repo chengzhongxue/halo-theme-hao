@@ -192,9 +192,9 @@
                                 'date': e.date,
                             }
                         })
-                        saveToLocal.set('artalk-newest-comments', JSON.stringify(artalk), 10 / (60 * 24))
-                        generateHtml(artalk)
-                        document.querySelector('#newcomm') && necommHtml(artalk)
+                        saveToLocal.set('artalk-newest-comments', JSON.stringify(Artalk), 10 / (60 * 24))
+                        generateHtml(Artalk)
+                        document.querySelector('#newcomm') && necommHtml(Artalk)
                     }).catch(e => {
                     const $dom = document.querySelector('#card-newest-comments .aside-list')
                     $dom.innerHTML = "无法获取评论，请确认相关配置是否正确"

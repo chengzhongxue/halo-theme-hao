@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 最新评论 -->
-<div class="card-widget card-recent-post"  th:fragment="comments">
+<div class="card-widget card-recent-post" th:fragment="comments">
     <div class="item-headline"><i class="haofont hao-icon-comments"></i><span>最新评论</span></div>
     <div class="aside-list" id="newcomm">
-        <th:block th:if="${#strings.equals(theme.config.comments.use, 'commentWidget') }">
-            <div class="aside-list-item" th:each="comment,iterStat : ${commentFinder.list(null, 1, 20)}"
+        <th:block th:if="${#strings.equals(theme.config.comments.use, 'commentWidget') }"
+                  th:with="newcommentnumber = ${#conversions.convert(theme.config.sidebar.newcommentnumber, 'java.lang.Integer') >= 0 ?  theme.config.sidebar.newcommentnumber : 5}">
+            <div th:each="comment,iterStat : ${commentFinder.list(null, 1, newcommentnumber)}" class="aside-list-item"
                  th:with="page = ${comment.spec.subjectRef.kind == 'Post' ? postFinder.getByName(comment.spec.subjectRef.name) :
-                 comment.spec.subjectRef.kind == 'SinglePage' && not #strings.contains('photos,links,moments', comment.spec.subjectRef.name) ? singlePageFinder.getByName(comment.spec.subjectRef.name) : null},
-                 url = ${page == null? '/' : page.status.permalink + '#comment-' + comment.metadata.name}"
-                 th:if="${iterStat.index  < theme.config.sidebar.newcommentnumber}">
+                comment.spec.subjectRef.kind == 'SinglePage' && not #strings.contains('photos,links,moments', comment.spec.subjectRef.name) ? singlePageFinder.getByName(comment.spec.subjectRef.name) : null},
+                url = ${page == null? '/' : page.status.permalink + '#comment-' + comment.metadata.name}">
                 <span th:text="${commentIndex}"></span>
                 <a class="thumbnail" th:href="${url}" data-pjax-state="">
                     <img alt="头像"
                          th:with=" img =${#strings.isEmpty(comment.owner.avatar)?'https://cravatar.cn/avatar/?d=mp':comment.owner.avatar}"
-                         th:src="${isLazyload ? loadingImg : img}"
-                         th:data-lazy-src="${ isLazyload ? img : ''}">
+                         th:src="${isLazyload ? loadingImg : img}" th:data-lazy-src="${ isLazyload ? img : ''}">
                 </a>
-                <div class="content" >
-                    <a class="comment" style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;"
-                       th:href="${url}" th:title="${comment.spec.content}" th:text="${comment.spec.content}" data-pjax-state="">
+                <div class="content">
+                    <a class="comment"
+                       style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;"
+                       th:href="${url}" th:title="${comment.spec.content}" th:text="${comment.spec.content}"
+                       data-pjax-state="">
 
                     </a>
                     <div class="name">
                         <span th:text="${comment.owner.displayName + ' / '}">stonewu / </span>
-                        <time th:datetime="${#dates.format(comment.metadata.creationTimestamp, 'yyyy-MM-dd HH:mm:ss')}"></time>
+                        <time
+                                th:datetime="${#dates.format(comment.metadata.creationTimestamp, 'yyyy-MM-dd HH:mm:ss')}"></time>
                     </div>
                 </div>
             </div>
         </th:block>
     </div>
 </div>
+
 </html>
