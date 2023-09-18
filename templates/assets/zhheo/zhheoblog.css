@@ -5119,6 +5119,9 @@ html {
     div#travellings_button {
         display: none!important
     }
+    div#darkmode_button {
+        display: none!important
+    }
 }
 
 
@@ -6391,6 +6394,9 @@ img.footer_mini_logo:hover {
 
 @media screen and (max-width: 768px) {
     #page-header.nav-fixed #travellings_button {
+        opacity: 0;
+    }
+    #page-header.nav-fixed #randomPost_button {
         opacity: 0;
     }
 }
