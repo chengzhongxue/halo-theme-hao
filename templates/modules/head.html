@@ -225,6 +225,10 @@
                     maxBarrage: [[${ theme.config.comments.commentBarrageConfig.maxBarrage }]],
                     barrageTime: [[${ theme.config.comments.commentBarrageConfig.barrageTime }]],
                     mailMd5: "[(${theme.config.comments.commentBarrageConfig.mailMd5})]",
+                    lazyload: [[${theme.config.comments.lazyload}]],
+                    textarea: [[${ theme.config.comments.use == 'Twikoo' ? 'el-textarea__inner' :
+                                   theme.config.comments.use == 'Artalk' ? 'atk-textarea' :
+                                   theme.config.comments.use == 'Waline' ? 'wl-editor' : 'appearance-none' }]]
                 },
                 twikoo:{
                     js:[[${not #strings.isEmpty(theme.config.comments.twikoos.js) ? theme.config.comments.twikoos.js : assets_link +'/libs/twikoo/twikoo.all.min.js' }]],
@@ -240,7 +244,6 @@
                 },
                 waline:{
                     js:[[${not #strings.isEmpty(theme.config.comments.walines.walinesJs) ? theme.config.comments.walines.walinesJs : 'https://cdn.cbd.int/@waline/client@2.15.7/dist/waline.js' }]],
-                    css:[[${not #strings.isEmpty(theme.config.comments.walines.walinesCss) ? theme.config.comments.walines.walinesCss : 'https://cdn.cbd.int/@waline/client@2.15.7/dist/waline.css' }]],
                     serverURL: "[(${theme.config.comments.walines.serverURL})]",
                 },
                 welcome:{

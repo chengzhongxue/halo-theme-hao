@@ -12,6 +12,9 @@
 
 <head>
     <th:block th:replace="~{modules/head :: head(htmlType = ${htmlType})}"/>
+    <link th:if="${#strings.equals(theme.config.comments.use, 'Waline')
+    && not #strings.isEmpty(theme.config.comments.walines.serverURL)}"
+      rel="stylesheet" th:href="${not #strings.isEmpty(theme.config.comments.walines.walinesCss) ? theme.config.comments.walines.walinesCss : 'https://cdn.cbd.int/@waline/client@2.15.7/dist/waline.css' }">
 </head>
 
 <body>
@@ -68,11 +71,11 @@
     <script data-pjax src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <!-- 评论 -->
-    <th:block th:if="${theme.config.comments.use!='commentWidget'}"
+    <th:block th:if="${theme.config.comments.use!='commentWidget' && theme.config.comments.commentsEnable }"
               th:with="use = ${theme.config.comments.use}">
-        <th:block th:replace="~{'modules/comment/newest-comments/' + ${use}}"></th:block>
+        <th:block th:replace="~{'modules/comment/' + ${use}}"></th:block>
+        <script th:if="${theme.config.comments.visitorMail.visitorMailEnable}">var visitorMail = "[(${theme.config.comments.visitorMail.mail})]";</script>
     </th:block>
-
     <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
     <script th:src="${assets_link + '/libs/waterfall/waterfall.min.js'}"></script>
 
@@ -100,13 +103,12 @@
     <script th:if="${theme.config.tool.rightMenu.rightMenuEnable}" th:src="${assets_link + '/zhheo/rightmenu.js'}"></script>
 
     <!-- 评论弹幕 -->
-    <script  th:if="${ ((theme.config.comments.twikooEnable &&
-        not #strings.isEmpty(theme.config.comments.twikoos.envId) &&
-        not #strings.isEmpty(theme.config.comments.twikoos.accessToken) ) ||
-        (theme.config.comments.artalkEnable &&
-        not #strings.isEmpty(theme.config.comments.artalks.server))) && theme.config.comments.commentBarrageConfig.commentBarrageEnable}"  data-pjax=""
+    <script  th:if="${ ( ( not #strings.isEmpty(theme.config.comments.twikoos.envId)  && not #strings.isEmpty(theme.config.comments.twikoos.accessToken) ) ||
+        ( not #strings.isEmpty(theme.config.comments.artalks.server) && not #strings.isEmpty(theme.config.comments.artalks.siteName)) ||
+          (#strings.equals(theme.config.comments.use, 'Waline') && not #strings.isEmpty(theme.config.comments.walines.serverURL)) )
+        && theme.config.comments.commentBarrageConfig.commentBarrageEnable
+        && theme.config.comments.commentsEnable}"  data-pjax=""
              th:src="${assets_link + '/zhheo/commentBarrage.js'}"></script>
-
 
     <!-- Tocbot 目录生成 start -->
     <th:block th:replace="~{modules/common/toc-bot :: toc-bot}"></th:block>

@@ -7,7 +7,7 @@
             server: GLOBAL_CONFIG.source.artalk.artalkUrl,
             site: GLOBAL_CONFIG.source.artalk.siteName,
             pageKey: location.pathname,
-            darkMode: document.documentElement.getAttribute('data-theme') === 'dark',
+            darkMode: false,
             countEl: '#ArtalkCount'
         }, null))
 
@@ -31,22 +31,13 @@
         }
     }
 
-    document.getElementById('darkmode') && document.getElementById('darkmode').addEventListener('click', () => {
-        setDarkMode()
-    })
-    document.getElementById('menu-darkmode') && document.getElementById('menu-darkmode').addEventListener('click', () => {
-        setDarkMode()
-    })
-    document.getElementById('darkmode_switchbutton') && document.getElementById('darkmode_switchbutton').addEventListener('click', () => {
-        setDarkMode()
-    })
     function setDarkMode() {
         if (typeof window.artalkItem !== 'object') return
         let isDark = document.documentElement.getAttribute('data-theme') === 'dark'
         window.artalkItem.setDarkMode(!isDark)
     }
-    if ('Artalk' === 'Artalk' || !false) {
-        if (false) btf.loadComment(document.getElementById('artalk-wrap'), loadArtalk)
+    if ('Artalk' === 'Artalk' || !GLOBAL_CONFIG.source.comments.lazyload) {
+        if (GLOBAL_CONFIG.source.comments.lazyload) btf.loadComment(document.getElementById('artalk-wrap'), loadArtalk)
         else loadArtalk()
     } else {
         window.loadOtherComment = loadArtalk
