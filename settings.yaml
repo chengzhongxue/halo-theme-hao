@@ -2261,11 +2261,23 @@ spec:
     - group: comments
       label: 评论
       formSchema:
+        - $formkit: radio
+          name: commentsEnable
+          id: commentsEnable
+          key: commentsEnable
+          label: 开关
+          value: true
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
         - $formkit: select
           name: use
           label: 请选择评论系统
           id: use
           key: use
+          if: $get(commentsEnable).value
           value: commentWidget
           options:
             - label: 默认
@@ -2277,63 +2289,18 @@ spec:
             - label: Waline
               value: Waline
         - $formkit: radio
-          if: $get(use).value == 'Twikoo'
-          name: twikooEnable
-          id: twikooEnable
-          key: twikooEnable
-          label: Twikoo
-          value: true
-          help: Twikoo评论需要填写下方配置
+          if: ($get(use).value == 'Twikoo' || $get(use).value == 'Artalk' || $get(use).value == 'Waline' ) && $get(commentsEnable).value
+          name: lazyload
+          label: 评论懒加载
+          value: false
+          help: 当评论进入浏览器的视窗时，将加载评论系统。
           options:
             - label: 打开
               value: true
             - label: 关闭
               value: false
         - $formkit: group
-          if: $get(twikooEnable).value
-          name: twikoos
-          key: twikoos
-          label: Twikoo评论配置 (文档：https://twikoo.js.org/)
-          value:
-            envId:
-            accessToken:
-            js: ""
-          children:
-            - $formkit: url
-              name: envId
-              key: envId
-              label: Twikoo评论 - 环境id/后端URL
-              placeholder: 请输入环境id或URL
-              help: 详情请查看文档 (后缀带 / )
-              validation: required
-            - $formkit: text
-              name: accessToken
-              key: accessToken
-              label: Twikoo评论 - 管理员令牌
-              placeholder: 请输入token
-              help: 在浏览器F12的控制台中获取，用于显示弹幕，详情请查看文档
-              validation: required
-            - $formkit: text
-              name: js
-              key: js
-              label: Twikoo评论 - js
-              placeholder: 请输入js文件地址
-              help: 主题的twikoo版本是最新版本(如果你使用的不是最新版本请自己引入js文件)
-        - $formkit: radio
-          if: $get(use).value == 'Artalk'
-          name: artalkEnable
-          id: artalkEnable
-          key: artalkEnable
-          label: Artalk
-          value: true
-          help: Artalk评论需要填写下方配置
-          options:
-            - label: 打开
-              value: true
-            - label: 关闭
-              value: false
-        - $formkit: group
-          if: $get(artalkEnable).value
+          if: $get(commentsEnable).value &&  $get(use).value == 'Artalk'
           name: artalks
           key: artalks
           label: Artalk评论配置 (文档：https://artalk.js.org/)
@@ -2368,21 +2335,38 @@ spec:
               label: Artalk评论 - css
               placeholder: 请输入css文件地址
               help: 主题的Artalk版本是最新版本(如果你使用的不是最新版本请自己引入css文件)
-        - $formkit: radio
-          if: $get(use).value == 'Waline'
-          name: walineEnable
-          id: walineEnable
-          key: walineEnable
-          label: Waline
-          value: true
-          help: Waline评论需要填写下方配置
-          options:
-            - label: 打开
-              value: true
-            - label: 关闭
-              value: false
         - $formkit: group
-          if: $get(walineEnable).value
+          if: $get(commentsEnable).value &&  $get(use).value == 'Twikoo'
+          name: twikoos
+          key: twikoos
+          label: Twikoo评论配置 (文档：https://twikoo.js.org/)
+          value:
+            envId:
+            accessToken:
+            js: ""
+          children:
+            - $formkit: url
+              name: envId
+              key: envId
+              label: Twikoo评论 - 环境id/后端URL
+              placeholder: 请输入环境id或URL
+              help: 详情请查看文档 (后缀带 / )
+              validation: required
+            - $formkit: text
+              name: accessToken
+              key: accessToken
+              label: Twikoo评论 - 管理员令牌
+              placeholder: 请输入token
+              help: 在浏览器F12的控制台中获取，用于显示弹幕，详情请查看文档
+              validation: required
+            - $formkit: text
+              name: js
+              key: js
+              label: Twikoo评论 - js
+              placeholder: 请输入js文件地址
+              help: 主题的twikoo版本是最新版本(如果你使用的不是最新版本请自己引入js文件)
+        - $formkit: group
+          if: $get(commentsEnable).value && $get(use).value == 'Waline'
           name: walines
           key: walines
           label: Waline评论配置 (文档：https://waline.js.org/)
@@ -2411,10 +2395,30 @@ spec:
               placeholder: 请输入css文件地址
               help: 主题的walines版本是最新版本(如果你使用的不是最新版本请自己引入css文件)
         - $formkit: group
+          if: ($get(use).value == 'Twikoo' || $get(use).value == 'Artalk' || $get(use).value == 'Waline' ) && $get(commentsEnable).value
+          name: visitorMail
+          label: 评论匿名邮箱
+          value:
+            visitorMailEnable: true
+            mail: visitor@xxx.com
+          children:
+            - $formkit: radio
+              name: visitorMailEnable
+              id: visitorMailEnable
+              key: visitorMailEnable
+              options:
+                - label: 打开
+                  value: true
+                - label: 关闭
+                  value: false
+            - $formkit: text
+              if: $get(visitorMailEnable).value
+              name: mail
+              label: 匿名邮箱
+              placeholder: 请输入匿名邮箱
+        - $formkit: group
           name: commentBarrageConfig
-          if: ($get(use).value == 'Artalk' && $get(artalkEnable).value) || 
-              ($get(use).value == 'Twikoo' && $get(twikooEnable).value) || 
-              ($get(use).value == 'Waline' && $get(walineEnable).value)
+          if: ($get(use).value == 'Twikoo' || $get(use).value == 'Artalk' || $get(use).value == 'Waline' ) && $get(commentsEnable).value
           label: 留言弹幕配置
           value:
             commentBarrageEnable: true
@@ -2427,9 +2431,9 @@ spec:
               id: commentBarrageEnable
               key: commentBarrageEnable
               options:
-                - label: 打开
+                - label: 显示
                   value: true
-                - label: 关闭
+                - label: 隐藏
                   value: false
             - $formkit: number
               if: $get(commentBarrageEnable).value

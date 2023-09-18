@@ -12770,6 +12770,11 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     flex-wrap: wrap;
 }
 
+.comment-randomInfo {
+    margin-left: auto;
+    font-size: 13px;
+}
+
 /* 隐藏没有评论 */
 .tk-comments-no {
     /* display: none !important; */

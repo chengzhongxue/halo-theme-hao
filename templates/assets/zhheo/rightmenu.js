@@ -321,7 +321,7 @@ rm.pasteText = function () {
 //引用到评论
 rm.rightMenuCommentText = function (txt) {
     rm.hideRightMenu();
-    var input = document.getElementsByClassName('el-textarea__inner')[0];
+    var input = document.getElementsByClassName(GLOBAL_CONFIG.source.comments.textarea)[0];
     let evt = document.createEvent('HTMLEvents');
     evt.initEvent('input', true, true);
     let inputValue = replaceAll(txt, '\n', '\n> ')

@@ -14,14 +14,13 @@
     const loadWaline = async () => {
         if (typeof Waline === 'object') initWaline()
         else {
-            await getCSS(GLOBAL_CONFIG.source.waline.css)
             await getScript(GLOBAL_CONFIG.source.waline.js)
             initWaline()
         }
     }
 
-    if ('Waline' === 'Waline' || !false) {
-        if (false) btf.loadComment(document.getElementById('waline-wrap'), loadWaline)
+    if ('Waline' === 'Waline' || !GLOBAL_CONFIG.source.comments.lazyload) {
+        if (GLOBAL_CONFIG.source.comments.lazyload) btf.loadComment(document.getElementById('waline-wrap'), loadWaline)
         else setTimeout(loadWaline, 0)
     } else {
         window.loadOtherComment = loadWaline
