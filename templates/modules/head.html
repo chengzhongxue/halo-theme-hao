@@ -237,8 +237,8 @@
 
                 },
                 artalk:{
-                    js:[[${not #strings.isEmpty(theme.config.comments.artalks.artalkJs) ? theme.config.comments.artalks.artalkJs : 'https://cdn.bootcdn.net/ajax/libs/artalk/2.6.2/Artalk.js' }]],
-                    css:[[${not #strings.isEmpty(theme.config.comments.artalks.artalkCss) ? theme.config.comments.artalks.artalkCss : 'https://cdn.bootcdn.net/ajax/libs/artalk/2.6.2/Artalk.css' }]],
+                    js:[[${not #strings.isEmpty(theme.config.comments.artalks.artalkJs) ? theme.config.comments.artalks.artalkJs : assets_link +'/libs/artalk/Artalk.js' }]],
+                    css:[[${not #strings.isEmpty(theme.config.comments.artalks.artalkCss) ? theme.config.comments.artalks.artalkCss : assets_link +'/libs/artalk/Artalk.css' }]],
                     artalkUrl: "[(${theme.config.comments.artalks.server})]",
                     siteName: "[(${theme.config.comments.artalks.siteName})]",
                 },
