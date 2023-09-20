@@ -97,72 +97,77 @@
             }
         }
     </style>
-    <script>
+    <!-- 关于统计-->
+    <script defer>
         // 链接替换即可，不需要后面的参数
-        fetch("https://v6-widget.51.la/v6/[[${theme.config.about.LingQueMonitorID}]]/quote.js")
-            .then(res => res.text())
-            .then(data => {
-                let title = ["最近活跃", "今日人数", "今日访问", "昨日人数", "昨日访问", "本月访问", "总访问量"];
-                // let num = data.match(/(?<=<\/span><span>).*?(?=<\/span><\/p>)/g)
-                let num = data.match(/(<\/span><span>).*?(\/span><\/p>)/g);
+        function initAboutPage() {
+            fetch("https://v6-widget.51.la/v6/[[${theme.config.about.LingQueMonitorID}]]/quote.js")
+                .then(res => res.text())
+                .then(data => {
+                    let title = ["最近活跃", "今日人数", "今日访问", "昨日人数", "昨日访问", "本月访问", "总访问量"];
+                    // let num = data.match(/(?<=<\/span><span>).*?(?=<\/span><\/p>)/g)
+                    let num = data.match(/(<\/span><span>).*?(\/span><\/p>)/g);
 
-                num = num.map(el => {
-                    let val = el.replace(/(<\/span><span>)/g, "");
-                    let str = val.replace(/(<\/span><\/p>)/g, "");
-                    return str;
-                });
-
-                let statisticEl = document.getElementById("statistic");
-
-                // 自定义不显示哪个或者显示哪个，如下为不显示 最近活跃访客 和 总访问量
-                let statistic = [];
-                for (let i = 0; i < num.length; i++) {
-                    if (!statisticEl) return;
-                    if (i == 0) continue;
-                    statisticEl.innerHTML +=
-                        "<div><span>" + title[i] + "</span><span id=" + title[i] + ">" + num[i] + "</span></div>";
-                    queueMicrotask(() => {
-                        statistic.push(
-                            new CountUp(title[i], 0, num[i], 0, 2, {
-                                useEasing: true,
-                                useGrouping: true,
-                                separator: ",",
-                                decimal: ".",
-                                prefix: "",
-                                suffix: "",
-                            })
-                        );
+                    num = num.map(el => {
+                        let val = el.replace(/(<\/span><span>)/g, "");
+                        let str = val.replace(/(<\/span><\/p>)/g, "");
+                        return str;
                     });
-                }
 
-                let statisticElement = document.querySelector(".about-statistic.author-content-item");
-                function statisticUP() {
-                    if (!statisticElement) return;
+                    let statisticEl = document.getElementById("statistic");
 
-                    const callback = (entries, observer) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                for (let i = 0; i < num.length; i++) {
-                                    if (i == 0) continue;
-                                    queueMicrotask(() => {
-                                        statistic[i - 1].start();
-                                    });
-                                }
-                                observer.disconnect(); // 停止观察元素，因为不再需要触发此回调
-                            }
+                    // 自定义不显示哪个或者显示哪个，如下为不显示 最近活跃访客 和 总访问量
+                    let statistic = [];
+                    for (let i = 0; i < num.length; i++) {
+                        if (!statisticEl) return;
+                        if (i == 0) continue;
+                        statisticEl.innerHTML +=
+                            "<div><span>" + title[i] + "</span><span id=" + title[i] + ">" + num[i] + "</span></div>";
+                        queueMicrotask(() => {
+                            statistic.push(
+                                new CountUp(title[i], 0, num[i], 0, 2, {
+                                    useEasing: true,
+                                    useGrouping: true,
+                                    separator: ",",
+                                    decimal: ".",
+                                    prefix: "",
+                                    suffix: "",
+                                })
+                            );
                         });
-                    };
+                    }
 
-                    const options = {
-                        root: null,
-                        rootMargin: "0px",
-                        threshold: 0
-                    };
-                    const observer = new IntersectionObserver(callback, options);
-                    observer.observe(statisticElement);
-                }
-                statisticUP()
-            });
+                    let statisticElement = document.querySelector(".about-statistic.author-content-item");
+                    function statisticUP() {
+                        if (!statisticElement) return;
+
+                        const callback = (entries, observer) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    for (let i = 0; i < num.length; i++) {
+                                        if (i == 0) continue;
+                                        queueMicrotask(() => {
+                                            statistic[i - 1].start();
+                                        });
+                                    }
+                                    observer.disconnect(); // 停止观察元素，因为不再需要触发此回调
+                                }
+                            });
+                        };
+
+                        const options = {
+                            root: null,
+                            rootMargin: "0px",
+                            threshold: 0
+                        };
+                        const observer = new IntersectionObserver(callback, options);
+                        observer.observe(statisticElement);
+                    }
+                    statisticUP()
+                });
+        }
+        initAboutPage();
+
     </script>
 </div>
 

@@ -170,7 +170,7 @@
     <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
 
     <!-- 关于统计-->
-    <script th:src="${assets_link + '/libs/countup/countup.js'}"></script>
+    <script th:if="${#strings.contains(theme.config.about.widgets,'statistics-map')}" th:src="${assets_link + '/libs/countup/countup.js'}"></script>
 
     <!-- 小板报 -->
     <th:block th:if="${not #strings.isEmpty(theme.config.sidebar.welcome.key)}">

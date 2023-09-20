@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!-- 我的介绍&我的想法 -->
+<!-- hello -->
 <div class="hello-about" th:fragment="hello-about">
     <div class="cursor" style="translate: none; rotate: none; scale: none; transform: translate(721px,180px);"></div>
     <div class="shapes">
@@ -17,7 +17,6 @@
     <div class="content">
         <h1>[[${theme.config.about.helloAbout}]]</h1>
     </div>
-    <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/gsap/3.9.1/gsap.min.js"></script>
     <style>
         .hello-about {
             margin: 20px auto 0;
@@ -133,8 +132,8 @@
             background: #2128bd;
         }
     </style>
-    <script>
-        (() => {
+    <script defer>
+        function initHelloAbout() {
             const helloAboutEl = document.querySelector(".hello-about");
             helloAboutEl.addEventListener("mousemove", evt => {
                 const mouseX = evt.offsetX;
@@ -150,7 +149,12 @@
                     stagger: -0.1,
                 });
             });
-        })();
+        }
+        if (typeof gsap === "object") {
+            initHelloAbout()
+        } else {
+            getScript("https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/gsap/3.9.1/gsap.min.js").then(initHelloAbout);
+        }
     </script>
 
 </div>
