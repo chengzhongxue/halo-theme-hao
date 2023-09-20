@@ -2040,18 +2040,22 @@ spec:
           label: 地图相关配置
           value:
             StrengthenTitle:
-            mapLocation: 22.582401,113.215456
+            background:
+            backgroundDark:
             authorInfo:
           children:
             - $formkit: text
               name: StrengthenTitle
               label: 居住地
               placeholder: 请输入内容
-            - $formkit: text
-              name: mapLocation
-              label: 居住地经纬度坐标
-              help: 可访问 https://lbs.qq.com/getPoint 拾取坐标，示例：22.582401,113.215456
-              placeholder: 请输入经纬度坐标
+            - $formkit: attachment
+              name: background
+              label: 地图亮色模式背景
+              placeholder: 请输入内容
+            - $formkit: attachment
+              name: backgroundDark
+              label: 地图暗色模式背景
+              placeholder: 请输入内容
             - $formkit: repeater
               name: authorInfo
               label: 个人信息

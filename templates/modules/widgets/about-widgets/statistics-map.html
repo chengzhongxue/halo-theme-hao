@@ -18,8 +18,7 @@
 
 
     <div class="author-content-item-group column mapAndInfo">
-        <div class="author-content-item map single" style="padding: 0;">
-            <div id="mapContainer" style="height: 100%;"></div>
+        <div class="author-content-item map single">
             <span class="map-title">我现在住在
                 <b>[[${theme.config.about.map.StrengthenTitle}]]</b></span>
         </div>
@@ -45,7 +44,7 @@
     </div>
     <style>
         .author-content-item.map {
-            background: none !important;
+            background: url([[${theme.config.about.map.background}]]) no-repeat center;
             min-height: 160px;
             max-height: 400px;
             position: relative;
@@ -57,8 +56,45 @@
         }
 
         [data-theme=dark] .author-content-item.map {
-            background: none !important;
+            background: url([[${theme.config.about.map.backgroundDark}]]) no-repeat center;
             background-size: 100%;
+        }
+        .author-content-item.map:hover {
+            background-size: 120%;
+            transition: 4s ease-in-out;
+            background-position-x: 0;
+            background-position-y: 36%;
+        }
+
+        .author-content-item.map .map-title {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            background: var(--heo-maskbg);
+            padding: 0.5rem 2rem;
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: 1s ease-in-out;
+            font-size: 20px;
+        }
+
+        .author-content-item.map:hover .map-title {
+            bottom: -100%;
+        }
+
+        .author-content-item.map .map-title b {
+            color: var(--heo-fontcolor);
+        }
+
+        @media screen and (max-width: 768px) {
+            .author-content-item.map.myphoto {
+                background-size: cover !important;
+            }
+
+            .author-content-item.map .map-title {
+                padding: 1rem;
+            }
         }
     </style>
     <script>
@@ -127,37 +163,6 @@
                 }
                 statisticUP()
             });
-    </script>
-    <script defer>
-        var t = new TMap.LatLng([[${ theme.config.about.map.mapLocation }]])
-            , n = new TMap.Map(document.getElementById("mapContainer"), {
-            center: t,
-            zoom: 12,
-        });
-        n.removeControl(TMap.constants.DEFAULT_CONTROL_ID.ZOOM),
-            n.removeControl(TMap.constants.DEFAULT_CONTROL_ID.ROTATION),
-            n.removeControl(TMap.constants.DEFAULT_CONTROL_ID.SCALE),
-            new TMap.MultiMarker({
-                map: n,
-                styles: {
-                    marker: new TMap.MarkerStyle({
-                        width: 20,
-                        height: 30,
-                        anchor: {
-                            x: 10,
-                            y: 30
-                        }
-                    })
-                },
-                geometries: [{
-                    id: "marker",
-                    position: t
-                }]
-            })
-
-        // 去除logo及水印
-        var a = document.querySelector('canvas+div:last-child')
-        a.style.display = 'none'
     </script>
 </div>
 
