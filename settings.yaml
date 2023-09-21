@@ -602,7 +602,7 @@ spec:
               name: stickerImg
               if: $get(profileStyle).value == 'one'
               label: 贴纸
-              value: https://0206.ink/upload/omxo3N22290781690363822143.png
+              value: https://kunkunyu.com/upload/omxo3N22290781690363822143.png
               placeholder: 请输入图片地址
             - $formkit: text
               if: $get(profileStyle).value == 'one'
@@ -764,23 +764,23 @@ spec:
             - $formkit: textarea
               name: lightMsimg
               label: 浅色卡片
-              value: https://card-music.0206.ink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
-              help: https://card-music.0206.ink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
+              value: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
+              help: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
             - $formkit: textarea
               name: lightBackMsimg
               label: 浅色翻页卡片
-              value: https://card-music.0206.ink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
-              help: https://card-music.0206.ink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+              value: https://card-music.yyds.pink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+              help: https://card-music.yyds.pink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
             - $formkit: textarea
               name: darkMsimg
               label: 深色卡片
-              value: https://card-music.0206.ink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
-              help: https://card-music.0206.ink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
+              value: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
+              help: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
             - $formkit: textarea
               name: darkBackMsimg
               label: 深色翻页卡片
-              value: https://card-music.0206.ink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
-              help: https://card-music.0206.ink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+              value: https://card-music.yyds.pink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+              help: https://card-music.yyds.pink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
         - $formkit: group
           name: steam
           label: Steam卡片
@@ -1141,9 +1141,9 @@ spec:
             style_one:
               owner_enable: false
               runtime_enable: true
-              work_img: "https://0206.ink/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
+              work_img: "https://kunkunyu.com/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
               work_description: "距离月入25k也就还差一个大佬带我~"
-              offduty_img: "https://0206.ink/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
+              offduty_img: "https://kunkunyu.com/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
               offduty_description: "下班了就该开开心心的玩耍，嘿嘿~"
               bdageitem_enable: false
               bdageitem:
@@ -1562,7 +1562,7 @@ spec:
           placeholder: 请输入跳转 url
         - $formkit: url
           name: apiurl
-          value: "https://moments.0206.ink/"
+          value: "https://moments.kunkunyu.com/"
           label: token地址
           placeholder: 请输入token地址
         - $formkit: radio
