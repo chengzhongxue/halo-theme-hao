@@ -17,7 +17,8 @@
                     <div class="meta-firstline">
                         <!-- 这里要跳转到版权页 -->
                         <th:block th:with="copyrightUrl =${#annotations.get(post, 'copyrightUrl')}"
-                                  th:if="${#strings.equals(#annotations.getOrDefault(post, 'copyrightEnable','true'),'true')}">
+                                  th:if="${not #strings.isEmpty(#annotations.get(post, 'copyrightEnable')) ?
+                                          #annotations.get(post, 'copyrightEnable')  == 'true' : theme.config.post.copyrights.enable}">
                             <a class="post-meta-original"
                                title="该文章为原创文章，注意版权协议"
                                th:if="${#strings.equals(#annotations.getOrDefault(post, 'copyrightType','original'),'original')}"
