@@ -8,6 +8,7 @@
             dark: 'html[data-theme="dark"]',
             path: window.location.pathname,
             comment: false,
+            locale:GLOBAL_CONFIG.source.waline.locale
         }, null))
     }
 

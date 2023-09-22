@@ -72,7 +72,7 @@
                         })
                         saveToLocal.set('waline-newest-comments', JSON.stringify(walineArray), 10 / (60 * 24))
                         generateHtml(walineArray)
-                        document.querySelector('#newcomm') && necommHtml(artalk)
+                        document.querySelector('#newcomm') && necommHtml(walineArray)
                     }).catch(e => {
                         const $dom = document.querySelector('#card-newest-comments .aside-list')
                         $dom.innerHTML = "无法获取评论，请确认相关配置是否正确"

@@ -72,8 +72,12 @@
                 </div>
             </div>
         </div>
-        <div th:if="${theme.config.post.copyrights.enable}" class="post-copyright__notice">
-            <span class="post-copyright-info" th:utext="${theme.config.post.copyrights.content}"></span>
+        <div th:if="${#strings.equals(#annotations.getOrDefault(post, 'copyrightEnable','true'),'true')}"
+             class="post-copyright__notice">
+            <span class="post-copyright-info"
+                  th:utext="${#strings.equals(#annotations.getOrDefault(post, 'copyrightType','original'),'reprint') ?
+                         theme.config.post.copyrights.reprintContent : theme.config.post.copyrights.content}">
+            </span>
         </div>
 
 

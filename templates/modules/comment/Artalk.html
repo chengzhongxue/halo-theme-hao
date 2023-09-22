@@ -156,6 +156,80 @@
             document.addEventListener('pjax:complete', newestCommentInit)
         })
     </script>
+    <style>
+        .atk-sidebar-layer {
+            top: 10%;
+            left: 20%;
+            width: 60%;
+            height: 80%;
+            transform: translateY(120%);
+            border-radius: 12px;
+            padding: 10px 0;
+            background: #FFF;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .atk-sidebar-layer {
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                border-radius: 0
+            }
+        }
+
+        .atk-layer-wrap .atk-layer-mask {
+            backdrop-filter: blur(10px);
+        }
+
+        .atk-main-editor>.atk-bottom .atk-plug-btn:not(:last-child) {
+            border-right: 1px solid var(--at-color-border);
+        }
+
+        .atk-main-editor>.atk-bottom .atk-plug-btn {
+            display: inline-flex;
+            align-content: center;
+            justify-content: center;
+        }
+
+        .atk-comment>.atk-avatar {
+            width: 48px;
+            height: 48px
+        }
+
+        .atk-comment>.atk-avatar img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            transition: all .3s ease;
+        }
+        .atk-comment>.atk-avatar img:hover {
+            transform: scale(1.2);
+            border-radius: 4px
+        }
+
+        .atk-comment>.atk-avatar img.error:before {
+            width: 48px !important;
+            height: 48px !important;
+            border-radius: 3px
+        }
+
+        .atk-comment>.atk-avatar img.error:after {
+            display: none
+        }
+        #owo-big p {
+            color: var(--at-color-meta);
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            text-align: center;
+            font-size: 12px;
+            margin: 0;
+            margin-top: -14px!important;
+        }
+
+
+    </style>
 
 </th:block>
 
