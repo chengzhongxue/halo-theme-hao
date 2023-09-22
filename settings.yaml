@@ -1419,12 +1419,12 @@ spec:
           label: 版权声明
           help: 需要在发布文章时的元数据上选显示版权声明才可以生效
           value:
+            enable: true
             content: '本文是原创文章，采用 <a target="_blank" href="/cc">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a href="/" target="_blank" >程序员小航</a>'
             reprintContent: '本文是转载文章，版权归原作者所有。建议访问原文，转载本文请联系原作者。'
           children:
             - $formkit: radio
               name: enable
-              value: false
               options:
                 - label: 显示
                   value: true
