@@ -79,7 +79,8 @@
 
     <!-- 版权声明 -->
     <div class="post-copyright" th:with="copyrightUrl =${#annotations.get(post, 'copyrightUrl')},
-       copyrightEnable = ${#strings.equals(#annotations.getOrDefault(post, 'copyrightEnable','true'),'true')}">
+       copyrightEnable = ${not #strings.isEmpty(#annotations.get(post, 'copyrightEnable')) ?
+       #annotations.get(post, 'copyrightEnable') == 'true' : theme.config.post.copyrights.enable}">
         <div class="post-copyright__author" >
             <!-- 版权页 以及版权描述文字 -->
             <a th:if="${#strings.equals(#annotations.getOrDefault(post, 'copyrightType','original'),'original') && copyrightEnable}"
