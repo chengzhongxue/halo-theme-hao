@@ -1743,33 +1743,9 @@ blockquote footer cite::before {
     -webkit-line-clamp: 3;
 }
 
-#recent-posts>.recent-post-item .recent-post-info .pinned-post {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: box;
-    display: flex;
-    color: var(--heo-lighttext);
-    font-size: .5rem;
-    position: absolute;
-    top: 5px;
-}
 
 @media screen and (max-width: 768px) {
 
-    #recent-posts>.recent-post-item .recent-post-info .pinned-post {
-        display: -webkit-box;
-        display: -moz-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: box;
-        display: flex;
-        color: var(--heo-lighttext);
-        font-size: .5rem;
-        position: absolute;
-        top: -19px;
-    }
     #recent-posts .recent-post-item {
         -webkit-box-orient: vertical;
         flex-direction: column;
@@ -8506,7 +8482,7 @@ li {
 .recent-post-item .recent-post-info .recent-post-info-top {
     position: relative;
     transition: 0.3s;
-    padding: 32px;
+    padding: 0 32px;
     width: 100%;
 }
 
@@ -8525,17 +8501,73 @@ li {
     -webkit-box-orient: vertical;
 }
 
-/*.recent-post-item .recent-post-info .recent-post-info-top .pinned-post {*/
-/*    display: none;*/
-/*}*/
+.recent-post-item .recent-post-info .recent-post-info-top .original {
+    display: flex;
+    color: var(--heo-secondtext);
+    font-size: .5rem;
+    position: relative;
+    margin-right: 8px
+}
+
+.recent-post-info-top-tips {
+    display: flex;
+    margin-top: 20px;
+    user-select: none
+}
+
+@media screen and (max-width: 768px) {
+    .recent-post-info-top-tips {
+        display:none
+    }
+}
+
+#recent-posts>.recent-post-item>.recent-post-info .sticky-warp {
+    line-height: 23px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -o-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin-right: 8px
+}
+
+#recent-posts>.recent-post-item>.recent-post-info .sticky {
+    color: #ff7242;
+    font-size: 12px
+}
+.recent-post-item .recent-post-info .recent-post-info-top .lastestpost {
+    display:flex;
+    color: var(--heo-secondtext);
+    font-size: .5rem;
+    position: relative;
+    margin-right: 8px
+}
+
+.recent-post-item .recent-post-info .recent-post-info-top a.unvisited-post {
+    display: flex;
+    color: var(--heo-secondtext);
+    font-size: .5rem;
+    position: relative
+}
+
+.recent-post-item .recent-post-info .recent-post-info-top a.unvisited-post:visited {
+    color: var(--heo-card-bg);
+}
 
 @media screen and (min-width: 1300px) {
-    #recent-posts > .recent-post-item .pinned-post {
-        display: flex;
-        color: var(--heo-lighttext);
-        font-size: 0.5rem;
-        position: relative;
-    }
 
     #recent-posts .recent-post-item.pinned-post-item .recent-post-info-top {
         padding-top: 16px;
@@ -8567,6 +8599,7 @@ li {
 }
 
 .recent-post-item .recent-post-info .recent-post-info-top .content {
+    opacity: 0;
     transition: 0.3s;
     display: -webkit-box;
     overflow: hidden;
@@ -9371,14 +9404,6 @@ span.recent-post-top-text {
         padding: 0.5rem 20px;
     }
 
-    a.article-meta__categories {
-        left: 12px !important;
-        top: 12px !important;
-        border-radius: 4px !important;
-        padding: 2px 9px !important;
-        font-size: 12px;
-    }
-
     #bbTimeList {
         margin-bottom: 0rem;
     }
@@ -9469,35 +9494,6 @@ span.recent-post-top-text {
   height: 120px;
   margin-top: 20px!important;
 } */
-
-.article-meta__categories {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    display: flex;
-}
-
-
-/* 自定义的文章分类 */
-a.article-meta__category {
-    display: block;
-    padding: 2px 6px;
-    background: var(--heo-black-op);
-    border-radius: 6px;
-    margin: 0 5px 0 0;
-    font-size: 12px;
-    margin-left: 4px;
-    font-weight: bold;
-    color: var(--heo-white);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-
-a.article-meta__category:hover {
-    background: var(--heo-theme) !important;
-    color: var(--heo-white) !important;
-    box-shadow: var(--heo-shadow-theme);
-}
 
 /* 文章卡片标题 */
 #recent-posts > .recent-post-item > .recent-post-info > .article-title {
