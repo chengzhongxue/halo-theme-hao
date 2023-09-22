@@ -641,6 +641,8 @@ spec:
                       value: hao-icon-weixin
                     - label: 公众号
                       value: hao-icon-weixingongzhonghao
+                    - label: rss
+                      value: hao-icon-rss
                     - label: 腾讯 QQ
                       value: hao-icon-qq
                     - label: 新浪微博
@@ -961,6 +963,8 @@ spec:
                       value: hao-icon-weixin
                     - label: 公众号
                       value: hao-icon-weixingongzhonghao
+                    - label: rss
+                      value: hao-icon-rss
                     - label: 腾讯 QQ
                       value: hao-icon-qq
                     - label: 新浪微博
@@ -1042,6 +1046,8 @@ spec:
                       value: hao-icon-weixin
                     - label: 公众号
                       value: hao-icon-weixingongzhonghao
+                    - label: rss
+                      value: hao-icon-rss
                     - label: 腾讯 QQ
                       value: hao-icon-qq
                     - label: 新浪微博
@@ -1252,16 +1258,6 @@ spec:
             - label: 关闭
               value: false
           help: 文章主色匹配图片颜色
-        - $formkit: radio
-          name: summarize
-          label: 文章摘要（首页）
-          value: false
-          options:
-            - label: 打开
-              value: true
-            - label: 关闭
-              value: false
-          help: 是否显示文章摘要
         - $formkit: group
           name: aiDescription
           label: 文章 AI 摘要
