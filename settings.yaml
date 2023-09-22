@@ -1421,26 +1421,28 @@ spec:
         - $formkit: group
           name: copyrights
           label: 版权声明
+          help: 需要在发布文章时的元数据上选显示版权声明才可以生效
           value:
-            enable: false
-            content:
+            content: '本文是原创文章，采用 <a target="_blank" href="/cc">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a href="/" target="_blank" >程序员小航</a>'
+            reprintContent: '本文是转载文章，版权归原作者所有。建议访问原文，转载本文请联系原作者。'
           children:
-            - $formkit: radio
-              name: enable
-              id: enable
-              key: enable
-              value: false
-              options:
-                - label: 打开
-                  value: true
-                - label: 关闭
-                  value: false
-              help: 文章底部显示版权声明模块
+            - $formkit: "text"
+              name: "originalUrl"
+              label: "原创链接"
+              placeholder: "请输入链接"
+            - $formkit: "text"
+              name: "reprintUrl"
+              label: "转载链接"
+              placeholder: "请输入链接"
             - $formkit: textarea
-              if: $get(enable).value
               name: content
-              label: 声明内容
+              label: 原创声明内容
               placeholder: '本文是原创文章，采用 <a target="_blank" href="/cc">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a href="/" target="_blank" >程序员小航</a>'
+              help: 支持 HTML 语法
+            - $formkit: textarea
+              name: reprintContent
+              label: 转载声明内容
+              placeholder: '本文是转载文章，版权归原作者所有。建议访问原文，转载本文请联系原作者。'
               help: 支持 HTML 语法
         - $formkit: select
           name: recommendQuantity
