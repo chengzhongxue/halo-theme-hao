@@ -1613,6 +1613,12 @@ spec:
           label: 大标题
           value: 这里是我的相册集哦😯
         - $formkit: text
+          name: topLink
+          key: topLink
+          if: $get(photosStyle).value == 'default'
+          label: 返回地址 (填写图库分组地址)
+          value: "/album"
+        - $formkit: text
           if: $get(photosStyle).value == 'default'
           name: detail
           label: 描述
@@ -2295,7 +2301,7 @@ spec:
           name: lazyload
           label: 评论懒加载
           value: false
-          help: 当评论进入浏览器的视窗时，将加载评论系统。
+          help: 当评论进入浏览器的视窗时，将加载评论系统。(不建议使用，定位不到评论位置)
           options:
             - label: 打开
               value: true
@@ -2376,6 +2382,7 @@ spec:
             serverURL: ""
             walinesJs: ""
             walinesCss: ""
+            locale: "{'placeholder': '欢迎评论', 'sofa': '来发评论吧~1'}"
           children:
             - $formkit: url
               name: serverURL
@@ -2396,6 +2403,13 @@ spec:
               label: Waline评论 - css
               placeholder: 请输入css文件地址
               help: 主题的walines版本是最新版本(如果你使用的不是最新版本请自己引入css文件)
+            - $formkit: code
+              name: locale
+              height: 200px
+              label: 选项
+              placeholder: 请输入json格式数据
+              help: "格式：{'placeholder': '欢迎评论', 'sofa': '来发评论吧~1'} 更多请查看文档：https://waline.js.org/cookbook/customize/locale.html#%E4%BE%8B%E5%AD%90"
+              language: json
         - $formkit: group
           if: ($get(use).value == 'Twikoo' || $get(use).value == 'Artalk' || $get(use).value == 'Waline' ) && $get(commentsEnable).value
           name: visitorMail
