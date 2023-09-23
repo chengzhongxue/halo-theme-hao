@@ -22,26 +22,26 @@
                      th:src="${isLazyload ? loadingImg : img}">
             </a>
         </div>
-        <!-- 类别非空时 -->
-        <th:block th:if="${not #lists.isEmpty(post.categories)}">
-            <span class="article-meta__categories">
-                <a class="article-meta__category"
-                   th:each="category : ${post.categories}"
-                   th:href="@{${category.status.permalink}}"
-                   th:text="${category.spec.displayName}"
-                   th:title="${category.spec.displayName}">
-                </a>
-            </span>
-        </th:block>
         <div class="recent-post-info">
             <div class="recent-post-info-top">
-                <span class="pinned-post" th:if="${post.spec.pinned}">置顶</span>
+                <div class="recent-post-info-top-tips">
+                    <span class="sticky-warp sticky" th:if="${post.spec.pinned}">置顶</span></span>
+                    <!-- 类别非空时 -->
+                    <th:block th:if="${not #lists.isEmpty(post.categories)}">
+                        <span th:each="category : ${post.categories}" th:href="@{${category.status.permalink}}"
+                              th:text="${category.spec.displayName}" th:title="${category.spec.displayName}"
+                              class="original"></span>
+                    </th:block>
+<!--                    <span class="lastestpost">最新</span>-->
+                    <a class="unvisited-post" th:href="@{${post.status.permalink}}" th:title="${post.spec.title}"
+                       data-pjax-state="">未读</a>
+                </div>
                 <a class="article-title"
                    th:attr="title=${post.spec.title}"
                    th:href="@{${post.status.permalink}}"
                    th:text="${post.spec.title}">
                 </a>
-                <div class="content" th:if="${theme.config.post.summarize}" th:text="${post.status.excerpt}"></div>
+                <div class="content" th:text="${post.status.excerpt}"></div>
             </div>
 
 

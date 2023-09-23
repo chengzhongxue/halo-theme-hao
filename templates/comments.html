@@ -151,8 +151,7 @@
                 </div>
 
 
-                <th:block th:if="${(theme.config.comments.twikooEnable ||  theme.config.comments.artalkEnable
-                                     ||  theme.config.comments.walineEnable) &&
+                <th:block th:if="${ theme.config.comments.commentsEnable &&
                         #strings.contains('Twikoo,Artalk,Waline',theme.config.comments.use) &&
                         theme.config.envelope_comment.enable_danmu }">
                     <div id="danmuBtn">

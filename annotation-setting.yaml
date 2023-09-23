@@ -4,6 +4,45 @@ metadata:
   generateName: annotation-setting-
 spec:
   targetRef:
+    group: content.halo.run
+    kind: Post
+  formSchema:
+    - $formkit: "radio"
+      name: "copyrightEnable"
+      id: "copyrightEnable"
+      key: "copyrightEnable"
+      label: "显示版权声明"
+      help: "默认后台设置"
+      options:
+        - label: "显示"
+          value: "true"
+        - label: "隐藏"
+          value: "false"
+    - $formkit: "radio"
+      name: "copyrightType"
+      label: "版权声明类型"
+      value: "original"
+      if: "$get(copyrightEnable).value != 'false'"
+      options:
+        - label: "原创"
+          value: "original"
+        - label: "转载"
+          value: "reprint"
+    - $formkit: "text"
+      name: "copyrightUrl"
+      label: "版权声明链接"
+      help: "默认后台设置"
+      if: "$get(copyrightEnable).value != 'false'"
+      placeholder: "请输入链接"
+
+---
+
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-setting-
+spec:
+  targetRef:
     group: ""
     kind: MenuItem
   formSchema:
@@ -15,9 +54,9 @@ spec:
       value: "0"
       label: "该菜单的子菜单是否为垂直菜单"
       options:
-        - label: 是
+        - label: "是"
           value: "1"
-        - label: 否
+        - label: "否"
           value: "0"
 ---
 
@@ -27,20 +66,20 @@ metadata:
   generateName: annotation-setting-
 spec:
   targetRef:
-    group: "core.halo.run"
+    group: core.halo.run
     kind: LinkGroup
   formSchema:
     - $formkit: "radio"
       name: "displayStyle"
       label: "分组方式"
-      value: default
+      value: "default"
       options:
-        - label: 默认
-          value: default
-        - label: 美化
-          value: beautify
-        - label: 失联
-          value: deprecated
+        - label: "默认"
+          value: "default"
+        - label: "美化"
+          value: "beautify"
+        - label: "失联"
+          value: "deprecated"
     - $formkit: "textarea"
       name: "description"
       label: "描述"
@@ -53,7 +92,7 @@ metadata:
   generateName: annotation-setting-
 spec:
   targetRef:
-    group: "core.halo.run"
+    group: core.halo.run
     kind: Link
   formSchema:
     - $formkit: "attachment"
@@ -75,7 +114,7 @@ metadata:
   generateName: annotation-setting-
 spec:
   targetRef:
-    group: "core.halo.run"
+    group: core.halo.run
     kind: PhotoGroup
   formSchema:
     - $formkit: "attachment"

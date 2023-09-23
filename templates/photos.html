@@ -15,12 +15,22 @@
                     <th:block th:each="group : ${photoFinder.groupBy()}">
                         <th:block th:if="${#strings.equals(group.metadata.name, param.photo_group_name)}" th:with="description = ${#annotations.get(group, 'description')},
                          background = ${#annotations.get(group, 'background')}">
-                            <th:div th:replace="~{macro/author-content :: author-content(background = ${background},
-                        smallTitle = '相册集',
-                        bigTitle = ${group.spec.displayName},
-                        detail = ${description},
-                        buttonUrl = '',
-                        buttonTitle = '')}" />
+                            <div class="author-content author-content-item essayPage single"
+                                 th:style="'background:url('+${background}+') left 28% / cover no-repeat !important;'">
+                                <div class="card-content">
+                                    <div class="author-content-item-tips" text="相册集"></div>
+                                    <span class="author-content-item-title" th:text="${group.spec.displayName}"></span>
+                                    <div class="content-bottom">
+                                        <div class="tips" th:text="${description}"></div>
+                                    </div>
+                                    <div class="banner-button-group">
+                                        <a class="banner-button" target="_blank" th:attr="onclick='pjax.loadUrl(\''+ ${theme.config.photos.topLink} +'\')'">
+                                            <i class="haofont hao-icon-circle-arrow-right"></i>
+                                            <span class="banner-button-text" th:text="返回"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </th:block>
                     </th:block>
                     <div id="article-container">

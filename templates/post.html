@@ -16,7 +16,22 @@
                 <div id="post-firstinfo">
                     <div class="meta-firstline">
                         <!-- 这里要跳转到版权页 -->
-                        <!--<a class="post-meta-original" th:href="@{/cc}" title="该文章为原创文章，注意版权协议">原创</a>-->
+                        <th:block th:with="copyrightUrl =${#annotations.get(post, 'copyrightUrl')}"
+                                  th:if="${not #strings.isEmpty(#annotations.get(post, 'copyrightEnable')) ?
+                                          #annotations.get(post, 'copyrightEnable')  == 'true' : theme.config.post.copyrights.enable}">
+                            <a class="post-meta-original"
+                               title="该文章为原创文章，注意版权协议"
+                               th:if="${#strings.equals(#annotations.getOrDefault(post, 'copyrightType','original'),'original')}"
+                               th:href="@{${not #strings.isEmpty(copyrightUrl) ? copyrightUrl :
+                                not #strings.isEmpty(theme.config.post.copyrights.originalUrl) ? theme.config.post.copyrights.originalUrl : '#'}}"
+                            >原创</a>
+                            <a class="post-meta-original"
+                               title="该文章为转载文章，版权归原作者所有"
+                               th:if="${#strings.equals(#annotations.getOrDefault(post, 'copyrightType','original'),'reprint')}"
+                               th:href="@{${not #strings.isEmpty(copyrightUrl) ? copyrightUrl :
+                                not #strings.isEmpty(theme.config.post.copyrights.originalUrl) ? theme.config.post.copyrights.reprintUrl : '#'}}"
+                            >转载</a>
+                        </th:block>
                         <span class="post-meta-categories" th:each="category : ${post.categories}"
                               th:if="${not #lists.isEmpty(post.categories)}">
                             <a class="post-meta-categories" th:href="@{${category.status.permalink}}"
@@ -75,15 +90,18 @@
                             <span class="post-meta-label">热度:</span>
                             <span id="visit" th:text="${post.stats.visit}"></span>
                         </span>
-                        <span th:if="${post.spec.allowComment}" class="post-meta-commentcount" onclick="heo.scrollTo('#post-comment');" title="评论数">
+                        <span th:if="${post.spec.allowComment && #strings.contains('Twikoo,Artalk,commentWidget',theme.config.comments.use)}" class="post-meta-commentcount"
+                              onclick="heo.scrollTo('#post-comment');" title="评论数">
                             <i class="haofont hao-icon-comments post-meta-icon"></i>
                             <span class="post-meta-label">评论:</span>
-                            <a th:if="${#strings.equals(theme.config.comments.use, 'commentWidget')}"
-                               href="#post-comment"><span id="comment-count"
-                                                          th:text="${post.stats.comment}"></span></a>
-
-                            <a th:if="${#strings.contains('Twikoo',theme.config.comments.use)}" href="#post-comment">
-                                <span id="twikoo-count"></span></a>
+                            <a  href="#post-comment">
+                                <span th:if="${#strings.equals(theme.config.comments.use, 'commentWidget')}"
+                                      id="comment-count" th:text="${post.stats.comment}"></span>
+                                <span th:if="${#strings.equals(theme.config.comments.use, 'Twikoo')}"
+                                      id="twikoo-count"></span>
+                                <span th:if="${#strings.equals(theme.config.comments.use, 'Artalk')}"
+                                      id="ArtalkCount"></span>
+                            </a>
                         </span>
                         <span  class="post-meta-commentcount" sec:authorize="isAuthenticated()"
                                data-flag-title="编辑文章"

@@ -1,70 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<th:block th:fragment="artalk" th:if="${theme.config.comments.artalkEnable
-  && #strings.equals(theme.config.comments.use, 'Artalk')
+<th:block th:fragment="artalk" th:if="${#strings.equals(theme.config.comments.use, 'Artalk')
   && not #strings.isEmpty(theme.config.comments.artalks.server)}">
     <div class="js-pjax">
-        <script>
-
-            if (document.querySelector('#post-comment')) {
-                (() => {
-                const initArtalk = () => {
-                    window.artalkItem = new Artalk(Object.assign({
-                        el: '#artalk-wrap',
-                        server: "[(${theme.config.comments.artalks.server})]",
-                        site: GLOBAL_CONFIG.source.artalk.siteName,
-                        pageKey: location.pathname,
-                        darkMode: document.documentElement.getAttribute('data-theme') === 'dark',
-                        countEl: '#twikoo-count'
-                    }, null))
-
-                    if (GLOBAL_CONFIG.lightbox === 'null') return
-                    window.artalkItem.use(ctx => {
-                        ctx.on('list-loaded', () => {
-                            ctx.getCommentList().forEach(comment => {
-                                const $content = comment.getRender().$content
-                                btf.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
-                            })
-                        })
-                    })
-                }
-
-
-                const loadArtalk = async () => {
-                    if (typeof window.artalkItem === 'object') initArtalk()
-                    else {
-                        await getCSS(GLOBAL_CONFIG.source.artalk.css)
-                        await getScript(GLOBAL_CONFIG.source.artalk.js)
-                        initArtalk()
-                    }
-                }
-
-                document.getElementById('darkmode') && document.getElementById('darkmode').addEventListener('click', () => {
-                    setDarkMode()
-                })
-                document.getElementById('menu-darkmode') && document.getElementById('menu-darkmode').addEventListener('click', () => {
-                    setDarkMode()
-                })
-                document.getElementById('darkmode_switchbutton') && document.getElementById('darkmode_switchbutton').addEventListener('click', () => {
-                    setDarkMode()
-                })
-                function setDarkMode() {
-                    if (typeof window.artalkItem !== 'object') return
-                    let isDark = document.documentElement.getAttribute('data-theme') === 'dark'
-                    window.artalkItem.setDarkMode(!isDark)
-                }
-                if ('Artalk' === 'Artalk' || !false) {
-                    if (false) btf.loadComment(document.getElementById('artalk-wrap'), loadArtalk)
-                    else loadArtalk()
-                } else {
-                    function loadOtherComment() {
-                        loadArtalk()
-                    }
-                }
-                })()
-            }
-        </script>
+        <script th:src="${assets_link + '/js/comment/artalk.js'}"></script>
         <input type="hidden" name="page-type" id="page-type" value="album">
     </div>
     <!-- 最近评论 -->
@@ -177,7 +117,7 @@
                     body: new URLSearchParams({
                         'site_name': GLOBAL_CONFIG.source.artalk.siteName,
                         'limit': '20',
-                        'type':'latest_comments'
+                        'type': 'latest_comments'
                     })
                 }
                 fetch("[(${theme.config.comments.artalks.server})]" + 'api/stat', statheaderList)
@@ -188,7 +128,7 @@
                                 'avatar': 'https://cravatar.cn/avatar/' + e.email_encrypted + '?d=mp&s=240',
                                 'content': changeContent(e.content_marked),
                                 'nick': e.nick,
-                                'url': e.page_url + '#atk-comment-' +  e.id,
+                                'url': e.page_url + '#atk-comment-' + e.id,
                                 'date': e.date,
                             }
                         })
@@ -216,6 +156,80 @@
             document.addEventListener('pjax:complete', newestCommentInit)
         })
     </script>
+    <style>
+        .atk-sidebar-layer {
+            top: 10%;
+            left: 20%;
+            width: 60%;
+            height: 80%;
+            transform: translateY(120%);
+            border-radius: 12px;
+            padding: 10px 0;
+            background: #FFF;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .atk-sidebar-layer {
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                border-radius: 0
+            }
+        }
+
+        .atk-layer-wrap .atk-layer-mask {
+            backdrop-filter: blur(10px);
+        }
+
+        .atk-main-editor>.atk-bottom .atk-plug-btn:not(:last-child) {
+            border-right: 1px solid var(--at-color-border);
+        }
+
+        .atk-main-editor>.atk-bottom .atk-plug-btn {
+            display: inline-flex;
+            align-content: center;
+            justify-content: center;
+        }
+
+        .atk-comment>.atk-avatar {
+            width: 48px;
+            height: 48px
+        }
+
+        .atk-comment>.atk-avatar img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            transition: all .3s ease;
+        }
+        .atk-comment>.atk-avatar img:hover {
+            transform: scale(1.2);
+            border-radius: 4px
+        }
+
+        .atk-comment>.atk-avatar img.error:before {
+            width: 48px !important;
+            height: 48px !important;
+            border-radius: 3px
+        }
+
+        .atk-comment>.atk-avatar img.error:after {
+            display: none
+        }
+        #owo-big p {
+            color: var(--at-color-meta);
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            text-align: center;
+            font-size: 12px;
+            margin: 0;
+            margin-top: -14px!important;
+        }
+
+
+    </style>
 
 </th:block>
 

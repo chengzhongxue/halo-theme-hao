@@ -1743,33 +1743,9 @@ blockquote footer cite::before {
     -webkit-line-clamp: 3;
 }
 
-#recent-posts>.recent-post-item .recent-post-info .pinned-post {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: box;
-    display: flex;
-    color: var(--heo-lighttext);
-    font-size: .5rem;
-    position: absolute;
-    top: 5px;
-}
 
 @media screen and (max-width: 768px) {
 
-    #recent-posts>.recent-post-item .recent-post-info .pinned-post {
-        display: -webkit-box;
-        display: -moz-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: box;
-        display: flex;
-        color: var(--heo-lighttext);
-        font-size: .5rem;
-        position: absolute;
-        top: -19px;
-    }
     #recent-posts .recent-post-item {
         -webkit-box-orient: vertical;
         flex-direction: column;
@@ -5119,6 +5095,9 @@ html {
     div#travellings_button {
         display: none!important
     }
+    div#darkmode_button {
+        display: none!important
+    }
 }
 
 
@@ -6391,6 +6370,9 @@ img.footer_mini_logo:hover {
 
 @media screen and (max-width: 768px) {
     #page-header.nav-fixed #travellings_button {
+        opacity: 0;
+    }
+    #page-header.nav-fixed #randomPost_button {
         opacity: 0;
     }
 }
@@ -8500,7 +8482,7 @@ li {
 .recent-post-item .recent-post-info .recent-post-info-top {
     position: relative;
     transition: 0.3s;
-    padding: 32px;
+    padding: 0 32px;
     width: 100%;
 }
 
@@ -8519,17 +8501,73 @@ li {
     -webkit-box-orient: vertical;
 }
 
-/*.recent-post-item .recent-post-info .recent-post-info-top .pinned-post {*/
-/*    display: none;*/
-/*}*/
+.recent-post-item .recent-post-info .recent-post-info-top .original {
+    display: flex;
+    color: var(--heo-secondtext);
+    font-size: .5rem;
+    position: relative;
+    margin-right: 8px
+}
+
+.recent-post-info-top-tips {
+    display: flex;
+    margin-top: 20px;
+    user-select: none
+}
+
+@media screen and (max-width: 768px) {
+    .recent-post-info-top-tips {
+        display:none
+    }
+}
+
+#recent-posts>.recent-post-item>.recent-post-info .sticky-warp {
+    line-height: 23px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -o-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin-right: 8px
+}
+
+#recent-posts>.recent-post-item>.recent-post-info .sticky {
+    color: #ff7242;
+    font-size: 12px
+}
+.recent-post-item .recent-post-info .recent-post-info-top .lastestpost {
+    display:flex;
+    color: var(--heo-secondtext);
+    font-size: .5rem;
+    position: relative;
+    margin-right: 8px
+}
+
+.recent-post-item .recent-post-info .recent-post-info-top a.unvisited-post {
+    display: flex;
+    color: var(--heo-secondtext);
+    font-size: .5rem;
+    position: relative
+}
+
+.recent-post-item .recent-post-info .recent-post-info-top a.unvisited-post:visited {
+    color: var(--heo-card-bg);
+}
 
 @media screen and (min-width: 1300px) {
-    #recent-posts > .recent-post-item .pinned-post {
-        display: flex;
-        color: var(--heo-lighttext);
-        font-size: 0.5rem;
-        position: relative;
-    }
 
     #recent-posts .recent-post-item.pinned-post-item .recent-post-info-top {
         padding-top: 16px;
@@ -8561,6 +8599,7 @@ li {
 }
 
 .recent-post-item .recent-post-info .recent-post-info-top .content {
+    opacity: 0;
     transition: 0.3s;
     display: -webkit-box;
     overflow: hidden;
@@ -9365,14 +9404,6 @@ span.recent-post-top-text {
         padding: 0.5rem 20px;
     }
 
-    a.article-meta__categories {
-        left: 12px !important;
-        top: 12px !important;
-        border-radius: 4px !important;
-        padding: 2px 9px !important;
-        font-size: 12px;
-    }
-
     #bbTimeList {
         margin-bottom: 0rem;
     }
@@ -9463,35 +9494,6 @@ span.recent-post-top-text {
   height: 120px;
   margin-top: 20px!important;
 } */
-
-.article-meta__categories {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    display: flex;
-}
-
-
-/* 自定义的文章分类 */
-a.article-meta__category {
-    display: block;
-    padding: 2px 6px;
-    background: var(--heo-black-op);
-    border-radius: 6px;
-    margin: 0 5px 0 0;
-    font-size: 12px;
-    margin-left: 4px;
-    font-weight: bold;
-    color: var(--heo-white);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-
-a.article-meta__category:hover {
-    background: var(--heo-theme) !important;
-    color: var(--heo-white) !important;
-    box-shadow: var(--heo-shadow-theme);
-}
 
 /* 文章卡片标题 */
 #recent-posts > .recent-post-item > .recent-post-info > .article-title {
@@ -10772,7 +10774,7 @@ span.post-meta-position {
     opacity: 1;
 }
 
-#twikoo-count {
+#twikoo-count,#ArtalkCount {
     font-weight: 800;
     color: var(--heo-white);
 }
@@ -12768,6 +12770,11 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.comment-randomInfo {
+    margin-left: auto;
+    font-size: 13px;
 }
 
 /* 隐藏没有评论 */
@@ -15498,65 +15505,7 @@ span.hexo-douban-pagenum {
     width: 59%;
 }
 
-/* 关于页面地图 */
-
-.author-content-item.map {
-    background: url(https://img.zhheo.com/i/2022/08/31/630ef8e827401.webp) no-repeat center;
-    min-height: 160px;
-    max-height: 400px;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 0.5rem;
-    height: 60%;
-    background-size: 100%;
-    transition: 1s ease-in-out;
-}
-
-[data-theme=dark] .author-content-item.map {
-    background: url(https://img.zhheo.com/i/2022/08/31/630ef8db0fefe.webp) no-repeat center;
-    background-size: 100%;
-}
-
-.author-content-item.map:hover {
-    background-size: 120%;
-    transition: 4s ease-in-out;
-    background-position-x: 0;
-    background-position-y: 36%;
-}
-
-.author-content-item.map .map-title {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    background: var(--heo-maskbg);
-    padding: 0.5rem 2rem;
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    transition: 1s ease-in-out;
-    font-size: 20px;
-}
-
-.author-content-item.map:hover .map-title {
-    bottom: -100%;
-}
-
-.author-content-item.map .map-title b {
-    color: var(--heo-fontcolor);
-}
-
-@media screen and (max-width: 768px) {
-    .author-content-item.map.myphoto {
-        background-size: cover !important;
-    }
-
-    .author-content-item.map .map-title {
-        padding: 1rem;
-    }
-}
-
 /* 关于页面自我信息 */
-
 .author-content-item.selfInfo {
     display: flex;
     min-height: 100px;

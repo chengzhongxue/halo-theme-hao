@@ -434,15 +434,88 @@ var heo = {
             document.getElementById("toPageButton").href = e)
     },
     changeSayHelloText: function() {
-        const e = GLOBAL_CONFIG.helloText.length == 0 ? ["🤖️ 数码科技爱好者", "🔍 分享与热心帮助", "🏠 智能家居小能手", "🔨 设计开发一条龙", "🤝 专修交互与设计", "🏃 脚踏实地行动派", "🧱 团队小组发动机", "💢 壮汉人狠话不多"] : GLOBAL_CONFIG.helloText
-            , t = document.getElementById("author-info__sayhi");
-        let o = e[Math.floor(Math.random() * e.length)];
-        for (; o === lastSayHello; )
-            o = e[Math.floor(Math.random() * e.length)];
-        t.textContent = o,
-            lastSayHello = o
+        const greetings = GLOBAL_CONFIG.helloText.length == 0 ? ["🤖️ 数码科技爱好者", "🔍 分享与热心帮助", "🏠 智能家居小能手", "🔨 设计开发一条龙", "🤝 专修交互与设计", "🏃 脚踏实地行动派", "🧱 团队小组发动机", "💢 壮汉人狠话不多"] : GLOBAL_CONFIG.helloText
+            , authorInfoSayHiElement = document.getElementById("author-info__sayhi");
+        // 如果只有一个问候语，设置为默认值
+        if (greetings.length === 1) {
+            authorInfoSayHiElement.textContent = greetings[0];
+            return;
+        }
+        let randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+        for (; randomGreeting === lastSayHello; )
+            randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+        authorInfoSayHiElement.textContent = randomGreeting,
+            lastSayHello = randomGreeting
     },
 
+    //匿名评论
+    addRandomCommentInfo: function () {
+        // 从形容词数组中随机取一个值
+        const randomAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+
+        // 从蔬菜水果动物名字数组中随机取一个值
+        const randomName = vegetablesAndFruits[Math.floor(Math.random() * vegetablesAndFruits.length)];
+
+        // 将两个值组合成一个字符串
+        const name = `${randomAdjective}${randomName}`;
+
+        function dr_js_autofill_commentinfos() {
+            var lauthor = [
+                    "#author",
+                    "input[name='comname']",
+                    "#inpName",
+                    "input[name='author']",
+                    "#ds-dialog-name",
+                    "#name",
+                    "input[name='nick']",
+                    "#comment_author",
+                ],
+                lmail = [
+                    "#mail",
+                    "#email",
+                    "input[name='commail']",
+                    "#inpEmail",
+                    "input[name='email']",
+                    "#ds-dialog-email",
+                    "input[name='mail']",
+                    "#comment_email",
+                ],
+                lurl = [
+                    "#url",
+                    "input[name='comurl']",
+                    "#inpHomePage",
+                    "#ds-dialog-url",
+                    "input[name='url']",
+                    "input[name='website']",
+                    "#website",
+                    "input[name='link']",
+                    "#comment_url",
+                ];
+            for (var i = 0; i < lauthor.length; i++) {
+                var author = document.querySelector(lauthor[i]);
+                if (author != null) {
+                    author.value = name;
+                    author.dispatchEvent(new Event("input"));
+                    author.dispatchEvent(new Event("change"));
+                    break;
+                }
+            }
+            for (var j = 0; j < lmail.length; j++) {
+                var mail = document.querySelector(lmail[j]);
+                if (mail != null) {
+                    mail.value = visitorMail;
+                    mail.dispatchEvent(new Event("input"));
+                    mail.dispatchEvent(new Event("change"));
+                    break;
+                }
+            }
+            return !1;
+        }
+        dr_js_autofill_commentinfos();
+        var input = document.getElementsByClassName(GLOBAL_CONFIG.source.comments.textarea)[0];
+        input.focus();
+        input.setSelectionRange(-1, -1);
+    },
 
     //初始化console图标
     initConsoleState: function() {
@@ -505,6 +578,8 @@ var heo = {
     },
 
 };
+const adjectives = ["美丽的", "英俊的", "聪明的", "勇敢的", "可爱的", "慷慨的", "善良的", "可靠的", "开朗的", "成熟的", "稳重的", "真诚的", "幽默的", "豁达的", "有趣的", "活泼的", "优雅的", "敏捷的", "温柔的", "温暖的", "敬业的", "细心的", "耐心的", "深沉的", "朴素的", "含蓄的", "率直的", "开放的", "务实的", "坚强的", "自信的", "谦虚的", "文静的", "深刻的", "纯真的", "朝气蓬勃的", "慎重的", "大方的", "顽强的", "迷人的", "机智的", "善解人意的", "富有想象力的", "有魅力的", "独立的", "好奇的", "干净的", "宽容的", "尊重他人的", "体贴的", "守信的", "有耐性的", "有责任心的", "有担当的", "有远见的", "有智慧的", "有眼光的", "有冒险精神的", "有爱心的", "有同情心的", "喜欢思考的", "喜欢学习的", "具有批判性思维的", "善于表达的", "善于沟通的", "善于合作的", "善于领导的", "有激情的", "有幽默感的", "有思想的", "有个性的", "有正义感的", "有责任感的", "有创造力的", "有想象力的", "有艺术细胞的", "有团队精神的", "有协调能力的", "有决策能力的", "有组织能力的", "有学习能力的", "有执行能力的", "有分析能力的", "有逻辑思维的", "有创新能力的", "有专业素养的", "有商业头脑的"]
+    , vegetablesAndFruits = ["萝卜", "白菜", "芹菜", "生菜", "青椒", "辣椒", "茄子", "豆角", "黄瓜", "西红柿", "洋葱", "大蒜", "土豆", "南瓜", "豆腐", "韭菜", "花菜", "西兰花", "蘑菇", "金针菇", "苹果", "香蕉", "橙子", "柠檬", "猕猴桃", "草莓", "葡萄", "桃子", "杏子", "李子", "石榴", "西瓜", "哈密瓜", "蜜瓜", "樱桃", "蓝莓", "柿子", "橄榄", "柚子", "火龙果"];
 $(document).ready((function() {
         initBlog()
     }

@@ -602,7 +602,7 @@ spec:
               name: stickerImg
               if: $get(profileStyle).value == 'one'
               label: 贴纸
-              value: https://0206.ink/upload/omxo3N22290781690363822143.png
+              value: https://kunkunyu.com/upload/omxo3N22290781690363822143.png
               placeholder: 请输入图片地址
             - $formkit: text
               if: $get(profileStyle).value == 'one'
@@ -641,6 +641,8 @@ spec:
                       value: hao-icon-weixin
                     - label: 公众号
                       value: hao-icon-weixingongzhonghao
+                    - label: rss
+                      value: hao-icon-rss
                     - label: 腾讯 QQ
                       value: hao-icon-qq
                     - label: 新浪微博
@@ -764,23 +766,23 @@ spec:
             - $formkit: textarea
               name: lightMsimg
               label: 浅色卡片
-              value: https://card-music.0206.ink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
-              help: https://card-music.0206.ink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
+              value: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
+              help: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
             - $formkit: textarea
               name: lightBackMsimg
               label: 浅色翻页卡片
-              value: https://card-music.0206.ink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
-              help: https://card-music.0206.ink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+              value: https://card-music.yyds.pink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+              help: https://card-music.yyds.pink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
             - $formkit: textarea
               name: darkMsimg
               label: 深色卡片
-              value: https://card-music.0206.ink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
-              help: https://card-music.0206.ink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
+              value: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
+              help: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
             - $formkit: textarea
               name: darkBackMsimg
               label: 深色翻页卡片
-              value: https://card-music.0206.ink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
-              help: https://card-music.0206.ink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+              value: https://card-music.yyds.pink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+              help: https://card-music.yyds.pink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
         - $formkit: group
           name: steam
           label: Steam卡片
@@ -961,6 +963,8 @@ spec:
                       value: hao-icon-weixin
                     - label: 公众号
                       value: hao-icon-weixingongzhonghao
+                    - label: rss
+                      value: hao-icon-rss
                     - label: 腾讯 QQ
                       value: hao-icon-qq
                     - label: 新浪微博
@@ -1042,6 +1046,8 @@ spec:
                       value: hao-icon-weixin
                     - label: 公众号
                       value: hao-icon-weixingongzhonghao
+                    - label: rss
+                      value: hao-icon-rss
                     - label: 腾讯 QQ
                       value: hao-icon-qq
                     - label: 新浪微博
@@ -1141,9 +1147,9 @@ spec:
             style_one:
               owner_enable: false
               runtime_enable: true
-              work_img: "https://0206.ink/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
+              work_img: "https://kunkunyu.com/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
               work_description: "距离月入25k也就还差一个大佬带我~"
-              offduty_img: "https://0206.ink/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
+              offduty_img: "https://kunkunyu.com/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
               offduty_description: "下班了就该开开心心的玩耍，嘿嘿~"
               bdageitem_enable: false
               bdageitem:
@@ -1252,16 +1258,6 @@ spec:
             - label: 关闭
               value: false
           help: 文章主色匹配图片颜色
-        - $formkit: radio
-          name: summarize
-          label: 文章摘要（首页）
-          value: false
-          options:
-            - label: 打开
-              value: true
-            - label: 关闭
-              value: false
-          help: 是否显示文章摘要
         - $formkit: group
           name: aiDescription
           label: 文章 AI 摘要
@@ -1421,26 +1417,37 @@ spec:
         - $formkit: group
           name: copyrights
           label: 版权声明
+          help: 需要在发布文章时的元数据上选显示版权声明才可以生效
           value:
-            enable: false
-            content:
+            enable: true
+            content: '本文是原创文章，采用 <a target="_blank" href="/cc">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a href="/" target="_blank" >程序员小航</a>'
+            reprintContent: '本文是转载文章，版权归原作者所有。建议访问原文，转载本文请联系原作者。'
           children:
             - $formkit: radio
               name: enable
-              id: enable
-              key: enable
-              value: false
               options:
-                - label: 打开
+                - label: 显示
                   value: true
-                - label: 关闭
+                - label: 隐藏
                   value: false
               help: 文章底部显示版权声明模块
+            - $formkit: text
+              name: originalUrl
+              label: 原创链接
+              placeholder: 请输入链接
+            - $formkit: text
+              name: reprintUrl
+              label: 转载链接
+              placeholder: 请输入链接
             - $formkit: textarea
-              if: $get(enable).value
               name: content
-              label: 声明内容
+              label: 原创声明内容
               placeholder: '本文是原创文章，采用 <a target="_blank" href="/cc">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a href="/" target="_blank" >程序员小航</a>'
+              help: 支持 HTML 语法
+            - $formkit: textarea
+              name: reprintContent
+              label: 转载声明内容
+              placeholder: '本文是转载文章，版权归原作者所有。建议访问原文，转载本文请联系原作者。'
               help: 支持 HTML 语法
         - $formkit: select
           name: recommendQuantity
@@ -1562,7 +1569,7 @@ spec:
           placeholder: 请输入跳转 url
         - $formkit: url
           name: apiurl
-          value: "https://moments.0206.ink/"
+          value: "https://moments.kunkunyu.com/"
           label: token地址
           placeholder: 请输入token地址
         - $formkit: radio
@@ -1614,6 +1621,12 @@ spec:
           key: bigTitle
           label: 大标题
           value: 这里是我的相册集哦😯
+        - $formkit: text
+          name: topLink
+          key: topLink
+          if: $get(photosStyle).value == 'default'
+          label: 返回地址 (填写图库分组地址)
+          value: "/album"
         - $formkit: text
           if: $get(photosStyle).value == 'default'
           name: detail
@@ -2075,18 +2088,22 @@ spec:
           label: 地图相关配置
           value:
             StrengthenTitle:
-            mapLocation: 22.582401,113.215456
+            background:
+            backgroundDark:
             authorInfo:
           children:
             - $formkit: text
               name: StrengthenTitle
               label: 居住地
               placeholder: 请输入内容
-            - $formkit: text
-              name: mapLocation
-              label: 居住地经纬度坐标
-              help: 可访问 https://lbs.qq.com/getPoint 拾取坐标，示例：22.582401,113.215456
-              placeholder: 请输入经纬度坐标
+            - $formkit: attachment
+              name: background
+              label: 地图亮色模式背景
+              placeholder: 请输入内容
+            - $formkit: attachment
+              name: backgroundDark
+              label: 地图暗色模式背景
+              placeholder: 请输入内容
             - $formkit: repeater
               name: authorInfo
               label: 个人信息
@@ -2296,11 +2313,23 @@ spec:
     - group: comments
       label: 评论
       formSchema:
+        - $formkit: radio
+          name: commentsEnable
+          id: commentsEnable
+          key: commentsEnable
+          label: 开关
+          value: true
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
         - $formkit: select
           name: use
           label: 请选择评论系统
           id: use
           key: use
+          if: $get(commentsEnable).value
           value: commentWidget
           options:
             - label: 默认
@@ -2312,63 +2341,20 @@ spec:
             - label: Waline
               value: Waline
         - $formkit: radio
-          if: $get(use).value == 'Twikoo'
-          name: twikooEnable
-          id: twikooEnable
-          key: twikooEnable
-          label: Twikoo
-          value: true
-          help: Twikoo评论需要填写下方配置
+          if: ($get(use).value == 'Twikoo' || $get(use).value == 'Artalk' || $get(use).value == 'Waline' ) && $get(commentsEnable).value
+          name: lazyload
+          label: 评论懒加载
+          value: false
+          help: 当评论进入浏览器的视窗时，将加载评论系统。(不建议使用，定位不到评论位置)
           options:
             - label: 打开
               value: true
             - label: 关闭
               value: false
         - $formkit: group
-          if: $get(twikooEnable).value
-          name: twikoos
-          label: Twikoo评论配置 (文档：https://twikoo.js.org/)
-          value:
-            envId:
-            accessToken:
-            js: ""
-          children:
-            - $formkit: url
-              name: envId
-              key: envId
-              label: Twikoo评论 - 环境id/后端URL
-              placeholder: 请输入环境id或URL
-              help: 详情请查看文档 (后缀带 / )
-              validation: required
-            - $formkit: text
-              name: accessToken
-              key: accessToken
-              label: Twikoo评论 - 管理员令牌
-              placeholder: 请输入token
-              help: 在浏览器F12的控制台中获取，用于显示弹幕，详情请查看文档
-              validation: required
-            - $formkit: text
-              name: js
-              key: js
-              label: Twikoo评论 - js
-              placeholder: 请输入js文件地址
-              help: 主题的twikoo版本是最新版本(如果你使用的不是最新版本请自己引入js文件)
-        - $formkit: radio
-          if: $get(use).value == 'Artalk'
-          name: artalkEnable
-          id: artalkEnable
-          key: artalkEnable
-          label: Artalk
-          value: true
-          help: Artalk评论需要填写下方配置
-          options:
-            - label: 打开
-              value: true
-            - label: 关闭
-              value: false
-        - $formkit: group
-          if: $get(artalkEnable).value
+          if: $get(commentsEnable).value &&  $get(use).value == 'Artalk'
           name: artalks
+          key: artalks
           label: Artalk评论配置 (文档：https://artalk.js.org/)
           value:
             siteName: ""
@@ -2401,27 +2387,46 @@ spec:
               label: Artalk评论 - css
               placeholder: 请输入css文件地址
               help: 主题的Artalk版本是最新版本(如果你使用的不是最新版本请自己引入css文件)
-        - $formkit: radio
-          if: $get(use).value == 'Waline'
-          name: walineEnable
-          id: walineEnable
-          key: walineEnable
-          label: Waline
-          value: true
-          help: Waline评论需要填写下方配置
-          options:
-            - label: 打开
-              value: true
-            - label: 关闭
-              value: false
         - $formkit: group
-          if: $get(walineEnable).value
+          if: $get(commentsEnable).value &&  $get(use).value == 'Twikoo'
+          name: twikoos
+          key: twikoos
+          label: Twikoo评论配置 (文档：https://twikoo.js.org/)
+          value:
+            envId:
+            accessToken:
+            js: ""
+          children:
+            - $formkit: url
+              name: envId
+              key: envId
+              label: Twikoo评论 - 环境id/后端URL
+              placeholder: 请输入环境id或URL
+              help: 详情请查看文档 (后缀带 / )
+              validation: required
+            - $formkit: text
+              name: accessToken
+              key: accessToken
+              label: Twikoo评论 - 管理员令牌
+              placeholder: 请输入token
+              help: 在浏览器F12的控制台中获取，用于显示弹幕，详情请查看文档
+              validation: required
+            - $formkit: text
+              name: js
+              key: js
+              label: Twikoo评论 - js
+              placeholder: 请输入js文件地址
+              help: 主题的twikoo版本是最新版本(如果你使用的不是最新版本请自己引入js文件)
+        - $formkit: group
+          if: $get(commentsEnable).value && $get(use).value == 'Waline'
           name: walines
+          key: walines
           label: Waline评论配置 (文档：https://waline.js.org/)
           value:
             serverURL: ""
             walinesJs: ""
             walinesCss: ""
+            locale: "{'placeholder': '欢迎评论', 'sofa': '来发评论吧~1'}"
           children:
             - $formkit: url
               name: serverURL
@@ -2442,11 +2447,38 @@ spec:
               label: Waline评论 - css
               placeholder: 请输入css文件地址
               help: 主题的walines版本是最新版本(如果你使用的不是最新版本请自己引入css文件)
+            - $formkit: code
+              name: locale
+              height: 200px
+              label: 选项
+              placeholder: 请输入json格式数据
+              help: "格式：{'placeholder': '欢迎评论', 'sofa': '来发评论吧~1'} 更多请查看文档：https://waline.js.org/cookbook/customize/locale.html#%E4%BE%8B%E5%AD%90"
+              language: json
+        - $formkit: group
+          if: ($get(use).value == 'Twikoo' || $get(use).value == 'Artalk' || $get(use).value == 'Waline' ) && $get(commentsEnable).value
+          name: visitorMail
+          label: 评论匿名邮箱
+          value:
+            visitorMailEnable: true
+            mail: visitor@xxx.com
+          children:
+            - $formkit: radio
+              name: visitorMailEnable
+              id: visitorMailEnable
+              key: visitorMailEnable
+              options:
+                - label: 打开
+                  value: true
+                - label: 关闭
+                  value: false
+            - $formkit: text
+              if: $get(visitorMailEnable).value
+              name: mail
+              label: 匿名邮箱
+              placeholder: 请输入匿名邮箱
         - $formkit: group
           name: commentBarrageConfig
-          if: ($get(use).value == 'Artalk' && $get(twikooEnable).value) || 
-              ($get(use).value == 'Twikoo' && $get(twikooEnable).value) || 
-              ($get(use).value == 'Waline' && $get(twikooEnable).value)
+          if: ($get(use).value == 'Twikoo' || $get(use).value == 'Artalk' || $get(use).value == 'Waline' ) && $get(commentsEnable).value
           label: 留言弹幕配置
           value:
             commentBarrageEnable: true
@@ -2459,9 +2491,9 @@ spec:
               id: commentBarrageEnable
               key: commentBarrageEnable
               options:
-                - label: 打开
+                - label: 显示
                   value: true
-                - label: 关闭
+                - label: 隐藏
                   value: false
             - $formkit: number
               if: $get(commentBarrageEnable).value

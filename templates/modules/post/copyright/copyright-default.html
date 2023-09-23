@@ -78,11 +78,19 @@
     </div>
 
     <!-- 版权声明 -->
-    <div class="post-copyright" th:if="${theme.config.post.copyrights.enable}">
-        <div class="post-copyright__author">
+    <div class="post-copyright" th:with="copyrightUrl =${#annotations.get(post, 'copyrightUrl')},
+       copyrightEnable = ${not #strings.isEmpty(#annotations.get(post, 'copyrightEnable')) ?
+       #annotations.get(post, 'copyrightEnable') == 'true' : theme.config.post.copyrights.enable}">
+        <div class="post-copyright__author" >
             <!-- 版权页 以及版权描述文字 -->
-            <a class="post-copyright__original" th:href="@{${theme.config.basics.copyrightAgreement}}"
+            <a th:if="${#strings.equals(#annotations.getOrDefault(post, 'copyrightType','original'),'original') && copyrightEnable}"
+               class="post-copyright__original" th:href="@{${not #strings.isEmpty(copyrightUrl) ? copyrightUrl :
+                not #strings.isEmpty(theme.config.post.copyrights.originalUrl) ? theme.config.post.copyrights.originalUrl : '#'}}"
                title="该文章为原创文章，注意版权协议">原创</a>
+            <a th:if="${#strings.equals(#annotations.getOrDefault(post, 'copyrightType','original'),'reprint') && copyrightEnable}"
+               class="post-copyright__original" th:href="@{${not #strings.isEmpty(copyrightUrl) ? copyrightUrl :
+                not #strings.isEmpty(theme.config.post.copyrights.originalUrl) ? theme.config.post.copyrights.reprintUrl : '#'}}"
+               title="该文章为转载文章，版权归原作者所有">转载</a>
             <a class="post-copyright-title" href="#"><span th:text="${post.spec.title}"></span></a>
         </div>
         <div class="post-copyright__type">
@@ -93,8 +101,11 @@
                 <i class="haofont hao-icon-paste"></i>
             </button>
         </div>
-        <div class="post-copyright__notice">
-            <span class="post-copyright-info" th:utext="${theme.config.post.copyrights.content}"></span>
+        <div class="post-copyright__notice" th:if="${copyrightEnable}">
+            <span class="post-copyright-info"
+                  th:utext="${#strings.equals(#annotations.getOrDefault(post, 'copyrightType','original'),'reprint') ?
+                         theme.config.post.copyrights.reprintContent : theme.config.post.copyrights.content}">
+            </span>
         </div>
     </div>
 

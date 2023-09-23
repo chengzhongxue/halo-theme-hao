@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<th:block th:fragment="twikoo" th:if="${theme.config.comments.twikooEnable &&
-#strings.equals(theme.config.comments.use, 'Twikoo') &&
-not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
-    <!-- 最近评论 -->
+<th:block th:fragment="waline" th:if="${#strings.equals(theme.config.comments.use, 'Waline')
+  && not #strings.isEmpty(theme.config.comments.walines.serverURL)}">
+    <div class="js-pjax">
+        <script th:src="${assets_link + '/js/comment/waline.js'}"></script>
+    </div>
     <script>
         window.addEventListener('load', () => {
             const changeContent = (content) => {
@@ -21,45 +22,6 @@ not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
                 return content
             }
 
-            const getComment = () => {
-                const runTwikoo = () => {
-                    twikoo.getRecentComments({
-                        envId: "[(${theme.config.comments.twikoos.envId})]",
-                        region: '',
-                        pageSize: 20,
-                        includeReply: true
-                    }).then(function (res) {
-                        const twikooArray = res.map(e => {
-                            return {
-                                'content': changeContent(e.comment),
-                                'avatar': e.avatar,
-                                'nick': e.nick,
-                                'url': e.url + '#' + e.id,
-                                'date': new Date(e.created).toISOString()
-                            }
-                        })
-
-                        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10 / (60 * 24))
-                        generateHtml(twikooArray)
-                        document.querySelector('#newcomm') && necommHtml(twikooArray)
-                    }).catch(function (err) {
-                        const $dom = document.querySelector('#card-newest-comments .aside-list')
-                        const $newcomm = document.querySelector('#newcomm')
-                        $dom.innerHTML = "无法获取评论，请确认相关配置是否正确"
-                        if($newcomm){
-                            $newcomm.innerHTML = "无法获取评论，请确认相关配置是否正确"
-                        }
-
-                    })
-                }
-
-                if (typeof twikoo === 'object') {
-                    runTwikoo()
-                } else {
-                    getScript(GLOBAL_CONFIG.source.twikoo.js).then(runTwikoo)
-                }
-            }
-
             const generateHtml = array => {
                 let result = ''
 
@@ -72,7 +34,7 @@ not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
 
                         if (true) {
                             let name = 'src'
-                            if([[${isLazyload}]]){
+                            if ([[${ isLazyload }]]) {
                                 name = 'data-lazy-src'
                             }
                             result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick}</span></div></a>`
@@ -93,10 +55,38 @@ not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
                 window.pjax && window.pjax.refresh($dom)
             }
 
+            const getComment = () => {
+                const loadWaline = () => {
+                    Waline.RecentComments({
+                        serverURL: GLOBAL_CONFIG.source.waline.serverURL,
+                        count: 20
+                    }).then(({ comments }) => {
+                        const walineArray = comments.map(e => {
+                            return {
+                                'content': changeContent(e.comment),
+                                'avatar': e.avatar,
+                                'nick': e.nick,
+                                'url': e.url + '#' + e.objectId,
+                                'date': e.insertedAt,
+                            }
+                        })
+                        saveToLocal.set('waline-newest-comments', JSON.stringify(walineArray), 10 / (60 * 24))
+                        generateHtml(walineArray)
+                        document.querySelector('#newcomm') && necommHtml(walineArray)
+                    }).catch(e => {
+                        const $dom = document.querySelector('#card-newest-comments .aside-list')
+                        $dom.innerHTML = "无法获取评论，请确认相关配置是否正确"
+                    })
+                }
+
+                if (typeof Waline === 'object') loadWaline()
+                else getScript(GLOBAL_CONFIG.source.waline.js).then(loadWaline)
+            }
+
             const necommHtml = array => {
                 let result = ''
 
-                const pagesize = [[${theme.config.sidebar.newcommentnumber}]];
+                const pagesize = [[${ theme.config.sidebar.newcommentnumber }]];
                 const defaultpagesize = 5;
                 const finalpagesize = pagesize <= 0 ? defaultpagesize : pagesize;
 
@@ -110,7 +100,7 @@ not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
 
                         if (true) {
                             let name = 'src'
-                            if([[${isLazyload}]]){
+                            if ([[${ isLazyload }]]) {
                                 name = 'data-lazy-src'
                             }
                             result += `
@@ -133,7 +123,6 @@ not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
                         </div>
                     </div>
                   `
-
                     }
                 } else {
                     result += '没有评论'
@@ -147,10 +136,10 @@ not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
 
             const newestCommentInit = () => {
                 if (document.querySelector('#card-newest-comments .aside-list')) {
-                    const data = saveToLocal.get('twikoo-newest-comments')
+                    const data = saveToLocal.get('waline-newest-comments')
                     if (data) {
                         generateHtml(JSON.parse(data))
-                        document.querySelector('#newcomm') &&  necommHtml(JSON.parse(data))
+                        document.querySelector('#newcomm') && necommHtml(JSON.parse(data))
                     } else {
                         getComment()
                     }
@@ -159,7 +148,9 @@ not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
 
             newestCommentInit()
             document.addEventListener('pjax:complete', newestCommentInit)
-        })</script>
+        })
 
+
+    </script>
 </th:block>
 </html>

@@ -18,8 +18,7 @@
 
 
     <div class="author-content-item-group column mapAndInfo">
-        <div class="author-content-item map single" style="padding: 0;">
-            <div id="mapContainer" style="height: 100%;"></div>
+        <div class="author-content-item map single">
             <span class="map-title">我现在住在
                 <b>[[${theme.config.about.map.StrengthenTitle}]]</b></span>
         </div>
@@ -45,7 +44,7 @@
     </div>
     <style>
         .author-content-item.map {
-            background: none !important;
+            background: url([[${theme.config.about.map.background}]]) no-repeat center;
             min-height: 160px;
             max-height: 400px;
             position: relative;
@@ -57,107 +56,118 @@
         }
 
         [data-theme=dark] .author-content-item.map {
-            background: none !important;
+            background: url([[${theme.config.about.map.backgroundDark}]]) no-repeat center;
             background-size: 100%;
         }
+        .author-content-item.map:hover {
+            background-size: 120%;
+            transition: 4s ease-in-out;
+            background-position-x: 0;
+            background-position-y: 36%;
+        }
+
+        .author-content-item.map .map-title {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            background: var(--heo-maskbg);
+            padding: 0.5rem 2rem;
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: 1s ease-in-out;
+            font-size: 20px;
+        }
+
+        .author-content-item.map:hover .map-title {
+            bottom: -100%;
+        }
+
+        .author-content-item.map .map-title b {
+            color: var(--heo-fontcolor);
+        }
+
+        @media screen and (max-width: 768px) {
+            .author-content-item.map.myphoto {
+                background-size: cover !important;
+            }
+
+            .author-content-item.map .map-title {
+                padding: 1rem;
+            }
+        }
     </style>
-    <script>
-        // 链接替换即可，不需要后面的参数
-        fetch("https://v6-widget.51.la/v6/[[${theme.config.about.LingQueMonitorID}]]/quote.js")
-            .then(res => res.text())
-            .then(data => {
-                let title = ["最近活跃", "今日人数", "今日访问", "昨日人数", "昨日访问", "本月访问", "总访问量"];
-                // let num = data.match(/(?<=<\/span><span>).*?(?=<\/span><\/p>)/g)
-                let num = data.match(/(<\/span><span>).*?(\/span><\/p>)/g);
-
-                num = num.map(el => {
-                    let val = el.replace(/(<\/span><span>)/g, "");
-                    let str = val.replace(/(<\/span><\/p>)/g, "");
-                    return str;
-                });
-
-                let statisticEl = document.getElementById("statistic");
-
-                // 自定义不显示哪个或者显示哪个，如下为不显示 最近活跃访客 和 总访问量
-                let statistic = [];
-                for (let i = 0; i < num.length; i++) {
-                    if (!statisticEl) return;
-                    if (i == 0) continue;
-                    statisticEl.innerHTML +=
-                        "<div><span>" + title[i] + "</span><span id=" + title[i] + ">" + num[i] + "</span></div>";
-                    queueMicrotask(() => {
-                        statistic.push(
-                            new CountUp(title[i], 0, num[i], 0, 2, {
-                                useEasing: true,
-                                useGrouping: true,
-                                separator: ",",
-                                decimal: ".",
-                                prefix: "",
-                                suffix: "",
-                            })
-                        );
-                    });
-                }
-
-                let statisticElement = document.querySelector(".about-statistic.author-content-item");
-                function statisticUP() {
-                    if (!statisticElement) return;
-
-                    const callback = (entries, observer) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                for (let i = 0; i < num.length; i++) {
-                                    if (i == 0) continue;
-                                    queueMicrotask(() => {
-                                        statistic[i - 1].start();
-                                    });
-                                }
-                                observer.disconnect(); // 停止观察元素，因为不再需要触发此回调
-                            }
-                        });
-                    };
-
-                    const options = {
-                        root: null,
-                        rootMargin: "0px",
-                        threshold: 0
-                    };
-                    const observer = new IntersectionObserver(callback, options);
-                    observer.observe(statisticElement);
-                }
-                statisticUP()
-            });
-    </script>
+    <!-- 关于统计-->
     <script defer>
-        var t = new TMap.LatLng([[${ theme.config.about.map.mapLocation }]])
-            , n = new TMap.Map(document.getElementById("mapContainer"), {
-            center: t,
-            zoom: 12,
-        });
-        n.removeControl(TMap.constants.DEFAULT_CONTROL_ID.ZOOM),
-            n.removeControl(TMap.constants.DEFAULT_CONTROL_ID.ROTATION),
-            n.removeControl(TMap.constants.DEFAULT_CONTROL_ID.SCALE),
-            new TMap.MultiMarker({
-                map: n,
-                styles: {
-                    marker: new TMap.MarkerStyle({
-                        width: 20,
-                        height: 30,
-                        anchor: {
-                            x: 10,
-                            y: 30
-                        }
-                    })
-                },
-                geometries: [{
-                    id: "marker",
-                    position: t
-                }]
-            })
+        // 链接替换即可，不需要后面的参数
+        function initAboutPage() {
+            fetch("https://v6-widget.51.la/v6/[[${theme.config.about.LingQueMonitorID}]]/quote.js")
+                .then(res => res.text())
+                .then(data => {
+                    let title = ["最近活跃", "今日人数", "今日访问", "昨日人数", "昨日访问", "本月访问", "总访问量"];
+                    // let num = data.match(/(?<=<\/span><span>).*?(?=<\/span><\/p>)/g)
+                    let num = data.match(/(<\/span><span>).*?(\/span><\/p>)/g);
 
-        // 去除logo及水印
-        var a = document.querySelector('canvas+div:last-child')
-        a.style.display = 'none'
+                    num = num.map(el => {
+                        let val = el.replace(/(<\/span><span>)/g, "");
+                        let str = val.replace(/(<\/span><\/p>)/g, "");
+                        return str;
+                    });
+
+                    let statisticEl = document.getElementById("statistic");
+
+                    // 自定义不显示哪个或者显示哪个，如下为不显示 最近活跃访客 和 总访问量
+                    let statistic = [];
+                    for (let i = 0; i < num.length; i++) {
+                        if (!statisticEl) return;
+                        if (i == 0) continue;
+                        statisticEl.innerHTML +=
+                            "<div><span>" + title[i] + "</span><span id=" + title[i] + ">" + num[i] + "</span></div>";
+                        queueMicrotask(() => {
+                            statistic.push(
+                                new CountUp(title[i], 0, num[i], 0, 2, {
+                                    useEasing: true,
+                                    useGrouping: true,
+                                    separator: ",",
+                                    decimal: ".",
+                                    prefix: "",
+                                    suffix: "",
+                                })
+                            );
+                        });
+                    }
+
+                    let statisticElement = document.querySelector(".about-statistic.author-content-item");
+                    function statisticUP() {
+                        if (!statisticElement) return;
+
+                        const callback = (entries, observer) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    for (let i = 0; i < num.length; i++) {
+                                        if (i == 0) continue;
+                                        queueMicrotask(() => {
+                                            statistic[i - 1].start();
+                                        });
+                                    }
+                                    observer.disconnect(); // 停止观察元素，因为不再需要触发此回调
+                                }
+                            });
+                        };
+
+                        const options = {
+                            root: null,
+                            rootMargin: "0px",
+                            threshold: 0
+                        };
+                        const observer = new IntersectionObserver(callback, options);
+                        observer.observe(statisticElement);
+                    }
+                    statisticUP()
+                });
+        }
+        initAboutPage();
+
     </script>
 </div>
 
