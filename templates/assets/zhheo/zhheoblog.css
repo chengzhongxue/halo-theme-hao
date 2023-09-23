@@ -8642,6 +8642,7 @@ li {
     .recent-post-item .recent-post-info .recent-post-info-top .content {
         opacity: 1;
         -webkit-line-clamp: 2;
+        display: none;
     }
 
     #recent-posts .recent-post-item .recent-post-info .article-title {
