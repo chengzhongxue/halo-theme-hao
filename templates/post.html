@@ -136,7 +136,8 @@
 
 
                 <!-- 文章ai摘要 -->
-                <div class="post-ai" th:if="${theme.config.post.aiDescription.aiDescriptionEnable}">
+                <div class="post-ai" th:if="${not #strings.isEmpty(#annotations.get(post, 'ai')) ?
+                      #annotations.get(post, 'ai') == 'true' : theme.config.post.aiDescription.aiDescriptionEnable}">
                     <div class="ai-title"><i class="haofont hao-icon-bilibili"></i>
                         <div class="ai-title-text">AI-摘要</div>
                         <div th:if="${theme.config.post.aiDescription.switchBtn}" id="ai-Toggle">切换</div>
@@ -159,7 +160,8 @@
                 </article>
 
                 <!-- 文章ai摘要 -->
-                <script data-pjax th:if="${theme.config.post.aiDescription.aiDescriptionEnable}"
+                <script data-pjax th:if="${not #strings.isEmpty(#annotations.get(post, 'ai')) ?
+                      #annotations.get(post, 'ai') == 'true' : theme.config.post.aiDescription.aiDescriptionEnable}"
                         th:src="${assets_link + '/libs/gpt/post-ai.js'}"></script>
 
                 <!-- 版权声明 -->
