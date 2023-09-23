@@ -8,6 +8,15 @@ spec:
     kind: Post
   formSchema:
     - $formkit: "radio"
+      name: "ai"
+      label: "AI 摘要"
+      help: "默认后台设置"
+      options:
+        - label: "启用"
+          value: "true"
+        - label: "禁用"
+          value: "false"
+    - $formkit: "radio"
       name: "copyrightEnable"
       id: "copyrightEnable"
       key: "copyrightEnable"
