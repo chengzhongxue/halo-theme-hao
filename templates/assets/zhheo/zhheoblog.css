@@ -17144,9 +17144,8 @@ img.rss-plan-icon {
     text-decoration: none;
     border-bottom: 0px;
     color: rgb(48 122 246 / 0%);
-
+    box-shadow: 0 8px 12px -3px var(--heo-background);
     border-radius: 12px;
-
 }
 
 #article-container a:not(.fancybox).rss-plan-item.rss-plan-wechat:hover {
@@ -17160,7 +17159,6 @@ img.rss-plan-icon {
 #article-container a:not(.fancybox).rss-plan-item.rss-plan-mail:hover {
     background: var(--heo-blue);
 }
-
 
 #article-container a.rss-plan-item{
     font-weight: 400;
