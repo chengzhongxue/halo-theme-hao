@@ -16614,29 +16614,6 @@ span.hexo-douban-pagenum {
 }
 
 
-@media screen and (max-width: 867px) {
-    #console .close-btn {
-        display:none
-    }
-
-    #console .console-card-group {
-        display: none
-    }
-
-    #consoleHideAside {
-        display: none
-    }
-
-    .console-card-group-reward .reward-all .reward-item img {
-        width: 130px;
-        height: 130px
-    }
-
-    #console #consoleKeyboard {
-        display: none
-    }
-}
-
 #console .console-card {
     background: var(--heo-maskbg);
     border-radius: 12px;
@@ -16952,6 +16929,29 @@ span.hexo-douban-pagenum {
     flex-direction: column;
     align-items: center;
     margin: .625rem;
+}
+
+@media screen and (max-width: 867px) {
+    #console .close-btn {
+        display:none
+    }
+
+    #console .console-card-group {
+        display: none
+    }
+
+    #consoleHideAside {
+        display: none
+    }
+
+    .console-card-group-reward .reward-all .reward-item img {
+        width: 130px;
+        height: 130px
+    }
+
+    #console #consoleKeyboard {
+        display: none
+    }
 }
 
 
