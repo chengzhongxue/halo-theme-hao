@@ -37,9 +37,9 @@
     border: var(--style-border);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    transform: translateZ(0);
     position: fixed;
     box-shadow: var(--heo-shadow-border);
-    overflow: hidden;
 }
 
 .comment-barrage-item:hover {
@@ -118,7 +118,6 @@
     line-height: 1;
     padding: 4px;
     border-radius: 4px;
-    white-space: nowrap;
 }
 
 .comment-barrage-item .barrageHead .barrageTitle:hover {
@@ -140,9 +139,8 @@
     font-size: 14px !important;
     font-weight: normal !important;
     height: calc(100% - 30px);
-    overflow: hidden;
-    width: fit-content;
-    max-height: 48px;
+    overflow: scroll;
+    cursor: pointer
 }
 
 .comment-barrage-item .barrageContent a {
