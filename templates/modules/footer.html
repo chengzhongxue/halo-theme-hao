@@ -14,7 +14,7 @@
         <th:block th:with="socialMedias = ${theme.config.footer.social_media.socialMediaLeft}">
             <a class="deal_link" rel="external nofollow" target="_blank" th:each="socialMedia : ${socialMedias}"
                th:href="${socialMedia.url}" th:title="${socialMedia.name}">
-                <i class="haofont " th:classappend="${socialMedia.icon}"></i>
+                <i th:class="${socialMedia.icon}"></i>
             </a>
         </th:block>
 
@@ -24,7 +24,7 @@
         <th:block th:with="socialMedias = ${theme.config.footer.social_media.socialMediaRight}">
             <a class="deal_link" rel="external nofollow" target="_blank" th:each="socialMedia : ${socialMedias}"
                th:href="${socialMedia.url}" th:title="${socialMedia.name}">
-                <i class="haofont " th:classappend="${socialMedia.icon}"></i>
+                <i th:class="${socialMedia.icon}"></i>
             </a>
         </th:block>
     </div>

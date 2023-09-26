@@ -20,7 +20,7 @@
                         buttonTitle = ${theme.config.moment.buttonTitle})}" ></div>
                 <div id="bber">
                     <section class="timeline page-1">
-                        <ul class="list" id="waterfall">
+                        <ul class="list" id="waterfall" th:with="moments = ${momentFinder.list(1, 30)}">
                             <li class="item" th:each="moment : ${moments.items}"
                                 th:with="content=${moment.spec.content}">
                                 <div class="bber-content">
@@ -57,11 +57,11 @@
                                     </a>
                                 </div>
                             </li>
-
                         </ul>
                     </section>
                     <!--  分页还没写 -->
                 </div>
+                <div id="bber-tips" style="color: var(--heo-secondtext);">- 只展示最近30条短文 -</div>
                 <script>heo.reflashEssayWaterFall();</script>
                 <hr/>
                 <!--/* 评论组件 */-->
