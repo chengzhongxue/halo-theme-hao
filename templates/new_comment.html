@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'newComment',title = ${singlePage.spec.title + ' | ' + site.title})}">
+
+<th:block th:fragment="content">
+
+    <div class="page" id="body-wrap">
+
+        <!-- 头部导航栏 -->
+        <header class="not-top-img" id="page-header">
+            <nav th:replace="~{modules/nav :: nav(title = ${singlePage.spec.title})}"></nav>
+        </header>
+        <main class="layout hide-aside" id="content-inner">
+            <div id="page">
+                <div th:replace="~{macro/author-content :: author-content(background = ${theme.config.new_comment.backgroundImg},
+                        smallTitle = ${theme.config.new_comment.smallTitle},
+                        bigTitle = ${theme.config.new_comment.bigTitle},
+                        detail = ${theme.config.new_comment.detail},
+                        buttonUrl = '',
+                        buttonTitle = '')}"></div>
+                <div id="comments-page">
+                    <th:block th:if="${#strings.equals(theme.config.comments.use, 'commentWidget') }"
+                              th:each="comment,iterStat : ${commentFinder.list(null, 1, 100)}" th:with="page = ${comment.spec.subjectRef.kind == 'Post' ? postFinder.getByName(comment.spec.subjectRef.name) :
+                        comment.spec.subjectRef.kind == 'SinglePage' && not #strings.contains('photos,links,moments', comment.spec.subjectRef.name) ? singlePageFinder.getByName(comment.spec.subjectRef.name) : null},
+                        url = ${page == null? '/' : page.status.permalink + '#comment-' + comment.metadata.name},
+                        article = ${page == null? '该文章/页面不存在' : page.spec.title}">
+                        <div class="comment-card" th:title="${comment.spec.content}"
+                             th:onclick="pjax.loadUrl([[${url}]])">
+                            <div class="comment-info">
+                                <img th:with=" img =${#strings.isEmpty(comment.owner.avatar)?'https://cravatar.cn/avatar/?d=mp':comment.owner.avatar}"
+                                     th:alt="${comment.owner.displayName}" th:src="${isLazyload ? loadingImg : img}"
+                                     th:data-lazy-src="${ isLazyload ? img : ''}" class="no-lightbox nolazyload avatar">
+                                <div class="comment-information">
+                                    <span class="comment-user">[[${comment.owner.displayName}]]</span>
+                                    <span class="comment-time">[[${#dates.format(comment.metadata.creationTimestamp,
+                                        'yyyy-MM-dd HH:mm:ss')}]]</span>
+                                </div>
+                            </div>
+                            <div class="comment-content">[[${comment.spec.content}]]
+                            </div>
+                            <div class="comment-article">[[${article}]]</div>
+                        </div>
+                    </th:block>
+
+                </div>
+                <th:block th:if="${!#strings.equals(theme.config.comments.use, 'commentWidget') }">
+                    <script data-pjax th:inline="javascript">
+                        var postsData = [[${ postFinder.listAll() }]];
+                        var pageData = [[${ singlePageFinder.list(1, 50) }]];
+                        var articles = [{ path: '/links', title: '友链' }, { path: '/bangumis', title: '追番' }, { path: '/moments', title: '瞬间' }, { path: '/photos', title: '图库' }];
+
+                        if (postsData.length > 0) {
+                            postsData.map((item) => {
+                                articles.push({
+                                    title: item.spec.title,
+                                    path: item.status.permalink
+                                })
+                            })
+                        }
+                        if (pageData.items.length > 0) {
+                            pageData.items.map((item) => {
+                                articles.push({
+                                    title: item.spec.title,
+                                    path: item.status.permalink
+                                })
+                            })
+                        }
+                    </script>
+                    <script>
+                        var config = {
+                            mailMd5: GLOBAL_CONFIG.source.comments.mailMd5,
+                            twikooUrl: GLOBAL_CONFIG.source.twikoo.twikooUrl,
+                            artalkUrl: GLOBAL_CONFIG.source.artalk.artalkUrl,
+                            walineUrl: GLOBAL_CONFIG.source.waline.serverURL,
+                            use: GLOBAL_CONFIG.source.comments.use
+                        };
+                        var isTwikoo = config.use == 'Twikoo';
+                        var isArtalk = config.use == 'Artalk';
+                        var isWaline = config.use == 'Waline';
+                        comments();
+                        async function comments() {
+                            if (isTwikoo) {
+                                fetch(GLOBAL_CONFIG.source.twikoo.twikooUrl, {
+                                    method: "POST",
+                                    body: JSON.stringify({
+                                        event: "GET_RECENT_COMMENTS",
+                                        accessToken: GLOBAL_CONFIG.source.twikoo.accessToken,
+                                        includeReply: !0,
+                                        pageSize: 100
+                                    }),
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    }
+                                }).then(res => res.json()).then(async ({ data }) => {
+                                    const twikooArray = data.map(e => {
+                                        return {
+                                            'comment': changeContents(e.comment),
+                                            'avatar': 'https://cravatar.cn/avatar/' + e.mailMd5,
+                                            'nick': e.nick,
+                                            'url': e.url,
+                                            'barrageBlogger': e.mailMd5 === config.mailMd5,
+                                            'id': e.id,
+                                            'created': e.created
+                                        }
+                                    })
+                                    renderer(twikooArray)
+                                }).catch((err) => { console.log(err); })
+                            }
+                            if (isArtalk) {
+                                const statheaderList = {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/x-www-form-urlencoded',
+                                        'Origin': window.location.origin
+                                    },
+                                    body: new URLSearchParams({
+                                        'site_name': GLOBAL_CONFIG.source.artalk.siteName,
+                                        'limit': '100',
+                                        'type': 'latest_comments'
+                                    })
+                                }
+                                fetch(GLOBAL_CONFIG.source.artalk.artalkUrl + 'api/stat', statheaderList)
+                                    .then(res => res.json()).then(d => {
+                                    const artalk = d.data.map(function (e) {
+                                        return {
+                                            'comment': changeContents(e.content_marked),
+                                            'avatar': 'https://cravatar.cn/avatar/' + e.email_encrypted + '?d=mp&s=240',
+                                            'nick': e.nick,
+                                            'url': e.page_key,
+                                            'barrageBlogger': e.email_encrypted === config.mailMd5,
+                                            'id': 'atk-comment-' + e.id,
+                                            'created': e.date,
+                                        }
+                                    })
+                                    renderer(artalk)
+                                }).catch((err) => { console.log(err); })
+                            }
+                            if (isWaline) {
+                                const loadWaline = () => {
+                                    Waline.RecentComments({
+                                        serverURL: GLOBAL_CONFIG.source.waline.serverURL,
+                                        count: 50
+                                    }).then(({ comments }) => {
+                                        const walineArray = comments.map(e => {
+                                            return {
+                                                'comment': changeContents(e.comment),
+                                                'avatar': e.avatar,
+                                                'nick': e.nick,
+                                                'url': e.url,
+                                                'barrageBlogger': e.type === 'administrator',
+                                                'id': e.objectId,
+                                                'created': e.insertedAt,
+                                            }
+                                        })
+                                        renderer(walineArray);
+                                    }).catch((err) => { console.log(err); })
+                                }
+                                if (typeof Waline === 'object') loadWaline()
+                                else getScript(GLOBAL_CONFIG.source.waline.js).then(loadWaline)
+                            }
+
+                        }
+
+                        function getTitle(url) {
+                            let a = articles.find(a => a.path == url)
+                            if (a) return a.title
+                            return '该文章/页面不存在'
+                        }
+
+                        function renderer(data) {
+                            let html = "";
+                            data.forEach(item => {
+                                const a = new Date(item.created),
+                                    c = `${a.getFullYear().toString().slice(-2)}-${a.getMonth() + 1}-${a.getDate()} ${a.getHours()}:${a.getMinutes()}:${a.getSeconds()}`;
+                                html += `<div class="comment-card" title="${item.comment}" onclick="pjax.loadUrl('${item.url}#${item.id}')">
+                                    <div class="comment-info no-lightbox">
+                                        <img src="${item.avatar}" alt='${item.nick}'/>
+                                        <div class="comment-information">
+                                                <span class="comment-user">${item.nick} ${item.barrageBlogger ? '<span class="isBlogger">博主</span>' : ''}</span>
+                                                <span class="comment-time">${c}</span>
+                                        </div>
+                                    </div>
+                                    <div class="comment-content">${item.comment}</div>
+                                    <div class="comment-article">"${getTitle(item.url)}"</div>
+                                </div>`
+                            })
+                            document.getElementById('comments-page').innerHTML = html
+                        }
+                        function changeContents(content) {
+                            if (content === '') return content
+
+                            content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+                            content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+                            content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+                            content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+                            if (content.length > 150) {
+                                content = content.substring(0, 150) + '...'
+                            }
+                            return content
+                        }
+                    </script>
+                </th:block>
+
+                <style>
+                    #comments-page {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 12px;
+                        min-height: 100px;
+                        width: 100%;
+                        margin-top: 1.5rem
+                    }
+
+                    #comments-page .comment-card {
+                        position: relative;
+                        width: calc(100% / 4 - 9px);
+                        border-radius: 12px;
+                        border: var(--style-border);
+                        padding: 14px;
+                        cursor: pointer;
+                        transition: .3s;
+                        overflow: hidden;
+                        box-shadow: var(--heo-shadow-border);
+                        background: var(--heo-card-bg)
+                    }
+
+                    span.isBlogger {
+                        background: var(--heo-main);
+                        color: white;
+                        font-weight: normal;
+                        font-size: 13px;
+                        line-height: 1;
+                        display: inline-flex;
+                        padding: 3px 3px 3px 6px;
+                        border-radius: 3px;
+                        margin-left: 5px;
+                        letter-spacing: 1px;
+                    }
+
+                    @media screen and (max-width: 900px) {
+                        #comments-page .comment-card {
+                            width: calc(100% / 2 - 6px)
+                        }
+                    }
+
+                    @media screen and (max-width: 768px) {
+                        #comments-page .comment-card {
+                            width: 100%
+                        }
+                    }
+
+                    #comments-page .comment-card:hover {
+                        border-color: var(--heo-main)
+                    }
+
+                    #comments-page .comment-card:hover .comment-article {
+                        opacity: 1;
+                        top: 0
+                    }
+
+                    #comments-page .comment-card .comment-info {
+                        display: flex;
+                        align-items: center;
+                        padding-bottom: 14px;
+                        margin-bottom: 8px;
+                        border-bottom: 1px dashed var(--hr-border)
+                    }
+
+                    #comments-page .comment-card .comment-info img {
+                        width: 50px;
+                        height: 50px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                        margin: 0 !important
+                    }
+
+                    #comments-page .comment-card .comment-info .comment-information {
+                        display: flex;
+                        flex-direction: column;
+                        margin-left: 12px;
+                        line-height: 1.5
+                    }
+
+                    #comments-page .comment-card .comment-info .comment-information .comment-user {
+                        display: flex;
+                        align-items: center;
+                        font-weight: 700;
+                        font-size: 15px
+                    }
+
+                    #comments-page .comment-card .comment-info .comment-information .comment-author::after {
+                        content: "\f3a5";
+                        font-family: "Font Awesome 6 Free" !important;
+                        padding-left: 6px;
+                        padding-top: 5px;
+                        font-size: 14px;
+                        color: #fdc22d
+                    }
+
+                    [data-theme=dark] #comments-page .comment-card .comment-info .comment-information .comment-author::after {
+                        color: var(--heo-main)
+                    }
+
+                    #comments-page .comment-card .comment-info .comment-information .comment-time {
+                        opacity: .8;
+                        font-size: 15px
+                    }
+
+                    #comments-page .comment-card .comment-info .comment-content {
+                        margin: 8px 5px 0
+                    }
+
+                    .comment-article,
+                    .comment-content {
+                        transition: .3s;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                        line-height: 1.7;
+                        font-weight: 400
+                    }
+
+                    .comment-article {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        height: 100%;
+                        width: 100%;
+                        z-index: 1;
+                        background: var(--heo-main);
+                        color: #fff;
+                        margin: 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 1rem;
+                        opacity: 0;
+                        text-align: center
+                    }
+                </style>
+
+            </div>
+
+
+        </main>
+        <!-- 底部 -->
+        <footer th:replace="~{modules/footer :: footer}"></footer>
+        <!-- 卡片顶部气泡效果 -->
+        <script th:if="${theme.config.other.bubbleEnable}" async data-pjax
+                th:src="${assets_link + '/libs/canvas/bubble.js'}"></script>
+    </div>
+
+</th:block>
+
+</html>
