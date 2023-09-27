@@ -736,11 +736,20 @@ spec:
           label: 最新文章
           value: 4
           help: 文章数量
-        - $formkit: number
-          name: newcommentnumber
+        - $formkit: group
+          name: newcomment
           label: 最新评论
-          value: 5
-          help: 最新评论数量, 小于 0 则展示5条评论
+          value:
+            newcommentUrl: /newest
+            newcommentnumber: 5
+          children:
+            - $formkit: url
+              name: newcommentUrl
+              label: 跳转地址
+            - $formkit: number
+              name: newcommentnumber
+              label: 数量
+              help: 最新评论数量, 小于 0 则展示5条评论
         - $formkit: number
           name: categoryQuantity
           label: 文章分类
@@ -1563,6 +1572,117 @@ spec:
                   placeholder: 请输入左下角按钮跳转链接
                   value: https://www.apple.com.cn/macbook-pro/
 
+    - group: new_comment
+      label: 最近评论
+      formSchema:
+        - $formkit: attachment
+          name: backgroundImg
+          label: 背景图
+          value: https://liuzhihang.com/upload/moments.png
+          placeholder: 请输入图片地址
+        - $formkit: text
+          name: smallTitle
+          label: 小标题
+          value: 评论
+        - $formkit: text
+          name: bigTitle
+          label: 大标题
+          value: 最近评论
+        - $formkit: text
+          name: detail
+          label: 描述
+          value: 快速查看本站最近评论内容。
+
+    - group: envelope_comment
+      label: 留言板
+      formSchema:
+        - $formkit: radio
+          label: 弹幕
+          name: enable_danmu
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: radio
+          label: 信笺
+          name: enable_envelope_comment
+          key: enable_envelope_comment
+          id: enable_envelope_comment
+          value: true
+          options:
+            - label: 启用
+              value: true
+            - label: 禁用
+              value: false
+        - $formkit: textarea
+          if: $get(enable_envelope_comment).value
+          name: title
+          label: 标题
+          placeholder: 请输入内容
+          value: <div align="center">留言板</div>
+          help: 支持 HTML 语法
+        - $formkit: group
+          name: custom_pic
+          if: $get(enable_envelope_comment).value
+          label: 信笺图片
+          value:
+            cover:
+            line:
+            beforeimg:
+            afterimg:
+          children:
+            - $formkit: attachment
+              name: cover
+              label: 头部图片
+              placeholder: 请输入内容
+              value: "https://npm.elemecdn.com/hexo-butterfly-envelope/lib/violet.jpg"
+            - $formkit: attachment
+              name: line
+              label: 底部图片
+              placeholder: 请输入内容
+              value: "https://npm.elemecdn.com/hexo-butterfly-envelope/lib/line.png"
+            - $formkit: attachment
+              name: beforeimg
+              label: 前半部分图片
+              placeholder: 请输入内容
+              value: "https://npm.elemecdn.com/hexo-butterfly-envelope/lib/before.png"
+            - $formkit: attachment
+              name: afterimg
+              label: 后半部分图片
+              placeholder: 请输入内容
+              value: "https://npm.elemecdn.com/hexo-butterfly-envelope/lib/after.png"
+        - $formkit: repeater
+          name: messageList
+          if: $get(enable_envelope_comment).value
+          label: 正文
+          value:
+            - content: "有什么想问的？"
+            - content: "有什么想说的？"
+            - content: "有什么想吐槽的？"
+            - content: "哪怕是有什么想吃的，都可以告诉我哦~"
+          children:
+            - $formkit: text
+              name: content
+              label: 内容
+              placeholder: 请输入内容
+              value: "有什么想问的？"
+        - $formkit: text
+          name: bottom
+          if: $get(enable_envelope_comment).value
+          label: 底部文本
+          placeholder: 请输入内容
+          value: 自动书记人偶竭诚为您服务！
+          help: 仅支持单行文本
+        - $formkit: number
+          name: height
+          if: $get(enable_envelope_comment).value
+          label: 高度
+          placeholder: 请输入内容
+          help: 信封划出的高度
+          value: 1024
+
     - group: about
       label: 关于
       formSchema:
@@ -1977,96 +2097,6 @@ spec:
                   value: Y
                 - label: 否
                   value: N
-
-    - group: envelope_comment
-      label: 留言板
-      formSchema:
-        - $formkit: radio
-          label: 弹幕
-          name: enable_danmu
-          value: true
-          options:
-            - label: 启用
-              value: true
-            - label: 禁用
-              value: false
-        - $formkit: radio
-          label: 信笺
-          name: enable_envelope_comment
-          key: enable_envelope_comment
-          id: enable_envelope_comment
-          value: true
-          options:
-            - label: 启用
-              value: true
-            - label: 禁用
-              value: false
-        - $formkit: textarea
-          if: $get(enable_envelope_comment).value
-          name: title
-          label: 标题
-          placeholder: 请输入内容
-          value: <div align="center">留言板</div>
-          help: 支持 HTML 语法
-        - $formkit: group
-          name: custom_pic
-          if: $get(enable_envelope_comment).value
-          label: 信笺图片
-          value:
-            cover:
-            line:
-            beforeimg:
-            afterimg:
-          children:
-            - $formkit: attachment
-              name: cover
-              label: 头部图片
-              placeholder: 请输入内容
-              value: "https://npm.elemecdn.com/hexo-butterfly-envelope/lib/violet.jpg"
-            - $formkit: attachment
-              name: line
-              label: 底部图片
-              placeholder: 请输入内容
-              value: "https://npm.elemecdn.com/hexo-butterfly-envelope/lib/line.png"
-            - $formkit: attachment
-              name: beforeimg
-              label: 前半部分图片
-              placeholder: 请输入内容
-              value: "https://npm.elemecdn.com/hexo-butterfly-envelope/lib/before.png"
-            - $formkit: attachment
-              name: afterimg
-              label: 后半部分图片
-              placeholder: 请输入内容
-              value: "https://npm.elemecdn.com/hexo-butterfly-envelope/lib/after.png"
-        - $formkit: repeater
-          name: messageList
-          if: $get(enable_envelope_comment).value
-          label: 正文
-          value:
-            - content: "有什么想问的？"
-            - content: "有什么想说的？"
-            - content: "有什么想吐槽的？"
-            - content: "哪怕是有什么想吃的，都可以告诉我哦~"
-          children:
-            - $formkit: text
-              name: content
-              label: 内容
-              placeholder: 请输入内容
-              value: "有什么想问的？"
-        - $formkit: text
-          name: bottom
-          if: $get(enable_envelope_comment).value
-          label: 底部文本
-          placeholder: 请输入内容
-          value: 自动书记人偶竭诚为您服务！
-          help: 仅支持单行文本
-        - $formkit: number
-          name: height
-          if: $get(enable_envelope_comment).value
-          label: 高度
-          placeholder: 请输入内容
-          help: 信封划出的高度
-          value: 1024
 
     - group: comments
       label: 评论
