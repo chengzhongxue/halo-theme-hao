@@ -16,27 +16,7 @@
     && not #strings.isEmpty(theme.config.comments.walines.serverURL)}"
       rel="stylesheet" th:href="${not #strings.isEmpty(theme.config.comments.walines.walinesCss) ? theme.config.comments.walines.walinesCss : 'https://cdn.cbd.int/@waline/client@2.15.7/dist/waline.css' }">
     <!--  解决 katex pjax问题 -->
-    <th:block th:if="${pluginFinder.available('plugin-katex')}">
-        <script defer="" src="/plugins/plugin-katex/assets/static/katex.min.js"></script>
-        <script>
-            document.addEventListener("pjax:complete", function () {
-                if (GLOBAL_CONFIG.htmlType == 'post' || GLOBAL_CONFIG.htmlType == 'page') {
-                    const postBody = document.body
-                    const renderMath = (selector, displayMode) => {
-                        const els = postBody.querySelectorAll(selector)
-                        els.forEach((el) => {
-                            katex.render(el.innerText, el, { displayMode })
-                        })
-                    }
-                    if (postBody) {
-                        renderMath("[math-inline],.math-inline,.katex--inline", false);
-                        renderMath("[math-display],.math-display,.katex--display", true);
-                    }
-                }
-
-            });
-        </script>
-    </th:block>
+    <script th:if="${pluginFinder.available('plugin-katex')}" defer="" src="/plugins/plugin-katex/assets/static/katex.min.js"></script>
 </head>
 
 <body>

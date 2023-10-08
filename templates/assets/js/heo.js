@@ -599,6 +599,10 @@ $(document).ready((function() {
     }
 )),
 document.addEventListener("pjax:complete", (function() {
-         initBlog()
+        initBlog();
+        // 解决 katex pjax问题
+        if((GLOBAL_CONFIG.htmlType == 'post' || GLOBAL_CONFIG.htmlType == 'page') && typeof window.renderKaTex != 'undefined'){
+            window.renderKaTex();
+        }
      }
 ));
