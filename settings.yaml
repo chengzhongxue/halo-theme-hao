@@ -556,7 +556,7 @@ spec:
         - $formkit: group
           name: widgetss
           label: 侧边栏内容
-          help: 目前提供的小部件有：profile（站点资料）, wechat（微信）, welcome（小板报）, steam（Steam卡片）, music（音乐卡片）, friend-link（通讯录）, recent-posts（近期文章）, comments（最新评论）, categories（文章分类）, tags（文章标签）, stat（统计）, tags-stat（标签&归档&统计）, adbox（广告区域）。你可以随意组合或排序，以逗号隔开。
+          help: 目前提供的小部件有：profile（站点资料）, wechat（微信）, power（爱发电赞助）, welcome（小板报）, steam（Steam卡片）, music（音乐卡片）, friend-link（通讯录）, recent-posts（近期文章）, comments（最新评论）, categories（文章分类）, tags（文章标签）, stat（统计）, tags-stat（标签&归档&统计）, adbox（广告区域）。你可以随意组合或排序，以逗号隔开。
           value:
             indexWidgets: profile,wechat,comments,recent-posts,categories,tags-stat
             postWidgets: profile,wechat,toc,comments,recent-posts,categories,tags-stat
@@ -646,14 +646,54 @@ spec:
           value:
             wechatImgFace:
             wechatImgBack:
+            color: "#07C160"
+            wechatImg: "/themes/theme-hao/assets/images/gzh_cover.png"
+            url: "/wechat"
           children:
+            - $formkit: color
+              name: color
+              label: 背景颜色
+              value: "#07C160"
+            - $formkit: attachment
+              name: wechatImg
+              label: 背景图
+            - $formkit: url
+              name: url
+              label: 链接
             - $formkit: attachment
               name: wechatImgFace
-              placeholder: 公众号正面图
+              label: 公众号正面图
             - $formkit: attachment
               name: wechatImgBack
-              placeholder: 公众号背面图
+              label: 公众号背面图
               help: 图片可以从公众号后台下载物料或者自制
+        - $formkit: group
+          name: power
+          label: 爱发电赞助
+          value:
+            powerLink: /
+            list:
+          children:
+            - $formkit: url
+              name: powerLink
+              label: 赞助地址
+            - $formkit: repeater
+              name: list
+              label: 爱发电赞助列表
+              value: [ ]
+              children:
+                - $formkit: attachment
+                  name: avatar
+                  label: 头像
+                - $formkit: text
+                  name: name
+                  label: 名称
+                - $formkit: url
+                  name: link
+                  label: 链接
+                - $formkit: text
+                  name: descr
+                  label: 描述
         - $formkit: group
           name: welcome
           label: 小板报
