@@ -646,13 +646,26 @@ spec:
           value:
             wechatImgFace:
             wechatImgBack:
+            color: "#07C160"
+            wechatImg: "/themes/theme-hao/assets/images/gzh_cover.png"
+            url: "/wechat"
           children:
+            - $formkit: color
+              name: color
+              label: 背景颜色
+              value: "#07C160"
+            - $formkit: attachment
+              name: wechatImg
+              label: 背景图
+            - $formkit: url
+              name: url
+              label: 链接
             - $formkit: attachment
               name: wechatImgFace
-              placeholder: 公众号正面图
+              label: 公众号正面图
             - $formkit: attachment
               name: wechatImgBack
-              placeholder: 公众号背面图
+              label: 公众号背面图
               help: 图片可以从公众号后台下载物料或者自制
         - $formkit: group
           name: power
