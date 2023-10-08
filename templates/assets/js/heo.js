@@ -531,6 +531,27 @@ var heo = {
         input.setSelectionRange(-1, -1);
     },
 
+    //爱发电赞助
+    addPowerLinksInPostRightSide: async function() {
+        const image = document.getElementById("power-star-image")
+            , star = document.getElementById("power-star")
+            , title = document.getElementById("power-star-title")
+            , desc = document.getElementById("power-star-desc");
+        if (image && star && title && desc)
+            try {
+                const list = GLOBAL_CONFIG.source.power.list
+                    , i = heo.getRandomInt(0, list.length)
+                    , power = list[i].realNode;
+                image.style.backgroundImage = `url(${power.avatar})`,
+                    star.href = power.link,
+                    title.innerText = power.name,
+                    desc.innerText = power.descr
+            } catch (e) {}
+    },
+    getRandomInt: function(e, t) {
+        return Math.floor(Math.random() * (t - e)) + e
+    },
+
     //初始化console图标
     initConsoleState: function() {
         document.documentElement.classList.contains("hide-aside") ? document.querySelector("#consoleHideAside").classList.add("on") : document.querySelector("#consoleHideAside").classList.remove("on")
