@@ -113,8 +113,8 @@
 
 @media screen and (max-width: 768px) {
     :root {
-        --style-border: 0px solid var(--heo-card-border);
-        --style-border-hover: 0px solid var(--heo-main);
+        --style-border:1px solid var(--heo-none);
+        --style-border-hover: 1px solid var(--heo-none)
     }
 }
 
@@ -14354,8 +14354,8 @@ div#heo-footer-bar .footer-bar-description {
 }
 
 #bber .bber-content-link:hover {
-    background-color: var(--heo-main);
-    color: var(--heo-white);
+    background-color: var(--heo-lighttext);
+    color: var(--heo-card-bg);
 }
 
 #bber .bber-content-link i {
@@ -14371,6 +14371,7 @@ div#heo-footer-bar .footer-bar-description {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    -webkit-user-select: none
 }
 
 #bber .count {
