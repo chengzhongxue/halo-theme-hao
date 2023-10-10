@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page',title = ${singlePage.spec.title + ' | ' + site.title})}">
-
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page',title = ${singlePage.spec.title + ' | ' + site.title}, head = ~{::head})}">
+<th:block th:fragment="head">
+    <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = ${singlePage.spec.title},
+                _permalink = ${singlePage.status.permalink},
+                _cover = ${singlePage.spec.cover},
+                _excerpt = ${singlePage.status.excerpt},
+                _type = 'website')}"></th:block>
+</th:block>
 <th:block th:fragment="content">
 
     <div class="page" id="body-wrap">

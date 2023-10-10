@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'archive',title = ${'文章' + ' | ' + site.title})}">
-
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'archive',title = ${'文章归档' + ' | ' + site.title}, head = ~{::head})}">
+<th:block th:fragment="head">
+    <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = '文章归档',
+                _permalink = '/archives',
+                _cover = ${theme.config.other.opengraph.image},
+                _excerpt = ${site.seo.description},
+                _type = 'website')}"></th:block>
+</th:block>
 <th:block th:fragment="content">
 
     <div class="page" id="body-wrap">
         <header class="not-top-img" id="page-header">
-            <nav th:replace="~{modules/nav :: nav(title = '文章')}"></nav>
+            <nav th:replace="~{modules/nav :: nav(title = '文章归档')}"></nav>
         </header>
         <main class="layout" id="content-inner">
             <!-- archive -->
