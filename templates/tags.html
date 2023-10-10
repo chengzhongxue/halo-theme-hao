@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{modules/layouts/layout :: layout(content = ~{::content},htmlType = 'tag',title = ${'标签' + ' | ' + site.title})}">
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content},htmlType = 'tag',title = ${'标签' + ' | ' + site.title}, head = ~{::head})}">
 
+<th:block th:fragment="head">
+    <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = '标签',
+                _permalink = '/tags',
+                _cover = ${theme.config.other.opengraph.image},
+                _excerpt = ${site.seo.description},
+                _type = 'website')}"></th:block>
+</th:block>
 <th:block th:fragment="content">
 
     <div class="page" id="body-wrap">
