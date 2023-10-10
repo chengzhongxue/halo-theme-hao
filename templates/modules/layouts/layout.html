@@ -137,9 +137,8 @@
     <script>
         let pjaxSelectors = ['title', '#config-diff', '#body-wrap', '#rightside-config-hide', '#rightside-config-show', '.js-pjax','#site-config']
 
-        if (false) {
-            pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
-        }
+        pjaxSelectors.unshift('meta[property="og:type"]','meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]', 'meta[property="og:description"]'
+                , 'meta[name="twitter:card"]', 'meta[name="twitter:title"]', 'meta[name="twitter:url"]', 'meta[name="twitter:description"]', 'meta[name="twitter:image"]')
 
         var pjax = new Pjax({
             elements: 'a:not([target="_blank"])',
