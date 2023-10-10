@@ -188,105 +188,62 @@ function showcopy() {
 // 获取时间
 var getTimeState = () => {
 
-    if (GLOBAL_CONFIG.profileStyle == 'default') {
-        // 获取当前时间
-        var timeNow = new Date();
-        // 获取当前小时
-        var hours = timeNow.getHours();
-        // 设置默认文字
-        var text = ``;
-        // 判断当前时间段
-        if (hours >= 0 && hours <= 5) {
-            text = `晚安`;
-        } else if (hours > 5 && hours <= 10) {
-            text = `早上好`;
-        } else if (hours > 10 && hours <= 14) {
-            text = `中午好`;
-        } else if (hours > 14 && hours <= 18) {
-            text = `下午好`;
-        } else if (hours > 18 && hours <= 24) {
-            text = `晚上好`;
+        if (GLOBAL_CONFIG.profileStyle == 'default') {
+            // 获取当前时间
+            var timeNow = new Date();
+            // 获取当前小时
+            var hours = timeNow.getHours();
+            // 设置默认文字
+            var text = ``;
+            // 判断当前时间段
+            if (hours >= 0 && hours <= 5) {
+                text = `晚安`;
+            } else if (hours > 5 && hours <= 10) {
+                text = `早上好`;
+            } else if (hours > 10 && hours <= 14) {
+                text = `中午好`;
+            } else if (hours > 14 && hours <= 18) {
+                text = `下午好`;
+            } else if (hours > 18 && hours <= 24) {
+                text = `晚上好`;
+            }
+            // 返回当前时间段对应的状态
+            return text;
+
         }
-        //    console.log(`hours >>>>>`, hours);
-        //    console.log(`text >>>>`, text);
-        // 返回当前时间段对应的状态
-        return text;
 
-    }
+        if (GLOBAL_CONFIG.profileStyle == 'one') {
+            var e = (new Date).getHours()
+                , t = "";
+            return e >= 0 && e <= 5 ? t = "睡个好觉，保证精力充沛" : e > 5 && e <= 10 ? t = "一日之计在于晨" : e > 10 && e <= 14 ? t = "吃饱了才有力气干活" : e > 14 && e <= 18 ? t = "集中精力，攻克难关" : e > 18 && e <= 24 && (t = "不要太劳累了，早睡更健康"),
+                t
+        }
 
-    if (GLOBAL_CONFIG.profileStyle == 'one') {
-        var e = (new Date).getHours()
-            , t = "";
-        return e >= 0 && e <= 5 ? t = "睡个好觉，保证精力充沛" : e > 5 && e <= 10 ? t = "一日之计在于晨" : e > 10 && e <= 14 ? t = "吃饱了才有力气干活" : e > 14 && e <= 18 ? t = "集中精力，攻克难关" : e > 18 && e <= 24 && (t = "不要太劳累了，早睡更健康"),
-            t
-    }
-
-};
-
-function fly_to_top() {
-    document.getElementById("guli_top").classList.add("open_wing");
-    setTimeout(function () {
-        document.getElementById("guli_top").classList.add("flying");
-        btf.scrollToDest(0, 300);
-    }, 300);
-    setTimeout(function () {
-        // 这里就是处理的事件
-        document.getElementById("guli_top").classList.remove("flying");
-        document.getElementById("guli_top").classList.remove("open_wing");
-        document.getElementById("guli_top").style.cssText = "opacity: ''; transform: ''";
-    }, 600)
-}
-
+    },
 //深色模式切换
-var navFn = {
-    switchDarkMode: () => { // Switch Between Light And Dark Mode
-        const nowMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
-        if (nowMode === 'light') {
-            activateDarkMode()
-            saveToLocal.set('theme', 'dark', 2)
-            GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night, false, 2000)
-        } else {
-            activateLightMode()
-            saveToLocal.set('theme', 'light', 2)
-            GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day, false, 2000)
-        }
-        // handle some cases
-        typeof utterancesTheme === 'function' && utterancesTheme();
-        typeof FB === 'object' && window.loadFBComment();
-        window.DISQUS && document.getElementById('disqus_thread').children.length && setTimeout(() => window.disqusReset(), 200)
-
-        //统计图
-        let color = document.documentElement.getAttribute('data-theme') === 'light' ? '#363636' : '#F7F7FA'
-        if (document.getElementById('posts-chart')) {
-            let postsOptionNew = postsOption
-            postsOptionNew.textStyle.color = color
-            postsOptionNew.title.textStyle.color = color
-            postsOptionNew.xAxis.axisLine.lineStyle.color = color
-            postsOptionNew.yAxis.axisLine.lineStyle.color = color
-            postsChart.setOption(postsOptionNew)
-        }
-        if (document.getElementById('tags-chart')) {
-            let tagsOptionNew = tagsOption
-            tagsOptionNew.textStyle.color = color
-            tagsOptionNew.title.textStyle.color = color
-            tagsOptionNew.xAxis.axisLine.lineStyle.color = color
-            tagsOptionNew.yAxis.axisLine.lineStyle.color = color
-            tagsChart.setOption(tagsOptionNew)
-        }
-        if (document.getElementById('categories-chart')) {
-            let categoriesOptionNew = categoriesOption
-            categoriesOptionNew.textStyle.color = color
-            categoriesOptionNew.title.textStyle.color = color
-            categoriesOptionNew.legend.textStyle.color = color
-            categoriesChart.setOption(categoriesOptionNew)
-        }
+    switchDarkMode = ()=>{
+        "dark" === document.documentElement.getAttribute("data-theme") ? (activateLightMode(),
+            saveToLocal.set("theme", "light", 2),
+        void 0 !== GLOBAL_CONFIG.Snackbar && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day, false, 2000),
+            $(".menu-darkmode-text").text("深色模式")) : (activateDarkMode(),
+            saveToLocal.set("theme", "dark", 2),
+        void 0 !== GLOBAL_CONFIG.Snackbar && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night, false, 2000),
+            $(".menu-darkmode-text").text("浅色模式")),
+            handleCases()
         heo.darkModeStatus();
         //代码块
         if(GLOBAL_CONFIG.prism.enable){
             halo.dataCodeTheme();
         }
     }
-}
+    , handleCases = ()=>{
+        "function" == typeof utterancesTheme && utterancesTheme(),
+        "object" == typeof FB && window.loadFBComment(),
+        window.DISQUS && document.getElementById("disqus_thread").children.length && setTimeout((()=>window.disqusReset()), 200)
+    }
+    , navFn = {
+        switchDarkMode: switchDarkMode
+    };
 
 //引用到评论
 function rightMenuCommentText(txt) {
@@ -326,8 +283,6 @@ function AddRewardMask() {
     document.getElementById("quit-box").style.display = "flex";
 }
 
-
-
 //监听蒙版关闭
 document.addEventListener('touchstart', e => {
     RemoveRewardMask()
@@ -345,20 +300,6 @@ $(document).unbind('keydown').bind('keydown', function (e) {
 
     }
 })
-
-//判断国内国外
-// var foreignTips = (function () {
-//   var fetchUrl = "https://api.ooomn.com/api/ip"
-//   fetch(fetchUrl)
-//     .then(res => res.json())
-//     .then(json =>{
-//       var country = json.country;
-//       console.log(country);
-//       if (country != '中国'){
-//         btf.snackbarShow('使用国外网络访问可能无法访问文章图片，敬请谅解。Blog pictures only serve mainland China.')
-//       }
-//     })
-// });
 
 //颜色
 document.addEventListener('scroll', btf.throttle(function () {
@@ -635,25 +576,28 @@ function initBlog() {
     GLOBAL_CONFIG.source.post.dynamicBackground && coverColor(),
     GLOBAL_CONFIG.rightMenuEnable && addRightMenuClickEvent(),
     percent(),
-    heo.topCategoriesBarScroll(),
-    heo.initIndexEssay(),
-    setBodyDataType(),
     listenToPageInputPress(),
+    setBodyDataType(),
     heo.topPostScroll(),
     heo.sayhi(),
+    heo.stopImgRightDrag(),
+    heo.addPowerLinksInPostRightSide(),
     heo.qrcodeCreate(),
     //右下角 snackbar 弹窗
     GLOBAL_CONFIG.source.tool.switch && heo.hidecookie(),
-    heo.stopImgRightDrag(),
-    heo.addPowerLinksInPostRightSide(),
     heo.onlyHome(),
     heo.addNavBackgroundInit(),
+    heo.initIndexEssay(),
+    heo.reflashEssayWaterFall(),
     heo.darkModeStatus(),
     heo.initThemeColor(),
+    heo.topCategoriesBarScroll(),
     //隐藏加载动画
     GLOBAL_CONFIG.loadingBox &&  heo.hideLoading(),
     initObserver(),
     checkUrlAndAddHideBanner()
+
+
 }
 
 // 如果当前页有评论就执行函数
@@ -837,8 +781,7 @@ if (getCookie('browsertc') != 1) {
 // };
 
 //注入函数
-document.addEventListener('pjax:send', function () {
-
+document.addEventListener('pjax:click', function () {
     //显示加载进度条
     if(GLOBAL_CONFIG.loadProgressBar){
         Pace.restart();
@@ -847,10 +790,4 @@ document.addEventListener('pjax:send', function () {
     if(GLOBAL_CONFIG.loadingBox){
         heo.showLoading();
     }
-
-
-})
-
-document.addEventListener('DOMContentLoaded', function () {
-    heo.reflashEssayWaterFall()
 })
