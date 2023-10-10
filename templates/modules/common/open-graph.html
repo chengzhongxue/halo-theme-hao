@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="open-graph(_title,_permalink,_cover,_excerpt,_type)">
+    <!-- Open Graph Start -->
+    <meta property="og:site_name" th:content="${site.title}" />
+    <meta property="og:type" th:content="${_type}" />
+    <meta property="og:title" th:content="${_title}" />
+    <meta property="og:url" th:content="|${site.url}${_permalink}|" />
+    <meta
+            th:unless="${#strings.isEmpty(_excerpt) and #strings.isEmpty(site.seo.description)}"
+            property="og:description"
+            th:content="${excerpt ?: site.seo.description}"
+    />
+    <meta
+            th:unless="${#lists.isEmpty(_cover)}"
+            property="og:image"
+            th:content="${_cover}"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" th:content="${_title}" />
+    <meta name="twitter:url" th:content="|${site.url}${_permalink}|" />
+    <meta
+            th:unless="${#strings.isEmpty(_excerpt) and #strings.isEmpty(site.seo.description)}"
+            name="twitter:description"
+            th:content="${_excerpt ?: site.seo.description}"
+    />
+    <meta
+            th:unless="${#lists.isEmpty(_cover)}"
+            name="twitter:image"
+            th:content="${_cover}"
+    />
+    <!-- Open Graph End -->
+</th:block>
+</html>

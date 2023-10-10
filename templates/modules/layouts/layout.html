@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="layout(content, htmlType, title)" xmlns:th="http://www.thymeleaf.org"
+<html lang="en" th:fragment="layout(content, htmlType, title, head)" xmlns:th="http://www.thymeleaf.org"
       th:with="assets_link=${theme.config.other.staticResource.use == 'onmicrosoft' ? 'https://npm.onmicrosoft.cn/hao-theme-static@' + theme.spec.version +'/templates/assets' :
       theme.config.other.staticResource.use == 'cbd' ? 'https://cdn.cbd.int/hao-theme-static@' + theme.spec.version +'/templates/assets' :
       theme.config.other.staticResource.use == 'custom' ? theme.config.other.staticResource.cdn_link : #theme.assets('/')},
@@ -17,6 +17,10 @@
       rel="stylesheet" th:href="${not #strings.isEmpty(theme.config.comments.walines.walinesCss) ? theme.config.comments.walines.walinesCss : 'https://cdn.cbd.int/@waline/client@2.15.7/dist/waline.css' }">
     <!--  解决 katex pjax问题 -->
     <script th:if="${pluginFinder.available('plugin-katex')}" defer="" src="/plugins/plugin-katex/assets/static/katex.min.js"></script>
+
+    <th:block th:if="${head != null}">
+        <th:block th:replace="${head}" />
+    </th:block>
 </head>
 
 <body>
