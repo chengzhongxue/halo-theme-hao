@@ -165,10 +165,6 @@
     <!-- 复制 https://githubfast.com/zenorocha/clipboard.js -->
     <script th:src="${assets_link + '/libs/clipboard/clipboard.min.js'}"></script>
 
-    <!-- 全局图片预览-->
-    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-    <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
-
     <!-- 关于统计-->
     <script th:if="${#strings.contains(theme.config.about.widgets,'statistics-map')}" th:src="${assets_link + '/libs/countup/countup.js'}"></script>
 
