@@ -135,3 +135,41 @@ spec:
     - $formkit: "textarea"
       name: "description"
       label: "分组描述"
+
+---
+
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-setting-
+spec:
+  targetRef:
+    group: core.halo.run
+    kind: EquipmentGroup
+  formSchema:
+    - $formkit: "textarea"
+      name: "description"
+      label: "分组描述"
+
+---
+
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-setting-
+spec:
+  targetRef:
+    group: core.halo.run
+    kind: Equipment
+  formSchema:
+    - $formkit: "text"
+      name: "model"
+      label: "装备型号/版本"
+    - $formkit: "text"
+      name: "button"
+      label: "左下角按钮显示文字"
+      value: "详情"
+    - $formkit: "text"
+      name: "link"
+      label: "左下角按钮跳转链接"
+
