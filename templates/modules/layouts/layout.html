@@ -26,7 +26,7 @@
 <body>
 
 <!-- loading 页面 -->
-<div th:replace="~{modules/loading-box :: loading-box}"></div>
+<th:block th:replace="~{modules/loading-box :: loading-box}"></th:block>
 
 <!-- 网站背景 -->
 <div id="web_bg"></div>
@@ -68,6 +68,38 @@
     <!-- todo head 中有它的 css，应该可以写一块，并改成后台可配置的功能，代码中应该还有他的 js -->
     <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script>
 
+    <script th:if="${theme.config.other.loadingBoxs.loadingBoxEnable} and not ${#strings.isEmpty(theme.config.other.loadingBoxs.loadingBoxImg)}">
+        var preloader = {
+            endLoading: () => {
+                //- document.body.style.overflow = 'auto';
+                document.getElementById('loading-box').classList.add("loaded")
+            },
+            initLoading: () => {
+                //- document.body.style.overflow = '';
+                document.getElementById('loading-box').classList.remove("loaded")
+            }
+        }
+        window.addEventListener('load', preloader.endLoading())
+        setTimeout(function () {
+            preloader.endLoading();
+        }, 3000)
+
+    </script>
+    <div class="js-pjax">
+        <!-- 动态标题 -->
+        <script th:replace="~{modules/common/diytitle :: diytitle}"></script>
+    </div>
+
+    <!-- 评论 -->
+    <th:block th:if="${theme.config.comments.use!='commentWidget' && theme.config.comments.commentsEnable }"
+              th:with="use = ${theme.config.comments.use}">
+        <th:block th:replace="~{'modules/comment/' + ${use}}"></th:block>
+        <script th:if="${theme.config.comments.visitorMail.visitorMailEnable}">var visitorMail = "[(${theme.config.comments.visitorMail.mail})]";</script>
+    </th:block>
+
+    <!--音乐-->
+    <script>var meting_api = "[(${theme.config.tool.nav_music.meting_api})]"; </script>
+
     <!-- 深色模式下添加粒子效果canvas -->
     <canvas th:if="${theme.config.style.universe}" id="universe" width="1312" height="880"></canvas>
     <script th:if="${theme.config.style.universe}" async="" th:src="${assets_link + '/libs/canvas/dark.js'}"></script>
@@ -76,12 +108,6 @@
     <!-- 应该是文章页分享使用 -->
     <script data-pjax src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-    <!-- 评论 -->
-    <th:block th:if="${theme.config.comments.use!='commentWidget' && theme.config.comments.commentsEnable }"
-              th:with="use = ${theme.config.comments.use}">
-        <th:block th:replace="~{'modules/comment/' + ${use}}"></th:block>
-        <script th:if="${theme.config.comments.visitorMail.visitorMailEnable}">var visitorMail = "[(${theme.config.comments.visitorMail.mail})]";</script>
-    </th:block>
     <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
     <script th:src="${assets_link + '/libs/waterfall/waterfall.min.js'}"></script>
 
@@ -90,9 +116,6 @@
     <script th:src="${assets_link + '/libs/fast-average-color/index.browser.min.js'}"></script>
 
     <script th:src="${assets_link + '/libs/view-image/view-image.min.js'}"></script>
-
-    <!--音乐-->
-    <script>var meting_api = "[(${theme.config.tool.nav_music.meting_api})]"; </script>
 
     <link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="all" onload="this.media='all'">
 
@@ -125,14 +148,7 @@
     <!--官方评论插件js-->
     <script th:if="${pluginFinder.available('PluginCommentWidget')}" src="/plugins/PluginCommentWidget/assets/static/comment-widget.iife.js"></script>
 
-    <div class="js-pjax">
-        <!-- 动态标题 -->
-        <script th:replace="~{modules/common/diytitle :: diytitle}"></script>
-    </div>
-
     <script th:if="${theme.config.envelope_comment.enable_danmu}" th:src="${assets_link + '/libs/twikoo/easy-Danmaku.min.js'}" id="Danmaku"></script>
-
-
 
     <script>
         let pjaxSelectors = ['title', '#config-diff', '#body-wrap', '#rightside-config-hide', '#rightside-config-show', '.js-pjax','#site-config']
