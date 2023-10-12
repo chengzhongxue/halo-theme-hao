@@ -53,7 +53,7 @@
                     <script data-pjax th:inline="javascript">
                         var postsData = [[${ postFinder.listAll() }]];
                         var pageData = [[${ singlePageFinder.list(1, 50) }]];
-                        var articles = [{ path: '/links', title: '友链' }, { path: '/bangumis', title: '追番' }, { path: '/moments', title: '瞬间' }, { path: '/photos', title: '图库' }];
+                        var articles = [{ path: '/links', title: '友链' }, { path: '/bangumis', title: '追番' }, { path: '/equipment', title: '我的装备' }, { path: '/moments', title: '瞬间' }, { path: '/photos', title: '图库' }];
 
                         if (postsData.length > 0) {
                             postsData.map((item) => {

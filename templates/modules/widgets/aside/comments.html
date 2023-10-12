@@ -13,7 +13,7 @@
                   th:with="newcommentnumber = ${#conversions.convert(theme.config.sidebar.newcomment.newcommentnumber, 'java.lang.Integer') >= 0 ?  theme.config.sidebar.newcommentnumber : 5}">
             <div th:each="comment,iterStat : ${commentFinder.list(null, 1, newcommentnumber)}" class="aside-list-item"
                  th:with="page = ${comment.spec.subjectRef.kind == 'Post' ? postFinder.getByName(comment.spec.subjectRef.name) :
-                comment.spec.subjectRef.kind == 'SinglePage' && not #strings.contains('photos,links,moments', comment.spec.subjectRef.name) ? singlePageFinder.getByName(comment.spec.subjectRef.name) : null},
+                comment.spec.subjectRef.kind == 'SinglePage' && not #strings.contains('photos,links,moments,equipment', comment.spec.subjectRef.name) ? singlePageFinder.getByName(comment.spec.subjectRef.name) : null},
                 url = ${page == null? '/' : page.status.permalink + '#comment-' + comment.metadata.name}">
                 <span th:text="${commentIndex}"></span>
                 <a class="thumbnail" th:href="${url}" data-pjax-state="">

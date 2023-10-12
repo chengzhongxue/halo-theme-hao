@@ -5,7 +5,7 @@
     <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = ${site.title},
                 _permalink = '',
                 _cover = ${theme.config.other.opengraph.image},
-                _excerpt = '',
+                _excerpt = ${site.seo.description},
                 _type = 'website')}"></th:block>
 </th:block>
 <th:block th:fragment="content">

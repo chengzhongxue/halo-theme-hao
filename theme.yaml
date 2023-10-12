@@ -37,10 +37,6 @@ spec:
         description: 待办清单页面
         screenshot:
         file: todolist.html
-      - name: 我的装备页面模版
-        description: 我的装备页面
-        screenshot:
-        file: equipment.html
       - name: 相册页面模版
         description: 相册页面
         screenshot:
