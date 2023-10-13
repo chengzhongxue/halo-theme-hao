@@ -152,13 +152,12 @@ document.addEventListener('DOMContentLoaded', function () {
      */
     const tocFn = function () {
         const postContent = document.querySelector('.post-content');
-
         if (postContent == null) return;
-
-        const headers = postContent.querySelectorAll('h1,h2,h3,h4,h5,h6');
+        const titles = postContent.querySelectorAll('h1,h2,h3,h4,h5,h6');
         // 没有 toc 目录，则直接移除
-        if (headers.length === 0) {
-            document.getElementById("card-toc").remove();
+        if (titles.length === 0 || !titles) {
+            const cardToc = document.getElementById("card-toc");
+            cardToc?.remove();
             const $mobileTocButton = document.getElementById("mobile-toc-button")
             if($mobileTocButton){
                 $('#mobile-toc-button').attr('style', 'display: none');
@@ -168,7 +167,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 tocSelector: '.toc-content',
                 contentSelector: '.post-content',
                 headingSelector: 'h1,h2,h3,h4,h5,h6',
-                hasInnerContainers: true
+                collapseDepth: 6,
+                headingsOffset: 70,
+                scrollSmooth: true,
+                scrollSmoothOffset: -70,
+                tocScrollOffset: 50
             });
 
         }
