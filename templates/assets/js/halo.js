@@ -270,9 +270,6 @@ let halo = {
             e.batchSend(t, !0);
         else {
             let n = [];
-            function a(e) {
-                return e = (e = (e = (e = (e = e.replace(/<\/*br>|[\s\uFEFF\xA0]+/g, "")).replace(/<img.*?>/g, "[图片]")).replace(/<a.*?>.*?<\/a>/g, "[链接]")).replace(/<pre.*?>.*?<\/pre>/g, "[代码块]")).replace(/<.*?>/g, "")
-            }
             if(GLOBAL_CONFIG.source.comments.use == 'Twikoo'){
                 fetch(GLOBAL_CONFIG.source.twikoo.twikooUrl, {
                     method: "POST",
@@ -290,7 +287,7 @@ let halo = {
                                 null == e.avatar && (e.avatar = "https://cravatar.cn/avatar/d615d5793929e8c7d70eab5f00f7f5f1?d=mp"),
                                     n.push({
                                         avatar: e.avatar,
-                                        content: e.nick + "：" + a(e.comment),
+                                        content: e.nick + "：" + btf.changeContent(e.comment),
                                         href: e.url + '#' + e.id
 
                                     })
@@ -319,7 +316,7 @@ let halo = {
                         t.forEach((e=>{
                                 n.push({
                                     avatar: 'https://cravatar.cn/avatar/' + e.email_encrypted + '?d=mp&s=240',
-                                    content: e.nick + "：" + a(e.content_marked),
+                                    content: e.nick + "：" + btf.changeContent(e.content_marked),
                                     href: e.page_url + '#atk-comment-' + e.id
 
                                 })
@@ -338,7 +335,7 @@ let halo = {
                     }).then(({ comments }) => {
                         const walineArray = comments.map(e => {
                             return {
-                                'content': e.nick + "：" + a(e.comment),
+                                'content': e.nick + "：" + btf.changeContent(e.comment),
                                 'avatar': e.avatar,
                                 'href': e.url + '#' + e.objectId,
                             }
