@@ -22,6 +22,12 @@ var heo = {
     // 首页bb
     initIndexEssay: function() {
         if (document.querySelector("#bber-talk"))
+            $(".swiper-wrapper .swiper-slide").each(function () {
+                var text = $(this)[0].innerText;
+                if (text != 'undefined') {
+                    $(this).text(btf.changeContent(text));
+                }
+            })
             new Swiper(".swiper-container",{
                 direction: "vertical",
                 loop: !0,
