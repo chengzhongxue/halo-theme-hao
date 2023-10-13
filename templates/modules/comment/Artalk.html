@@ -10,19 +10,6 @@
     <!-- 最近评论 -->
     <script>
         window.addEventListener('load', () => {
-            const changeContent = (content) => {
-                if (content === '') return content
-
-                content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
-                content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
-                content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
-                content = content.replace(/<[^>]+>/g, "") // remove html tag
-
-                if (content.length > 150) {
-                    content = content.substring(0, 150) + '...'
-                }
-                return content
-            }
             const generateHtml = array => {
                 let result = ''
 
@@ -126,7 +113,7 @@
                         const artalk = d.data.map(function (e) {
                             return {
                                 'avatar': 'https://cravatar.cn/avatar/' + e.email_encrypted + '?d=mp&s=240',
-                                'content': changeContent(e.content_marked),
+                                'content': btf.changeContent(e.content_marked,150),
                                 'nick': e.nick,
                                 'url': e.page_url + '#atk-comment-' + e.id,
                                 'date': e.date,

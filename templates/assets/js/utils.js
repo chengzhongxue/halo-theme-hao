@@ -331,6 +331,23 @@ var btf = {
         }
 
         return actualTop
+    },
+    //过滤标签
+    changeContent: (content,length = null)=>{
+        if (content === '') return content
+
+        content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+        content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+        content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+        content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+        if (length!=null){
+            if (content.length > length) {
+                content = content.substring(0, length) + '...'
+            }
+        }
+
+        return content
     }
 
 }

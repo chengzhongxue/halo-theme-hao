@@ -6,29 +6,22 @@
     <meta property="og:type" th:content="${_type}" />
     <meta property="og:title" th:content="${_title}" />
     <meta property="og:url" th:content="|${site.url}${_permalink}|" />
-    <meta
-            th:unless="${#strings.isEmpty(_excerpt) and #strings.isEmpty(site.seo.description)}"
-            property="og:description"
-            th:content="${excerpt ?: site.seo.description}"
-    />
-    <meta
-            th:unless="${#lists.isEmpty(_cover)}"
-            property="og:image"
-            th:content="${_cover}"
-    />
+    <th:block
+            th:with="description = ${ not #strings.isEmpty(_excerpt) ? _excerpt : not #strings.isEmpty(site.seo.description) ? site.seo.description: _title},
+                     image=${not #strings.isEmpty(_cover) ? _cover : not #strings.isEmpty(site.logo) ? site.logo :'null'}">
+        <meta property="og:description" th:content="${description}" />
+        <meta property="og:image" th:content="${image}" />
+    </th:block>
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" th:content="${_title}" />
     <meta name="twitter:url" th:content="|${site.url}${_permalink}|" />
-    <meta
-            th:unless="${#strings.isEmpty(_excerpt) and #strings.isEmpty(site.seo.description)}"
-            name="twitter:description"
-            th:content="${_excerpt ?: site.seo.description}"
-    />
-    <meta
-            th:unless="${#lists.isEmpty(_cover)}"
-            name="twitter:image"
-            th:content="${_cover}"
-    />
+    <th:block th:with="description = ${ not #strings.isEmpty(_excerpt) ? _excerpt : not #strings.isEmpty(site.seo.description) ? site.seo.description: _title},
+    image=${not #strings.isEmpty(_cover) ? _cover : not #strings.isEmpty(site.logo) ? site.logo :'null'}">
+        <meta name="twitter:description" th:content="${description}" />
+        <meta name="twitter:image" th:content="${image}" />
+    </th:block>
+
     <!-- Open Graph End -->
 </th:block>
+
 </html>

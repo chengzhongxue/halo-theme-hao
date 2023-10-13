@@ -9,20 +9,6 @@ not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
     <!-- 最近评论 -->
     <script>
         window.addEventListener('load', () => {
-            const changeContent = (content) => {
-                if (content === '') return content
-
-                content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
-                content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
-                content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
-                content = content.replace(/<[^>]+>/g, "") // remove html tag
-
-                if (content.length > 150) {
-                    content = content.substring(0, 150) + '...'
-                }
-                return content
-            }
-
             const getComment = () => {
                 const runTwikoo = () => {
                     twikoo.getRecentComments({
@@ -33,7 +19,7 @@ not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
                     }).then(function (res) {
                         const twikooArray = res.map(e => {
                             return {
-                                'content': changeContent(e.comment),
+                                'content': btf.changeContent(e.comment,150),
                                 'avatar': e.avatar,
                                 'nick': e.nick,
                                 'url': e.url + '#' + e.id,
