@@ -1201,15 +1201,14 @@ spec:
           name: post_edit
           label: 运营模式与责任
           value:
-            enable_post_edit:
-            post_edit_url:
+            enable_post_edit: false
+            post_edit_url: "/rss"
           children:
             - $formkit: radio
               name: enable_post_edit
               id: enable_post_edit
               key: enable_post_edit
               help: 启用文章运营模式与责任，请正确填写链接
-              value: false
               options:
                 - label: 启用
                   value: true
@@ -1220,7 +1219,6 @@ spec:
               if: $get(enable_post_edit).value
               label: 运营模式与责任地址
               placeholder: 请输入运营模式与责任地址
-              value: /rss
         - $formkit: group
           name: share_right
           label: 分享按钮
@@ -2070,18 +2068,16 @@ spec:
             name:
             wxPay:
             alipay:
-            enable_reward_wz:
-            reward_md_url:
+            enable_reward_wz: false
+            reward_md_url: "/about"
           children:
             - $formkit: url
               name: reward_md_url
               label: 名单地址
               placeholder: 请输入赞赏者名单地址
-              value: /about
             - $formkit: radio
               name: enable_reward_wz
               label: 文章页面打赏
-              value: false
               options:
                 - label: 启用
                   value: true
