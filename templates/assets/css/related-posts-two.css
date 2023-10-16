@@ -65,7 +65,7 @@
     padding: 0 1rem;
     width: 100%;
 }
-.is-center {
+.relatedPosts>.relatedPosts-list .is-center {
     text-align: center;
     display: flex;
     flex-wrap: wrap;

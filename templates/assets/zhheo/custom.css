@@ -85,7 +85,6 @@ i.haofont.hao-icon-arrow-right.banner-righticon{
     display: -moz-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: box;
     display: flex;
     -webkit-box-align: center;
     -moz-box-align: center;
@@ -98,7 +97,9 @@ i.haofont.hao-icon-arrow-right.banner-righticon{
     -o-box-lines: single;
     -webkit-flex-wrap: nowrap;
     -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap
+    flex-wrap: nowrap;
+    border-radius: 12px;
+
 }
 
 .card-widget.card-friend-link a.card-friend-item:hover {
