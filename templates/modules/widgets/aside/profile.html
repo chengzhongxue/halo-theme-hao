@@ -194,7 +194,12 @@
                 position: absolute;
                 opacity: 1;
                 transition: .3s;
-                border: 5px solid var(--heo-white)
+                border: 5px solid var(--heo-white);
+                overflow: hidden
+            }
+
+            .page #aside-content .card-info img.avatar-img {
+                border-color: var(--heo-card-bg)
             }
 
             .author-info__top-group {
@@ -275,6 +280,11 @@
                 box-shadow: none
             }
 
+            [data-theme=dark] .page #aside-content .card-info .card-info-social-icons i {
+                background: var(--heo-black-op);
+                color: var(--heo-card-bg)
+            }
+
             #aside-content .card-info .banner-button {
                 height: 40px;
                 width: 118px;
@@ -350,6 +360,10 @@
                 margin-bottom: 5px
             }
 
+            .page #aside-content .card-info .author-info__name,.page .author-info__desc {
+                color: var(--heo-card-bg)
+            }
+
             .author-info__desc {
                 font-size: 12px;
                 color: var(--heo-white);
@@ -361,7 +375,22 @@
                 line-height: 1.38;
                 margin: .3rem 0;
                 text-align: justify;
-                color: rgba(255, 255, 255, .8)
+                color: var(--heo-white);
+                opacity: 1
+            }
+
+            .page .author-info__description {
+                color: var(--heo-card-bg)
+            }
+
+            .author-info__description b {
+                color: var(--heo-white);
+                opacity: 1
+            }
+
+            .page .author-info__description b {
+                color: var(--heo-card-bg);
+                opacity: 1
             }
 
             .avatar-sticker {
@@ -379,6 +408,10 @@
                 transform: scale(1);
                 background: var(--heo-white);
                 border-radius: 50%
+            }
+
+            .page .avatar-sticker {
+                background: var(--heo-card-bg)
             }
 
             .avatar-sticker img {

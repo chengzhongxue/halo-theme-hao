@@ -157,6 +157,10 @@ i.haofont.hao-icon-arrow-right.banner-righticon{
     align-items: flex-start
 }
 
+.card-widget.card-friend-link a.card-friend-item:hover .card-friend-name  {
+    color: var(--heo-card-bg) !important;
+}
+
 .card-widget.card-friend-link .card-friend-name {
     color: var(--card-friend-name-color)
 }
