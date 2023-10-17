@@ -1599,10 +1599,6 @@ blockquote footer cite::before {
     color: rgb(255, 87, 34);
 }
 
-#recent-posts > .recent-post-item:not(:first-child) {
-    margin-top: 1rem;
-}
-
 #recent-posts > .recent-post-item {
     display: flex;
     -webkit-box-orient: horizontal;
@@ -1630,14 +1626,6 @@ blockquote footer cite::before {
     transform: scale(1.1);
 }
 
-#recent-posts > .recent-post-item .left_radius {
-    border-radius: 5px 0px 0px 8px;
-}
-
-#recent-posts > .recent-post-item .right_radius {
-    border-radius: 5px 0px 0px 8px;
-}
-
 #recent-posts > .recent-post-item.ads-wrap {
     display: block !important;
     height: auto !important;
@@ -1655,6 +1643,12 @@ blockquote footer cite::before {
     height: 100%;
     transition: all 0.6s ease 0s;
     object-fit: cover;
+}
+
+#recent-posts>.recent-post-item.col1.alternate .left_radius, #recent-posts>.recent-post-item.col1.alternate .right_radius {
+    width:75%;
+    display: flex;
+    height: 220px
 }
 
 #recent-posts > .recent-post-item .post_cover img.post_bg:hover {
@@ -8372,17 +8366,16 @@ a.categoryButton:hover {
 
 @media screen and (max-width: 768px) {
     #category-bar {
-        border-radius: 0;
+        border-radius:0;
         background: var(--heo-background);
-        margin-bottom: 0rem;
+        margin-bottom: 0;
         position: -webkit-sticky;
         position: sticky;
-        top: 60px;
         z-index: 1;
-        padding: 0rem 1rem 0rem 16px;
+        padding: 0;
         height: 50px;
         margin-top: 0;
-        align-items: center;
+        align-items: center
     }
 }
 
@@ -8400,6 +8393,7 @@ a.categoryButton:hover {
     display: flex;
     white-space: nowrap;
     align-items: center;
+    margin-bottom: 4px
 }
 
 .category-in-bar-tips {
@@ -8409,7 +8403,11 @@ a.categoryButton:hover {
 .category-bar-items {
     white-space: nowrap;
     overflow-x: scroll;
+    overflow-y: hidden;
     display: flex;
+    border-radius: 8px;
+    align-items: center;
+    height: 30px
 }
 
 .category-in-bar .category-in-bar-tips {
@@ -8427,14 +8425,17 @@ a.categoryButton:hover {
 
 .category-bar-item a {
     padding: 0.1rem 0.5rem;
-    margin: 0 4px;
-    font-weight: bold;
+    margin-right: 6px;
+    font-weight: 700;
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    height: 30px
 }
 
 .category-bar-item:hover a {
     background: var(--heo-theme);
-    color: var(--heo-white);
+    color: var(--heo-card-bg);
 }
 
 .category-bar-item.select a {
@@ -8683,10 +8684,6 @@ li {
 }
 
 @media screen and (min-width: 1300px) {
-
-    #recent-posts .recent-post-item.pinned-post-item .recent-post-info-top {
-        padding-top: 16px;
-    }
 
     .recent-post-item .recent-post-info .recent-post-info-top .article-title {
         font-size: 20px;
@@ -9086,26 +9083,10 @@ ins.adsbygoogle {
     box-shadow: var(--heo-shadow-main);
 }
 
-#recent-posts > .recent-post-item .right_radius {
-    border-top-left-radius: 12px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 12px;
-}
-
-@media screen and (min-width: 1300px) {
-    #recent-posts > .recent-post-item .right_radius {
-        border-top-left-radius: 12px;
-        border-top-right-radius: 12px;
-        border-bottom-right-radius: 0px;
-        border-bottom-left-radius: 0px;
-    }
-}
-
 @media screen and (max-width: 768px) {
     #recent-posts .recent-post-item:hover {
-        border: none;
-        box-shadow: none;
+        border:var(--style-border-always);
+        box-shadow: none
     }
 }
 
@@ -9114,20 +9095,15 @@ ins.adsbygoogle {
 
     #recent-posts > .recent-post-item .right_radius,
     #recent-posts > .recent-post-item .left_radius {
-        border-top-left-radius: 12px;
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-        border-bottom-left-radius: 12px;
-        width: 75%;
+        width:75%;
         display: flex;
-        height: 200px;
+        height: 220px
     }
 
     #recent-posts > .recent-post-item:hover .post_cover img.post_bg {
         transform: scale(1.03);
-        transition: 0.3s ease-in-out;
-        filter: brightness(0.85);
-        border-radius: 12px 0 0 12px;
+        transition: .3s ease-in-out;
+        filter: brightness(.85)
     }
 
     #recent-posts > .recent-post-item.post-card-large:hover .post_cover img.post_bg {
@@ -9138,8 +9114,9 @@ ins.adsbygoogle {
         min-width: 100%;
         -webkit-backface-visibility: hidden;
         -webkit-transform-style: preserve-3d;
-        transition: 0.3s ease-in-out;
+        transition: .3s ease-in-out;
         min-height: 100%;
+        user-select: none
     }
 
     #recent-posts > .recent-post-item:hover > .recent-post-info {
@@ -9152,23 +9129,32 @@ ins.adsbygoogle {
     }
 }
 
+@media screen and (max-width: 375px) {
+    #recent-posts>.recent-post-item .left_radius,#recent-posts>.recent-post-item .right_radius {
+        height:170px
+    }
+}
+
 #recent-posts > .recent-post-item:hover .post_cover img.post_bg {
-    transform: scale(1.03);
-    transition: 0.3s ease-in-out;
-    filter: brightness(0.85);
-    border-radius: 12px 0 0 12px;
+    transform: scale(1);
+    transition: 0s ease-in-out;
+    filter: brightness(1)
+}
+
+@media screen and (min-width: 1200px) {
+    #recent-posts>.recent-post-item:hover .post_cover img.post_bg {
+        transform:scale(1.03);
+        transition: .3s ease-in-out;
+        filter: brightness(.85)
+    }
 }
 
 @media screen and (min-width: 1300px) {
 
     #recent-posts > .recent-post-item .right_radius,
     #recent-posts > .recent-post-item .left_radius {
-        border-top-left-radius: 12px;
-        border-top-right-radius: 12px;
-        border-bottom-right-radius: 0px;
-        border-bottom-left-radius: 0px;
-        width: 100%;
-        display: flex;
+        width:100%;
+        display: flex
     }
 }
 
@@ -9404,12 +9390,14 @@ span.recent-post-top-text {
     transition: all 0.3s ease 0s;
 }
 
-#recent-posts > .recent-post-item:not(:first-child) {
-    margin-top: 0.5rem;
+#recent-posts > .recent-post-item {
+    margin-top: .5rem;
     margin-bottom: 1rem;
     position: relative;
     overflow: hidden;
+    margin-top: 1rem;
     animation: slide-in .6s .4s backwards;
+    will-change: transform
 }
 
 /* 图片在左侧 */
@@ -9437,38 +9425,43 @@ span.recent-post-top-text {
         flex-direction: column;
     }
 
-    #recent-posts > .recent-post-item:not(:first-child) {
-        /*width: calc(50% - 0.5rem);*/
+    #recent-posts > .recent-post-item {
+        width: calc(50% - 0.5rem);
         margin-top: 0.25rem;
         margin-bottom: 0.75rem;
         box-shadow: var(--heo-shadow-border);
         clip-path: inset(0 0 0 0 round 12px);
     }
 
-    #recent-posts > .recent-post-item:not(:first-child):active {
-        transform: scale(0.97);
+    #category #recent-posts .recent-post-item,#tag #recent-posts .recent-post-item {
+        margin-top: .5rem;
+        margin-bottom: 1rem;
+        position: relative;
+        overflow: hidden;
+        margin-top: 1rem;
+        animation: slide-in .6s .4s backwards;
+        will-change: transform;
+        width: calc(100% / 2 - .5rem);
+        margin-top: .25rem;
+        margin-bottom: .75rem;
+        box-shadow: var(--heo-shadow-border)
     }
 
     /* 设置分列 */
     /* 1 列：左右排列 */
-    #recent-posts > .recent-post-item.col1 {
+    #recent-posts > .recent-post-item.col1,#category #recent-posts .recent-post-item.col1,#tag #recent-posts .recent-post-item.col1 {
         width: calc(100% - .5rem);
 
     }
 
     /* 2 列 */
-    #recent-posts > .recent-post-item.col2 {
+    #recent-posts > .recent-post-item.col2,#category #recent-posts .recent-post-item.col2,#tag #recent-posts .recent-post-item.col2 {
         width: calc(100% / 2 - .5rem);
     }
 
     /* 3 列 */
-    #recent-posts > .recent-post-item.col3 {
+    #recent-posts > .recent-post-item.col3,#category #recent-posts .recent-post-item.col3,#tag #recent-posts .recent-post-item.col3 {
         width: calc(100% / 3 - .5rem);
-    }
-
-    /* 4 列 */
-    #recent-posts > .recent-post-item.col4 {
-        width: calc(100% / 4 - .5rem);
     }
 
     #category-bar {
@@ -9488,9 +9481,13 @@ span.recent-post-top-text {
         justify-content: space-between;
         align-items: flex-start;
         align-content: flex-start;
+        -webkit-user-select: none
     }
 }
 
+#recent-posts {
+    position: relative
+}
 
 /* 主页卡片手机端美化 */
 @media screen and (max-width: 768px) {
@@ -9498,15 +9495,23 @@ span.recent-post-top-text {
         border-radius: 0;
     }
 
-    #recent-posts > .recent-post-item:not(:first-child) {
-        margin: 1.5rem 1rem;
+    #recent-posts>.recent-post-item {
+        margin: 1.5rem 0;
         border-radius: 12px;
-        margin-top: 0.5rem;
+        margin-top: .5rem;
         border: var(--style-border-always);
         box-shadow: var(--heo-shadow-border);
         display: block;
         position: relative;
-        clip-path: inset(0 0 0 0 round 12px);
+        clip-path: inset(0 0 0 0 round 12px)
+    }
+
+    #recent-posts {
+        padding: 0 1rem
+    }
+
+    #category #recent-posts,#tag #recent-posts {
+        padding: 0
     }
 
     #recent-posts .recent-post-item .post_cover {
@@ -9519,6 +9524,14 @@ span.recent-post-top-text {
         border-radius: 0;
         background: var(--heo-background);
         padding: 0.5rem 20px;
+    }
+
+    a.article-meta__categories {
+        left: 12px!important;
+        top: 12px!important;
+        border-radius: 4px!important;
+        padding: 2px 9px!important;
+        font-size: 12px
     }
 
     #bbTimeList {
@@ -9552,7 +9565,9 @@ span.recent-post-top-text {
         right: 0;
     }
 
-
+    #rightside {
+        display: none
+    }
 
     /* 背景 */
     #web_bg {
@@ -9575,42 +9590,13 @@ span.recent-post-top-text {
         transform: scale(1);
     }
 
-    #recent-posts > .recent-post-item > .recent-post-info > .article-title,
-    #recent-posts > .recent-post-item > .recent-post-info > .content,
-    #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap {
-        padding: 0 20px !important;
+    #recent-posts>.recent-post-item>.recent-post-info>.article-meta-wrap,
+    #recent-posts>.recent-post-item>.recent-post-info>.article-title,
+    #recent-posts>.recent-post-item>.recent-post-info>.content {
+        padding: 0 20px!important
     }
 
 }
-
-/* 主页文章封面左侧显示 */
-/* #recent-posts>.recent-post-item .right_radius{
-  order: 0;
-  border-radius: 8px 0 0 8px;
-} */
-
-/* 主页文章卡片尺寸变化 */
-/* #recent-posts > div:nth-child(1){
-  height: 22em;
-}
-#recent-posts > div:nth-child(1) > div.recent-post-info > div.content{
-  height: 120px;
-  margin-top: 20px!important;
-}
-#recent-posts > div:nth-child(4){
-  height: 22em;
-}
-#recent-posts > div:nth-child(4) > div.recent-post-info > div.content{
-  height: 120px;
-  margin-top: 20px!important;
-}
-#recent-posts > div:nth-child(8){
-  height: 22em;
-}
-#recent-posts > div:nth-child(8) > div.recent-post-info > div.content{
-  height: 120px;
-  margin-top: 20px!important;
-} */
 
 /* 文章卡片标题 */
 #recent-posts > .recent-post-item > .recent-post-info > .article-title {
@@ -9754,12 +9740,14 @@ span.recent-post-top-text {
 }
 
 /* 文章标签置底 */
-
 #recent-posts > .recent-post-item > .recent-post-info {
     height: 174px;
     width: 100%;
     cursor: pointer;
     position: relative;
+    padding: 0;
+    display: inline-block;
+    overflow: hidden
 }
 
 @media screen and (max-width: 768px) {
@@ -9783,15 +9771,15 @@ span.recent-post-top-text {
 }
 
 @media screen and (min-width: 1300px) {
-    #recent-posts > .recent-post-item:hover > .recent-post-info > .article-meta-wrap {
+    #recent-posts > .recent-post-item.top:hover > .recent-post-info > .article-meta-wrap {
         bottom: 30px;
     }
 
-    #recent-posts > .recent-post-item.post-card-large:hover > .recent-post-info > .article-meta-wrap {
-        bottom: 30px;
+    #recent-posts > .recent-post-item.top.post-card-large:hover > .recent-post-info > .article-meta-wrap {
+        bottom: 20px;
     }
 
-    #recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap {
+    #recent-posts > .recent-post-item.top > .recent-post-info > .article-meta-wrap {
         bottom: 30px;
     }
 }

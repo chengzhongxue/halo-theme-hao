@@ -590,6 +590,7 @@ function initBlog() {
     heo.initIndexEssay(),
     heo.reflashEssayWaterFall(),
     heo.darkModeStatus(),
+    heo.categoriesBarActive(),
     heo.initThemeColor(),
     heo.topCategoriesBarScroll(),
     //隐藏加载动画
