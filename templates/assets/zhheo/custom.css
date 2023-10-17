@@ -85,7 +85,6 @@ i.haofont.hao-icon-arrow-right.banner-righticon{
     display: -moz-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: box;
     display: flex;
     -webkit-box-align: center;
     -moz-box-align: center;
@@ -98,7 +97,9 @@ i.haofont.hao-icon-arrow-right.banner-righticon{
     -o-box-lines: single;
     -webkit-flex-wrap: nowrap;
     -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap
+    flex-wrap: nowrap;
+    border-radius: 12px;
+
 }
 
 .card-widget.card-friend-link a.card-friend-item:hover {
@@ -155,6 +156,10 @@ i.haofont.hao-icon-arrow-right.banner-righticon{
     -ms-flex-align: start;
     -webkit-align-items: flex-start;
     align-items: flex-start
+}
+
+.card-widget.card-friend-link a.card-friend-item:hover .card-friend-name  {
+    color: var(--heo-card-bg) !important;
 }
 
 .card-widget.card-friend-link .card-friend-name {

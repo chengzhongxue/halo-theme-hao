@@ -49,7 +49,7 @@
             <div class="pagination_tips_next">下页</div>
             <i class="haofont hao-icon-chevron-right fa-fw"></i>
         </a>
-        <div th:if="${pageInfo.totalPages > 1 && isIndex}" class="toPageGroup">
+        <div th:if="${pageInfo.totalPages > 1}" class="toPageGroup">
             <input id="toPageText" maxlength="3" title="跳转到指定页面"
                    oninput="value=value.replace(/[^0-9]/g,'')"
                    onkeyup="if (this.value === '0') this.value = ''">
@@ -57,21 +57,21 @@
             </a>
         </div>
 
+        <script th:if="${theme.config.top.above.enable_above}">
+            function scrollToPost() {
+                if (document.querySelector(".pl-container")) {
+                    setTimeout(() => {
+                        btf.scrollToDest(window.innerHeight, 500);
+                    }, 1000)
+                }
+            }
+        </script>
+        <script th:unless="${theme.config.top.above.enable_above}">
+            function scrollToPost() {
+            }
+        </script>
+
     </div>
-    <script th:if="${theme.config.top.above.enable_above}">
-        function scrollToPost(){
-            setTimeout(()=>{
-                btf.scrollToDest(window.innerHeight, 500);
-            },1000)
-        }
-    </script>
-    <script th:unless="${theme.config.top.above.enable_above}">
-        function scrollToPost(){
-            setTimeout(()=>{
-                btf.scrollToDest(0, 500);
-            },1000)
-        }
-    </script>
 </nav>
 
 </html>

@@ -64,12 +64,19 @@
 }
 
 .comment-barrage-item .comment-barrage-close:hover {
-    color: var(--heo-main);
+    color: var(--heo-lighttext);
 }
 
-.comment-barrage-item .comment-barrage-close .heofont {
+.comment-barrage-item .comment-barrage-close .haofont {
+    color: var(--heo-fontcolor);
+    transition: all 0.3s ease 0s;
     font-size: 18px !important;
 }
+
+.comment-barrage-item .comment-barrage-close:hover .haofont {
+    color: var(--heo-lighttext);
+}
+
 
 .comment-barrage-item pre {
     display: none;

@@ -590,10 +590,12 @@ function initBlog() {
     heo.initIndexEssay(),
     heo.reflashEssayWaterFall(),
     heo.darkModeStatus(),
+    heo.categoriesBarActive(),
     heo.initThemeColor(),
     heo.topCategoriesBarScroll(),
     //隐藏加载动画
     GLOBAL_CONFIG.loadingBox &&  heo.hideLoading(),
+    heo.tagPageActive(),
     initObserver(),
     checkUrlAndAddHideBanner()
 
