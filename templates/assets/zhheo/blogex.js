@@ -594,6 +594,7 @@ function initBlog() {
     heo.topCategoriesBarScroll(),
     //隐藏加载动画
     GLOBAL_CONFIG.loadingBox &&  heo.hideLoading(),
+    heo.tagPageActive(),
     initObserver(),
     checkUrlAndAddHideBanner()
 

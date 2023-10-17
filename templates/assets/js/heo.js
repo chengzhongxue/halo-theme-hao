@@ -72,6 +72,19 @@ var heo = {
             $("#cookies-window").hide())
     },
 
+    tagPageActive: function() {
+        var e = window.location.pathname;
+        if (/\/tags\/.*?/.test(e = decodeURIComponent(e))) {
+            var t = e.split("/")[2];
+            if (document.querySelector("#tag-page-tags")) {
+                $("a").removeClass("select");
+                var o = document.getElementById(t);
+                o && (o.classList.add("select"),
+                    o.style.order = "-1")
+            }
+        }
+    },
+
     // 页脚友链
     addFriendLinksInFooter: function () {
         var footerRandomFriendsBtn = document.getElementById("footer-random-friends-btn");

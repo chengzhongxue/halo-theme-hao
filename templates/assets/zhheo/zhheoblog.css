@@ -1227,11 +1227,6 @@ blockquote footer cite::before {
     -webkit-line-clamp: 2;
 }
 
-.article-sort-item-title:hover {
-    color: rgb(48, 122, 246);
-    transform: translateX(10px);
-}
-
 .article-sort-item-img {
     overflow: hidden;
     width: 80px;
@@ -6181,7 +6176,7 @@ a {
 }
 
 a:hover {
-    color: var(--heo-hovertext);
+    color: var(--heo-lighttext);
 }
 
 /* 分割线 */
@@ -10486,7 +10481,19 @@ a.extend.prev {
     border: var(--style-border);
     width: calc(100% - 300px);
     align-self: flex-start;
-    animation: slide-in 0.6s 0.1s backwards;
+    animation: slide-in .6s .1s backwards;
+    position: relative;
+    overflow: hidden
+}
+
+#tag {
+    padding: 3rem 2rem 1rem 2rem
+}
+
+@media screen and (min-width: 1300px) {
+    #tag {
+        padding:4rem 2rem 1rem 2rem;
+    }
 }
 
 #page {
@@ -11012,8 +11019,8 @@ span.post-meta-position {
 
 /* 文章tab样式 */
 #article-container ul > li:not(.tab):before {
-    border: 0.21em solid var(--heo-lighttext);
-    background: var(--heo-lighttext);
+    border: 0.21em solid var(--heo-main);
+    background: var(--heo-main);
 }
 
 #article-container ol,
@@ -13333,10 +13340,6 @@ span.tagsPageCount {
 }
 
 
-#post .tag_share .post-meta__tags:hover span.tagsPageCount {
-    color: var(--heo-lighttext);
-}
-
 #tag #tag-page-tags a.select .tagsPageCount {
     background: var(--heo-card-bg);
     color: var(--heo-lighttext);
@@ -13436,8 +13439,31 @@ figure.gallery-group:hover .gallery-group-name::after {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 0 -0.75rem;
-    margin-bottom: 0.5rem;
+    margin: 0 -.25rem;
+    margin-bottom: .5rem;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    padding: 1rem 2rem;
+    left: 0;
+    top: 0;
+    max-height: 64px;
+    overflow: hidden;
+    background: var(--heo-card-bg);
+    backdrop-filter: saturate(180%) blur(20px);
+    transition: .1s ease-out
+}
+
+@media screen and (max-width: 768px) {
+    #tag #tag-page-tags {
+        display:none
+    }
+}
+
+#tag #tag-page-tags:hover {
+    max-height: 1000px;
+    transition: .3s ease-out;
+    background: var(--heo-maskbgdeep)
 }
 
 #tag #tag-page-tags a {
@@ -13445,10 +13471,11 @@ figure.gallery-group:hover .gallery-group-name::after {
     margin: 0.25rem 0.25rem;
     line-height: 1.6;
     border-radius: 8px;
-    color: var(--heo-fontcolor) !important;
+    color: var(--heo-fontcolor)!important;
     border: var(--style-border-always);
     display: flex;
     align-items: center;
+    background: var(--heo-card-bg)
 }
 
 #tag #tag-page-tags a.select {
@@ -13489,6 +13516,14 @@ figure.gallery-group:hover .gallery-group-name::after {
     margin-left: 0;
     padding-bottom: 0;
     padding-left: 0;
+}
+
+.article-sort-title sup {
+    margin-left: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    opacity: .4;
+    top: -1em
 }
 
 .article-sort-item {
@@ -13538,7 +13573,7 @@ figure.gallery-group:hover .gallery-group-name::after {
 
 .article-sort-item-title:hover {
     transform: translateX(0px);
-    color: var(--heo-hovertext);
+    color: var(--heo-lighttext);
 }
 
 /* 友情链接页面 */
@@ -13607,7 +13642,7 @@ figure.gallery-group:hover .gallery-group-name::after {
 }
 
 .flink#article-container .flink-list > .flink-list-item:hover a .flink-item-desc {
-    color: var(--heo-white);
+    color: var(--heo-card-bg);
 }
 
 /* 友链标题 */
@@ -13631,7 +13666,7 @@ figure.gallery-group:hover .gallery-group-name::after {
 }
 
 .flink#article-container .flink-list > .flink-list-item:hover a .flink-item-name {
-    color: var(--heo-white);
+    color: var(--heo-card-bg)!important;
 }
 
 .flink#article-container .flink-list > .flink-list-item a {
@@ -13749,7 +13784,7 @@ figure.gallery-group:hover .gallery-group-name::after {
 }
 
 .flink#article-container .site-card:hover .info .title {
-    color: var(--heo-white);
+    color: var(--heo-card-bg);
 }
 
 .flink#article-container .site-card:hover .info {
@@ -13772,11 +13807,6 @@ figure.gallery-group:hover .gallery-group-name::after {
     text-align: left;
 }
 
-.flink#article-container .site-card:hover .info .desc {
-    color: var(--heo-white);
-}
-
-
 @media screen and (min-width: 768px) {
     .flink#article-container .site-card:hover .info .desc {
         -webkit-line-clamp: 4;
@@ -13785,7 +13815,7 @@ figure.gallery-group:hover .gallery-group-name::after {
 
 .flink#article-container .site-card:hover .info .desc {
     transition: 0.3s;
-    color: var(--heo-white);
+    color: var(--heo-card-bg);
     width: 100%
 }
 

@@ -21,7 +21,7 @@
                        th:classappend="${tag.metadata.name == tagItem.metadata.name} ? 'select'"
                        th:each="tagItem : ${tags}"
                        th:href="@{${tagItem.status.permalink}}"
-                       th:id="${tagItem.spec.displayName}">
+                       th:id="${tagItem.spec.slug}">
                         <span class="tags-punctuation">[[${tagItem.spec.displayName}]]</span>
                         <span class="tagsPageCount" th:text="${tagItem.status.visiblePostCount}"></span>
                     </a>
