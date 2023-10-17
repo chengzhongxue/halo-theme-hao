@@ -5352,6 +5352,10 @@ html {
     border-radius: 40px;
 }
 
+.page .back-home-button {
+    color: var(--heo-fontcolor)
+}
+
 @media screen and (max-width: 768px) {
     .back-home-button {
         display: none;
