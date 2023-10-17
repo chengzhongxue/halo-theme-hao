@@ -100,6 +100,7 @@
 - 追番插件 [plugin-bilibili-bangumi](https://githubfast.com/Roozenlz/plugin-bilibili-bangumi)
 - 图库插件 [plugin-photos](https://githubfast.com/halo-sigs/plugin-photos)
 - 主题标签 [plugin-haotag](https://githubfast.com/chengzhongxue/plugin-haotag)
+- 我的装备 [plugin-equipments](https://githubfast.com/chengzhongxue/plugin-equipments)
 
 > 更多插件请参见：https://githubfast.com/halo-sigs/awesome-halo
 

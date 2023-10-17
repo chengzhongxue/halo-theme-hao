@@ -13293,7 +13293,7 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
 #page .tag-cloud-list a:hover {
     background: var(--heo-theme) !important;
     box-shadow: var(--heo-shadow-blue);
-    color: var(--heo-white) !important;
+    color: var(--heo-card-bg)!important;
     border: var(--style-border-hover);
 }
 
@@ -13467,13 +13467,13 @@ figure.gallery-group:hover .gallery-group-name::after {
 }
 
 #tag #tag-page-tags a.select {
-    color: var(--heo-white) !important;
+    color: var(--heo-card-bg)!important;
     background: var(--heo-theme);
     box-shadow: var(--heo-shadow-theme);
 }
 
 #tag #tag-page-tags a:hover {
-    color: var(--heo-white) !important;
+    color: var(--heo-card-bg)!important;
     background: var(--heo-theme);
     box-shadow: var(--heo-shadow-theme);
 }

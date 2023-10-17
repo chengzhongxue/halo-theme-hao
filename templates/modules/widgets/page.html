@@ -12,7 +12,7 @@
 
         <!-- 页码按钮 -->
         <th:block th:if="${pageInfo.page > 3}">
-            <a class="page-number" th:href="${paths}" th:text="1" onclick="scrollToPost()></a>
+            <a class="page-number" th:href="${paths}" th:text="1" onclick="scrollToPost()"></a>
             <span class="space" th:if="${pageInfo.page != 4}">…</span>
         </th:block>
 
