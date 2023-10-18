@@ -77,6 +77,10 @@
                             </div>
                         </section>
                     </div>
+                    <!-- 分页 -->
+                    <th:block th:with="param_group = ${not #strings.isEmpty(param.group) ? '?group='+param.group : ''}">
+                        <div th:replace="~{modules/widgets/page :: page('/photos',${photos},false,${param_group})}"></div>
+                    </th:block>
                 </th:block>
 
                 <div class="gallery-groups" th:if="${#strings.equals(theme.config.photos.photosStyle, 'one')}">
@@ -103,7 +107,12 @@
                             </div>
                         </section>
                     </div>
+                    <!-- 分页 -->
+                    <th:block th:with="param_group = ${not #strings.isEmpty(param.group) ? '?group='+param.group : ''}">
+                        <div th:replace="~{modules/widgets/page :: page('/photos',${photos},false,${param_group})}"></div>
+                    </th:block>
                 </div>
+
                 <style>
                     .gallery-groups {
                         box-shadow: var(--heo-shadow-border);

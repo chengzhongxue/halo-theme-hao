@@ -6,8 +6,9 @@
     @param  path       '/path/page/n' 中的 `/path` 需要保留 `/`
     @param  pageInfo   Halo类型UrlContextListResult<ListedPostVo>
     @param  isIndex    是否主页
+    @param  _param     参数
  -->
-<nav id="pagination" th:fragment="page(path,pageInfo,isIndex)">
+<nav id="pagination" th:fragment="page(path,pageInfo,isIndex,_param)">
     <div class="pagination" th:with="paths = ${isIndex ? path+'/' : path}">
 
         <!-- 页码按钮 -->
@@ -20,7 +21,7 @@
             <span class="page-number current" th:if="${pageInfo.page} == ${index}" th:text="${pageInfo.page}"></span>
             <a class="page-number" th:unless="${pageInfo.page == index}"
                th:if="${index > 0 && index <= pageInfo.totalPages}"
-               th:href="${#strings.equals(index, '1') ? paths : path+'/page/'+index}"
+               th:href="${#strings.equals(index, '1') ? paths + _param : path+'/page/'+index  + _param}"
                th:text="${index}"
                onclick="scrollToPost()"></a>
         </th:block>
@@ -28,11 +29,10 @@
         <th:block th:if="${pageInfo.totalPages - pageInfo.page > 2}">
             <span class="space" th:if="${pageInfo.totalPages - pageInfo.page != 3}">…</span>
             <a class="page-number"
-               th:href="${path+'/page/'+pageInfo.totalPages}"
+               th:href="${path+'/page/'+pageInfo.totalPages+_param}"
                th:text="${pageInfo.totalPages}"
                onclick="scrollToPost()"></a>
         </th:block>
-
         <!-- 翻页按钮 -->
         <a class="extend prev" rel="prev"
            th:if="${pageInfo.hasPrevious}"
@@ -53,7 +53,7 @@
             <input id="toPageText" maxlength="3" title="跳转到指定页面"
                    oninput="value=value.replace(/[^0-9]/g,'')"
                    onkeyup="if (this.value === '0') this.value = ''">
-            <a id="toPageButton" onclick="heo.toPage();scrollToPost();"><i class="haofont hao-icon-angles-right"></i>
+            <a id="toPageButton" onclick="heo.toPage();"><i class="haofont hao-icon-angles-right"></i>
             </a>
         </div>
 

@@ -5362,9 +5362,10 @@ html {
     }
 }
 
-.nav-fixed #nav .back-home-button {
+.nav-fixed #nav .back-home-button{
     color: var(--heo-fontcolor);
 }
+
 
 .back-home-button:hover {
     background: var(--heo-main);
@@ -6276,6 +6277,22 @@ a.deal_link:hover {
     transform: scale(1.1)
 }
 
+a.custom_socials {
+    display: flex;
+    margin: 1rem 27px;
+    border-radius: 3rem;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+a.custom_socials:hover {
+    transform: scale(1.1)
+}
+
+
 img.footer_mini_logo {
     width: 50px;
     height: 50px;
@@ -6440,8 +6457,8 @@ img.footer_mini_logo:hover {
 }
 
 #rightMenu .rightMenu-group .rightMenu-item:hover {
-    background-color: var(--heo-main);
-    color: var(--heo-white);
+    background-color: var(--heo-lighttext);
+    color: var(--heo-card-bg);
     box-shadow: var(--heo-shadow-main);
 }
 
@@ -8818,6 +8835,7 @@ li {
 }
 .ai-btn-item:hover {
     background: var(--heo-theme);
+    color: var(--heo-card-bg);
 }
 .ai-recommend {
     display: -webkit-box;
@@ -11482,7 +11500,7 @@ blockquote p {
 /* 文章数字头 */
 #article-container ol li:before,
 #article-container ul li:before {
-    background: var(--heo-theme);
+    background: var(--heo-main);
     cursor: default;
 }
 
