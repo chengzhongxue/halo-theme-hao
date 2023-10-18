@@ -484,9 +484,23 @@ var heo = {
             , o = document.getElementById("toPageText")
             , n = parseInt(o.value);
         if (!isNaN(n) && n > 0 && "0" !== ("" + n)[0] && n <= t) {
-            var a, l = window.location.href.replace(/\/page\/\d$/, "");
-            a = 1 === n ? l : l + (l.endsWith("/") ? "" : "/") + "page/" + n,
-                document.getElementById("toPageButton").href = a
+            var url = window.location.href;
+
+            var photosIndexOf = url.indexOf("?group") >= 0 ? url.indexOf("?group") : -1;
+            if (photosIndexOf >= 0) {//图库页面
+                var new_url = url.substr(0,photosIndexOf);
+                var group = url.substr(photosIndexOf)
+                var a, l = new_url.replace(/\/page\/\d$/, "");
+                a = 1 === n ? l : l + (l.endsWith("/") ? "" : "/") + "page/" + n,
+                    document.getElementById("toPageButton").href = a + group
+            }else{
+                var a, l = url.replace(/\/page\/\d$/, "");
+                a = 1 === n ? l : l + (l.endsWith("/") ? "" : "/") + "page/" + n,
+                    document.getElementById("toPageButton").href = a
+            }
+            //首页有第一屏就跳转指定位置
+            scrollToPost();
+
         }
     },
     changeSayHelloText: function() {

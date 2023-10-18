@@ -104,6 +104,10 @@
                         </section>
                     </div>
                 </div>
+                <!-- 分页 -->
+                <th:block th:with="param_group = ${not #strings.isEmpty(param.group) ? '?group='+param.group : ''}">
+                    <div th:replace="~{modules/widgets/page :: page('/photos',${photos},false,${param_group})}"></div>
+                </th:block>
                 <style>
                     .gallery-groups {
                         box-shadow: var(--heo-shadow-border);
