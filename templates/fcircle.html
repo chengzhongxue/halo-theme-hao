@@ -72,10 +72,12 @@
                 <script type="text/javascript" th:src="${assets_link + '/libs/moments/bundle.js'}"></script>
 
                 <style>
-                    /*修复友链朋友圈管理面板显示太大导致无法关闭的bug*/
-                    .cf-manage-pannel[data-v-34921c7c] {
-                        width: 80% !important;
-                        height: 80% !important;
+                    .cf-article-author:hover {
+                        color: var(--heo-card-bg)!important
+                    }
+                    #cf-more:hover{
+                        background: var(--heo-lighttext)!important;
+                        color: var(--heo-card-bg)!important
                     }
                 </style>
 

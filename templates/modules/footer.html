@@ -12,9 +12,10 @@
     <!-- 社交链接，需要填入 href class title -->
     <div id="footer_deal">
         <th:block th:with="socialMedias = ${theme.config.footer.social_media.socialMediaLeft}">
-            <a class="deal_link" rel="external nofollow" target="_blank" th:each="socialMedia : ${socialMedias}"
+            <a th:class="${socialMedia.option_social_data == 'custom' ? 'custom_socials' : 'deal_link'}" rel="external nofollow" target="_blank" th:each="socialMedia : ${socialMedias}"
                th:href="${socialMedia.url}" th:title="${socialMedia.name}">
-                <i th:class="${socialMedia.icon}"></i>
+                <i th:if="${socialMedia.option_social_data == 'icon'}" th:class="${socialMedia.icon}"></i>
+                <th:block th:if="${socialMedia.option_social_data == 'custom'}" th:utext="${socialMedia.icon}"></th:block>
             </a>
         </th:block>
 
@@ -22,9 +23,11 @@
              th:with="img = @{${theme.config.footer.social_media.centerImg}}" th:src="${isLazyload ? '' : img}"
              th:data-lazy-src="${ isLazyload ? img : ''}" title="返回顶部" onclick="btf.scrollToDest(0, 500)">
         <th:block th:with="socialMedias = ${theme.config.footer.social_media.socialMediaRight}">
-            <a class="deal_link" rel="external nofollow" target="_blank" th:each="socialMedia : ${socialMedias}"
+            <a th:class="${socialMedia.option_social_data == 'custom' ? 'custom_socials' : 'deal_link'}" rel="external nofollow" target="_blank" th:each="socialMedia : ${socialMedias}"
                th:href="${socialMedia.url}" th:title="${socialMedia.name}">
-                <i th:class="${socialMedia.icon}"></i>
+                <i th:if="${socialMedia.option_social_data == 'icon' || #strings.isEmpty(socialMedia.option_social_data)}"
+                   th:class="${socialMedia.icon}"></i>
+                <th:block th:if="${socialMedia.option_social_data == 'custom'}" th:utext="${socialMedia.icon}"></th:block>
             </a>
         </th:block>
     </div>

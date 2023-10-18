@@ -509,8 +509,6 @@ spec:
                   value: col2
                 - label: 三列
                   value: col3
-                - label: 四列
-                  value: col4
             - $formkit: select
               name: postLocation
               label: 封面位置
@@ -933,29 +931,56 @@ spec:
               label: 左侧
               value: [ ]
               children:
-                - $formkit: text
+                - $formkit: radio
+                  name: option_social_data
+                  label: 类型
+                  value: icon
+                  help: "icon图标选择icon图标，svg代码或者图片(如果使用图片请输入完整img标签)选择自定义"
+                  options:
+                    - value: icon
+                      label: icon图标
+                    - value: custom
+                      label: 自定义
+                - $formkit: textarea
                   name: icon
+                  help: "icon图标，svg代码，图片(如果使用图片请输入完整img标签)"
                   label: 图标
+                  validation: "required"
                 - $formkit: text
                   name: name
                   label: 名称
+                  validation: "required"
                 - $formkit: text
                   name: url
                   label: 链接
+                  validation: "required"
             - $formkit: repeater
               name: socialMediaRight
               label: 右侧
               value: [ ]
               children:
-                - $formkit: text
+                - $formkit: radio
+                  name: option_social_data
+                  label: 类型
+                  value: icon
+                  options:
+                    - value: icon
+                      label: icon图标
+                    - value: custom
+                      label: 自定义
+                - $formkit: textarea
                   name: icon
+                  help: "icon图标或svg代码或者图片(如果使用图片请输入完整img标签)"
                   label: 图标
+                  validation: "required"
                 - $formkit: text
                   name: name
                   label: 名称
+                  validation: "required"
                 - $formkit: text
                   name: url
                   label: 链接
+                  validation: "required"
         - $formkit: menuRadio
           name: menu
           label: 相关链接

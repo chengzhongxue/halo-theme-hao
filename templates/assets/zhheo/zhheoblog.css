@@ -5362,9 +5362,10 @@ html {
     }
 }
 
-.nav-fixed #nav .back-home-button {
+.nav-fixed #nav .back-home-button{
     color: var(--heo-fontcolor);
 }
+
 
 .back-home-button:hover {
     background: var(--heo-main);
@@ -6275,6 +6276,22 @@ a.deal_link:hover {
     background: var(--heo-main);
     transform: scale(1.1)
 }
+
+a.custom_socials {
+    display: flex;
+    margin: 1rem 27px;
+    border-radius: 3rem;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+a.custom_socials:hover {
+    transform: scale(1.1)
+}
+
 
 img.footer_mini_logo {
     width: 50px;
