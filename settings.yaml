@@ -1585,55 +1585,6 @@ spec:
           name: detail
           label: 描述
           value: 跟我一起享受科技带来的乐趣
-        - $formkit: repeater
-          name: category_list
-          label: 我的装备
-          value: [ ]
-          children:
-            - $formkit: text
-              name: category_name
-              label: 装备分类名称
-              placeholder: 请输入装备分类名称
-              value: 生产力
-            - $formkit: text
-              name: description
-              label: 分类描述信息
-              placeholder: 请输入分类描述信息
-              value: 提升自己生产效率的硬件设备
-            - $formkit: repeater
-              name: equipment_list
-              label: 装备列表
-              value: [ ]
-              children:
-                - $formkit: attachment
-                  name: img
-                  label: 装备展示图
-                  placeholder: 请输入装备展示图地址
-                - $formkit: text
-                  name: name
-                  label: 装备名称
-                  placeholder: 请输入装备名称
-                  value: MacBookPro
-                - $formkit: text
-                  name: model
-                  label: 装备型号/版本
-                  placeholder: 请输入装备型号/版本
-                  value: M1Pro 32G / 1TB
-                - $formkit: textarea
-                  name: description
-                  label: 装备描述
-                  placeholder: 请输入装备描述
-                  value: 屏幕显示效果好、色彩准确、对比度强、性能强劲、续航优秀。可以用来开发和设计。
-                - $formkit: text
-                  name: button
-                  label: 左下角按钮显示文字
-                  placeholder: 请输入左下角按钮显示文字
-                  value: 详情
-                - $formkit: text
-                  name: url
-                  label: 左下角按钮跳转链接
-                  placeholder: 请输入左下角按钮跳转链接
-                  value: https://www.apple.com.cn/macbook-pro/
 
     - group: new_comment
       label: 最近评论
