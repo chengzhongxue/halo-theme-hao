@@ -6,7 +6,7 @@
             el: '#artalk-wrap',
             server: GLOBAL_CONFIG.source.artalk.artalkUrl,
             site: GLOBAL_CONFIG.source.artalk.siteName,
-            pageKey: location.pathname,
+            pageKey: location.pathname.replace(/\/page\/\d$/, ""),
             darkMode: false,
             countEl: '#ArtalkCount'
         }, null))
