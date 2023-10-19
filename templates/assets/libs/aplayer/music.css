@@ -60,9 +60,11 @@ body[data-type=music] #page {
 #page-header.not-top-img #nav .back-home-button,
 #page-header.not-top-img #nav a {
     color:#F7F7FA;
-
 }
 
+#page-header.not-top-img #nav .back-home-button:hover{
+    color: var(--heo-card-bg);
+}
 
 body[data-type=music] #footer,
 body[data-type=music] #nav-music {
@@ -588,4 +590,6 @@ body[data-type=music] #nav-music {
         left: 0;
         top: 0;
     }
+
+
 }

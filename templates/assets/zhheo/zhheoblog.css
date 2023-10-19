@@ -6581,6 +6581,10 @@ a.console_switchbutton {
     color: var(--heo-fontcolor)
 }
 
+body[data-type=music] .page #nav #site-name span{
+    color: var(--heo-white);
+}
+
 .page #nav #site-name:hover {
     color: var(--heo-card-bg)
 }
