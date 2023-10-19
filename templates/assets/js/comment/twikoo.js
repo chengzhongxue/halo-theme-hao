@@ -5,6 +5,7 @@
             el: '#twikoo-wrap',
             envId: GLOBAL_CONFIG.source.twikoo.twikooUrl,
             region: '',
+            path: location.pathname.replace(/\/page\/\d$/, ""),
             onCommentLoaded: function () {
                 btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
                 typeof hljs === 'object' && hljs.highlightAll()

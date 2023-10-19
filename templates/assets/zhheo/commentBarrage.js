@@ -12,7 +12,7 @@ if(GLOBAL_CONFIG.htmlType!='comments' && document.querySelector('#post-comment')
         //token获取见上方
         accessToken: GLOBAL_CONFIG.source.twikoo.accessToken,
         mailMd5: GLOBAL_CONFIG.source.comments.mailMd5,
-        pageUrl: window.location.pathname,
+        pageUrl: window.location.pathname.replace(/\/page\/\d$/, ""),
         barrageTimer: [],
         barrageList: [],
         siteName: GLOBAL_CONFIG.source.artalk.siteName,
