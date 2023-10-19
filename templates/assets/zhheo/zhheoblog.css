@@ -6584,9 +6584,10 @@ a.console_switchbutton {
 body[data-type=music] .page #nav #site-name span{
     color: var(--heo-white);
 }
-
-.page #nav #site-name:hover {
-    color: var(--heo-card-bg)
+@media screen and (max-width: 768px) {
+    .page #nav #site-name span:hover {
+        color: var(--heo-card-bg);
+    }
 }
 
 /* 搜索 */
