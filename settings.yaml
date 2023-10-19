@@ -446,6 +446,7 @@ spec:
             - $formkit: repeater
               if: $get(nav).value === 'custom-category'
               name: navCustomCategory
+              key: navCustomCategory
               label: 自定义分类
               value: [ ]
               children:
@@ -455,6 +456,7 @@ spec:
             - $formkit: repeater
               if: $get(nav).value === 'custom-tag'
               name: navCustomTag
+              key: navCustomTag
               label: 自定义标签
               value: [ ]
               children:
@@ -464,6 +466,7 @@ spec:
             - $formkit: repeater
               if: $get(nav).value === 'custom-url'
               name: navCustomUrl
+              key: navCustomUrl
               label: 自定义路径
               value: [ ]
               children:

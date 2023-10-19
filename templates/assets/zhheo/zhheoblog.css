@@ -3107,7 +3107,7 @@ ul {
 
 #pagination .page-number.current {
     background: rgb(0, 121, 255);
-    color: var(--white);
+    color: var(--heo-card-bg);
     cursor: default;
     border-radius: 5px;
 }
@@ -8023,8 +8023,8 @@ div#banners {
         height: 100%;
         top: 0;
         left: 0;
-        background: var(--heo-theme);
-        color: var(--heo-white);
+        background: var(--heo-lighttext);
+        color: var(--heo-card-bg);
         padding-left: 0.5rem;
         display: flex;
         flex-direction: column;
@@ -8047,7 +8047,7 @@ div#banners {
     #banners:hover #banner-hover {
         opacity: 1;
         padding-left: 2rem;
-        background: #4259efc9;
+        background: var(--heo-theme-op-deep);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
         -webkit-backface-visibility: hidden;
@@ -8148,8 +8148,8 @@ div#banners {
     }
 
     .topGroup .banner-button:hover {
-        background: var(--heo-theme);
-        color: var(--heo-white);
+        background: var(--heo-lighttext);
+        color: var(--heo-card-bg);
     }
 
     .topGroup .banner-button i {
@@ -8361,7 +8361,7 @@ a.categoryButton:hover {
 
 /* 首页分类条展示 */
 #category-bar {
-    padding: 0.4rem 1rem 0.4rem 0.5rem;
+    padding: 0.4rem 1rem 0.4rem 0.7rem;
     background: var(--heo-card-bg);
     border-radius: 12px;
     display: flex;
@@ -8372,6 +8372,9 @@ a.categoryButton:hover {
     transition: 0.3s;
     width: 100%;
     justify-content: space-between;
+    -webkit-user-select: none;
+    display: flex;
+    align-items: center
 }
 
 @media screen and (min-width: 1300px) {
