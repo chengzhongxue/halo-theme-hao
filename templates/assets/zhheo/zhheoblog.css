@@ -1645,12 +1645,13 @@ blockquote footer cite::before {
     object-fit: cover;
 }
 
-#recent-posts>.recent-post-item.col1.alternate .left_radius, #recent-posts>.recent-post-item.col1.alternate .right_radius {
-    width:75%;
-    display: flex;
-    height: 220px
+@media screen and (min-width: 1300px) {
+    #recent-posts > .recent-post-item.col1.alternate .left_radius, #recent-posts > .recent-post-item.col1.alternate .right_radius {
+        width: 75%;
+        display: flex;
+        height: 220px
+    }
 }
-
 #recent-posts > .recent-post-item .post_cover img.post_bg:hover {
     transform: scale(1.1);
 }
