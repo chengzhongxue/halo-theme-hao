@@ -4,7 +4,7 @@
 <footer id="footer" th:fragment="footer">
 
     <div id="heo-footer-bar" th:if="${theme.config.footer.footer_bar.footer_bar_enable}">
-        <div class="footer-logo">[[${theme.config.footer.footer_bar.logo}]]</div>
+        <div class="footer-logo"><th:block th:utext="${theme.config.footer.footer_bar.logo}"></th:block></div>
         <div class="footer-bar-description">[[${theme.config.footer.footer_bar.description}]]</div>
         <a class="footer-bar-link" href="/" data-pjax-state="">了解更多</a>
     </div>

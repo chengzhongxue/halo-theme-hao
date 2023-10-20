@@ -2246,7 +2246,7 @@ blockquote footer cite::before {
 
 #aside-content #card-toc .toc-content {
     overflow-y: auto;
-    max-height: calc(100vh - 120px);
+    max-height: calc(100vh - 300px);
 }
 
 @media screen and (max-width: 900px) {
@@ -2301,10 +2301,10 @@ blockquote footer cite::before {
     position: absolute;
     top: 0.6rem;
     right: 1.2rem;
-    color: rgb(169, 169, 169);
+    color: #a9a9a9;
     content: attr(progress-percentage);
     font-style: italic;
-    font-size: 1.2rem;
+    font-size: 1.2rem
 }
 
 #aside-content :only-child > .card-widget {
@@ -2763,8 +2763,12 @@ blockquote footer cite::before {
 #page-header.nav-fixed #nav #site-name,
 #page-header.nav-fixed #nav #toggle-menu,
 #page-header.nav-fixed #nav a {
-    color: var(--heo-fontcolor);
     text-shadow: none;
+}
+@media screen and (min-width: 900px) {
+    #page-header.nav-fixed #nav #site-name:hover {
+        color: var(--heo-white);
+    }
 }
 
 #page-header.nav-visible #nav {
@@ -4856,7 +4860,7 @@ html {
     color: var(--heo-white);
 }
 
-.nav-fixed #nav a {
+.nav-fixed #nav a{
     color: var(--heo-fontcolor);
     transition: 0.3s;
 }
@@ -6125,6 +6129,7 @@ i.fab {
 
 .nav-fixed #nav a:hover {
     background: var(--heo-main);
+    color: var(--heo-white);
     transition: 0.3s;
 }
 
@@ -6557,6 +6562,10 @@ a.console_switchbutton {
 .post-bg #nav #site-name {
     color: var(--heo-white);
     transition: 0s;
+}
+
+.nav-fixed #nav #site-name{
+    color: var(--heo-fontcolor);
 }
 
 /* 导航栏名称样式 */
@@ -9595,10 +9604,6 @@ span.recent-post-top-text {
         right: 0;
     }
 
-    #rightside {
-        display: none
-    }
-
     /* 背景 */
     #web_bg {
         background: none !important;
@@ -9693,16 +9698,16 @@ span.recent-post-top-text {
 
 /* 文章目录 */
 #aside-content #card-toc .toc-content .toc-link.active {
-    line-height: 1.2;
+    line-height: 24px;
     border-radius: 12px;
     border-left-color: var(--heo-hovertext);
     background-color: var(--heo-card-bg);
     color: var(--heo-lighttext);
-    font-weight: bold;
-    font-size: 20px;
+    font-weight: 700;
+    font-size: 20px
 }
 
-[data-theme=dark].toc .toc-item.active .toc-link .toc-text {
+[data-theme=dark].toc-list .toc-item.active .toc-link{
     color: var(--heo-white);
 }
 
@@ -9712,27 +9717,30 @@ span.recent-post-top-text {
 }
 
 #aside-content #card-toc .toc-content .toc-link {
-    line-height: 1.2;
+    line-height: 24px;
     padding: 8px;
-    border-left: 0px solid transparent;
+    border-left: 0 solid transparent;
     border-radius: 12px;
     color: var(--heo-secondtext);
     cursor: default;
+    min-height: 40px;
+    display: flex;
+    align-items: center
 }
 
-#aside-content #card-toc .toc-content .toc-link:not(.active) span {
+#aside-content #card-toc .toc-content a.toc-link:not(.active)  {
     opacity: 0.6;
     cursor: pointer;
     filter: blur(1px);
     transition: 0.3s;
 }
 
-#aside-content #card-toc:hover .toc-content .toc-link:not(.active) span {
+#aside-content #card-toc:hover .toc-content a.toc-link:not(.active)  {
     filter: blur(0px);
     opacity: 1;
 }
 
-#aside-content #card-toc .toc-content .toc-link:not(.active) span:hover {
+#aside-content #card-toc .toc-content a:hover.toc-link:not(.active)  {
     color: var(--heo-lighttext);
 }
 
@@ -17438,18 +17446,6 @@ a#toPageButton.haveValue:hover {
     }
 }
 
-
-/*   文章目录样式 */
-a.toc-link {
-    color: currentColor;
-    height:0%;
-}
-/*   文章目录样式 */
-#aside-content #card-toc .toc-content .is-active-link {
-    font-weight: 700;
-    font-size: 20px;
-    color: var(--heo-lighttext);
-}
 /*   code样式 */
 code:not([class]) {
     color: var(--heo-white);
