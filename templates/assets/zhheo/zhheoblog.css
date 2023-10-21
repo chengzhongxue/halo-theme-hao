@@ -2246,6 +2246,7 @@ blockquote footer cite::before {
 /*}*/
 
 #aside-content #card-toc .toc-content {
+    position: relative;
     overflow-y: auto;
     max-height: calc(100vh - 300px);
 }
@@ -9705,7 +9706,8 @@ span.recent-post-top-text {
     background-color: var(--heo-card-bg);
     color: var(--heo-lighttext);
     font-weight: 700;
-    font-size: 20px
+    font-size: 20px;
+    position: relative;
 }
 
 [data-theme=dark].toc-list .toc-item.active .toc-link{
@@ -9726,7 +9728,8 @@ span.recent-post-top-text {
     cursor: default;
     min-height: 40px;
     display: flex;
-    align-items: center
+    align-items: center;
+
 }
 
 #aside-content #card-toc .toc-content a.toc-link:not(.active)  {
@@ -10182,6 +10185,7 @@ div#author-info__sayhi:hover {
 #aside-content .item-headline + div,
 #aside-content .item-headline + ul {
     padding: 0;
+    -webkit-user-select: none;
 }
 
 @media screen and (min-width: 1300px) {

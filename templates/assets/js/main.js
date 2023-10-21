@@ -168,38 +168,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 contentSelector: '.post-content',
                 headingSelector: 'h1,h2,h3,h4,h5,h6',
                 listItemClass: 'toc-item',
-                collapseDepth: 6,
-                headingsOffset: 70,
+                activeLinkClass: 'active',
+                activeListItemClass: 'active',
+                headingsOffset: -400,
                 scrollSmooth: true,
                 scrollSmoothOffset: -70,
-                tocScrollOffset: 35,
-
+                tocScrollOffset: 50,
             });
 
             const $cardTocLayout = document.getElementById('card-toc')
             const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0]
-            const $tocLink = $cardToc.querySelectorAll('.toc-link')
-            const $article = document.getElementById('article-container')
-
-            window.tocScrollFn = function () {
-                return btf.throttle(function () {
-                    const currentTop = window.scrollY || document.documentElement.scrollTop
-                    scrollPercent(currentTop)
-                    findHeadPosition(currentTop)
-                }, 100)()
-            }
-            window.addEventListener('scroll', tocScrollFn)
-
-            const scrollPercent = function (currentTop) {
-                const docHeight = $article.clientHeight
-                const winHeight = document.documentElement.clientHeight
-                const headerHeight = $article.offsetTop
-                const contentMath = (docHeight > winHeight) ? (docHeight - winHeight) : (document.documentElement.scrollHeight - winHeight)
-                const scrollPercent = (currentTop - headerHeight) / (contentMath)
-                const scrollPercentRounded = Math.round(scrollPercent * 100)
-                const percentage = (scrollPercentRounded > 100) ? 100 : (scrollPercentRounded <= 0) ? 0 : scrollPercentRounded
-                $cardToc.setAttribute('progress-percentage', percentage)
-            }
 
             // toc元素點擊
             $cardToc.addEventListener('click', (ele) => {
@@ -208,63 +186,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             })
 
-            const autoScrollToc = function (item) {
-                const activePosition = item.getBoundingClientRect().top
-                const sidebarScrollTop = $cardToc.scrollTop
-                if (activePosition > (document.documentElement.clientHeight - 100)) {
-                    $cardToc.scrollTop = sidebarScrollTop + 150
-                }
-                if (activePosition < 100) {
-                    $cardToc.scrollTop = sidebarScrollTop - 150
-                }
-            }
-
-            // find head position & add active class
-            const list = $article.querySelectorAll('h1,h2,h3,h4,h5,h6')
-            let detectItem = ''
-            const findHeadPosition = function (top) {
-                if ($tocLink.length === 0 || top === 0) {
-                    return false
-                }
-
-                let currentId = ''
-                let currentIndex = ''
-
-                list.forEach(function (ele, index) {
-                    if (top > btf.getEleTop(ele) - 80) {
-                        currentId = '#' + encodeURI(ele.getAttribute('id'))
-                        currentIndex = index
-                    }
-                })
-
-                if (detectItem === currentIndex) return
-
-
-                if (currentId === '') {
-                    $cardToc.querySelectorAll('.active').forEach(i => { i.classList.remove('active') })
-                    detectItem = currentIndex
-                    return
-                }
-
-                detectItem = currentIndex
-
-                $cardToc.querySelectorAll('.active').forEach(item => { item.classList.remove('active') })
-                const currentActive = $tocLink[currentIndex]
-                currentActive.classList.add('active')
-
-                setTimeout(() => {
-                    autoScrollToc(currentActive)
-                }, 0)
-
-                let parent = currentActive.parentNode
-
-                for (; !parent.matches('.toc-list'); parent = parent.parentNode) {
-                    if (parent.matches('li')) parent.classList.add('active')
-                }
-            }
-
         }
     }
+
 
     /**
      * Rightside
