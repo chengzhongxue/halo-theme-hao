@@ -4949,7 +4949,7 @@ html {
     transition: 0.3s;
     display: flex;
     justify-content: center;
-    z-index: 1000 !important;
+    z-index: 999 !important;
     -webkit-user-select: none;
 }
 
@@ -11996,7 +11996,7 @@ a.reward-main-btn:hover {
         overflow: hidden;
         cursor: pointer;
         opacity: 0;
-        z-index: 1002
+        z-index: 999
     }
 
 
@@ -13029,7 +13029,7 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
 }
 
 .post-reward .reward-main {
-    z-index: 1003;
+    z-index: 999;
 }
 
 .tk-meta-input .el-input .el-input-group__prepend {
@@ -13046,18 +13046,6 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
 }
 
 @media screen and (max-width: 768px) {
-
-    .post-reward .reward-main {
-        justify-content: center !important;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 102;
-        width: 100%;
-        margin: auto;
-        padding: 0;
-    }
 
     .post-reward .reward-main .reward-all {
         width: 100%;
@@ -15147,7 +15135,7 @@ span.hexo-douban-pagenum {
     background: var(--heo-secondbg);
     display: flex;
     overflow: hidden;
-    z-index: 1002;
+    z-index: 999;
     transition: 0.3s;
 }
 

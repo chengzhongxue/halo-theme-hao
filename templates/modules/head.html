@@ -108,10 +108,12 @@
 
             win.activateDarkMode = function () {
                 document.documentElement.setAttribute('data-theme', 'dark')
+                document.documentElement.classList.add('color-scheme-dark')
                 heo.initThemeColor()
             }
             win.activateLightMode = function () {
                 document.documentElement.setAttribute('data-theme', 'light')
+                document.documentElement.classList.remove('color-scheme-dark')
                 heo.initThemeColor()
             }
             const t = saveToLocal.get('theme')
