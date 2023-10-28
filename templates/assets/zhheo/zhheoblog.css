@@ -6305,22 +6305,13 @@ img.footer_mini_logo {
     height: 50px;
     margin: 0 1rem;
     cursor: pointer;
-    transition: cubic-bezier(0, 0, 0, 1.29) 0.5s;
+    transition: cubic-bezier(0,0,0,1.29) .5s;
 }
 
 img.footer_mini_logo:hover {
     -webkit-backface-visibility: hidden;
     -webkit-transform-style: preserve-3d;
-}
-
-@media screen and (min-width: 1300px) {
-    img.footer_mini_logo:hover {
-        transform: scale(1.03);
-    }
-
-    img.footer_mini_logo:active {
-        transform: scale(0.97);
-    }
+    transform: scale(1.2)
 }
 
 /* logo居中 */
@@ -7921,24 +7912,24 @@ div#banners {
 
 @media screen and (min-width: 1300px) {
     .topGroup {
-        display: flex;
+        display:flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: flex-end;
-        height: calc(328px + 0.5rem);
+        justify-content: space-between;
+        height: calc(328px + .5rem);
         align-content: space-between;
-        width: calc(600px + 1.5rem);
+        width: calc(50% - .25rem);
         position: relative;
         animation: slide-in .6s .1s backwards
     }
 
     div#bannerGroup {
-        width: calc(100% - 600px - 2rem);
-        margin-right: 0.5rem;
-        height: calc(328px + 0.5rem);
+        width: calc(50% - .25rem);
+        margin-right: .5rem;
+        height: calc(328px + .5rem);
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-between
     }
 
     div#banners {
@@ -7955,7 +7946,7 @@ div#banners {
         flex-direction: column;
         overflow: hidden;
         transition: 0.3s;
-        clip-path: inset(0 0 0 0 round 12px);
+        will-change: transform;
         animation: slide-in .6s .1s backwards;
     }
 
@@ -8080,19 +8071,19 @@ div#banners {
 
     .topGroup .todayCard {
         position: absolute;
-        width: calc(600px + 1rem);
+        width: 100%;
         height: 100%;
         z-index: 1;
         top: 0;
-        left: 0;
-        background: var(--card-bg);
+        right: 0;
+        background: var(--heo-card-bg);
         border-radius: 12px;
-        margin-left: 0.5rem;
+        margin-left: .5rem;
         overflow: hidden;
-        transition: 0.3s;
+        transition: .3s;
         display: flex;
         cursor: pointer;
-        pointer-events: all;
+        pointer-events: all
     }
 
     .topGroup .todayCard::after {
@@ -9268,12 +9259,17 @@ ins.adsbygoogle {
 
 @media screen and (min-width: 1300px) {
     .recent-post-top .recent-post-item {
-        margin-right: 0px;
-        margin-bottom: 0.5rem;
+        width:calc(100% / 3 - .25rem);
+        margin-left: 0
     }
 
     .recent-post-top .recent-post-item:active {
         transform: scale(0.97);
+    }
+
+    .recent-post-top .recent-post-item {
+        margin-right: 0;
+        margin-bottom: .5rem
     }
 
     .recent-post-top {
@@ -11794,7 +11790,7 @@ blockquote p {
 
 .post-reward .reward-main .reward-all {
     border-radius: 12px;
-    background: var(--heo-background);
+    background: var(--heo-card-bg);
     border: var(--style-border-always);
     padding: 0.8rem;
     display: flex;
@@ -11840,20 +11836,18 @@ a.reward-main-btn:hover {
     color: var(--heo-red);
 }
 
-
-
 /* 赞赏背景 */
-
 #quit-box {
     position: fixed;
     width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, .4);
+    height: calc(100vh);
+    background: rgba(0,0,0,.2);
+    opacity: 0.01;
     top: 0;
     left: 0;
     display: none;
-    z-index: 101;
-    margin: 0 !important;
+    z-index: 109;
+    margin: 0!important
 }
 
 .post-tools-left #quit-box {
@@ -11862,6 +11856,7 @@ a.reward-main-btn:hover {
 
 @media screen and (max-width: 768px) {
     #quit-box {
+        z-index:109;
         display: none!important;
     }
 }
@@ -12131,12 +12126,12 @@ a.reward-main-btn:hover {
     #pagination .pagination .extend {
         width: 100%;
         height: 2.5rem;
-        margin: 0.2rem 1rem 1rem 1rem;
+        margin: .2rem 0 1rem 0;
         border-radius: 12px;
         line-height: 2.5rem;
         background: var(--heo-card-bg);
         border: var(--style-border-always);
-        box-shadow: var(--heo-shadow-border);
+        box-shadow: var(--heo-shadow-border)
     }
 
     #pagination .pagination .extend i {
@@ -12375,6 +12370,11 @@ div#post-comment {
     width: 100%;
 }
 
+.tk-content img {
+    max-height: 1100px!important;
+    max-width: 100%!important;
+    border-radius: 12px
+}
 
 #post-comment .comment-tips.show {
     display: flex;
@@ -12391,12 +12391,17 @@ div#post-comment {
     width: 32px !important;
     height: 32px !important;
     box-shadow: var(--heo-shadow-border);
+    margin-right: 16px!important
 }
 
 .tk-avatar.tk-has-avatar {
     width: 32px !important;
     height: 32px !important;
     border-radius: 32px !important;
+}
+
+.tk-avatar.tk-has-avatar img {
+    border-radius: 32px!important;
 }
 
 .tk-row .tk-avatar {
@@ -12824,6 +12829,11 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     pointer-events: none;
 }
 
+.OwO.OwO-open .OwO-body {
+    animation: .3s ease .1s 1 normal both running donate_effcet
+}
+
+
 @keyframes owoIn {
     0% {
         transform: translate(0, -95%);
@@ -13036,6 +13046,18 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
 }
 
 @media screen and (max-width: 768px) {
+
+    .post-reward .reward-main {
+        justify-content: center !important;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 102;
+        width: 100%;
+        margin: auto;
+        padding: 0;
+    }
 
     .post-reward .reward-main .reward-all {
         width: 100%;
@@ -15266,8 +15288,6 @@ span.hexo-douban-pagenum {
     animation-delay: 1.8s;
 }
 
-
-
 #about-page .author-img {
     margin: 0 30px;
     border-radius: 50%;
@@ -15276,10 +15296,18 @@ span.hexo-douban-pagenum {
     position: relative;
     background: var(--heo-secondbg);
     user-select: none;
+    transition: .3s
 }
 
 #about-page .author-img img {
     border-radius: 200px;
+    overflow: hidden;
+    width: 180px;
+    height: 180px
+}
+
+#about-page .author-img:hover {
+    transform: scale(1.1)
 }
 
 #about-page .author-img::before {
@@ -15311,8 +15339,6 @@ span.hexo-douban-pagenum {
         right: -5px;
     }
 }
-
-
 
 #about-page .author-title {
     font-size: 2rem;

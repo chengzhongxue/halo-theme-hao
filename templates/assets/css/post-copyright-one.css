@@ -287,24 +287,6 @@ img.post-copyright__author_img_front {
     width: fit-content;
 }
 
-@media screen and (max-width: 768px) {
-    .post-reward .reward-main {
-        justify-content: center !important;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 102;
-        width: 100%;
-        margin: auto;
-        padding: 0;
-    }
-}
-
-.post-reward .reward-main .reward-all {
-    background:var(--heo-card-bg);
-}
-
 .post-tools .post-tools-left .rewardLeftButton,.post-tools .post-tools-left .shareRight {
     display: -webkit-box;
     display: -moz-box;
