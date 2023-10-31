@@ -479,7 +479,7 @@ window.onkeydown = function (e) {
 // document.querySelector('#algolia-search').addEventListener('wheel', (e) => {
 //   e.preventDefault()
 // })
-document.querySelector('#console').addEventListener('wheel', (e) => {
+document.querySelector('#console') && document.querySelector('#console').addEventListener('wheel', (e) => {
     e.preventDefault()
 })
 // document.querySelector('#loading-box').addEventListener('wheel', (e) => {

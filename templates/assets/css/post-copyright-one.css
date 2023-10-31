@@ -310,7 +310,6 @@ img.post-copyright__author_img_front {
     display: -moz-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: box;
     display: flex;
     margin: 10px
 }

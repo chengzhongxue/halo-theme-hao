@@ -446,6 +446,7 @@ spec:
             - $formkit: repeater
               if: $get(nav).value === 'custom-category'
               name: navCustomCategory
+              key: navCustomCategory
               label: 自定义分类
               value: [ ]
               children:
@@ -455,6 +456,7 @@ spec:
             - $formkit: repeater
               if: $get(nav).value === 'custom-tag'
               name: navCustomTag
+              key: navCustomTag
               label: 自定义标签
               value: [ ]
               children:
@@ -464,6 +466,7 @@ spec:
             - $formkit: repeater
               if: $get(nav).value === 'custom-url'
               name: navCustomUrl
+              key: navCustomUrl
               label: 自定义路径
               value: [ ]
               children:
@@ -554,7 +557,7 @@ spec:
         - $formkit: group
           name: widgetss
           label: 侧边栏内容
-          help: 目前提供的小部件有：profile（站点资料）, wechat（微信）, power（爱发电赞助）, welcome（小板报）, steam（Steam卡片）, music（音乐卡片）, friend-link（通讯录）, recent-posts（近期文章）, comments（最新评论）, categories（文章分类）, tags（文章标签）, stat（统计）, tags-stat（标签&归档&统计）, adbox（广告区域）。你可以随意组合或排序，以逗号隔开。
+          help: 目前提供的小部件有：profile（个人卡片）, wechat（公众号）, power（爱发电赞助）, welcome（小板报）, steam（Steam卡片）, music（音乐卡片）, friend-link（通讯录）, recent-posts（最新文章）, comments（最新评论）, categories（文章分类）, tags（文章标签）, stat（统计）, tags-stat（标签&归档&统计）, adbox（广告区域）。你可以随意组合或排序，以逗号隔开。
           value:
             indexWidgets: profile,wechat,comments,recent-posts,categories,tags-stat
             postWidgets: profile,wechat,toc,comments,recent-posts,categories,tags-stat
@@ -2324,10 +2327,6 @@ spec:
     - group: style
       label: 样式
       formSchema:
-        - $formkit: checkbox
-          name: enableChangeColorScheme
-          label: 允许访客切换配色
-          value: true
         - $formkit: radio
           name: colorScheme
           label: 默认配色

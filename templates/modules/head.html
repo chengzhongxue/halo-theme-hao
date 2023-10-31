@@ -108,10 +108,12 @@
 
             win.activateDarkMode = function () {
                 document.documentElement.setAttribute('data-theme', 'dark')
+                document.documentElement.classList.add('color-scheme-dark')
                 heo.initThemeColor()
             }
             win.activateLightMode = function () {
                 document.documentElement.setAttribute('data-theme', 'light')
+                document.documentElement.classList.remove('color-scheme-dark')
                 heo.initThemeColor()
             }
             const t = saveToLocal.get('theme')
@@ -176,7 +178,7 @@
     </th:block>
 
     <!-- icon图标 -->
-    <link rel="stylesheet" th:href="'https://cdn.cbd.int/hao-theme-static@'+${theme.spec.version}+'/icon/iconfont.css'">
+    <link rel="stylesheet" th:href="${assets_link + '/icon/iconfont.css' + theme_version}">
 
     <th:block th:replace="~{modules/variables/site-config :: site-config}" />
 

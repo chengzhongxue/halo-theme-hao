@@ -1645,12 +1645,13 @@ blockquote footer cite::before {
     object-fit: cover;
 }
 
-#recent-posts>.recent-post-item.col1.alternate .left_radius, #recent-posts>.recent-post-item.col1.alternate .right_radius {
-    width:75%;
-    display: flex;
-    height: 220px
+@media screen and (min-width: 1300px) {
+    #recent-posts > .recent-post-item.col1.alternate .left_radius, #recent-posts > .recent-post-item.col1.alternate .right_radius {
+        width: 75%;
+        display: flex;
+        height: 220px
+    }
 }
-
 #recent-posts > .recent-post-item .post_cover img.post_bg:hover {
     transform: scale(1.1);
 }
@@ -2245,8 +2246,9 @@ blockquote footer cite::before {
 /*}*/
 
 #aside-content #card-toc .toc-content {
+    position: relative;
     overflow-y: auto;
-    max-height: calc(100vh - 120px);
+    max-height: calc(100vh - 300px);
 }
 
 @media screen and (max-width: 900px) {
@@ -2301,10 +2303,10 @@ blockquote footer cite::before {
     position: absolute;
     top: 0.6rem;
     right: 1.2rem;
-    color: rgb(169, 169, 169);
+    color: #a9a9a9;
     content: attr(progress-percentage);
     font-style: italic;
-    font-size: 1.2rem;
+    font-size: 1.2rem
 }
 
 #aside-content :only-child > .card-widget {
@@ -2763,8 +2765,12 @@ blockquote footer cite::before {
 #page-header.nav-fixed #nav #site-name,
 #page-header.nav-fixed #nav #toggle-menu,
 #page-header.nav-fixed #nav a {
-    color: var(--heo-fontcolor);
     text-shadow: none;
+}
+@media screen and (min-width: 900px) {
+    #page-header.nav-fixed #nav #site-name:hover {
+        color: var(--heo-white);
+    }
 }
 
 #page-header.nav-visible #nav {
@@ -3107,7 +3113,7 @@ ul {
 
 #pagination .page-number.current {
     background: rgb(0, 121, 255);
-    color: var(--white);
+    color: var(--heo-card-bg);
     cursor: default;
     border-radius: 5px;
 }
@@ -4856,7 +4862,7 @@ html {
     color: var(--heo-white);
 }
 
-.nav-fixed #nav a {
+.nav-fixed #nav a{
     color: var(--heo-fontcolor);
     transition: 0.3s;
 }
@@ -4943,7 +4949,7 @@ html {
     transition: 0.3s;
     display: flex;
     justify-content: center;
-    z-index: 1000 !important;
+    z-index: 999 !important;
     -webkit-user-select: none;
 }
 
@@ -6125,6 +6131,7 @@ i.fab {
 
 .nav-fixed #nav a:hover {
     background: var(--heo-main);
+    color: var(--heo-white);
     transition: 0.3s;
 }
 
@@ -6298,22 +6305,13 @@ img.footer_mini_logo {
     height: 50px;
     margin: 0 1rem;
     cursor: pointer;
-    transition: cubic-bezier(0, 0, 0, 1.29) 0.5s;
+    transition: cubic-bezier(0,0,0,1.29) .5s;
 }
 
 img.footer_mini_logo:hover {
     -webkit-backface-visibility: hidden;
     -webkit-transform-style: preserve-3d;
-}
-
-@media screen and (min-width: 1300px) {
-    img.footer_mini_logo:hover {
-        transform: scale(1.03);
-    }
-
-    img.footer_mini_logo:active {
-        transform: scale(0.97);
-    }
+    transform: scale(1.2)
 }
 
 /* logo居中 */
@@ -6559,6 +6557,10 @@ a.console_switchbutton {
     transition: 0s;
 }
 
+.nav-fixed #nav #site-name{
+    color: var(--heo-fontcolor);
+}
+
 /* 导航栏名称样式 */
 #nav #site-name {
     color: var(--heo-fontcolor);
@@ -6581,8 +6583,13 @@ a.console_switchbutton {
     color: var(--heo-fontcolor)
 }
 
-.page #nav #site-name:hover {
-    color: var(--heo-card-bg)
+body[data-type=music] .page #nav #site-name span{
+    color: var(--heo-white);
+}
+@media screen and (max-width: 768px) {
+    .page #nav #site-name span:hover {
+        color: var(--heo-card-bg);
+    }
 }
 
 /* 搜索 */
@@ -7905,24 +7912,24 @@ div#banners {
 
 @media screen and (min-width: 1300px) {
     .topGroup {
-        display: flex;
+        display:flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: flex-end;
-        height: calc(328px + 0.5rem);
+        justify-content: space-between;
+        height: calc(328px + .5rem);
         align-content: space-between;
-        width: calc(600px + 1.5rem);
+        width: calc(50% - .25rem);
         position: relative;
         animation: slide-in .6s .1s backwards
     }
 
     div#bannerGroup {
-        width: calc(100% - 600px - 2rem);
-        margin-right: 0.5rem;
-        height: calc(328px + 0.5rem);
+        width: calc(50% - .25rem);
+        margin-right: .5rem;
+        height: calc(328px + .5rem);
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-between
     }
 
     div#banners {
@@ -7939,7 +7946,7 @@ div#banners {
         flex-direction: column;
         overflow: hidden;
         transition: 0.3s;
-        clip-path: inset(0 0 0 0 round 12px);
+        will-change: transform;
         animation: slide-in .6s .1s backwards;
     }
 
@@ -8023,8 +8030,8 @@ div#banners {
         height: 100%;
         top: 0;
         left: 0;
-        background: var(--heo-theme);
-        color: var(--heo-white);
+        background: var(--heo-lighttext);
+        color: var(--heo-card-bg);
         padding-left: 0.5rem;
         display: flex;
         flex-direction: column;
@@ -8047,7 +8054,7 @@ div#banners {
     #banners:hover #banner-hover {
         opacity: 1;
         padding-left: 2rem;
-        background: #4259efc9;
+        background: var(--heo-theme-op-deep);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
         -webkit-backface-visibility: hidden;
@@ -8064,19 +8071,19 @@ div#banners {
 
     .topGroup .todayCard {
         position: absolute;
-        width: calc(600px + 1rem);
+        width: 100%;
         height: 100%;
         z-index: 1;
         top: 0;
-        left: 0;
-        background: var(--card-bg);
+        right: 0;
+        background: var(--heo-card-bg);
         border-radius: 12px;
-        margin-left: 0.5rem;
+        margin-left: .5rem;
         overflow: hidden;
-        transition: 0.3s;
+        transition: .3s;
         display: flex;
         cursor: pointer;
-        pointer-events: all;
+        pointer-events: all
     }
 
     .topGroup .todayCard::after {
@@ -8148,8 +8155,8 @@ div#banners {
     }
 
     .topGroup .banner-button:hover {
-        background: var(--heo-theme);
-        color: var(--heo-white);
+        background: var(--heo-lighttext);
+        color: var(--heo-card-bg);
     }
 
     .topGroup .banner-button i {
@@ -8361,7 +8368,7 @@ a.categoryButton:hover {
 
 /* 首页分类条展示 */
 #category-bar {
-    padding: 0.4rem 1rem 0.4rem 0.5rem;
+    padding: 0.4rem 1rem 0.4rem 0.7rem;
     background: var(--heo-card-bg);
     border-radius: 12px;
     display: flex;
@@ -8372,6 +8379,9 @@ a.categoryButton:hover {
     transition: 0.3s;
     width: 100%;
     justify-content: space-between;
+    -webkit-user-select: none;
+    display: flex;
+    align-items: center
 }
 
 @media screen and (min-width: 1300px) {
@@ -9249,12 +9259,17 @@ ins.adsbygoogle {
 
 @media screen and (min-width: 1300px) {
     .recent-post-top .recent-post-item {
-        margin-right: 0px;
-        margin-bottom: 0.5rem;
+        width:calc(100% / 3 - .25rem);
+        margin-left: 0
     }
 
     .recent-post-top .recent-post-item:active {
         transform: scale(0.97);
+    }
+
+    .recent-post-top .recent-post-item {
+        margin-right: 0;
+        margin-bottom: .5rem
     }
 
     .recent-post-top {
@@ -9587,10 +9602,6 @@ span.recent-post-top-text {
         right: 0;
     }
 
-    #rightside {
-        display: none
-    }
-
     /* 背景 */
     #web_bg {
         background: none !important;
@@ -9685,16 +9696,17 @@ span.recent-post-top-text {
 
 /* 文章目录 */
 #aside-content #card-toc .toc-content .toc-link.active {
-    line-height: 1.2;
+    line-height: 24px;
     border-radius: 12px;
     border-left-color: var(--heo-hovertext);
     background-color: var(--heo-card-bg);
     color: var(--heo-lighttext);
-    font-weight: bold;
+    font-weight: 700;
     font-size: 20px;
+    position: relative;
 }
 
-[data-theme=dark].toc .toc-item.active .toc-link .toc-text {
+[data-theme=dark].toc-list .toc-item.active .toc-link{
     color: var(--heo-white);
 }
 
@@ -9704,27 +9716,31 @@ span.recent-post-top-text {
 }
 
 #aside-content #card-toc .toc-content .toc-link {
-    line-height: 1.2;
+    line-height: 24px;
     padding: 8px;
-    border-left: 0px solid transparent;
+    border-left: 0 solid transparent;
     border-radius: 12px;
     color: var(--heo-secondtext);
     cursor: default;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+
 }
 
-#aside-content #card-toc .toc-content .toc-link:not(.active) span {
+#aside-content #card-toc .toc-content a.toc-link:not(.active)  {
     opacity: 0.6;
     cursor: pointer;
     filter: blur(1px);
     transition: 0.3s;
 }
 
-#aside-content #card-toc:hover .toc-content .toc-link:not(.active) span {
+#aside-content #card-toc:hover .toc-content a.toc-link:not(.active)  {
     filter: blur(0px);
     opacity: 1;
 }
 
-#aside-content #card-toc .toc-content .toc-link:not(.active) span:hover {
+#aside-content #card-toc .toc-content a:hover.toc-link:not(.active)  {
     color: var(--heo-lighttext);
 }
 
@@ -10165,6 +10181,7 @@ div#author-info__sayhi:hover {
 #aside-content .item-headline + div,
 #aside-content .item-headline + ul {
     padding: 0;
+    -webkit-user-select: none;
 }
 
 @media screen and (min-width: 1300px) {
@@ -11773,7 +11790,7 @@ blockquote p {
 
 .post-reward .reward-main .reward-all {
     border-radius: 12px;
-    background: var(--heo-background);
+    background: var(--heo-card-bg);
     border: var(--style-border-always);
     padding: 0.8rem;
     display: flex;
@@ -11819,20 +11836,18 @@ a.reward-main-btn:hover {
     color: var(--heo-red);
 }
 
-
-
 /* 赞赏背景 */
-
 #quit-box {
     position: fixed;
     width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, .4);
+    height: calc(100vh);
+    background: rgba(0,0,0,.2);
+    opacity: 0.01;
     top: 0;
     left: 0;
     display: none;
-    z-index: 101;
-    margin: 0 !important;
+    z-index: 109;
+    margin: 0!important
 }
 
 .post-tools-left #quit-box {
@@ -11841,6 +11856,7 @@ a.reward-main-btn:hover {
 
 @media screen and (max-width: 768px) {
     #quit-box {
+        z-index:109;
         display: none!important;
     }
 }
@@ -11980,7 +11996,7 @@ a.reward-main-btn:hover {
         overflow: hidden;
         cursor: pointer;
         opacity: 0;
-        z-index: 1002
+        z-index: 999
     }
 
 
@@ -12110,12 +12126,12 @@ a.reward-main-btn:hover {
     #pagination .pagination .extend {
         width: 100%;
         height: 2.5rem;
-        margin: 0.2rem 1rem 1rem 1rem;
+        margin: .2rem 0 1rem 0;
         border-radius: 12px;
         line-height: 2.5rem;
         background: var(--heo-card-bg);
         border: var(--style-border-always);
-        box-shadow: var(--heo-shadow-border);
+        box-shadow: var(--heo-shadow-border)
     }
 
     #pagination .pagination .extend i {
@@ -12354,6 +12370,11 @@ div#post-comment {
     width: 100%;
 }
 
+.tk-content img {
+    max-height: 1100px!important;
+    max-width: 100%!important;
+    border-radius: 12px
+}
 
 #post-comment .comment-tips.show {
     display: flex;
@@ -12370,12 +12391,17 @@ div#post-comment {
     width: 32px !important;
     height: 32px !important;
     box-shadow: var(--heo-shadow-border);
+    margin-right: 16px!important
 }
 
 .tk-avatar.tk-has-avatar {
     width: 32px !important;
     height: 32px !important;
     border-radius: 32px !important;
+}
+
+.tk-avatar.tk-has-avatar img {
+    border-radius: 32px!important;
 }
 
 .tk-row .tk-avatar {
@@ -12803,6 +12829,11 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     pointer-events: none;
 }
 
+.OwO.OwO-open .OwO-body {
+    animation: .3s ease .1s 1 normal both running donate_effcet
+}
+
+
 @keyframes owoIn {
     0% {
         transform: translate(0, -95%);
@@ -12998,7 +13029,7 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
 }
 
 .post-reward .reward-main {
-    z-index: 1003;
+    z-index: 999;
 }
 
 .tk-meta-input .el-input .el-input-group__prepend {
@@ -15104,7 +15135,7 @@ span.hexo-douban-pagenum {
     background: var(--heo-secondbg);
     display: flex;
     overflow: hidden;
-    z-index: 1002;
+    z-index: 999;
     transition: 0.3s;
 }
 
@@ -15245,8 +15276,6 @@ span.hexo-douban-pagenum {
     animation-delay: 1.8s;
 }
 
-
-
 #about-page .author-img {
     margin: 0 30px;
     border-radius: 50%;
@@ -15255,10 +15284,18 @@ span.hexo-douban-pagenum {
     position: relative;
     background: var(--heo-secondbg);
     user-select: none;
+    transition: .3s
 }
 
 #about-page .author-img img {
     border-radius: 200px;
+    overflow: hidden;
+    width: 180px;
+    height: 180px
+}
+
+#about-page .author-img:hover {
+    transform: scale(1.1)
 }
 
 #about-page .author-img::before {
@@ -15290,8 +15327,6 @@ span.hexo-douban-pagenum {
         right: -5px;
     }
 }
-
-
 
 #about-page .author-title {
     font-size: 2rem;
@@ -17430,18 +17465,6 @@ a#toPageButton.haveValue:hover {
     }
 }
 
-
-/*   文章目录样式 */
-a.toc-link {
-    color: currentColor;
-    height:0%;
-}
-/*   文章目录样式 */
-#aside-content #card-toc .toc-content .is-active-link {
-    font-weight: 700;
-    font-size: 20px;
-    color: var(--heo-lighttext);
-}
 /*   code样式 */
 code:not([class]) {
     color: var(--heo-white);

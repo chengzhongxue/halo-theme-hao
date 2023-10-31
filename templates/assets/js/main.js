@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const cardToc = document.getElementById("card-toc");
             cardToc?.remove();
             const $mobileTocButton = document.getElementById("mobile-toc-button")
-            if($mobileTocButton){
+            if ($mobileTocButton) {
                 $('#mobile-toc-button').attr('style', 'display: none');
             }
         } else {
@@ -167,15 +167,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 tocSelector: '.toc-content',
                 contentSelector: '.post-content',
                 headingSelector: 'h1,h2,h3,h4,h5,h6',
-                collapseDepth: 6,
-                headingsOffset: 70,
+                listItemClass: 'toc-item',
+                activeLinkClass: 'active',
+                activeListItemClass: 'active',
+                headingsOffset: -400,
                 scrollSmooth: true,
                 scrollSmoothOffset: -70,
-                tocScrollOffset: 50
+                tocScrollOffset: 50,
             });
+
+            const $cardTocLayout = document.getElementById('card-toc')
+            const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0]
+
+            // toc元素點擊
+            $cardToc.addEventListener('click', (ele) => {
+                if (window.innerWidth < 900) {
+                    $cardTocLayout.classList.remove("open");
+                }
+            })
 
         }
     }
+
 
     /**
      * Rightside
@@ -210,13 +223,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 : saveToLocal.set('aside-status', 'hide', 2)
             $htmlDom.toggle('hide-aside')
         },
-        runMobileToc: () => {
-            const $cardToc = document.getElementById("card-toc")
-            if ($cardToc.classList.contains("open")) {
-                $cardToc.classList.remove("open");
-            } else {
-                $cardToc.classList.add("open");
-            }
+        runMobileToc: item => {
+            const tocEle = document.getElementById("card-toc");
+            tocEle.style.transformOrigin = `right ${item.getBoundingClientRect().top + 17}px`;
+            tocEle.style.transition = "transform 0.3s ease-in-out";
+            tocEle.classList.toggle("open");
+            tocEle.addEventListener(
+                "transitionend",
+                () => {
+                    tocEle.style.transition = "";
+                    tocEle.style.transformOrigin = "";
+                },
+                { once: true }
+            );
         },
     }
 
@@ -230,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 rightSideFn.showOrHideBtn()
                 break
             case "mobile-toc-button":
-                rightSideFn.runMobileToc();
+                rightSideFn.runMobileToc(this);
                 break;
             case 'readmode':
                 rightSideFn.switchReadMode()
