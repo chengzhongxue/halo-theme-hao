@@ -96,11 +96,11 @@
 - 搜索功能 [plugin-search-widget](https://github.com/halo-sigs/plugin-search-widget/releases)
 - 友链页面 [plugin-links](https://github.com/halo-sigs/plugin-links)
 - 瞬间页面 [plugin-moments](https://github.com/halo-sigs/plugin-moments) 
-- 代码高亮 [plugin-prismjs](https://github.com/liuzhihang/plugin-prismjs)
 - 追番插件 [plugin-bilibili-bangumi](https://github.com/Roozenlz/plugin-bilibili-bangumi)
 - 图库插件 [plugin-photos](https://github.com/halo-sigs/plugin-photos)
-- 主题标签 [plugin-haotag](https://github.com/chengzhongxue/plugin-haotag)
+- katex插件 [plugin-katex](https://github.com/chengzhongxue/plugin-katex/releases/)
 - 我的装备 [plugin-equipments](https://github.com/chengzhongxue/plugin-equipments)
+- Markdown / HTML 内容块插件 [plugin-hybrid-edit-block](https://www.halo.run/store/apps/app-NgHnY)
 
 > 更多插件请参见：https://github.com/halo-sigs/awesome-halo
 
