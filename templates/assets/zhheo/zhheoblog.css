@@ -883,6 +883,7 @@ a:hover {
 img {
     max-width: 100%;
     transition: all 0.2s ease 0s;
+    border-style: none
 }
 
 img:not([src]),
@@ -909,133 +910,6 @@ img[src=""] {
     --hlscrollbar-bg: #121212;
     --hlexpand-bg: linear-gradient(180deg, rgba(33, 33, 33, 0.6), rgba(33, 33, 33, 0.9));
 }
-
-/*figure.highlight table::-webkit-scrollbar-thumb {*/
-/*    background: var(--hlscrollbar-bg);*/
-/*}*/
-
-/*figure.highlight pre .deletion {*/
-/*    color: rgb(191, 66, 191);*/
-/*}*/
-
-/*figure.highlight pre .addition {*/
-/*    color: rgb(16, 94, 222);*/
-/*}*/
-
-/*figure.highlight pre .meta {*/
-/*    color: rgb(199, 146, 234);*/
-/*}*/
-
-/*figure.highlight pre .comment {*/
-/*    color: rgb(150, 152, 150);*/
-/*}*/
-
-/*figure.highlight pre .attribute,*/
-/*figure.highlight pre .css .class,*/
-/*figure.highlight pre .css .id,*/
-/*figure.highlight pre .css .pseudo,*/
-/*figure.highlight pre .html .doctype,*/
-/*figure.highlight pre .regexp,*/
-/*figure.highlight pre .ruby .constant,*/
-/*figure.highlight pre .tag .name,*/
-/*figure.highlight pre .variable,*/
-/*figure.highlight pre .xml .doctype,*/
-/*figure.highlight pre .xml .pi,*/
-/*figure.highlight pre .xml .tag .title {*/
-/*    color: var(--heo-red);*/
-/*}*/
-
-/*figure.highlight pre .tag {*/
-/*    color: rgb(137, 221, 255);*/
-/*}*/
-
-/*figure.highlight pre .command,*/
-/*figure.highlight pre .constant,*/
-/*figure.highlight pre .literal,*/
-/*figure.highlight pre .number,*/
-/*figure.highlight pre .params,*/
-/*figure.highlight pre .preprocessor {*/
-/*    color: var(--heo-orange);*/
-/*}*/
-
-/*figure.highlight pre .built_in {*/
-/*    color: var(--heo-yellow);*/
-/*}*/
-
-/*figure.highlight pre .css .rules .attribute,*/
-/*figure.highlight pre .formula,*/
-/*figure.highlight pre .header,*/
-/*figure.highlight pre .inheritance,*/
-/*figure.highlight pre .number,*/
-/*figure.highlight pre .ruby .class .title,*/
-/*figure.highlight pre .ruby .symbol,*/
-/*figure.highlight pre .special,*/
-/*figure.highlight pre .string,*/
-/*figure.highlight pre .value,*/
-/*figure.highlight pre .xml .cdata {*/
-/*    color: var(--heo-green);*/
-/*}*/
-
-/*figure.highlight pre .css .hexcolor,*/
-/*figure.highlight pre .keyword,*/
-/*figure.highlight pre .title {*/
-/*    color: rgb(137, 221, 255);*/
-/*}*/
-
-/*figure.highlight pre .coffeescript .title,*/
-/*figure.highlight pre .function,*/
-/*figure.highlight pre .javascript .title,*/
-/*figure.highlight pre .perl .sub,*/
-/*figure.highlight pre .python .decorator,*/
-/*figure.highlight pre .python .title,*/
-/*figure.highlight pre .ruby .function .title,*/
-/*figure.highlight pre .ruby .title .keyword {*/
-/*    color: var(--heo-blue);*/
-/*}*/
-
-/*figure.highlight pre .javascript .function,*/
-/*figure.highlight pre .tag .attr {*/
-/*    color: rgb(199, 146, 234);*/
-/*}*/
-
-/*#article-container figure.highlight .line.marked {*/
-/*    background-color: rgba(97, 97, 97, 0.314);*/
-/*}*/
-
-/*#article-container figure.highlight table {*/
-/*    display: block;*/
-/*    overflow: auto;*/
-/*    border: none;*/
-/*}*/
-
-/*#article-container figure.highlight table td {*/
-/*    padding: 0px;*/
-/*    border: none;*/
-/*}*/
-
-/*#article-container figure.highlight .gutter pre {*/
-/*    padding-right: 0.5rem;*/
-/*    padding-left: 0.5rem;*/
-/*    background-color: var(--hlnumber-bg);*/
-/*    color: var(--hlnumber-color);*/
-/*    text-align: right;*/
-/*}*/
-
-/*#article-container figure.highlight .code pre {*/
-/*    padding-right: 0.5rem;*/
-/*    padding-left: 0.5rem;*/
-/*    width: 100%;*/
-/*}*/
-
-/*#article-container figure.highlight,*/
-/*#article-container pre {*/
-/*    overflow: auto;*/
-/*    margin: 0px 0px 1rem;*/
-/*    padding: 0px;*/
-/*    background: var(--hl-bg);*/
-/*    color: var(--hl-color);*/
-/*    line-height: 1.6;*/
-/*}*/
 
 blockquote {
     margin: 0px 0px 1rem;
@@ -10226,24 +10100,24 @@ div#author-info__sayhi:hover {
     margin-top: 8px;
     background: var(--heo-card-btn-bg);
     border-radius: 8px;
-    transition: 0.3s !important;
+    transition: .3s ease-out!important
 }
 
 #aside-content > div.sticky_layout > div.card-widget.card-archives > div > ul > li.card-archive-list-item.more.is-center :hover {
     color: var(--heo-white);
     background: var(--heo-blue);
     border-radius: 8px;
-    transition: 0.3s !important;
+    transition: .3s ease-out!important
 }
 
 #aside-content .card-archives ul.card-archive-list > .card-archive-list-item.more span,
 #aside-content .card-categories ul.card-category-list > .card-category-list-item.more span {
-    transition: 0.3s !important;
+    transition: .3s ease-out!important
 }
 
 #aside-content .card-archives ul.card-archive-list > .card-archive-list-item:hover.more span,
 #aside-content .card-categories ul.card-category-list > .card-category-list-item.more span {
-    transition: 0.3s !important;
+    transition: .3s ease-out!important
 }
 
 #aside-content > div.sticky_layout > div.card-widget.card-archives > div > ul > li.card-archive-list-item.more.is-center :hover span {
@@ -10711,6 +10585,7 @@ span.post-meta-categories {
     line-height: 32px;
     height: 32px;
     transition: 0.3s;
+    transition: .3s ease-out
 }
 
 span.post-meta-categories:not(:first-child) {
@@ -12273,7 +12148,7 @@ a.reward-main-btn:hover {
 
     #pagination a.extend.next .pagination_tips_next {
         margin-left: -32px;
-        transition: 0.3s;
+        transition: .3s ease-out 0s;
         opacity: 0;
     }
 
@@ -12285,7 +12160,7 @@ a.reward-main-btn:hover {
 
     #pagination a.extend.prev .pagination_tips_prev {
         margin-right: -32px;
-        transition: 0.3s;
+        transition: .3s ease-out 0s;
         opacity: 0;
     }
 
@@ -14028,7 +13903,7 @@ figure.gallery-group:hover .gallery-group-name::after {
 
 
 .flink#article-container .site-card .img {
-    -webkit-mask-image: -webkit-radial-gradient(center, rgb(255, 255, 255), rgb(0, 0, 0));
+    -webkit-mask-image: -webkit-radial-gradient(center,#fff,#000);
     border-radius: 0;
     height: 120px;
     width: 100%;
@@ -14041,7 +13916,7 @@ figure.gallery-group:hover .gallery-group-name::after {
 /* 头像 */
 .flink#article-container .site-card .info img {
     border-radius: 32px;
-    transition: 0.3s !important;
+    transition: .3s ease-out!important;
     margin: 2px 8px 0 0;
     width: 20px;
     height: 20px;
@@ -16786,7 +16661,7 @@ span.hexo-douban-pagenum {
     z-index: 9999;
     justify-content: center;
     opacity: 0;
-    transition: 0.3s ease-out;
+    transition: .3s ease-out;
     flex-direction: column;
     align-items: center;
     pointer-events: none;
