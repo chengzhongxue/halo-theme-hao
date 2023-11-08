@@ -242,6 +242,10 @@
                 align-items: center
             }
 
+            a.author-info__bottom-group-left:hover {
+                opacity: .8
+            }
+
             #aside-content .card-info .card-info-social-icons {
                 margin: 0;
                 display: flex;
@@ -250,6 +254,7 @@
                 flex-wrap: wrap;
                 cursor: pointer
             }
+
 
             #aside-content .card-info .card-info-social-icons i:hover {
                 transform: rotate(540deg);
@@ -274,9 +279,9 @@
             }
 
             #aside-content .card-info .card-info-social-icons i:hover {
-                background: var(--heo-white-op);
+                background: var(--heo-white);
                 transform: scale(1.1);
-                color: var(--heo-white);
+                color: var(--heo-main);
                 box-shadow: none
             }
 
@@ -300,6 +305,18 @@
                 [data-theme=dark] #aside-content .card-info .card-info-social-icons i {
                     color: var(--heo-white)
                 }
+                [data-theme=dark] .page #aside-content .card-info .card-info-social-icons i {
+                    color: var(--heo-card-bg)
+                }
+            }
+
+            #aside-content .card-info .card-info-data>.card-info-data-item:hover {
+                background: var(--heo-post-blockquote-bg);
+                transform: scale(.97)
+            }
+
+            #aside-content>div.card-widget.card-info>div.card-content>div.card-info-data>.card-info-data-item:hover>a>div.headline,#aside-content>div.card-widget.card-info>div.card-content>div.card-info-data>.card-info-data-item:hover>a>div.length-num {
+                color: var(--heo-blue)
             }
 
             .author-info__description_group {

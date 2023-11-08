@@ -12,6 +12,7 @@
     --heo-main: var(--heo-theme);
     --heo-main-op: var(--heo-theme-op);
     --heo-main-op-deep: var(--heo-theme-op-deep);
+    --heo-main-op-light: var(--heo-theme-op-light);
     --heo-main-none: var(--heo-theme-none);
     --heo-shadow-theme: 0 8px 12px -3px var(--heo-theme-op);
     --heo-shadow-blackdeep: 0 2px 16px -3px rgba(0, 0, 0, 0.15);
@@ -41,6 +42,7 @@
     --heo-theme: #425AEF;
     --heo-theme-op: #4259ef23;
     --heo-theme-op-deep: #4259efdd;
+    --heo-theme-op-light: #4259ef0d;
     --heo-theme-none: #4259ef01;
     --heo-blue: #425AEF;
     --heo-red: #f04a63;
@@ -15084,6 +15086,11 @@ span.hexo-douban-pagenum {
     transition: 0.3s;
 }
 
+.article-sort-item-tags a .tags-punctuation {
+    font-size: 12px;
+    margin-right: 1px
+}
+
 /* v3footer */
 #heo-footer .footer-links {
     display: flex;
@@ -15103,19 +15110,23 @@ span.hexo-douban-pagenum {
 }
 
 #heo-footer .footer-item {
-    font-size: 0.8rem;
-    line-height: 0.8rem;
-    margin: 0.38rem 0;
+    font-size: .8rem;
+    line-height: .8rem;
+    margin: 4px 0;
     color: var(--heo-fontcolor);
     margin-right: auto;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     max-width: 120px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 12px
 }
 
 #heo-footer .footer-item:hover {
-    color: var(--heo-main);
+    color: var(--heo-lighttext);
+    background: var(--heo-main-op-light)
 }
 
 #heo-footer .footer-group {
@@ -15126,6 +15137,9 @@ span.hexo-douban-pagenum {
     display: flex;
     align-items: center;
     margin: 1rem 0 0.7rem 0;
+    color: var(--heo-secondtext);
+    font-size: .8rem;
+    margin-left: 8px
 }
 
 #heo-footer .footer-title-group a {
@@ -15154,7 +15168,8 @@ span.hexo-douban-pagenum {
 
 #heo-footer .footer-title {
     color: var(--heo-secondtext);
-    font-size: 0.8rem;
+    font-size: .8rem;
+    margin-left: 8px
 }
 
 #footer-banner {
@@ -15166,6 +15181,7 @@ span.hexo-douban-pagenum {
     overflow: hidden;
     z-index: 999;
     transition: 0.3s;
+    border-top: var(--style-border-always);
 }
 
 #footer-banner .footer-banner-links {
