@@ -9688,9 +9688,25 @@ span.recent-post-top-text {
     display: none;
 }
 
-#post-meta .post-meta-date {
+#post-meta .post-meta-date,#post-meta .post-meta-author {
     opacity: .6;
-    margin-right: .8rem
+    margin-right: 0.8rem;
+}
+
+#post-info #post-meta a.post-meta-pv,
+#post-info #post-meta a.post-meta-commentcount,
+#post-info #post-meta a.post-meta-editor {
+    color: var(--heo-white);
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+#post-info #post-meta a.post-meta-pv:hover,
+#post-info #post-meta a.post-meta-commentcount:hover,
+#post-info #post-meta a.post-meta-editor:hover{
+    opacity: 1;
+    background: var(--heo-white-op)
 }
 
 
@@ -10666,17 +10682,23 @@ a.extend.prev {
     color: var(--heo-white);
     opacity: 0.8;
     margin-right: 8px;
+    padding: 0 8px 0 4px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    flex-direction: row
 }
 
 #post-firstinfo .post-meta__tags:hover {
     color: var(--heo-white);
     opacity: 1;
+    background: var(--heo-white-op)
 }
 
 span.post-meta-categories {
     background-color: var(--heo-white-op);
     padding: 0 0.5rem;
-    border-radius: 8px;
+    border-radius: 12px;
     line-height: 32px;
     height: 32px;
     transition: 0.3s;
@@ -10706,6 +10728,12 @@ span.post-meta-categories:hover a.post-meta-categories {
     margin-left: 1rem;
 }
 
+.meta-firstline .tag_share .post-meta__tag-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
+
 #post-firstinfo .meta-firstline {
     display: flex;
     align-items: center;
@@ -10731,7 +10759,7 @@ a.post-meta-original {
     padding: 0 0.5rem;
     font-size: 0.7rem;
     margin: auto;
-    border-radius: 8px;
+    border-radius: 12px;
     font-weight: bold;
     height: 32px;
     line-height: 32px;
@@ -10743,7 +10771,6 @@ a.post-meta-original {
 a.post-meta-original:hover {
     color: var(--heo-main) !important;
     background: var(--heo-white) !important;
-    border-radius: 8px !important;
 }
 
 .meta-avatar img:hover {
@@ -10849,14 +10876,8 @@ span.post-meta-pv-cv {
 
 /* 微信公众号同步 */
 span.post-meta-wechat {
-    margin-right: 0.8rem;
+    margin-right: 10px;
     opacity: 0.6;
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-.post-meta-wechat:hover {
-    opacity: 1;
 }
 
 span.post-meta-position {
@@ -10912,20 +10933,9 @@ span.post-meta-position {
     opacity: 0.6;
 }
 
-.post-meta-pv {
+.post-meta-pv,.post-meta-commentcount,.post-meta-editor {
     opacity: 0.6;
-    margin-right: 0.8rem;
-}
-
-.post-meta-commentcount {
-    opacity: 0.6;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-right: 0.8rem;
-}
-
-.post-meta-commentcount:hover {
-    opacity: 1;
+    margin-right: 2px
 }
 
 #twikoo-count,#ArtalkCount {
@@ -10940,6 +10950,9 @@ span.post-meta-position {
 
 .el-textarea .el-input__count {
     color: var(--heo-secondtext) !important;
+    -webkit-user-select: none;
+    bottom: 8px!important;
+    right: 12px!important
 }
 
 .post-meta-commentcount i {
@@ -10955,7 +10968,7 @@ span.post-meta-position {
 }
 
 .inline-image a:hover {
-    background: none !important;
+    background: 0 0!important;
     box-shadow: none !important;
 }
 
@@ -11005,12 +11018,16 @@ span.post-meta-position {
     text-decoration: none;
     color: var(--heo-fontcolor);
     line-height: 1;
+    border-radius: 12px
 }
 
 #post-info #post-meta a:hover {
     text-decoration: none;
-    color: var(--heo-blue);
-    border-radius: 12px
+    color: var(--heo-white)
+}
+
+#post-info #post-meta i {
+    line-height: 1
 }
 
 /* 文章标题前图标 */
@@ -13328,7 +13345,18 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     }
 }
 
+#post .tag_share .post-meta__tag-list {
+    display: flex;
+    padding: 0;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: row
+}
 
+#post .tag_share .post-meta__tag-list a {
+    margin-bottom: 8px;
+    margin-right: 8px
+}
 
 #page .tag-cloud-list a {
     color: var(--heo-fontcolor) !important;
@@ -13341,6 +13369,7 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
     -webkit-transform-style: preserve-3d;
     border: var(--style-border-always);
     box-shadow: var(--heo-shadow-border);
+    align-items: center
 }
 
 #page .tag-cloud-list a:hover {
