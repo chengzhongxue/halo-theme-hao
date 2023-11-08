@@ -152,6 +152,22 @@ i.haofont {
     display: var(--fa-display,inline-block);
 }
 
+#page img {
+    border-radius: 12px
+}
+
+#page p a:not(.headerlink) {
+    text-decoration: none;
+    border-bottom: 2px solid var(--heo-lighttext);
+    font-weight: 700;
+    padding: 0 4px;
+    border-radius: 4px 4px 0 0
+}
+
+#page p a:hover {
+    text-decoration: none
+}
+
 /* 旧版css */
 html {
     line-height: 1.15;
