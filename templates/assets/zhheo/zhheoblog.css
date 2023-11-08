@@ -7521,10 +7521,11 @@ span.fund_name {
 #power-star-image {
     width: 60px;
     height: 60px;
-    border-radius: 8px;
+    border-radius: 60px;
     background-size: cover;
     margin-right: 12px;
-    border: var(--style-border-always)
+    border: var(--style-border-always);
+    transition: .3s ease-out
 }
 
 a#power-star {
@@ -7537,12 +7538,18 @@ a#power-star {
     justify-content: flex-start;
     position: relative;
     margin: 12px 0;
-    background: var(--heo-secondbg)
+    background: var(--heo-secondbg);
+    transition: .3s ease-out
 }
 
 a#power-star:hover {
     background: var(--heo-lighttext);
-    color: var(--heo-card-bg)
+    color: var(--heo-card-bg);
+    box-shadow: var(--heo-shadow-theme)
+}
+
+a#power-star:hover #power-star-image {
+    transform: scale(.9);
 }
 
 div#power-star-title {
