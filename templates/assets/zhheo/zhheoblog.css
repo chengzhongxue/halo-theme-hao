@@ -152,7 +152,7 @@ i.haofont {
     display: var(--fa-display,inline-block);
 }
 
-#page p a:not(.headerlink) {
+#page #post-comment p a:not(.headerlink):not(.fancybox) {
     text-decoration: none;
     border-bottom: 2px solid var(--heo-lighttext);
     font-weight: 700;
@@ -3083,17 +3083,23 @@ ul {
     overflow-wrap: break-word;
 }
 
-#article-container a {
-    color: rgb(48, 122, 246);
-}
-
 #article-container a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    background: var(--heo-main);
+    border-width: 0;
+    color: var(--heo-white);
+    border-radius: 4px
 }
 
 #article-container img {
     display: block;
     margin: 0px auto 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+    #article-container img {
+        max-width:100%
+    }
 }
 
 #article-container p {
@@ -11157,20 +11163,19 @@ details[open]:not(.tk-admin-config-group):not(.card-friend-class-name) > summary
 /* 文章中的超链接 */
 #article-container a {
     text-decoration: none;
-    border-bottom: 2px solid var(--heo-lighttext);
+    border-bottom: 2px dotted var(--heo-lighttext);
     color: var(--heo-fontcolor);
-    font-weight: bold;
+    font-weight: 700;
     padding: 0 4px;
-    border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0
 }
 
-#article-container a:not(.fancybox):hover {
+#article-container .site-card:hover a:not(.fancybox) {
     text-decoration: none;
     border-bottom: 2px solid var(--heo-none);
     color: var(--heo-white);
     background: var(--heo-main);
-    border-radius: 4px;
-    box-shadow: var(--heo-shadow-main);
+    box-shadow: var(--heo-shadow-main)
 }
 
 #article-container a.fancybox {
@@ -11179,6 +11184,7 @@ details[open]:not(.tk-admin-config-group):not(.card-friend-class-name) > summary
     margin: auto;
     display: contents;
     width: fit-content;
+    -webkit-user-select: none
 }
 
 #article-container a.fancybox img {
@@ -11421,6 +11427,9 @@ blockquote p {
     object-fit: cover;
 }
 
+#article-container img.error {
+    content: url(../images/404.gif)
+}
 
 /* 文章视频 */
 .doge-inner-player {
