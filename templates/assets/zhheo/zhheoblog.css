@@ -192,6 +192,11 @@ pre {
 
 a {
     background-color: transparent;
+    color: var(--heo-fontcolor);
+    text-decoration: none;
+    transition: all .3s ease-out 0s;
+    overflow-wrap: break-word;
+    -webkit-user-drag: none;
 }
 
 abbr[title] {
@@ -835,15 +840,8 @@ button {
     cursor: pointer;
 }
 
-a {
-    color: rgb(153, 169, 191);
-    text-decoration: none;
-    transition: all 0.2s ease 0s;
-    overflow-wrap: break-word;
-}
-
 a:hover {
-    color: rgb(48, 122, 246);
+    color: var(--heo-lighttext)
 }
 
 #aside-content .author-info__description,
@@ -1421,8 +1419,8 @@ blockquote footer cite::before {
     width: 100%;
     height: 120px;
     overflow: hidden;
-    border-radius: 12px 12px 0px 0px;
-    background: rgb(246, 246, 246);
+    border-radius: 12px 12px 0 0;
+    background: #f6f6f6
 }
 
 @media screen and (max-width: 500px) {
@@ -6070,15 +6068,6 @@ i.fab {
     color: var(--heo-white);
 }
 
-/* 全局超链接 */
-a {
-    color: var(--heo-fontcolor);
-}
-
-a:hover {
-    color: var(--heo-lighttext);
-}
-
 /* 分割线 */
 hr {
     display: none;
@@ -10330,17 +10319,18 @@ a.extend.prev {
 
 @media screen and (max-width: 768px) {
     .coverdiv {
-        margin: 0 0 0 auto;
-        transform: rotate(0deg) translateY(0) scale(1);
-        filter: blur(0px);
+        margin:0 0 0 auto;
+        transform: rotate(0) translateY(0) scale(1);
+        filter: blur(0);
         width: 100%;
         position: fixed;
         height: 30rem;
-        z-index: 1;
+        z-index: 1
     }
 
     .coverdiv:after {
-        box-shadow: 0px 0px 205px 59px var(--heo-main) inset;
+        box-shadow: 0 0 105px 99px var(--heo-main) inset;
+        height: 70%
     }
 
 }
@@ -10474,11 +10464,6 @@ a.extend.prev {
         z-index: 10;
     }
 
-    #post {
-        background:var(--heo-background)!important;
-        border: none;
-    }
-
     .post .layout > div:first-child:not(.recent-posts) {
         border-radius: 12px 12px 0 0;
     }
@@ -10505,21 +10490,14 @@ a.extend.prev {
     max-width: 1400px;
 }
 
+.layout#content-inner p img {
+    margin: auto
+}
+
 /* 隐藏主页头图 */
 .full_page #post-cover {
     display: none;
 }
-
-/* @keyframes postheadimg {
-  from {
-    backdrop-filter: blur(0px);
-    background-color: rgba(0,0,0,0.2);
-  }
-
-  to {
-    backdrop-filter: blur(300px);
-    background-color: rgba(0,0,0,0.2);
-  } */
 
 /* 文章头部 */
 #page-header #post-info {
@@ -10692,7 +10670,7 @@ a.post-meta-original:hover {
         position: absolute;
         content: '';
         width: 100%;
-        height: 100%;
+        height: 200%;
         bottom: 0;
         left: 0;
         box-shadow: 0px -214px 287px 45px var(--heo-main) inset;
@@ -11188,7 +11166,7 @@ details[open]:not(.tk-admin-config-group):not(.card-friend-class-name) > summary
 }
 
 #article-container a.fancybox img {
-    cursor: zoom-in;
+    cursor: zoom-in
 }
 
 .site-card-avatar a.fancybox {
@@ -13782,20 +13760,23 @@ figure.gallery-group:hover .gallery-group-name::after {
     text-align: left;
 }
 
+.flink#article-container .site-card:hover .info .desc {
+    color: var(--heo-card-bg);
+}
+
 @media screen and (min-width: 768px) {
     .flink#article-container .site-card:hover .info .desc {
         -webkit-line-clamp: 4;
     }
-}
+    .flink#article-container .site-card:hover .info .desc {
+        transition: .3s;
+        color: var(--heo-card-bg);
+        width: 100%
+    }
 
-.flink#article-container .site-card:hover .info .desc {
-    transition: 0.3s;
-    color: var(--heo-card-bg);
-    width: 100%
-}
-
-.flink#article-container .site-card:hover .info {
-    background: var(--heo-theme);
+    .flink#article-container .site-card:hover .info {
+        background: var(--heo-theme)
+    }
 }
 
 /* 背景 */
@@ -13810,16 +13791,6 @@ figure.gallery-group:hover .gallery-group-name::after {
     width: calc(100% / 7 - 16px);
     background: var(--heo-card-bg);
     box-shadow: var(--heo-shadow-border);
-}
-
-@media screen and (min-width: 1300px) {
-    .flink#article-container .site-card:hover {
-        transform: scale(1.03);
-    }
-
-    .flink#article-container .site-card:active {
-        transition: 0.95;
-    }
 }
 
 .site-card-tag {
@@ -13945,7 +13916,6 @@ figure.gallery-group:hover .gallery-group-name::after {
     min-height: 20px;
     background: var(--heo-secondbg);
 }
-
 
 /* 边距 */
 .flink#article-container .site-card-group {
