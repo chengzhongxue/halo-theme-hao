@@ -11284,10 +11284,20 @@ strong {
     width: 60px;
     min-width: 60px;
     height: 60px;
-    background-size: cover !important;
-    border-radius: 60px;
-    background: var(--heo-card-bg);
-    pointer-events: none;
+    background-size: cover;
+    border-radius: 8px;
+    background-color: var(--heo-card-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+#article-container .tag-Link .tag-link-bottom .tag-link-left i {
+    margin: 0;
+    padding: 0;
+    margin: auto;
+    font-size: 24px;
+    color: var(--heo-fontcolor)
 }
 
 #article-container .tag-Link .tag-link-bottom .tag-link-right {
