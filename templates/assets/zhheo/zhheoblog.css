@@ -17051,7 +17051,7 @@ span.hexo-douban-pagenum {
 }
 
 #console .close-btn i:hover {
-    color: var(--heo-hovertext);
+    color: var(--heo-main);
     background: var(--heo-main-op);
     border-radius: 32px;
 }
