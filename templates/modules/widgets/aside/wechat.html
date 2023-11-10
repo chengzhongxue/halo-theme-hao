@@ -24,7 +24,15 @@ th:with="faceImg = ${theme.config.sidebar.wechat.wechatImgFace}, backImg=${theme
             top: 0;
             background: url([[${theme.config.sidebar.wechat.wechatImg}]]) center center no-repeat;
             content: '';
+            background-size: cover;
+            transition: .2s cubic-bezier(.45,.04,.43,1.21)
         }
+        #aside-content .card-widget#card-wechat:hover:before {
+            top: 100%;
+            opacity: 0;
+            transition: .3s ease-out
+        }
+
     </style>
 </div>
 </html>
