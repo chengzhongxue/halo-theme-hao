@@ -1,11 +1,11 @@
 @font-face {
   font-family: "haofont"; /* Project id 4159149 */
-  src: url('iconfont.eot?t=1697559754295'); /* IE9 */
-  src: url('iconfont.eot?t=1697559754295#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('iconfont.woff2?t=1697559754295') format('woff2'),
-       url('iconfont.woff?t=1697559754295') format('woff'),
-       url('iconfont.ttf?t=1697559754295') format('truetype'),
-       url('iconfont.svg?t=1697559754295#haofont') format('svg');
+  src: url('iconfont.eot?t=1699626796799'); /* IE9 */
+  src: url('iconfont.eot?t=1699626796799#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('iconfont.woff2?t=1699626796799') format('woff2'),
+       url('iconfont.woff?t=1699626796799') format('woff'),
+       url('iconfont.ttf?t=1699626796799') format('truetype'),
+       url('iconfont.svg?t=1699626796799#haofont') format('svg');
 }
 
 .haofont {
@@ -14,6 +14,18 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.hao-icon-yingwen:before {
+  content: "\e6d6";
+}
+
+.hao-icon-jianti:before {
+  content: "\e6d7";
+}
+
+.hao-icon-fanti:before {
+  content: "\e6d8";
 }
 
 .hao-icon-aifadian-line:before {

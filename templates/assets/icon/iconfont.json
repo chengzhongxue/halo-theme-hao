@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "6845137",
+      "name": "英文",
+      "font_class": "yingwen",
+      "unicode": "e6d6",
+      "unicode_decimal": 59094
+    },
+    {
+      "icon_id": "6847086",
+      "name": "简体",
+      "font_class": "jianti",
+      "unicode": "e6d7",
+      "unicode_decimal": 59095
+    },
+    {
+      "icon_id": "6847093",
+      "name": "繁体",
+      "font_class": "fanti",
+      "unicode": "e6d8",
+      "unicode_decimal": 59096
+    },
+    {
       "icon_id": "37108822",
       "name": "aifadian-line",
       "font_class": "aifadian-line",
