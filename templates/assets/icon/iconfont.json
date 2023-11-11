@@ -6,6 +6,69 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "8555184",
+      "name": "disc-fill",
+      "font_class": "disc-fill",
+      "unicode": "e6fd",
+      "unicode_decimal": 59133
+    },
+    {
+      "icon_id": "8555113",
+      "name": "signal-tower-fill",
+      "font_class": "signal-tower-fill",
+      "unicode": "e6f2",
+      "unicode_decimal": 59122
+    },
+    {
+      "icon_id": "10914998",
+      "name": "search-2-line",
+      "font_class": "search--line",
+      "unicode": "e697",
+      "unicode_decimal": 59031
+    },
+    {
+      "icon_id": "10916939",
+      "name": "chat-1-fill",
+      "font_class": "chat--fill",
+      "unicode": "e6b2",
+      "unicode_decimal": 59058
+    },
+    {
+      "icon_id": "17511881",
+      "name": "apps-fill",
+      "font_class": "apps-fill",
+      "unicode": "e82d",
+      "unicode_decimal": 59437
+    },
+    {
+      "icon_id": "7458391",
+      "name": "Home",
+      "font_class": "Home",
+      "unicode": "e69a",
+      "unicode_decimal": 59034
+    },
+    {
+      "icon_id": "6845137",
+      "name": "英文",
+      "font_class": "yingwen",
+      "unicode": "e6d6",
+      "unicode_decimal": 59094
+    },
+    {
+      "icon_id": "6847086",
+      "name": "简体",
+      "font_class": "jianti",
+      "unicode": "e6d7",
+      "unicode_decimal": 59095
+    },
+    {
+      "icon_id": "6847093",
+      "name": "繁体",
+      "font_class": "fanti",
+      "unicode": "e6d8",
+      "unicode_decimal": 59096
+    },
+    {
       "icon_id": "37108822",
       "name": "aifadian-line",
       "font_class": "aifadian-line",
@@ -433,13 +496,6 @@
       "unicode_decimal": 58897
     },
     {
-      "icon_id": "34999311",
-      "name": "magnifying-glass",
-      "font_class": "magnifying-glass",
-      "unicode": "e612",
-      "unicode_decimal": 58898
-    },
-    {
       "icon_id": "34999312",
       "name": "message",
       "font_class": "message",
@@ -608,13 +664,6 @@
       "unicode_decimal": 58922
     },
     {
-      "icon_id": "35006421",
-      "name": "grip-vertical",
-      "font_class": "grip-vertical",
-      "unicode": "e62b",
-      "unicode_decimal": 58923
-    },
-    {
       "icon_id": "35006529",
       "name": "bars",
       "font_class": "bars",
@@ -641,13 +690,6 @@
       "font_class": "list-ul",
       "unicode": "e62f",
       "unicode_decimal": 58927
-    },
-    {
-      "icon_id": "35006776",
-      "name": "comments",
-      "font_class": "comments",
-      "unicode": "e630",
-      "unicode_decimal": 58928
     },
     {
       "icon_id": "35006786",

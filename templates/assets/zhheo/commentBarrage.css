@@ -43,7 +43,7 @@
 }
 
 .comment-barrage-item:hover {
-    border: var(--style-border-hover);
+    border: 1px solid var(--heo-main);
     box-shadow: var(--heo-shadow-main);
 }
 
@@ -74,7 +74,7 @@
 }
 
 .comment-barrage-item .comment-barrage-close:hover .haofont {
-    color: var(--heo-lighttext);
+    color: var(--heo-main);
 }
 
 

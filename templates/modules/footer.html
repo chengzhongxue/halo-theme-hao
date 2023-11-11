@@ -107,18 +107,16 @@
         <div class="footer-banner-links">
             <div class="footer-banner-left">
                 <div id="footer-banner-tips">
-                    <div class="copyright" th:if="${not #strings.isEmpty(theme.config.basics.siteStartTime)}">
-                        ©[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] - [[${#dates.format(new
-                        java.util.Date(), 'yyyy')}]]
+                    <div style="display: flex;flex-direction: row;align-items: center;">
+                        <th:block th:if="${not #strings.isEmpty(theme.config.basics.siteStartTime)}">
+                            ©[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] - [[${#dates.format(new
+                            java.util.Date(), 'yyyy')}]]
+                        </th:block>
+                        <th:block th:if="${#strings.isEmpty(theme.config.basics.siteStartTime)}">
+                            ©[[${#dates.format(new java.util.Date(), 'yyyy')}]]
+                        </th:block>
+                        By <a class="footer-banner-link" href="/" target="_blank">[[${site.title}]]</a>
                     </div>
-                    <div class="copyright" th:if="${#strings.isEmpty(theme.config.basics.siteStartTime)}">
-                        ©[[${#dates.format(new java.util.Date(), 'yyyy')}]]
-                    </div>
-                </div>
-                <br>
-                <div>
-                    &nbsp;
-                    By <a class="footer-banner-link" href="/" target="_blank">[[${site.title}]]</a>
                 </div>
             </div>
             <div class="footer-banner-right">

@@ -4,7 +4,7 @@
     <!-- 已知问题 PJAX 下，comment 首次请求会出错。当前的临时解决办法是使用 js 重试 -->
     <div id="post-comment">
         <div class="comment-head">
-            <div class="comment-headline"><i class="haofont hao-icon-comments"></i> <span>评论</span></div>
+            <div class="comment-headline"><i class="haofont hao-icon-chat--fill" style="font-size: 20px;"></i> <span>评论</span></div>
             <div  class="comment-randomInfo">
                 <a th:if="${theme.config.comments.visitorMail.visitorMailEnable}"
                    onclick="heo.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a>

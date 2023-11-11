@@ -98,14 +98,20 @@
                            class="post-meta-commentcount"  data-flag-title="评论数"
                            title="评论数"
                            href="#post-comment">
-                            <i class="haofont hao-icon-comments post-meta-icon"></i>
+                            <i class="haofont hao-icon-chat--fill post-meta-icon" style="font-size: 17px;"></i>
                             <span class="post-meta-label">评论:</span>
                             <span th:if="${#strings.equals(theme.config.comments.use, 'commentWidget')}"
-                                  id="comment-count" th:text="${post.stats.comment}"></span>
+                                  id="comment-count" th:text="${post.stats.comment}">
+                                <i class="haofont hao-icon-spinner fa-spin"></i>
+                            </span>
                             <span th:if="${#strings.equals(theme.config.comments.use, 'Twikoo')}"
-                                  id="twikoo-count"></span>
+                                  id="twikoo-count">
+                                <i class="haofont hao-icon-spinner fa-spin"></i>
+                            </span>
                             <span th:if="${#strings.equals(theme.config.comments.use, 'Artalk')}"
-                                  id="ArtalkCount"></span>
+                                  id="ArtalkCount">
+                                <i class="haofont hao-icon-spinner fa-spin"></i>
+                            </span>
                         </a>
                         <a class="post-meta-editor" sec:authorize="isAuthenticated()" data-flag-title="编辑文章"
                            title="编辑文章"
