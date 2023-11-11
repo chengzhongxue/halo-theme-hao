@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const msgToTraditionalChinese = translate.msgToTraditionalChinese; // 此處可以更改為你想要顯示的文字
     const msgToSimplifiedChinese = translate.msgToSimplifiedChinese; // 同上，但兩處均不建議更改
     // 此處可以更改為你想要顯示的文字
-    const rightMenuMsgToTraditionalChinese = '<i class="haofont hao-icon-fanti"></i><span>轉為繁體</span>'
+    const rightMenuMsgToTraditionalChinese = '<i class="haofont hao-icon-fanti" style="font-size: 19px;"></i><span>轉為繁體</span>'
     // 同上，但兩處均不建議更改
-    const rightMenuMsgToSimplifiedChinese = '<i class="haofont hao-icon-jianti"></i><span>转为简体</span>'
+    const rightMenuMsgToSimplifiedChinese = '<i class="haofont hao-icon-jianti" style="font-size: 19px;"></i><span>转为简体</span>'
     
     
     let currentEncoding = defaultEncoding

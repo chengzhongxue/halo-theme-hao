@@ -1,11 +1,11 @@
 @font-face {
   font-family: "haofont"; /* Project id 4159149 */
-  src: url('iconfont.eot?t=1699626796799'); /* IE9 */
-  src: url('iconfont.eot?t=1699626796799#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('iconfont.woff2?t=1699626796799') format('woff2'),
-       url('iconfont.woff?t=1699626796799') format('woff'),
-       url('iconfont.ttf?t=1699626796799') format('truetype'),
-       url('iconfont.svg?t=1699626796799#haofont') format('svg');
+  src: url('iconfont.eot?t=1699690237296'); /* IE9 */
+  src: url('iconfont.eot?t=1699690237296#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('iconfont.woff2?t=1699690237296') format('woff2'),
+       url('iconfont.woff?t=1699690237296') format('woff'),
+       url('iconfont.ttf?t=1699690237296') format('truetype'),
+       url('iconfont.svg?t=1699690237296#haofont') format('svg');
 }
 
 .haofont {
@@ -14,6 +14,30 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.hao-icon-disc-fill:before {
+  content: "\e6fd";
+}
+
+.hao-icon-signal-tower-fill:before {
+  content: "\e6f2";
+}
+
+.hao-icon-search--line:before {
+  content: "\e697";
+}
+
+.hao-icon-chat--fill:before {
+  content: "\e6b2";
+}
+
+.hao-icon-apps-fill:before {
+  content: "\e82d";
+}
+
+.hao-icon-Home:before {
+  content: "\e69a";
 }
 
 .hao-icon-yingwen:before {
@@ -272,10 +296,6 @@
   content: "\e611";
 }
 
-.hao-icon-magnifying-glass:before {
-  content: "\e612";
-}
-
 .hao-icon-message:before {
   content: "\e613";
 }
@@ -372,10 +392,6 @@
   content: "\e62a";
 }
 
-.hao-icon-grip-vertical:before {
-  content: "\e62b";
-}
-
 .hao-icon-bars:before {
   content: "\e62c";
 }
@@ -390,10 +406,6 @@
 
 .hao-icon-list-ul:before {
   content: "\e62f";
-}
-
-.hao-icon-comments:before {
-  content: "\e630";
 }
 
 .hao-icon-comment-sms:before {

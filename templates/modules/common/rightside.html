@@ -11,7 +11,7 @@
         <div id="rightside-config-show">
             <button id="rightside-config" type="button" title="设置"><i class="haofont hao-icon-gear"></i></button>
             <button th:if="${htmlType == 'post'}" class="close" id="mobile-toc-button" type="button" title="目录"><i class="haofont hao-icon-list-ul"></i></button>
-            <a id="to_comment" href="#post-comment" title="直达评论" ><i class="haofont hao-icon-comments"></i></a>
+            <a id="to_comment" href="#post-comment" title="直达评论" ><i class="haofont hao-icon-chat--fill" style="font-size: 17px;"></i></a>
             <a th:if="${theme.config.comments.commentBarrageConfig.commentBarrageEnable}" id="switch-commentBarrage" href="javascript:heo.switchCommentBarrage();" rel="external nofollow noreferrer" title="开关弹幕" draggable="false" data-pjax-state="external"><i class="haofont hao-icon-danmu"></i></a>
             <button id="go-up" type="button" title="回到顶部"><i class="haofont hao-icon-arrow-up"></i></button>
             <a th:if="${htmlType == 'post' || htmlType == 'page'}"

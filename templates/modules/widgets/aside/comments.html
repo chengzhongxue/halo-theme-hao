@@ -7,7 +7,7 @@
        title="查看更多"
        class="card-more-btn"
        style="cursor:pointer" draggable="false"><i class="haofont hao-icon-chevron-right"></i></a>
-    <div class="item-headline"><i class="haofont hao-icon-comments"></i><span>最新评论</span></div>
+    <div class="item-headline"><i class="haofont hao-icon-chat--fill" style="font-size: 19px;"></i><span>最新评论</span></div>
     <div class="aside-list" id="newcomm">
         <th:block th:if="${#strings.equals(theme.config.comments.use, 'commentWidget') }"
                   th:with="newcommentnumber = ${#conversions.convert(theme.config.sidebar.newcomment.newcommentnumber, 'java.lang.Integer') >= 0 ?  theme.config.sidebar.newcomment.newcommentnumber : 5}">

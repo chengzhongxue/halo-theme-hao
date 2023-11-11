@@ -836,6 +836,11 @@ table th {
     color: rgb(247, 247, 247);
 }
 
+.fa-spin {
+    animation: heo-spin 1.2s linear infinite;
+    opacity: .6
+}
+
 button {
     padding: 0px;
     outline: 0px;
@@ -2302,7 +2307,7 @@ blockquote footer cite::before {
     display: inline-block;
     vertical-align: middle;
     font-weight: 700;
-    font-size: 1.43em;
+    font-size: 19px;
 }
 
 #post-comment .comment-head #comment-switch {
@@ -2571,10 +2576,6 @@ blockquote footer cite::before {
     box-shadow: var(--heo-shadow-main)
 }
 
-#body-wrap #travellings_button:hover a i {
-    color: var(--heo-white)
-}
-
 #body-wrap #travellings_button::after {
     --height: 1.8rem;
     content: attr(title);
@@ -2597,7 +2598,7 @@ blockquote footer cite::before {
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
-    color: var(--heo-white);
+    color: var(--heo-card-bg);
     background: var(--heo-white-op)!important;
     -webkit-box-shadow: var(--heo-shadow-nav);
     box-shadow: var(--heo-shadow-nav);
@@ -2656,11 +2657,6 @@ blockquote footer cite::before {
 #page-header.nav-fixed #nav #toggle-menu,
 #page-header.nav-fixed #nav a {
     text-shadow: none;
-}
-@media screen and (min-width: 900px) {
-    #page-header.nav-fixed #nav #site-name:hover {
-        color: var(--heo-white);
-    }
 }
 
 #page-header.nav-visible #nav {
@@ -4910,6 +4906,7 @@ html {
 #page-header #nav #nav-right .nav-button a i,
 #page-header #nav #nav-left .nav-button a i {
     line-height: 1;
+    font-size: 22px;
 }
 
 #page-header #nav #nav-right div,
@@ -5251,6 +5248,10 @@ html {
     color: var(--heo-fontcolor)
 }
 
+.page .back-home-button:hover {
+    color: var(--heo-card-bg)
+}
+
 @media screen and (max-width: 768px) {
     .back-home-button {
         display: none;
@@ -5261,6 +5262,9 @@ html {
     color: var(--heo-fontcolor);
 }
 
+#page-header.not-top-img #nav .back-home-button i {
+    font-size: 20px
+}
 
 .back-home-button:hover {
     background: var(--heo-main);
@@ -5443,21 +5447,22 @@ html {
     }
 
     #nav #site-name:after {
-        background: url(../images/home.webp) no-repeat 50% 50%;
         opacity: 0;
         position: absolute;
         display: flex;
         z-index: 1;
-        width: 74px;
-        height: 58px;
-        content: "";
-        transition: 0s;
-        transition-timing-function: ease-in;
-        transform: scale(0.4);
+        content: "\e69a";
+        transition: .1s;
+        font-family: haofont!important;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        line-height: 1
     }
 
     .post #nav #site-name:hover {
         background: var(--heo-white-op);
+        color: var(--heo-white)
     }
 
     .nav-fixed #nav #site-name:hover {
@@ -5467,8 +5472,6 @@ html {
 
     #nav #site-name:hover:after {
         opacity: 1;
-        transform: translateY(0px) scale(0.3);
-        transition-timing-function: ease-in;
     }
 
     #nav .back-home-button:hover {
@@ -5513,7 +5516,7 @@ html {
         line-height: 36px;
     }
 
-    .page #page-header.nav-fixed #nav #page-name-text:hover:after {
+    #page-header.nav-fixed #nav #page-name-text:hover:after {
         color: var(--heo-card-bg);
     }
 
@@ -5934,8 +5937,8 @@ i.fab {
 
 /* 消息弹窗 */
 .snackbar-container {
-    background: var(--heo-main) !important;
-    color: var(--heo-white) !important;
+    background: var(--heo-lighttext)!important;
+    color: var(--heo-card-bg)!important;
     border-radius: 0 !important;
     display: flex;
     justify-content: center !important;
@@ -5948,6 +5951,7 @@ i.fab {
 }
 
 .snackbar-container p {
+    color: var(--heo-card-bg)!important;
     font-weight: bold !important;
     text-align: center !important;
     font-size: 0.8rem !important;
@@ -5956,7 +5960,7 @@ i.fab {
 }
 
 .snackbar-container .action {
-    color: var(--heo-white) !important;
+    color: var(--heo-card-bg)!important;
     padding: 4px 6px !important;
     font-weight: bold;
     border-radius: 8px !important;
@@ -5965,8 +5969,8 @@ i.fab {
 }
 
 .snackbar-container .action:hover {
-    color: var(--heo-main) !important;
-    background: var(--heo-white) !important;
+    color: var(--heo-lighttext)!important;
+    background: var(--heo-card-bg)!important
 }
 
 .snackbar-container::after {
@@ -16966,6 +16970,10 @@ span.hexo-douban-pagenum {
 
 #console .button-group .console-btn-item:hover a {
     background: var(--heo-main);
+}
+
+#console .button-group .console-btn-item a i {
+    font-size: 24px
 }
 
 #console .button-group .console-btn-item a {
