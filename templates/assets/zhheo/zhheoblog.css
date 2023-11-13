@@ -721,6 +721,16 @@ template {
     }
 }
 
+@keyframes heo-spin {
+    0% {
+        transform: rotate(0)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
 :root {
     --global-font-size: 16px;
     --global-bg: #fff;
