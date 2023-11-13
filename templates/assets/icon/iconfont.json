@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "17511807",
+      "name": "moon-clear-fill",
+      "font_class": "moon-clear-fill",
+      "unicode": "e821",
+      "unicode_decimal": 59425
+    },
+    {
+      "icon_id": "22554653",
+      "name": "eicon_train-line",
+      "font_class": "eicon_train-line",
+      "unicode": "e698",
+      "unicode_decimal": 59032
+    },
+    {
       "icon_id": "8555184",
       "name": "disc-fill",
       "font_class": "disc-fill",
@@ -984,20 +998,6 @@
       "font_class": "heartbeat",
       "unicode": "e65a",
       "unicode_decimal": 58970
-    },
-    {
-      "icon_id": "35014836",
-      "name": "jike",
-      "font_class": "a-2",
-      "unicode": "e65b",
-      "unicode_decimal": 58971
-    },
-    {
-      "icon_id": "35015039",
-      "name": "jike",
-      "font_class": "jike",
-      "unicode": "e65c",
-      "unicode_decimal": 58972
     },
     {
       "icon_id": "35015857",

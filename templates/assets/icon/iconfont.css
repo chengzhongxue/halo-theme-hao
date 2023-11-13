@@ -1,11 +1,11 @@
 @font-face {
   font-family: "haofont"; /* Project id 4159149 */
-  src: url('iconfont.eot?t=1699690237296'); /* IE9 */
-  src: url('iconfont.eot?t=1699690237296#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('iconfont.woff2?t=1699690237296') format('woff2'),
-       url('iconfont.woff?t=1699690237296') format('woff'),
-       url('iconfont.ttf?t=1699690237296') format('truetype'),
-       url('iconfont.svg?t=1699690237296#haofont') format('svg');
+  src: url('iconfont.eot?t=1699854542133'); /* IE9 */
+  src: url('iconfont.eot?t=1699854542133#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('iconfont.woff2?t=1699854542133') format('woff2'),
+       url('iconfont.woff?t=1699854542133') format('woff'),
+       url('iconfont.ttf?t=1699854542133') format('truetype'),
+       url('iconfont.svg?t=1699854542133#haofont') format('svg');
 }
 
 .haofont {
@@ -14,6 +14,14 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.hao-icon-moon-clear-fill:before {
+  content: "\e821";
+}
+
+.hao-icon-eicon_train-line:before {
+  content: "\e698";
 }
 
 .hao-icon-disc-fill:before {
@@ -574,14 +582,6 @@
 
 .hao-icon-heartbeat:before {
   content: "\e65a";
-}
-
-.hao-icon-a-2:before {
-  content: "\e65b";
-}
-
-.hao-icon-jike:before {
-  content: "\e65c";
 }
 
 .hao-icon-heartbeat1:before {
