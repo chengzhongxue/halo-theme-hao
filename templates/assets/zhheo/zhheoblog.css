@@ -5162,7 +5162,7 @@ html {
 }
 
 .console-button .back-menu-list-groups .back-menu-list {
-    display: flex;
+    display: block;
     flex-direction: row;
     flex-wrap: wrap;
     width: 140px;
@@ -5214,10 +5214,6 @@ html {
     pointer-events: auto;
     left: 1.8rem;
     transform: scale(1);
-}
-
-.console-button .back-menu-list .back-menu-item {
-    width: 140px;
 }
 
 @media screen and (max-width: 768px) {
