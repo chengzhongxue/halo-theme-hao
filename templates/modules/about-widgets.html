@@ -3,16 +3,9 @@
 
 <!-- 关于小组件 -->
 <th:block th:fragment="about-widgets(widgets)"
-     th:if="${ not #strings.isEmpty(widgets)}">
-
-    <th:block>
-        <th:block th:each="widget : ${#strings.listSplit(widgets, ',')}">
-            <th:block >
-                <th:block th:replace="~{'modules/widgets/about-widgets/'+ ${widget}}"/>
-            </th:block>
+     th:if="${not #lists.isEmpty(widgets)}">
+        <th:block th:each="widget : ${widgets}">
+            <th:block th:replace="~{'modules/widgets/about-widgets/'+ ${widget.widgetId}}"/>
         </th:block>
-    </th:block>
-
-
 </th:block>
 </html>

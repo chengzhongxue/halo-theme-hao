@@ -1721,11 +1721,41 @@ spec:
     - group: about
       label: 关于
       formSchema:
-        - $formkit: textarea
-          name: widgets
+        - $formkit: repeater
+          name: widgetList
           label: 小部件
-          value: content-idea,hello-about,authorCareers,personalities-photo,textarea,game,like-music,statistics-map
-          help: content-idea（我的介绍&我的想法）, hello-about（我的问候）, authorCareers（技能&职业生涯）, personalities-photo（性格&图片）, textarea（座右铭）, game（爱好）, like-music（关注偏好&音乐偏好）, statistics-map（数据统计&音乐偏好）。你可以随意组合或排序，以逗号隔开。
+          help: 我的介绍&我的想法, 我的问候, 技能&职业生涯, 性格&图片, 座右铭, 爱好, 关注偏好&音乐偏好, 数据统计&作者相关信息。
+          value:
+            - widgetId: content-idea
+            - widgetId: hello-about
+            - widgetId: authorCareers
+            - widgetId: personalities-photo
+            - widgetId: textarea
+            - widgetId: game
+            - widgetId: like-music
+            - widgetId: statistics-map
+          children:
+            - $formkit: select
+              name: widgetId
+              id: widgetId
+              label: 模块
+              options:
+                - value: content-idea
+                  label: 我的介绍&我的想法
+                - value: hello-about
+                  label: 我的问候
+                - value: authorCareers
+                  label: 技能&职业生涯
+                - value: personalities-photo
+                  label: 性格&图片
+                - value: textarea
+                  label: 座右铭
+                - value: game
+                  label: 爱好
+                - value: like-music
+                  label: 关注偏好&音乐偏好
+                - value: statistics-map
+                  label: 数据统计&作者相关信息
         - $formkit: repeater
           name: authorInfoLeftTags
           label: 个人标签-左
