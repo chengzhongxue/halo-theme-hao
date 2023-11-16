@@ -7,10 +7,12 @@ spec:
     - group: basics
       label: 基础
       formSchema:
-        - $formkit: text
+        - $formkit: code
           name: siteTitle
           label: 站点名称
           placeholder: 请输入站点名称
+          height: 80px
+          language: html
           help: 支持 HTML 语法
         - $formkit: date
           name: siteStartTime
@@ -286,15 +288,19 @@ spec:
                 - $formkit: color
                   name: background
                   label: 背景色
-            - $formkit: textarea
+            - $formkit: code
               name: bannersTitleBig
               label: 大标题
               placeholder: 请输入大标题
+              height: 80px
+              language: html
               help: 支持 HTML 语法
-            - $formkit: textarea
+            - $formkit: code
               name: bannersTitleSmall
               label: 小标题
               placeholder: 请输入小标题
+              height: 80px
+              language: html
               help: 支持 HTML 语法
             - $formkit: repeater
               name: categoryGroup
@@ -623,10 +629,12 @@ spec:
               label: 卡片名称
               placeholder: 请填写个人卡片名称
               help: 不填写默认为站点则名称
-            - $formkit: textarea
+            - $formkit: code
               name: profileDesc
               label: 描述信息
               placeholder: 请填写个人卡片描述信息
+              height: 200px
+              language: html
               help: 支持 HTML 语法
             - $formkit: repeater
               name: socialMedia
@@ -908,11 +916,12 @@ spec:
                   value: true
                 - label: 隐藏
                   value: false
-            - $formkit: textarea
+            - $formkit: code
               if: $get(footer_bar_enable).value
               name: logo
               label: logo
-              placeholder:
+              height: 80px
+              language: html
               help: 支持 HTML 语法
             - $formkit: textarea
               if: $get(footer_bar_enable).value
@@ -1310,15 +1319,19 @@ spec:
               name: reprintUrl
               label: 转载链接
               placeholder: 请输入链接
-            - $formkit: textarea
+            - $formkit: code
               name: content
               label: 原创声明内容
               placeholder: '本文是原创文章，采用 <a target="_blank" href="/cc">CC BY-NC-ND 4.0</a> 协议，完整转载请注明来自 <a href="/" target="_blank" >程序员小航</a>'
+              height: 120px
+              language: html
               help: 支持 HTML 语法
-            - $formkit: textarea
+            - $formkit: code
               name: reprintContent
               label: 转载声明内容
               placeholder: '本文是转载文章，版权归原作者所有。建议访问原文，转载本文请联系原作者。'
+              height: 120px
+              language: html
               help: 支持 HTML 语法
         - $formkit: select
           name: recommendQuantity
@@ -1404,7 +1417,7 @@ spec:
               value: false
         - $formkit: code
           name: linksArticle
-          height: 200px
+          height: 300px
           label: 底部显示内容
           language: html
 
@@ -1636,12 +1649,14 @@ spec:
               value: true
             - label: 禁用
               value: false
-        - $formkit: textarea
+        - $formkit: code
           if: $get(enable_envelope_comment).value
           name: title
           label: 标题
           placeholder: 请输入内容
           value: <div align="center">留言板</div>
+          height: 80px
+          language: html
           help: 支持 HTML 语法
         - $formkit: group
           name: custom_pic
@@ -1706,11 +1721,41 @@ spec:
     - group: about
       label: 关于
       formSchema:
-        - $formkit: textarea
-          name: widgets
+        - $formkit: repeater
+          name: widgetList
           label: 小部件
-          value: content-idea,hello-about,authorCareers,personalities-photo,textarea,game,like-music,statistics-map
-          help: content-idea（我的介绍&我的想法）, hello-about（我的问候）, authorCareers（技能&职业生涯）, personalities-photo（性格&图片）, textarea（座右铭）, game（爱好）, like-music（关注偏好&音乐偏好）, statistics-map（数据统计&音乐偏好）。你可以随意组合或排序，以逗号隔开。
+          help: 我的介绍&我的想法, 我的问候, 技能&职业生涯, 性格&图片, 座右铭, 爱好, 关注偏好&音乐偏好, 数据统计&作者相关信息。
+          value:
+            - widgetId: content-idea
+            - widgetId: hello-about
+            - widgetId: authorCareers
+            - widgetId: personalities-photo
+            - widgetId: textarea
+            - widgetId: game
+            - widgetId: like-music
+            - widgetId: statistics-map
+          children:
+            - $formkit: select
+              name: widgetId
+              id: widgetId
+              label: 模块
+              options:
+                - value: content-idea
+                  label: 我的介绍&我的想法
+                - value: hello-about
+                  label: 我的问候
+                - value: authorCareers
+                  label: 技能&职业生涯
+                - value: personalities-photo
+                  label: 性格&图片
+                - value: textarea
+                  label: 座右铭
+                - value: game
+                  label: 爱好
+                - value: like-music
+                  label: 关注偏好&音乐偏好
+                - value: statistics-map
+                  label: 数据统计&作者相关信息
         - $formkit: repeater
           name: authorInfoLeftTags
           label: 个人标签-左
@@ -1731,15 +1776,19 @@ spec:
               name: tag
               label: 标签
               placeholder: 请输入内容
-        - $formkit: textarea
+        - $formkit: code
           name: content
           label: 我的介绍
           value: <div class="title1">你好，很高兴认识你👋</div> <div class="title2">我叫 <span class="inline-word">程序员小航</span></div> <div class="title1">是一名 前端开发工程师、后端开发工程师、全干工程师</div>
+          height: 200px
+          language: html
           help: 支持 HTML 语法
-        - $formkit: textarea
+        - $formkit: code
           name: idea
           label: 我的想法
           value: <div class="author-content-item-tips">一定</div> <h2>记得<br> 修改这块<span class="inline-word">代码</span> <div class="mask"> <span class="first-tips" data-show="">优秀的产品</span> <span>出色的设计</span> <span>高效的编程</span> <span data-up="">人性化的用户体验</span> </div> </h2>
+          height: 200px
+          language: html
           help: 支持 HTML 语法
         - $formkit: text
           name: helloAbout
@@ -2023,10 +2072,12 @@ spec:
                   label: 内容颜色
                   placeholder: 请输入内容
                   value: '#ffffff'
-        - $formkit: textarea
+        - $formkit: code
           name: xjlc
           label: 心路历程
           value: <div class="author-content-item-tips">心路历程</div> <span class="author-content-item-title">为什么建站？</span> <br>创建这个站的时候，想要就是能够有一个自己能够<b>积累知识、积累兴趣</b>的地方。和他人分享，会让这些成为积累和沉淀。如果能够帮助到更多的人，帮助更多人解决问题，那一定是非常棒的事情。<br> 分享这件事我从很早就开始了，起初做的微信公众号，现在做的网站。因为我比较喜欢研究数码和软件，想要探究在互联网上的事物是如何被创造和发展。网络给我带来了非常多的知识和眼界，我也想力所能及的分享一些我生活的琐碎知识。<br>与大多数垂直类的技术博客不同，这里的种类会非常的繁杂，有<b>技能的教程干货</b>、有<b>生活上的吐槽和妙招</b>、有<b>话题上的思考和想法</b>。一般我研究什么、发现了什么都会分享在这里。<br> 这些就是创造这个小站的本意，<b>也是我分享生活的方式</b>。有幸能和你相遇在这里，相信我们能共同留下一段美好记忆。</p>
+          height: 200px
+          language: html
           help: 支持 HTML 语法
 
     - group: aboutReward

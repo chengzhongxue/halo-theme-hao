@@ -10,7 +10,7 @@
     <div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站" th:if="${theme.config.nav.right.travelling}">
         <a class="site-page" onclick="totraveling()" href="javascript:void(0);"  rel="external nofollow"
            title="随机前往一个开往项目网站">
-            <i class="haofont hao-icon-train" style="font-size: 0.94rem"></i>
+            <i class="haofont hao-icon-eicon_train-line"></i>
         </a>
     </div>
 
@@ -24,7 +24,7 @@
     <div class="nav-button" id="darkmode_button" th:if="${theme.config.nav.right.darkMode}">
         <a class="console_switchbutton" href="javascript:void(0);"  onclick="navFn.switchDarkMode();" rel="external nofollow"
            title="切换模式 - 日夜交替，黑白互换。">
-            <i class="haofont hao-icon-circle-half-stroke" style="font-size: 1rem; font-weight: 700;"></i>
+            <i class="haofont hao-icon-moon-clear-fill" style="font-size: 1rem;"></i>
         </a>
     </div>
 
@@ -39,7 +39,7 @@
     <div th:if="${theme.config.nav.right.navLogin}" class="console-button" tabindex="-1"
          th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}">
         <span class="site-page nav-login">
-            <i sec:authorize="isAnonymous()" class="haofont hao-icon-zhanghao1 " style="font-size: 1rem;font-weight: 700;"></i>
+            <i sec:authorize="isAnonymous()" class="haofont hao-icon-zhanghao1 " style="font-size: 19.5px;"></i>
             <img sec:authorize="isAuthenticated()"  th:src="${currentUser.avatar}"
                  th:alt="${currentUser.displayName}"
                  style=" width: 24px; height: 24px; border-radius: 9999px" />
@@ -47,12 +47,15 @@
         <div class="back-menu-list-groups">
             <div class="back-menu-list-group" style="margin: -4px -9px -4px -18px">
                 <div class="back-menu-list">
-                    <a sec:authorize="isAuthenticated()" class="back-menu-item" rel="external nofollow" target="_blank" href="/console">
-                        <span class="back-menu-item-text">控制台</span>
-                    </a>
-                    <!-- <a sec:authorize="isAuthenticated()" class="back-menu-item" rel="external nofollow" href="/logout">
-                        <span class="back-menu-item-text">退出登录</span>
-                    </a> -->
+                    <th:block sec:authorize="isAuthenticated()">
+                        <a class="back-menu-item" rel="external nofollow" target="_blank" href="/console">
+                            <span class="back-menu-item-text">控制台</span>
+                        </a>
+                        <a class="back-menu-item" rel="external nofollow"
+                           href="javascript:$.ajax({type: 'post',url:'/logout'});window.location.reload()">
+                            <span class="back-menu-item-text">退出登录</span>
+                        </a>
+                    </th:block>
                     <a sec:authorize="isAnonymous()" class="back-menu-item" rel="external nofollow" target="_blank" href="/console/login">
                         <span class="back-menu-item-text">登录</span>
                     </a>
