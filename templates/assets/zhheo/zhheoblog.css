@@ -374,7 +374,7 @@ template {
 }
 
 .reward-main {
-    animation: 0.3s ease 0.1s 1 normal both running donate_effcet;
+    animation: slide-in .3s ease 0s 1 normal none running
 }
 
 @-webkit-keyframes scroll-down-effect {
@@ -9416,6 +9416,16 @@ span.recent-post-top-text {
         align-items: flex-start;
         align-content: flex-start;
         -webkit-user-select: none
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #category #recent-posts .recent-post-item,#tag #recent-posts .recent-post-item {
+        animation:slide-in .6s .4s backwards
+    }
+
+    #category-bar {
+        animation: slide-in .6s .3s backwards
     }
 }
 
