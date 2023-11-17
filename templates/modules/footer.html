@@ -125,10 +125,13 @@
                    th:if="${pluginFinder.available('PluginSitemap')}">订阅</a>
                 <a class="footer-banner-link" href="https://github.com/liuzhihang/halo-theme-hao">主题</a>
                 <a class="footer-banner-link" href="/about">关于</a>
-                <a class="footer-banner-link" href="https://beian.miit.gov.cn/#/Integrated/index"
-                   rel="noopener external nofollow noreferrer noopener" target="_blank">[[${theme.config.basics.icp}]]
+                <a th:if="${not #strings.isEmpty(theme.config.basics.icp)}"
+                   class="footer-banner-link" href="https://beian.miit.gov.cn/#/Integrated/index"
+                   rel="noopener external nofollow noreferrer noopener"
+                   target="_blank">[[${theme.config.basics.icp}]]
                 </a>
-                <a class="footer-banner-link" th:href="@{'http://www.beian.gov.cn/portal/registerSystemInfo'}"
+                <a th:if="${not #strings.isEmpty(theme.config.basics.gongan)}"
+                   class="footer-banner-link" href="http://www.beian.gov.cn/portal/registerSystemInfo"
                    rel="noopener external nofollow noreferrer noopener"
                    target="_blank">[[${theme.config.basics.gongan}]]
                 </a>
