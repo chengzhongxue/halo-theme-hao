@@ -37,7 +37,6 @@
 |   站点名称   |           站点地址            |
 |:--------:|:-------------------------:|
 |  程序员小航   |  https://liuzhihang.com   |
-|   小孙同学   | https://blog.sunguoqi.com |
 |    流殃    |   https://shyblog.world   |
 |    羡羡    |  https://www.hydsb0.com/  |
 |   困困鱼    |     https://kunkunyu.com      |
