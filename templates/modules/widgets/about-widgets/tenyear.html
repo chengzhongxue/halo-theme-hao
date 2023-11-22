@@ -1,0 +1,16 @@
+<div class="author-content"  th:fragment="tenyear" th:if="${theme.config.about.tenyear.tenyear_enable}">
+    <div class="create-site-post author-content-item single">
+        <div class="author-content-item-tips">[[${theme.config.about.tenyear.tenyear_tips}]]</div>
+        <span class="author-content-item-title">[[${theme.config.about.tenyear.tenyear_title}]]</span>
+        <p>[[${theme.config.about.tenyear.tenyear_content}]]</p>
+        <div class="timeline">
+            <div class="progress"></div>
+            <div class="past-time"></div>
+            <div class="percentage-label"></div>
+        </div>
+        <div class="time-labels">
+            <div class="start-time"></div>
+            <div class="end-time"></div>
+        </div>
+    </div>
+</div>

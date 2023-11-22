@@ -2079,21 +2079,78 @@ spec:
           height: 200px
           language: html
           help: 支持 HTML 语法
+        - $formkit: group
+          name: tenyear
+          label: 十年之约
+          value:
+            tenyear_enable: true
+            tenyear_tips: 始终如一，不离不弃
+            tenyear_title: 十年之约
+            tenyear_content: 在这个十年中，我会用心感受生活的美好，用努力书写工作的篇章，用行动诠释人生的意义。这个进度条，不仅是数字的积累，更是我心中的期许和承诺。我相信，经过十年的坚持和努力，我会收获更多，成为一个更好的自己。
+            start_time: "2023-11-22"
+            end_time: "2033-11-22"
+          children:
+            - $formkit: radio
+              name: tenyear_enable
+              id: tenyear_enable
+              key: tenyear_enable
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
+            - $formkit: text
+              if: $get(tenyear_enable).value
+              name: tenyear_tips
+              label: 提示文字
+              placeholder: 请输入内容
+            - $formkit: text
+              if: $get(tenyear_enable).value
+              name: tenyear_title
+              label: 标题
+              placeholder: 请输入内容
+            - $formkit: textarea
+              if: $get(tenyear_enable).value
+              name: tenyear_content
+              label: 描述
+              placeholder: 请输入内容
+            - $formkit: date
+              if: $get(tenyear_enable).value
+              name: start_time
+              label: 开始时间
+            - $formkit: date
+              if: $get(tenyear_enable).value
+              name: end_time
+              label: 结束时间
+        
 
     - group: aboutReward
       label: 关于（打赏）
       formSchema:
+        - $formkit: radio
+          name: aboutRewardEnable
+          id: aboutRewardEnable
+          key: aboutRewardEnable
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
         - $formkit: text
+          if: $get(aboutRewardEnable).value
           name: title
           label: 标题
           placeholder: 请输入内容
           value: 赞赏名单
         - $formkit: text
+          if: $get(aboutRewardEnable).value
           name: content
           label: 内容
           placeholder: 请输入内容
           value: 感谢赞赏的人，因为你们，让我感受到写博客这件事情能够给你们创造价值。这会让我在这条路上走得更远。
         - $formkit: group
+          if: $get(aboutRewardEnable).value
           name: reward
           label: 打赏按钮
           value:
@@ -2141,6 +2198,7 @@ spec:
               help: 支付宝二维码图片链接
               placeholder: 请填写支付宝二维码图片链接
         - $formkit: repeater
+          if: $get(aboutRewardEnable).value
           name: reward_list
           label: 打赏名单
           value: [ ]

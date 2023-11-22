@@ -42,85 +42,39 @@
                     </div>
                     <div class="author-title">关于本站</div>
 
-
                     <th:block th:replace="~{modules/about-widgets :: about-widgets(${theme.config.about.widgetList})}"></th:block>
 
                     <div class="author-content">
                         <div class="create-site-post author-content-item single" th:utext="${theme.config.about.xjlc}">
                         </div>
                     </div>
-                    <div class="author-content">
-                        <div class="author-content-item single reward" id="about-reward">
-                            <div class="author-content-item-tips">致谢</div>
-                            <span class="author-content-item-title" >[[${theme.config.aboutReward.title}]]</span>
-                            <div class="author-content-item-description" >
-                                [[${theme.config.aboutReward.content}]]
-                            </div>
 
-                            <div th:if="${theme.config.aboutReward.reward.enable_reward}" class="about-reward">
-                                <div id="con"></div>
-                                <div id="TA-con" onclick="heo.rewardShowConsole()">
-                                    <div id="text-con">
-                                        <div id="linght"></div>
-                                        <div id="TA">[[${theme.config.aboutReward.reward.name}]]</div>
-                                    </div>
-                                </div>
-                                <div id="tube-con"><svg viewBox="0 0 1028 385" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 77H234.226L307.006 24H790" stroke="#e5e9ef" stroke-width="20"></path>
-                                    <path d="M0 140H233.035L329.72 71H1028" stroke="#e5e9ef" stroke-width="20"></path>
-                                    <path d="M1 255H234.226L307.006 307H790" stroke="#e5e9ef" stroke-width="20"></path>
-                                    <path d="M0 305H233.035L329.72 375H1028" stroke="#e5e9ef" stroke-width="20"></path>
-                                    <rect y="186" width="236" height="24" fill="#e5e9ef"></rect>
-                                    <ellipse cx="790" cy="25.5" rx="25" ry="25.5" fill="#e5e9ef"></ellipse>
-                                    <circle r="14" transform="matrix(1 0 0 -1 790 25)" fill="white"></circle>
-                                    <ellipse cx="790" cy="307.5" rx="25" ry="25.5" fill="#e5e9ef"></ellipse>
-                                    <circle r="14" transform="matrix(1 0 0 -1 790 308)" fill="white"></circle>
-                                </svg>
-                                    <div id="mask"><svg viewBox="0 0 1028 385" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 77H234.226L307.006 24H790" stroke="#f25d8e" stroke-width="20"></path>
-                                        <path d="M0 140H233.035L329.72 71H1028" stroke="#f25d8e" stroke-width="20"></path>
-                                        <path d="M1 255H234.226L307.006 307H790" stroke="#f25d8e" stroke-width="20"></path>
-                                        <path d="M0 305H233.035L329.72 375H1028" stroke="#f25d8e" stroke-width="20"></path>
-                                        <rect y="186" width="236" height="24" fill="#f25d8e"></rect>
-                                        <ellipse cx="790" cy="25.5" rx="25" ry="25.5" fill="#f25d8e"></ellipse>
-                                        <circle r="14" transform="matrix(1 0 0 -1 790 25)" fill="white"></circle>
-                                        <ellipse cx="790" cy="307.5" rx="25" ry="25.5" fill="#f25d8e"></ellipse>
-                                        <circle r="14" transform="matrix(1 0 0 -1 790 308)" fill="white"></circle>
-                                    </svg></div>
-                                    <div id="orange-mask"><svg viewBox="0 0 1028 385" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 77H234.226L307.006 24H790" stroke="#ffd52b" stroke-width="20"></path>
-                                        <path d="M0 140H233.035L329.72 71H1028" stroke="#ffd52b" stroke-width="20"></path>
-                                        <path d="M1 255H234.226L307.006 307H790" stroke="#ffd52b" stroke-width="20"></path>
-                                        <path d="M0 305H233.035L329.72 375H1028" stroke="#ffd52b" stroke-width="20"></path>
-                                        <rect y="186" width="236" height="24" fill="#ffd52b"></rect>
-                                        <ellipse cx="790" cy="25.5" rx="25" ry="25.5" fill="#ffd52b"></ellipse>
-                                        <circle r="14" transform="matrix(1 0 0 -1 790 25)" fill="white"></circle>
-                                        <ellipse cx="790" cy="307.5" rx="25" ry="25.5" fill="#ffd52b"></ellipse>
-                                        <circle r="14" transform="matrix(1 0 0 -1 790 308)" fill="white"></circle>
-                                    </svg></div>
-                                    <p id="people">共<b>[[${theme.config.aboutReward.reward_list.size()}]]</b>人</p>
-                                </div>
-                            </div>
-                            <div class="reward-list-all" th:if="${not #lists.isEmpty(theme.config.aboutReward.reward_list)}"
-                                 th:with="authorRewardList = ${theme.config.aboutReward.reward_list}">
+                    <th:block th:replace="~{modules/widgets/about-widgets/tenyear}"></th:block>
 
-                                <div class="reward-list-item" th:each="authorReward : ${authorRewardList}">
-                                    <div class="reward-list-item-name">[[${authorReward.name}]]</div>
-                                    <div class="reward-list-bottom-group">
-                                        <div th:if="${authorReward.sign == 'N'}" class="reward-list-item-money">¥
-                                            [[${authorReward.amount}]]</div>
-                                        <div th:if="${authorReward.sign == 'Y'}" class="reward-list-item-money"
-                                             style="background: var(--heo-vip);">¥ [[${authorReward.amount}]]
-                                        </div>
-                                        <time class="datatime reward-list-item-time">[[${authorReward.datatime}]]</time>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+                    <th:block th:replace="~{modules/widgets/about-widgets/about-reward}"></th:block>
+                    
                 </div>
 
+                <th:block th:if="${theme.config.about.tenyear.tenyear_enable}">
+                    <link rel="stylesheet" th:href="${assets_link + '/css/tenyear.css' + theme_version}"  media="all" onload="this.media='all'">
+                    <script> (() => {
+                            const t = document.querySelector(".progress"),
+                                n = document.querySelector(".past-time"),
+                                o = document.querySelector(".percentage-label"),
+                                r = document.querySelector(".start-time"),
+                                s = document.querySelector(".end-time"),
+                                a = new Date("[(${theme.config.about.tenyear.start_time})]").getTime(),
+                                i = new Date("[(${theme.config.about.tenyear.end_time})]").getTime(),
+                                c = ((new Date).getTime() - a) / (i - a) * 100,
+                                u = c <= 100 ? c + "%" : "100%";
+                            n.style.setProperty("--past-time-percentage", c + "%"), t.style.setProperty("--progress-percentage", u), o.textContent = c.toFixed(0) + "%", o.style.left = `calc(${c}% - 33px)`, r.textContent = "" + new Date(a).toLocaleDateString(), s.textContent = "" + new Date(i).toLocaleDateString(), setTimeout(() => {
+                                o.style.visibility = "visible"
+                            }, 2500);
+                        })() 
+                    </script>
+                </th:block>
+                
+                
             </div>
 
         </main>
