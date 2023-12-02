@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<th:block th:fragment="post-list"
+<th:block
           th:with='postItems=${posts.items},
           postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"&" : theme.config.layout.postRandomImg+"?"}'>
 
@@ -107,5 +104,3 @@
     <div th:replace="~{modules/widgets/page :: page('',${posts},true,'')}"></div>
 
 </th:block>
-
-</html>

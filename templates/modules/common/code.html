@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<th:block th:fragment="code">
+<th:block >
     <!-- 解决 pjax问题  自动识别语言-->
     <th:block th:if="${pluginFinder.available('PluginPrismJS')}">
         <script src="/plugins/PluginPrismJS/assets/static/highlight.js/highlight.min.js"></script>
@@ -34,5 +32,3 @@
     </th:block>
 
 </th:block>
-
-</html>

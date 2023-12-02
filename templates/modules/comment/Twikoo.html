@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<th:block th:fragment="twikoo" th:if="${#strings.equals(theme.config.comments.use, 'Twikoo') &&
+<th:block  th:if="${#strings.equals(theme.config.comments.use, 'Twikoo') &&
 not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
     <div class="js-pjax">
         <script th:src="${assets_link + '/js/comment/twikoo.js'}"></script>
@@ -150,4 +148,3 @@ not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
         })</script>
 
 </th:block>
-</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
       th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page',title = ${singlePage.spec.title + ' | ' + site.title}, head = ~{::head})}">
 <th:block th:fragment="head">
     <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = ${singlePage.spec.title},
@@ -19,10 +19,10 @@
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
                 <div id="album" th:if="${#strings.equals(theme.config.photos.photosStyle, 'default')}">
-                    <div th:replace="~{macro/author-content :: author-content(background = ${theme.config.photos.backgroundImg},
-                        smallTitle = ${theme.config.photos.smallTitle},
-                        bigTitle = ${theme.config.photos.bigTitle},
-                        detail = ${theme.config.photos.detail},
+                    <div th:replace="~{macro/author-content :: author-content(background = ${singlePage.spec.cover},
+                        smallTitle = '相册集',
+                        bigTitle = ${singlePage.spec.title},
+                        detail = ${singlePage.spec.excerpt.raw},
                         buttonUrl = '',
                         buttonTitle = '')}"></div>
 
@@ -182,7 +182,7 @@
 
         </main>
         <!-- 底部 -->
-        <footer th:replace="~{modules/footer :: footer}"></footer>
+        <footer th:replace="~{modules/footer}"/>
         <!-- 卡片顶部气泡效果 -->
         <script th:if="${theme.config.other.bubbleEnable}" async data-pjax
                 th:src="${assets_link + '/libs/canvas/bubble.js'}"></script>

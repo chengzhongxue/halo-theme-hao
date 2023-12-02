@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<th:block th:fragment="rightside">
+<th:block >
     <div id="rightside">
         <div id="rightside-config-hide">
             <button th:if="${htmlType == 'post' && theme.config.tool.rightside.readmode}" id="readmode" type="button" title="阅读模式"><i class="haofont hao-icon-book-open"></i></button>
@@ -40,4 +38,3 @@
     <link th:if="${theme.config.tool.rightside.readmode && theme.config.tool.rightside.rightsideEnable}"
           rel="stylesheet" th:href="${assets_link + '/css/read-mode.css' + theme_version}">
 </th:block>
-</html>

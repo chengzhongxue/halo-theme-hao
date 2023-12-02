@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 目录条 -->
-<div id="category-bar" th:fragment="category">
+<div id="category-bar">
     <div class="category-bar-items" id="category-bar-items">
         <div class="category-bar-item select" id="category-bar-home">
             <a href="/">首页</a>
@@ -17,7 +15,5 @@
 
         </th:block>
     </div>
-    <a class="category-bar-more" th:replace="~{modules/bar/more :: more}">更多</a>
+    <a class="category-bar-more" th:replace="~{modules/bar/more}">更多</a>
 </div>
-
-</html>

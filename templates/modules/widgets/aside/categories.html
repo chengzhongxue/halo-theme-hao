@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 目录 -->
-<div class="card-widget card-categories" th:fragment="categories"
+<div class="card-widget card-categories"
      th:with="categories =  ${categoryFinder.list(1, theme.config.sidebar.categoryQuantity)}">
     <div class="item-headline"><i class="haofont hao-icon-folder-open"></i><span>分类</span></div>
     <div class="aside-list">
@@ -18,5 +16,3 @@
 
     </div>
 </div>
-
-</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="layout(content, htmlType, title, head)" xmlns:th="http://www.thymeleaf.org"
+<html lang="zh-CN" th:fragment="layout(content, htmlType, title, head)" xmlns:th="http://www.thymeleaf.org"
       th:with="assets_link=${theme.config.other.staticResource.use == 'onmicrosoft' ? 'https://npm.onmicrosoft.cn/hao-theme-static@' + theme.spec.version +'/templates/assets' :
       theme.config.other.staticResource.use == 'cbd' ? 'https://cdn.cbd.int/hao-theme-static@' + theme.spec.version +'/templates/assets' :
       theme.config.other.staticResource.use == 'custom' ? theme.config.other.staticResource.cdn_link : #theme.assets('/')},
@@ -26,7 +26,7 @@
 <body>
 
 <!-- loading 页面 -->
-<th:block th:replace="~{modules/loading-box :: loading-box}"></th:block>
+<th:block th:replace="~{modules/loading-box}"/>
 
 <!-- 网站背景 -->
 <div id="web_bg"></div>
@@ -35,13 +35,13 @@
 <div id="an_music_bg"></div>
 
 <!-- 控制台 -->
-<div th:replace="~{modules/widgets/console :: console}"></div>
+<div th:replace="~{modules/widgets/console}"/>
 
-<div th:replace="~{modules/sidebar :: sidebar}"></div>
+<div th:replace="~{modules/sidebar}"/>
 
 <!-- 左下角音乐 -->
 <th:block th:if="${theme.config.tool.nav_music.nav_musicEnable}" >
-    <div  th:replace="~{modules/widgets/nav-music :: nav-music}"></div>
+    <div  th:replace="~{modules/widgets/nav-music}"/>
 </th:block>
 
 <!-- 内容 -->
@@ -49,10 +49,10 @@
 
 
 <!-- todo 右下角悬浮操作按钮 -->
-<th:block th:replace="~{modules/widgets/rightside :: rightside}"></th:block>
+<th:block th:replace="~{modules/widgets/rightside}"/>
 
 
-<div th:replace="~{modules/widgets/right-menu :: right-menu}"></div>
+<div th:replace="~{modules/widgets/right-menu}"/>
 
 <div>
     <script th:src="${assets_link + '/js/utils.js' + theme_version}"></script>
@@ -71,7 +71,7 @@
 
     <div class="js-pjax">
         <!-- 动态标题 -->
-        <script th:replace="~{modules/common/diytitle :: diytitle}"></script>
+        <script th:replace="~{modules/common/diytitle}"/>
     </div>
 
     <!-- 评论 -->
@@ -124,10 +124,10 @@
              th:src="${assets_link + '/zhheo/commentBarrage.js'}"></script>
 
     <!-- Tocbot 目录生成 start -->
-    <th:block th:replace="~{modules/common/toc-bot :: toc-bot}"></th:block>
+    <th:block th:replace="~{modules/common/toc-bot}"/>
 
     <!-- 51统计 -->
-    <th:block th:replace="~{modules/common/51-la :: 51-la}"></th:block>
+    <th:block th:replace="~{modules/common/51-la}"/>
 
     <!--官方评论插件js-->
     <script th:if="${pluginFinder.available('PluginCommentWidget')}" src="/plugins/PluginCommentWidget/assets/static/comment-widget.iife.js"></script>

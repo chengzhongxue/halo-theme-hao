@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 侧边栏自我介绍 -->
 
-<div class="card-widget card-info" th:fragment="profile">
+<div class="card-widget card-info" >
 
     <!-- 默认 -->
     <th:block th:if="${#strings.equals(theme.config.sidebar.profile.profileStyle, 'default')}">
@@ -469,5 +467,3 @@
     </th:block>
 
 </div>
-
-</html>

@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <!-- 导航栏左侧 -->
-<div id="blog_name" th:fragment="nav-left">
+<div id="blog_name" >
 
     <th:block th:if="${not #strings.isEmpty(theme.config.nav.leftMenu)}"
               th:with="leftMenu = ${menuFinder.getByName(theme.config.nav.leftMenu)}">
@@ -40,6 +37,3 @@
         <span th:utext="${#strings.isEmpty(theme.config.basics.siteTitle)} ? ${site.title} : ${theme.config.basics.siteTitle}"></span>
     </a>
 </div>
-
-
-</html>

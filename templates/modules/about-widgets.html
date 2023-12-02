@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <!-- 关于小组件 -->
 <th:block th:fragment="about-widgets(widgets)"
-     th:if="${not #lists.isEmpty(widgets)}">
-        <th:block th:each="widget : ${widgets}">
-            <th:block th:replace="~{'modules/widgets/about-widgets/'+ ${widget.widgetId}}"/>
-        </th:block>
+          th:if="${not #lists.isEmpty(widgets)}">
+    <th:block th:each="widget : ${widgets}">
+        <th:block th:replace="~{'modules/widgets/about-widgets/'+ ${widget.widgetId}}"/>
+    </th:block>
 </th:block>
-</html>

@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 版权样式一 -->
-<th:block th:fragment="copyright-one" th:if="${#strings.equals(theme.config.post.copyrightsStyle, 'one')}">
+<th:block  th:if="${#strings.equals(theme.config.post.copyrightsStyle, 'one')}">
     <!-- 版权声明 -->
     <div class="post-copyright">
         <div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about"
@@ -96,7 +94,3 @@
     </div>
     <link rel="stylesheet" th:href="${assets_link + '/css/post-copyright-one.css' + theme_version}">
 </th:block>
-
-
-
-</html>

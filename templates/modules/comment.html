@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="comment(group, kind, name, allowComment)" th:if="${allowComment && theme.config.comments.commentsEnable}">
     <!-- 已知问题 PJAX 下，comment 首次请求会出错。当前的临时解决办法是使用 js 重试 -->
     <div id="post-comment">
@@ -40,4 +38,3 @@
                       th:attr="name=${name},kind=${kind},group=${group}" colorScheme="document.documentElement.getAttribute('data-theme')"/>
     </div>
 </th:block>
-</html>

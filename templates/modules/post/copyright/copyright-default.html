@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 版权样式默认 -->
-<th:block th:fragment="copyright-default" th:if="${#strings.equals(theme.config.post.copyrightsStyle, 'default')}">
+<th:block  th:if="${#strings.equals(theme.config.post.copyrightsStyle, 'default')}">
     <div class="post-tools" id="post-tools">
         <div class="post-tools-left">
 
@@ -111,6 +109,3 @@
 
     <link rel="stylesheet" th:href="${assets_link + '/css/post-copyright.css' + theme_version}">
 </th:block>
-
-
-</html>

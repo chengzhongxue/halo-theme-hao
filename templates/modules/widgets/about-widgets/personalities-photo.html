@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 性格&图片 -->
 
 <!-- personalities -->
-<div class="author-content" th:fragment="personalities-photo">
+<div class="author-content">
     <div class="author-content-item personalities" th:with="personality = ${theme.config.about.personalities}">
         <div class="author-content-item-tips">性格</div>
 
@@ -13,9 +11,9 @@
             <div class="image"><img th:src="${assets_link + '/images/infp.svg'}" style="transform: rotateY(180deg);">
             </div>
             <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow"
-                    target="_blank">16personalities</a>
+                                         target="_blank">16personalities</a>
                 了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                    th:href="@{'https://www.16personalities.com/ch/INFP-%E4%BA%BA%E6%A0%BC'}">调停者</a>
+                                th:href="@{'https://www.16personalities.com/ch/INFP-%E4%BA%BA%E6%A0%BC'}">调停者</a>
             </div>
         </th:block>
 
@@ -25,9 +23,9 @@
             <div class="image"><img th:src="${assets_link + '/images/intj.svg'}" style="transform: rotateY(180deg);">
             </div>
             <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow"
-                    target="_blank">16personalities</a>
+                                         target="_blank">16personalities</a>
                 了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                    th:href="@{'https://www.16personalities.com/ch/INTJ-%E4%BA%BA%E6%A0%BC'}">建筑师</a>
+                                th:href="@{'https://www.16personalities.com/ch/INTJ-%E4%BA%BA%E6%A0%BC'}">建筑师</a>
             </div>
         </th:block>
 
@@ -37,9 +35,9 @@
             <div class="image"><img th:src="${assets_link + '/images/intp.svg'}" style="transform: rotateY(180deg);">
             </div>
             <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow"
-                    target="_blank">16personalities</a>
+                                         target="_blank">16personalities</a>
                 了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                    th:href="@{'https://www.16personalities.com/ch/INTP-%E4%BA%BA%E6%A0%BC'}">逻辑学家</a>
+                                th:href="@{'https://www.16personalities.com/ch/INTP-%E4%BA%BA%E6%A0%BC'}">逻辑学家</a>
             </div>
         </th:block>
 
@@ -49,9 +47,9 @@
             <div class="image"><img th:src="${assets_link + '/images/entj.svg'}" style="transform: rotateY(180deg);">
             </div>
             <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow"
-                    target="_blank">16personalities</a>
+                                         target="_blank">16personalities</a>
                 了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                    th:href="@{'https://www.16personalities.com/ch/ENTJ-%E4%BA%BA%E6%A0%BC'}">指挥官</a>
+                                th:href="@{'https://www.16personalities.com/ch/ENTJ-%E4%BA%BA%E6%A0%BC'}">指挥官</a>
             </div>
         </th:block>
 
@@ -61,9 +59,9 @@
             <div class="image"><img th:src="${assets_link + '/images/entp.svg'}" style="transform: rotateY(180deg);">
             </div>
             <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow"
-                    target="_blank">16personalities</a>
+                                         target="_blank">16personalities</a>
                 了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                    th:href="@{'https://www.16personalities.com/ch/ENTP-%E4%BA%BA%E6%A0%BC'}">辩论家</a>
+                                th:href="@{'https://www.16personalities.com/ch/ENTP-%E4%BA%BA%E6%A0%BC'}">辩论家</a>
             </div>
         </th:block>
 
@@ -73,9 +71,9 @@
             <div class="image"><img th:src="${assets_link + '/images/enfj.svg'}" style="transform: rotateY(180deg);">
             </div>
             <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow"
-                    target="_blank">16personalities</a>
+                                         target="_blank">16personalities</a>
                 了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                    th:href="@{'https://www.16personalities.com/ch/ENFJ-%E4%BA%BA%E6%A0%BC'}">主人公</a>
+                                th:href="@{'https://www.16personalities.com/ch/ENFJ-%E4%BA%BA%E6%A0%BC'}">主人公</a>
             </div>
         </th:block>
 
@@ -85,9 +83,9 @@
             <div class="image"><img th:src="${assets_link + '/images/enfp.svg'}" style="transform: rotateY(180deg);">
             </div>
             <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow"
-                    target="_blank">16personalities</a>
+                                         target="_blank">16personalities</a>
                 了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                    th:href="@{'https://www.16personalities.com/ch/ENFP-%E4%BA%BA%E6%A0%BC'}">竞选者</a>
+                                th:href="@{'https://www.16personalities.com/ch/ENFP-%E4%BA%BA%E6%A0%BC'}">竞选者</a>
             </div>
         </th:block>
 
@@ -97,9 +95,9 @@
             <div class="image"><img th:src="${assets_link + '/images/estj.svg'}" style="transform: rotateY(180deg);">
             </div>
             <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow"
-                    target="_blank">16personalities</a>
+                                         target="_blank">16personalities</a>
                 了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                    th:href="@{'https://www.16personalities.com/ch/ESTJ-%E4%BA%BA%E6%A0%BC'}">总经理</a>
+                                th:href="@{'https://www.16personalities.com/ch/ESTJ-%E4%BA%BA%E6%A0%BC'}">总经理</a>
             </div>
         </th:block>
 
@@ -109,9 +107,9 @@
             <div class="image"><img th:src="${assets_link + '/images/estp.svg'}" style="transform: rotateY(180deg);">
             </div>
             <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow"
-                    target="_blank">16personalities</a>
+                                         target="_blank">16personalities</a>
                 了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                    th:href="@{'https://www.16personalities.com/ch/ESTP-%E4%BA%BA%E6%A0%BC'}">企业家</a>
+                                th:href="@{'https://www.16personalities.com/ch/ESTP-%E4%BA%BA%E6%A0%BC'}">企业家</a>
             </div>
         </th:block>
 
@@ -121,9 +119,9 @@
             <div class="image"><img th:src="${assets_link + '/images/esfj.svg'}" style="transform: rotateY(180deg);">
             </div>
             <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow"
-                    target="_blank">16personalities</a>
+                                         target="_blank">16personalities</a>
                 了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                    th:href="@{'https://www.16personalities.com/ch/ESFJ-%E4%BA%BA%E6%A0%BC'}">执政官</a>
+                                th:href="@{'https://www.16personalities.com/ch/ESFJ-%E4%BA%BA%E6%A0%BC'}">执政官</a>
             </div>
         </th:block>
 
@@ -133,9 +131,9 @@
             <div class="image"><img th:src="${assets_link + '/images/esfp.svg'}" style="transform: rotateY(180deg);">
             </div>
             <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow"
-                    target="_blank">16personalities</a>
+                                         target="_blank">16personalities</a>
                 了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                    th:href="@{'https://www.16personalities.com/ch/ESFP-%E4%BA%BA%E6%A0%BC'}">表演者</a>
+                                th:href="@{'https://www.16personalities.com/ch/ESFP-%E4%BA%BA%E6%A0%BC'}">表演者</a>
             </div>
         </th:block>
 
@@ -145,9 +143,9 @@
             <div class="image"><img th:src="${assets_link + '/images/infj.svg'}" style="transform: rotateY(180deg);">
             </div>
             <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow"
-                    target="_blank">16personalities</a>
+                                         target="_blank">16personalities</a>
                 了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                    th:href="@{'https://www.16personalities.com/ch/INFJ-%E4%BA%BA%E6%A0%BC'}">提倡者</a>
+                                th:href="@{'https://www.16personalities.com/ch/INFJ-%E4%BA%BA%E6%A0%BC'}">提倡者</a>
             </div>
         </th:block>
 
@@ -157,9 +155,9 @@
             <div class="image"><img th:src="${assets_link + '/images/istj.svg'}" style="transform: rotateY(180deg);">
             </div>
             <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow"
-                    target="_blank">16personalities</a>
+                                         target="_blank">16personalities</a>
                 了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                    th:href="@{'https://www.16personalities.com/ch/ISTJ-%E4%BA%BA%E6%A0%BC'}">物流师</a>
+                                th:href="@{'https://www.16personalities.com/ch/ISTJ-%E4%BA%BA%E6%A0%BC'}">物流师</a>
             </div>
         </th:block>
 
@@ -169,9 +167,9 @@
             <div class="image"><img th:src="${assets_link + '/images/istp.svg'}" style="transform: rotateY(180deg);">
             </div>
             <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow"
-                    target="_blank">16personalities</a>
+                                         target="_blank">16personalities</a>
                 了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                    th:href="@{'https://www.16personalities.com/ch/ISTP-%E4%BA%BA%E6%A0%BC'}">鉴赏家</a>
+                                th:href="@{'https://www.16personalities.com/ch/ISTP-%E4%BA%BA%E6%A0%BC'}">鉴赏家</a>
             </div>
         </th:block>
 
@@ -181,9 +179,9 @@
             <div class="image"><img th:src="${assets_link + '/images/isfj.svg'}" style="transform: rotateY(180deg);">
             </div>
             <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow"
-                    target="_blank">16personalities</a>
+                                         target="_blank">16personalities</a>
                 了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                    th:href="@{'https://www.16personalities.com/ch/ISFJ-%E4%BA%BA%E6%A0%BC'}">守卫者</a>
+                                th:href="@{'https://www.16personalities.com/ch/ISFJ-%E4%BA%BA%E6%A0%BC'}">守卫者</a>
             </div>
         </th:block>
 
@@ -193,16 +191,14 @@
             <div class="image"><img th:src="${assets_link + '/images/isfp.svg'}" style="transform: rotateY(180deg);">
             </div>
             <div class="post-tips">在 <a href="https://www.16personalities.com/" rel="noopener nofollow"
-                    target="_blank">16personalities</a>
+                                         target="_blank">16personalities</a>
                 了解更多关于 <a rel="noopener external nofollow" target="_blank"
-                    th:href="@{'https://www.16personalities.com/ch/ISFP-%E4%BA%BA%E6%A0%BC'}">探险家</a>
+                                th:href="@{'https://www.16personalities.com/ch/ISFP-%E4%BA%BA%E6%A0%BC'}">探险家</a>
             </div>
         </th:block>
 
     </div>
     <div class="author-content-item myphoto"><img alt="自拍" class="author-content-img"
-            th:src="${theme.config.about.authorCareersPhoto}">
+                                                  th:src="${theme.config.about.authorCareersPhoto}">
     </div>
 </div>
-
-</html>

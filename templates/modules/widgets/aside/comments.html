@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 最新评论 -->
-<div class="card-widget card-recent-post" th:fragment="comments">
+<div class="card-widget card-recent-post" >
     <a th:if="${not #strings.isEmpty(theme.config.sidebar.newcomment.newcommentUrl)}"
        th:onclick="pjax.loadUrl([[${theme.config.sidebar.newcomment.newcommentUrl}]])"
        title="查看更多"
@@ -38,5 +36,3 @@
         </th:block>
     </div>
 </div>
-
-</html>

@@ -1424,23 +1424,6 @@ spec:
     - group: fcircle
       label: 友链鱼塘
       formSchema:
-        - $formkit: attachment
-          name: backgroundImg
-          label: 背景图
-          value: https://npm.onmicrosoft.cn/hao-theme-static@1.3.6/images/64624940e3623.jpeg
-          placeholder: 请输入图片地址
-        - $formkit: text
-          name: smallTitle
-          label: 小标题
-          value: 友链
-        - $formkit: text
-          name: bigTitle
-          label: 大标题
-          value: 最新文章订阅
-        - $formkit: text
-          name: detail
-          label: 描述
-          value: 使用 友链朋友圈 订阅友链最新文章
         - $formkit: text
           name: buttonTitle
           label: 按钮标题
@@ -1489,22 +1472,6 @@ spec:
               label: 默认
             - value: one
               label: 样式一
-        - $formkit: attachment
-          if: $get(photosStyle).value == 'default'
-          name: backgroundImg
-          label: 背景图
-          value: https://liuzhihang.com/upload/moments.png
-        - $formkit: text
-          if: $get(photosStyle).value == 'default'
-          name: smallTitle
-          key: smallTitle
-          label: 小标题
-          value: 相册集
-        - $formkit: text
-          name: bigTitle
-          key: bigTitle
-          label: 大标题
-          value: 这里是我的相册集哦😯
         - $formkit: text
           name: topLink
           key: topLink
@@ -1530,26 +1497,9 @@ spec:
     - group: todo
       label: 待办清单
       formSchema:
-        - $formkit: attachment
-          name: backgroundImg
-          label: 背景图
-          value: https://npm.onmicrosoft.cn/hao-theme-static@1.3.6/images/64624940e3623.jpeg
-          placeholder: 请输入图片地址
-        - $formkit: text
-          name: smallTitle
-          label: 小标题
-          value: 想做清单
-        - $formkit: text
-          name: bigTitle
-          label: 大标题
-          value: ToDoList
-        - $formkit: text
-          name: detail
-          label: 描述
-          value: 要做的事还有很多，想做的事源源不断
         - $formkit: repeater
           name: list
-          label: 待办清单
+          label: 待办清单列表
           value: [ ]
           children:
             - $formkit: text
@@ -1604,27 +1554,6 @@ spec:
           name: detail
           label: 描述
           value: 跟我一起享受科技带来的乐趣
-
-    - group: new_comment
-      label: 最近评论
-      formSchema:
-        - $formkit: attachment
-          name: backgroundImg
-          label: 背景图
-          value: https://liuzhihang.com/upload/moments.png
-          placeholder: 请输入图片地址
-        - $formkit: text
-          name: smallTitle
-          label: 小标题
-          value: 评论
-        - $formkit: text
-          name: bigTitle
-          label: 大标题
-          value: 最近评论
-        - $formkit: text
-          name: detail
-          label: 描述
-          value: 快速查看本站最近评论内容。
 
     - group: envelope_comment
       label: 留言板
