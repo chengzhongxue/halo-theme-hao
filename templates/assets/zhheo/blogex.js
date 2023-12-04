@@ -1,5 +1,5 @@
 
-function checkOpen() {}
+function checkOpen() { }
 checkOpen.toString = function () {
     this.opened = true;
 };
@@ -13,7 +13,7 @@ function coverColor() {
         // 获取颜色 https://github.com/fast-average-color/fast-average-color
         const fac = new FastAverageColor();
 
-        fac.getColorAsync(path,{
+        fac.getColorAsync(path, {
             // 忽略白色
             ignoredColor: [255, 255, 255, 255]
         })
@@ -188,58 +188,58 @@ function showcopy() {
 // 获取时间
 var getTimeState = () => {
 
-        if (GLOBAL_CONFIG.profileStyle == 'default') {
-            // 获取当前时间
-            var timeNow = new Date();
-            // 获取当前小时
-            var hours = timeNow.getHours();
-            // 设置默认文字
-            var text = ``;
-            // 判断当前时间段
-            if (hours >= 0 && hours <= 5) {
-                text = `晚安`;
-            } else if (hours > 5 && hours <= 10) {
-                text = `早上好`;
-            } else if (hours > 10 && hours <= 14) {
-                text = `中午好`;
-            } else if (hours > 14 && hours <= 18) {
-                text = `下午好`;
-            } else if (hours > 18 && hours <= 24) {
-                text = `晚上好`;
-            }
-            // 返回当前时间段对应的状态
-            return text;
-
+    if (GLOBAL_CONFIG.profileStyle == 'default') {
+        // 获取当前时间
+        var timeNow = new Date();
+        // 获取当前小时
+        var hours = timeNow.getHours();
+        // 设置默认文字
+        var text = ``;
+        // 判断当前时间段
+        if (hours >= 0 && hours <= 5) {
+            text = `晚安`;
+        } else if (hours > 5 && hours <= 10) {
+            text = `早上好`;
+        } else if (hours > 10 && hours <= 14) {
+            text = `中午好`;
+        } else if (hours > 14 && hours <= 18) {
+            text = `下午好`;
+        } else if (hours > 18 && hours <= 24) {
+            text = `晚上好`;
         }
+        // 返回当前时间段对应的状态
+        return text;
 
-        if (GLOBAL_CONFIG.profileStyle == 'one') {
-            var e = (new Date).getHours()
-                , t = "";
-            return e >= 0 && e <= 5 ? t = "睡个好觉，保证精力充沛" : e > 5 && e <= 10 ? t = "一日之计在于晨" : e > 10 && e <= 14 ? t = "吃饱了才有力气干活" : e > 14 && e <= 18 ? t = "集中精力，攻克难关" : e > 18 && e <= 24 && (t = "不要太劳累了，早睡更健康"),
-                t
-        }
+    }
 
-    },
-//深色模式切换
-    switchDarkMode = ()=>{
+    if (GLOBAL_CONFIG.profileStyle == 'one') {
+        var e = (new Date).getHours()
+            , t = "";
+        return e >= 0 && e <= 5 ? t = "睡个好觉，保证精力充沛" : e > 5 && e <= 10 ? t = "一日之计在于晨" : e > 10 && e <= 14 ? t = "吃饱了才有力气干活" : e > 14 && e <= 18 ? t = "集中精力，攻克难关" : e > 18 && e <= 24 && (t = "不要太劳累了，早睡更健康"),
+            t
+    }
+
+},
+    //深色模式切换
+    switchDarkMode = () => {
         "dark" === document.documentElement.getAttribute("data-theme") ? (activateLightMode(),
             saveToLocal.set("theme", "light", 2),
-        void 0 !== GLOBAL_CONFIG.Snackbar && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day, false, 2000),
+            void 0 !== GLOBAL_CONFIG.Snackbar && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day, false, 2000),
             $(".menu-darkmode-text").text("深色模式")) : (activateDarkMode(),
-            saveToLocal.set("theme", "dark", 2),
-        void 0 !== GLOBAL_CONFIG.Snackbar && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night, false, 2000),
-            $(".menu-darkmode-text").text("浅色模式")),
+                saveToLocal.set("theme", "dark", 2),
+                void 0 !== GLOBAL_CONFIG.Snackbar && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night, false, 2000),
+                $(".menu-darkmode-text").text("浅色模式")),
             handleCases()
         heo.darkModeStatus();
         //代码块
-        if(GLOBAL_CONFIG.prism.enable){
+        if (GLOBAL_CONFIG.prism.enable) {
             halo.dataCodeTheme();
         }
     }
-    , handleCases = ()=>{
+    , handleCases = () => {
         "function" == typeof utterancesTheme && utterancesTheme(),
-        "object" == typeof FB && window.loadFBComment(),
-        window.DISQUS && document.getElementById("disqus_thread").children.length && setTimeout((()=>window.disqusReset()), 200)
+            "object" == typeof FB && window.loadFBComment(),
+            window.DISQUS && document.getElementById("disqus_thread").children.length && setTimeout((() => window.disqusReset()), 200)
     }
     , navFn = {
         switchDarkMode: switchDarkMode
@@ -250,7 +250,7 @@ function rightMenuCommentText(txt) {
     if (GLOBAL_CONFIG.rightMenuEnable) {
         rm.hideRightMenu();
     }
-    var input =  document.getElementsByClassName(GLOBAL_CONFIG.source.comments.textarea)[0];
+    var input = document.getElementsByClassName(GLOBAL_CONFIG.source.comments.textarea)[0];
     let evt = document.createEvent('HTMLEvents');
     evt.initEvent('input', true, true);
     let inputValue = replaceAll(txt, '\n', '\n> ')
@@ -317,7 +317,7 @@ function travelling() {
                 renderer(json.items);
             })
     }
-    function renderer(data){
+    function renderer(data) {
         var linksData = data
         var name = ''
         var link = ''
@@ -342,7 +342,7 @@ function travelling() {
             }
         });
     }
-    function init(){
+    function init() {
         const data = saveToLocal.get('links-data')
         if (data) {
             renderer(JSON.parse(data))
@@ -369,16 +369,16 @@ function toforeverblog() {
     });
 }
 
-//前往开往项目
-function totraveling () {
-    btf.snackbarShow("即将跳转到「开往」项目的成员博客，不保证跳转网站的安全性和可用性", function(element) {
-        element.style.opacity = 0,
-        travellingsTimer && clearTimeout(travellingsTimer)
-    }, 5000, "取消"),
-        travellingsTimer = setTimeout(function() {
-            window.open("https://www.travellings.cn/go.html", "_blank")
-        }, "5000")
-}
+// //前往开往项目
+// function totraveling () {
+//     btf.snackbarShow("即将跳转到「开往」项目的成员博客，不保证跳转网站的安全性和可用性", function(element) {
+//         element.style.opacity = 0,
+//         travellingsTimer && clearTimeout(travellingsTimer)
+//     }, 5000, "取消"),
+//         travellingsTimer = setTimeout(function() {
+//             window.open("https://www.travellings.cn/go.html", "_blank")
+//         }, "5000")
+// }
 
 // 移除加载动画
 function removeLoading() {
@@ -426,42 +426,42 @@ function getArrayItems(arr, num) {
 
 //评论增加放大功能
 function owoBig() {
-    new MutationObserver((e=>{
-            for (let t of e)
-                if ("childList" === t.type)
-                    for (let e of t.addedNodes)
-                        if (e.classList && e.classList.contains("OwO-body")) {
-                            let t = e
-                                , o = ""
-                                , n = !0
-                                , a = document.createElement("div");
-                            a.id = "owo-big",
-                                document.querySelector("body").appendChild(a),
-                                t.addEventListener("contextmenu", (e=>e.preventDefault())),
-                                t.addEventListener("mouseover", (e=>{
-                                        "LI" === e.target.tagName && n && (n = !1,
-                                            o = setTimeout((()=>{
-                                                    let t = 3 * e.target.clientWidth
-                                                        , o = e.x - e.offsetX - (t - e.target.clientWidth) / 2
-                                                        , n = e.y - e.offsetY;
-                                                    a.style.height = 3 * e.target.clientHeight + "px",
-                                                        a.style.width = t + "px",
-                                                        a.style.left = o + "px",
-                                                        a.style.top = n + "px",
-                                                        a.style.display = "flex",
-                                                        a.innerHTML = `<img src="${e.target.querySelector("img").src}">`
-                                                }
-                                            ), 300))
+    new MutationObserver((e => {
+        for (let t of e)
+            if ("childList" === t.type)
+                for (let e of t.addedNodes)
+                    if (e.classList && e.classList.contains("OwO-body")) {
+                        let t = e
+                            , o = ""
+                            , n = !0
+                            , a = document.createElement("div");
+                        a.id = "owo-big",
+                            document.querySelector("body").appendChild(a),
+                            t.addEventListener("contextmenu", (e => e.preventDefault())),
+                            t.addEventListener("mouseover", (e => {
+                                "LI" === e.target.tagName && n && (n = !1,
+                                    o = setTimeout((() => {
+                                        let t = 3 * e.target.clientWidth
+                                            , o = e.x - e.offsetX - (t - e.target.clientWidth) / 2
+                                            , n = e.y - e.offsetY;
+                                        a.style.height = 3 * e.target.clientHeight + "px",
+                                            a.style.width = t + "px",
+                                            a.style.left = o + "px",
+                                            a.style.top = n + "px",
+                                            a.style.display = "flex",
+                                            a.innerHTML = `<img src="${e.target.querySelector("img").src}">`
                                     }
-                                )),
-                                t.addEventListener("mouseout", (e=>{
-                                        a.style.display = "none",
-                                            n = !0,
-                                            clearTimeout(o)
-                                    }
-                                ))
-                        }
-        }
+                                    ), 300))
+                            }
+                            )),
+                            t.addEventListener("mouseout", (e => {
+                                a.style.display = "none",
+                                    n = !0,
+                                    clearTimeout(o)
+                            }
+                            ))
+                    }
+    }
     )).observe(document.getElementById("post-comment"), {
         childList: !0,
         subtree: !0
@@ -487,9 +487,9 @@ document.querySelector('#console') && document.querySelector('#console').addEven
 // })
 
 //自动调整即刻短文尺寸
-window.addEventListener("resize", (function() {
-        document.querySelector("#waterfall") && heo.reflashEssayWaterFall()
-    }
+window.addEventListener("resize", (function () {
+    document.querySelector("#waterfall") && heo.reflashEssayWaterFall()
+}
 ));
 
 //首页大卡片恢复显示
@@ -509,14 +509,14 @@ $(".topGroup").hover(function () {
 function initObserver() {
     var e = document.getElementById("post-comment")
         , t = document.getElementById("pagination");
-    e && new IntersectionObserver((function(e) {
-            e.forEach((function(e) {
-                    e.isIntersecting ? (t && t.classList.add("show-window"),
-                        document.querySelector(".comment-barrage").style.bottom = "-200px") : (t && t.classList.remove("show-window"),
-                        document.querySelector(".comment-barrage").style.bottom = "0px")
-                }
-            ))
+    e && new IntersectionObserver((function (e) {
+        e.forEach((function (e) {
+            e.isIntersecting ? (t && t.classList.add("show-window"),
+                document.querySelector(".comment-barrage").style.bottom = "-200px") : (t && t.classList.remove("show-window"),
+                    document.querySelector(".comment-barrage").style.bottom = "0px")
         }
+        ))
+    }
     )).observe(e)
 }
 
@@ -530,7 +530,7 @@ function percent() {
         , i = document.getElementById("post-comment") || document.getElementById("footer");
     i.offsetTop + i.offsetHeight / 2 < a || o > 90 ? (document.querySelector("#nav-totop").classList.add("long"),
         n.innerHTML = "返回顶部") : (document.querySelector("#nav-totop").classList.remove("long"),
-    o >= 0 && (n.innerHTML = o)),
+            o >= 0 && (n.innerHTML = o)),
         endresult = t - e,
         endresult < 100 ? $(".needEndHide").addClass("hide") : $(".needEndHide").removeClass("hide"),
         window.onscroll = percent
@@ -544,12 +544,12 @@ function checkUrlAndAddHideBanner() {
             , o = document.getElementById("bbTimeList")
             , c = document.getElementById("climb");
         t && (t.classList.add("more-page"),
-        o && o.classList.add("more-page"),
-        c && c.classList.add("more-page"));
+            o && o.classList.add("more-page"),
+            c && c.classList.add("more-page"));
     }
 }
 
-function setBodyDataType(){
+function setBodyDataType() {
     var body = document.body;
     var att = document.createAttribute("data-type");
     att.value = GLOBAL_CONFIG.htmlType;
@@ -558,46 +558,46 @@ function setBodyDataType(){
 function listenToPageInputPress() {
     var e = document.getElementById("toPageText")
         , t = document.getElementById("toPageButton");
-    e && (e.addEventListener("keydown", (e=>{
-            13 === e.keyCode && (heo.toPage(),
-                pjax.loadUrl(t.href))
-        }
+    e && (e.addEventListener("keydown", (e => {
+        13 === e.keyCode && (heo.toPage(),
+            pjax.loadUrl(t.href))
+    }
     )),
-        e.addEventListener("input", (function() {
-                "" === e.value || "0" === e.value ? t.classList.remove("haveValue") : t.classList.add("haveValue");
-                var o = document.querySelectorAll(".page-number")
-                    , n = +o[o.length - 1].innerHTML;
-                +document.getElementById("toPageText").value > n && (e.value = n)
-            }
+        e.addEventListener("input", (function () {
+            "" === e.value || "0" === e.value ? t.classList.remove("haveValue") : t.classList.add("haveValue");
+            var o = document.querySelectorAll(".page-number")
+                , n = +o[o.length - 1].innerHTML;
+            +document.getElementById("toPageText").value > n && (e.value = n)
+        }
         )))
 }
 function initBlog() {
     // 图片主色
     GLOBAL_CONFIG.source.post.dynamicBackground && coverColor(),
-    GLOBAL_CONFIG.rightMenuEnable && addRightMenuClickEvent(),
-    percent(),
-    listenToPageInputPress(),
-    setBodyDataType(),
-    heo.topPostScroll(),
-    heo.sayhi(),
-    heo.stopImgRightDrag(),
-    heo.addPowerLinksInPostRightSide(),
-    heo.qrcodeCreate(),
-    //右下角 snackbar 弹窗
-    GLOBAL_CONFIG.source.tool.switch && heo.hidecookie(),
-    heo.onlyHome(),
-    heo.addNavBackgroundInit(),
-    heo.initIndexEssay(),
-    heo.reflashEssayWaterFall(),
-    heo.darkModeStatus(),
-    heo.categoriesBarActive(),
-    heo.initThemeColor(),
-    heo.topCategoriesBarScroll(),
-    //隐藏加载动画
-    GLOBAL_CONFIG.loadingBox &&  heo.hideLoading(),
-    heo.tagPageActive(),
-    initObserver(),
-    checkUrlAndAddHideBanner()
+        GLOBAL_CONFIG.rightMenuEnable && addRightMenuClickEvent(),
+        percent(),
+        listenToPageInputPress(),
+        setBodyDataType(),
+        heo.topPostScroll(),
+        heo.sayhi(),
+        heo.stopImgRightDrag(),
+        heo.addPowerLinksInPostRightSide(),
+        heo.qrcodeCreate(),
+        //右下角 snackbar 弹窗
+        GLOBAL_CONFIG.source.tool.switch && heo.hidecookie(),
+        heo.onlyHome(),
+        heo.addNavBackgroundInit(),
+        heo.initIndexEssay(),
+        heo.reflashEssayWaterFall(),
+        heo.darkModeStatus(),
+        heo.categoriesBarActive(),
+        heo.initThemeColor(),
+        heo.topCategoriesBarScroll(),
+        //隐藏加载动画
+        GLOBAL_CONFIG.loadingBox && heo.hideLoading(),
+        heo.tagPageActive(),
+        initObserver(),
+        checkUrlAndAddHideBanner()
 
 
 }
@@ -785,11 +785,11 @@ if (getCookie('browsertc') != 1) {
 //注入函数
 document.addEventListener('pjax:click', function () {
     //显示加载进度条
-    if(GLOBAL_CONFIG.loadProgressBar){
+    if (GLOBAL_CONFIG.loadProgressBar) {
         Pace.restart();
     }
     //显示加载动画
-    if(GLOBAL_CONFIG.loadingBox){
+    if (GLOBAL_CONFIG.loadingBox) {
         heo.showLoading();
     }
 })
