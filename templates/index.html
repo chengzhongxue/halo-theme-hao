@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
       th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'index', title = null, head = ~{::head})}">
 <th:block th:fragment="head">
     <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = ${site.title},
@@ -15,15 +15,15 @@
         <header th:class="${theme.config.top.above.enable_above ? 'full_page' : 'not-top-img'}" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = ${siteTitle})}"></nav>
             <!-- 问候语 -->
-            <th:block th:replace="~{modules/header/greeting :: greeting}"></th:block>
+            <th:block th:replace="~{modules/header/greeting}"/>
             <!-- 第一屏 -->
-            <th:block th:replace="~{modules/header/index-img :: index-img}"></th:block>
+            <th:block th:replace="~{modules/header/index-img}"/>
         </header>
         <div id="home_top">
             <!-- 每日说说 -->
-            <div th:replace="~{modules/moment :: moment}"></div>
+            <div th:replace="~{modules/moment}"/>
             <!-- 置顶内容 -->
-            <div th:replace="~{modules/recent-top :: recent-top}"></div>
+            <div th:replace="~{modules/recent-top}"/>
         </div>
         <main class="layout" id="content-inner" th:classappend="${theme.config.sidebar.location}">
             <div class="recent-posts" id="recent-posts">
@@ -31,13 +31,13 @@
                 <!-- 分类导航栏 -->
                 <div th:replace="~{'modules/bar/' + ${theme.config.layout.navs.nav}}"></div>
 
-                <th:block th:replace="~{modules/post-list :: post-list}"></th:block>
+                <th:block th:replace="~{modules/post-list}"/>
 
             </div>
             <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.widgetss.indexWidgets})}"></div>
         </main>
         <!-- 底部 -->
-        <footer th:replace="~{modules/footer :: footer}"></footer>
+        <footer th:replace="~{modules/footer}"/>
     </div>
 
 </th:block>

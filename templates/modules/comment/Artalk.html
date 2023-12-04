@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<th:block th:fragment="artalk" th:if="${#strings.equals(theme.config.comments.use, 'Artalk')
+<th:block th:if="${#strings.equals(theme.config.comments.use, 'Artalk')
   && not #strings.isEmpty(theme.config.comments.artalks.server)}">
     <div class="js-pjax">
         <script th:src="${assets_link + '/js/comment/artalk.js'}"></script>
@@ -219,5 +216,3 @@
     </style>
 
 </th:block>
-
-</html>

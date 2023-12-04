@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
+<html  xmlns:th="http://www.thymeleaf.org"
       th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page',title = ${singlePage.spec.title + ' | ' + site.title}, head = ~{::head})}">
 <th:block th:fragment="head">
     <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = ${singlePage.spec.title},
@@ -36,7 +36,7 @@
 
         </main>
         <!-- 底部 -->
-        <footer th:replace="~{modules/footer :: footer}"></footer>
+        <footer th:replace="~{modules/footer}"/>
     </div>
 
 </th:block>

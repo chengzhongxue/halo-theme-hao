@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 关注偏好&音乐偏好 -->
-<div class="author-content" th:fragment="like-music">
+<div class="author-content" >
 
     <div class="author-content-item like-technology"
-        th:style="'background: url('+ @{${theme.config.about.like.like_bg}} +') top / cover no-repeat;'">
+         th:style="'background: url('+ @{${theme.config.about.like.like_bg}} +') top / cover no-repeat;'">
         <div class="card-content">
             <div class="author-content-item-tips" th:text="${theme.config.about.like.like_tips}">
 
             </div>
             <span class="author-content-item-title"
-                th:text="${theme.config.about.like.like_title}"></span>
+                  th:text="${theme.config.about.like.like_title}"></span>
             <div class="content-bottom">
                 <div class="tips" th:text="${theme.config.about.like.like_bottom}"></div>
             </div>
@@ -18,13 +16,13 @@
     </div>
 
     <div class="author-content-item like-music"
-        th:style="'background: url('+ @{${theme.config.about.music.music_bg}} +') top / cover no-repeat'">
+         th:style="'background: url('+ @{${theme.config.about.music.music_bg}} +') top / cover no-repeat'">
         <div class="card-content">
             <div class="author-content-item-tips" th:text="${theme.config.about.music.music_tips}">
 
             </div>
             <span class="author-content-item-title"
-                th:text="${theme.config.about.music.music_title}"></span>
+                  th:text="${theme.config.about.music.music_title}"></span>
             <div class="content-bottom">
                 <div class="tips">跟 [[${site.title}]] 一起欣赏更多音乐</div>
             </div>
@@ -33,11 +31,10 @@
                    th:href="${theme.config.about.music.music_link}"
                    target="_blank"
                    rel="noopener nofollow">
-                <i class="haofont hao-icon-circle-arrow-up-right-1"></i>
-                <span class="banner-button-text">更多推荐</span></a>
+                    <i class="haofont hao-icon-circle-arrow-up-right-1"></i>
+                    <span class="banner-button-text">更多推荐</span></a>
             </div>
         </div>
     </div>
 
 </div>
-</html>

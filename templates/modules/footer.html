@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 页脚模块 -->
-<footer id="footer" th:fragment="footer">
+<footer id="footer">
 
     <div id="heo-footer-bar" th:if="${theme.config.footer.footer_bar.footer_bar_enable}">
         <div class="footer-logo"><th:block th:utext="${theme.config.footer.footer_bar.logo}"></th:block></div>
@@ -163,5 +161,3 @@
     <div class="comment-barrage needEndHide" style="display: none;"></div>
 
 </footer>
-
-</html>

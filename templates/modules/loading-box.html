@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- loading页面 -->
-<th:block th:fragment="loading-box"
+<th:block
           th:if="${theme.config.other.loadingBoxs.loadingBoxEnable} and not ${#strings.isEmpty(theme.config.other.loadingBoxs.loadingBoxImg)}">
     <style type="text/css">
         #loading-box {
@@ -103,5 +101,3 @@
     </script>
 
 </th:block>
-
-</html>

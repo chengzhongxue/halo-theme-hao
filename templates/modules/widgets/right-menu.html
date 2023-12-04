@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 右键菜单 -->
-<div class="js-pjax" th:fragment="right-menu" th:if="${theme.config.tool.rightMenu.rightMenuEnable}">
+<div class="js-pjax"  th:if="${theme.config.tool.rightMenu.rightMenuEnable}">
     <div id="rightMenu">
         <div class="rightMenu-group rightMenu-small">
             <div class="rightMenu-item" id="menu-backward"><i class="haofont hao-icon-arrow-left"></i></div>
@@ -119,5 +117,3 @@
     </div>
     <div id="rightmenu-mask"></div>
 </div>
-
-</html>

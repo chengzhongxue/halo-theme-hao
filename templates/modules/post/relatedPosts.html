@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <!-- 阅读建议 -->
-<th:block th:fragment="relatedPosts" th:if="${not #lists.isEmpty(post.categories)}" th:with="recommendQuantity = ${theme.config.post.recommendQuantity},
+<th:block  th:if="${not #lists.isEmpty(post.categories)}" th:with="recommendQuantity = ${theme.config.post.recommendQuantity},
 recommandPosts = ${postFinder.listByCategory(1,recommendQuantity == 'six' ? 7 : recommendQuantity == 'two' ? 3 : 1,post.categories.get(0).metadata.name)},
 containsTitle = ${#strings.contains(recommandPosts,post.spec.title)},
 postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,'?') ? theme.config.layout.postRandomImg+'&' : theme.config.layout.postRandomImg+'?'}">
@@ -57,4 +56,3 @@ postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,'?') ? theme
     <link th:if="${#strings.equals(recommendQuantity, 'two')}" rel="stylesheet"
           th:href="${assets_link + '/css/related-posts-two.css' + theme_version}">
 </th:block>
-</html>

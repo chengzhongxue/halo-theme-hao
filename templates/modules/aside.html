@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <!-- 侧边栏 -->
 <div class="aside-content" id="aside-content" th:fragment="aside(widgets)"
      th:if="${theme.config.sidebar.location != 'hide-aside' && not #strings.isEmpty(widgets)}">
@@ -30,7 +27,7 @@
 
         <!-- toc 之后的组件需要被 sticky_layout 包裹 -->
         <div class="sticky_layout">
-            <th:block th:replace="~{modules/widgets/aside/toc :: toc}"/>
+            <th:block th:replace="~{modules/widgets/aside/toc}"/>
 
             <th:block th:each="widget : ${#strings.listSplit(#strings.substringAfter(widgets, 'toc'), ',')}">
                 <th:block th:replace="~{'modules/widgets/aside/'+ ${widget}}"/>
@@ -40,4 +37,3 @@
 
 
 </div>
-</html>
