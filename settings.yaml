@@ -1041,7 +1041,36 @@ spec:
           children:
             - $formkit: radio
               name: default_enable
+              id: default_enable
+              key: default_enable
               label: 底部
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
+            - $formkit: radio
+              if: $get(default_enable).value
+              name: dingyue
+              label: 订阅
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
+            - $formkit: radio
+              if: $get(default_enable).value
+              name: zhuti
+              label: 主题
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
+            - $formkit: radio
+              if: $get(default_enable).value
+              name: about
+              label: 关于
               options:
                 - label: 显示
                   value: true
