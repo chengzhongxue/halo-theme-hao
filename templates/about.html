@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'about',title = ${'关于' + ' | ' + site.title}, head = ~{::head})}">
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'about',title = ${${singlePage.spec.title} + ' | ' + site.title}, head = ~{::head})}">
 <th:block th:fragment="head">
     <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = ${singlePage.spec.title},
                 _permalink = ${singlePage.status.permalink},
@@ -14,7 +14,7 @@
 
         <!-- 头部导航栏 -->
         <header class="not-top-img" id="page-header">
-            <nav th:replace="~{modules/nav :: nav(title = '关于')}"></nav>
+            <nav th:replace="~{modules/nav :: nav(title = ${singlePage.spec.title})}"></nav>
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
@@ -40,7 +40,7 @@
                                   th:text="${authorTag.tag}"></span>
                         </div>
                     </div>
-                    <div class="author-title">关于本站</div>
+                    <div class="author-title" th:text="${singlePage.spec.title}"></div>
 
                     <th:block th:replace="~{modules/about-widgets :: about-widgets(${theme.config.about.widgetList})}"></th:block>
 
