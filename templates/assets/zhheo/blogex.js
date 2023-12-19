@@ -597,7 +597,8 @@ function initBlog() {
     GLOBAL_CONFIG.loadingBox &&  heo.hideLoading(),
     heo.tagPageActive(),
     initObserver(),
-    checkUrlAndAddHideBanner()
+    checkUrlAndAddHideBanner(),
+    halo.getTopSponsors()
 
 
 }
