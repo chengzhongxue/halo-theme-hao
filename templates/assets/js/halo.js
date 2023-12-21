@@ -378,29 +378,40 @@ let halo = {
         function renderer(values){
             var data = getArrayItems(values, 1);
             let powerStar = document.getElementById("power-star")
-            if (powerStar) {
-                powerStar.href = "https://afdian.net/u/" + data[0].user_id
+            if (values.length===0){
+                powerStar.href = "/"
                 powerStar.innerHTML = ` 
+                        <div id="power-star-image" style="background-image: url('https://redirect.cnkj.site:8099/b/2023/6583b34d95d08.webp?type=blog')">
+                        </div>
+                        <div class="power-star-body">
+                            <div id="power-star-title">暂无赞赏，骚年请加油💪</div>
+                            <div id="power-star-desc">更多支持，为爱发电</div>
+                        </div>`;
+            }else {
+                if (powerStar) {
+                    powerStar.href = "https://afdian.net/u/" + data[0].user_id
+                    powerStar.innerHTML = ` 
                         <div id="power-star-image" style="background-image: url(${data[0].avatar})">
                         </div>
                         <div class="power-star-body">
                             <div id="power-star-title">${data[0].name}</div>
                             <div id="power-star-desc">更多支持，为爱发电</div>
                         </div>`;
-            }
-
-            if (values.length > 1) {
-                var i = 0;
-                var htmlText = '';
-                for (let value of values) {
-                    if (i > parseInt(show_num)) {
-                        break;
-                    }
-                    htmlText += ` <a href="${"https://afdian.net/u/" + value["user_id"]}" rel="external nofollow" target="_blank" th:title="${value["name"]}">${value["name"]}</a>`;
-                    i = i + 1;
                 }
-                if (document.getElementById("power-item-link")) {
-                    document.getElementById("power-item-link").innerHTML = htmlText;
+
+                if (values.length > 1) {
+                    var i = 0;
+                    var htmlText = '';
+                    for (let value of values) {
+                        if (i > parseInt(show_num)) {
+                            break;
+                        }
+                        htmlText += ` <a href="${"https://afdian.net/u/" + value["user_id"]}" rel="external nofollow" target="_blank" th:title="${value["name"]}">${value["name"]}</a>`;
+                        i = i + 1;
+                    }
+                    if (document.getElementById("power-item-link")) {
+                        document.getElementById("power-item-link").innerHTML = htmlText;
+                    }
                 }
             }
         }
