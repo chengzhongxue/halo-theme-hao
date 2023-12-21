@@ -379,13 +379,13 @@ let halo = {
             var data = getArrayItems(values, 1);
             let powerStar = document.getElementById("power-star")
             if (values.length===0){
-                powerStar.href = "/"
+                powerStar.href = GLOBAL_CONFIG.source.power.powerLink
                 powerStar.innerHTML = ` 
                         <div id="power-star-image" style="background-image: url('https://redirect.cnkj.site:8099/b/2023/6583b34d95d08.webp?type=blog')">
                         </div>
                         <div class="power-star-body">
-                            <div id="power-star-title">暂无赞赏，骚年请加油💪</div>
-                            <div id="power-star-desc">更多支持，为爱发电</div>
+                            <div id="power-star-title">还没有人赞助～</div>
+                            <div id="power-star-desc">为爱发电，点击赞助</div>
                         </div>`;
             }else {
                 if (powerStar) {
