@@ -7409,7 +7409,7 @@ span.fund_name {
 #power-star-image {
     width: 60px;
     height: 60px;
-    border-radius: 60px;
+    border-radius: 50%;
     background-size: cover;
     margin-right: 12px;
     border: var(--style-border-always);
