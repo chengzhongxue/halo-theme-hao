@@ -1,6 +1,6 @@
 <!-- 侧边栏自我介绍 -->
 
-<div class="card-widget card-info" >
+<div class="card-widget card-info" th:style="|background-image: url(${theme.config.sidebar.profile.backgroundImg});|">
 
     <!-- 默认 -->
     <th:block th:if="${#strings.equals(theme.config.sidebar.profile.profileStyle, 'default')}">

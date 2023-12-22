@@ -609,6 +609,11 @@ spec:
                 - value: one
                   label: 样式一
             - $formkit: attachment
+              name: backgroundImg
+              label: 背景图片
+              value: https://pic.cnkj.site/b/2023/6585299246b8a.webp?type=blog
+              placeholder: 请输入背景图片地址
+            - $formkit: attachment
               name: stickerImg
               if: $get(profileStyle).value == 'one'
               label: 贴纸
@@ -628,7 +633,7 @@ spec:
               name: profileName
               label: 卡片名称
               placeholder: 请填写个人卡片名称
-              help: 不填写默认为站点则名称
+              help: 不填写默认为站点名称
             - $formkit: code
               name: profileDesc
               label: 描述信息
@@ -1311,6 +1316,24 @@ spec:
             - $formkit: radio
               name: copyurl_edit
               help: 启用复制链接
+              value: true
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: radio
+              name: qq_edit
+              help: 启用分享到QQ
+              value: true
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: radio
+              name: wechat_edit
+              help: 启用分享到微信朋友圈
               value: true
               options:
                 - label: 启用
@@ -2074,7 +2097,7 @@ spec:
               if: $get(tenyear_enable).value
               name: end_time
               label: 结束时间
-        
+
 
     - group: aboutReward
       label: 关于（打赏）
