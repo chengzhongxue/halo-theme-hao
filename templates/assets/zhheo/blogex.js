@@ -1,5 +1,6 @@
+function checkOpen() {
+}
 
-function checkOpen() {}
 checkOpen.toString = function () {
     this.opened = true;
 };
@@ -13,7 +14,7 @@ function coverColor() {
         // 获取颜色 https://github.com/fast-average-color/fast-average-color
         const fac = new FastAverageColor();
 
-        fac.getColorAsync(path,{
+        fac.getColorAsync(path, {
             // 忽略白色
             ignoredColor: [255, 255, 255, 255]
         })
@@ -221,7 +222,7 @@ var getTimeState = () => {
 
     },
 //深色模式切换
-    switchDarkMode = ()=>{
+    switchDarkMode = () => {
         "dark" === document.documentElement.getAttribute("data-theme") ? (activateLightMode(),
             saveToLocal.set("theme", "light", 2),
         void 0 !== GLOBAL_CONFIG.Snackbar && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day, false, 2000),
@@ -232,14 +233,14 @@ var getTimeState = () => {
             handleCases()
         heo.darkModeStatus();
         //代码块
-        if(GLOBAL_CONFIG.prism.enable){
+        if (GLOBAL_CONFIG.prism.enable) {
             halo.dataCodeTheme();
         }
     }
-    , handleCases = ()=>{
+    , handleCases = () => {
         "function" == typeof utterancesTheme && utterancesTheme(),
         "object" == typeof FB && window.loadFBComment(),
-        window.DISQUS && document.getElementById("disqus_thread").children.length && setTimeout((()=>window.disqusReset()), 200)
+        window.DISQUS && document.getElementById("disqus_thread").children.length && setTimeout((() => window.disqusReset()), 200)
     }
     , navFn = {
         switchDarkMode: switchDarkMode
@@ -250,7 +251,7 @@ function rightMenuCommentText(txt) {
     if (GLOBAL_CONFIG.rightMenuEnable) {
         rm.hideRightMenu();
     }
-    var input =  document.getElementsByClassName(GLOBAL_CONFIG.source.comments.textarea)[0];
+    var input = document.getElementsByClassName(GLOBAL_CONFIG.source.comments.textarea)[0];
     let evt = document.createEvent('HTMLEvents');
     evt.initEvent('input', true, true);
     let inputValue = replaceAll(txt, '\n', '\n> ')
@@ -264,6 +265,7 @@ function rightMenuCommentText(txt) {
         document.getElementById("comment-tips").classList.add("show");
     }
 }
+
 //替换所有内容
 function replaceAll(string, search, replace) {
     return string.split(search).join(replace);
@@ -317,7 +319,8 @@ function travelling() {
                 renderer(json.items);
             })
     }
-    function renderer(data){
+
+    function renderer(data) {
         var linksData = data
         var name = ''
         var link = ''
@@ -342,7 +345,8 @@ function travelling() {
             }
         });
     }
-    function init(){
+
+    function init() {
         const data = saveToLocal.get('links-data')
         if (data) {
             renderer(JSON.parse(data))
@@ -350,6 +354,7 @@ function travelling() {
             getLinks()
         }
     }
+
     init()
 }
 
@@ -370,12 +375,12 @@ function toforeverblog() {
 }
 
 //前往开往项目
-function totraveling () {
-    btf.snackbarShow("即将跳转到「开往」项目的成员博客，不保证跳转网站的安全性和可用性", function(element) {
+function totraveling() {
+    btf.snackbarShow("即将跳转到「开往」项目的成员博客，不保证跳转网站的安全性和可用性", function (element) {
         element.style.opacity = 0,
         travellingsTimer && clearTimeout(travellingsTimer)
     }, 5000, "取消"),
-        travellingsTimer = setTimeout(function() {
+        travellingsTimer = setTimeout(function () {
             window.open("https://www.travellings.cn/go.html", "_blank")
         }, "5000")
 }
@@ -426,7 +431,7 @@ function getArrayItems(arr, num) {
 
 //评论增加放大功能
 function owoBig() {
-    new MutationObserver((e=>{
+    new MutationObserver((e => {
             for (let t of e)
                 if ("childList" === t.type)
                     for (let e of t.addedNodes)
@@ -437,10 +442,10 @@ function owoBig() {
                                 , a = document.createElement("div");
                             a.id = "owo-big",
                                 document.querySelector("body").appendChild(a),
-                                t.addEventListener("contextmenu", (e=>e.preventDefault())),
-                                t.addEventListener("mouseover", (e=>{
+                                t.addEventListener("contextmenu", (e => e.preventDefault())),
+                                t.addEventListener("mouseover", (e => {
                                         "LI" === e.target.tagName && n && (n = !1,
-                                            o = setTimeout((()=>{
+                                            o = setTimeout((() => {
                                                     let t = 3 * e.target.clientWidth
                                                         , o = e.x - e.offsetX - (t - e.target.clientWidth) / 2
                                                         , n = e.y - e.offsetY;
@@ -454,7 +459,7 @@ function owoBig() {
                                             ), 300))
                                     }
                                 )),
-                                t.addEventListener("mouseout", (e=>{
+                                t.addEventListener("mouseout", (e => {
                                         a.style.display = "none",
                                             n = !0,
                                             clearTimeout(o)
@@ -487,7 +492,7 @@ document.querySelector('#console') && document.querySelector('#console').addEven
 // })
 
 //自动调整即刻短文尺寸
-window.addEventListener("resize", (function() {
+window.addEventListener("resize", (function () {
         document.querySelector("#waterfall") && heo.reflashEssayWaterFall()
     }
 ));
@@ -509,8 +514,8 @@ $(".topGroup").hover(function () {
 function initObserver() {
     var e = document.getElementById("post-comment")
         , t = document.getElementById("pagination");
-    e && new IntersectionObserver((function(e) {
-            e.forEach((function(e) {
+    e && new IntersectionObserver((function (e) {
+            e.forEach((function (e) {
                     e.isIntersecting ? (t && t.classList.add("show-window"),
                         document.querySelector(".comment-barrage").style.bottom = "-200px") : (t && t.classList.remove("show-window"),
                         document.querySelector(".comment-barrage").style.bottom = "0px")
@@ -523,7 +528,8 @@ function initObserver() {
 // 页面百分比
 function percent() {
     let e = document.documentElement.scrollTop || window.pageYOffset
-        , t = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight) - document.documentElement.clientHeight
+        ,
+        t = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight) - document.documentElement.clientHeight
         , o = Math.round(e / t * 100)
         , n = document.querySelector("#percent");
     var a = window.scrollY + document.documentElement.clientHeight
@@ -549,21 +555,22 @@ function checkUrlAndAddHideBanner() {
     }
 }
 
-function setBodyDataType(){
+function setBodyDataType() {
     var body = document.body;
     var att = document.createAttribute("data-type");
     att.value = GLOBAL_CONFIG.htmlType;
     body.setAttributeNode(att);
 }
+
 function listenToPageInputPress() {
     var e = document.getElementById("toPageText")
         , t = document.getElementById("toPageButton");
-    e && (e.addEventListener("keydown", (e=>{
+    e && (e.addEventListener("keydown", (e => {
             13 === e.keyCode && (heo.toPage(),
                 pjax.loadUrl(t.href))
         }
     )),
-        e.addEventListener("input", (function() {
+        e.addEventListener("input", (function () {
                 "" === e.value || "0" === e.value ? t.classList.remove("haveValue") : t.classList.add("haveValue");
                 var o = document.querySelectorAll(".page-number")
                     , n = +o[o.length - 1].innerHTML;
@@ -571,34 +578,36 @@ function listenToPageInputPress() {
             }
         )))
 }
+
 function initBlog() {
     // 图片主色
     GLOBAL_CONFIG.source.post.dynamicBackground && coverColor(),
     GLOBAL_CONFIG.rightMenuEnable && addRightMenuClickEvent(),
-    percent(),
-    listenToPageInputPress(),
-    setBodyDataType(),
-    heo.topPostScroll(),
-    heo.sayhi(),
-    heo.stopImgRightDrag(),
-    heo.addPowerLinksInPostRightSide(),
-    heo.qrcodeCreate(),
-    //右下角 snackbar 弹窗
+        percent(),
+        listenToPageInputPress(),
+        setBodyDataType(),
+        heo.topPostScroll(),
+        heo.sayhi(),
+        heo.stopImgRightDrag(),
+        heo.addPowerLinksInPostRightSide(),
+        heo.qrcodeCreate(),
+        //右下角 snackbar 弹窗
     GLOBAL_CONFIG.source.tool.switch && heo.hidecookie(),
-    heo.onlyHome(),
-    heo.addNavBackgroundInit(),
-    heo.initIndexEssay(),
-    heo.reflashEssayWaterFall(),
-    heo.darkModeStatus(),
-    heo.categoriesBarActive(),
-    heo.initThemeColor(),
-    heo.topCategoriesBarScroll(),
-    //隐藏加载动画
-    GLOBAL_CONFIG.loadingBox &&  heo.hideLoading(),
-    heo.tagPageActive(),
-    initObserver(),
-    checkUrlAndAddHideBanner(),
-    halo.getTopSponsors()
+        heo.onlyHome(),
+        heo.addNavBackgroundInit(),
+        heo.initIndexEssay(),
+        heo.reflashEssayWaterFall(),
+        heo.darkModeStatus(),
+        heo.categoriesBarActive(),
+        heo.initThemeColor(),
+        heo.topCategoriesBarScroll(),
+        //隐藏加载动画
+    GLOBAL_CONFIG.loadingBox && heo.hideLoading(),
+        heo.tagPageActive(),
+        initObserver(),
+        checkUrlAndAddHideBanner(),
+        halo.getTopSponsors(),
+        halo.checkAd()
 
 
 }
@@ -786,11 +795,11 @@ if (getCookie('browsertc') != 1) {
 //注入函数
 document.addEventListener('pjax:click', function () {
     //显示加载进度条
-    if(GLOBAL_CONFIG.loadProgressBar){
+    if (GLOBAL_CONFIG.loadProgressBar) {
         Pace.restart();
     }
     //显示加载动画
-    if(GLOBAL_CONFIG.loadingBox){
+    if (GLOBAL_CONFIG.loadingBox) {
         heo.showLoading();
     }
 })
