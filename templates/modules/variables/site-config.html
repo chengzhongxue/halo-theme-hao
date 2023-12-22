@@ -8,11 +8,14 @@
         isHome: [[${ htmlType == 'index'}]],
         copyright: undefined,
         lightbox: 'fancybox',
-        lazyload: {enable: [[${theme.config.other.vanillaLazyload.enable}]], error: [[@{${theme.config.other.vanillaLazyload.errorImg}}]] },
+        lazyload: {
+            enable: [[${theme.config.other.vanillaLazyload.enable}]],
+            error: [[@{${theme.config.other.vanillaLazyload.errorImg}}]]
+        },
         isFriendLinksInFooter: [[${theme.config.footer.footer_group.enable_footer_group}]],
         loadingBox: [[${theme.config.other.loadingBoxs.loadingBoxEnable}]],
         loadProgressBar: [[${theme.config.other.loadingBoxs.loadProgressBar}]],
-        navMusicEnable:[[${theme.config.tool.nav_music.nav_musicEnable}]],
+        navMusicEnable: [[${theme.config.tool.nav_music.nav_musicEnable}]],
         isMusic: [[${ htmlType == 'music'}]],
         helloText: [[${#strings.listSplit(theme.config.sidebar.profile.helloText, ',')}]],
         profileStyle: [[${theme.config.sidebar.profile.profileStyle}]],
@@ -34,12 +37,12 @@
             position: "top-center",
         },
         translate: {
-            defaultEncoding:[[${theme.config.style.translate.defaultEncoding}]],
-            translateDelay:0,
-            msgToTraditionalChinese:"繁",
-            msgToSimplifiedChinese:"简",
-            rightMenuMsgToTraditionalChinese:"轉為繁體",
-            rightMenuMsgToSimplifiedChinese:"转为简体"
+            defaultEncoding: [[${theme.config.style.translate.defaultEncoding}]],
+            translateDelay: 0,
+            msgToTraditionalChinese: "繁",
+            msgToSimplifiedChinese: "简",
+            rightMenuMsgToTraditionalChinese: "轉為繁體",
+            rightMenuMsgToSimplifiedChinese: "转为简体"
         },
         prism: {
             enable: [[${ theme.config.code.enable }]],
@@ -48,15 +51,15 @@
             enable_line: [[${ theme.config.code.enable_line }]],
             enable_copy: [[${ theme.config.code.enable_copy }]],
             enable_expander: [[${ theme.config.code.enable_expander }]],
-            prism_limit: Number([[${#strings.isEmpty(theme.config.code.height_limit) ? 300 : theme.config.code.height_limit}]])+30,
+            prism_limit: Number([[${#strings.isEmpty(theme.config.code.height_limit) ? 300 : theme.config.code.height_limit}]]) + 30,
             enable_height_limit: [[${theme.config.code.enable_height_limit}]]
         },
         source: {
-            power:{
+            power: {
                 powerLink: [[${theme.config.sidebar.power.powerLink}]],
-                url:[[${theme.config.sidebar.power.url}]],
-                userId:[[${theme.config.sidebar.power.userId}]],
-                showNum:[[${theme.config.sidebar.power.showNum}]]
+                url: [[${theme.config.sidebar.power.url}]],
+                userId: [[${theme.config.sidebar.power.userId}]],
+                showNum: [[${theme.config.sidebar.power.showNum}]]
             },
             links: {
                 linksUrl: [[${ theme.config.link.linksUrl }]],
@@ -71,7 +74,7 @@
                 js: 'https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js',
                 css: '/null'
             },
-            comments:{
+            comments: {
                 use: [[${theme.config.comments.use}]],
                 maxBarrage: [[${ theme.config.comments.commentBarrageConfig.maxBarrage }]],
                 barrageTime: [[${ theme.config.comments.commentBarrageConfig.barrageTime }]],
@@ -81,53 +84,54 @@
                                    theme.config.comments.use == 'Artalk' ? 'atk-textarea' :
                                    theme.config.comments.use == 'Waline' ? 'wl-editor' : 'appearance-none' }]]
             },
-            welcome:{
-                key:"[(${theme.config.sidebar.welcome.key})]",
+            welcome: {
+                key: "[(${theme.config.sidebar.welcome.key})]",
                 locationLng: [[${theme.config.sidebar.welcome.locationLng}]],
                 locationLat: [[${theme.config.sidebar.welcome.locationLat}]]
             },
-            post:{
+            post: {
                 dynamicBackground: [[${ theme.config.post.dynamicBackground }]]
             },
-            tool:{
+            tool: {
                 switch: [[${ theme.config.tool.snackbar.switch }]]
             },
-            postAi:{
-                ai : [[${htmlType != 'post' || !theme.config.post.aiDescription.aiDescriptionEnable  ?  ''  :
+            postAi: {
+                ai: [[${htmlType != 'post' || !theme.config.post.aiDescription.aiDescriptionEnable  ?  ''  :
                                     theme.config.post.aiDescription.mode != 'local' && !theme.config.post.aiDescription.switchBtn ? '' :
                                     post.spec.excerpt.autoGenerate ? '本地模式需要自己填写文章摘要' :
                                     #strings.isEmpty(post.status.excerpt) ? '请填写文章摘要' : post.status.excerpt  }]],
-                randomNum : [[${theme.config.post.aiDescription.randomNum}]],
-                basicWordCount : [[${theme.config.post.aiDescription.basicWordCount}]],
-                btnLink : "[(${theme.config.post.aiDescription.btnLink})]",
-                gptName : "[(${theme.config.post.aiDescription.gptName})]",
-                modeName : [[${theme.config.post.aiDescription.mode}]],
-                switchBtn : [[${theme.config.post.aiDescription.switchBtn}]],
-                keys : "[(${theme.config.post.aiDescription.key})]",
-                Referers : "[(${theme.config.post.aiDescription.Referer})]",
+                randomNum: [[${theme.config.post.aiDescription.randomNum}]],
+                basicWordCount: [[${theme.config.post.aiDescription.basicWordCount}]],
+                btnLink: "[(${theme.config.post.aiDescription.btnLink})]",
+                gptName: "[(${theme.config.post.aiDescription.gptName})]",
+                modeName: [[${theme.config.post.aiDescription.mode}]],
+                switchBtn: [[${theme.config.post.aiDescription.switchBtn}]],
+                keys: "[(${theme.config.post.aiDescription.key})]",
+                Referers: "[(${theme.config.post.aiDescription.Referer})]",
             },
-            img:{
+            img: {
                 src: [[${isLazyload ? 'data-lazy-src' : 'src' }]]
             },
-            twikoo:{
-                js:[[${not #strings.isEmpty(theme.config.comments.twikoos.js) ? theme.config.comments.twikoos.js : assets_link +'/libs/twikoo/twikoo.all.min.js' }]],
+            twikoo: {
+                js: [[${not #strings.isEmpty(theme.config.comments.twikoos.js) ? theme.config.comments.twikoos.js : assets_link +'/libs/twikoo/twikoo.all.min.js' }]],
                 twikooUrl: "[(${theme.config.comments.twikoos.envId})]",
                 accessToken: "[(${theme.config.comments.twikoos.accessToken})]",
-
             },
-            artalk:{
-                js:[[${not #strings.isEmpty(theme.config.comments.artalks.artalkJs) ? theme.config.comments.artalks.artalkJs : assets_link +'/libs/artalk/Artalk.js' }]],
-                css:[[${not #strings.isEmpty(theme.config.comments.artalks.artalkCss) ? theme.config.comments.artalks.artalkCss : assets_link +'/libs/artalk/Artalk.css' }]],
+            artalk: {
+                js: [[${not #strings.isEmpty(theme.config.comments.artalks.artalkJs) ? theme.config.comments.artalks.artalkJs : assets_link +'/libs/artalk/Artalk.js' }]],
+                css: [[${not #strings.isEmpty(theme.config.comments.artalks.artalkCss) ? theme.config.comments.artalks.artalkCss : assets_link +'/libs/artalk/Artalk.css' }]],
                 artalkUrl: "[(${theme.config.comments.artalks.server})]",
                 siteName: "[(${theme.config.comments.artalks.siteName})]",
             },
-            waline:{
-                js:[[${not #strings.isEmpty(theme.config.comments.walines.walinesJs) ? theme.config.comments.walines.walinesJs : 'https://cdn.cbd.int/@waline/client@2.15.7/dist/waline.js' }]],
+            waline: {
+                js: [[${not #strings.isEmpty(theme.config.comments.walines.walinesJs) ? theme.config.comments.walines.walinesJs : 'https://cdn.cbd.int/@waline/client@2.15.7/dist/waline.js' }]],
                 serverURL: "[(${theme.config.comments.walines.serverURL})]",
-                locale: [(${not #strings.isEmpty(theme.config.comments.walines.locale) ? theme.config.comments.walines.locale : {} })]
-           },
-    },
-
+                locale: [[${not #strings.isEmpty(theme.config.comments.walines.locale) ? theme.config.comments.walines.locale : '' }]]
+            },
+            footer: {
+                default_enable: [[${theme.config.footer.footerContent.default_enable}]]
+            }
+        }
     };
 
 </script>

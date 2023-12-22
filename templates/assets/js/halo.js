@@ -1,16 +1,16 @@
 let halo = {
-    darkComment : ()=>{
-        if(document.querySelector('#comment div').shadowRoot.querySelector('.halo-comment-widget').classList != null){
-            let commentDOMclass =  document.querySelector('#comment div').shadowRoot.querySelector('.halo-comment-widget').classList
-            if(commentDOMclass.contains('light'))
-                commentDOMclass.replace('light','dark')
+    darkComment: () => {
+        if (document.querySelector('#comment div').shadowRoot.querySelector('.halo-comment-widget').classList != null) {
+            let commentDOMclass = document.querySelector('#comment div').shadowRoot.querySelector('.halo-comment-widget').classList
+            if (commentDOMclass.contains('light'))
+                commentDOMclass.replace('light', 'dark')
             else
-                commentDOMclass.replace('dark','light')
+                commentDOMclass.replace('dark', 'light')
         }
 
     },
 
-    dataCodeTheme : ()=>{
+    dataCodeTheme: () => {
 
         var t = document.documentElement.getAttribute('data-theme')
         var e = document.querySelector("link[data-code-theme=light]"),
@@ -23,7 +23,7 @@ let halo = {
      * 代码
      * 只适用于halo的代码渲染
      */
-    addPrismTool : ()=>{
+    addPrismTool: () => {
         if (typeof Prism === 'undefined' || typeof document === 'undefined') {
             return;
         }
@@ -144,7 +144,7 @@ let halo = {
             customItem.className = 'custom-item absolute top-0'
 
             //复制
-            if(isEnableCopy){
+            if (isEnableCopy) {
                 var copy = document.createElement("i");
 
                 copy.className = 'haofont hao-icon-paste copy-button code-copy cursor-pointer'
@@ -181,13 +181,12 @@ let halo = {
             };
 
             //折叠
-            if(isEnableExpander){
+            if (isEnableExpander) {
                 var expander = document.createElement("i");
                 expander.className = 'fa-sharp fa-solid haofont hao-icon-angle-down code-expander cursor-pointer'
                 customItem.appendChild(expander)
 
                 expander.addEventListener('click', prismToolsFn)
-
 
 
             }
@@ -214,12 +213,12 @@ let halo = {
                 r.classList.toggle("expand-done-expander");
                 if (toolbar.classList.contains('c-expander')) {
                     r.firstElementChild.style.display = "none";
-                    if($nextEle.contains('code-expand-btn')){
+                    if ($nextEle.contains('code-expand-btn')) {
                         r.offsetParent.lastElementChild.style.display = "none";
                     }
                 } else {
                     r.firstElementChild.style.display = "block";
-                    if($nextEle.contains('code-expand-btn') &&  !r.classList.contains('expand-done')){
+                    if ($nextEle.contains('code-expand-btn') && !r.classList.contains('expand-done')) {
                         r.offsetParent.lastElementChild.style.display = "block";
                     }
                 }
@@ -247,7 +246,7 @@ let halo = {
         Prism.hooks.add("complete", r)
     },
 
-    addScript: (e,t,n)=>{
+    addScript: (e, t, n) => {
         if (document.getElementById(e))
             return n ? n() : void 0;
         let a = document.createElement("script");
@@ -257,7 +256,7 @@ let halo = {
             document.head.appendChild(a)
     },
 
-    danmu: ()=>{
+    danmu: () => {
         const e = new EasyDanmakuMin({
             el: "#danmu",
             line: 10,
@@ -270,7 +269,7 @@ let halo = {
             e.batchSend(t, !0);
         else {
             let n = [];
-            if(GLOBAL_CONFIG.source.comments.use == 'Twikoo'){
+            if (GLOBAL_CONFIG.source.comments.use == 'Twikoo') {
                 fetch(GLOBAL_CONFIG.source.twikoo.twikooUrl, {
                     method: "POST",
                     body: JSON.stringify({
@@ -282,8 +281,8 @@ let halo = {
                     headers: {
                         "Content-Type": "application/json"
                     }
-                }).then((e=>e.json())).then((({data: t})=>{
-                        t.forEach((e=>{
+                }).then((e => e.json())).then((({data: t}) => {
+                        t.forEach((e => {
                                 null == e.avatar && (e.avatar = "https://cravatar.cn/avatar/d615d5793929e8c7d70eab5f00f7f5f1?d=mp"),
                                     n.push({
                                         avatar: e.avatar,
@@ -298,7 +297,7 @@ let halo = {
                     }
                 ))
             }
-            if(GLOBAL_CONFIG.source.comments.use == 'Artalk'){
+            if (GLOBAL_CONFIG.source.comments.use == 'Artalk') {
                 const statheaderList = {
                     method: 'POST',
                     headers: {
@@ -308,12 +307,12 @@ let halo = {
                     body: new URLSearchParams({
                         'site_name': GLOBAL_CONFIG.source.artalk.siteName,
                         'limit': '100',
-                        'type':'latest_comments'
+                        'type': 'latest_comments'
                     })
                 }
                 fetch(GLOBAL_CONFIG.source.artalk.artalkUrl + 'api/stat', statheaderList)
-                    .then((e=>e.json())).then((({data: t})=>{
-                        t.forEach((e=>{
+                    .then((e => e.json())).then((({data: t}) => {
+                        t.forEach((e => {
                                 n.push({
                                     avatar: 'https://cravatar.cn/avatar/' + e.email_encrypted + '?d=mp&s=240',
                                     content: e.nick + "：" + btf.changeContent(e.content_marked),
@@ -327,12 +326,12 @@ let halo = {
                     }
                 ))
             }
-            if(GLOBAL_CONFIG.source.comments.use == 'Waline'){
+            if (GLOBAL_CONFIG.source.comments.use == 'Waline') {
                 const loadWaline = () => {
                     Waline.RecentComments({
                         serverURL: GLOBAL_CONFIG.source.waline.serverURL,
                         count: 50
-                    }).then(({ comments }) => {
+                    }).then(({comments}) => {
                         const walineArray = comments.map(e => {
                             return {
                                 'content': e.nick + "：" + btf.changeContent(e.comment),
@@ -375,10 +374,10 @@ let halo = {
                 })
         }
 
-        function renderer(values){
+        function renderer(values) {
             var data = getArrayItems(values, 1);
             let powerStar = document.getElementById("power-star")
-            if (values.length===0){
+            if (values.length === 0) {
                 powerStar.href = GLOBAL_CONFIG.source.power.powerLink
                 powerStar.innerHTML = ` 
                         <div id="power-star-image" style="background-image: url('https://redirect.cnkj.site:8099/b/2023/6583b34d95d08.webp?type=blog')">
@@ -387,7 +386,7 @@ let halo = {
                             <div id="power-star-title">还没有人赞助～</div>
                             <div id="power-star-desc">为爱发电，点击赞助</div>
                         </div>`;
-            }else {
+            } else {
                 if (powerStar) {
                     powerStar.href = "https://afdian.net/u/" + data[0].user_id
                     powerStar.innerHTML = ` 
@@ -415,7 +414,8 @@ let halo = {
                 }
             }
         }
-        function init(){
+
+        function init() {
             const data = saveToLocal.get('power-data')
             if (data) {
                 renderer(JSON.parse(data))
@@ -423,7 +423,20 @@ let halo = {
                 getPower()
             }
         }
+
         document.getElementById("power-star") && init()
+    },
+
+    checkAd() {
+        var default_enable = GLOBAL_CONFIG.source.footer.default_enable
+        if (default_enable) {
+            var adElement = document.getElementById("footer-banner");
+            if (adElement.offsetWidth <= 0 || adElement.offsetHeight <= 0) {
+                // 元素不可见，可能被拦截
+                console.log("Element may be blocked by AdBlocker Ultimate");
+                alert("页脚信息可能被AdBlocker Ultimate拦截，请检查广告拦截插件！")
+            }
+        }
     }
 
 
