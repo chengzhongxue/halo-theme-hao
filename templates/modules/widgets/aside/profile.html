@@ -1,11 +1,11 @@
 <!-- 侧边栏自我介绍 -->
 
-<div class="card-widget card-info" th:style="|background-image: url(${theme.config.sidebar.profile.backgroundImg});|">
+<div class="card-widget card-info" >
 
     <!-- 默认 -->
     <th:block th:if="${#strings.equals(theme.config.sidebar.profile.profileStyle, 'default')}">
         <!-- 描述信息 -->
-        <div class="card-content">
+        <div class="card-content" th:style="|background-image: url(${theme.config.sidebar.profile.backgroundImg});|">
             <div class="card-info-avatar is-center">
                 <div class="author-info__top-group">
                     <div class="author-info__sayhi" id="author-info__sayhi" onclick="heo.changeSayHelloText()">你好啊！我是
