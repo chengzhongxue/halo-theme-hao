@@ -1202,6 +1202,15 @@ spec:
             - label: 关闭
               value: false
           help: 文章主色匹配图片颜色
+        - $formkit: radio
+          name: opacity
+          label: 目录模糊效果
+          value: true
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
         - $formkit: group
           name: aiDescription
           label: 文章 AI 摘要
