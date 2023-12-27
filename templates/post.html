@@ -165,7 +165,16 @@
                 </div>
 
                 <!-- 文章内容 -->
-                <article th:class="'post-content  '+${ theme.config.code.enable_line || pluginFinder.available('PluginPrismJS') ? 'line-numbers' : ''}" id="article-container" th:utext="${post.content.content}">
+                <article  th:class="'post-content  '+${ theme.config.code.enable_line || pluginFinder.available('PluginPrismJS') ? 'line-numbers' : ''}" id="article-container">
+                    <th:block th:if="${theme.config.post.passage_tips.enable}"
+                              th:with="days=${(new java.util.Date().getTime()-post.status.lastModifyTime.toEpochMilli())/86400000}">
+                        <div class="note simple  warning"  th:if="${days > #conversions.convert(theme.config.post.passage_tips.day, 'java.lang.Integer')}">
+                            <p>
+                                <th:block th:text="|本文最后更新于 ${#dates.format(post.status.lastModifyTime,'yyyy-MM-dd')}，|"/><th:block th:utext="${theme.config.post.passage_tips.content}"/>
+                            </p>
+                        </div>
+                    </th:block>
+                    <th:block th:utext="${post.content.content}"/>
                 </article>
 
                 <!-- 文章ai摘要 -->

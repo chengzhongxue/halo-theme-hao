@@ -262,6 +262,54 @@ rm.sharePage = function () {
     rm.hideRightMenu();
 }
 
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+rm.shareToQQ = function () {
+    var url = /*[[${post.status.permalink}]]*/ window.location.href;
+    var title = $('#post-info .post-title')[0].innerText;
+    if (isMobileDevice()) {
+        // 使用手机分享方式
+        window.location.href = "mqqapi://share/to_fri?src_type=web&version=1&file_type=news&url=" + encodeURIComponent(url) + "&title=" + encodeURIComponent(title) +  "&callback_type=scheme&generalpastboard=1";
+    } else {
+        // 使用Web分享方式
+        window.open("https://connect.qq.com/widget/shareqq/index.html?url=" + encodeURIComponent(url) + "&title=" + encodeURIComponent(title));
+    }
+    btf.snackbarShow('分享链接地址成功', false, 2000);
+    rm.hideRightMenu();
+}
+
+rm.shareToWechat = function () {
+
+    // 手机分享逻辑
+    if (isMobileDevice) {
+
+        wx.config({
+            // 配置微信的appID、timestamp、nonceStr、signature等参数
+            // ...
+            debug: false,
+            jsApiList: ['onMenuShareTimeline'] // 需要使用的微信接口
+        });
+
+        wx.ready(function () {
+            wx.onMenuShareTimeline({
+                title: $('#post-info .post-title')[0].innerText,
+                link: window.location.href,
+                imgUrl: $('#coverdiv img')[0].src,
+                success: function () {
+                    btf.snackbarShow('分享链接地址成功', false, 2000);
+                    rm.hideRightMenu();
+                },
+                cancel: function () {
+                    btf.snackbarShow('分享链接地址失败', false, 2000);
+                    rm.hideRightMenu();
+                }
+            });
+        });
+    }
+}
+
 // 复制当前选中文本
 var selectTextNow = '';
 document.onmouseup = document.ondbclick = selceText;

@@ -67,6 +67,16 @@
                         <div class="share-button" id="post-share-url" onclick="rm.copyPageUrl()" title="复制链接"><i
                                 class="haofont hao-icon-link"></i></div>
                     </div>
+                    <div class="share-link weibo" th:if="${theme.config.post.share_right.qq_edit}">
+                        <div class="share-button" id="post-share-url-qq" onclick="rm.shareToQQ()" title="分享到QQ">
+                            <i class="haofont hao-icon-qq" style="font-size:19px"></i>
+                        </div>
+                    </div>
+                    <div class="share-link weibo" th:if="${theme.config.post.share_right.wechat_edit}">
+                        <div class="share-button" id="post-share-url-wechat" onclick="rm.shareToWechat()" title="分享到微信朋友圈">
+                            <i class="haofont hao-icon-weixin" style="font-size:22px"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

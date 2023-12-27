@@ -39,9 +39,43 @@ spec:
     - group: nav
       label: 导航
       formSchema:
+        - $formkit: group
+          name: menus
+          label: 菜单控制
+          value:
+            pc_leftMenu: true
+            phone_leftMenu: true
+            phone_menu: true
+          children:
+            - $formkit: radio
+              name: pc_leftMenu
+              id: pc_leftMenu
+              label: pc端左侧菜单
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
+            - $formkit: radio
+              name: phone_leftMenu
+              label: 移动左侧菜单
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
+            - $formkit: radio
+              name: phone_menu
+              label: 移动主菜单
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
         - $formkit: menuRadio
           name: leftMenu
-          label: 站点名左侧
+          if: $get(pc_leftMenu).value
+          label: 站点名左侧菜单
           help: 默认只有主菜单，可前往【外观】—>【菜单】新建菜单组
           value: ""
         - $formkit: group
@@ -1168,6 +1202,15 @@ spec:
             - label: 关闭
               value: false
           help: 文章主色匹配图片颜色
+        - $formkit: radio
+          name: opacity
+          label: 目录模糊效果
+          value: true
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
         - $formkit: group
           name: aiDescription
           label: 文章 AI 摘要
@@ -1249,6 +1292,34 @@ spec:
               label: 你的博客地址
               help: 注意保留最后的斜杠
               value: https://xx.xx/
+        - $formkit: group
+          name: passage_tips
+          label: 温馨提示
+          value:
+            enable: false
+            content: 文章内容可能已经过时。
+            day: 7
+          children:
+            - $formkit: radio
+              name: enable
+              id: enable
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: number
+              if: "$get(enable).value"
+              name: day
+              label: 更新时间大于天数显示
+              validation: required
+            - $formkit: code
+              if: "$get(enable).value"
+              name: content
+              height: 100px
+              label: 温馨提示文案
+              help: "自定义温馨提示的文案，支持html语法"
+              language: html
         - $formkit: select
           name: copyrightsStyle
           id: copyrightsStyle
@@ -1322,24 +1393,24 @@ spec:
                   value: true
                 - label: 禁用
                   value: false
-#            - $formkit: radio
-#              name: qq_edit
-#              help: 启用分享到QQ
-#              value: true
-#              options:
-#                - label: 启用
-#                  value: true
-#                - label: 禁用
-#                  value: false
-#            - $formkit: radio
-#              name: wechat_edit
-#              help: 启用分享到微信朋友圈
-#              value: true
-#              options:
-#                - label: 启用
-#                  value: true
-#                - label: 禁用
-#                  value: false
+            - $formkit: radio
+              name: qq_edit
+              help: 启用分享到QQ
+              value: true
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: radio
+              name: wechat_edit
+              help: 启用分享到微信朋友圈
+              value: true
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
         - $formkit: group
           name: copyrights
           label: 版权声明
