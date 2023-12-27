@@ -39,9 +39,43 @@ spec:
     - group: nav
       label: 导航
       formSchema:
+        - $formkit: group
+          name: menus
+          label: 菜单控制
+          value:
+            pc_leftMenu: true
+            phone_leftMenu: true
+            phone_menu: true
+          children:
+            - $formkit: radio
+              name: pc_leftMenu
+              id: pc_leftMenu
+              label: pc端左侧菜单
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
+            - $formkit: radio
+              name: phone_leftMenu
+              label: 移动左侧菜单
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
+            - $formkit: radio
+              name: phone_menu
+              label: 移动主菜单
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
         - $formkit: menuRadio
           name: leftMenu
-          label: 站点名左侧
+          if: $get(pc_leftMenu).value
+          label: 站点名左侧菜单
           help: 默认只有主菜单，可前往【外观】—>【菜单】新建菜单组
           value: ""
         - $formkit: group
