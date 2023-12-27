@@ -1249,6 +1249,34 @@ spec:
               label: 你的博客地址
               help: 注意保留最后的斜杠
               value: https://xx.xx/
+        - $formkit: group
+          name: passage_tips
+          label: 温馨提示
+          value:
+            enable: false
+            content: 文章内容可能已经过时。
+            day: 7
+          children:
+            - $formkit: radio
+              name: enable
+              id: enable
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: number
+              if: "$get(enable).value"
+              name: day
+              label: 更新时间大于天数显示
+              validation: required
+            - $formkit: code
+              if: "$get(enable).value"
+              name: content
+              height: 100px
+              label: 温馨提示文案
+              help: "自定义温馨提示的文案，支持html语法"
+              language: html
         - $formkit: select
           name: copyrightsStyle
           id: copyrightsStyle
