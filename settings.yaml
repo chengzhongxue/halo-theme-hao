@@ -645,8 +645,8 @@ spec:
             - $formkit: attachment
               name: backgroundImg
               label: 背景图片
-              value: https://pic.cnkj.site/b/2023/6585299246b8a.webp?type=blog
-              placeholder: 请输入背景图片地址
+              value: /themes/theme-hao/assets/images/sidebar/profile.webp
+              placeholder: 请输入背景图片路径或地址（建议使用 280px * 330px 图片效果最佳）
             - $formkit: attachment
               name: stickerImg
               if: $get(profileStyle).value == 'one'
