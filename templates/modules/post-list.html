@@ -40,7 +40,14 @@
                 </a>
                 <div class="content" th:text="${post.status.excerpt}"></div>
             </div>
-
+            
+            <div class="dateshow">
+                <i class="haofont hao-icon-calendar-alt dateshowicon"></i>
+                <span class="banner-button-text" th:text="发表于 + '&nbsp;' + ${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></span>
+                &nbsp;&nbsp;
+                <i class="haofont hao-icon-history dateshowicon"></i>
+                <span class="banner-button-text" th:text="更新于 + '&nbsp;' + ${#dates.format(post.status.lastModifyTime,'yyyy-MM-dd')}"></span>
+            </div>
 
             <div class="article-meta-wrap">
                 <!-- tag -->
@@ -96,6 +103,29 @@
             }
             #recent-posts > .recent-post-item:not(a):hover::before {
                 transform: translateX(100%) skewX(-60deg);
+            }
+        </style>
+        
+        <style>
+            .dateshow {
+                position: absolute;
+                bottom: 55px;
+                transition: 0.3s;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                width: 100%;
+                left: 0;
+                padding: 0 32px;
+                white-space: nowrap;
+            }
+            i.haofont.hao-icon-calendar-alt.dateshowicon {
+                font-size: 20px;
+                margin-top: 6px;
+            }
+            i.haofont.hao-icon-history.dateshowicon {
+                font-size: 20px;
+                margin-top: 6px;
             }
         </style>
     </div>

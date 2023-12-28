@@ -1,5 +1,5 @@
 <!-- 页脚模块 -->
-<footer id="footer">
+<footer id="footer" xmlns:th="http://www.w3.org/1999/xhtml">
 
     <div id="heo-footer-bar" th:if="${theme.config.footer.footer_bar.footer_bar_enable}">
         <div class="footer-logo"><th:block th:utext="${theme.config.footer.footer_bar.logo}"></th:block></div>
@@ -79,7 +79,7 @@
                  th:data-lazy-src="${ isLazyload ? img : ''}" th:alt="${data.message}" />
         </a>
     </p>
-    <span th:if="${!theme.config.footer.footerContent.default_enable}" style="padding: 20px 20px;">
+    <span th:if="${!theme.config.footer.footerContent.default_enable_group.default_enable}" style="padding: 20px 20px;">
 
     </span>
 
@@ -95,13 +95,13 @@
             th:if="${(theme.config.footer.footerContent.style_one.owner_enable
             || (not #lists.isEmpty(theme.config.footer.footerContent.style_one.bdageitem) && theme.config.footer.footerContent.style_one.bdageitem_enable )
             || theme.config.footer.footerContent.style_one.runtime_enable)
-        && theme.config.footer.footerContent.default_enable}">
+        && theme.config.footer.footerContent.default_enable_group.default_enable}">
         #heo-footer {
             margin-bottom: 1rem;
         }
     </style>
 
-    <div th:if="${theme.config.footer.footerContent.default_enable}" id="footer-banner">
+    <div th:if="${theme.config.footer.footerContent.default_enable_group.default_enable}" id="footer-banner">
         <div class="footer-banner-links">
             <div class="footer-banner-left">
                 <div id="footer-banner-tips">
@@ -118,11 +118,58 @@
                 </div>
             </div>
             <div class="footer-banner-right">
+                
+                <!-- 又拍云 -->
+                <a th:if="${theme.config.footer.footerContent.default_enable_group.yunzhichi && theme.config.footer.footerContent.default_enable_group.yunzhichi_list == 'upyun_cloud'}"
+                   class="footer-banner-link cloud" href="https://www.upyun.com/"
+                   rel="noopener external nofollow noreferrer noopener"
+                   target="_blank">
+                    <span>本网站由</span>&nbsp;&nbsp;
+                    <img th:src="${assets_link + '/images/footer/upyun-5.png'}" alt="upyun" class="entered loading cloud" />
+                    &nbsp;&nbsp;<span>提供CDN加速/云存储服务</span>
+                </a>
+                <!-- 阿里云 -->
+                <a th:if="${theme.config.footer.footerContent.default_enable_group.yunzhichi && theme.config.footer.footerContent.default_enable_group.yunzhichi_list == 'aliyun_cloud'}"
+                   class="footer-banner-link cloud" href="https://www.aliyun.com/"
+                   rel="noopener external nofollow noreferrer noopener"
+                   target="_blank">
+                    <span>本网站由</span>&nbsp;&nbsp;
+                    <img th:src="${assets_link + '/images/footer/aliyun.png'}" alt="aliyun_cloud" class="entered loading cloud" />
+                    &nbsp;&nbsp;<span>提供CDN加速/云存储服务</span>
+                </a>
+                <!-- 腾讯云 -->
+                <a th:if="${theme.config.footer.footerContent.default_enable_group.yunzhichi && theme.config.footer.footerContent.default_enable_group.yunzhichi_list == 'tencent_cloud'}"
+                   class="footer-banner-link cloud" href="https://cloud.tencent.com/"
+                   rel="noopener external nofollow noreferrer noopener"
+                   target="_blank">
+                    <span>本网站由</span>&nbsp;&nbsp;
+                    <img th:src="${assets_link + '/images/footer/tencent.png'}" alt="tencent_cloud" class="entered loading cloud" />
+                    &nbsp;&nbsp;<span>提供CDN加速/云存储服务</span>
+                </a>
+                <!-- 华为云 -->
+                <a th:if="${theme.config.footer.footerContent.default_enable_group.yunzhichi && theme.config.footer.footerContent.default_enable_group.yunzhichi_list == 'huawei_cloud'}"
+                   class="footer-banner-link cloud" href="https://www.huaweicloud.com/"
+                   rel="noopener external nofollow noreferrer noopener"
+                   target="_blank">
+                    <span>本网站由</span>&nbsp;&nbsp;
+                    <img th:src="${assets_link + '/images/footer/huawei.png'}" alt="huawei_cloud" class="entered loading cloud" />
+                    &nbsp;&nbsp;<span>提供CDN加速/云存储服务</span>
+                </a>
+                <!-- 自定义云服务信息 -->
+                <a th:if="${theme.config.footer.footerContent.default_enable_group.yunzhichi && theme.config.footer.footerContent.default_enable_group.yunzhichi_list == 'custom_cloud' && not #strings.isEmpty(theme.config.footer.footerContent.default_enable_group.yunzhichi_url)}"
+                   class="footer-banner-link cloud" th:href="@{${theme.config.footer.footerContent.default_enable_group.yunzhichi_url_link}}"
+                   rel="noopener external nofollow noreferrer noopener"
+                   target="_blank">
+                    <span>本网站由</span>&nbsp;&nbsp;
+                    <img th:src="@{${theme.config.footer.footerContent.default_enable_group.yunzhichi_url}}" alt="custom_cloud" class="entered loading cloud"/>
+                    &nbsp;&nbsp;<span>提供CDN加速/云存储服务</span>
+                </a>
+                
                 <!-- 订阅 需要 RSS 插件支持 -->
-                <a class="footer-banner-link" href="/rss.xml" th:if="${pluginFinder.available('PluginFeed')} and ${theme.config.footer.footerContent.dingyue}">订阅</a>
-                <a th:if="${theme.config.footer.footerContent.zhuti}" class="footer-banner-link" href="https://github.com/liuzhihang/halo-theme-hao">主题</a>
-                <a th:if="${theme.config.footer.footerContent.about}" class="footer-banner-link" href="/about">关于</a>
-                <a th:if="${not #strings.isEmpty(theme.config.basics.icp)}"
+                <a class="footer-banner-link" href="/rss.xml" th:if="${pluginFinder.available('PluginFeed')} and ${theme.config.footer.footerContent.default_enable_group.dingyue}">订阅</a>
+                <a th:if="${theme.config.footer.footerContent.default_enable_group.zhuti}" class="footer-banner-link" href="https://github.com/liuzhihang/halo-theme-hao">主题</a>
+                <a th:if="${theme.config.footer.footerContent.default_enable_group.about}" class="footer-banner-link" href="/about">关于</a>
+                <a th:if="${not #strings.isEmpty(theme.config.basics.icp) && theme.config.footer.footerContent.default_enable_group.icp_icon}"
                    class="footer-banner-link" href="https://beian.miit.gov.cn/#/Integrated/index"
                    rel="noopener external nofollow noreferrer noopener"
                    target="_blank">
@@ -131,7 +178,7 @@
                     <img th:if="${#strings.startsWith(theme.config.basics.icp, 'http')}"
                          th:src="@{${theme.config.basics.icp}}" alt="icp"/>
                 </a>
-                <a th:if="${not #strings.isEmpty(theme.config.basics.gongan)}"
+                <a th:if="${not #strings.isEmpty(theme.config.basics.gongan) && theme.config.footer.footerContent.default_enable_group.gongwangan}"
                    class="footer-banner-link" href="http://www.beian.gov.cn/portal/registerSystemInfo"
                    rel="noopener external nofollow noreferrer noopener"
                    target="_blank">
@@ -140,7 +187,7 @@
                          th:src="@{${theme.config.basics.gongan}}" alt="gongan"/>
                 </a>
                 <a class="footer-banner-link cc" th:href="${theme.config.basics.copyrightAgreement}"
-                   th:if="${not #strings.isEmpty(theme.config.basics.copyrightAgreement)}" title="cc协议">
+                   th:if="${not #strings.isEmpty(theme.config.basics.copyrightAgreement) && theme.config.footer.footerContent.default_enable_group.yingsi}" title="cc协议">
                     <i class="haofont hao-icon-copyright-line"></i>
                     <i class="haofont hao-icon-creative-commons-by-line"></i>
                     <i class="haofont hao-icon-creative-commons-nc-line"></i>
@@ -166,4 +213,14 @@
     <!--评论弹幕弹窗 -->
     <div class="comment-barrage needEndHide" style="display: none;"></div>
 
+    <style>
+        a.footer-banner-link.cloud {
+            display: flex;
+            align-items: center;
+        }
+        img.entered.loading.cloud {
+            height: 32px;
+        }
+    </style>
+    
 </footer>

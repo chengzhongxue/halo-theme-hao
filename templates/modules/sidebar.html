@@ -64,8 +64,9 @@
              th:with="tags = ${tagFinder.listAll()}">
             <div class="item-headline"></div>
             <div class="card-tag-cloud">
-                <a style="font-size:14.3px;color:#d3d3d3" th:each="tag : ${tags}"
+                <a class="tag-item" style="font-size:1em" th:each="tag,iterStat : ${tags}"
                    th:href="@{${tag.status.permalink}}"
+                   th:if="${tagQuantity >= 0 && iterStat.index < tagQuantity || tagQuantity < 0}"
                    th:title="${tag.spec.displayName}">
                     <!-- 角标 -->
                     [[${tag.spec.displayName}]]<sup th:text="${tag.status.visiblePostCount}"></sup>
