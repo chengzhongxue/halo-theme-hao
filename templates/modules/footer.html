@@ -122,7 +122,7 @@
                 <a class="footer-banner-link" href="/rss.xml" th:if="${pluginFinder.available('PluginFeed')} and ${theme.config.footer.footerContent.dingyue}">订阅</a>
                 <a th:if="${theme.config.footer.footerContent.zhuti}" class="footer-banner-link" href="https://github.com/liuzhihang/halo-theme-hao">主题</a>
                 <a th:if="${theme.config.footer.footerContent.about}" class="footer-banner-link" href="/about">关于</a>
-                <a th:if="${not #strings.isEmpty(theme.config.basics.icp)}"
+                <a th:if="${not #strings.isEmpty(theme.config.basics.icp) && theme.config.footer.footerContent.icp_icon}"
                    class="footer-banner-link" href="https://beian.miit.gov.cn/#/Integrated/index"
                    rel="noopener external nofollow noreferrer noopener"
                    target="_blank">
@@ -131,7 +131,7 @@
                     <img th:if="${#strings.startsWith(theme.config.basics.icp, 'http')}"
                          th:src="@{${theme.config.basics.icp}}" alt="icp"/>
                 </a>
-                <a th:if="${not #strings.isEmpty(theme.config.basics.gongan)}"
+                <a th:if="${not #strings.isEmpty(theme.config.basics.gongan) && theme.config.footer.footerContent.gongwangan}"
                    class="footer-banner-link" href="http://www.beian.gov.cn/portal/registerSystemInfo"
                    rel="noopener external nofollow noreferrer noopener"
                    target="_blank">
@@ -140,7 +140,7 @@
                          th:src="@{${theme.config.basics.gongan}}" alt="gongan"/>
                 </a>
                 <a class="footer-banner-link cc" th:href="${theme.config.basics.copyrightAgreement}"
-                   th:if="${not #strings.isEmpty(theme.config.basics.copyrightAgreement)}" title="cc协议">
+                   th:if="${not #strings.isEmpty(theme.config.basics.copyrightAgreement) && theme.config.footer.footerContent.yingsi}" title="cc协议">
                     <i class="haofont hao-icon-copyright-line"></i>
                     <i class="haofont hao-icon-creative-commons-by-line"></i>
                     <i class="haofont hao-icon-creative-commons-nc-line"></i>

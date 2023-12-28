@@ -1085,6 +1085,7 @@ spec:
             - $formkit: radio
               if: $get(default_enable).value
               name: dingyue
+              default_enable: true
               label: 订阅
               options:
                 - label: 显示
@@ -1094,6 +1095,7 @@ spec:
             - $formkit: radio
               if: $get(default_enable).value
               name: zhuti
+              default_enable: true
               label: 主题
               options:
                 - label: 显示
@@ -1103,7 +1105,38 @@ spec:
             - $formkit: radio
               if: $get(default_enable).value
               name: about
+              default_enable: true
               label: 关于
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
+            - $formkit: radio
+              if: $get(default_enable).value
+              name: icp_icon
+              default_enable: true
+              label: icp备案
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
+            - $formkit: radio
+              if: $get(default_enable).value
+              name: gongwangan
+              default_enable: true
+              label: 公网安备案
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
+            - $formkit: radio
+              if: $get(default_enable).value
+              name: yingsi
+              default_enable: true
+              label: yingsi
               options:
                 - label: 显示
                   value: true
