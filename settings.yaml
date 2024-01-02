@@ -1307,6 +1307,15 @@ spec:
               value: true
             - label: 关闭
               value: false
+        - $formkit: radio
+          name: article_date_show
+          label: 文章“发表于”、“更新于”展示
+          value: true
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
         - $formkit: group
           name: aiDescription
           label: 文章 AI 摘要
