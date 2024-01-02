@@ -1,7 +1,7 @@
 <th:block
-          th:with='postItems=${posts.items},
+        th:with='postItems=${posts.items},
           postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"&" : theme.config.layout.postRandomImg+"?"}'>
-
+    
     <!-- card，需要添加在没有图片时使用随机图片 -->
     <div class="recent-post-item"
          th:classappend="${theme.config.layout.post.cols} + ' ' +
@@ -41,14 +41,6 @@
                 <div class="content" th:text="${post.status.excerpt}"></div>
             </div>
             
-            <div class="dateshow">
-                <i class="haofont hao-icon-calendar-alt dateshowicon"></i>
-                <span class="banner-button-text" th:text="发表于 + '&nbsp;' + ${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></span>
-                &nbsp;&nbsp;
-                <i class="haofont hao-icon-history dateshowicon"></i>
-                <span class="banner-button-text" th:text="更新于 + '&nbsp;' + ${#dates.format(post.status.lastModifyTime,'yyyy-MM-dd')}"></span>
-            </div>
-
             <div class="article-meta-wrap">
                 <!-- tag -->
                 <th:block th:if="${not #lists.isEmpty(post.tags)}">
@@ -63,30 +55,42 @@
                     </span>
                 </th:block>
                 <!-- 创建时间 -->
-                <span class="post-meta-date" th:with="days=${(new java.util.Date().getTime()-post.spec.publishTime.toEpochMilli())/86400000}">
-                    <i class="far fa-calendar-alt"></i>
-                    <time style="display: inline;"
+                <span class="post-meta-date"
+                      th:with="days=${(new java.util.Date().getTime()-post.spec.publishTime.toEpochMilli())/86400000}">
+                    <i class="haofont hao-icon-linggan"></i>
+                    <time style="display: inline;color: #a599e9"
                           th:datetime="${post.spec.publishTime}"
                           th:if="${days > 30}"
-                          th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
-                          th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}+创建">
-                    </time>
-                    <time style="display: inline;"
-                          th:datetime="${post.spec.publishTime}"
-                          th:if="${days <= 30 && days > 0}"
                           th:text="${days}+天前"
                           th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}+创建">
                     </time>
-                    <time style="display: inline;"
+                    <time style="display: inline;color: #75a7ca"
+                          th:datetime="${post.spec.publishTime}"
+                          th:if="${days <= 30 && days > 0}"
+                          th:text="最近发布"
+                          th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}+创建">
+                    </time>
+                    <time style="display: inline;color: #0ec0ea"
                           th:datetime="${post.spec.publishTime}"
                           th:if="${days == 0}"
-                          th:text="最近"
+                          th:text="今日上新"
                           th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}+创建">
                     </time>
                 </span>
             </div>
+            
+            <div class="dateshow" media="screen and (min-width: 1024px)" th:if="${post.article_date_show}">
+                <i class="haofont hao-icon-calendar-alt dateshowicon"></i>
+                <span class="banner-button-text"
+                      th:text="发表于 + '&nbsp;' + ${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></span>
+                &nbsp;&nbsp;
+                <i class="haofont hao-icon-history dateshowicon"></i>
+                <span class="banner-button-text"
+                      th:text="更新于 + '&nbsp;' + ${#dates.format(post.status.lastModifyTime,'yyyy-MM-dd')}"></span>
+            </div>
+        
         </div>
-
+        
         <!-- 文章卡片擦亮效果 -->
         <style th:if="${theme.config.layout.articleCardPolish}">
             #recent-posts > .recent-post-item:not(a)::before {
@@ -101,6 +105,7 @@
                 transition: transform 0.5s linear;
                 z-index: 1;
             }
+            
             #recent-posts > .recent-post-item:not(a):hover::before {
                 transform: translateX(100%) skewX(-60deg);
             }
@@ -108,8 +113,9 @@
         
         <style>
             .dateshow {
+                font-size: 12px;
                 position: absolute;
-                bottom: 55px;
+                bottom: 10px;
                 transition: 0.3s;
                 display: flex;
                 flex-direction: row;
@@ -118,18 +124,22 @@
                 left: 0;
                 padding: 0 32px;
                 white-space: nowrap;
+                color: var(--heo-fontcolor);
+                height: 20px;
             }
+            
             i.haofont.hao-icon-calendar-alt.dateshowicon {
-                font-size: 20px;
-                margin-top: 6px;
+                font-size: 14px;
+                margin-top: 5px;
             }
+            
             i.haofont.hao-icon-history.dateshowicon {
-                font-size: 20px;
-                margin-top: 6px;
+                font-size: 14px;
+                margin-top: 5px;
             }
         </style>
     </div>
-
+    
     <!-- 分页 -->
     <div th:replace="~{modules/widgets/page :: page('',${posts},true,'')}"></div>
 
