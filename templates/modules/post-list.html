@@ -55,38 +55,27 @@
                     </span>
                 </th:block>
                 <!-- 创建时间 -->
-                <span class="post-meta-date"
-                      th:with="days=${(new java.util.Date().getTime()-post.spec.publishTime.toEpochMilli())/86400000}">
-                    <i class="haofont hao-icon-linggan"></i>
-                    <time style="display: inline;color: #a599e9"
+                <span class="post-meta-date" th:with="days=${(new java.util.Date().getTime()-post.spec.publishTime.toEpochMilli())/86400000}">
+                    <i class="far fa-calendar-alt"></i>
+                    <time style="display: inline;"
                           th:datetime="${post.spec.publishTime}"
                           th:if="${days > 30}"
+                          th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
+                          th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}+创建">
+                    </time>
+                    <time style="display: inline;"
+                          th:datetime="${post.spec.publishTime}"
+                          th:if="${days <= 30 && days > 0}"
                           th:text="${days}+天前"
                           th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}+创建">
                     </time>
-                    <time style="display: inline;color: #75a7ca"
-                          th:datetime="${post.spec.publishTime}"
-                          th:if="${days <= 30 && days > 0}"
-                          th:text="最近发布"
-                          th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}+创建">
-                    </time>
-                    <time style="display: inline;color: #0ec0ea"
+                    <time style="display: inline;"
                           th:datetime="${post.spec.publishTime}"
                           th:if="${days == 0}"
-                          th:text="今日上新"
+                          th:text="最近"
                           th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}+创建">
                     </time>
                 </span>
-            </div>
-            
-            <div class="dateshow" media="screen and (min-width: 1024px)" th:if="${theme.config.post.article_date_show}">
-                <i class="haofont hao-icon-calendar-alt dateshowicon"></i>
-                <span class="banner-button-text"
-                      th:text="发表于 + '&nbsp;' + ${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></span>
-                &nbsp;&nbsp;
-                <i class="haofont hao-icon-history dateshowicon"></i>
-                <span class="banner-button-text"
-                      th:text="更新于 + '&nbsp;' + ${#dates.format(post.status.lastModifyTime,'yyyy-MM-dd')}"></span>
             </div>
         
         </div>
@@ -108,34 +97,6 @@
             
             #recent-posts > .recent-post-item:not(a):hover::before {
                 transform: translateX(100%) skewX(-60deg);
-            }
-        </style>
-        
-        <style>
-            .dateshow {
-                font-size: 12px;
-                position: absolute;
-                bottom: 10px;
-                transition: 0.3s;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                width: 100%;
-                left: 0;
-                padding: 0 32px;
-                white-space: nowrap;
-                color: var(--heo-fontcolor);
-                height: 20px;
-            }
-            
-            i.haofont.hao-icon-calendar-alt.dateshowicon {
-                font-size: 14px;
-                margin-top: 5px;
-            }
-            
-            i.haofont.hao-icon-history.dateshowicon {
-                font-size: 14px;
-                margin-top: 5px;
             }
         </style>
     </div>

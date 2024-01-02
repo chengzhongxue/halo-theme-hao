@@ -1307,15 +1307,6 @@ spec:
               value: true
             - label: 关闭
               value: false
-        - $formkit: radio
-          name: article_date_show
-          label: 文章“发表于”、“更新于”展示
-          value: true
-          options:
-            - label: 打开
-              value: true
-            - label: 关闭
-              value: false
         - $formkit: group
           name: aiDescription
           label: 文章 AI 摘要
@@ -1492,24 +1483,6 @@ spec:
             - $formkit: radio
               name: copyurl_edit
               help: 启用复制链接
-              value: true
-              options:
-                - label: 启用
-                  value: true
-                - label: 禁用
-                  value: false
-            - $formkit: radio
-              name: qq_edit
-              help: 启用分享到QQ
-              value: true
-              options:
-                - label: 启用
-                  value: true
-                - label: 禁用
-                  value: false
-            - $formkit: radio
-              name: wechat_edit
-              help: 启用分享到微信朋友圈
               value: true
               options:
                 - label: 启用
