@@ -79,7 +79,7 @@
                 </span>
             </div>
             
-            <div class="dateshow" media="screen and (min-width: 1024px)" th:if="${post.article_date_show}">
+            <div class="dateshow" media="screen and (min-width: 1024px)" th:if="${theme.config.post.article_date_show}">
                 <i class="haofont hao-icon-calendar-alt dateshowicon"></i>
                 <span class="banner-button-text"
                       th:text="发表于 + '&nbsp;' + ${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></span>
