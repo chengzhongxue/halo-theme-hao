@@ -2,7 +2,7 @@
     if (!document.getElementById('post-comment')) return
     const initArtalk = () => {
 
-        window.artalkItem = new Artalk(Object.assign({
+        window.artalkItem = Artalk.init(Object.assign({
             el: '#artalk-wrap',
             server: GLOBAL_CONFIG.source.artalk.artalkUrl,
             site: GLOBAL_CONFIG.source.artalk.siteName,
@@ -12,7 +12,7 @@
         }, null))
 
         if (GLOBAL_CONFIG.lightbox === 'null') return
-        window.artalkItem.use(ctx => {
+        Artalk.use(ctx => {
             ctx.on('list-loaded', () => {
                 ctx.getCommentList().forEach(comment => {
                     const $content = comment.getRender().$content
