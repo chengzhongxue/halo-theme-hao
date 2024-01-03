@@ -1,42 +1,53 @@
 <!-- 数据统计&作者相关信息 -->
-<div class="author-content" >
+<div class="author-content">
     <div class="about-statistic author-content-item"
          style="background: url(https://bu.dusays.com/2023/03/12/640dc8c72f623.webp);">
         <div class="card-content">
             <div class="author-content-item-tips">数据</div>
             <span class="author-content-item-title">访问统计</span>
             <div id="statistic"></div>
-            <div class="post-tips">统计信息来自 <a href="https://invite.51.la/1NzKqTeb?target=V6" rel="noopener nofollow"
+            <div class="post-tips">统计信息来自 <a href="https://invite.51.la/1NzKqTeb?target=V6"
+                                                   rel="noopener nofollow"
                                                    target="_blank">51la网站统计</a></div>
-            <div class="banner-button-group"><a class="banner-button" onclick="pjax.loadUrl('/archives')"
-                                                data-pjax-state=""><i class="haofont hao-icon-circle-arrow-up-right-1"></i><span
-                    class="banner-button-text">文章隧道</span></a></div>
+            <div class="banner-button-group">
+                <a class="banner-button" onclick="pjax.loadUrl('/archives')" data-pjax-state="">
+                    <i class="haofont hao-icon-circle-arrow-up-right-1"></i>
+                    <span class="banner-button-text">文章隧道</span>
+                </a>
+            </div>
         </div>
     </div>
-
-
+    
+    
     <div class="author-content-item-group column mapAndInfo">
         <div class="author-content-item map single">
             <span class="map-title">我现在住在
-                <b>[[${theme.config.about.map.StrengthenTitle}]]</b></span>
+                <b>[[${theme.config.about.map.StrengthenTitle}]]</b>
+            </span>
         </div>
         <div class="author-content-item selfInfo single"
              th:if="${not #lists.isEmpty(theme.config.about.map.authorInfo)}"
              th:with="texts = ${theme.config.about.map.authorInfo}">
-            <div th:if="${theme.config.about.map.authorInfo.size()}>'0'"><span class="selfInfo-title"
-                                                                               th:text="${texts[0].authorInfoTitle}">生于</span><span class="selfInfo-content"
-                                                                                                                                      id="selfInfo-content-year" th:style="'color:' + ${texts[0].authorInfoColor}"
-                                                                                                                                      th:text="${texts[0].authorInfoContent}">2000</span>
+            <div th:if="${theme.config.about.map.authorInfo.size()}>'0'">
+                <span class="selfInfo-title"
+                      th:text="${texts[0].authorInfoTitle}">生于</span><span
+                    class="selfInfo-content"
+                    id="selfInfo-content-year" th:style="'color:' + ${texts[0].authorInfoColor}"
+                    th:text="${texts[0].authorInfoContent}">2000</span>
             </div>
-            <div th:if="${theme.config.about.map.authorInfo.size()}>'1'"><span class="selfInfo-title"
-                                                                               th:text="${texts[1].authorInfoTitle}">太原理工大学</span><span class="selfInfo-content"
-                                                                                                                                              th:style="'color:' + ${texts[1].authorInfoColor}"
-                                                                                                                                              th:text="${texts[1].authorInfoContent}">计算机科学</span>
+            <div th:if="${theme.config.about.map.authorInfo.size()}>'1'">
+                <span class="selfInfo-title"
+                      th:text="${texts[1].authorInfoTitle}">太原理工大学</span><span
+                    class="selfInfo-content"
+                    th:style="'color:' + ${texts[1].authorInfoColor}"
+                    th:text="${texts[1].authorInfoContent}">计算机科学</span>
             </div>
-            <div th:if="${theme.config.about.map.authorInfo.size()}>'2'"><span class="selfInfo-title"
-                                                                               th:text="${texts[2].authorInfoTitle}">现在职业</span><span class="selfInfo-content"
-                                                                                                                                          th:style="'color:' + ${texts[2].authorInfoColor}"
-                                                                                                                                          th:text="${texts[2].authorInfoContent}">BI工程师</span>
+            <div th:if="${theme.config.about.map.authorInfo.size()}>'2'">
+                <span class="selfInfo-title"
+                      th:text="${texts[2].authorInfoTitle}">现在职业</span><span
+                    class="selfInfo-content"
+                    th:style="'color:' + ${texts[2].authorInfoColor}"
+                    th:text="${texts[2].authorInfoContent}">BI工程师</span>
             </div>
         </div>
     </div>
@@ -52,18 +63,19 @@
             background-size: 100%;
             transition: 1s ease-in-out;
         }
-
+        
         [data-theme=dark] .author-content-item.map {
             background: url([[${theme.config.about.map.backgroundDark}]]) no-repeat center;
             background-size: 100%;
         }
+        
         .author-content-item.map:hover {
             background-size: 120%;
             transition: 4s ease-in-out;
             background-position-x: 0;
             background-position-y: 36%;
         }
-
+        
         .author-content-item.map .map-title {
             position: absolute;
             bottom: 0px;
@@ -75,21 +87,22 @@
             -webkit-backdrop-filter: blur(20px);
             transition: 1s ease-in-out;
             font-size: 20px;
+            border-radius: 0 0 1rem 1rem;
         }
-
+        
         .author-content-item.map:hover .map-title {
             bottom: -100%;
         }
-
+        
         .author-content-item.map .map-title b {
             color: var(--heo-fontcolor);
         }
-
+        
         @media screen and (max-width: 768px) {
             .author-content-item.map.myphoto {
                 background-size: cover !important;
             }
-
+            
             .author-content-item.map .map-title {
                 padding: 1rem;
             }
@@ -100,71 +113,74 @@
         // 链接替换即可，不需要后面的参数
         function initAboutPage() {
             fetch("https://v6-widget.51.la/v6/[[${theme.config.about.LingQueMonitorID}]]/quote.js")
-                .then(res => res.text())
-                .then(data => {
-                    let title = ["最近活跃", "今日人数", "今日访问", "昨日人数", "昨日访问", "本月访问", "总访问量"];
-                    // let num = data.match(/(?<=<\/span><span>).*?(?=<\/span><\/p>)/g)
-                    let num = data.match(/(<\/span><span>).*?(\/span><\/p>)/g);
-
-                    num = num.map(el => {
-                        let val = el.replace(/(<\/span><span>)/g, "");
-                        let str = val.replace(/(<\/span><\/p>)/g, "");
-                        return str;
-                    });
-
-                    let statisticEl = document.getElementById("statistic");
-
-                    // 自定义不显示哪个或者显示哪个，如下为不显示 最近活跃访客 和 总访问量
-                    let statistic = [];
-                    for (let i = 0; i < num.length; i++) {
-                        if (!statisticEl) return;
-                        if (i == 0) continue;
-                        statisticEl.innerHTML +=
-                            "<div><span>" + title[i] + "</span><span id=" + title[i] + ">" + num[i] + "</span></div>";
-                        queueMicrotask(() => {
-                            statistic.push(
-                                new CountUp(title[i], 0, num[i], 0, 2, {
-                                    useEasing: true,
-                                    useGrouping: true,
-                                    separator: ",",
-                                    decimal: ".",
-                                    prefix: "",
-                                    suffix: "",
-                                })
-                            );
+                    .then(res => res.text())
+                    .then(data => {
+                        let title = ["最近活跃", "今日人数", "今日访问", "昨日人数", "昨日访问", "本月访问", "总访问量"];
+                        // let num = data.match(/(?<=<\/span><span>).*?(?=<\/span><\/p>)/g)
+                        let num = data.match(/(<\/span><span>).*?(\/span><\/p>)/g);
+                        
+                        num = num.map(el => {
+                            let val = el.replace(/(<\/span><span>)/g, "");
+                            let str = val.replace(/(<\/span><\/p>)/g, "");
+                            return str;
                         });
-                    }
-
-                    let statisticElement = document.querySelector(".about-statistic.author-content-item");
-                    function statisticUP() {
-                        if (!statisticElement) return;
-
-                        const callback = (entries, observer) => {
-                            entries.forEach(entry => {
-                                if (entry.isIntersecting) {
-                                    for (let i = 0; i < num.length; i++) {
-                                        if (i == 0) continue;
-                                        queueMicrotask(() => {
-                                            statistic[i - 1].start();
-                                        });
-                                    }
-                                    observer.disconnect(); // 停止观察元素，因为不再需要触发此回调
-                                }
+                        
+                        let statisticEl = document.getElementById("statistic");
+                        
+                        // 自定义不显示哪个或者显示哪个，如下为不显示 最近活跃访客 和 总访问量
+                        let statistic = [];
+                        for (let i = 0; i < num.length; i++) {
+                            if (!statisticEl) return;
+                            if (i == 0) continue;
+                            statisticEl.innerHTML +=
+                                    "<div><span>" + title[i] + "</span><span id=" + title[i] + ">" + num[i] + "</span></div>";
+                            queueMicrotask(() => {
+                                statistic.push(
+                                        new CountUp(title[i], 0, num[i], 0, 2, {
+                                            useEasing: true,
+                                            useGrouping: true,
+                                            separator: ",",
+                                            decimal: ".",
+                                            prefix: "",
+                                            suffix: "",
+                                        })
+                                );
                             });
-                        };
-
-                        const options = {
-                            root: null,
-                            rootMargin: "0px",
-                            threshold: 0
-                        };
-                        const observer = new IntersectionObserver(callback, options);
-                        observer.observe(statisticElement);
-                    }
-                    statisticUP()
-                });
+                        }
+                        
+                        let statisticElement = document.querySelector(".about-statistic.author-content-item");
+                        
+                        function statisticUP() {
+                            if (!statisticElement) return;
+                            
+                            const callback = (entries, observer) => {
+                                entries.forEach(entry => {
+                                    if (entry.isIntersecting) {
+                                        for (let i = 0; i < num.length; i++) {
+                                            if (i == 0) continue;
+                                            queueMicrotask(() => {
+                                                statistic[i - 1].start();
+                                            });
+                                        }
+                                        observer.disconnect(); // 停止观察元素，因为不再需要触发此回调
+                                    }
+                                });
+                            };
+                            
+                            const options = {
+                                root: null,
+                                rootMargin: "0px",
+                                threshold: 0
+                            };
+                            const observer = new IntersectionObserver(callback, options);
+                            observer.observe(statisticElement);
+                        }
+                        
+                        statisticUP()
+                    });
         }
+        
         initAboutPage();
-
+    
     </script>
 </div>
