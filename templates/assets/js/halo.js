@@ -380,7 +380,7 @@ let halo = {
             if (values.length === 0) {
                 powerStar.href = GLOBAL_CONFIG.source.power.powerLink
                 powerStar.innerHTML = ` 
-                        <div id="power-star-image" style="background-image: url('https://redirect.cnkj.site:8099/b/2023/6583b34d95d08.webp?type=blog')">
+                        <div id="power-star-image" style="background-image: url('/themes/theme-hao/assets/images/afadian/afadian.webp')">
                         </div>
                         <div class="power-star-body">
                             <div id="power-star-title">还没有人赞助～</div>
