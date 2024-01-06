@@ -1489,24 +1489,6 @@ spec:
                   value: true
                 - label: 禁用
                   value: false
-            - $formkit: radio
-              name: qq_edit
-              help: 启用分享到QQ
-              value: true
-              options:
-                - label: 启用
-                  value: true
-                - label: 禁用
-                  value: false
-            - $formkit: radio
-              name: wechat_edit
-              help: 启用分享到微信朋友圈
-              value: true
-              options:
-                - label: 启用
-                  value: true
-                - label: 禁用
-                  value: false
         - $formkit: group
           name: copyrights
           label: 版权声明

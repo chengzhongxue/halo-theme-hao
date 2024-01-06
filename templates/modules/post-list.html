@@ -1,7 +1,7 @@
 <th:block
-          th:with='postItems=${posts.items},
+        th:with='postItems=${posts.items},
           postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"&" : theme.config.layout.postRandomImg+"?"}'>
-
+    
     <!-- card，需要添加在没有图片时使用随机图片 -->
     <div class="recent-post-item"
          th:classappend="${theme.config.layout.post.cols} + ' ' +
@@ -41,14 +41,6 @@
                 <div class="content" th:text="${post.status.excerpt}"></div>
             </div>
             
-            <div class="dateshow">
-                <i class="haofont hao-icon-calendar-alt dateshowicon"></i>
-                <span class="banner-button-text" th:text="发表于 + '&nbsp;' + ${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></span>
-                &nbsp;&nbsp;
-                <i class="haofont hao-icon-history dateshowicon"></i>
-                <span class="banner-button-text" th:text="更新于 + '&nbsp;' + ${#dates.format(post.status.lastModifyTime,'yyyy-MM-dd')}"></span>
-            </div>
-
             <div class="article-meta-wrap">
                 <!-- tag -->
                 <th:block th:if="${not #lists.isEmpty(post.tags)}">
@@ -85,8 +77,9 @@
                     </time>
                 </span>
             </div>
+        
         </div>
-
+        
         <!-- 文章卡片擦亮效果 -->
         <style th:if="${theme.config.layout.articleCardPolish}">
             #recent-posts > .recent-post-item:not(a)::before {
@@ -101,35 +94,13 @@
                 transition: transform 0.5s linear;
                 z-index: 1;
             }
+            
             #recent-posts > .recent-post-item:not(a):hover::before {
                 transform: translateX(100%) skewX(-60deg);
             }
         </style>
-        
-        <style>
-            .dateshow {
-                position: absolute;
-                bottom: 55px;
-                transition: 0.3s;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                width: 100%;
-                left: 0;
-                padding: 0 32px;
-                white-space: nowrap;
-            }
-            i.haofont.hao-icon-calendar-alt.dateshowicon {
-                font-size: 20px;
-                margin-top: 6px;
-            }
-            i.haofont.hao-icon-history.dateshowicon {
-                font-size: 20px;
-                margin-top: 6px;
-            }
-        </style>
     </div>
-
+    
     <!-- 分页 -->
     <div th:replace="~{modules/widgets/page :: page('',${posts},true,'')}"></div>
 
