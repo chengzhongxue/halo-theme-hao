@@ -2215,7 +2215,7 @@ blockquote footer cite::before {
 }
 
 #aside-content :only-child > .card-widget {
-    margin-top: 0px;
+    margin-top: 1rem;
 }
 
 #aside-content .card-more-btn {
