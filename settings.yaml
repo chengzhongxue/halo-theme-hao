@@ -1537,6 +1537,70 @@ spec:
               label: 两篇
             - value: six
               label: 六篇
+    - group: drainage
+      label: 公众号引流
+      formSchema:
+        - $formkit: group
+          name: pub_edit
+          label: 公众号引流
+          value:
+            enable_pub_edit: false
+          children:
+            - $formkit: radio
+              name: enable_pub_edit
+              id: enable_pub_edit
+              key: enable_pub_edit
+              help: 启用公众号引流
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: text
+              name: blogid
+              if: $get(enable_pub_edit).value
+              label: 博客唯一ID
+              placeholder: 获取博客唯一ID
+              help: 获取ID参考 https://openwrite.cn/guide/readmore/readmore.html
+            - $formkit: text
+              name: publiname
+              if: $get(enable_pub_edit).value
+              label: 公众号昵称
+              placeholder: 请输入公众号昵称
+            - $formkit: text
+              name: publicurl
+              if: $get(enable_pub_edit).value
+              label: 公众号二维码地址
+              placeholder: 请输入公众号二维码图片地址
+              help: 公众号二维码
+            - $formkit: text
+              name: pulicgjz
+              if: $get(enable_pub_edit).value
+              label: 回复关键字
+              value: VIP
+              placeholder: 请输入公众号回复关键字
+              help: 公众号发送内容 获取数字验证
+            - $formkit: text
+              name: btnname
+              if: $get(enable_pub_edit).value
+              label: 按钮内容
+              value: 阅读全文
+              placeholder: 请输入按钮内容
+              help: 展示按钮内容
+            - $formkit: text
+              name: cooktime
+              if: $get(enable_pub_edit).value
+              label: 过期时间
+              placeholder: 请输入过期时间
+              value: 24
+              help: 指定时间内不需要再次输入密码验证
+            - $formkit: text
+              name: displayall
+              if: $get(enable_pub_edit).value
+              label: 展示范围
+              placeholder: 请输入展示范围
+              value: 0.4
+              help: 0.4表示展示40% 隐藏60%
 
     - group: categories
       label: 分类
