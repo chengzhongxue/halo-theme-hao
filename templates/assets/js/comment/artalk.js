@@ -11,13 +11,34 @@
             countEl: '#ArtalkCount'
         }, null))
 
+        function versionOld(ctx){
+            ctx.getCommentList().forEach(comment => {
+                const $content = comment.getRender().$content
+                btf.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
+            })
+        }
+
+        function version_2_7_3_WithUpper(ctx){
+            ctx.get('list').getCommentNodes().forEach(comment => {
+                const $content = comment .getRender().$content
+                btf.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
+            })
+
+        }
+
+        function versionCheck(ctx){
+            if(ctx.getCommentList != undefined){
+                // Artalk 版本小于于 2.7.3
+                versionOld(ctx);
+            }else{
+                version_2_7_3_WithUpper(ctx);
+            }
+        }
+
         if (GLOBAL_CONFIG.lightbox === 'null') return
         Artalk.use(ctx => {
             ctx.on('list-loaded', () => {
-                ctx.getCommentList().forEach(comment => {
-                    const $content = comment.getRender().$content
-                    btf.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
-                })
+                versionCheck(ctx);
             })
         })
     }
