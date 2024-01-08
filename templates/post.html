@@ -79,12 +79,12 @@
                             </time>
                         </span>
                         <span th:with="syncStatus=${#strings.isEmpty(#annotations.get(post, 'sync_status')) ? '未同步': #annotations.get(post, 'sync_status')}"
-                              class="post-meta-wechat" th:title=" ${pluginFinder.available('plugin-platforms-sync') &&  syncStatus == '同步更新文章成功' ? '该文章已在公众号中更新' : '该文章在博客首发'}">
-                            <th:block th:if="${!pluginFinder.available('plugin-platforms-sync') || syncStatus != '同步更新文章成功'}">
+                              class="post-meta-wechat" th:title=" ${pluginFinder.available('plugin-platforms-sync') &&  (syncStatus == '同步更新文章成功' || syncStatus == '同步上传文章成功') ? '该文章已在公众号中更新' : '该文章在博客首发'}">
+                            <th:block th:unless="${pluginFinder.available('plugin-platforms-sync') && (syncStatus == '同步更新文章成功' || syncStatus == '同步上传文章成功')}">
                                 <i class="haofont hao-icon-rss post-meta-icon"></i>博客独享
                             </th:block>
 
-                            <th:block th:if="${pluginFinder.available('plugin-platforms-sync') && syncStatus == '同步更新文章成功'}">
+                            <th:block th:if="${pluginFinder.available('plugin-platforms-sync') && (syncStatus == '同步更新文章成功' || syncStatus == '同步上传文章成功')}">
                                 <i class="haofont hao-icon-weixin1 post-meta-icon"></i>公众号同步
                             </th:block>
                         </span>

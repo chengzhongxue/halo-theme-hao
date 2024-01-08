@@ -12,13 +12,12 @@
         }, null))
 
         if (GLOBAL_CONFIG.lightbox === 'null') return
-        Artalk.use(ctx => {
-            ctx.on('list-loaded', () => {
-                ctx.getCommentList().forEach(comment => {
-                    const $content = comment.getRender().$content
-                    btf.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
-                })
+        window.artalkItem.on('list-loaded', () => {
+            window.artalkItem.ctx.get('list').getCommentNodes().forEach(comment => {
+                const $content = comment.getRender().$content
+                btf.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
             })
+
         })
     }
 
