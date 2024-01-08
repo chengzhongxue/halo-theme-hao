@@ -2218,6 +2218,10 @@ blockquote footer cite::before {
     margin-top: 1rem;
 }
 
+#aside-content :only-child > :first-child {
+    margin-top: 0rem;
+}
+
 #aside-content .card-more-btn {
     float: right;
     color: inherit;
@@ -6803,19 +6807,26 @@ body[data-type=music] .page #nav #site-name span{
     }
 }
 
+/* 保证无card-widget时自动和左侧元素对齐 */
 @media screen and (min-width: 1300px) {
     #aside-content .sticky_layout {
-        margin-top: 1rem;
+        margin-top: 0rem;
+    }
+}
+
+/* 用 :has() 伪类判断card-widget是否存在，进行属性覆写 */
+/* 若存在，表明需要和card-widget保持距离 */
+@media screen and (min-width: 1300px) {
+    #aside-content:has(+.card-widget) {
+        #aside-content .sticky_layout {
+            margin-top: 1rem;
+        }
     }
 }
 
 #aside-content .sticky_layout {
     top: 80px;
     transition: top 0s;
-}
-
-#aside-content .sticky_layout .card-widget:first-child {
-    margin-top: 0;
 }
 
 #aside-content .card-widget:hover {
@@ -9890,8 +9901,13 @@ div#author-info__sayhi:hover {
     transform: scale(1.1)
 }
 
-/* 作者卡片背景 */
+/* 选中第一个卡片，与左侧元素对齐 */
 #aside-content > .card-widget:first-child {
+    margin-top: 0px;
+}
+
+/* 作者卡片背景 */
+#aside-content > .card-widget.card-info {
     transition: 0.3s;
     border: none;
     box-shadow: none;
