@@ -36,10 +36,8 @@
         }
 
         if (GLOBAL_CONFIG.lightbox === 'null') return
-        Artalk.use(ctx => {
-            ctx.on('list-loaded', () => {
-                versionCheck(ctx);
-            })
+        artalkItem.on('list-loaded', () => {
+            versionCheck(artalkItem.ctx);
         })
     }
 
