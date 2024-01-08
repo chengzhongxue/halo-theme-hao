@@ -12,6 +12,7 @@
         }, null))
 
         function versionOld(ctx){
+            // 旧版本兼容性补丁
             ctx.getCommentList().forEach(comment => {
                 const $content = comment.getRender().$content
                 btf.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
@@ -19,6 +20,7 @@
         }
 
         function version_2_7_3_WithUpper(ctx){
+            // 2.7.3 版本及以后版本支持
             ctx.get('list').getCommentNodes().forEach(comment => {
                 const $content = comment .getRender().$content
                 btf.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
@@ -36,8 +38,8 @@
         }
 
         if (GLOBAL_CONFIG.lightbox === 'null') return
-        artalkItem.on('list-loaded', () => {
-            versionCheck(artalkItem.ctx);
+        window.artalkItem.on('list-loaded', () => {
+            versionCheck(window.artalkItem.ctx);
         })
     }
 
