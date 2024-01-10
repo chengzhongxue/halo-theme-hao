@@ -74,7 +74,7 @@ var btf = {
             }
 
             if (typeof $.fancybox === 'undefined') {
-                $('head').append(`<link rel="stylesheet" type="text/css" href="${GLOBAL_CONFIG.source.fancybox.css}">`)
+                // $('head').append(`<link rel="stylesheet" type="text/css" href="${GLOBAL_CONFIG.source.fancybox.css}">`)
                 $.getScript(`${GLOBAL_CONFIG.source.fancybox.js}`, function () {
                     runFancybox($(ele))
                 })
