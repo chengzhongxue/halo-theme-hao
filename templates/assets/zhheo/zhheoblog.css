@@ -6071,11 +6071,6 @@ i.fab {
     color: var(--heo-white);
 }
 
-/* 分割线 */
-hr {
-    display: none;
-}
-
 /* footer样式 */
 #footer-wrap {
     color: var(--heo-fontcolor);
