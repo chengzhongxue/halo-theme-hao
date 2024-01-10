@@ -9,19 +9,19 @@
                 _type = 'website')}"></th:block>
 </th:block>
 <th:block th:fragment="content">
-
+    
     <div class="page" id="body-wrap">
-
+        
         <!-- 头部导航栏 -->
         <header class="not-top-img" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = ${singlePage.spec.title})}"></nav>
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
-
+                
                 <div id="about-page">
-
-
+                    
+                    
                     <div class="author-info">
                         <div class="author-tag-left"
                              th:if="${not #lists.isEmpty(theme.config.about.authorInfoLeftTags)}"
@@ -41,24 +41,26 @@
                         </div>
                     </div>
                     <div class="author-title" th:text="${singlePage.spec.title}"></div>
-
-                    <th:block th:replace="~{modules/about-widgets :: about-widgets(${theme.config.about.widgetList})}"></th:block>
-
+                    
+                    <th:block
+                            th:replace="~{modules/about-widgets :: about-widgets(${theme.config.about.widgetList})}"></th:block>
+                    
                     <div class="author-content">
                         <div class="create-site-post author-content-item single" th:utext="${theme.config.about.xjlc}">
                         </div>
                     </div>
-
-                    <th:block th:replace="~{modules/widgets/about-widgets/tenyear}"></th:block>
-
-                    <th:block th:replace="~{modules/widgets/about-widgets/about-reward}"></th:block>
                     
+                    <th:block th:replace="~{modules/widgets/about-widgets/tenyear}"></th:block>
+                    
+                    <th:block th:replace="~{modules/widgets/about-widgets/about-reward}"></th:block>
+                
                 </div>
-
+                
                 <th:block th:if="${theme.config.about.tenyear.tenyear_enable}">
-                    <link rel="stylesheet" th:href="${assets_link + '/css/tenyear.css' + theme_version}"  media="all" onload="this.media='all'">
+                    <link rel="stylesheet" th:href="${assets_link + '/css/tenyear.css' + theme_version}" media="all"
+                          onload="this.media='all'">
                     <script> (() => {
-                            const t = document.querySelector(".progress"),
+                        const t = document.querySelector(".progress"),
                                 n = document.querySelector(".past-time"),
                                 o = document.querySelector(".percentage-label"),
                                 r = document.querySelector(".start-time"),
@@ -66,17 +68,18 @@
                                 a = new Date("[(${theme.config.about.tenyear.start_time})]").getTime(),
                                 i = new Date("[(${theme.config.about.tenyear.end_time})]").getTime(),
                                 c = ((new Date).getTime() - a) / (i - a) * 100,
-                                u = c <= 100 ? c + "%" : "100%";
-                            n.style.setProperty("--past-time-percentage", c + "%"), t.style.setProperty("--progress-percentage", u), o.textContent = c.toFixed(0) + "%", o.style.left = `calc(${c}% - 33px)`, r.textContent = "" + new Date(a).toLocaleDateString(), s.textContent = "" + new Date(i).toLocaleDateString(), setTimeout(() => {
-                                o.style.visibility = "visible"
-                            }, 2500);
-                        })() 
+                                u = c <= 100 ? c + "%" : "100%",
+                                m = c <= 100 ? c.toFixed(0) + "%" : "已达标 ";
+                        n.style.setProperty("--past-time-percentage", c + "%"), t.style.setProperty("--progress-percentage", u), o.textContent = m, o.style.left = `calc(${c}% - 3rem)`, r.textContent = "" + new Date(a).toLocaleDateString(), s.textContent = "" + new Date(i).toLocaleDateString(), setTimeout(() => {
+                            o.style.visibility = "visible"
+                        }, 2500);
+                    })()
                     </script>
                 </th:block>
-                
-                
+            
+            
             </div>
-
+        
         </main>
         <!-- 底部 -->
         <footer th:replace="~{modules/footer}"/>
