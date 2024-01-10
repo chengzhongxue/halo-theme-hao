@@ -244,7 +244,8 @@ function showWelcome() {
             document.getElementById("welcome-info").innerHTML =
                 `欢迎来自 <b><span style="color: var(--hao-ip-color);font-size: var(--hao-gl-size)">${pos}</span></b> 的小友💖<br>${posdesc}🍂<br>当前位置距博主约 <b><span style="color: var(--hao-ip-color)">${dist}</span></b> 公里！<br>您的IP地址为：<b><span>${ip}</span></b><br>${timeChange} <br>`;
         } catch (err) {
-            console.log("Pjax无法获取元素")
+            console.log("Pjax无法获取元素");
+            console.log("如果[侧边栏]设置中没有给本页添加 welcome 小部件，请忽略报错");
         }
     } else {
         try {
@@ -253,6 +254,7 @@ function showWelcome() {
                 `${ipLocation.message}`;
         } catch (err) {
             console.log("Pjax无法获取元素")
+            console.log("如果[侧边栏]设置中没有给本页添加 welcome 小部件，请忽略报错");
         }
 
     }
