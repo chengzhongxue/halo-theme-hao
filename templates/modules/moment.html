@@ -21,7 +21,6 @@
         <div class="swiper-container swiper-no-swiping" id="bbtalk" tabindex="-1">
             <div class="swiper-wrapper" id="bber-talk" onclick="pjax.loadUrl('/moments')" th:if="${momentFinder}">
                 <th:block th:each="moment : ${momentFinder.listAll()}" th:with="content=${moment.spec.content}">
-                    <!-- th:text="${#strings.substringBefore(#strings.substringAfter(content.html,'<p>'),'</p>')}" -->
                     <div class="li-style swiper-slide"
                          th:if="${not #strings.isEmpty(content.raw)}"
                          th:utext="${content.raw}">
