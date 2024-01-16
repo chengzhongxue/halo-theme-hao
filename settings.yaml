@@ -1416,6 +1416,15 @@ spec:
               label: 温馨提示文案
               help: "自定义温馨提示的文案，支持html语法"
               language: html
+        - $formkit: radio
+          name: update_time
+          label: 最后更新时间
+          value: false
+          options:
+            - label: 打开
+              value: true
+            - label: 关闭
+              value: false
         - $formkit: select
           name: copyrightsStyle
           id: copyrightsStyle

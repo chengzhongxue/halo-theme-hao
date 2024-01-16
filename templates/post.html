@@ -78,7 +78,7 @@
                                   th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">
                             </time>
                         </span>
-                        <span class="post-meta-date">
+                        <span class="post-meta-date" th:if="${theme.config.post.update_time}">
                             <i class="haofont hao-icon-pencil post-meta-icon" title="最后更新时间"></i>
                             <time th:attr="datetime=${#dates.format(post.status.lastModifyTime, 'yyyy-MM-dd')}"
                                   th:text="${#dates.format(post.status.lastModifyTime,'yyyy/MM/dd')}"
