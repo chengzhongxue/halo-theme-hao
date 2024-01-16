@@ -2325,7 +2325,7 @@ spec:
           if: $get(aboutRewardEnable).value
           name: rewardNumber
           label: 标记金额
-          placeholder: 请输入标记金额，大于等于该值自动标记(必须为整数型)
+          placeholder: 请输入标记金额，大于等于该值自动标记
           value: 10
         - $formkit: repeater
           if: $get(aboutRewardEnable).value
