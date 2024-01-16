@@ -62,10 +62,10 @@
             <div class="reward-list-item" th:each="authorReward : ${authorRewardList}">
                 <div class="reward-list-item-name">[[${authorReward.name}]]</div>
                 <div class="reward-list-bottom-group">
-                    <div th:if="${#conversions.convert(authorReward.amount, 'java.lang.Integer') < #conversions.convert(theme.config.aboutReward.rewardNumber, 'java.lang.Integer')}" class="reward-list-item-money">¥
+                    <div th:if="${#conversions.convert(authorReward.amount, 'java.math.BigDecimal') < #conversions.convert(theme.config.aboutReward.rewardNumber, 'java.math.BigDecimal')}" class="reward-list-item-money">¥
                         [[${authorReward.amount}]]
                     </div>
-                    <div th:if="${#conversions.convert(authorReward.amount, 'java.lang.Integer') >= #conversions.convert(theme.config.aboutReward.rewardNumber, 'java.lang.Integer')}" class="reward-list-item-money"
+                    <div th:if="${#conversions.convert(authorReward.amount, 'java.math.BigDecimal') >= #conversions.convert(theme.config.aboutReward.rewardNumber, 'java.math.BigDecimal')}" class="reward-list-item-money"
                          style="background: var(--heo-vip);">¥ [[${authorReward.amount}]]
                     </div>
                     <time class="datatime reward-list-item-time">[[${authorReward.datatime}]]</time>
