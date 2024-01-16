@@ -2330,6 +2330,12 @@ spec:
               label: 支付宝收款码
               help: 支付宝二维码图片链接
               placeholder: 请填写支付宝二维码图片链接
+        - $formkit: text
+          if: $get(aboutRewardEnable).value
+          name: rewardNumber
+          label: 标记金额
+          placeholder: 请输入标记金额，大于等于该值自动标记
+          value: 10
         - $formkit: repeater
           if: $get(aboutRewardEnable).value
           name: reward_list
@@ -2348,15 +2354,19 @@ spec:
               name: datatime
               label: 时间
               placeholder: 请输入内容
-            - $formkit: radio
-              name: sign
-              label: 标记
-              value: N
-              options:
-                - label: 是
-                  value: Y
-                - label: 否
-                  value: N
+            - $formkit: attachment
+              name: avatar
+              label: 头像
+              placeholder: 请输入头像地址
+#            - $formkit: radio
+#              name: sign
+#              label: 标记
+#              value: N
+#              options:
+#                - label: 是
+#                  value: Y
+#                - label: 否
+#                  value: N
 
     - group: comments
       label: 评论
