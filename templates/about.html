@@ -60,7 +60,7 @@
                     <link rel="stylesheet" th:href="${assets_link + '/css/tenyear.css' + theme_version}" media="all"
                           onload="this.media='all'">
                     <script> (() => {
-                        const t = document.querySelector(".progress"),
+                        let t = document.querySelector(".progress"),
                                 n = document.querySelector(".past-time"),
                                 o = document.querySelector(".percentage-label"),
                                 r = document.querySelector(".start-time"),
@@ -70,6 +70,9 @@
                                 c = ((new Date).getTime() - a) / (i - a) * 100,
                                 u = c <= 100 ? c + "%" : "100%",
                                 m = c <= 100 ? c.toFixed(0) + "%" : "已达标 ";
+                        if (c < 10){
+                            m = "";
+                        }
                         n.style.setProperty("--past-time-percentage", c + "%"), t.style.setProperty("--progress-percentage", u), o.textContent = m, o.style.left = `calc(${c}% - 3rem)`, r.textContent = "" + new Date(a).toLocaleDateString(), s.textContent = "" + new Date(i).toLocaleDateString(), setTimeout(() => {
                             o.style.visibility = "visible"
                         }, 2500);
