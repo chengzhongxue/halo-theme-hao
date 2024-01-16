@@ -16168,6 +16168,11 @@ span.hexo-douban-pagenum {
     box-shadow: var(--heo-shadow-border);
 }
 
+.author-content-item.single.reward .reward-list-all .reward-list-item:hover {
+    background-color: rgb(0, 108, 242);
+    color: #FFFFFF;
+}
+
 @media screen and (max-width: 1200px) {
     .author-content-item.single.reward .reward-list-all .reward-list-item {
         width: calc((100% / 4) - 0.5rem);
@@ -16204,6 +16209,19 @@ span.hexo-douban-pagenum {
     justify-content: space-between;
 }
 
+.author-content-item.single.reward .reward-list-all .reward-list-item .reward-list-item-avatar {
+    width: 32%;
+    float: left;
+    z-index: 10;
+    position: static;
+}
+
+.author-content-item.single.reward .reward-list-all .reward-list-item .reward-list-item-avatar img{
+    border-radius: 50%;
+    width: 80%;
+    margin-top: 0.2rem;
+}
+
 .author-content-item.single.reward .reward-list-all .reward-list-item .reward-list-item-money {
     padding: 4px;
     background: var(--heo-fontcolor);
@@ -16218,6 +16236,12 @@ span.hexo-douban-pagenum {
 .author-content-item.single.reward .reward-list-all .reward-list-item .reward-list-item-time {
     font-size: 12px;
     color: var(--heo-secondtext);
+    white-space: nowrap;
+}
+
+.author-content-item.single.reward .reward-list-all .reward-list-item .reward-list-item-time:hover {
+    font-size: 12px;
+    color: #FFFFFF;
     white-space: nowrap;
 }
 

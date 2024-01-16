@@ -2345,6 +2345,10 @@ spec:
               name: datatime
               label: 时间
               placeholder: 请输入内容
+            - $formkit: attachment
+              name: avatar
+              label: 头像
+              placeholder: 请输入头像地址
 #            - $formkit: radio
 #              name: sign
 #              label: 标记
