@@ -338,8 +338,10 @@ spec:
               help: 支持 HTML 语法
             - $formkit: repeater
               name: categoryGroup
+              id: categoryGroup
+              key: categoryGroup
               min: 3
-              max: 3
+              max: 4
               children:
                 - $formkit: text
                   name: title
