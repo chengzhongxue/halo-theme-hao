@@ -1754,6 +1754,8 @@ blockquote footer cite::before {
     background-color: rgb(48, 122, 246);
     background-position: center center;
     background-size: cover;
+    margin-left: 1rem;
+    border-radius: 2rem;
 }
 
 @media screen and (max-width: 768px) {
