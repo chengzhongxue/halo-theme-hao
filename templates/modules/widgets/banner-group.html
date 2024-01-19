@@ -1,5 +1,5 @@
-<div id="bannerGroup">
-    
+<div id="bannerGroup" >
+
     <!-- banners -->
     <div id="banners">
         <div class="banners-title">
@@ -10,17 +10,16 @@
                  th:if="${not #strings.isEmpty(theme.config.top.BannerLeft.bannersTitleSmall)}"
                  th:utext="${theme.config.top.BannerLeft.bannersTitleSmall}"></div>
         </div>
-        
+
         <div class="tags-group-all">
-            
+
             <!--  banners 使用默认值-->
-            <div class="tags-group-wrapper"
-                 th:if="${#strings.equals(theme.config.top.BannerLeft.bannersBackground, 'default')}">
+            <div class="tags-group-wrapper" th:if="${#strings.equals(theme.config.top.BannerLeft.bannersBackground, 'default')}">
                 <div class="tags-group-icon-pair">
                     <div class="tags-group-icon" style="background:#989bf8">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/AfterEffect.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="AfterEffect">
@@ -28,7 +27,7 @@
                     <div class="tags-group-icon" style="background:#fff">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/Sketch.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="Sketch">
@@ -38,7 +37,7 @@
                     <div class="tags-group-icon" style="background:#57b6e6">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/Docker.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="Docker">
@@ -46,7 +45,7 @@
                     <div class="tags-group-icon" style="background:#4082c3">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/Photoshop.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="Photoshop">
@@ -56,7 +55,7 @@
                     <div class="tags-group-icon" style="background:#fff">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/FinalCutPro.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="FinalCutPro">
@@ -64,7 +63,7 @@
                     <div class="tags-group-icon" style="background:#fff">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/Python.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="Python">
@@ -74,7 +73,7 @@
                     <div class="tags-group-icon" style="background:#eb6840">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/Swift.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="Swift">
@@ -82,7 +81,7 @@
                     <div class="tags-group-icon" style="background:#8f55ba">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/Principle.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="Principle">
@@ -92,7 +91,7 @@
                     <div class="tags-group-icon" style="background:#f29e39">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/illustrator.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="illustrator">
@@ -100,7 +99,7 @@
                     <div class="tags-group-icon" style="background:#2c51db">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/CSS3.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="CSS3">
@@ -110,7 +109,7 @@
                     <div class="tags-group-icon" style="background:#f7cb4f">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/JS.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="JS">
@@ -118,7 +117,7 @@
                     <div class="tags-group-icon" style="background:#e9572b">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/HTML.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="HTML">
@@ -128,7 +127,7 @@
                     <div class="tags-group-icon" style="background:#df5b40">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/Git.webp'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="Git">
@@ -136,7 +135,7 @@
                     <div class="tags-group-icon" style="background:#e65164">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/Apifox.webp'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="Apifox">
@@ -146,7 +145,7 @@
                     <div class="tags-group-icon" style="background:#989bf8">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/AfterEffect.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="AfterEffect">
@@ -154,7 +153,7 @@
                     <div class="tags-group-icon" style="background:#fff">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/Sketch.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="Sketch">
@@ -164,7 +163,7 @@
                     <div class="tags-group-icon" style="background:#57b6e6">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/Docker.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="Docker">
@@ -172,7 +171,7 @@
                     <div class="tags-group-icon" style="background:#4082c3">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/Photoshop.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="Photoshop">
@@ -182,7 +181,7 @@
                     <div class="tags-group-icon" style="background:#fff">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/FinalCutPro.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="FinalCutPro">
@@ -190,7 +189,7 @@
                     <div class="tags-group-icon" style="background:#fff">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/Python.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="Python">
@@ -200,7 +199,7 @@
                     <div class="tags-group-icon" style="background:#eb6840">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/Swift.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="Swift">
@@ -208,7 +207,7 @@
                     <div class="tags-group-icon" style="background:#8f55ba">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/Principle.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="Principle">
@@ -218,7 +217,7 @@
                     <div class="tags-group-icon" style="background:#f29e39">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/illustrator.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="illustrator">
@@ -226,7 +225,7 @@
                     <div class="tags-group-icon" style="background:#2c51db">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/CSS3.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="CSS3">
@@ -236,7 +235,7 @@
                     <div class="tags-group-icon" style="background:#f7cb4f">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/JS.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="JS">
@@ -244,7 +243,7 @@
                     <div class="tags-group-icon" style="background:#e9572b">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/HTML.png'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="HTML">
@@ -254,7 +253,7 @@
                     <div class="tags-group-icon" style="background:#df5b40">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/Git.webp'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="Git">
@@ -262,14 +261,14 @@
                     <div class="tags-group-icon" style="background:#e65164">
                         <img
                                 th:with=" img = ${assets_link + '/images/icons/Apifox.webp'}"
-                                
+
                                 th:src="${isLazyload ? loadingImg : img}"
                                 th:data-lazy-src="${ isLazyload ? img : ''}"
                                 title="Apifox">
                     </div>
                 </div>
             </div>
-            
+
             <!--  banners 使用默认值-->
             <div class="tags-group-wrapper"
                  th:if="${#strings.equals(theme.config.top.BannerLeft.bannersBackground, 'techStack')}"
@@ -281,18 +280,18 @@
                              th:with="techOdd = ${techs.get(iterStat.index - 1)}">
                             <img
                                     th:with=" img = @{${techOdd.url}}"
-                                    
+
                                     th:src="${isLazyload ? loadingImg : img}"
                                     th:data-lazy-src="${ isLazyload ? img : ''}"
                                     th:title="${techOdd.name}">
                         </div>
-                        
+
                         <div class="tags-group-icon"
                              th:style="'background:' + ${techEven.background}"
                              th:with="techEven = ${tech}">
                             <img
                                     th:with=" img = @{${techEven.url}}"
-                                    
+
                                     th:src="${isLazyload ? loadingImg : img}"
                                     th:data-lazy-src="${ isLazyload ? img : ''}"
                                     th:title="${techEven.name}">
@@ -307,69 +306,102 @@
             <i class="haofont hao-icon-arrow-right banner-righticon"></i>
         </a>
     </div>
-    
+
     <!-- category -->
-    <div class="categoryGroup" th:if="${not #lists.isEmpty(theme.config.top.BannerLeft.categoryGroup)}">
-        <div class="categoryItem" th:each="group : ${theme.config.top.BannerLeft.categoryGroup}">
-            <a class="categoryButton CB1 bikan" th:href="@{${group.url}}">
-                <span class="categoryButtonText" th:text="${group.title}"></span>
-                <i th:class="${group.icon}"></i>
-            </a>
-        </div>
+    <div class="categoryGroup">
+        <th:block th:if="${not #lists.isEmpty(theme.config.top.BannerLeft.categoryGroup)}" th:with="groups = ${theme.config.top.BannerLeft.categoryGroup}">
+            <div class="categoryItem">
+                <a class="categoryButton CB1 bikan" th:href="@{${groups[0].url}}">
+                    <span class="categoryButtonText">[[${groups[0].title}]]</span>
+                    <i th:if="${not #strings.startsWith(groups[0].icon, 'http')}" th:class="${groups[0].icon}"></i>
+                    <img th:if="${#strings.startsWith(groups[0].icon, 'http')}" th:src="@{${groups[0].icon}}" alt="icon"/>
+                </a>
+            </div>
+            <div class="categoryItem">
+                <a class="categoryButton remen" th:href="@{${groups[1].url}}">
+                    <span class="categoryButtonText">[[${groups[1].title}]]</span>
+                    <i th:if="${not #strings.startsWith(groups[1].icon, 'http')}" th:class="${groups[1].icon}"></i>
+                    <img th:if="${#strings.startsWith(groups[1].icon, 'http')}" th:src="@{${groups[1].icon}}" alt="icon"/>
+                </a>
+            </div>
+            <div class="categoryItem" th:if="${#lists.size(groups)} > 2">
+                <a class="categoryButton shiyong" th:href="@{${groups[2].url}}">
+                    <span class="categoryButtonText">[[${groups[2].title}]]</span>
+                    <i th:if="${not #strings.startsWith(groups[2].icon, 'http')}" th:class="${groups[2].icon}"></i>
+                    <img th:if="${#strings.startsWith(groups[2].icon, 'http')}" th:src="@{${groups[2].icon}}" alt="icon"/>
+                </a>
+            </div>
+            <div class="categoryItem" th:if="${#lists.size(groups)} > 3">
+                <a class="categoryButton bannerItem4" th:href="@{${groups[3].url}}">
+                    <span class="categoryButtonText">[[${groups[3].title}]]</span>
+                    <i th:if="${not #strings.startsWith(groups[3].icon, 'http')}" th:class="${groups[3].icon}"></i>
+                    <img th:if="${#strings.startsWith(groups[3].icon, 'http')}" th:src="@{${groups[3].icon}}" alt="icon"/>
+                </a>
+            </div>
+        </th:block>
     </div>
-    
-    <style th:if="${not #lists.isEmpty(theme.config.top.BannerLeft.categoryGroup)}"
-           th:with="groups = ${theme.config.top.BannerLeft.categoryGroup}">
+
+    <style th:if="${not #lists.isEmpty(theme.config.top.BannerLeft.categoryGroup)}" th:with="groups = ${theme.config.top.BannerLeft.categoryGroup}">
         a.categoryButton.bikan {
             background: linear-gradient(to right, [[${groups[0].colorOneLight}]], [[${groups[0].colorTwoLight}]]);
             background-size: 200%;
         }
-        
+
         a.categoryButton.remen {
             background: linear-gradient(to right, [[${groups[1].colorOneLight}]], [[${groups[1].colorTwoLight}]]);
             background-size: 200%;
         }
-        
+
         a.categoryButton.shiyong {
             background: linear-gradient(to right, [[${groups[2].colorOneLight}]], [[${groups[2].colorTwoLight}]]);
             background-size: 200%;
         }
         
+        a.categoryButton.bannerItem4 {
+            background: linear-gradient(to right, [[${groups[3].colorOneLight}]], [[${groups[3].colorTwoLight}]]);
+            background-size: 200%;
+        }
+
         [data-theme=dark] a.categoryButton.bikan {
             background: linear-gradient(to right, [[${groups[0].colorOneDark}]], [[${groups[0].colorTwoDark}]]);
             background-size: 200%;
         }
-        
+
         [data-theme=dark] a.categoryButton.remen {
             background: linear-gradient(to right, [[${groups[1].colorOneDark}]], [[${groups[1].colorTwoDark}]]);
             background-size: 200%;
         }
-        
+
         [data-theme=dark] a.categoryButton.shiyong {
             background: linear-gradient(to right, [[${groups[2].colorOneDark}]], [[${groups[2].colorTwoDark}]]);
             background-size: 200%;
         }
-    </style>
-    
-    <script th:inline="javascript">
         
+        [data-theme=dark] a.categoryButton.bannerItem4 {
+            background: linear-gradient(to right, [[${groups[3].colorOneDark}]], [[${groups[3].colorTwoDark}]]);
+            background-size: 200%;
+        }
+    </style>
+
+    <script th:inline="javascript">
+
         function toRandomPost() {
             // 随机跳转首页的一篇文章
             // 后续改成跳转全站的文章，可以从 sitemap 中获取所有文章
             let posts = [[${posts}]];
-            
+
             let datum = posts.total < posts.size ? posts.total : posts.size;
-            
+
             let number = Math.floor(Math.random() * datum);
-            
+
             let post = posts.items[number];
-            
+
             // 当前窗口打开
             //window.location.href = post.status.permalink;
             pjax.loadUrl(post.status.permalink)
             // window.open(post.status.permalink);
         }
-    
+
     </script>
 
 </div>
