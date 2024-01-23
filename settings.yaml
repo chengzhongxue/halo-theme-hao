@@ -285,13 +285,13 @@ spec:
                 colorTwoLight: "#ffbf37"
                 colorOneDark: "#e22a16"
                 colorTwoDark: "#da980c"
-              - title: "实用教程"
-                icon: "haofont hao-icon-book"
-                url: "/"
-                colorOneLight: "#18e7ae"
-                colorTwoLight: "#1eebeb"
-                colorOneDark: "#099e74"
-                colorTwoDark: "#0ea4a4"
+#              - title: "实用教程"
+#                icon: "haofont hao-icon-book"
+#                url: "/"
+#                colorOneLight: "#18e7ae"
+#                colorTwoLight: "#1eebeb"
+#                colorOneDark: "#099e74"
+#                colorTwoDark: "#0ea4a4"
             techStack:
           children:
             - $formkit: select
@@ -338,8 +338,10 @@ spec:
               help: 支持 HTML 语法
             - $formkit: repeater
               name: categoryGroup
-              min: 3
-              max: 3
+              id: categoryGroup
+              key: categoryGroup
+              min: 2
+              max: 4
               children:
                 - $formkit: text
                   name: title
