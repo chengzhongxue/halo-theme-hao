@@ -1754,6 +1754,8 @@ blockquote footer cite::before {
     background-color: rgb(48, 122, 246);
     background-position: center center;
     background-size: cover;
+    margin-left: 1rem;
+    border-radius: 2rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -7739,6 +7741,10 @@ a.categoryButton i {
     transform: scale(1.0) rotate(15deg);
 }
 
+a.categoryButton img {
+    transform: scale(1.0) rotate(15deg);
+}
+
 @media screen and (min-width: 1300px) {
     a.categoryButton:active {
         transform: scale(0.97);
@@ -7784,8 +7790,25 @@ a.categoryButton i {
     filter: blur(2px);
 }
 
+a.categoryButton img {
+    font-size: 5rem;
+    opacity: 0.2;
+    position: absolute;
+    right: 0%;
+    top: 20%;
+    transition: 0.3s;
+    width: 50px;
+    text-align: center;
+    filter: blur(2px);
+    margin-right: 1rem;
+}
+
 @media screen and (max-width: 768px) {
     a.categoryButton i {
+        display: none;
+    }
+
+    a.categoryButton img {
         display: none;
     }
 
@@ -8178,8 +8201,21 @@ div#banners {
     filter: blur(0px);
 }
 
+.categoryItem:hover img {
+    opacity: 0.8;
+    transition: 0.8s;
+    transition-delay: 0.15s;
+    transform: scale(1.03) rotate(0deg);
+    font-size: 2.5rem;
+    filter: blur(0px);
+}
+
 @media screen and (min-width: 1300px) {
     .categoryItem:hover i {
+        transform: scale(1.03) rotate(0deg);
+    }
+
+    .categoryItem:hover img {
         transform: scale(1.03) rotate(0deg);
     }
 }
@@ -8206,7 +8242,7 @@ div#banners {
     min-width: 200px;
 }
 
-.categoryGroup .categoryItem:nth-child(3) {
+.categoryGroup .categoryItem:nth-child(4) {
     display: none;
 }
 
@@ -8231,7 +8267,7 @@ div#banners {
         width: 50%;
     }
 
-    .categoryGroup .categoryItem:nth-child(3) {
+    .categoryGroup .categoryItem:nth-child(4) {
         display: flex;
     }
 }
@@ -8251,6 +8287,11 @@ a.categoryButton.shiyong {
     background-size: 200%;
 }
 
+a.categoryButton.bannerItem4 {
+    background: linear-gradient(to right, #82a531, #e38969);
+    background-size: 200%;
+}
+
 [data-theme=dark] a.categoryButton.bikan {
     background: linear-gradient(to right, #0653b8, #2fcbff);
     background-size: 200%;
@@ -8263,6 +8304,11 @@ a.categoryButton.shiyong {
 
 [data-theme=dark] a.categoryButton.shiyong {
     background: linear-gradient(to right, #099e74, #0ea4a4);
+    background-size: 200%;
+}
+
+[data-theme=dark] a.categoryButton.bannerItem4 {
+    background: linear-gradient(to right, #82a531, #e38969);
     background-size: 200%;
 }
 
@@ -8425,8 +8471,8 @@ a.categoryButton:hover {
 }
 
 #bber-talk .li-style {
-    width: auto;
-    max-width: 100%;
+    width: 90%;
+    max-width: 500px;
     height: 25px;
     text-align: center;
     overflow: hidden;

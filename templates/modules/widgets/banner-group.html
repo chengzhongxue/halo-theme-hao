@@ -312,17 +312,30 @@
         <th:block th:if="${not #lists.isEmpty(theme.config.top.BannerLeft.categoryGroup)}" th:with="groups = ${theme.config.top.BannerLeft.categoryGroup}">
             <div class="categoryItem">
                 <a class="categoryButton CB1 bikan" th:href="@{${groups[0].url}}">
-                    <span class="categoryButtonText">[[${groups[0].title}]]</span><i th:class="${groups[0].icon}"></i>
+                    <span class="categoryButtonText">[[${groups[0].title}]]</span>
+                    <i th:if="${not #strings.startsWith(groups[0].icon, 'http')}" th:class="${groups[0].icon}"></i>
+                    <img th:if="${#strings.startsWith(groups[0].icon, 'http')}" th:src="@{${groups[0].icon}}" alt="icon"/>
                 </a>
             </div>
             <div class="categoryItem">
                 <a class="categoryButton remen" th:href="@{${groups[1].url}}">
-                    <span class="categoryButtonText">[[${groups[1].title}]]</span><i th:class="${groups[1].icon}"></i>
+                    <span class="categoryButtonText">[[${groups[1].title}]]</span>
+                    <i th:if="${not #strings.startsWith(groups[1].icon, 'http')}" th:class="${groups[1].icon}"></i>
+                    <img th:if="${#strings.startsWith(groups[1].icon, 'http')}" th:src="@{${groups[1].icon}}" alt="icon"/>
                 </a>
             </div>
-            <div class="categoryItem">
+            <div class="categoryItem" th:if="${#lists.size(groups)} > 2">
                 <a class="categoryButton shiyong" th:href="@{${groups[2].url}}">
-                    <span class="categoryButtonText">[[${groups[2].title}]]</span><i th:class="${groups[2].icon}"></i>
+                    <span class="categoryButtonText">[[${groups[2].title}]]</span>
+                    <i th:if="${not #strings.startsWith(groups[2].icon, 'http')}" th:class="${groups[2].icon}"></i>
+                    <img th:if="${#strings.startsWith(groups[2].icon, 'http')}" th:src="@{${groups[2].icon}}" alt="icon"/>
+                </a>
+            </div>
+            <div class="categoryItem" th:if="${#lists.size(groups)} > 3">
+                <a class="categoryButton bannerItem4" th:href="@{${groups[3].url}}">
+                    <span class="categoryButtonText">[[${groups[3].title}]]</span>
+                    <i th:if="${not #strings.startsWith(groups[3].icon, 'http')}" th:class="${groups[3].icon}"></i>
+                    <img th:if="${#strings.startsWith(groups[3].icon, 'http')}" th:src="@{${groups[3].icon}}" alt="icon"/>
                 </a>
             </div>
         </th:block>
@@ -343,6 +356,11 @@
             background: linear-gradient(to right, [[${groups[2].colorOneLight}]], [[${groups[2].colorTwoLight}]]);
             background-size: 200%;
         }
+        
+        a.categoryButton.bannerItem4 {
+            background: linear-gradient(to right, [[${groups[3].colorOneLight}]], [[${groups[3].colorTwoLight}]]);
+            background-size: 200%;
+        }
 
         [data-theme=dark] a.categoryButton.bikan {
             background: linear-gradient(to right, [[${groups[0].colorOneDark}]], [[${groups[0].colorTwoDark}]]);
@@ -356,6 +374,11 @@
 
         [data-theme=dark] a.categoryButton.shiyong {
             background: linear-gradient(to right, [[${groups[2].colorOneDark}]], [[${groups[2].colorTwoDark}]]);
+            background-size: 200%;
+        }
+        
+        [data-theme=dark] a.categoryButton.bannerItem4 {
+            background: linear-gradient(to right, [[${groups[3].colorOneDark}]], [[${groups[3].colorTwoDark}]]);
             background-size: 200%;
         }
     </style>
