@@ -15160,7 +15160,7 @@ span.hexo-douban-pagenum {
     padding: 1rem;
     color: var(--heo-fontcolor);
     margin-top: 1rem;
-    background: var(--heo-secondbg);
+    background: var(--heo-secondbg) 0.6;
     display: flex;
     overflow: hidden;
     z-index: 999;
