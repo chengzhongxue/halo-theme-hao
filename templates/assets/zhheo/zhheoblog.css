@@ -8471,8 +8471,8 @@ a.categoryButton:hover {
 }
 
 #bber-talk .li-style {
-    width: auto;
-    max-width: 100%;
+    width: 90%;
+    max-width: 500px;
     height: 25px;
     text-align: center;
     overflow: hidden;
