@@ -72,7 +72,7 @@
     <div th:if="${theme.config.footer.footerContent.style_one.runtime_enable}" id="workboard"></div>
     <p th:if="${theme.config.footer.footerContent.style_one.bdageitem_enable && not #lists.isEmpty(theme.config.footer.footerContent.style_one.bdageitem)}"
        th:with="bdageitem = ${theme.config.footer.footerContent.style_one.bdageitem}"
-       id="ghbdages" >
+       id="ghbdages" style="width:60%;margin: 0 auto 0;">
         <a class="github-badge" th:each="data : ${bdageitem}" target="_blank" th:href="@{${data.link}}"
            style="margin-inline:5px" th:title="${data.message}">
             <img th:with=" img = @{${data.shields}}" th:src="${isLazyload ? '' : img}"
