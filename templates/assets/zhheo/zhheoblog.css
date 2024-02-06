@@ -7764,6 +7764,12 @@ a.categoryButton img {
     }
 }
 
+@media screen and (max-width: 1300px) {
+    .categoryItem-mobile {
+        height: 0px;
+    }
+}
+
 a.categoryButton:after {
     top: 50px;
     width: 1rem;

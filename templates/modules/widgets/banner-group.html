@@ -324,14 +324,14 @@
                     <img th:if="${#strings.startsWith(groups[1].icon, 'http')}" th:src="@{${groups[1].icon}}" alt="icon"/>
                 </a>
             </div>
-            <div class="categoryItem" th:if="${#lists.size(groups)} > 2">
+            <div class="categoryItem categoryItem-mobile" th:if="${#lists.size(groups)} > 2">
                 <a class="categoryButton shiyong" th:href="@{${groups[2].url}}">
                     <span class="categoryButtonText">[[${groups[2].title}]]</span>
                     <i th:if="${not #strings.startsWith(groups[2].icon, 'http')}" th:class="${groups[2].icon}"></i>
                     <img th:if="${#strings.startsWith(groups[2].icon, 'http')}" th:src="@{${groups[2].icon}}" alt="icon"/>
                 </a>
             </div>
-            <div class="categoryItem" th:if="${#lists.size(groups)} > 3">
+            <div class="categoryItem categoryItem-mobile" th:if="${#lists.size(groups)} > 3">
                 <a class="categoryButton bannerItem4" th:href="@{${groups[3].url}}">
                     <span class="categoryButtonText">[[${groups[3].title}]]</span>
                     <i th:if="${not #strings.startsWith(groups[3].icon, 'http')}" th:class="${groups[3].icon}"></i>
