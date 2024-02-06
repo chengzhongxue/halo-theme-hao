@@ -61,20 +61,22 @@
             
             <div class="reward-list-item" th:each="authorReward : ${authorRewardList}">
                 <div th:if="${not #strings.isEmpty(authorReward.avatar)}">
-                    <div class="reward-list-item-avatar">
-                        <img th:src="${authorReward.avatar}" th:alt="${authorReward.name}">
-                    </div>
-                    <div style="z-index:20;float: left;">
-                        <div class="reward-list-item-name">[[${authorReward.name}]]</div>
-                        <div class="reward-list-bottom-group">
-                            <div th:if="${#conversions.convert(authorReward.amount, 'java.math.BigDecimal') < #conversions.convert(theme.config.aboutReward.rewardNumber, 'java.math.BigDecimal')}" class="reward-list-item-money">¥
-                                [[${authorReward.amount}]]
-                            </div>
-                            <div th:if="${#conversions.convert(authorReward.amount, 'java.math.BigDecimal') >= #conversions.convert(theme.config.aboutReward.rewardNumber, 'java.math.BigDecimal')}" class="reward-list-item-money"
-                                 style="background: var(--heo-vip);">¥ [[${authorReward.amount}]]
-                            </div>
-                            <time class="datatime reward-list-item-time">[[${authorReward.datatime}]]</time>
+                    <div>
+                        <div class="reward-list-item-avatar">
+                            <img th:src="${authorReward.avatar}" th:alt="${authorReward.name}">
                         </div>
+                        <div style="z-index:20;float: left;" class="reward-list-item-avatar-group">
+                            <div class="reward-list-item-name">[[${authorReward.name}]]</div>
+                        </div>
+                    </div>
+                    <div class="reward-list-bottom-group">
+                        <div th:if="${#conversions.convert(authorReward.amount, 'java.math.BigDecimal') < #conversions.convert(theme.config.aboutReward.rewardNumber, 'java.math.BigDecimal')}" class="reward-list-item-money">¥
+                            [[${authorReward.amount}]]
+                        </div>
+                        <div th:if="${#conversions.convert(authorReward.amount, 'java.math.BigDecimal') >= #conversions.convert(theme.config.aboutReward.rewardNumber, 'java.math.BigDecimal')}" class="reward-list-item-money"
+                             style="background: var(--heo-vip);">¥ [[${authorReward.amount}]]
+                        </div>
+                        <time class="datatime reward-list-item-time">[[${authorReward.datatime}]]</time>
                     </div>
                 </div>
                 <div th:if="${#strings.isEmpty(authorReward.avatar)}">
