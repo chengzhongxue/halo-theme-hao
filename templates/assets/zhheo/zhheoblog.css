@@ -7781,7 +7781,7 @@ a.categoryButton img {
 
 @media screen and (max-width: 1300px) {
     .categoryItem-mobile {
-        height: 0px;
+        display: none;
     }
 }
 
