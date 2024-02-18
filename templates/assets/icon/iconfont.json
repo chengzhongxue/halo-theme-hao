@@ -6,6 +6,69 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "5153143",
+      "name": "图书",
+      "font_class": "tushu",
+      "unicode": "eac6",
+      "unicode_decimal": 60102
+    },
+    {
+      "icon_id": "3373061",
+      "name": "舞台剧",
+      "font_class": "screen",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "11391542",
+      "name": "音乐",
+      "font_class": "yinle",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "22978048",
+      "name": "游戏",
+      "font_class": "youxi",
+      "unicode": "e8a1",
+      "unicode_decimal": 59553
+    },
+    {
+      "icon_id": "7678892",
+      "name": "电影",
+      "font_class": "dianying",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "18170317",
+      "name": "星,星星,星形,半星,实星",
+      "font_class": "star-full",
+      "unicode": "e9a1",
+      "unicode_decimal": 59809
+    },
+    {
+      "icon_id": "18170318",
+      "name": "星,星星,星形,半星,实星",
+      "font_class": "star",
+      "unicode": "e9a2",
+      "unicode_decimal": 59810
+    },
+    {
+      "icon_id": "18170319",
+      "name": "星,星星,星形,半星",
+      "font_class": "star-half",
+      "unicode": "e9a3",
+      "unicode_decimal": 59811
+    },
+    {
+      "icon_id": "38098454",
+      "name": "困困鱼",
+      "font_class": "baibanwenjian-daochu",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
       "icon_id": "17511807",
       "name": "moon-clear-fill",
       "font_class": "moon-clear-fill",
