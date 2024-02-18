@@ -29,7 +29,9 @@
                 <div id="article-collect">
                     <div class="type-button-group">
                         <button th:onclick="pjax.loadUrl([['/douban?type='+${type.key}]])"
-                                th:each="type : ${types}" class="type-button" id="wishlistButton" th:text="${type.name}"></button>
+                                th:each="type : ${types}" class="type-button"
+                                th:classappend="${#lists.contains(param.type, type.key) ? 'active' : ''}"
+                                id="wishlistButton" th:text="${type.name}"></button>
                     </div>
                     <div class="collect">
                         <div class="collect-list">
