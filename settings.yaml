@@ -840,17 +840,17 @@ spec:
         - $formkit: number
           name: categoryQuantity
           label: 文章分类
-          value: -1
+          value: 0
           help: 小于 0 则展示全部分类
         - $formkit: number
           name: tagQuantity
           label: 文章标签
-          value: -1
+          value: 0
           help: 小于 0 则展示全部标签
         - $formkit: number
           name: archivesQuantity
           label: 文章归档
-          value: -1
+          value: 0
           help: 小于 0 则展示全部归档(目前没用等适配)
         - $formkit: radio
           name: tags_switch
