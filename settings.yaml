@@ -887,6 +887,8 @@ spec:
                   value: none
                 - label: Google AdSence
                   value: google
+                - label: 自定义
+                  value: customAd
             - $formkit: group
               if: $get(adType).value == 'google'
               name: ad_google
@@ -932,6 +934,25 @@ spec:
                       value: true
                     - label: 否
                       value: false
+            - $formkit: group
+              if: $get(adType).value == 'customAd'
+              name: ad_custom
+              label: 自定义广告
+              help: 填写广告图片地址和跳转地址
+              value:
+                ad_client:
+                ad_slot:
+                ad_format:
+                full_width_responsive:
+              children:
+                - $formkit: text
+                  name: ad_pic_url
+                  label: 自定义广告图片地址
+                  help: 自定义广告图片地址
+                - $formkit: text
+                  name: ad_redirect_url
+                  label: 自定义广告跳转地址
+                  help: 自定义广告跳转地址
     - group: footer
       label: 页脚
       formSchema:

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-CN" th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = '500', title = '500', head = null)}"
+<html lang="zh-CN"
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = '500', title = '500', head = null)}"
       xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
-
+    
     <div class="page" id="body-wrap">
         <div class="errors">
-
+            
             <!-- 头部导航栏 -->
             <div>
                 <header class="not-top-img" id="page-header">
@@ -15,7 +16,8 @@
             </div>
             <div id="error-wrap">
                 <div class="error-content">
-                    <div class="error-img" th:style="'background-image: url('+${theme.config.other.error_500.background}+')'">
+                    <div class="error-img"
+                         th:style="'background-image: url('+${theme.config.other.error_500.background}+')'">
                     </div>
                     <div class="error-info">
                         <h1 class="error_title">500</h1>
@@ -25,31 +27,37 @@
                     </div>
                 </div>
             </div>
-
+            
             <!-- 默认设置前 6 篇文章 -->
             <div class="aside-list">
                 <div class="aside-list-group"
                      th:with='topGroupPosts = ${postFinder.list(1,6)},
                 postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"&" : theme.config.layout.postRandomImg+"?"}'>
-                    <div th:each="post : ${topGroupPosts}" class="aside-list-item"><a class="thumbnail"
-                                                                                      th:href="@{${post.status.permalink}}"
-                                                                                      th:title="${post.spec.title}"><img
-                            loading="lazy"
-                            th:src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}'
-                            th:alt="${post.spec.title}"></a>
-                        <div class="content"><a class="title" th:href="@{${post.status.permalink}}"
-                                                th:title="${post.spec.title}"
-                                                data-pjax-state="">[[${post.spec.title}]]</a>
+                    <div th:each="post : ${topGroupPosts}" class="aside-list-item">
+                        <a class="thumbnail div_border"
+                           th:href="@{${post.status.permalink}}"
+                           th:title="${post.spec.title}"><img
+                                loading="lazy"
+                                th:src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}'
+                                th:alt="${post.spec.title}"></a>
+                        <div class="content">
+                            <a class="title" th:href="@{${post.status.permalink}}"
+                               th:title="${post.spec.title}"
+                               data-pjax-state="">[[${post.spec.title}]]</a>
                             <!-- <time datetime="2023-06-08T04:08:22.000Z" title="创建 2023-06-08 12:08:22">2023-06-08</time> -->
                         </div>
                     </div>
                 </div>
             </div>
-
+        
         </div>
         <!-- 底部 -->
         <footer th:replace="~{modules/footer}"/>
     </div>
 </th:block>
-
+<style>
+    .div_border {
+        border-radius: 0.5rem;
+    }
+</style>
 </html>
