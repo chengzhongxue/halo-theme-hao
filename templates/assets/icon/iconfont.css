@@ -1,11 +1,11 @@
 @font-face {
   font-family: "haofont"; /* Project id 4159149 */
-  src: url('iconfont.eot?t=1699854542133'); /* IE9 */
-  src: url('iconfont.eot?t=1699854542133#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('iconfont.woff2?t=1699854542133') format('woff2'),
-       url('iconfont.woff?t=1699854542133') format('woff'),
-       url('iconfont.ttf?t=1699854542133') format('truetype'),
-       url('iconfont.svg?t=1699854542133#haofont') format('svg');
+  src: url('iconfont.eot?t=1708243411223'); /* IE9 */
+  src: url('iconfont.eot?t=1708243411223#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('iconfont.woff2?t=1708243411223') format('woff2'),
+       url('iconfont.woff?t=1708243411223') format('woff'),
+       url('iconfont.ttf?t=1708243411223') format('truetype'),
+       url('iconfont.svg?t=1708243411223#haofont') format('svg');
 }
 
 .haofont {
@@ -14,6 +14,42 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.hao-icon-tushu:before {
+  content: "\eac6";
+}
+
+.hao-icon-screen:before {
+  content: "\e65b";
+}
+
+.hao-icon-yinle:before {
+  content: "\e65c";
+}
+
+.hao-icon-youxi:before {
+  content: "\e8a1";
+}
+
+.hao-icon-dianying:before {
+  content: "\e62b";
+}
+
+.hao-icon-star-full:before {
+  content: "\e9a1";
+}
+
+.hao-icon-star:before {
+  content: "\e9a2";
+}
+
+.hao-icon-star-half:before {
+  content: "\e9a3";
+}
+
+.hao-icon-baibanwenjian-daochu:before {
+  content: "\e612";
 }
 
 .hao-icon-moon-clear-fill:before {
