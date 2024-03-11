@@ -219,6 +219,31 @@ spec:
               label: 移动端背景图
               placeholder: 请填写移动端背景图地址
               value: https://imgapi.kouseki.cn/random?sort=mp
+            - $formkit: radio
+              label: 首页透明背景图
+              if: $get(enable_above).value == false
+              name: enable_background_img
+              key: enable_background_img
+              id: enable_background_img
+              value: false
+              help: 首页透明背景图和首页第一屏不能同时使用
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: attachment
+              name: index_background_img
+              if: $get(enable_background_img).value  &&  $get(enable_above).value == false
+              label: PC背景图
+              placeholder: 请填写背景图地址
+              value: https://www.dmoe.cc/random.php
+            - $formkit: attachment
+              name: phone_index_background_img
+              if: $get(enable_background_img).value  &&  $get(enable_above).value == false
+              label: 移动端背景图
+              placeholder: 请填写移动端背景图地址
+              value: https://imgapi.kouseki.cn/random?sort=mp
         - $formkit: radio
           name: moment
           label: 瞬间说说

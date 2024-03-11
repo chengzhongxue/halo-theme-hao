@@ -29,7 +29,47 @@
 <th:block th:replace="~{modules/loading-box}"/>
 
 <!-- 网站背景 -->
-<div id="web_bg"></div>
+<div id="web_bg" class="background_web_bg"></div>
+
+<th:block th:if="${theme.config.top.above.enable_background_img}">
+    <style>
+        @media screen and (min-width: 1300px) {
+            #web_bg{}
+            .background_web_bg {
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                opacity: 1;
+                position: fixed;
+                z-index: -999;
+                background: var(--heo-background);
+                background-image: url([[${theme.config.top.above.index_background_img}]]);
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            #web_bg{}
+            .background_web_bg {
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                opacity: 1;
+                position: fixed;
+                z-index: -999;
+                background: var(--heo-background);
+                background-image: url([[${theme.config.top.above.phone_index_background_img}]]);
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+
+    </style>
+</th:block>
 
 <!-- 网站背景 -->
 <div id="an_music_bg"></div>
