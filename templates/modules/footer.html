@@ -221,6 +221,33 @@
         img.entered.loading.cloud {
             height: 32px;
         }
+        #footer-banner {
+            background-color: [[${theme.config.footer.footerContent.default_enable_group.footer_banner_background_color}]];
+        }
     </style>
     
+    <th:block th:if="${theme.config.top.above.enable_background_img}">
+        <style>
+            @media screen and (min-width: 1300px) {
+                #footer {
+                    background: linear-gradient(180deg, var(--heo-card-bg-none) 0%, #fff0 25%);
+                    margin-top: 0.5rem;
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+            
+            @media screen and (max-width: 768px) {
+                #footer {
+                    background: linear-gradient(180deg, var(--heo-background) 0%, #fff0 25%);
+                    margin-top: 0;
+                    z-index: 3;
+                }
+            }
+        
+        </style>
+    </th:block>
+    
 </footer>
+
+

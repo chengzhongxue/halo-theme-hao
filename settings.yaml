@@ -220,7 +220,7 @@ spec:
               placeholder: 请填写移动端背景图地址
               value: https://imgapi.kouseki.cn/random?sort=mp
             - $formkit: radio
-              label: 首页透明背景图
+              label: 全局透明背景图
               if: $get(enable_above).value == false
               name: enable_background_img
               key: enable_background_img
@@ -1253,6 +1253,11 @@ spec:
                   if: $get(yunzhichi_list).value == 'custom_cloud'
                   value:
                   placeholder: 请输入自定义云支持跳转地址（注意是跳转地址不是图片展示地址）
+                - $formkit: color
+                  name: footer_banner_background_color
+                  label: 自定义页脚背景颜色
+                  validation: required
+                  value: "#f1f3f8"
             - $formkit: group
               name: style_one
               label: 中间
