@@ -14,12 +14,14 @@
     <th:block th:replace="~{modules/head :: head(htmlType = ${htmlType})}"/>
     <link th:if="${#strings.equals(theme.config.comments.use, 'Waline')
     && not #strings.isEmpty(theme.config.comments.walines.serverURL)}"
-      rel="stylesheet" th:href="${not #strings.isEmpty(theme.config.comments.walines.walinesCss) ? theme.config.comments.walines.walinesCss : 'https://cdn.cbd.int/@waline/client@2.15.7/dist/waline.css' }">
+          rel="stylesheet"
+          th:href="${not #strings.isEmpty(theme.config.comments.walines.walinesCss) ? theme.config.comments.walines.walinesCss : 'https://cdn.cbd.int/@waline/client@2.15.7/dist/waline.css' }">
     <!--  解决 katex pjax问题 -->
-    <script th:if="${pluginFinder.available('plugin-katex')}" defer="" src="/plugins/plugin-katex/assets/static/katex.min.js"></script>
+    <script th:if="${pluginFinder.available('plugin-katex')}" defer=""
+            src="/plugins/plugin-katex/assets/static/katex.min.js"></script>
     <script th:src="${assets_link + '/js/custom.js' + theme_version}"></script>
     <th:block th:if="${head != null}">
-        <th:block th:replace="${head}" />
+        <th:block th:replace="${head}"/>
     </th:block>
 </head>
 
@@ -31,6 +33,45 @@
 <!-- 网站背景 -->
 <div id="web_bg"></div>
 
+<th:block th:if="${theme.config.top.above.enable_background_img}">
+    <style>
+        @media screen and (min-width: 1300px) {
+            #web_bg {
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                opacity: 1;
+                position: fixed;
+                z-index: -999;
+                background: var(--heo-background);
+                background-image: url([[${theme.config.top.above.index_background_img}]]);
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            #web_bg {
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                opacity: 1;
+                position: fixed;
+                z-index: -999;
+                background: var(--heo-background);
+                background-image: url([[${theme.config.top.above.phone_index_background_img}]]);
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+    
+    </style>
+</th:block>
+
 <!-- 网站背景 -->
 <div id="an_music_bg"></div>
 
@@ -40,8 +81,8 @@
 <div th:replace="~{modules/sidebar}"/>
 
 <!-- 左下角音乐 -->
-<th:block th:if="${theme.config.tool.nav_music.nav_musicEnable}" >
-    <div  th:replace="~{modules/widgets/nav-music}"/>
+<th:block th:if="${theme.config.tool.nav_music.nav_musicEnable}">
+    <div th:replace="~{modules/widgets/nav-music}"/>
 </th:block>
 
 <!-- 内容 -->
@@ -61,85 +102,91 @@
     <script charset="utf-8" data-pjax th:src="${assets_link + '/zhheo/blogex.js' + theme_version}"></script>
     <script th:src="${assets_link + '/js/tw_cn.js' + theme_version}"></script>
     <!-- https://instant.page/ 网站预加载， 放在 </body> 之前 -->
-    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script>
-
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js"
+            type="module"></script>
+    
     <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script>
-
+    
     <!-- 右下角通知 https://www.polonel.com/snackbar/ -->
     <!-- todo head 中有它的 css，应该可以写一块，并改成后台可配置的功能，代码中应该还有他的 js -->
     <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script>
-
+    
     <div class="js-pjax">
         <!-- 动态标题 -->
         <script th:replace="~{modules/common/diytitle}"/>
     </div>
-
+    
     <!-- 评论 -->
     <th:block th:if="${theme.config.comments.use!='commentWidget' && theme.config.comments.commentsEnable }"
               th:with="use = ${theme.config.comments.use}">
         <th:block th:replace="~{'modules/comment/' + ${use}}"></th:block>
         <script th:if="${theme.config.comments.visitorMail.visitorMailEnable}">var visitorMail = "[(${theme.config.comments.visitorMail.mail})]";</script>
     </th:block>
-
+    
     <!--音乐-->
     <script>var meting_api = "[(${theme.config.tool.nav_music.meting_api})]"; </script>
-
+    
     <!-- 深色模式下添加粒子效果canvas -->
     <canvas th:if="${theme.config.style.universe}" id="universe" width="1312" height="880"></canvas>
     <script th:if="${theme.config.style.universe}" async="" th:src="${assets_link + '/libs/canvas/dark.js'}"></script>
-
+    
     <!-- https://davidshimjs.github.io/qrcodejs/ 生成二维码 -->
     <!-- 应该是文章页分享使用 -->
     <script data-pjax src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
-
+    
     <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
     <script th:src="${assets_link + '/libs/waterfall/waterfall.min.js'}"></script>
-
+    
     <!-- 获取主色 https://lokeshdhakar.com/projects/color-thief/ -->
     <!--<script th:src="@{/assets/libs/color-thief/color-thief.umd.js}"></script>-->
     <script th:src="${assets_link + '/libs/fast-average-color/index.browser.min.js'}"></script>
-
+    
     <script th:src="${assets_link + '/libs/view-image/view-image.min.js'}"></script>
-
-    <link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="all" onload="this.media='all'">
-
+    
+    <link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css"
+          media="all" onload="this.media='all'">
+    
     <script th:src="${assets_link + '/libs/aplayer/APlayer.min.js'}"></script>
-
+    
     <script th:src="${assets_link + '/libs/aplayer/Meting2.min.js'}"></script>
-
+    
     <script th:src="${assets_link + '/libs/pjax/pjax.min.js'}"></script>
-
+    
     <!-- swiper 在瞬间滚动时会使用 -->
-    <script th:if="${theme.config.top.moment}" data-pjax  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/6.6.2/swiper-bundle.min.js"></script>
-
+    <script th:if="${theme.config.top.moment}" data-pjax
+            src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/6.6.2/swiper-bundle.min.js"></script>
+    
     <!-- 右键菜单 -->
-    <script th:if="${theme.config.tool.rightMenu.rightMenuEnable}" th:src="${assets_link + '/zhheo/rightmenu.js'}"></script>
-
+    <script th:if="${theme.config.tool.rightMenu.rightMenuEnable}"
+            th:src="${assets_link + '/zhheo/rightmenu.js'}"></script>
+    
     <!-- 评论弹幕 -->
-    <script  th:if="${ ( ( not #strings.isEmpty(theme.config.comments.twikoos.envId)  && not #strings.isEmpty(theme.config.comments.twikoos.accessToken) ) ||
+    <script th:if="${ ( ( not #strings.isEmpty(theme.config.comments.twikoos.envId)  && not #strings.isEmpty(theme.config.comments.twikoos.accessToken) ) ||
         ( not #strings.isEmpty(theme.config.comments.artalks.server) && not #strings.isEmpty(theme.config.comments.artalks.siteName)) ||
           (#strings.equals(theme.config.comments.use, 'Waline') && not #strings.isEmpty(theme.config.comments.walines.serverURL)) )
         && theme.config.comments.commentBarrageConfig.commentBarrageEnable
-        && theme.config.comments.commentsEnable}"  data-pjax=""
-             th:src="${assets_link + '/zhheo/commentBarrage.js'}"></script>
-
+        && theme.config.comments.commentsEnable}" data-pjax=""
+            th:src="${assets_link + '/zhheo/commentBarrage.js'}"></script>
+    
     <!-- Tocbot 目录生成 start -->
     <th:block th:replace="~{modules/common/toc-bot}"/>
-
+    
     <!-- 51统计 -->
     <th:block th:replace="~{modules/common/51-la}"/>
-
+    
     <!--官方评论插件js-->
-    <script th:if="${pluginFinder.available('PluginCommentWidget')}" src="/plugins/PluginCommentWidget/assets/static/comment-widget.iife.js"></script>
-
-    <script th:if="${theme.config.envelope_comment.enable_danmu}" th:src="${assets_link + '/libs/twikoo/easy-Danmaku.min.js'}" id="Danmaku"></script>
-
+    <script th:if="${pluginFinder.available('PluginCommentWidget')}"
+            src="/plugins/PluginCommentWidget/assets/static/comment-widget.iife.js"></script>
+    
+    <script th:if="${theme.config.envelope_comment.enable_danmu}"
+            th:src="${assets_link + '/libs/twikoo/easy-Danmaku.min.js'}" id="Danmaku"></script>
+    
     <script>
-        let pjaxSelectors = ['title', '#config-diff', '#body-wrap', '#rightside-config-hide', '#rightside-config-show', '.js-pjax','#site-config']
-
-        pjaxSelectors.unshift('meta[property="og:type"]','meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]', 'meta[property="og:description"]'
+        let pjaxSelectors = ['title', '#config-diff', '#body-wrap', '#rightside-config-hide', '#rightside-config-show', '.js-pjax', '#site-config']
+        
+        pjaxSelectors.unshift('meta[property="og:type"]', 'meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]', 'meta[property="og:description"]'
                 , 'meta[name="twitter:title"]', 'meta[name="twitter:url"]', 'meta[name="twitter:description"]', 'meta[name="twitter:image"]')
-
+        
         var pjax = new Pjax({
             elements: 'a:not([target="_blank"])',
             selectors: pjaxSelectors,
@@ -147,14 +194,14 @@
             analytics: false,
             scrollRestoration: false
         })
-
+        
         document.addEventListener('pjax:send', function () {
-
+            
             // removeEventListener toc scroll
             window.removeEventListener('scroll', window.tocScrollFn)
-
+            
             typeof preloader === 'object' && preloader.initLoading()
-
+            
             if (window.aplayers) {
                 for (let i = 0; i < window.aplayers.length; i++) {
                     if (!window.aplayers[i].options.fixed) {
@@ -162,57 +209,57 @@
                     }
                 }
             }
-
+            
             typeof typed === 'object' && typed.destroy()
-
+            
             //reset readmode
             const $bodyClassList = document.body.classList
             $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
         })
-
+        
         document.addEventListener('pjax:complete', function () {
             window.refreshFn()
-
+            
             document.querySelectorAll('script[data-pjax]').forEach(item => {
-                    const newScript = document.createElement('script')
-                    const content = item.text || item.textContent || item.innerHTML || ""
-                    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-                    newScript.appendChild(document.createTextNode(content))
-                    item.parentNode.replaceChild(newScript, item)
-                }
+                        const newScript = document.createElement('script')
+                        const content = item.text || item.textContent || item.innerHTML || ""
+                        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+                        newScript.appendChild(document.createTextNode(content))
+                        item.parentNode.replaceChild(newScript, item)
+                    }
             )
-
+            
             GLOBAL_CONFIG.lazyload.enable && window.lazyLoadInstance.update()
-
+            
             typeof chatBtnFn === 'function' && chatBtnFn()
             typeof panguInit === 'function' && panguInit()
-
+            
             // google analytics
             typeof gtag === 'function' && gtag('config', '', {
                 'page_path': window.location.pathname
             });
-
+            
             // baidu analytics
             typeof _hmt === 'object' && _hmt.push(['_trackPageview', window.location.pathname]);
-
+            
             typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
-
+            
             // Analytics
             if (false) {
                 MtaH5.pgv()
             }
-
+            
             // prismjs
             typeof Prism === 'object' && Prism.highlightAll()
-
+            
             typeof preloader === 'object' && preloader.endLoading()
         })
-
+        
         document.addEventListener('pjax:error', (e) => {
-                if (e.request.status === 404 || e.request.status === 500) {
-                    window.location.href = e.request.responseURL;
+                    if (e.request.status === 404 || e.request.status === 500) {
+                        window.location.href = e.request.responseURL;
+                    }
                 }
-            }
         )
     </script>
 
@@ -223,21 +270,21 @@
 <th:block th:replace="~{'modules/variables/layout'}"></th:block>
 
 <script data-pjax="">
-
+    
     //页脚友联
     GLOBAL_CONFIG.isFriendLinksInFooter && heo.addFriendLinksInFooter()
     //音乐页面切换歌曲调用
-    if(GLOBAL_CONFIG.isMusic){
+    if (GLOBAL_CONFIG.isMusic) {
         heo.changeMusicBg(false);
     }
     //代码块
-    if(GLOBAL_CONFIG.prism.enable){
+    if (GLOBAL_CONFIG.prism.enable) {
         halo.addPrismTool()
         halo.dataCodeTheme()
     }
-    if(document.querySelector('#danmu') &&
-        document.body.clientWidth > 768 &&
-        [[${theme.config.envelope_comment.enable_danmu}]]){
+    if (document.querySelector('#danmu') &&
+            document.body.clientWidth > 768 &&
+            [[${theme.config.envelope_comment.enable_danmu}]]) {
         halo.addScript("Danmaku", "[[${assets_link + '/libs/twikoo/easy-Danmaku.min.js'}]]", halo.danmu())
     }
 
