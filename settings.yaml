@@ -3317,3 +3317,40 @@ spec:
                   label: 结束时间
                   placeholder: 请输入结束时间(小时)
                   help: 可以与开始时间相同，表示一个小时内的问候
+
+    - group: advertise
+      label: 广告设置
+      formSchema:
+        - $formkit: group
+          name: index_top_adv
+          label: 首页置顶广告
+          value:
+            enable: false
+            index_top_adv_url: "https://www.aliyun.com/daily-act/ecs/activity_selection?userCode=ck9px1df"
+            index_top_adv_img: https://img.alicdn.com/imgextra/i3/O1CN01Tbj8qb1w835uueixH_!!6000000006262-2-tps-3840-120.png
+          children:
+            - $formkit: radio
+              name: enable
+              id: enable
+              key: enable
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: attachment
+              name: index_top_adv_img
+              id: index_top_adv_img
+              key: index_top_adv_img
+              if: $get(enable).value
+              label: 首页置顶广告图片
+              validation: required
+              placeholder: 请输入图片 url
+            - $formkit: text
+              name: index_top_adv_url
+              id: index_top_adv_url
+              key: index_top_adv_url
+              if: $get(enable).value
+              label: 首页置顶广告图片跳转地址
+              validation: required
+              placeholder: 请输入广告图片跳转 url
