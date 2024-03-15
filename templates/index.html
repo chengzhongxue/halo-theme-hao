@@ -9,8 +9,21 @@
                 _type = 'website')}"></th:block>
 </th:block>
 <th:block th:fragment="content">
-
+    
     <div class="page" id="body-wrap">
+        
+        <div class="_3f01c8f5a4546beb05aa576fb01cb512_banner"
+             style="--bg-color: #F0F3FB;" th:if="${theme.config.advertise.index_top_adv.enable}">
+            <a class="_3f01c8f5a4546beb05aa576fb01cb512_link"
+               th:href="${theme.config.advertise.index_top_adv.index_top_adv_url}"
+               target="_blank"
+               data-tracker-scm="20140722.M_185485774.P_128.MO_1774-ID_10314565-MID_10314565-CID_31226-ST_10134-PA_m@1000390637-V_1"
+               data-aplus-ae="x1_6a70ef6a" data-spm-anchor-id="5176.28987142.J_4VYgf18xNlTAyFFbOuOQe.1">
+                <img th:src="${theme.config.advertise.index_top_adv.index_top_adv_img}" alt="">
+            </a>
+            <a class="_3f01c8f5a4546beb05aa576fb01cb512_close"></a>
+        </div>
+        
         <!-- 头部导航栏 -->
         <header th:class="${theme.config.top.above.enable_above ? 'full_page' : 'not-top-img'}" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = ${siteTitle})}"></nav>
@@ -27,19 +40,28 @@
         </div>
         <main class="layout" id="content-inner" th:classappend="${theme.config.sidebar.location}">
             <div class="recent-posts" id="recent-posts">
-
+                
                 <!-- 分类导航栏 -->
                 <div th:replace="~{'modules/bar/' + ${theme.config.layout.navs.nav}}"></div>
-
+                
                 <th:block th:replace="~{modules/post-list}"/>
-
+            
             </div>
             <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.widgetss.indexWidgets})}"></div>
         </main>
         <!-- 底部 -->
         <footer th:replace="~{modules/footer}"/>
     </div>
+    
+    <style th:if="${theme.config.advertise.index_top_adv.enable}">
+        #page-header.not-top-img:not(.nav-fixed) #nav {
+            background: var(--heo-none);
+            margin-top:60px
+        }
+    </style>
 
 </th:block>
+
+
 
 </html>
