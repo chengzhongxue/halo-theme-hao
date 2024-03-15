@@ -7144,7 +7144,7 @@ li.card-archive-list-item {
 
     #aside-content .sticky_layout {
         top: calc(60px + 0.5rem);
-        margin-top: 1rem;
+        /*margin-top: 1rem;*/
     }
 
     #page-header.nav-visible + .layout > .aside-content > .sticky_layout {
