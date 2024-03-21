@@ -1233,13 +1233,13 @@ blockquote footer cite::before {
     border-color: rgb(255, 114, 66);
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
     ._3f01c8f5a4546beb05aa576fb01cb512_banner {
         display: none;
     }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 770px) {
     ._3f01c8f5a4546beb05aa576fb01cb512_banner {
         --image: none;
         --bg-color: transparent;
