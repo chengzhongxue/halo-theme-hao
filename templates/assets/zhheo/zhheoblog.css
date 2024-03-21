@@ -1261,6 +1261,7 @@ blockquote footer cite::before {
 
     ._3f01c8f5a4546beb05aa576fb01cb512_banner ._3f01c8f5a4546beb05aa576fb01cb512_link img{
         display: flex;
+        height: 60px;
     }
 
     ._3f01c8f5a4546beb05aa576fb01cb512_banner ._3f01c8f5a4546beb05aa576fb01cb512_close {
