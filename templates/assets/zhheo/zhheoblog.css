@@ -1233,7 +1233,13 @@ blockquote footer cite::before {
     border-color: rgb(255, 114, 66);
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (max-width: 768px) {
+    ._3f01c8f5a4546beb05aa576fb01cb512_banner {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 770px) {
     ._3f01c8f5a4546beb05aa576fb01cb512_banner {
         --image: none;
         --bg-color: transparent;
@@ -1251,6 +1257,11 @@ blockquote footer cite::before {
         width: 100%;
         height: 100%;
         cursor: pointer
+    }
+
+    ._3f01c8f5a4546beb05aa576fb01cb512_banner ._3f01c8f5a4546beb05aa576fb01cb512_link img{
+        display: flex;
+        height: 60px;
     }
 
     ._3f01c8f5a4546beb05aa576fb01cb512_banner ._3f01c8f5a4546beb05aa576fb01cb512_close {
@@ -7144,7 +7155,7 @@ li.card-archive-list-item {
 
     #aside-content .sticky_layout {
         top: calc(60px + 0.5rem);
-        margin-top: 1rem;
+        /*margin-top: 1rem;*/
     }
 
     #page-header.nav-visible + .layout > .aside-content > .sticky_layout {
