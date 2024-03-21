@@ -1644,37 +1644,6 @@ spec:
           label: 按钮跳转连链接
           placeholder: 请输入跳转 url
 
-    - group: douban
-      label: 豆瓣
-      formSchema:
-        - $formkit: attachment
-          name: backgroundImg
-          label: 背景图
-          value: https://liuzhihang.com/upload/moments.png
-          placeholder: 请输入图片地址
-        - $formkit: text
-          name: smallTitle
-          label: 小标题
-          value: 电影
-        - $formkit: text
-          name: bigTitle
-          label: 大标题
-          value: 静下来慢慢感受着，流淌的故事。
-        - $formkit: text
-          name: detail
-          label: 描述
-          value: 跟 hao 用心体会电影的魅力
-        - $formkit: text
-          name: buttonTitle
-          label: 按钮标题
-          value: 感受更多
-        - $formkit: url
-          name: buttonUrl
-          validation: url
-          value: https://www.douban.com/search?cat=1002&q=%E6%9C%80%E6%96%B0%E7%94%B5%E5%BD%B1
-          label: 按钮跳转连链接
-          placeholder: 请输入跳转 url
-
     - group: link
       label: 友链
       formSchema:
