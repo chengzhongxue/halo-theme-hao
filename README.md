@@ -1,6 +1,6 @@
 <div align="center">
 <!-- 主题Logo -->
-<img width="100px" src="https://liuzhihang.com/upload/logo.png">
+<img width="100px" src="https://api.minio.yyds.pink/moony/files/2024/04/halo-theme-hao-sbxqdmuv.png">
 <!-- 主题名称 -->
 <h1>Halo-Theme-Hao</h1>
 <!-- 快捷导航 -->
@@ -52,30 +52,6 @@
 6. **若安装主题后出现500错误，请到主题设置页面，将每个设置项都保存一下！！！**
 7. **`beta`版本主题必须使用`本地资源`，正式版本才会存在`在线资源`**
 
-## 🛠 安装
-
-### 🚗 自动安装
-
-1. 点击 [此链接](https://halo.run/store/apps/app-MgZJX) 进入 Halo 官方应用市场，找到本主题
-2. 点击左下角 `下载` 按钮
-3. 弹出的对话框中，输入自己的网站地址，点击安装
-
-### 🚲 手动安装
-
-#### 🚂 本地安装
-
-1. 在 [ Release](https://github.com/chengzhongxue/halo-theme-hao/releases) 页面 `下载` 最新主题包 (zip) 
-2. 进入 Halo 后台 -> 主题 (左侧面板)
-3. 点击右上角 “主题”， 在弹出的窗口中选择 `安装主题`
-4. 选择下载好的主题包（zip）
-5. 安装完成后的主题将会出现在 “未安装” 内，点击 `启用主题`
-
-#### 🛸 远程安装
-
-1. 复制地址 `https://github.com/chengzhongxue/halo-theme-hao`
-2. 进入Halo后台 -> 外观 -> 主题 (左侧面板)
-3. 点击右上方 `安装` 按钮, 然后选择 `远程下载`
-4. 在文本框中粘贴仓库地址后点击下载
 
 ### 🔌 插件依赖
 > 所有插件均为可选，不安装则不会出现对应功能。
@@ -98,9 +74,6 @@
 
 [点我查看](https://moony.la/docs/hao)
 
-## 🔐 许可
-
-[Halo-Theme-Hao](https://github.com/chengzhongxue/halo-theme-hao) 使用 [GPL-v3.0](./LICENSE) 协议开源，请遵守开源协议。
 
 ## 💬 讨论
 
@@ -111,6 +84,13 @@
 <img width="360" src="https://api.minio.yyds.pink/moony/files/2024/04/%E5%BE%AE%E4%BF%A1%E4%BA%8C%E7%BB%B4%E7%A0%81-krkpfcem.jpg" />
 
 > 卖服务器的广告人，就不要加了。
+
+### 赞助
+如果 material 对你有帮助，欢迎[赞助我](https://afdian.net/a/moony_la)，感谢以下赞助者对 material 项目的支持：
+
+## 🔐 许可
+
+[Halo-Theme-Hao](https://github.com/chengzhongxue/halo-theme-hao) 使用 [GPL-v3.0](./LICENSE) 协议开源，请遵守开源协议。
 
 
 
