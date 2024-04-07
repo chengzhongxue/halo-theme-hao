@@ -86,7 +86,7 @@
 > 卖服务器的广告人，就不要加了。
 
 ### 赞助
-如果 material 对你有帮助，欢迎[赞助我](https://afdian.net/a/moony_la)，感谢以下赞助者对 material 项目的支持：
+如果 hao 对你有帮助，欢迎[赞助我](https://afdian.net/a/moony_la)，感谢以下赞助者对 material 项目的支持：
 
 ## 🔐 许可
 
