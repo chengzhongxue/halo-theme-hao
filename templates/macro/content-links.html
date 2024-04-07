@@ -46,30 +46,6 @@
         <!--互动友链-->
         <th:block th:replace="~{macro/links-canvas :: links-canvas(${groups})}" />
 
-        <!--钓鱼-->
-        <th:block th:if="${not #lists.isEmpty(groups) && theme.config.fcircle.linksRandomFriendsEnable}">
-            <div class="title-h2-a">
-                <div class="title-h2-a-left">
-                    <h2 style="padding-top:0;margin:.6rem 0 .6rem">🎣 钓鱼</h2>
-                    <a class="random-post-start" href="javascript:fetchRandomPost();">
-                        <i class="haofont hao-icon-arrow-rotate-right"></i>
-                    </a>
-                </div>
-                <div th:if="${not #strings.isEmpty(theme.config.link.fcircleUrl)}" class="title-h2-a-right">
-                    <a class="random-post-all" th:href="${theme.config.link.fcircleUrl}" data-pjax-state="">查看鱼塘</a>
-                </div>
-            </div>
-            <div id="random-post"></div>
-            <script type="text/javascript">
-                var fdataUser = {
-                    apiurl: "[(${ theme.config.fcircle.apiurl })]",
-                    defaultFish: 500,
-                    hungryFish: 500,
-                }
-            </script>
-            <script th:src="${assets_link + '/libs/moments/random-friends-post.js'}"></script>
-        </th:block>
-
         <div class="flink" id="article-container">
 
             <th:block th:each="group,iterStat : ${groups}">

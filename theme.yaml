@@ -3,14 +3,12 @@ kind: Theme
 metadata:
   name: theme-hao
   annotations:
-    # Add supports for Halo App Store
-    # https://halo.run/store/apps/app-MgZJX
     "store.halo.run/app-id": "app-MgZJX"
 spec:
   displayName: Hao
   author:
-    name: 程序员小航
-    website: https://liuzhihang.com
+    name: 程序员小航 & 困困鱼
+    website: https://github.com/chengzhongxue
   customTemplates:
     page:
       - name: 友情链接页面模版
@@ -21,10 +19,6 @@ spec:
         description: 关于页面
         screenshot:
         file: about.html
-      - name: 鱼塘页面模版
-        description: 友链鱼塘
-        screenshot:
-        file: fcircle.html
       - name: 音乐页面模版
         description: 音乐页面
         screenshot:
@@ -47,9 +41,9 @@ spec:
         file: new_comment.html
   description: Halo 2.x Theme base on Thymeleaf, Referring to Butterfly and Heo
   logo: /themes/theme-hao/assets/images/hao-logo.jpg
-  website: https://liuzhihang.com
-  repo: https://githubfast.com/liuzhihang/halo-theme-hao
+  website: https://github.com/chengzhongxue
+  repo: https://github.com/chengzhongxue/halo-theme-hao
   settingName: "theme-hao-setting"
   configMapName: "theme-hao-configMap"
-  version: "1.4.9-beta1"
+  version: "1.4.9"
   require: ">=2.10.0"

@@ -293,30 +293,23 @@ spec:
           if: $get(recentTop).value
           value:
             bannersBackground: default
-            bannersTitleBig: Halo Theme Hao
+            bannersTitleBig: <div class="banners-title-big">Halo Theme</div><div class="banners-title-big">Hao</div>
             bannersTitleSmall: 更多信息请关注 GitHub
             categoryGroup:
-              - title: "必看精选"
+              - title: "必看"
                 icon: "haofont hao-icon-book"
                 url: "/"
                 colorOneLight: "#358bff"
                 colorTwoLight: "#15c6ff"
                 colorOneDark: "#0653b8"
                 colorTwoDark: "#2fcbff"
-              - title: "热门文章"
+              - title: "热门"
                 icon: "haofont hao-icon-fire"
                 url: "/"
                 colorOneLight: "#ff6655"
                 colorTwoLight: "#ffbf37"
                 colorOneDark: "#e22a16"
                 colorTwoDark: "#da980c"
-#              - title: "实用教程"
-#                icon: "haofont hao-icon-book"
-#                url: "/"
-#                colorOneLight: "#18e7ae"
-#                colorTwoLight: "#1eebeb"
-#                colorOneDark: "#099e74"
-#                colorTwoDark: "#0ea4a4"
             techStack:
           children:
             - $formkit: select
@@ -353,7 +346,7 @@ spec:
               placeholder: 请输入大标题
               height: 80px
               language: html
-              help: 支持 HTML 语法
+              help: 支持 HTML 语法  <div class="banners-title-big">内容</div>
             - $formkit: code
               name: bannersTitleSmall
               label: 小标题
@@ -366,7 +359,7 @@ spec:
               id: categoryGroup
               key: categoryGroup
               min: 2
-              max: 4
+              max: 2
               children:
                 - $formkit: text
                   name: title
@@ -627,31 +620,329 @@ spec:
         - $formkit: group
           name: widgetss
           label: 侧边栏内容
-          help: 目前提供的小部件有：profile（个人卡片）, wechat（公众号）, power（爱发电赞助）, welcome（小板报）, steam（Steam卡片）, music（音乐卡片）, friend-link（通讯录）, recent-posts（最新文章）, comments（最新评论）, categories（文章分类）, tags（文章标签）, stat（统计）, tags-stat（标签&归档&统计）, adbox（广告区域）。你可以随意组合或排序，以逗号隔开。
           value:
-            indexWidgets: profile,wechat,comments,recent-posts,categories,tags-stat
-            postWidgets: profile,wechat,toc,comments,recent-posts,categories,tags-stat
-            tagWidgets: profile,wechat,comments,recent-posts,categories,tags-stat
-            categoryWidgets: profile,wechat,comments,recent-posts,categories,tags-stat
-            pageWidgets: ""
+            indexWidget:
+              - widget: "profile"
+              - widget: "wechat"
+              - widget: "comments"
+              - widget: "recent-posts"
+              - widget: "categories"
+            postWidget:
+              - widget: "profile"
+              - widget: "wechat"
+              - widget: "toc"
+              - widget: "comments"
+              - widget: "recent-posts"
+              - widget: "categories"
+            tagWidget:
+              - widget: "profile"
+              - widget: "wechat"
+              - widget: "comments"
+              - widget: "recent-posts"
+              - widget: "categories"
+            categoryWidget:
+              - widget: "profile"
+              - widget: "wechat"
+              - widget: "comments"
+              - widget: "recent-posts"
+              - widget: "categories"
+            pageWidget:
           children:
-            - $formkit: textarea
-              name: indexWidgets
+            - $formkit: repeater
+              name: indexWidget
+              id: indexWidget
               label: 首页
-            - $formkit: textarea
-              name: postWidgets
+              children:
+                - $formkit: select
+                  name: widget
+                  id: widget
+                  key: widget
+                  label: "小工具"
+                  options:
+                    - value: "profile"
+                      label: 个人卡片
+                    - value: "wechat"
+                      label: 公众号
+                    - value: "power"
+                      label: 爱发电赞助
+                    - value: "steam"
+                      label: Steam卡片
+                    - value: "music"
+                      label: 音乐卡片
+                    - value: "friend-link"
+                      label: 通讯录
+                    - value: "recent-posts"
+                      label: 最新文章
+                    - value: "comments"
+                      label: 最新评论
+                    - value: "categories"
+                      label: 文章分类
+                    - value: "tags"
+                      label: 文章标签
+                    - value: "stat"
+                      label: 统计
+                    - value: "tags-stat"
+                      label: 标签&归档&统计
+                    - value: "adbox"
+                      label: 广告区域
+                    - value: "custom_html"
+                      label: 自定义
+                - $formkit: group
+                  name: custom_html
+                  if: $value.widget == 'custom_html'
+                  key: custom_html
+                  label: 自定义内容
+                  children:
+                    - $formkit: code
+                      name: title
+                      label: 标题
+                      help: 支持html语法
+                      height: 50px
+                      value: <i class="haofont hao-icon-folder-open"></i><span>分类</span>
+                      language: html
+                    - $formkit: code
+                      name: html
+                      label: 内容
+                      height: 200px
+                      help: 支持html语法
+                      language: html
+            - $formkit: repeater
+              name: postWidget
+              id: postWidget
               label: 文章页
               help: post 可以支持设置 toc
-            - $formkit: textarea
-              name: tagWidgets
+              children:
+                - $formkit: select
+                  name: widget
+                  id: widget
+                  key: widget
+                  label: "小工具"
+                  options:
+                    - value: "profile"
+                      label: 个人卡片
+                    - value: "toc"
+                      label: 目录
+                    - value: "wechat"
+                      label: 公众号
+                    - value: "power"
+                      label: 爱发电赞助
+                    - value: "steam"
+                      label: Steam卡片
+                    - value: "music"
+                      label: 音乐卡片
+                    - value: "friend-link"
+                      label: 通讯录
+                    - value: "recent-posts"
+                      label: 最新文章
+                    - value: "comments"
+                      label: 最新评论
+                    - value: "categories"
+                      label: 文章分类
+                    - value: "tags"
+                      label: 文章标签
+                    - value: "stat"
+                      label: 统计
+                    - value: "tags-stat"
+                      label: 标签&归档&统计
+                    - value: "adbox"
+                      label: 广告区域
+                    - value: "custom_html"
+                      label: 自定义
+                - $formkit: group
+                  name: custom_html
+                  if: $value.widget == 'custom_html'
+                  key: custom_html
+                  label: 自定义内容
+                  children:
+                    - $formkit: code
+                      name: title
+                      label: 标题
+                      help: 支持html语法
+                      height: 100px
+                      value: <i class="haofont hao-icon-folder-open"></i><span>分类</span>
+                      language: html
+                    - $formkit: code
+                      name: html
+                      label: 内容
+                      height: 200px
+                      help: 支持html语法
+                      language: html
+
+            - $formkit: repeater
+              name: tagWidget
+              id: tagWidget
               label: 标签页
-            - $formkit: textarea
-              name: categoryWidgets
+              children:
+                - $formkit: select
+                  name: widget
+                  id: widget
+                  key: widget
+                  label: "小工具"
+                  options:
+                    - value: "profile"
+                      label: 个人卡片
+                    - value: "wechat"
+                      label: 公众号
+                    - value: "power"
+                      label: 爱发电赞助
+                    - value: "steam"
+                      label: Steam卡片
+                    - value: "music"
+                      label: 音乐卡片
+                    - value: "friend-link"
+                      label: 通讯录
+                    - value: "recent-posts"
+                      label: 最新文章
+                    - value: "comments"
+                      label: 最新评论
+                    - value: "categories"
+                      label: 文章分类
+                    - value: "tags"
+                      label: 文章标签
+                    - value: "stat"
+                      label: 统计
+                    - value: "tags-stat"
+                      label: 标签&归档&统计
+                    - value: "adbox"
+                      label: 广告区域
+                    - value: "custom_html"
+                      label: 自定义
+                - $formkit: group
+                  name: custom_html
+                  if: $value.widget == 'custom_html'
+                  key: custom_html
+                  label: 自定义内容
+                  children:
+                    - $formkit: code
+                      name: title
+                      label: 标题
+                      help: 支持html语法
+                      height: 100px
+                      value: <i class="haofont hao-icon-folder-open"></i><span>分类</span>
+                      language: html
+                    - $formkit: code
+                      name: html
+                      label: 内容
+                      height: 200px
+                      help: 支持html语法
+                      language: html
+            - $formkit: repeater
+              id: categoryWidget
+              name: categoryWidget
               label: 分类页
-            - $formkit: textarea
-              name: pageWidgets
+              children:
+                - $formkit: select
+                  name: widget
+                  id: widget
+                  key: widget
+                  label: "小工具"
+                  options:
+                    - value: "profile"
+                      label: 个人卡片
+                    - value: "wechat"
+                      label: 公众号
+                    - value: "power"
+                      label: 爱发电赞助
+                    - value: "steam"
+                      label: Steam卡片
+                    - value: "music"
+                      label: 音乐卡片
+                    - value: "friend-link"
+                      label: 通讯录
+                    - value: "recent-posts"
+                      label: 最新文章
+                    - value: "comments"
+                      label: 最新评论
+                    - value: "categories"
+                      label: 文章分类
+                    - value: "tags"
+                      label: 文章标签
+                    - value: "stat"
+                      label: 统计
+                    - value: "tags-stat"
+                      label: 标签&归档&统计
+                    - value: "adbox"
+                      label: 广告区域
+                    - value: "custom_html"
+                      label: 自定义
+                - $formkit: group
+                  name: custom_html
+                  if: $value.widget == 'custom_html'
+                  key: custom_html
+                  label: 自定义内容
+                  children:
+                    - $formkit: code
+                      name: title
+                      label: 标题
+                      help: 支持html语法
+                      height: 100px
+                      value: <i class="haofont hao-icon-folder-open"></i><span>分类</span>
+                      language: html
+                    - $formkit: code
+                      name: html
+                      label: 内容
+                      height: 200px
+                      help: 支持html语法
+                      language: html
+            - $formkit: repeater
+              name: pageWidget
+              id: pageWidget
               label: 自定义页
               help: 自定义页面默认没有侧栏
+              children:
+                - $formkit: select
+                  name: widget
+                  id: widget
+                  key: widget
+                  label: "小工具"
+                  options:
+                    - value: "profile"
+                      label: 个人卡片
+                    - value: "wechat"
+                      label: 公众号
+                    - value: "power"
+                      label: 爱发电赞助
+                    - value: "steam"
+                      label: Steam卡片
+                    - value: "music"
+                      label: 音乐卡片
+                    - value: "friend-link"
+                      label: 通讯录
+                    - value: "recent-posts"
+                      label: 最新文章
+                    - value: "comments"
+                      label: 最新评论
+                    - value: "categories"
+                      label: 文章分类
+                    - value: "tags"
+                      label: 文章标签
+                    - value: "stat"
+                      label: 统计
+                    - value: "tags-stat"
+                      label: 标签&归档&统计
+                    - value: "adbox"
+                      label: 广告区域
+                    - value: "custom_html"
+                      label: 自定义
+                - $formkit: group
+                  name: custom_html
+                  if: $value.widget == 'custom_html'
+                  key: custom_html
+                  label: 自定义内容
+                  children:
+                    - $formkit: code
+                      name: title
+                      label: 标题
+                      help: 支持html语法
+                      height: 100px
+                      value: <i class="haofont hao-icon-folder-open"></i><span>分类</span>
+                      language: html
+                    - $formkit: code
+                      name: html
+                      label: 内容
+                      height: 200px
+                      help: 支持html语法
+                      language: html
         - $formkit: group
           name: profile
           label: 个人卡片
@@ -767,81 +1058,49 @@ spec:
               name: showNum
               label: 最大展示条数
         - $formkit: group
-          name: welcome
-          label: 小板报
-          value:
-            key:
-            locationLng:
-            locationLat:
-          children:
-            - $formkit: text
-              name: key
-              label: 腾讯位置服务Key
-              value: "xxxx"
-              help: 申请地址：https://lbs.qq.com/dev/console/application/mine
-            - $formkit: text
-              name: locationLng
-              label: 经度坐标
-              value: "113.215456"
-              help: 可访问 https://lbs.qq.com/getPoint 拾取坐标，示例：113.215456
-              placeholder: 请输入经度坐标
-            - $formkit: text
-              name: locationLat
-              label: 纬度坐标
-              help: 示例：22.582401
-              value: "22.582401"
-              placeholder: 请输入纬度坐标
-        - $formkit: group
           name: music
           label: 音乐卡片
           help: 文档请看：https://githubfast.com/zonemeen/netease-recent-profile
           value:
-            musicUrl:
-            lightMsimg:
-            lightBackMsimg:
-            darkMsimg:
-            darkBackMsimg:
+            musicUrl: /music
+            lightMsimg: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
+            lightBackMsimg: https://card-music.yyds.pink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+            darkMsimg: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
+            darkBackMsimg: https://card-music.yyds.pink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
           children:
             - $formkit: url
               name: musicUrl
               label: 跳转地址
-              value: /music
             - $formkit: textarea
               name: lightMsimg
               label: 浅色卡片
-              value: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
               help: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
             - $formkit: textarea
               name: lightBackMsimg
               label: 浅色翻页卡片
-              value: https://card-music.yyds.pink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
               help: https://card-music.yyds.pink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
             - $formkit: textarea
               name: darkMsimg
               label: 深色卡片
-              value: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
               help: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
             - $formkit: textarea
               name: darkBackMsimg
               label: 深色翻页卡片
-              value: https://card-music.yyds.pink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
               help: https://card-music.yyds.pink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
         - $formkit: group
           name: steam
           label: Steam卡片
           help: 文档请看：https://githubfast.com/yuyinws/steam-card
           value:
-            steamUrl:
-            cardSteam:
+            steamUrl: /
+            cardSteam: https://card.yuy1n.io/card/xxxxxx/gradient1,badge,bg-game-1111460,games,screenshots,badges
           children:
             - $formkit: url
               name: steamUrl
               label: 跳转地址
-              value: /
             - $formkit: textarea
               name: cardSteam
               label: 卡片
-              value: https://card.yuy1n.io/card/xxxxxx/gradient1,badge,bg-game-1111460,games,screenshots,badges
               help: https://card.yuy1n.io/card/xxxxxx/gradient1,badge,bg-game-1111460,games,screenshots,badges
         - $formkit: number
           name: recentPost
@@ -1253,11 +1512,6 @@ spec:
                   if: $get(yunzhichi_list).value == 'custom_cloud'
                   value:
                   placeholder: 请输入自定义云支持跳转地址（注意是跳转地址不是图片展示地址）
-                - $formkit: color
-                  name: footer_banner_background_color
-                  label: 自定义页脚背景颜色
-                  validation: required
-                  value: "#f1f3f8"
             - $formkit: group
               name: style_one
               label: 中间
@@ -1678,43 +1932,6 @@ spec:
           label: 底部显示内容
           language: html
 
-    - group: fcircle
-      label: 友链鱼塘
-      formSchema:
-        - $formkit: text
-          name: buttonTitle
-          label: 按钮标题
-          value: 部署项目
-        - $formkit: url
-          name: buttonUrl
-          validation: url
-          value: https://githubfast.com/Rock-Candy-Tea/hexo-circle-of-friends
-          label: 按钮跳转连链接
-          placeholder: 请输入跳转 url
-        - $formkit: url
-          name: apiurl
-          value: "https://moments.kunkunyu.com/"
-          label: token地址
-          placeholder: 请输入token地址
-        - $formkit: radio
-          name: fcircleRandomFriendsEnable
-          label: 友链鱼塘页面（钓鱼）
-          value: true
-          options:
-            - label: 打开
-              value: true
-            - label: 关闭
-              value: false
-        - $formkit: radio
-          name: linksRandomFriendsEnable
-          label: 友链页面（钓鱼）
-          value: true
-          options:
-            - label: 打开
-              value: true
-            - label: 关闭
-              value: false
-
     - group: photos
       label: 图库
       formSchema:
@@ -1815,15 +2032,6 @@ spec:
     - group: envelope_comment
       label: 留言板
       formSchema:
-        - $formkit: radio
-          label: 弹幕
-          name: enable_danmu
-          value: true
-          options:
-            - label: 启用
-              value: true
-            - label: 禁用
-              value: false
         - $formkit: radio
           label: 信笺
           name: enable_envelope_comment
@@ -2411,15 +2619,15 @@ spec:
               name: avatar
               label: 头像
               placeholder: 请输入头像地址
-#            - $formkit: radio
-#              name: sign
-#              label: 标记
-#              value: N
-#              options:
-#                - label: 是
-#                  value: Y
-#                - label: 否
-#                  value: N
+    #            - $formkit: radio
+    #              name: sign
+    #              label: 标记
+    #              value: N
+    #              options:
+    #                - label: 是
+    #                  value: Y
+    #                - label: 否
+    #                  value: N
 
     - group: comments
       label: 评论
@@ -3286,40 +3494,3 @@ spec:
                   label: 结束时间
                   placeholder: 请输入结束时间(小时)
                   help: 可以与开始时间相同，表示一个小时内的问候
-
-    - group: advertise
-      label: 广告设置
-      formSchema:
-        - $formkit: group
-          name: index_top_adv
-          label: 首页置顶广告
-          value:
-            enable: false
-            index_top_adv_url: "https://www.aliyun.com/daily-act/ecs/activity_selection?userCode=ck9px1df"
-            index_top_adv_img: https://img.alicdn.com/imgextra/i3/O1CN01Tbj8qb1w835uueixH_!!6000000006262-2-tps-3840-120.png
-          children:
-            - $formkit: radio
-              name: enable
-              id: enable
-              key: enable
-              options:
-                - label: 启用
-                  value: true
-                - label: 禁用
-                  value: false
-            - $formkit: attachment
-              name: index_top_adv_img
-              id: index_top_adv_img
-              key: index_top_adv_img
-              if: $get(enable).value
-              label: 首页置顶广告图片
-              validation: required
-              placeholder: 请输入图片 url
-            - $formkit: text
-              name: index_top_adv_url
-              id: index_top_adv_url
-              key: index_top_adv_url
-              if: $get(enable).value
-              label: 首页置顶广告图片跳转地址
-              validation: required
-              placeholder: 请输入广告图片跳转 url

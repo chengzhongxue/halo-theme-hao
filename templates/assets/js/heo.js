@@ -289,10 +289,8 @@ var heo = {
     },
 
     //隐藏今日推荐
-    hideTodayCard: function () {
-        if (document.getElementById("todayCard")) {
-            document.getElementById("todayCard").classList.add('hide');
-        }
+    hideTodayCard: function() {
+        document.getElementById("topGroup") && document.getElementById("topGroup").classList.add("hideCard")
     },
 
     //更改主题色

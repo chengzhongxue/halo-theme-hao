@@ -16,7 +16,7 @@
         <header class="not-top-img" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = ${singlePage.spec.title})}"></nav>
         </header>
-        <main class="layout" th:classappend="${not #strings.isEmpty(theme.config.sidebar.widgetss.pageWidgets) ? '' : 'hide-aside'}" id="content-inner">
+        <main class="layout" th:classappend="${not #strings.isEmpty(theme.config.sidebar.widgetss.pageWidget) ? '' : 'hide-aside'}" id="content-inner">
             <div id="page">
                 <div  id="article-container"
                       th:class="${ theme.config.code.enable_line || pluginFinder.available('PluginPrismJS') ? 'line-numbers' : ''}"
@@ -32,7 +32,7 @@
             </div>
 
             <!-- 侧栏 -->
-            <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.widgetss.pageWidgets})}"></div>
+            <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.widgetss.pageWidget})}"></div>
 
         </main>
         <!-- 底部 -->

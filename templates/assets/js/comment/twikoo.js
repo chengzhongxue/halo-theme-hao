@@ -7,7 +7,6 @@
             region: '',
             path: location.pathname.replace(/\/page\/\d$/, ""),
             onCommentLoaded: function () {
-                btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
                 typeof hljs === 'object' && hljs.highlightAll()
                 typeof Prism === 'object' && Prism.highlightAll()
                 $("input").focus(function () {

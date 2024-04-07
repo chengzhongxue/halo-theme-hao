@@ -429,6 +429,16 @@ function getArrayItems(arr, num) {
     return return_array;
 }
 
+function bindTodayCardHoverEvent() {
+    $(".topGroup").hover((function() {}
+    ), (function() {
+            hoverOnCommentBarrage = !1,
+                document.getElementById("topGroup").classList.remove("hideCard"),
+                document.getElementById("topGroup").style.zIndex = 1
+        }
+    ))
+}
+
 //评论增加放大功能
 function owoBig() {
     new MutationObserver((e => {
@@ -496,20 +506,6 @@ window.addEventListener("resize", (function () {
         document.querySelector("#waterfall") && heo.reflashEssayWaterFall()
     }
 ));
-
-//首页大卡片恢复显示
-$(".topGroup").hover(function () {
-    // console.log("卡片悬浮");
-}, function () {
-    hoverOnCommentBarrage = false;
-
-    if (document.getElementById("todayCard")) {
-        document.getElementById("todayCard").classList.remove('hide');
-        document.getElementById('todayCard').style.zIndex = 1;
-        // console.log("卡片停止悬浮");
-    }
-});
-
 
 function initObserver() {
     var e = document.getElementById("post-comment")
@@ -606,6 +602,7 @@ function initBlog() {
         heo.tagPageActive(),
         initObserver(),
         checkUrlAndAddHideBanner(),
+        bindTodayCardHoverEvent(),
         halo.getTopSponsors(),
         halo.checkAd()
 

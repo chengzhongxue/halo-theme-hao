@@ -4,36 +4,48 @@
 
     <!-- 侧栏部件，不包含 toc 则直接遍历 -->
     <th:block th:if="${not #strings.contains(widgets, 'toc')}">
-        <th:block th:each="widget,iterStat : ${#strings.listSplit(widgets, ',')}">
+        <th:block th:each="widget_data,iterStat : ${widgets}">
+            <th:block th:unless="${widget_data.widget=='custom_html'}">
+                <th:block th:if="not ${iterStat.last}">
+                    <th:block th:replace="~{'modules/widgets/aside/'+ ${widget_data.widget}}" />
+                </th:block>
+                <th:block th:if="${iterStat.last}">
+                    <div class="sticky_layout">
+                        <th:block th:replace="~{'modules/widgets/aside/'+ ${widget_data.widget}}" />
+                    </div>
+                </th:block>
+            </th:block>
+            <th:block th:if="${widget_data.widget=='custom_html'}">
+                <th:block th:if="not ${iterStat.last}">
+                    <th:block th:replace="~{modules/widgets/aside/custom_html :: custom_html(${widget_data})}" />
+                </th:block>
+                <th:block th:if="${iterStat.last}">
+                    <div class="sticky_layout">
+                        <th:block th:replace="~{modules/widgets/aside/custom_html :: custom_html(${widget_data})}" />
+                    </div>
+                </th:block>
+            </th:block>
 
-            <th:block th:if="not ${iterStat.last}">
-                <th:block th:replace="~{'modules/widgets/aside/'+ ${widget}}"/>
-            </th:block>
-            <th:block th:if="${iterStat.last}">
-                <div class="sticky_layout">
-                    <th:block th:replace="~{'modules/widgets/aside/'+ ${widget}}"/>
-                </div>
-            </th:block>
         </th:block>
     </th:block>
 
     <!-- 侧栏部件，toc 之后的组件需要被 sticky_layout 包裹 -->
     <th:block th:if="${#strings.contains(widgets, 'toc')}">
-
-        <th:block th:each="widget : ${#strings.listSplit(#strings.substringBefore(widgets, 'toc'), ',')}">
-
-            <th:block th:replace="~{'modules/widgets/aside/'+ ${widget}}"/>
+        <th:block th:each="widget_data,iterStat : ${widgets}">
+            <th:block th:if="${widget_data.widget=='toc'}">
+                <div class="sticky_layout">
+            </th:block>
+            <th:block th:unless="${widget_data.widget=='custom_html'}">
+                <th:block th:replace="~{'modules/widgets/aside/'+ ${widget_data.widget}}" />
+            </th:block>
+            <th:block th:if="${widget_data.widget=='custom_html'}">
+                <th:block th:replace="~{modules/widgets/aside/custom_html :: custom_html(${widget_data})}" />
+            </th:block>
+            <th:block th:if="${iterStat.count==widgets.size()}">
+                </div>
+            </th:block>
         </th:block>
 
-        <!-- toc 之后的组件需要被 sticky_layout 包裹 -->
-        <div class="sticky_layout">
-            <th:block th:replace="~{modules/widgets/aside/toc}"/>
-
-            <th:block th:each="widget : ${#strings.listSplit(#strings.substringAfter(widgets, 'toc'), ',')}">
-                <th:block th:replace="~{'modules/widgets/aside/'+ ${widget}}"/>
-            </th:block>
-        </div>
     </th:block>
-
 
 </div>
