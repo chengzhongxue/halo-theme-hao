@@ -287,10 +287,20 @@ spec:
               value: true
             - label: 隐藏
               value: false
+        - $formkit: select
+          name: leftBannerStyle
+          id: leftBannerStyle
+          key: leftBannerStyle
+          label: Banner 左侧样式选择
+          options:
+            - label: 默认样式
+              value: default
+            - label: 轮播图
+              value: carousel
         - $formkit: group
           name: BannerLeft
           label: Banner 左侧
-          if: $get(recentTop).value
+          if: $get(recentTop).value && $get(leftBannerStyle).value == 'default'
           value:
             bannersBackground: default
             bannersTitleBig: <div class="banners-title-big">Halo Theme</div><div class="banners-title-big">Hao</div>
@@ -399,6 +409,31 @@ spec:
                   label: 颜色2 (深色)
                   validation: required
                   value: "#2fcbff"
+        - $formkit: repeater
+          name: BannerLeftCarousel
+          id: BannerLeftCarousel
+          key: BannerLeftCarousel
+          label: Banner 左侧轮播图
+          if: $get(recentTop).value && $get(leftBannerStyle).value == 'carousel'
+          value: []
+          min: 2
+          max: 6
+          children:
+            - $formkit: attachment
+              name: banner_left_carousel_img
+              id: banner_left_carousel_img
+              key: banner_left_carousel_img
+              label: 图片
+              validation: required
+              placeholder: 请输入图片 url
+            - $formkit: text
+              name: banner_left_carousel_img_url
+              id: banner_left_carousel_img_url
+              key: banner_left_carousel_img_url
+              label: 图片跳转地址
+              validation: required
+              placeholder: 请输入广告图片跳转 url
+              value: '/'
         - $formkit: group
           name: BannerRight
           label: Banner 右侧
@@ -1237,6 +1272,7 @@ spec:
                   name: ad_redirect_url
                   label: 自定义广告跳转地址
                   help: 自定义广告跳转地址
+
     - group: footer
       label: 页脚
       formSchema:
@@ -2517,7 +2553,6 @@ spec:
               name: end_time
               label: 结束时间
 
-
     - group: aboutReward
       label: 关于（打赏）
       formSchema:
@@ -2619,15 +2654,6 @@ spec:
               name: avatar
               label: 头像
               placeholder: 请输入头像地址
-    #            - $formkit: radio
-    #              name: sign
-    #              label: 标记
-    #              value: N
-    #              options:
-    #                - label: 是
-    #                  value: Y
-    #                - label: 否
-    #                  value: N
 
     - group: comments
       label: 评论
@@ -2838,7 +2864,6 @@ spec:
               placeholder: 请输入md5值
               help: 用于验证博主评论，可前往cmd5.com加密自己使用的邮箱，选择32位小写
               validation: required
-
 
     - group: style
       label: 样式
@@ -3151,7 +3176,7 @@ spec:
           name: rightMenu
           label: 右键菜单
           value:
-            rightMenuEnable: true
+            rightMenuEnable: false
           children:
             - $formkit: radio
               name: rightMenuEnable

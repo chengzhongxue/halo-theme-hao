@@ -1,0 +1,62 @@
+<div id="bannerGroup2">
+    <div class="layui-carousel" id="ID-carousel-demo-image">
+        <div carousel-item>
+            <th:block th:with="bannerCarouselImgs = ${theme.config.top.BannerLeftCarousel}">
+                <th:block th:each="bannerCarouselImg,bannerCarouselImgStat : ${bannerCarouselImgs}">
+                    <div th:with="techEven = ${bannerCarouselImg}">
+                        <a th:href="${url}" th:with=" url = @{${techEven.banner_left_carousel_img_url}}" target="_blank">
+                            <img th:with=" img = @{${techEven.banner_left_carousel_img}}"
+                                 th:src="${isLazyload ? loadingImg : img}" th:data-lazy-src="${ isLazyload ? img : ''}">
+                        </a>
+                    </div>
+                </th:block>
+            </th:block>
+        </div>
+    </div>
+</div>
+
+<script src="//unpkg.com/layui@2.9.8/dist/layui.js"></script>
+<script>
+    layui.use(function () {
+        var carousel = layui.carousel;
+        // 渲染 - 图片轮播
+        carousel.render({
+            elem: '#ID-carousel-demo-image',
+            width: '100%',
+            height: '100%',
+            interval: 3000
+        });
+    });
+</script>
+
+<style>
+    .layui-carousel > [carousel-item] {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 0.5rem;
+    }
+    
+    .layui-carousel img {
+        min-height: 100%;
+        min-width: 100%;
+    }
+    
+    @media screen and (min-width: 1200px) {
+        div#bannerGroup2 {
+            width: 35rem;
+            margin-right: 1rem;
+            height: calc(328px + .5rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+    
+    @media screen and (max-width: 768px) {
+        #bannerGroup2 {
+            display: none;
+        }
+    }
+</style>

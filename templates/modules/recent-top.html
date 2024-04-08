@@ -2,8 +2,13 @@
 <div class="recent-top-post-group" id="recent-top-post-group" th:if="${theme.config.top.recentTop}">
     <div class="recent-post-top" id="recent-post-top">
         <!-- banner -->
-        <div th:replace="~{modules/widgets/banner-group}" />
+        <div th:if="${#strings.equals(theme.config.top.leftBannerStyle, 'default')}">
+            <div th:replace="~{modules/widgets/banner-group}"/>
+        </div>
+        <div th:if="${#strings.equals(theme.config.top.leftBannerStyle, 'carousel')}">
+            <div th:replace="~{modules/widgets/banner-group2}"/>
+        </div>
         <!-- top -->
-        <div th:replace="~{modules/widgets/top-group}" />
+        <div th:replace="~{modules/widgets/top-group}"/>
     </div>
 </div>
