@@ -1,6 +1,6 @@
 <!-- 侧边栏 -->
 <div class="aside-content" id="aside-content" th:fragment="aside(widgets)"
-     th:if="${theme.config.sidebar.location != 'hide-aside' && not #strings.isEmpty(widgets)}">
+     th:if="${theme.config.sidebar.location != 'hide-aside' && not #lists.isEmpty(widgets)}">
 
     <!-- 侧栏部件，不包含 toc 则直接遍历 -->
     <th:block th:if="${not #strings.contains(widgets, 'toc')}">
