@@ -29,7 +29,12 @@
     <!-- swiper 在瞬间滚动时会使用 -->
     <link th:if="${theme.config.top.moment}" rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.css"/>
     
-
+    <!-- swiper 在轮播图的时候启用 -->
+    <!-- <link th:if="${#strings.equals(theme.config.top.leftBannerStyle, 'carousel')}" rel="stylesheet" th:href="${assets_link + '/swiper/swiper.min.css'}"> -->
+    <!-- <script th:if="${#strings.equals(theme.config.top.leftBannerStyle, 'carousel')}" th:src="${assets_link + '/swiper/swiper.min.js'}"> </script> -->
+    <link th:if="${#strings.equals(theme.config.top.leftBannerStyle, 'carousel')}" rel="stylesheet" href="https://unpkg.com/swiper@8.3.2/swiper-bundle.min.css">
+    <script th:if="${#strings.equals(theme.config.top.leftBannerStyle, 'carousel')}" src="https://unpkg.com/swiper@8.3.2/swiper-bundle.min.js"></script>
+    
     <!-- 右下角通知 -->
     <link href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css"
           media="print"

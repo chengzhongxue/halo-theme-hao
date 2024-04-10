@@ -1,11 +1,17 @@
 <div id="bannerGroup2">
     <!-- Swiper -->
-    <div class="swiper-container gallery-top">
+    <div class="swiper gallery-top">
         <div class="swiper-wrapper" th:with="bannerCarouselImgs = ${theme.config.top.BannerLeftCarousel}">
             <th:block th:each="bannerCarouselImg,bannerCarouselImgStat : ${bannerCarouselImgs}">
                 <th:block th:with="techEven = ${bannerCarouselImg}">
                     <div class="swiper-slide"
-                         th:style="|background-image:url(${techEven.banner_left_carousel_img})|"></div>
+                         th:style="|background-image:url(${techEven.banner_left_carousel_img})|">
+                        <div class="blog-slider__content">
+                            <a th:href="${techEven.banner_left_carousel_img_url}" target="_blank">
+                                <h2>[[${techEven.title}]]<h2>
+                            </a>
+                        </div>
+                    </div>
                 </th:block>
             </th:block>
         </div>
@@ -13,47 +19,61 @@
         <div class="swiper-button-next swiper-button-white"></div>
         <div class="swiper-button-prev swiper-button-white"></div>
     </div>
-    <div class="swiper-container gallery-thumbs">
+    <div class="swiper gallery-thumbs">
         <div class="swiper-wrapper" th:with="bannerCarouselImgs = ${theme.config.top.BannerLeftCarousel}">
             <th:block th:each="bannerCarouselImg,bannerCarouselImgStat : ${bannerCarouselImgs}">
                 <th:block th:with="techEven = ${bannerCarouselImg}">
-                    <!-- <a th:href="${techEven.banner_left_carousel_img_url}" target="_blank"> -->
                     <div class="swiper-slide"
-                         th:style="|background-image:url(${techEven.banner_left_carousel_img})|"></div>
-                    <!-- </a> -->
+                         th:style="|background-image:url(${techEven.banner_left_carousel_img})|">
+                    </div>
                 </th:block>
             </th:block>
         </div>
     </div>
+
 </div>
 
-<!-- swiper 在轮播图的时候启用 -->
-<link th:if="${#strings.equals(theme.config.top.leftBannerStyle, 'carousel')}" rel="stylesheet" th:href="${assets_link + '/swiper/swiper-bundle.css'}">
-<link th:if="${#strings.equals(theme.config.top.leftBannerStyle, 'carousel')}" rel="stylesheet" th:href="${assets_link + '/swiper/swiper-bundle.min.css'}">
-<script th:if="${#strings.equals(theme.config.top.leftBannerStyle, 'carousel')}" th:src="${assets_link + '/swiper/swiper-bundle.js'}"> </script>
-<script th:if="${#strings.equals(theme.config.top.leftBannerStyle, 'carousel')}" th:src="${assets_link + '/swiper/swiper-bundle.min.js'}"> </script>
-<script th:if="${#strings.equals(theme.config.top.leftBannerStyle, 'carousel')}" th:src="${assets_link + '/swiper/swiper-bundle.min.js.map'}"> </script>
-
-<!-- Initialize Swiper -->
-<script>
-    var galleryTop = new Swiper('.gallery-top', {
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        spaceBetween: 10,
-    });
-    var galleryThumbs = new Swiper('.gallery-thumbs', {
-        spaceBetween: 10,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        touchRatio: 0.2,
-        slideToClickedSlide: true
-    });
-    galleryTop.params.control = galleryThumbs;
-    galleryThumbs.params.control = galleryTop;
-
-</script>
+<th:block th:with="bannerCarouselImgs = ${theme.config.top.BannerLeftCarousel}">
+    <script>
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+            spaceBetween: 10,
+            slidesPerView: [[${bannerCarouselImgs.size()}]],
+            loop: true,
+            freeMode: true,
+            loopedSlides: 5, //looped slides should be the same
+            watchSlidesProgress: true,
+        });
+        var galleryTop = new Swiper('.gallery-top', {
+            spaceBetween: 10,
+            loop: true,
+            loopedSlides: 5, //looped slides should be the same
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            thumbs: {
+                swiper: galleryThumbs,
+            },
+        });
+    </script>
+</th:block>
 <style>
-    .swiper-container {
+    html,
+    body {
+        position: relative;
+        height: 100%;
+    }
+    
+    body {
+        background: #000;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .swiper {
         width: 100%;
         height: 300px;
         margin-left: auto;
@@ -68,24 +88,24 @@
     .gallery-top {
         height: 80%;
         width: 100%;
+        border-radius: 12px;
     }
     
     .gallery-thumbs {
         height: 20%;
         box-sizing: border-box;
         padding: 10px 0;
+        border-radius: 2rem;
     }
     
     .gallery-thumbs .swiper-slide {
-        width: 25%;
         height: 100%;
         opacity: 0.4;
     }
     
-    .gallery-thumbs .swiper-slide-active {
+    .gallery-thumbs .swiper-slide-thumb-active {
         opacity: 1;
     }
-
 </style>
 <style>
     @media screen and (min-width: 1200px) {
@@ -96,6 +116,23 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            border-radius: 12px;
+        }
+        
+        .left-banner-span {
+            width: 20%;
+            height: 35%;
+            margin: 0 auto 0;
+            font-size: 12px;
+        }
+        
+        .blog-slider__content {
+            padding: 0 50px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100%
         }
     }
     

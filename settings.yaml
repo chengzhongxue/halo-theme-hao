@@ -432,8 +432,16 @@ spec:
               key: banner_left_carousel_img_url
               label: 图片跳转地址
               validation: required
-              placeholder: 请输入广告图片跳转 url
+              placeholder: 请输入图片跳转 url
               value: '/'
+            - $formkit: text
+              name: title
+              id: title
+              key: title
+              label: 标题
+              validation: required
+              placeholder: 标题
+              value: ''
         - $formkit: group
           name: BannerRight
           label: Banner 右侧
