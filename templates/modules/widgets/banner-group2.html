@@ -8,7 +8,7 @@
                          th:style="|background-image:url(${techEven.banner_left_carousel_img})|">
                         <div class="blog-slider__content">
                             <a th:href="${techEven.banner_left_carousel_img_url}" target="_blank">
-                                <h2>[[${techEven.title}]]<h2>
+                                <span class="left-banner-span">[[${techEven.title}]]<span>
                             </a>
                         </div>
                     </div>
@@ -133,6 +133,13 @@
             align-items: center;
             flex-direction: column;
             height: 100%
+        }
+        
+        .left-banner-span{
+            font-size: 24px;
+            color: #fff3eb;
+            margin: 0 auto 0;
+            text-align: center;
         }
     }
     
