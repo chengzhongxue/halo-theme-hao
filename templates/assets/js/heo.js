@@ -21,7 +21,7 @@ var heo = {
 
     // 首页bb
     initIndexEssay: function() {
-        if (document.querySelector("#bber-talk"))
+        if (document.querySelector("#bber-talk")) {
             $(".swiper-wrapper .swiper-slide").each(function () {
                 var text = $(this)[0].innerText;
                 if (text != 'undefined') {
@@ -36,6 +36,7 @@ var heo = {
                     pauseOnMouseEnter: !0
                 }
             })
+        }
     },
 
 
