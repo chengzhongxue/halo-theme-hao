@@ -439,8 +439,14 @@ spec:
               id: title
               key: title
               label: 标题
-              validation: required
               placeholder: 标题
+              value: ''
+            - $formkit: text
+              name: title2
+              id: title2
+              key: title2
+              label: 副标题
+              placeholder: 副标题
               value: ''
         - $formkit: group
           name: BannerRight
