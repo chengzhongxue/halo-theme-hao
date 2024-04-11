@@ -4,13 +4,10 @@
         <div class="swiper-wrapper" th:with="bannerCarouselImgs = ${theme.config.top.BannerLeftCarousel}">
             <th:block th:each="bannerCarouselImg,bannerCarouselImgStat : ${bannerCarouselImgs}">
                 <th:block th:with="techEven = ${bannerCarouselImg}">
-                    <div class="swiper-slide"
-                         th:style="|background-image:url(${techEven.banner_left_carousel_img})|">
-                        <div class="blog-slider__content">
-                            <a th:href="${techEven.banner_left_carousel_img_url}" target="_blank">
-                                <span class="left-banner-span">[[${techEven.title}]]<span>
-                            </a>
-                        </div>
+                    <div class="blog-slider__content swiper-slide"
+                         th:style="|background-image:url(${techEven.banner_left_carousel_img})|"
+                         th:utext="${techEven.title}"
+                         th:onclick="location.href= [[${techEven.banner_left_carousel_img_url}]]">
                     </div>
                 </th:block>
             </th:block>
@@ -23,13 +20,15 @@
         <div class="swiper-wrapper" th:with="bannerCarouselImgs = ${theme.config.top.BannerLeftCarousel}">
             <th:block th:each="bannerCarouselImg,bannerCarouselImgStat : ${bannerCarouselImgs}">
                 <th:block th:with="techEven = ${bannerCarouselImg}">
-                    <div class="swiper-slide"
-                         th:style="|background-image:url(${techEven.banner_left_carousel_img})|">
+                    <div class="blog-slider__content2 swiper-slide"
+                         th:style="|background-image:url(${techEven.banner_left_carousel_img})|"
+                         th:utext="${techEven.title2}">
                     </div>
                 </th:block>
             </th:block>
         </div>
     </div>
+    <img src="">
 
 </div>
 
@@ -119,27 +118,32 @@
             border-radius: 12px;
         }
         
-        .left-banner-span {
-            width: 20%;
-            height: 35%;
-            margin: 0 auto 0;
-            font-size: 12px;
-        }
-        
         .blog-slider__content {
             padding: 0 50px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            height: 100%
+            height: 100%;
+            font-size: 1rem;
+            color: #FFFFFF;
+            text-align: center;
         }
         
-        .left-banner-span{
-            font-size: 24px;
-            color: #ffffff;
+        .blog-slider__content2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 1rem;
             margin: 0 auto 0;
+            color: #ffffff9e;
             text-align: center;
+        }
+        
+        .blog-slider__content2:hover{
+            color: #0A84FF;
+            font-size: 1.2rem;
         }
     }
     
