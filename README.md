@@ -12,41 +12,6 @@
 </div>
 
 <!-- 主题预览图 -->
-
-[//]: # (<table>)
-
-[//]: # (  <tr>)
-
-[//]: # (    <td>)
-
-[//]: # (      <img src="https://api.minio.yyds.pink/moony/files/2024/04/hao1-krimlgao.png"/>)
-
-[//]: # (    </td>)
-
-[//]: # (  </tr>)
-
-[//]: # (  <tr>)
-
-[//]: # (    <td>)
-
-[//]: # (      <img src="https://api.minio.yyds.pink/moony/files/2024/04/hao2-xanlpcmp.png"/>)
-
-[//]: # (    </td>)
-
-[//]: # (  </tr>)
-
-[//]: # (   <tr>)
-
-[//]: # (    <td>)
-
-[//]: # (      <img src="https://api.minio.yyds.pink/moony/files/2024/04/hao2-xanlpcmp.png"/>)
-
-[//]: # (    </td>)
-
-[//]: # (  </tr>)
-
-[//]: # (</table>)
-
 ![](https://api.minio.yyds.pink/moony/files/2024/04/hao1-krimlgao.png)
 ![](https://api.minio.yyds.pink/moony/files/2024/04/hao2-xanlpcmp.png)
 ![](https://redirect.cnkj.site:8099/b/2024/66177ca6056fd.webp?type=blog)
