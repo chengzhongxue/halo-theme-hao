@@ -7822,6 +7822,10 @@ a.categoryButton i {
         overflow: hidden;
         position: relative
     }
+
+    #bannerGroup2 {
+        display: none;
+    }
 }
 
 .topGroup {
@@ -7829,6 +7833,10 @@ a.categoryButton i {
 }
 
 #bannerGroup {
+    display: flex;
+}
+
+#bannerGroup2 {
     display: flex;
 }
 
@@ -7859,7 +7867,16 @@ div#banners {
         height: calc(328px + .5rem);
         display: flex;
         flex-direction: column;
-        justify-content: space-between
+        justify-content: space-between;
+    }
+
+    div#bannerGroup2 {
+        width: 35rem;
+        margin-right: 1rem;
+        height: calc(328px + .5rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     div#banners {
