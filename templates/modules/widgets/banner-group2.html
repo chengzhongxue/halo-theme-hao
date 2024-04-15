@@ -1,4 +1,4 @@
-<div id="bannerGroup2">
+<div id="bannerGroup2" th:if="${#strings.equals(theme.config.top.leftBannerStyle, 'carousel')}" class="banner_group2">
     <!-- Swiper -->
     <div class="swiper gallery-top">
         <div class="swiper-wrapper" th:with="bannerCarouselImgs = ${theme.config.top.BannerLeftCarousel}">
@@ -144,6 +144,9 @@
     
     @media screen and (max-width: 768px) {
         #bannerGroup2 {
+            display: none;
+        }
+        .banner_group2 {
             display: none;
         }
     }
