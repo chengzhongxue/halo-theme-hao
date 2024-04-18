@@ -712,8 +712,6 @@ spec:
                       label: 个人卡片
                     - value: "wechat"
                       label: 公众号
-                    - value: "power"
-                      label: 爱发电赞助
                     - value: "steam"
                       label: Steam卡片
                     - value: "music"
@@ -773,8 +771,6 @@ spec:
                       label: 目录
                     - value: "wechat"
                       label: 公众号
-                    - value: "power"
-                      label: 爱发电赞助
                     - value: "steam"
                       label: Steam卡片
                     - value: "music"
@@ -832,8 +828,6 @@ spec:
                       label: 个人卡片
                     - value: "wechat"
                       label: 公众号
-                    - value: "power"
-                      label: 爱发电赞助
                     - value: "steam"
                       label: Steam卡片
                     - value: "music"
@@ -890,8 +884,6 @@ spec:
                       label: 个人卡片
                     - value: "wechat"
                       label: 公众号
-                    - value: "power"
-                      label: 爱发电赞助
                     - value: "steam"
                       label: Steam卡片
                     - value: "music"
@@ -949,8 +941,6 @@ spec:
                       label: 个人卡片
                     - value: "wechat"
                       label: 公众号
-                    - value: "power"
-                      label: 爱发电赞助
                     - value: "steam"
                       label: Steam卡片
                     - value: "music"
@@ -1085,27 +1075,6 @@ spec:
               name: wechatImgBack
               label: 公众号背面图
               help: 图片可以从公众号后台下载物料或者自制
-        - $formkit: group
-          name: power
-          label: 爱发电赞助
-          value:
-            powerLink: /
-            url: https://api.afdian.cnkj.site/api/creator/get-top-sponsors?user_id=
-            userId:
-            showNum: 3
-          children:
-            - $formkit: url
-              name: powerLink
-              label: 赞助地址
-            - $formkit: text
-              name: url
-              label: 接口地址
-            - $formkit: text
-              name: userId
-              label: 用户ID
-            - $formkit: number
-              name: showNum
-              label: 最大展示条数
         - $formkit: group
           name: music
           label: 音乐卡片
