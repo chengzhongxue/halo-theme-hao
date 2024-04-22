@@ -72,7 +72,7 @@
 
 ## 📝 使用
 
-[点我查看](https://moony.la/docs/hao)
+[点我查看](https://docs.kunkunyu.com/docs/hao)
 
 
 ## 💬 讨论
