@@ -1,4 +1,4 @@
-<div id="bannerGroup2">
+<div id="bannerGroup2" th:if="${#strings.equals(theme.config.top.leftBannerStyle, 'carousel')}" class="banner_group2">
     <!-- Swiper -->
     <div class="swiper gallery-top">
         <div class="swiper-wrapper" th:with="bannerCarouselImgs = ${theme.config.top.BannerLeftCarousel}">
@@ -137,18 +137,16 @@
             flex-direction: column;
             font-size: 1rem;
             margin: 0 auto 0;
-            color: #ffffff9e;
+            color: #FFFFFF;
             text-align: center;
-        }
-        
-        .blog-slider__content2:hover{
-            color: #0A84FF;
-            font-size: 1.2rem;
         }
     }
     
     @media screen and (max-width: 768px) {
         #bannerGroup2 {
+            display: none;
+        }
+        .banner_group2 {
             display: none;
         }
     }

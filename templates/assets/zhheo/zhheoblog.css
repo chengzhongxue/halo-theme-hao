@@ -7862,7 +7862,8 @@ div#banners {
     }
 
     div#bannerGroup {
-        width: calc(50% - .5rem);
+        /*width: calc(50% - .5rem);*/
+        width: 33rem;
         margin-right: 1rem;
         height: calc(328px + .5rem);
         display: flex;
