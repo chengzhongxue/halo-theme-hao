@@ -66,15 +66,14 @@
 
 ## 📝 使用
 
-[点我查看](https://moony.la/docs/hao)
+[点我查看](https://docs.kunkunyu.com/docs/hao)
 
 ## 💬 讨论
 
 如果你对主题有什么建议或者意见，欢迎提 PR & issue。
+进群。
 
-发送"hao 主题"，可以加我微信，我拉你进群。
-
-<img width="360" src="https://api.minio.yyds.pink/moony/files/2024/04/%E5%BE%AE%E4%BF%A1%E4%BA%8C%E7%BB%B4%E7%A0%81-krkpfcem.jpg" />
+<img width="360" src="https://api.minio.yyds.pink/halo-docs/2024/04/hao-2.jpg" />
 
 > 卖服务器的广告人，就不要加了。
 
