@@ -2532,7 +2532,7 @@ blockquote footer cite::before {
 #page-header.not-top-img {
     margin-bottom: 0.5rem;
     height: 60px;
-    background: 0px center;
+    background: #ffffff59 0px center;
 }
 
 #page-header.not-top-img #nav {
@@ -8528,6 +8528,7 @@ a.categoryButton:hover {
 .category-bar-more {
     margin-left: 1rem;
     font-weight: bold;
+    color: #fbae03;
 }
 
 .category-bar-more:hover {
@@ -14236,6 +14237,12 @@ figure.gallery-group:hover .gallery-group-name::after {
     font-variant: normal;
     line-height: 1;
     text-rendering: auto;
+}
+
+.github-badge {
+    color: inherit;
+    text-decoration: inherit;
+    display: inline-flex;
 }
 
 #ghbdages .github-badge img {

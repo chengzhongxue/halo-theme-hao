@@ -16,7 +16,7 @@
                 <span th:text="${commentIndex}"></span>
                 <a class="thumbnail" th:href="${url}" data-pjax-state="">
                     <img alt="头像"
-                         th:with=" img =${#strings.isEmpty(comment.owner.avatar)?'https://cravatar.cn/avatar/?d=mp':comment.owner.avatar}"
+                         th:with=" img =${#strings.isEmpty(comment.owner.avatar)?'https://ui-avatars.com/api/?size=50&background=ffffff&font-size=0.5&rounded=FALSE&color=363636&name='+comment.owner.displayName:comment.owner.avatar}"
                          th:src="${isLazyload ? loadingImg : img}" th:data-lazy-src="${ isLazyload ? img : ''}">
                 </a>
                 <div class="content">
