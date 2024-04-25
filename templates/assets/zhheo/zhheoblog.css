@@ -14239,6 +14239,12 @@ figure.gallery-group:hover .gallery-group-name::after {
     text-rendering: auto;
 }
 
+.github-badge {
+    color: inherit;
+    text-decoration: inherit;
+    display: inline-flex;
+}
+
 #ghbdages .github-badge img {
     height: 20px;
     max-width: 150px;
