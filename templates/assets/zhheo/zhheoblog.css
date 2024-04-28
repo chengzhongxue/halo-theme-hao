@@ -1312,6 +1312,19 @@ blockquote footer cite::before {
     text-align: center;
 }
 
+# 友链及在线工具卡片的自适应宽度设置
+.flink-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.flink-list > .flink-list-item{
+    flex: 0 0 30%;
+    min-width: 280px;
+    max-width: 310px;
+}
+
 .flink#article-container .flink-list > .flink-list-item {
     position: relative;
     float: left;
