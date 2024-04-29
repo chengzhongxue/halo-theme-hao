@@ -645,6 +645,28 @@ let halo = {
                 alert("页脚信息可能被AdBlocker Ultimate拦截，请检查广告拦截插件！")
             }
         }
+    },
+    logout() {
+        fetch('/logout', {
+            method: 'POST',
+            headers: {
+                'X-Xsrf-Token':
+                    document.cookie
+                        .split('; ')
+                        .find((row) => row.startsWith('XSRF-TOKEN'))
+                        ?.split('=')[1] || '',
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.reload();
+            } else {
+                console.error('Logout failed:', response.status);
+            }
+        })
+        .catch(error => {
+            console.error('Network error:', error);
+        });
     }
 
 
