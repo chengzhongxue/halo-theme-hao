@@ -46,4 +46,4 @@ spec:
   settingName: "theme-hao-setting"
   configMapName: "theme-hao-configMap"
   version: "1.5.0-beta3"
-  require: ">=2.10.0"
+  require: ">=2.15.0"
