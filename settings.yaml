@@ -1090,19 +1090,11 @@ spec:
           label: 爱发电赞助
           value:
             powerLink: /
-            url: https://api.afdian.cnkj.site/api/creator/get-top-sponsors?user_id=
-            userId:
             showNum: 3
           children:
             - $formkit: url
               name: powerLink
               label: 赞助地址
-            - $formkit: text
-              name: url
-              label: 接口地址
-            - $formkit: text
-              name: userId
-              label: 用户ID
             - $formkit: number
               name: showNum
               label: 最大展示条数
