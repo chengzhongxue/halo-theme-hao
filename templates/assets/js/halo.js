@@ -593,7 +593,7 @@ let halo = {
                             <div id="power-star-desc">为爱发电，点击赞助</div>
                         </div>`;
             } else {
-                if (values.length === 1) {
+                if (powerStar) {
                     powerStar.href = "https://afdian.net/u/" + data[0]["user"].user_id
                     powerStar.innerHTML = ` 
                         <div id="power-star-image" style="background-image: url(${data[0]["user"].avatar})">
