@@ -20,7 +20,6 @@
 
 |    站点名称    |          站点地址          |
 |:----------:|:----------------------:|
-|  Top John  |   https://op-lab.top   |
 |   Roozen   |   https://roozen.top   |
 | Carol`s 小屋 | https://blog.cnkj.site |
 |    小窝哟     | https://blog.528688.cn |
@@ -61,6 +60,7 @@
 - katex插件 [plugin-katex](https://github.com/chengzhongxue/plugin-katex/releases/)
 - 我的装备 [plugin-equipments](https://github.com/chengzhongxue/plugin-equipments)
 - Markdown / HTML 内容块插件 [plugin-hybrid-edit-block](https://www.halo.run/store/apps/app-NgHnY)
+- 爱发电 [plugin-afdian](https://github.com/carolcoral/plugin-afdian)
 
 > 更多插件请参见：https://github.com/halo-sigs/awesome-halo
 
