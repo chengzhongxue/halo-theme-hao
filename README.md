@@ -61,6 +61,7 @@
 - katex插件 [plugin-katex](https://github.com/chengzhongxue/plugin-katex/releases/)
 - 我的装备 [plugin-equipments](https://github.com/chengzhongxue/plugin-equipments)
 - Markdown / HTML 内容块插件 [plugin-hybrid-edit-block](https://www.halo.run/store/apps/app-NgHnY)
+- 爱发电 [plugin-afdian](https://github.com/carolcoral/plugin-afdian)
 
 > 更多插件请参见：https://github.com/halo-sigs/awesome-halo
 
