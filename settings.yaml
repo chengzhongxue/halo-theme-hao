@@ -816,7 +816,6 @@ spec:
                       height: 200px
                       help: 支持html语法
                       language: html
-
             - $formkit: repeater
               name: tagWidget
               id: tagWidget
@@ -992,300 +991,303 @@ spec:
                       height: 200px
                       help: 支持html语法
                       language: html
-        - $formkit: group
-          name: profile
-          label: 个人卡片
-          value:
-            profileStyle: default
-            helloText: 🤖️ 数码科技爱好者, 🔍 分享与热心帮助, 🏠 智能家居小能手, 🔨 设计开发一条龙, 🤝 专修交互与设计, 🏃 脚踏实地行动派, 🧱 团队小组发动机, 💢 壮汉人狠话不多
-          children:
-            - $formkit: select
-              name: profileStyle
-              id: profileStyle
-              key: profileStyle
-              label: 样式
-              options:
-                - value: default
-                  label: 默认
-                - value: one
-                  label: 样式一
-            - $formkit: attachment
-              name: backgroundImg
-              label: 背景图片
-              value: /themes/theme-hao/assets/images/sidebar/profile.webp
-              placeholder: 请输入背景图片路径或地址（建议使用 280px * 330px 图片效果最佳）
-            - $formkit: attachment
-              name: stickerImg
-              if: $get(profileStyle).value == 'one'
-              label: 贴纸
-              value: https://kunkunyu.com/upload/omxo3N22290781690363822143.png
-              placeholder: 请输入图片地址
-            - $formkit: text
-              if: $get(profileStyle).value == 'one'
-              name: desc
-              value: "分享设计与科技生活"
-              label: 卡片名称下面的描述
-            - $formkit: text
-              name: helloText
-              label: 作者打招呼
-              placeholder: 请填写作者打招呼
-              help: 注意格式 （🤖️ 数码科技爱好者, 🔍 分享与热心帮助 ） 以逗号隔开
-            - $formkit: text
-              name: profileName
-              label: 卡片名称
-              placeholder: 请填写个人卡片名称
-              help: 不填写默认为站点名称
-            - $formkit: code
-              name: profileDesc
-              label: 描述信息
-              placeholder: 请填写个人卡片描述信息
-              height: 200px
-              language: html
-              help: 支持 HTML 语法
-            - $formkit: repeater
-              name: socialMedia
-              label: 社交媒体
-              help: 此处社交媒体最多设置两个
-              max: 2
-              value: [ ]
+            - $formkit: group
+              name: profile
+              label: 个人卡片
+              value:
+                profileStyle: default
+                helloText: 🤖️ 数码科技爱好者, 🔍 分享与热心帮助, 🏠 智能家居小能手, 🔨 设计开发一条龙, 🤝 专修交互与设计, 🏃 脚踏实地行动派, 🧱 团队小组发动机, 💢 壮汉人狠话不多
               children:
+                - $formkit: select
+                  name: profileStyle
+                  id: profileStyle
+                  key: profileStyle
+                  label: 样式
+                  options:
+                    - value: default
+                      label: 默认
+                    - value: one
+                      label: 样式一
+                - $formkit: attachment
+                  name: backgroundImg
+                  label: 背景图片
+                  value: /themes/theme-hao/assets/images/sidebar/profile.webp
+                  placeholder: 请输入背景图片路径或地址（建议使用 280px * 330px 图片效果最佳）
+                - $formkit: attachment
+                  name: stickerImg
+                  if: $get(profileStyle).value == 'one'
+                  label: 贴纸
+                  value: https://kunkunyu.com/upload/omxo3N22290781690363822143.png
+                  placeholder: 请输入图片地址
                 - $formkit: text
-                  name: icon
-                  label: 图标
+                  if: $get(profileStyle).value == 'one'
+                  name: desc
+                  value: "分享设计与科技生活"
+                  label: 卡片名称下面的描述
                 - $formkit: text
-                  name: name
-                  label: 名称
+                  name: helloText
+                  label: 作者打招呼
+                  placeholder: 请填写作者打招呼
+                  help: 注意格式 （🤖️ 数码科技爱好者, 🔍 分享与热心帮助 ） 以逗号隔开
+                - $formkit: text
+                  name: profileName
+                  label: 卡片名称
+                  placeholder: 请填写个人卡片名称
+                  help: 不填写默认为站点名称
+                - $formkit: code
+                  name: profileDesc
+                  label: 描述信息
+                  placeholder: 请填写个人卡片描述信息
+                  height: 200px
+                  language: html
+                  help: 支持 HTML 语法
+                - $formkit: repeater
+                  name: socialMedia
+                  label: 社交媒体
+                  help: 此处社交媒体最多设置两个
+                  max: 2
+                  value: [ ]
+                  children:
+                    - $formkit: text
+                      name: icon
+                      label: 图标
+                    - $formkit: text
+                      name: name
+                      label: 名称
+                    - $formkit: url
+                      name: url
+                      label: 链接
+            - $formkit: group
+              name: wechat
+              label: 公众号
+              value:
+                wechatImgFace:
+                wechatImgBack:
+                color: "#07C160"
+                wechatImg: "/themes/theme-hao/assets/images/gzh_cover.png"
+                url: "/wechat"
+              children:
+                - $formkit: color
+                  name: color
+                  label: 背景颜色
+                  value: "#07C160"
+                - $formkit: attachment
+                  name: wechatImg
+                  label: 背景图
                 - $formkit: url
                   name: url
                   label: 链接
-        - $formkit: group
-          name: wechat
-          label: 公众号
-          value:
-            wechatImgFace:
-            wechatImgBack:
-            color: "#07C160"
-            wechatImg: "/themes/theme-hao/assets/images/gzh_cover.png"
-            url: "/wechat"
-          children:
-            - $formkit: color
-              name: color
-              label: 背景颜色
-              value: "#07C160"
-            - $formkit: attachment
-              name: wechatImg
-              label: 背景图
-            - $formkit: url
-              name: url
-              label: 链接
-            - $formkit: attachment
-              name: wechatImgFace
-              label: 公众号正面图
-            - $formkit: attachment
-              name: wechatImgBack
-              label: 公众号背面图
-              help: 图片可以从公众号后台下载物料或者自制
-        - $formkit: group
-          name: power
-          label: 爱发电赞助
-          value:
-            powerLink: /
-            url: https://api.afdian.cnkj.site/api/creator/get-top-sponsors?user_id=
-            userId:
-            showNum: 3
-          children:
-            - $formkit: url
-              name: powerLink
-              label: 赞助地址
-            - $formkit: text
-              name: url
-              label: 接口地址
-            - $formkit: text
-              name: userId
-              label: 用户ID
+                - $formkit: attachment
+                  name: wechatImgFace
+                  label: 公众号正面图
+                - $formkit: attachment
+                  name: wechatImgBack
+                  label: 公众号背面图
+                  help: 图片可以从公众号后台下载物料或者自制
+            - $formkit: group
+              name: power
+              label: 爱发电赞助
+              value:
+                powerLink: /
+                showNum: 3
+              children:
+                - $formkit: url
+                  name: powerLink
+                  label: 赞助地址
+                - $formkit: number
+                  name: showNum
+                  label: 最大展示条数
+            - $formkit: group
+              name: music
+              label: 音乐卡片
+              help: 文档请看：https://githubfast.com/zonemeen/netease-recent-profile
+              value:
+                musicUrl: /music
+                lightMsimg: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
+                lightBackMsimg: https://card-music.yyds.pink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+                darkMsimg: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
+                darkBackMsimg: https://card-music.yyds.pink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+              children:
+                - $formkit: url
+                  name: musicUrl
+                  label: 跳转地址
+                - $formkit: textarea
+                  name: lightMsimg
+                  label: 浅色卡片
+                  help: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
+                - $formkit: textarea
+                  name: lightBackMsimg
+                  label: 浅色翻页卡片
+                  help: https://card-music.yyds.pink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+                - $formkit: textarea
+                  name: darkMsimg
+                  label: 深色卡片
+                  help: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
+                - $formkit: textarea
+                  name: darkBackMsimg
+                  label: 深色翻页卡片
+                  help: https://card-music.yyds.pink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
+            - $formkit: group
+              name: steam
+              label: Steam卡片
+              help: 文档请看：https://githubfast.com/yuyinws/steam-card
+              value:
+                steamUrl: /
+                cardSteam: https://card.yuy1n.io/card/xxxxxx/gradient1,badge,bg-game-1111460,games,screenshots,badges
+              children:
+                - $formkit: url
+                  name: steamUrl
+                  label: 跳转地址
+                - $formkit: textarea
+                  name: cardSteam
+                  label: 卡片
+                  help: https://card.yuy1n.io/card/xxxxxx/gradient1,badge,bg-game-1111460,games,screenshots,badges
             - $formkit: number
-              name: showNum
-              label: 最大展示条数
-        - $formkit: group
-          name: music
-          label: 音乐卡片
-          help: 文档请看：https://githubfast.com/zonemeen/netease-recent-profile
-          value:
-            musicUrl: /music
-            lightMsimg: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
-            lightBackMsimg: https://card-music.yyds.pink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
-            darkMsimg: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
-            darkBackMsimg: https://card-music.yyds.pink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
-          children:
-            - $formkit: url
-              name: musicUrl
-              label: 跳转地址
-            - $formkit: textarea
-              name: lightMsimg
-              label: 浅色卡片
-              help: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=light&size=300&show_random=1
-            - $formkit: textarea
-              name: lightBackMsimg
-              label: 浅色翻页卡片
-              help: https://card-music.yyds.pink/?id=xxxxx&size=60&type=1&mode=light&title=%E6%9C%80%E8%BF%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
-            - $formkit: textarea
-              name: darkMsimg
-              label: 深色卡片
-              help: https://card-music.yyds.pink/?id=xxxxx&theme=card&themeColor=e60026&mode=dark&size=300&show_random=1
-            - $formkit: textarea
-              name: darkBackMsimg
-              label: 深色翻页卡片
-              help: https://card-music.yyds.pink/?id=xxxxx&size=60%E2%80%A6F%91%E5%B8%B8%E5%90%AC%E6%A6%9C%E5%8D%95&number=6
-        - $formkit: group
-          name: steam
-          label: Steam卡片
-          help: 文档请看：https://githubfast.com/yuyinws/steam-card
-          value:
-            steamUrl: /
-            cardSteam: https://card.yuy1n.io/card/xxxxxx/gradient1,badge,bg-game-1111460,games,screenshots,badges
-          children:
-            - $formkit: url
-              name: steamUrl
-              label: 跳转地址
-            - $formkit: textarea
-              name: cardSteam
-              label: 卡片
-              help: https://card.yuy1n.io/card/xxxxxx/gradient1,badge,bg-game-1111460,games,screenshots,badges
-        - $formkit: number
-          name: recentPost
-          label: 最新文章
-          value: 4
-          help: 文章数量
-        - $formkit: group
-          name: newcomment
-          label: 最新评论
-          value:
-            newcommentUrl: /newest
-            newcommentnumber: 5
-          children:
-            - $formkit: url
-              name: newcommentUrl
-              label: 跳转地址
+              name: recentPost
+              label: 最新文章
+              value: 4
+              help: 文章数量
+            - $formkit: group
+              name: newcomment
+              label: 最新评论
+              value:
+                newcommentUrl: /newest
+                newcommentnumber: 5
+              children:
+                - $formkit: url
+                  name: newcommentUrl
+                  label: 跳转地址
+                - $formkit: number
+                  name: newcommentnumber
+                  label: 数量
+                  help: 最新评论数量, 小于 0 则展示5条评论
             - $formkit: number
-              name: newcommentnumber
-              label: 数量
-              help: 最新评论数量, 小于 0 则展示5条评论
-        - $formkit: number
-          name: categoryQuantity
-          label: 文章分类
-          value: 0
-          help: 小于 0 则展示全部分类
-        - $formkit: number
-          name: tagQuantity
-          label: 文章标签
-          value: 0
-          help: 小于 0 则展示全部标签
-        - $formkit: number
-          name: archivesQuantity
-          label: 文章归档
-          value: 0
-          help: 小于 0 则展示全部归档(目前没用等适配)
-        - $formkit: radio
-          name: tags_switch
-          label: 标签&归档&统计 (标签按钮开关)
-          value: true
-          options:
-            - label: 显示
+              name: categoryQuantity
+              label: 文章分类
+              value: 0
+              help: 小于 0 则展示全部分类
+            - $formkit: number
+              name: tagQuantity
+              label: 文章标签
+              value: 0
+              help: 小于 0 则展示全部标签
+            - $formkit: number
+              name: archivesQuantity
+              label: 文章归档
+              value: 0
+              help: 小于 0 则展示全部归档(目前没用等适配)
+            - $formkit: radio
+              name: tags_switch
+              label: 标签&归档&统计 (标签按钮开关)
               value: true
-            - label: 隐藏
-              value: false
-        - $formkit: radio
-          name: archive_switch
-          label: 标签&归档&统计 (归档按钮开关)
-          value: false
-          options:
-            - label: 显示
-              value: true
-            - label: 隐藏
-              value: false
-        - $formkit: group
-          name: adbox
-          label: 广告区域
-          value:
-            adType:
-          children:
-            - $formkit: select
-              name: adType
-              id: adType
-              key: adType
-              label: 广告类型
-              value: none
               options:
-                - label: 无
-                  value: none
-                - label: Google AdSence
-                  value: google
-                - label: 自定义
-                  value: customAd
-            - $formkit: group
-              if: $get(adType).value == 'google'
-              name: ad_google
-              label: Google AdSence
-              help: 申请地址：https://www.google.com/adsense/
-              value:
-                ad_client:
-                ad_slot:
-                ad_format:
-                full_width_responsive:
-              children:
-                - $formkit: text
-                  name: ad_client
-                  label: ad_client
-                  help: 填写Google AdSence广告代码中的ad_client(必填)，示例：ca-pub-123456789
-                - $formkit: text
-                  name: ad_slot
-                  label: ad_slot
-                  help: 填写Google AdSence单元代码中的ad_slot(必填)，示例：987654321
-                - $formkit: radio
-                  name: ad_format
-                  id: ad_format
-                  key: ad_format
-                  label: 广告尺寸
-                  value: auto
-                  options:
-                    - label: 自适应
-                      value: auto
-                    - label: 长方形/矩形
-                      value: rectangle
-                    - label: 垂直
-                      value: vertical
-                    - label: 水平横向
-                      value: horizontal
-                - $formkit: radio
-                  name: full_width_responsive
-                  id: full_width_responsive
-                  key: full_width_responsive
+                - label: 显示
+                  value: true
+                - label: 隐藏
                   value: false
-                  label: 是否宽度自适应
-                  options:
-                    - label: 是
-                      value: true
-                    - label: 否
-                      value: false
+            - $formkit: radio
+              name: archive_switch
+              label: 标签&归档&统计 (归档按钮开关)
+              value: false
+              options:
+                - label: 显示
+                  value: true
+                - label: 隐藏
+                  value: false
             - $formkit: group
-              if: $get(adType).value == 'customAd'
-              name: ad_custom
-              label: 自定义广告
-              help: 填写广告图片地址和跳转地址
+              name: adbox
+              label: 广告区域
               value:
-                ad_client:
-                ad_slot:
-                ad_format:
-                full_width_responsive:
+                adType:
+              children:
+                - $formkit: select
+                  name: adType
+                  id: adType
+                  key: adType
+                  label: 广告类型
+                  value: none
+                  options:
+                    - label: 无
+                      value: none
+                    - label: Google AdSence
+                      value: google
+                    - label: 自定义
+                      value: customAd
+                - $formkit: group
+                  if: $get(adType).value == 'google'
+                  name: ad_google
+                  label: Google AdSence
+                  help: 申请地址：https://www.google.com/adsense/
+                  value:
+                    ad_client:
+                    ad_slot:
+                    ad_format:
+                    full_width_responsive:
+                  children:
+                    - $formkit: text
+                      name: ad_client
+                      label: ad_client
+                      help: 填写Google AdSence广告代码中的ad_client(必填)，示例：ca-pub-123456789
+                    - $formkit: text
+                      name: ad_slot
+                      label: ad_slot
+                      help: 填写Google AdSence单元代码中的ad_slot(必填)，示例：987654321
+                    - $formkit: radio
+                      name: ad_format
+                      id: ad_format
+                      key: ad_format
+                      label: 广告尺寸
+                      value: auto
+                      options:
+                        - label: 自适应
+                          value: auto
+                        - label: 长方形/矩形
+                          value: rectangle
+                        - label: 垂直
+                          value: vertical
+                        - label: 水平横向
+                          value: horizontal
+                    - $formkit: radio
+                      name: full_width_responsive
+                      id: full_width_responsive
+                      key: full_width_responsive
+                      value: false
+                      label: 是否宽度自适应
+                      options:
+                        - label: 是
+                          value: true
+                        - label: 否
+                          value: false
+                - $formkit: group
+                  if: $get(adType).value == 'customAd'
+                  name: ad_custom
+                  label: 自定义广告
+                  help: 填写广告图片地址和跳转地址
+                  value:
+                    ad_client:
+                    ad_slot:
+                    ad_format:
+                    full_width_responsive:
+                  children:
+                    - $formkit: text
+                      name: ad_pic_url
+                      label: 自定义广告图片地址
+                      help: 自定义广告图片地址
+                    - $formkit: text
+                      name: ad_redirect_url
+                      label: 自定义广告跳转地址
+                      help: 自定义广告跳转地址
+            - $formkit: group
+              name: com
+              label: 评论头像设置
+              value:
+                providerMirror:
               children:
                 - $formkit: text
-                  name: ad_pic_url
-                  label: 自定义广告图片地址
-                  help: 自定义广告图片地址
-                - $formkit: text
-                  name: ad_redirect_url
-                  label: 自定义广告跳转地址
-                  help: 自定义广告跳转地址
+                  label: 头像服务镜像地址
+                  name: providerMirror
+                  value: "https://cravatar.cn"
+                  help: 使用官方源则留空, 示例：https://gravatar.com
 
     - group: footer
       label: 页脚
