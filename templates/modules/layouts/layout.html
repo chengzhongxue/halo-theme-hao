@@ -73,6 +73,27 @@
     </style>
 </th:block>
 
+<script th:inline="javascript">
+
+    function toRandomPost() {
+        // 随机跳转首页的一篇文章
+        // 后续改成跳转全站的文章，可以从 sitemap 中获取所有文章
+        let posts = [[${posts}]];
+
+        let datum = posts.total < posts.size ? posts.total : posts.size;
+
+        let number = Math.floor(Math.random() * datum);
+
+        let post = posts.items[number];
+
+        // 当前窗口打开
+        //window.location.href = post.status.permalink;
+        pjax.loadUrl(post.status.permalink)
+        // window.open(post.status.permalink);
+    }
+
+</script>
+
 <!-- 网站背景 -->
 <div id="an_music_bg"></div>
 

@@ -287,20 +287,10 @@ spec:
               value: true
             - label: 隐藏
               value: false
-        - $formkit: select
-          name: leftBannerStyle
-          id: leftBannerStyle
-          key: leftBannerStyle
-          label: Banner 左侧样式选择
-          options:
-            - label: 默认样式
-              value: default
-            - label: 轮播图
-              value: carousel
         - $formkit: group
           name: BannerLeft
           label: Banner 左侧
-          if: $get(recentTop).value && $get(leftBannerStyle).value == 'default'
+          if: $get(recentTop).value
           value:
             bannersBackground: default
             bannersTitleBig: <div class="banners-title-big">Halo Theme</div><div class="banners-title-big">Hao</div>
@@ -409,45 +399,6 @@ spec:
                   label: 颜色2 (深色)
                   validation: required
                   value: "#2fcbff"
-        - $formkit: repeater
-          name: BannerLeftCarousel
-          id: BannerLeftCarousel
-          key: BannerLeftCarousel
-          label: Banner 左侧轮播图
-          if: $get(recentTop).value && $get(leftBannerStyle).value == 'carousel'
-          value: []
-          min: 2
-          max: 6
-          children:
-            - $formkit: attachment
-              name: banner_left_carousel_img
-              id: banner_left_carousel_img
-              key: banner_left_carousel_img
-              label: 图片
-              validation: required
-              placeholder: 请输入图片 url
-            - $formkit: text
-              name: banner_left_carousel_img_url
-              id: banner_left_carousel_img_url
-              key: banner_left_carousel_img_url
-              label: 图片跳转地址
-              validation: required
-              placeholder: 请输入图片跳转 url
-              value: '/'
-            - $formkit: text
-              name: title
-              id: title
-              key: title
-              label: 标题
-              placeholder: 标题
-              value: ''
-            - $formkit: text
-              name: title2
-              id: title2
-              key: title2
-              label: 副标题
-              placeholder: 副标题
-              value: ''
         - $formkit: group
           name: BannerRight
           label: Banner 右侧

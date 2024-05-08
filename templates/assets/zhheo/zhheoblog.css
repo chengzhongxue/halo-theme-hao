@@ -2532,7 +2532,7 @@ blockquote footer cite::before {
 #page-header.not-top-img {
     margin-bottom: 0.5rem;
     height: 60px;
-    background: #ffffff59 0px center;
+    background: 0px center;
 }
 
 #page-header.not-top-img #nav {
@@ -7822,10 +7822,6 @@ a.categoryButton i {
         overflow: hidden;
         position: relative
     }
-
-    #bannerGroup2 {
-        display: none;
-    }
 }
 
 .topGroup {
@@ -7833,10 +7829,6 @@ a.categoryButton i {
 }
 
 #bannerGroup {
-    display: flex;
-}
-
-#bannerGroup2 {
     display: flex;
 }
 
@@ -7862,17 +7854,7 @@ div#banners {
     }
 
     div#bannerGroup {
-        /*width: calc(50% - .5rem);*/
-        width: 33rem;
-        margin-right: 1rem;
-        height: calc(328px + .5rem);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    div#bannerGroup2 {
-        width: 35rem;
+        width: calc(50% - .5rem);
         margin-right: 1rem;
         height: calc(328px + .5rem);
         display: flex;
@@ -8515,26 +8497,32 @@ a.categoryButton:hover {
 }
 
 .category-bar-next {
-    margin-left: 12px;
+    margin-left: 8px;
     cursor: pointer;
-    height: 22px;
-    display: flex
+    height: 30px;
+    width: 30px;
+    display: flex;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    transition: .3s
 }
 
 .category-bar-next:hover {
+    background: var(--heo-secondbg);
     color: var(--heo-lighttext)
 }
 
 .category-bar-more {
-    margin-left: 1rem;
-    font-weight: bold;
-    color: #fbae03;
+    margin-left: 4px;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 0 8px
 }
-
 .category-bar-more:hover {
-    color: var(--heo-lighttext);
+    background: var(--heo-secondbg);
+    color: var(--heo-lighttext)
 }
-
 /* 主页哔哔bb */
 #bber-talk {
     width: 100%;
@@ -18971,4 +18959,8 @@ div#equipment {
 
 .equipment-item-content-item-toolbar a.bber-reply {
     cursor: pointer;
+}
+
+#aside-content #card-toc .toc-content .toc-link:hover {
+    background: var(--heo-main-op-light)
 }
