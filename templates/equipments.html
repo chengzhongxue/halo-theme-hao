@@ -49,6 +49,11 @@
                                         <div class="equipment-item-content-item-toolbar">
                                             <a class="equipment-item-content-item-link" th:href="${#annotations.get(equipment, 'link')}"
                                                target="_blank">[[${#annotations.get(equipment, 'button')}]]</a>
+                                            <a class="bber-reply" th:if="${theme.config.comments.use != 'commentWidget'}"
+                                               th:onclick="rightMenuCommentText([['&quot;'+${equipment.spec.displayName}+' '+${#annotations.get(equipment, 'model')}+' '+${equipment.spec.description}+'&quot;']]);"
+                                               data-pjax-state="">
+                                                <i class="haofont hao-icon-chat--fill" style="font-size: 22px;"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -56,6 +61,14 @@
                         </div>
                     </th:block>
                 </div>
+                <!--/* 评论组件 */-->
+                <th:block th:if="">
+                    <th:block
+                            th:replace="~{modules/comment :: comment(group = 'content.halo.run',
+                  kind = 'SinglePage',
+                  name = 'equipment',
+                  allowComment = ${theme.config.comments.use != 'commentWidget'})}"/>
+                </th:block>
             </div>
         </main>
         <!-- 底部 -->

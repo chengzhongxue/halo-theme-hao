@@ -17,6 +17,20 @@
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
                 <th:block th:replace="~{macro/content-links :: content-links(${htmlType})}" />
+
+                <hr th:if="${theme.config.comments.use != 'commentWidget'}" />
+                <!--/* 评论组件 */-->
+                <th:block
+                        th:replace="~{modules/comment :: comment(group = 'content.halo.run',
+                  kind = 'SinglePage',
+                  name = 'links',
+                  allowComment = ${theme.config.comments.use != 'commentWidget'})}"/>
+                <style>
+                    /*修复友链页面表情选择器无法显示完全的bug*/
+                    .tk-submit {
+                        overflow: inherit !important;
+                    }
+                </style>
             </div>
         </main>
         <!-- 底部 -->
