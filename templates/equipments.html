@@ -62,13 +62,11 @@
                     </th:block>
                 </div>
                 <!--/* 评论组件 */-->
-                <th:block th:if="">
-                    <th:block
-                            th:replace="~{modules/comment :: comment(group = 'content.halo.run',
+                <th:block
+                        th:replace="~{modules/comment :: comment(group = 'content.halo.run',
                   kind = 'SinglePage',
                   name = 'equipment',
                   allowComment = ${theme.config.comments.use != 'commentWidget'})}"/>
-                </th:block>
             </div>
         </main>
         <!-- 底部 -->
