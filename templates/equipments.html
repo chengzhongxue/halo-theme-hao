@@ -29,7 +29,6 @@
                             <h2 class="equipment-item-title">[[${group.spec.displayName}]]</h2>
                             <div class="equipment-item-description">[[${#annotations.get(group, 'description')}]]</div>
                             <div class="equipment-item-content" th:with="equipmentList = ${group.equipments}">
-
                                 <div class="equipment-item-content-item" th:each="equipment : ${equipmentList}">
                                     <div class="equipment-item-content-item-cover">
                                         <img class="equipment-item-content-item-image"
@@ -50,11 +49,6 @@
                                         <div class="equipment-item-content-item-toolbar">
                                             <a class="equipment-item-content-item-link" th:href="${#annotations.get(equipment, 'link')}"
                                                target="_blank">[[${#annotations.get(equipment, 'button')}]]</a>
-                                            <a class="bber-reply"
-                                               th:onclick="rightMenuCommentText([['&quot;'+${equipment.spec.displayName}+' '+${#annotations.get(equipment, 'model')}+' '+${equipment.spec.description}+'&quot;']]);"
-                                               data-pjax-state="">
-                                                <i class="haofont hao-icon-chat--fill" style="font-size: 22px;"></i>
-                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -62,14 +56,7 @@
                         </div>
                     </th:block>
                 </div>
-                <!--/* 评论组件 */-->
-                <th:block
-                        th:replace="~{modules/comment :: comment(group = 'content.halo.run',
-                  kind = 'SinglePage',
-                  name = 'equipment',
-                  allowComment = true)}"/>
             </div>
-
         </main>
         <!-- 底部 -->
         <footer th:replace="~{modules/footer}"/>

@@ -59,10 +59,6 @@
                                                   th:text="${#dates.format(moment.spec.releaseTime,'yyyy-MM-dd')}"></time>
                                         </div>
                                     </div>
-                                    <a class="bber-reply" th:onclick="rightMenuCommentText([[${content.html}]]);"
-                                       data-pjax-state=""> <i class="haofont hao-icon-chat--fill"
-                                                              style="font-size: 20px;"></i>
-                                    </a>
                                 </div>
                             </li>
                         </ul>
@@ -71,15 +67,7 @@
                 </div>
                 <div id="bber-tips" style="color: var(--heo-secondtext);">- 只展示最近30条短文 -</div>
                 <script>heo.reflashEssayWaterFall();</script>
-                <hr />
-                <!--/* 评论组件 */-->
-                <th:block th:replace="~{modules/comment :: comment(group = 'content.halo.run',
-                  kind = 'SinglePage',
-                  name = 'moments',
-                  allowComment = true)}" />
-
             </div>
-
 
         </main>
         <!-- 底部 -->
