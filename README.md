@@ -3,12 +3,20 @@
 <img width="100px" src="https://api.minio.yyds.pink/moony/files/2024/04/halo-theme-hao-sbxqdmuv.png">
 <!-- 主题名称 -->
 <h1>Halo-Theme-Hao</h1>
+<!-- 快速导航 -->
+   
+[主题预览](#-预览) | [快速上手](#-安装) | [使用文档](https://www.yuque.com/liuzhihangs/halo-theme-hao) | [加入我们](#-讨论)
+
 </div>
 
 <!-- 主题预览图 -->
 ![](https://api.minio.yyds.pink/moony/files/2024/04/hao1-krimlgao.png)
 ![](https://api.minio.yyds.pink/moony/files/2024/04/hao2-xanlpcmp.png)
 ![](https://redirect.cnkj.site:8099/b/2024/66177ca6056fd.webp?type=blog)
+
+## 安装
+
+在 [Halo市场](https://www.halo.run/store/apps/app-MgZJX) 下载最新版本 zip 后，通过 Halo Console 后台主题安装处上传即可。
 
 ## 🔥 预览
 
@@ -57,15 +65,9 @@
 
 > 更多插件请参见：<https://github.com/halo-sigs/awesome-halo>
 
-## 📝 使用
-
-[点我查看](https://www.yuque.com/liuzhihangs/halo-theme-hao)
-
 ## 💬 讨论
 
 如果你对主题有什么建议或者意见，欢迎提 PR & issue。
-
-进群。
 
 <img width="360" src="https://api.minio.yyds.pink/halo-docs/2024/04/hao-2.jpg" />
 
@@ -74,6 +76,7 @@
 ### 赞助
 
 如果 hao 对你有帮助，欢迎[赞助我](https://afdian.net/a/moony_la)，感谢以下赞助者对 material 项目的支持：
+<!--非创建者不能查看赞助用户信息,也希望作者尽快更新赞助信息吧。 -->
 
 ## 🔐 许可
 
