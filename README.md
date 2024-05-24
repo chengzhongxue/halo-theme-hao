@@ -3,12 +3,6 @@
 <img width="100px" src="https://api.minio.yyds.pink/moony/files/2024/04/halo-theme-hao-sbxqdmuv.png">
 <!-- 主题名称 -->
 <h1>Halo-Theme-Hao</h1>
-<!-- 快捷导航 -->
-<p align="center">
-
-[主题预览](#-预览) | [快速上手](#-安装) | [使用文档](https://www.yuque.com/liuzhihangs/halo-theme-hao) | [加入我们](#-讨论)
-
-</p>
 </div>
 
 <!-- 主题预览图 -->
@@ -20,9 +14,8 @@
 
 |    站点名称    |          站点地址          |
 |:----------:|:----------------------:|
-|   Roozen   |   https://roozen.top   |
-| Carol`s 小屋 | https://blog.cnkj.site |
-|    小窝哟     | https://blog.528688.cn |
+|   Roozen   |   <https://roozen.top>   |
+| Carol`s 小屋 | <https://blog.cnkj.site> |
 
 ## 👋 简介
 
@@ -39,7 +32,7 @@
 2. 如果安装主题后报错，请仔细查阅[主题说明](https://github.com/chengzhongxue/halo-theme-hao)
    与[更新说明](https://github.com/chengzhongxue/halo-theme-hao/releases)！！！
 3. 如果还未解决，可以加群求助！！！
-4. 如果群友也解决不了，再考虑提ISSUE！！！
+4. 如果群友也解决不了，再考虑提issue！！！
 5. `1.3.1`及以上版本需要`Halo`版本>=`2.8.0`
 6. **若安装主题后出现500错误，请到主题设置页面，将每个设置项都保存一下！！！**
 7. **`beta`版本主题必须使用`本地资源`，正式版本才会存在`在线资源`**
@@ -57,20 +50,21 @@
 - 瞬间页面 [plugin-moments](https://github.com/halo-sigs/plugin-moments)
 - 追番插件 [plugin-bilibili-bangumi](https://github.com/Roozenlz/plugin-bilibili-bangumi)
 - 图库插件 [plugin-photos](https://github.com/halo-sigs/plugin-photos)
-- katex插件 [plugin-katex](https://github.com/chengzhongxue/plugin-katex/releases/)
+- KaTex插件 [plugin-katex](https://github.com/chengzhongxue/plugin-katex/releases/)
 - 我的装备 [plugin-equipments](https://github.com/chengzhongxue/plugin-equipments)
 - Markdown / HTML 内容块插件 [plugin-hybrid-edit-block](https://www.halo.run/store/apps/app-NgHnY)
 - 爱发电 [plugin-afdian](https://github.com/carolcoral/plugin-afdian)
 
-> 更多插件请参见：https://github.com/halo-sigs/awesome-halo
+> 更多插件请参见：<https://github.com/halo-sigs/awesome-halo>
 
 ## 📝 使用
 
-[点我查看](https://docs.kunkunyu.com/docs/hao)
+[点我查看](https://www.yuque.com/liuzhihangs/halo-theme-hao)
 
 ## 💬 讨论
 
 如果你对主题有什么建议或者意见，欢迎提 PR & issue。
+
 进群。
 
 <img width="360" src="https://api.minio.yyds.pink/halo-docs/2024/04/hao-2.jpg" />
