@@ -438,7 +438,7 @@ let halo = {
             if ((adElement.offsetWidth <= 0 || adElement.offsetHeight <= 0) && notMusic) {
                 // 元素不可见，可能被拦截
                 console.log("Element may be blocked by AdBlocker Ultimate");
-                alert("页脚信息可能被AdBlocker Ultimate拦截，请检查广告拦截插件！")
+                // alert("页脚信息可能被AdBlocker Ultimate拦截，请检查广告拦截插件！")
             }
         }
     },

@@ -4,6 +4,35 @@ metadata:
   name: theme-hao-setting
 spec:
   forms:
+    - group: buguagaoshuCustom
+      label: 自定义
+      formSchema:
+        - $formkit: text
+          name: tagBackgroundImg
+          label: 标签背景图
+          value: https://liuzhihang.com/upload/moments.png
+          placeholder: 请输入图片地址
+        - $formkit: text
+          name: tagSmallTitle
+          label: 标签小标题
+          value: 
+        - $formkit: text
+          name: tagBigTitle
+          label: 标签大标题
+          value: 标签
+        - $formkit: text
+          name: categoriesBackgroundImg
+          label: 分类背景图
+          value: https://liuzhihang.com/upload/moments.png
+          placeholder: 请输入图片地址
+        - $formkit: text
+          name: categoriesSmallTitle
+          label: 分类小标题
+          value: 
+        - $formkit: text
+          name: categoriesBigTitle
+          label: 分类大标题
+          value: 分类
     - group: basics
       label: 基础
       formSchema:

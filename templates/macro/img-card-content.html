@@ -1,0 +1,9 @@
+<div th:fragment="img-card-content(background, smallTitle, bigTitle)"
+     class="author-content author-content-item essayPage single"
+     th:style="'background:url('+${background}+') left 28% / cover no-repeat !important;'">
+    <div class="card-content">
+        <div class="author-content-item-tips" th:text="${smallTitle}"></div>
+        <span class="author-content-item-title" th:text="${bigTitle}"></span>
+  
+    </div>
+</div>
