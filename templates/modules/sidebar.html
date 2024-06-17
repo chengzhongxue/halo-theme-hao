@@ -4,7 +4,7 @@
     <div id="sidebar-menus">
         <span class="sidebar-menu-item-title">功能</span>
         <div class="sidebar-menu-item">
-            <a class="darkmode_switchbutton menu-child" href="javascript:void(0);" onclick="rm.switchDarkMode()"
+            <a class="darkmode_switchbutton menu-child" href="javascript:void(0);" onclick="navFn.switchDarkMode();"
                rel="external nofollow" title="显示模式切换">
                 <i class="haofont hao-icon-moon" style="font-size: 0.9rem;"></i>
                 <span>显示模式</span>
@@ -39,24 +39,22 @@
         <th:block th:if="${not #lists.isEmpty(menuFinder.getPrimary().menuItems) && theme.config.nav.menus.phone_menu}"
         >
             <div class="menus_items">
-                <div class="menus_item" th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
-                    <th:block th:if="${not #lists.isEmpty(menuItem.children)}">
-                        <a class="site-page" href="javascript:void(0);" rel="external nofollow">
+                    <!-- 第一层仅展示使用，不做跳转 -->
+                    <div class="menus_item" th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
+                        <!-- javascript:void(0);" -->
+                        <a class="site-page" rel="external nofollow"
+                           th:if="${#lists.isEmpty(menuItem.children)}"
+                           th:target="${menuItem.spec.target?.value}"
+                           th:href="@{${menuItem.status.href}}">
                             <span th:text="${menuItem.status.displayName}"></span>
                         </a>
-                        <th:block th:if="${not #lists.isEmpty(menuItem.children)}">
-                            <ul class="menus_item_child">
-                                <li th:each="childMenu : ${menuItem.children}">
-                                    <a class="site-page child" th:href="@{${childMenu.status.href}}">
-                                        <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(childMenu, 'icon', ''))}"
-                                           th:class="${#annotations.getOrDefault(childMenu, 'icon', '')}"></i>
-                                        <span th:text="${childMenu.status.displayName}"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </th:block>
-                    </th:block>
-                </div>
+            
+                        <a th:if="${not #lists.isEmpty(menuItem.children)}" class="site-page" rel="external nofollow">
+                            <span th:text="${menuItem.status.displayName}"></span>
+                        </a>
+                        <!--递归调用-->
+                        <div th:replace="~{modules/widgets/nav-menu :: nav-menu-recursion(menuItem=${menuItem})}"></div>
+                    </div>
             </div>
         </th:block>
         <span class="sidebar-menu-item-title">标签</span>
