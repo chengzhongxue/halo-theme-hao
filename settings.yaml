@@ -1985,6 +1985,11 @@ spec:
           name: detail
           label: 描述
           value: 每一张照片都是一次美好的记忆。
+        - $formkit: text
+          if: $get(photosStyle).value == 'default'
+          name: backgroundImg
+          label: 背景图片
+          value: 
         - $formkit: radio
           name: tagEnable
           label: 图片标签
