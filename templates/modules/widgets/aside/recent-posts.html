@@ -1,24 +1,29 @@
-<div class="card-widget card-recent-post" th:with='posts = ${postFinder.list(1,theme.config.sidebar.recentPost)},
+<div class="card-widget card-recent-post" th:with='
     postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"&" : theme.config.layout.postRandomImg+"?"}'>
     <div class="item-headline"><i class="haofont hao-icon-eicon_map-2-line1"></i><span>最近发布</span></div>
     <div class="aside-list">
         <!-- 最新文章，用户可以自定义展示数量 -->
-        <div class="aside-list-item" th:each="post : ${posts}">
-            <a class="thumbnail" th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
-                <img th:alt="${post.spec.title}"
-                     th:with="img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}"
+        <th:block th:with="archives = ${postFinder.archives(1,#conversions.convert(theme.config.sidebar.recentPost, 'java.lang.Integer'))}">
+            <th:block th:each="archive : ${archives.items}">
+                <th:block th:each="month : ${archive.months}">
+                    <div class="aside-list-item" th:each="post : ${month.posts}">
+                        <a class="thumbnail" th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
+                            <img th:alt="${post.spec.title}"
+                                 th:with="img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}"
 
-                     th:src="${isLazyload ? loadingImg : img}"
-                     th:data-lazy-src="${ isLazyload ? img : ''}">
-            </a>
-            <div class="content">
-                <a class="title" th:href="@{${post.status.permalink}}" th:text="${post.spec.title}" th:title="${post.spec.title}"></a>
-                <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm:ss')}"
-                      th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}"
-                      th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">
-                </time>
-            </div>
-        </div>
-
+                                 th:src="${isLazyload ? loadingImg : img}"
+                                 th:data-lazy-src="${ isLazyload ? img : ''}">
+                        </a>
+                        <div class="content">
+                            <a class="title" th:href="@{${post.status.permalink}}" th:text="${post.spec.title}" th:title="${post.spec.title}"></a>
+                            <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm:ss')}"
+                                  th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}"
+                                  th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">
+                            </time>
+                        </div>
+                    </div>
+                </th:block>
+            </th:block>
+        </th:block>
     </div>
 </div>

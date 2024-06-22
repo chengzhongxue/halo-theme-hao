@@ -311,7 +311,7 @@ document.addEventListener('scroll', btf.throttle(function () {
 //友链随机传送
 function travelling() {
     function getLinks() {
-        const links = "/apis/api.plugin.halo.run/v1alpha1/plugins/PluginLinks/links?keyword=&sort=priority,asc"
+        const links = "/apis/api.plugin.halo.run/v1alpha1/plugins/PluginLinks/links?keyword="
         fetch(links)
             .then(res => res.json())
             .then(json => {
