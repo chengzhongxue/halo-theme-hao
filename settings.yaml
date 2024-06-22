@@ -1248,22 +1248,25 @@ spec:
             - $formkit: group
               if: $get(adType).value == 'customAd'
               name: ad_custom
-              label: 自定义广告
-              help: 填写广告图片地址和跳转地址
+              label: 自定义区域
+              help: 填写标题图片地址和跳转地址
               value:
-                ad_client:
-                ad_slot:
-                ad_format:
-                full_width_responsive:
+                ad_title: '广告'
+                ad_pic_url:
+                ad_redirect_url:
               children:
                 - $formkit: text
+                  name: ad_title
+                  label: 自定义标题
+                  help: 自定义标题
+                - $formkit: text
                   name: ad_pic_url
-                  label: 自定义广告图片地址
-                  help: 自定义广告图片地址
+                  label: 自定义图片地址
+                  help: 自定义图片地址
                 - $formkit: text
                   name: ad_redirect_url
-                  label: 自定义广告跳转地址
-                  help: 自定义广告跳转地址
+                  label: 自定义跳转地址
+                  help: 自定义跳转地址
 
     - group: footer
       label: 页脚

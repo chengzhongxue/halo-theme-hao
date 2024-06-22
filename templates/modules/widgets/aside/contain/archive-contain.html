@@ -4,7 +4,7 @@
 
     <div  class="item-headline"><a class="card-more-btn" href="/archives/" title="查看更多" data-pjax-state=""></a></div>
     <ul  class="card-archive-list"
-         th:with="archives = ${postFinder.archives(1,1000)}, archivesQuantity = ${#conversions.convert(theme.config.sidebar.archivesQuantity, 'java.lang.Integer')}">
+         th:with="archives = ${postFinder.archives(1,0)}, archivesQuantity = ${#conversions.convert(theme.config.sidebar.archivesQuantity, 'java.lang.Integer')}">
         <th:block th:each="archive,archiveStat : ${archives.items}">
             <li class="card-archive-list-item"
                 th:each="month,monthIndex  : ${archive.months}"

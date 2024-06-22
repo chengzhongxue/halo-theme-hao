@@ -111,7 +111,7 @@ var heo = {
         footerRandomFriendsBtn.style.transitionDuration = "0.3s";
         footerRandomFriendsBtn.style.transform = "rotate(" + 360 * refreshNum++ + "deg)";
         function getLinks(){
-            const fetchUrl = "/apis/api.plugin.halo.run/v1alpha1/plugins/PluginLinks/links?keyword=&sort=priority,asc"
+            const fetchUrl = "/apis/api.plugin.halo.run/v1alpha1/plugins/PluginLinks/links?keyword="
             fetch(fetchUrl)
                 .then(res => res.json())
                 .then(json => {

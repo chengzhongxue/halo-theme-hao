@@ -33,7 +33,7 @@
                         <div class="comment-card" th:title="${comment.spec.content}"
                              th:onclick="pjax.loadUrl([[${url}]])">
                             <div class="comment-info">
-                                <img th:with=" img =${#strings.isEmpty(comment.owner.avatar)?'https://cravatar.cn/avatar/?d=mp':comment.owner.avatar}"
+                                <img th:with=" img =${#strings.isEmpty(comment.owner.avatar)? theme.config.sidebar.newcomment.providerMirror+'/avatar/'+comment.spec.owner.annotations['email-hash'] :comment.owner.avatar}"
                                      th:alt="${comment.owner.displayName}" th:src="${isLazyload ? loadingImg : img}"
                                      th:data-lazy-src="${ isLazyload ? img : ''}" class="no-lightbox nolazyload avatar">
                                 <div class="comment-information">

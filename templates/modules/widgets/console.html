@@ -62,7 +62,7 @@
       <!-- 底部展示时间归档 -->
       <div class="console-card history" onclick="heo.hideConsole()">
         <div class="item-headline"><i class="fas fa-archive"></i><span>文章</span></div>
-        <ul class="card-archive-list" th:with="archives = ${postFinder.archives(1,1000)}">
+        <ul class="card-archive-list" th:with="archives = ${postFinder.archives(1,0)}">
           <th:block th:each="archive : ${archives.items}">
             <li class="card-archive-list-item" th:each="month,monthStat : ${archive.months}">
               <a class="card-archive-list-link" th:href="@{'/archives/'+${archive.year}+'/'+${month.month}}"
