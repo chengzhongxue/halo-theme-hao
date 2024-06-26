@@ -24,7 +24,7 @@
                      th:src="${isLazyload ? loadingImg : img}"
                      th:data-lazy-src="${ isLazyload ? img : ''}"
                      th:alt="${comment.owner.displayName}">
-                <div class="name"><span>stonewu</span></div>
+                <div class="name"><span th:text="${comment.owner.displayName}">stonewu</span></div>
               </a>
               <div class="content">
                 <a class="comment" th:href="${url}" th:title="${comment.spec.content}" data-pjax-state="" th:text="${comment.spec.content}"></a>
