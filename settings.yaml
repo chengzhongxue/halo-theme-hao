@@ -292,6 +292,7 @@ spec:
           label: Banner 左侧
           if: $get(recentTop).value
           value:
+            bannersBackgroundRollStyle: tags-group-all
             bannersBackground: default
             bannersTitleBig: <div class="banners-title-big">Halo Theme</div><div class="banners-title-big">Hao</div>
             bannersTitleSmall: 更多信息请关注 GitHub
@@ -312,6 +313,16 @@ spec:
                 colorTwoDark: "#da980c"
             techStack:
           children:
+            - $formkit: select
+              name: bannersBackgroundRollStyle
+              id: bannersBackgroundRollStyle
+              key: bannersBackgroundRollStyle
+              label: 背景图滚动样式
+              options:
+                - label: 垂直滚动
+                  value: tags-group-all
+                - label: 倾斜滚动
+                  value: tags-group-all45
             - $formkit: select
               name: bannersBackground
               id: bannersBackground
@@ -1376,6 +1387,7 @@ spec:
               gongwangan: true
               yingsi: true
               yunzhichi: false
+              footer_banner_padding: 1
             style_one:
               owner_enable: false
               runtime_enable: true
@@ -1404,6 +1416,12 @@ spec:
                       value: true
                     - label: 隐藏
                       value: false
+                - $formkit: number
+                  if: $get(default_enable).value
+                  name: footer_banner_padding
+                  id: footer_banner_padding
+                  key: footer_banner_padding
+                  label: 页脚高度
                 - $formkit: radio
                   if: $get(default_enable).value
                   name: dingyue

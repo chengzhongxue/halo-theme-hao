@@ -8171,10 +8171,21 @@ div#banners {
 
 .tags-group-all {
     display: flex;
-    transform: rotate(0)
+    transform: rotate(0);
+}
+
+.tags-group-all45 {
+    display: flex;
+    transform: rotate(45deg);
+    margin-top: -130%;
 }
 
 .tags-group-all.nowrapMove {
+    transform: rotate(0);
+    padding-bottom: 2rem
+}
+
+.tags-group-all45.nowrapMove {
     transform: rotate(0);
     padding-bottom: 2rem
 }

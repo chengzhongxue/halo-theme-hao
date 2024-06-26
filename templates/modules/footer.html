@@ -101,7 +101,7 @@
         }
     </style>
 
-    <div th:if="${theme.config.footer.footerContent.default_enable_group.default_enable}" id="footer-banner">
+    <div th:if="${theme.config.footer.footerContent.default_enable_group.default_enable}" id="footer-banner" th:style="|padding:${theme.config.footer.footerContent.default_enable_group.footer_banner_padding}rem|">
         <div class="footer-banner-links">
             <div class="footer-banner-left">
                 <div id="footer-banner-tips">
