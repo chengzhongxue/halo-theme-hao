@@ -8133,12 +8133,13 @@ div#banners {
         border-radius: 60px;
         margin-bottom: 12px;
         color: var(--heo-white);
-        width: 94px;
+        max-width: 170px;
         position: relative
     }
 
     .banners-link-title {
-        margin-left: auto
+        margin-left: auto;
+        padding-left: 5px;
     }
 }
 
