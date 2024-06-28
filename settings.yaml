@@ -1987,6 +1987,13 @@ spec:
               value: true
             - label: 隐藏
               value: false
+        - $formkit: attachment
+          name: backgroundImg
+          key: backgroundImg
+          id: backgroundImg
+          label: 背景图
+          value: https://liuzhihang.com/upload/moments.png
+          placeholder: 请输入图片地址
 
     - group: todo
       label: 待办清单
