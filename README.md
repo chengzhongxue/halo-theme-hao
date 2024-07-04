@@ -74,8 +74,8 @@
 ## 💰赞助
 
 **如果 Halo-theme-hao 主题对你有帮助，欢迎赞助相关开发者**
-* 困困鱼: [赞助我](https://afdian.net/a/moony_la)
-* Carol: [赞助我](https://afdian.net/a/carolcoral)
+* 困困鱼: [爱发电赞助](https://afdian.net/a/moony_la)
+* Carol: [爱发电赞助](https://afdian.net/a/carolcoral) 或 [微信赞赏码](https://redirect.cnkj.site:8099/vZWztN.webp?type=blog)
 
 ### 感谢以下赞助者对 Halo-theme-hao 主题的支持：
 
