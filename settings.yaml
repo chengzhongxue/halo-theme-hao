@@ -3290,10 +3290,6 @@ spec:
               options:
                 - label: 本地
                   value: local
-                - label: onmicrosoft
-                  value: onmicrosoft
-                - label: cbd
-                  value: cbd
                 - label: 自定义
                   value: custom
             - $formkit: url
