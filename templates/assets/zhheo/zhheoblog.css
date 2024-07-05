@@ -14382,6 +14382,7 @@ div#heo-footer-bar .footer-bar-description {
     height: 200px;
     background: var(--heo-card-bg);
     display: flex;
+    border-radius: 12px;
 }
 
 #body-wrap.page .errors .aside-list .aside-list-item .content .title {
