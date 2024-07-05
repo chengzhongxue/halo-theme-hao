@@ -30,12 +30,30 @@
 <th:block th:replace="~{modules/loading-box}"/>
 
 <!-- 网站背景 -->
-<div id="web_bg"></div>
+<div id="web_bg">
+    <div th:if="${theme.config.top.global_background.enable_background_img}">
+        <img th:if="${theme.config.top.global_background.enable_above_video == false}"
+             class="global_background_img"
+             th:src="${theme.config.top.global_background.global_background_img}"
+        />
+        <video th:if="${theme.config.top.global_background.enable_above_video}"
+               class="index-video"
+               id="index-video"
+               autoplay=""
+               th:src="${theme.config.top.global_background.global_background_video}"
+               loop=""
+               muted=""
+               playsinline=""
+               webkit-playsinline=""
+               style="display:block;object-fit:cover;width:100%;height:100%;pointer-events:none;">
+        </video>
+    </div>
+</div>
 
-<th:block th:if="${theme.config.top.above.enable_background_img}">
+<th:block th:if="${theme.config.top.global_background.enable_background_img}">
     <style>
         @media screen and (min-width: 1300px) {
-            #web_bg {
+            .global_background_img {
                 width: 100%;
                 height: 100%;
                 top: 0;
@@ -44,7 +62,6 @@
                 position: fixed;
                 z-index: -999;
                 background: var(--heo-background);
-                background-image: url([[${theme.config.top.above.index_background_img}]]);
                 background-attachment: fixed;
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -52,7 +69,7 @@
         }
         
         @media screen and (max-width: 768px) {
-            #web_bg {
+            .global_background_img {
                 width: 100%;
                 height: 100%;
                 top: 0;
@@ -61,7 +78,6 @@
                 position: fixed;
                 z-index: -999;
                 background: var(--heo-background);
-                background-image: url([[${theme.config.top.above.phone_index_background_img}]]);
                 background-attachment: fixed;
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -72,18 +88,18 @@
 </th:block>
 
 <script th:inline="javascript">
-
+    
     function toRandomPost() {
         // 随机跳转首页的一篇文章
         // 后续改成跳转全站的文章，可以从 sitemap 中获取所有文章
         let posts = [[${posts}]];
-
+        
         let datum = posts.total < posts.size ? posts.total : posts.size;
-
+        
         let number = Math.floor(Math.random() * datum);
-
+        
         let post = posts.items[number];
-
+        
         // 当前窗口打开
         //window.location.href = post.status.permalink;
         pjax.loadUrl(post.status.permalink)
