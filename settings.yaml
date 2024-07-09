@@ -224,14 +224,14 @@ spec:
           label: 全局背景设置
           help: 开启后设置全局背景图片/视频
           value:
-            enable_background_img: false
+            enable_global_background_img: false
             index_background_img:
           children:
             - $formkit: radio
               label: 全局透明背景图
-              name: enable_background_img
-              key: enable_background_img
-              id: enable_background_img
+              name: enable_global_background_img
+              key: enable_global_background_img
+              id: enable_global_background_img
               value: false
               help: 首页透明背景图
               options:
@@ -240,11 +240,11 @@ spec:
                 - label: 禁用
                   value: false
             - $formkit: radio
-              if: $get(enable_background_img).value
+              if: $get(enable_global_background_img).value
               label: 全局背景模式
-              name: enable_above_video
-              key: enable_above_video
-              id: enable_above_video
+              name: enable_global_background_above_video
+              key: enable_global_background_above_video
+              id: enable_global_background_above_video
               value: false
               options:
                 - label: 显示视频
@@ -255,14 +255,14 @@ spec:
               name: global_background_img
               key: global_background_img
               id: global_background_img
-              if: $get(enable_background_img).value  &&  $get(enable_above_video).value == false
+              if: $get(enable_global_background_img).value  &&  $get(enable_global_background_above_video).value == false
               label: 全局背景图片
               placeholder: 请填写全局背景图片地址
             - $formkit: attachment
               name: global_background_video
               id: global_background_video
               key: global_background_video
-              if: $get(enable_background_img).value  &&  $get(enable_above_video).value
+              if: $get(enable_global_background_img).value  &&  $get(enable_global_background_above_video).value
               label: 全局背景视频
               placeholder: 请填写全局背景视频地址
         - $formkit: radio
