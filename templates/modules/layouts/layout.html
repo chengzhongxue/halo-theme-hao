@@ -31,12 +31,12 @@
 
 <!-- 网站背景 -->
 <div id="web_bg">
-    <div th:if="${theme.config.top.global_background.enable_background_img}">
-        <img th:if="${theme.config.top.global_background.enable_above_video == false}"
+    <div th:if="${theme.config.top.global_background.enable_global_background_img}">
+        <img th:if="${theme.config.top.global_background.enable_global_background_above_video == false}"
              class="global_background_img"
              th:src="${theme.config.top.global_background.global_background_img}"
         />
-        <video th:if="${theme.config.top.global_background.enable_above_video}"
+        <video th:if="${theme.config.top.global_background.enable_global_background_above_video}"
                class="index-video"
                id="index-video"
                autoplay=""
@@ -50,7 +50,7 @@
     </div>
 </div>
 
-<th:block th:if="${theme.config.top.global_background.enable_background_img}">
+<th:block th:if="${theme.config.top.global_background.enable_global_background_img}">
     <style>
         @media screen and (min-width: 1300px) {
             .global_background_img {
