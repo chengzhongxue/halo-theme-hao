@@ -8243,6 +8243,7 @@ div#banners {
 
 .tags-group-icon img {
     width: 60%;
+    rotate: -60deg;
 }
 
 .nowrapMove .tags-group-icon img {
