@@ -8176,8 +8176,8 @@ div#banners {
 
 .tags-group-all45 {
     display: flex;
-    transform: rotate(60deg);
-    margin-top: -130%;
+    transform: rotate(50deg);
+    margin-top: -40rem;
 }
 
 .tags-group-all.nowrapMove {
@@ -8243,6 +8243,7 @@ div#banners {
 
 .tags-group-icon img {
     width: 60%;
+    rotate: -50deg;
 }
 
 .nowrapMove .tags-group-icon img {

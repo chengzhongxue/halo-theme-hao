@@ -18,7 +18,7 @@
 
 |  站点名称  |          站点地址           |
 |:------:|:-----------------------:|
-| 新 · 都在 | https://blog.xindu.site |
+| 新 · 都在 | https://blog.xindu.site/?preview-theme=theme-hao |
 
 ## ℹ️ 简介
 
