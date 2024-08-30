@@ -7,7 +7,7 @@ metadata:
 spec:
   displayName: Hao
   author:
-    name: 程序员小航 & 困困鱼
+    name: 程序员小航 & 困困鱼 & Carol
     website: https://github.com/chengzhongxue
   customTemplates:
     page:
@@ -41,7 +41,8 @@ spec:
         file: new_comment.html
   description: Halo 2.x Theme base on Thymeleaf, Referring to Butterfly and Heo
   logo: /themes/theme-hao/assets/images/hao-logo.jpg
-  website: https://github.com/chengzhongxue
+  homepage: https://www.halo.run/store/apps/app-MgZJX
+  issues: https://github.com/chengzhongxue/halo-theme-hao/issues
   repo: https://github.com/chengzhongxue/halo-theme-hao
   settingName: "theme-hao-setting"
   configMapName: "theme-hao-configMap"

@@ -12,19 +12,15 @@
 </div>
 
 <!-- 主题预览图 -->
-![](https://api.minio.yyds.pink/moony/files/2024/04/hao1-krimlgao.png)
-![](https://api.minio.yyds.pink/moony/files/2024/04/hao2-xanlpcmp.png)
 ![](https://redirect.cnkj.site:8099/b/2024/66177ca6056fd.webp?type=blog)
 
 ## 🔥 预览
 
-|    站点名称    |          站点地址          |
-|:----------:|:----------------------:|
-|   Roozen   |   https://roozen.top   |
-| Carol`s 小屋 | https://blog.cnkj.site |
-|    小窝哟     | https://blog.528688.cn |
+|  站点名称  |          站点地址           |
+|:------:|:-----------------------:|
+| 新 · 都在 | https://blog.xindu.site/?preview-theme=theme-hao |
 
-## 👋 简介
+## ℹ️ 简介
 
 [Halo-Theme-Hao](https://github.com/chengzhongxue/halo-theme-hao)
 是一款适用于 [Halo2.x](https://github.com/halo-dev/halo) 的博客主题。
@@ -33,17 +29,15 @@
 对 [Hexo-Theme-Butterfly](https://github.com/chengzhongxue/halo-theme-hao)
 主题的魔改版本。
 
-## 🚨 注意事项(看我看我)
+## 🚨注意事项(看我看我)
 
 1. **建站时间必填**
 2. 如果安装主题后报错，请仔细查阅[主题说明](https://github.com/chengzhongxue/halo-theme-hao)
    与[更新说明](https://github.com/chengzhongxue/halo-theme-hao/releases)！！！
 3. 如果还未解决，可以加群求助！！！
 4. 如果群友也解决不了，再考虑提ISSUE！！！
-5. `1.3.1`及以上版本需要`Halo`版本>=`2.8.0`
+5. `1.5.5`及以上版本需要`Halo`版本>=`2.17.0`
 6. **若安装主题后出现500错误，请到主题设置页面，将每个设置项都保存一下！！！**
-7. **`beta`版本主题必须使用`本地资源`，正式版本才会存在`在线资源`**
-8. 版本更新公告列表详见(包含beta版本): [版本发布通告](https://github.com/chengzhongxue/halo-theme-hao/discussions/715)
 
 ### 🔌 插件依赖
 
@@ -77,9 +71,13 @@
 
 > 卖服务器的广告人，就不要加了。
 
-### 赞助
+## 💰赞助
 
-如果 hao 对你有帮助，欢迎[赞助我](https://afdian.net/a/moony_la)，感谢以下赞助者对 material 项目的支持：
+**如果 Halo-theme-hao 主题对你有帮助，欢迎赞助相关开发者**
+* 困困鱼: [爱发电赞助](https://afdian.net/a/moony_la)
+* Carol: [爱发电赞助](https://afdian.net/a/carolcoral) 或 [微信赞赏码](https://redirect.cnkj.site:8099/vZWztN.webp?type=blog)
+
+### 感谢以下赞助者对 Halo-theme-hao 主题的支持：
 
 ## 🔐 许可
 

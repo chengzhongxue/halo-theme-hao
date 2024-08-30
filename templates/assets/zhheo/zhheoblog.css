@@ -4698,7 +4698,7 @@ html {
 
 /*---------竖向菜单--------*/
 #nav .menus_items .menus_item .menus_item_child.vertical_nav > .recursion_menus_item {
-    display: inline-flex;
+    display: flex;
     list-style: none;
     border-radius: 5px;
     margin: 0 4px;
@@ -8133,12 +8133,13 @@ div#banners {
         border-radius: 60px;
         margin-bottom: 12px;
         color: var(--heo-white);
-        width: 94px;
+        max-width: 170px;
         position: relative
     }
 
     .banners-link-title {
-        margin-left: auto
+        margin-left: auto;
+        padding-left: 5px;
     }
 }
 
@@ -8170,10 +8171,21 @@ div#banners {
 
 .tags-group-all {
     display: flex;
-    transform: rotate(0)
+    transform: rotate(0);
+}
+
+.tags-group-all45 {
+    display: flex;
+    transform: rotate(50deg);
+    margin-top: -40rem;
 }
 
 .tags-group-all.nowrapMove {
+    transform: rotate(0);
+    padding-bottom: 2rem
+}
+
+.tags-group-all45.nowrapMove {
     transform: rotate(0);
     padding-bottom: 2rem
 }
@@ -8231,6 +8243,7 @@ div#banners {
 
 .tags-group-icon img {
     width: 60%;
+    rotate: -50deg;
 }
 
 .nowrapMove .tags-group-icon img {
@@ -8542,7 +8555,7 @@ a.categoryButton:hover {
 
 #bber-talk .li-style {
     width: 90%;
-    max-width: 500px;
+    max-width: 80%;
     height: 25px;
     text-align: center;
     overflow: hidden;
@@ -14370,6 +14383,7 @@ div#heo-footer-bar .footer-bar-description {
     height: 200px;
     background: var(--heo-card-bg);
     display: flex;
+    border-radius: 12px;
 }
 
 #body-wrap.page .errors .aside-list .aside-list-item .content .title {
@@ -17736,7 +17750,7 @@ code:not([class]) {
 
 #nav .menus_items .menus_item .menus_item_child {
     padding: 2px 2px 4px 2px;
-    border-radius: 55px;
+    border-radius: 1.5rem;
 }
 
 #nav .menus_items .menus_item .menus_item_child > .recursion_menus_item:hover > a {
