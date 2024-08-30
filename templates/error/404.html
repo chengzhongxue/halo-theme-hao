@@ -38,7 +38,7 @@
                            th:href="@{${post.status.permalink}}"
                            th:title="${post.spec.title}"><img
                                 loading="lazy"
-                                th:src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}'
+                                th:src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : thumbnail.gen(post.spec.cover, "m")}'
                                 th:alt="${post.spec.title}"></a>
                         <div class="content">
                             <a class="title" th:href="@{${post.status.permalink}}"

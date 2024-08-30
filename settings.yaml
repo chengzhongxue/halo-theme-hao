@@ -673,6 +673,8 @@ spec:
                       label: 通讯录
                     - value: "recent-posts"
                       label: 最新文章
+                    - value: "visit-posts"
+                      label: 热门文章
                     - value: "comments"
                       label: 最新评论
                     - value: "categories"
@@ -734,6 +736,8 @@ spec:
                       label: 通讯录
                     - value: "recent-posts"
                       label: 最新文章
+                    - value: "visit-posts"
+                      label: 热门文章
                     - value: "comments"
                       label: 最新评论
                     - value: "categories"
@@ -793,6 +797,8 @@ spec:
                       label: 通讯录
                     - value: "recent-posts"
                       label: 最新文章
+                    - value: "visit-posts"
+                      label: 热门文章
                     - value: "comments"
                       label: 最新评论
                     - value: "categories"
@@ -851,6 +857,8 @@ spec:
                       label: 通讯录
                     - value: "recent-posts"
                       label: 最新文章
+                    - value: "visit-posts"
+                      label: 热门文章
                     - value: "comments"
                       label: 最新评论
                     - value: "categories"
@@ -910,6 +918,8 @@ spec:
                       label: 通讯录
                     - value: "recent-posts"
                       label: 最新文章
+                    - value: "visit-posts"
+                      label: 热门文章
                     - value: "comments"
                       label: 最新评论
                     - value: "categories"
@@ -1096,7 +1106,7 @@ spec:
               help: https://card.yuy1n.io/card/xxxxxx/gradient1,badge,bg-game-1111460,games,screenshots,badges
         - $formkit: number
           name: recentPost
-          label: 最新文章
+          label: 最新文章/热门文章
           value: 4
           help: 文章数量
         - $formkit: group
@@ -1925,11 +1935,16 @@ spec:
               value: true
             - label: 关闭
               value: false
+        - $formkit: checkbox
+          name: enable_comment
+          label: 启用评论
+          help: "启用链接插件原生适配的评论组件，需要链接插件 >= 1.4.0 版本"
         - $formkit: code
           name: linksArticle
           height: 300px
           label: 底部显示内容
           language: html
+
 
     - group: photos
       label: 图库

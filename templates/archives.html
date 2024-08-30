@@ -28,7 +28,7 @@
                             <a class="article-sort-item-img" th:href="@{${post.status.permalink}}"
                                th:title="${post.spec.title}">
                                 <img th:alt="${post.spec.title}"
-                                     th:src="${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}">
+                                     th:src="${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : thumbnail.gen(post.spec.cover, 's')}">
                             </a>
                             <div class="article-sort-item-info">
                                 <div class="article-sort-item-time"><i class="far fa-calendar-alt"></i>

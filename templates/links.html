@@ -21,10 +21,10 @@
                 <hr th:if="${theme.config.comments.use != 'commentWidget'}" />
                 <!--/* 评论组件 */-->
                 <th:block
-                        th:replace="~{modules/comment :: comment(group = 'content.halo.run',
-                  kind = 'SinglePage',
-                  name = 'links',
-                  allowComment = ${theme.config.comments.use != 'commentWidget'})}"/>
+                        th:replace="~{modules/comment :: comment(group = 'plugin.halo.run',
+                  kind = 'Plugin',
+                  name = ${pluginName},
+                  allowComment = ${theme.config.link.enable_comment})}"/>
                 <style>
                     /*修复友链页面表情选择器无法显示完全的bug*/
                     .tk-submit {

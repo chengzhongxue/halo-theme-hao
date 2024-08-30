@@ -12,7 +12,7 @@
             <div class="post_cover left_radius">
                 <a th:attr="title=${post.spec.title}" th:href="@{${post.status.permalink}}">
                     <img class="post_bg"
-                         th:with='img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}'
+                         th:with='img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : thumbnail.gen(post.spec.cover, "m")}'
                          th:alt="${post.spec.title}" th:data-lazy-src="${ isLazyload ? img : ''}"
                          th:src="${isLazyload ? loadingImg : img}">
                 </a>

@@ -17,7 +17,7 @@ postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,'?') ? theme
                 <div th:if="${!containsTitle ? iterStat.index <6 : true}">
                     <a th:href="@{${recommandPost.status.permalink}}" th:title="${recommandPost.spec.title}">
                         <img alt="cover" class="cover" id="preimg"
-                             th:with="img = ${#strings.isEmpty(recommandPost.spec.cover) ? postRandomImg+recommandPost.spec.title : recommandPost.spec.cover}"
+                             th:with="img = ${#strings.isEmpty(recommandPost.spec.cover) ? postRandomImg+recommandPost.spec.title : thumbnail.gen(recommandPost.spec.cover, 'm')}"
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}">
                         <div class="content is-center">
@@ -37,7 +37,7 @@ postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,'?') ? theme
                 <div th:if="${!containsTitle ? iterStat.index <2 : true}">
                     <a th:href="@{${recommandPost.status.permalink}}" th:title="${recommandPost.spec.title}">
                         <img class="cover" alt="cover"
-                             th:with="img = ${#strings.isEmpty(recommandPost.spec.cover) ? postRandomImg+recommandPost.spec.title : recommandPost.spec.cover}"
+                             th:with="img = ${#strings.isEmpty(recommandPost.spec.cover) ? postRandomImg+recommandPost.spec.title : thumbnail.gen(recommandPost.spec.cover, 'm')}"
 
                              th:src="${isLazyload ? loadingImg : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}">
