@@ -24,7 +24,7 @@
                         th:replace="~{modules/comment :: comment(group = 'plugin.halo.run',
                   kind = 'Plugin',
                   name = ${pluginName},
-                  allowComment = ${theme.config.link.enable_comment})}"/>
+                  allowComment = ${theme.config.link.enable_comment == true})}"/>
                 <style>
                     /*修复友链页面表情选择器无法显示完全的bug*/
                     .tk-submit {
