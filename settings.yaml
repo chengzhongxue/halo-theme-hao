@@ -705,7 +705,7 @@ spec:
                       label: 通讯录
                     - value: "recent-posts"
                       label: 最新文章
-                    - value: "visit-posts"
+                    - value: "hot-posts"
                       label: 热门文章
                     - value: "comments"
                       label: 最新评论
@@ -768,7 +768,7 @@ spec:
                       label: 通讯录
                     - value: "recent-posts"
                       label: 最新文章
-                    - value: "visit-posts"
+                    - value: "hot-posts"
                       label: 热门文章
                     - value: "comments"
                       label: 最新评论
@@ -829,7 +829,7 @@ spec:
                       label: 通讯录
                     - value: "recent-posts"
                       label: 最新文章
-                    - value: "visit-posts"
+                    - value: "hot-posts"
                       label: 热门文章
                     - value: "comments"
                       label: 最新评论
@@ -889,7 +889,7 @@ spec:
                       label: 通讯录
                     - value: "recent-posts"
                       label: 最新文章
-                    - value: "visit-posts"
+                    - value: "hot-posts"
                       label: 热门文章
                     - value: "comments"
                       label: 最新评论
@@ -950,7 +950,7 @@ spec:
                       label: 通讯录
                     - value: "recent-posts"
                       label: 最新文章
-                    - value: "visit-posts"
+                    - value: "hot-posts"
                       label: 热门文章
                     - value: "comments"
                       label: 最新评论
@@ -1138,7 +1138,12 @@ spec:
               help: https://card.yuy1n.io/card/xxxxxx/gradient1,badge,bg-game-1111460,games,screenshots,badges
         - $formkit: number
           name: recentPost
-          label: 最新文章/热门文章
+          label: 最新文章
+          value: 4
+          help: 文章数量
+        - $formkit: number
+          name: hotPost
+          label: 热门文章
           value: 4
           help: 文章数量
         - $formkit: group
