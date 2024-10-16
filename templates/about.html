@@ -24,26 +24,26 @@
                     
                     <div class="author-info">
                         <div class="author-tag-left"
-                             th:if="${not #lists.isEmpty(theme.config.about.authorInfoLeftTags)}"
-                             th:with="authorTags = ${theme.config.about.authorInfoLeftTags}">
+                             th:if="${not #lists.isEmpty(theme.config.about.author_info_left_tags)}"
+                             th:with="authorTags = ${theme.config.about.author_info_left_tags}">
                             <span class="author-tag" th:each="authorTag : ${authorTags}"
-                                  th:text="${authorTag.tag}"></span>
+                                  th:text="${authorTag}"></span>
                         </div>
                         <div class="author-img">
                             <img
                                     th:src="@{${#strings.isEmpty(site.logo) ?  assets_link + '/images/hao-logo.jpg' : site.logo}}">
                         </div>
                         <div class="author-tag-right"
-                             th:if="${not #lists.isEmpty(theme.config.about.authorInfoRightTags)}"
-                             th:with="authorTags = ${theme.config.about.authorInfoRightTags}">
+                             th:if="${not #lists.isEmpty(theme.config.about.author_info_right_tags)}"
+                             th:with="authorTags = ${theme.config.about.author_info_right_tags}">
                             <span class="author-tag" th:each="authorTag : ${authorTags}"
-                                  th:text="${authorTag.tag}"></span>
+                                  th:text="${authorTag}"></span>
                         </div>
                     </div>
                     <div class="author-title" th:text="${singlePage.spec.title}"></div>
                     
                     <th:block
-                            th:replace="~{modules/about-widgets :: about-widgets(${theme.config.about.widgetList})}"></th:block>
+                            th:replace="~{modules/about-widgets :: about-widgets(${theme.config.about.widget_list})}"></th:block>
                     
                     <div class="author-content">
                         <div class="create-site-post author-content-item single" th:utext="${theme.config.about.xjlc}">

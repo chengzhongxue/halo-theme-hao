@@ -538,8 +538,25 @@ spec:
                   value: custom-tag
                 - label: 自定义路径
                   value: custom-url
-            - $formkit: repeater
+            - $formkit: categorySelect
               if: $get(nav).value === 'custom-category'
+              name: navCategory
+              key: navCategory
+              label: 自定义分类
+              multiple: true
+              clearable: true
+              searchable: true
+              sortable: true
+            - $formkit: checkbox
+              if: $get(nav).value === 'custom-category'
+              name: show_deprecated_items_category
+              key: show_deprecated_items_category
+              id: show_deprecated_items_category
+              label: 显示已过时选项
+              value: false
+              help: 这些选项将在未来的版本移除，请尽快使用替代方案
+            - $formkit: repeater
+              if: "$get(show_deprecated_items_category).value && $get(nav).value === 'custom-category'"
               name: navCustomCategory
               key: navCustomCategory
               label: 自定义分类
@@ -548,8 +565,25 @@ spec:
                 - $formkit: categorySelect
                   name: category
                   label: 分类
-            - $formkit: repeater
+            - $formkit: tagSelect
               if: $get(nav).value === 'custom-tag'
+              name: navTag
+              key: navTag
+              label: 自定义标签
+              multiple: true
+              clearable: true
+              searchable: true
+              sortable: true
+            - $formkit: checkbox
+              if: $get(nav).value === 'custom-tag'
+              name: show_deprecated_items_tag
+              key: show_deprecated_items_tag
+              id: show_deprecated_items_tag
+              label: 显示已过时选项
+              value: false
+              help: 这些选项将在未来的版本移除，请尽快使用替代方案
+            - $formkit: repeater
+              if: $get(show_deprecated_items_tag).value && $get(nav).value === 'custom-tag'
               name: navCustomTag
               key: navCustomTag
               label: 自定义标签
@@ -1011,7 +1045,7 @@ spec:
               name: stickerImg
               if: $get(profileStyle).value == 'one'
               label: 贴纸
-              value: https://kunkunyu.com/upload/omxo3N22290781690363822143.png
+              value: /upload/omxo3N22290781690363822143.png
               placeholder: 请输入图片地址
             - $formkit: text
               if: $get(profileStyle).value == 'one'
@@ -1422,9 +1456,9 @@ spec:
             style_one:
               owner_enable: false
               runtime_enable: true
-              work_img: "https://kunkunyu.com/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
+              work_img: "/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
               work_description: "距离月入25k也就还差一个大佬带我~"
-              offduty_img: "https://kunkunyu.com/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
+              offduty_img: "/upload/%E5%9B%B0%E5%9B%B0%E9%B1%BC-%E4%B8%8B%E7%8F%AD%E5%95%A6-yellowgreen.svg"
               offduty_description: "下班了就该开开心心的玩耍，嘿嘿~"
               bdageitem_enable: false
               bdageitem:
@@ -2145,9 +2179,32 @@ spec:
               label: 后半部分图片
               placeholder: 请输入内容
               value: "https://npm.elemecdn.com/hexo-butterfly-envelope/lib/after.png"
+        - $formkit: list
+          if: $get(enable_envelope_comment).value
+          name: message_list
+          label: 正文
+          addLabel: 添加标签
+          help: 选项是默认给的值
+          itemType: string
+          value:
+            - 有什么想问的？
+            - 有什么想说的？
+            - 有什么想吐槽的？
+            - 哪怕是有什么想吃的，都可以告诉我哦~
+          children:
+            - $formkit: text
+              index: "$index"
+              validation: required
+        - $formkit: checkbox
+          name: show_deprecated_items_message
+          key: show_deprecated_items_message
+          id: show_deprecated_items_message
+          label: 显示已过时选项
+          value: false
+          help: 这些选项将在未来的版本移除，请尽快使用替代方案
         - $formkit: repeater
           name: messageList
-          if: $get(enable_envelope_comment).value
+          if: $get(enable_envelope_comment).value && $get(show_deprecated_items_message).value
           label: 正文
           value:
             - content: "有什么想问的？"
@@ -2178,8 +2235,48 @@ spec:
     - group: about
       label: 关于
       formSchema:
+        - $formkit: select
+          name: widget_list
+          multiple: true
+          sortable: true
+          label: 小部件
+          help: 我的介绍&我的想法, 我的问候, 技能&职业生涯, 性格&图片, 座右铭, 爱好, 关注偏好&音乐偏好, 数据统计&作者相关信息。
+          value:
+            - content-idea
+            - hello-about
+            - authorCareers
+            - personalities-photo
+            - textarea
+            - game
+            - like-music
+            - statistics-map
+          options:
+            - value: content-idea
+              label: 我的介绍&我的想法
+            - value: hello-about
+              label: 我的问候
+            - value: authorCareers
+              label: 技能&职业生涯
+            - value: personalities-photo
+              label: 性格&图片
+            - value: textarea
+              label: 座右铭
+            - value: game
+              label: 爱好
+            - value: like-music
+              label: 关注偏好&音乐偏好
+            - value: statistics-map
+              label: 数据统计&作者相关信息
+        - $formkit: checkbox
+          name: show_deprecated_items_widget
+          key: show_deprecated_items_widget
+          id: show_deprecated_items_widget
+          label: 显示已过时选项
+          value: false
+          help: 这些选项将在未来的版本移除，请尽快使用替代方案
         - $formkit: repeater
           name: widgetList
+          if: $get(show_deprecated_items_widget).value
           label: 小部件
           help: 我的介绍&我的想法, 我的问候, 技能&职业生涯, 性格&图片, 座右铭, 爱好, 关注偏好&音乐偏好, 数据统计&作者相关信息。
           value:
@@ -2213,7 +2310,26 @@ spec:
                   label: 关注偏好&音乐偏好
                 - value: statistics-map
                   label: 数据统计&作者相关信息
+
+        - $formkit: list
+          name: author_info_left_tags
+          label: 个人标签-左
+          addLabel: 添加标签
+          help: 头像左侧个人标签
+          itemType: string
+          children:
+            - $formkit: text
+              index: "$index"
+              validation: required
+        - $formkit: checkbox
+          name: show_deprecated_items_authorInfoLeftTags
+          key: show_deprecated_items_authorInfoLeftTags
+          id: show_deprecated_items_authorInfoLeftTags
+          label: 显示已过时选项
+          value: false
+          help: 这些选项将在未来的版本移除，请尽快使用替代方案
         - $formkit: repeater
+          if: $get(show_deprecated_items_authorInfoLeftTags).value
           name: authorInfoLeftTags
           label: 个人标签-左
           help: 头像左侧个人标签
@@ -2223,7 +2339,25 @@ spec:
               name: tag
               label: 标签
               placeholder: 请输入内容
+        - $formkit: list
+          name: author_info_right_tags
+          label: 个人标签-右
+          addLabel: 添加标签
+          help: 头像右侧个人标签
+          itemType: string
+          children:
+            - $formkit: text
+              index: "$index"
+              validation: required
+        - $formkit: checkbox
+          name: show_deprecated_items_authorInfoRightTags
+          key: show_deprecated_items_authorInfoRightTags
+          id: show_deprecated_items_authorInfoRightTags
+          label: 显示已过时选项
+          value: false
+          help: 这些选项将在未来的版本移除，请尽快使用替代方案
         - $formkit: repeater
+          if: $get(show_deprecated_items_authorInfoRightTags).value
           name: authorInfoRightTags
           label: 个人标签-右
           help: 头像右侧个人标签

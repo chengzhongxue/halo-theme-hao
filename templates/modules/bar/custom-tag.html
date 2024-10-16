@@ -5,9 +5,9 @@
             <a href="/">首页</a>
         </div>
 
-        <th:block th:each="customTag : ${theme.config.layout.navs.navCustomTag}">
+        <th:block th:each="navTag : ${theme.config.layout.navs.navTag}">
             <div class="category-bar-item"
-                 th:each="tagItem : ${tagFinder.getByName(customTag.tag)}"
+                 th:each="tagItem : ${tagFinder.getByName(navTag)}"
                  th:id="${tagItem.spec.displayName}">
                 <a th:href="@{${tagItem.status.permalink}}" th:text="${tagItem.spec.displayName}"></a>
             </div>

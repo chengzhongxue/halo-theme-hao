@@ -442,28 +442,5 @@ let halo = {
             }
         }
     },
-    logout() {
-        fetch('/logout', {
-            method: 'POST',
-            headers: {
-                'X-Xsrf-Token':
-                    document.cookie
-                        .split('; ')
-                        .find((row) => row.startsWith('XSRF-TOKEN'))
-                        ?.split('=')[1] || '',
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                window.location.reload();
-            } else {
-                console.error('Logout failed:', response.status);
-            }
-        })
-        .catch(error => {
-            console.error('Network error:', error);
-        });
-    }
-
 
 }
