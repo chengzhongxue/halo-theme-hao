@@ -1,12 +1,11 @@
 <!-- 标签 -->
 <th:block
-          th:with="tags = ${tagFinder.listAll()}, tagQuantity = ${#conversions.convert(theme.config.sidebar.tagQuantity, 'java.lang.Integer')}">
+          th:with="tags = ${tagFinder.list(1,theme.config.sidebar.tagQuantity)}">
 
     <div class="item-headline"></div>
     <div class="card-tag-cloud">
         <a class="tag-item" style="font-size:1em" th:each="tag,iterStat : ${tags}"
            th:href="@{${tag.status.permalink}}"
-           th:if="${tagQuantity >= 0 && iterStat.index < tagQuantity || tagQuantity < 0}"
            th:title="${tag.spec.displayName}">
             <!-- 角标 -->
             [[${tag.spec.displayName}]]<sup th:text="${tag.status.visiblePostCount}"></sup>

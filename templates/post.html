@@ -120,12 +120,15 @@
                                 <i class="haofont hao-icon-spinner fa-spin"></i>
                             </span>
                         </a>
-                        <a class="post-meta-editor" sec:authorize="isAuthenticated()" data-flag-title="编辑文章"
-                           title="编辑文章"
-                           th:attr="onclick='javascript:window.open(\''+ '/console/posts/editor?name='+${post.metadata.name}+'&returnToView=true\''+ ',' +'\'_self'+'\')'">
-                            <i style="margin-top: 2px;" class="haofont hao-icon-bianji post-meta-icon"></i>
-                            <span>编辑</span>
-                        </a>
+                        <th:block th:with="contributorLogin = ${contributorFinder.getContributor(#authentication.name)}">
+                            <a class="post-meta-editor" sec:authorize="isAuthenticated()" data-flag-title="编辑文章"
+                               title="编辑文章"
+                               th:if="${contributorLogin.name} == ${post.spec.owner}"
+                               th:attr="onclick='javascript:window.open(\''+ '/console/posts/editor?name='+${post.metadata.name}+'&returnToView=true\''+ ',' +'\'_self'+'\')'">
+                                <i style="margin-top: 2px;" class="haofont hao-icon-bianji post-meta-icon"></i>
+                                <span>编辑</span>
+                            </a>
+                        </th:block>
                     </div>
 
                 </div>
