@@ -12,7 +12,7 @@
 </div>
 
 <!-- 主题预览图 -->
-![](https://redirect.cnkj.site:8099/b/2024/66177ca6056fd.webp?type=blog)
+![demo-hao](https://redirect.cnkj.site:8099/bKlEJK.webp?type=blog)
 
 ## 🔥 预览
 
@@ -37,7 +37,8 @@
 3. 如果还未解决，可以加群求助！！！
 4. 如果群友也解决不了，再考虑提ISSUE！！！
 5. `1.5.5`及以上版本需要`Halo`版本>=`2.17.0`
-6. **若安装主题后出现500错误，请到主题设置页面，将每个设置项都保存一下！！！**
+6. `1.6.0`及以上版本需要`Halo`版本>=`2.20.0`（自定义登录页兼容）
+7. **若安装主题后出现500错误，请到主题设置页面，将每个设置项都保存一下！！！**
 
 ### 🔌 插件依赖
 
@@ -60,7 +61,8 @@
 
 ## 📝 使用
 
-[点我查看](https://docs.kunkunyu.com/docs/hao)
+* [新版本主题文档(持续更新中)](https://docs.kunkunyu.com/docs/hao)
+* [老版本主题文档](https://www.yuque.com/liuzhihangs/halo-theme-hao)
 
 ## 💬 讨论
 
