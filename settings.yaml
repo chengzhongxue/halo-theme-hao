@@ -335,16 +335,6 @@ spec:
             techStack:
           children:
             - $formkit: select
-              name: bannersBackgroundRollStyle
-              id: bannersBackgroundRollStyle
-              key: bannersBackgroundRollStyle
-              label: 背景图滚动样式
-              options:
-                - label: 垂直滚动
-                  value: tags-group-all
-                - label: 倾斜滚动
-                  value: tags-group-all45
-            - $formkit: select
               name: bannersBackground
               id: bannersBackground
               key: bannersBackground
