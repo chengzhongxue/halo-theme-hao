@@ -20,6 +20,7 @@
 |:------:|:-----------------------:|
 | 新 · 都在 | https://blog.xindu.site/?preview-theme=theme-hao |
 |楠笙|https://blog.nanshengwx.cn|
+|登逆|denlee.cc|
 
 ## ℹ️ 简介
 
