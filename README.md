@@ -19,6 +19,7 @@
 |  站点名称  |          站点地址           |
 |:------:|:-----------------------:|
 | 新 · 都在 | https://blog.xindu.site/?preview-theme=theme-hao |
+|楠笙|https://blog.nanshengwx.cn|
 
 ## ℹ️ 简介
 
