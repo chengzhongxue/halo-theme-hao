@@ -1112,9 +1112,14 @@ spec:
             - $formkit: url
               name: powerLink
               label: 赞助地址
+              help: https://afdian.com/a/ (必须带上末尾的/)
             - $formkit: number
               name: showNum
               label: 最大展示条数
+            - $formkit: text
+              name: username
+              label: 赞助用户名
+              help: carolcoral
         - $formkit: group
           name: music
           label: 音乐卡片
