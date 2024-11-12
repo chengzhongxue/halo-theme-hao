@@ -90,10 +90,10 @@
                 switch: [[${ theme.config.tool.snackbar.switch }]]
             },
             postAi: {
-                ai: [[${htmlType != 'post' || !theme.config.post.aiDescription.aiDescriptionEnable  ?  ''  :
-                                    theme.config.post.aiDescription.mode != 'local' && !theme.config.post.aiDescription.switchBtn ? '' :
-                                    post.spec.excerpt.autoGenerate ? '本地模式需要自己填写文章摘要' :
-                                    #strings.isEmpty(post.status.excerpt) ? '请填写文章摘要' : post.status.excerpt  }]],
+                 ai: [[${htmlType != 'post' || !theme.config.post.aiDescription.aiDescriptionEnable ? '' : 
+                                    theme.config.post.aiDescription.mode != 'local' && !theme.config.post.aiDescription.switchBtn ? '' : 
+                                    post.spec.excerpt.autoGenerate ? (#strings.isEmpty(post.status.excerpt) ? '本地模式需要自己填写文章摘要' : post.status.excerpt ): 
+                                    (#strings.isEmpty(post.status.excerpt) ? '请填写文章摘要' : post.status.excerpt )}]],
                 randomNum: [[${theme.config.post.aiDescription.randomNum}]],
                 basicWordCount: [[${theme.config.post.aiDescription.basicWordCount}]],
                 btnLink: "[(${theme.config.post.aiDescription.btnLink})]",
