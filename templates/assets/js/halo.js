@@ -380,7 +380,7 @@ let halo = {
             var data = getArrayItems(values, 1);
             let powerStar = document.getElementById("power-star")
             if (values.length === 0) {
-                powerStar.href = GLOBAL_CONFIG.source.power.powerLink
+                powerStar.href = GLOBAL_CONFIG.source.power.powerLink + GLOBAL_CONFIG.source.power.username
                 powerStar.innerHTML = ` 
                         <div id="power-star-image" style="background-image: url('/themes/theme-hao/assets/images/afadian/afadian.webp')">
                         </div>
@@ -390,7 +390,7 @@ let halo = {
                         </div>`;
             } else {
                 if (powerStar) {
-                    powerStar.href = "https://afdian.net/u/" + data[0]["user"].user_id
+                    powerStar.href = GLOBAL_CONFIG.source.power.powerLink + data[0]["user"].user_id
                     powerStar.innerHTML = ` 
                         <div id="power-star-image" style="background-image: url(${data[0]["user"].avatar})">
                         </div>
