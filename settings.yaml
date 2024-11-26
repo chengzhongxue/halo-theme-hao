@@ -72,6 +72,16 @@ spec:
                   value: true
                 - label: 隐藏
                   value: false
+            - $formkit: select
+              name: enable_ali_iconfont_symbol_header
+              label: 阿里巴巴IconFont Symbol
+              value: false
+              help: '开启后，可以使用阿里IconFont的Symbol彩色图标。语法为 #icon-xxx，例如 #icon-shouye'
+              options:
+                - value: true
+                  label: 开启
+                - value: false
+                  label: 关闭
         - $formkit: menuRadio
           name: leftMenu
           if: $get(pc_leftMenu).value
@@ -380,7 +390,7 @@ spec:
               name: categoryGroup
               id: categoryGroup
               key: categoryGroup
-              min: 2
+              min: 0
               max: 2
               children:
                 - $formkit: text
