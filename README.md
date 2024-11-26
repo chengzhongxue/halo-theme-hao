@@ -72,7 +72,9 @@
 如果你对主题有什么建议或者意见，欢迎提 PR & issue。
 进群，添加企业微信 （备注什么主题）
 
-<img width="360" src="https://api.minio.yyds.pink/halo-docs/2024/11/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20241107125530.jpg" />
+[//]: # (<img width="360" src="https://api.minio.yyds.pink/halo-docs/2024/11/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20241107125530.jpg" />)
+
+![github-discus](WX20241126-135909@2x.png)
 
 > 卖服务器的广告人，就不要加了。
 
