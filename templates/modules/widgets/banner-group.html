@@ -174,7 +174,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <!--  banners 使用默认值-->
             <div class="tags-group-wrapper"
                  th:if="${#strings.equals(theme.config.top.BannerLeft.bannersBackground, 'techStack')}"
@@ -186,7 +186,7 @@
                             <img th:with=" img = @{${techOdd.url}}" th:src="${img}"
                                  th:title="${techOdd.name}">
                         </div>
-
+                        
                         <div class="tags-group-icon" th:style="'background:' + ${techEven.background}"
                              th:with="techEven = ${tech}">
                             <img th:with=" img = @{${techEven.url}}" th:src="${img}"
@@ -205,83 +205,101 @@
         </div>
         <div class="banners-link" th:if="${not #lists.isEmpty(theme.config.top.BannerLeft.categoryGroup)}"
              th:with="groups = ${theme.config.top.BannerLeft.categoryGroup}">
-            <a class="banners-link-btn blb-hot" th:href="@{${groups[0].url}}">
-                <i th:if="${not #strings.startsWith(groups[0].icon, 'http')}" th:class="${groups[0].icon}"></i>
-                <img th:if="${#strings.startsWith(groups[0].icon, 'http')}" th:src="@{${groups[0].icon}}"
-                     alt="icon" />
-                <div class="banners-link-title">[[${groups[0].title}]]</div>
-            </a>
-            <a class="banners-link-btn blb-top" th:href="@{${groups[1].url}}">
-                <i th:if="${not #strings.startsWith(groups[1].icon, 'http')}" th:class="${groups[1].icon}"></i>
-                <img th:if="${#strings.startsWith(groups[1].icon, 'http')}" th:src="@{${groups[1].icon}}"
-                     alt="icon" />
-                <div class="banners-link-title">[[${groups[1].title}]]</div>
-            </a>
+            <div th:if="${#lists.size(theme.config.top.BannerLeft.categoryGroup) >= 1}">
+                <a class="banners-link-btn blb-hot" th:href="@{${groups[0].url}}">
+                    <i th:if="${not #strings.startsWith(groups[0].icon, 'http')}" th:class="${groups[0].icon}"></i>
+                    <img th:if="${#strings.startsWith(groups[0].icon, 'http')}" th:src="@{${groups[0].icon}}"
+                         alt="icon"/>
+                    <div class="banners-link-title">[[${groups[0].title}]]</div>
+                </a>
+            </div>
+            <div th:if="${#lists.size(theme.config.top.BannerLeft.categoryGroup) > 1}">
+                <a class="banners-link-btn blb-top" th:href="@{${groups[1].url}}">
+                    <i th:if="${not #strings.startsWith(groups[1].icon, 'http')}" th:class="${groups[1].icon}"></i>
+                    <img th:if="${#strings.startsWith(groups[1].icon, 'http')}" th:src="@{${groups[1].icon}}"
+                         alt="icon"/>
+                    <div class="banners-link-title">[[${groups[1].title}]]</div>
+                </a>
+            </div>
+        
         </div>
     </div>
-
+    
     <!-- category -->
-    <div class="categoryGroup">
+    <div class="categoryGroup" th:if="${not #lists.isEmpty(theme.config.top.BannerLeft.categoryGroup)}">
         <th:block th:if="${not #lists.isEmpty(theme.config.top.BannerLeft.categoryGroup)}"
                   th:with="groups = ${theme.config.top.BannerLeft.categoryGroup}">
-            <div class="categoryItem">
+            <div class="categoryItem" th:if="${#lists.size(theme.config.top.BannerLeft.categoryGroup) >= 1}">
                 <a class="categoryButton CB1 bikan" th:href="@{${groups[0].url}}">
                     <span class="categoryButtonText">[[${groups[0].title}]]</span>
                     <i th:if="${not #strings.startsWith(groups[0].icon, 'http')}" th:class="${groups[0].icon}"></i>
                     <img th:if="${#strings.startsWith(groups[0].icon, 'http')}" th:src="@{${groups[0].icon}}"
-                         alt="icon" />
+                         alt="icon"/>
                 </a>
             </div>
-            <div class="categoryItem">
+            <div class="categoryItem" th:if="${#lists.size(theme.config.top.BannerLeft.categoryGroup) > 1}">
                 <a class="categoryButton remen" th:href="@{${groups[1].url}}">
                     <span class="categoryButtonText">[[${groups[1].title}]]</span>
                     <i th:if="${not #strings.startsWith(groups[1].icon, 'http')}" th:class="${groups[1].icon}"></i>
                     <img th:if="${#strings.startsWith(groups[1].icon, 'http')}" th:src="@{${groups[1].icon}}"
-                         alt="icon" />
+                         alt="icon"/>
                 </a>
             </div>
         </th:block>
     </div>
-    <th:block th:if="${not #lists.isEmpty(theme.config.top.BannerLeft.categoryGroup)}"
+    <th:block th:if="${#lists.size(theme.config.top.BannerLeft.categoryGroup) >= 1}"
               th:with="groups = ${theme.config.top.BannerLeft.categoryGroup}">
         <style>
             a.categoryButton.bikan {
                 background: linear-gradient(to right, [[${groups[0].colorOneLight}]], [[${groups[0].colorTwoLight}]]);
                 background-size: 200%;
             }
-
-            a.categoryButton.remen {
-                background: linear-gradient(to right, [[${groups[1].colorOneLight}]], [[${groups[1].colorTwoLight}]]);
-                background-size: 200%;
-            }
+            
             [data-theme=dark] a.categoryButton.bikan {
                 background: linear-gradient(to right, [[${groups[0].colorOneDark}]], [[${groups[0].colorTwoDark}]]);
                 background-size: 200%;
             }
-
-            [data-theme=dark] a.categoryButton.remen {
-                background: linear-gradient(to right, [[${groups[1].colorOneDark}]], [[${groups[1].colorTwoDark}]]);
-                background-size: 200%;
-            }
-
+            
             .banners-link-btn.blb-hot {
                 background: linear-gradient(to right, [[${groups[0].colorOneLight}]], [[${groups[0].colorTwoLight}]]);
                 background-size: 200%
             }
-
+            
             .banners-link-btn.blb-hot:hover,
             .banners-link-btn.blb-top:hover {
                 background-position: 100% 0;
                 cursor: pointer;
                 color: var(--heo-white)
             }
-
+        </style>
+    
+    </th:block>
+    <th:block th:if="${#lists.size(theme.config.top.BannerLeft.categoryGroup) > 1}"
+              th:with="groups = ${theme.config.top.BannerLeft.categoryGroup}">
+        <style>
+            a.categoryButton.remen {
+                background: linear-gradient(to right, [[${groups[1].colorOneLight}]], [[${groups[1].colorTwoLight}]]);
+                background-size: 200%;
+            }
+            
+            [data-theme=dark] a.categoryButton.remen {
+                background: linear-gradient(to right, [[${groups[1].colorOneDark}]], [[${groups[1].colorTwoDark}]]);
+                background-size: 200%;
+            }
+            
+            .banners-link-btn.blb-hot:hover,
+            .banners-link-btn.blb-top:hover {
+                background-position: 100% 0;
+                cursor: pointer;
+                color: var(--heo-white)
+            }
+            
             .banners-link-btn.blb-top {
                 background: linear-gradient(to right, [[${groups[1].colorOneLight}]], [[${groups[1].colorTwoLight}]]);
                 background-size: 200%
             }
         </style>
-
+    
     </th:block>
 
 </div>
