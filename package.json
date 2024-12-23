@@ -1,5 +1,8 @@
 {
   "name": "halo-theme-hao",
   "version": "1.4.7",
+  "scripts": {
+    "syncToTheme": "node scripts/syncToTheme.js /Users/tanglei/halo2-dev/themes/theme-hao"
+  },
   "dependencies": {}
 }
