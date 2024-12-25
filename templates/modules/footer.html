@@ -105,7 +105,7 @@
         <div class="footer-banner-links">
             <div class="footer-banner-left">
                 <div id="footer-banner-tips">
-                    <div style="display: flex;flex-direction: row;align-items: center;">
+                    <div style="display: flex;flex-direction: row;align-items: center; font-weight: 600">
                         <th:block th:if="${not #strings.isEmpty(theme.config.basics.siteStartTime)}">
                             ©[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] - [[${#dates.format(new
                             java.util.Date(), 'yyyy')}]]
@@ -118,7 +118,7 @@
                 </div>
             </div>
             <div class="footer-banner-right">
-                
+
                 <!-- 又拍云 -->
                 <a th:if="${theme.config.footer.footerContent.default_enable_group.yunzhichi && theme.config.footer.footerContent.default_enable_group.yunzhichi_list == 'upyun_cloud'}"
                    class="footer-banner-link cloud" href="https://www.upyun.com/"
@@ -164,7 +164,7 @@
                     <img th:src="@{${theme.config.footer.footerContent.default_enable_group.yunzhichi_url}}" alt="custom_cloud" class="entered loading cloud"/>
                     &nbsp;&nbsp;<span>提供CDN加速/云存储服务</span>
                 </a>
-                
+
                 <!-- 订阅 需要 RSS 插件支持 -->
                 <a class="footer-banner-link" href="/rss.xml" th:if="${pluginFinder.available('PluginFeed')} and ${theme.config.footer.footerContent.default_enable_group.dingyue}">订阅</a>
                 <a th:if="${theme.config.footer.footerContent.default_enable_group.zhuti}" class="footer-banner-link" href="https://github.com/liuzhihang/halo-theme-hao">主题</a>
@@ -222,7 +222,7 @@
             height: 32px;
         }
     </style>
-    
+
     <th:block th:if="${theme.config.top.global_background.enable_global_background_img}">
         <style>
             @media screen and (min-width: 1300px) {
@@ -233,7 +233,7 @@
                     flex-direction: column;
                 }
             }
-            
+
             @media screen and (max-width: 1300px) {
                 #footer {
                     background: linear-gradient(180deg, var(--heo-background) 0%, #fff0 25%);
@@ -241,10 +241,10 @@
                     z-index: 3;
                 }
             }
-        
+
         </style>
     </th:block>
-    
+
 </footer>
 
 

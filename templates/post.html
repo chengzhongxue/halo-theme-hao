@@ -157,21 +157,22 @@
                 <!-- 文章ai摘要 -->
                 <div class="post-ai" th:if="${not #strings.isEmpty(#annotations.get(post, 'ai')) ?
                       #annotations.get(post, 'ai') == 'true' : theme.config.post.aiDescription.aiDescriptionEnable}">
-                    <div class="ai-title"><i class="haofont hao-icon-bilibili"></i>
-                        <div class="ai-title-text">AI-摘要</div>
-                        <div th:if="${theme.config.post.aiDescription.switchBtn}" id="ai-Toggle">切换</div>
+                    <div class="ai-title">
+                        <div class="ai-title-text">文章摘要</div>
+<!--                        <div th:if="${theme.config.post.aiDescription.switchBtn}" id="ai-Toggle">切换</div>-->
                         <i class="haofont hao-icon-arrow-rotate-right"></i>
-                        <div th:if="${#strings.equals(theme.config.post.aiDescription.mode, 'local')}" class="ai-tag" id="ai-tag">[[${theme.config.post.aiDescription.gptName}]] GPT</div>
-                        <div th:if="${#strings.equals(theme.config.post.aiDescription.mode, 'tianli')}" class="ai-tag" id="ai-tag">Tianli GPT</div>
+                        <div th:if="${#strings.equals(theme.config.post.aiDescription.mode, 'local')}" class="ai-tag" id="ai-tag">[[${theme.config.post.aiDescription.gptName}]]</div>
+<!--                        <div th:if="${#strings.equals(theme.config.post.aiDescription.mode, 'tianli')}" class="ai-tag" id="ai-tag">Tianli GPT</div>-->
                     </div>
                     <div class="ai-explanation" style="display: block;">AI初始化中...</div>
                     <div class="ai-btn-box">
-                        <div class="ai-btn-item">介绍自己</div>
-                        <div class="ai-btn-item">生成本文简介</div>
-                        <div class="ai-btn-item">推荐相关文章</div>
-                        <div class="ai-btn-item">前往主页</div>
+<!--                        <div class="ai-btn-item">介绍自己</div>-->
+<!--                        <div class="ai-btn-item">生成本文简介</div>-->
+<!--                        <div class="ai-btn-item">推荐相关文章</div>-->
+<!--                        <div class="ai-btn-item">前往主页</div>-->
                         <div class="ai-btn-item" id="go-tianli-blog">前往tianli博客</div>
                     </div>
+                    <div class="ai-btn-tips">此内容根据文章内容生成，并经过人工审核，仅用于文章内容的解析与总结</div>
                 </div>
 
                 <!-- 文章内容 -->

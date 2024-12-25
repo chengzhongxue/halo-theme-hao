@@ -12,8 +12,10 @@
 #post-comment .code-toolbar{
     margin: 18px 0;
     overflow: hidden;
-    -webkit-box-shadow: var(--rl-code-bar-shadow);
-    box-shadow: var(--rl-code-bar-shadow);
+    font-size: 14px;
+    border: var(--style-border-always);
+    /*-webkit-box-shadow: var(--rl-code-bar-shadow);*/
+    /*box-shadow: var(--rl-code-bar-shadow);*/
     border-radius: 7px
 }
 

@@ -71,7 +71,7 @@
     --heo-card-bg-none: rgba(255, 255, 255, 0);
     --heo-shadow-lightblack: 0 5px 12px -5px rgba(102, 68, 68, 0);
     --heo-shadow-light2black: 0 5px 12px -5px rgba(102, 68, 68, 0);
-    --heo-card-border: #e3e8f7;
+    --heo-card-border: rgb(226 232 240);
     --heo-shadow-border: 0 8px 16px -4px #2c2d300c;
     --style-border-forever: 2px solid var(--heo-main);
 }
@@ -108,7 +108,7 @@
     --heo-card-bg-none: #1d1b2600;
     --heo-shadow-lightblack: 0 5px 12px -5px rgba(102, 68, 68, 0);
     --heo-shadow-light2black: 0 5px 12px -5px rgba(102, 68, 68, 0);
-    --heo-card-border: #3d3d3f;
+    --heo-card-border: rgb(63, 63, 70);
     --heo-shadow-border: 0 8px 16px -4px #00000050;
     --style-border: 1px solid var(--heo-card-border);
     --style-border-always: 1px solid var(--heo-card-border);
@@ -3347,9 +3347,10 @@ ul {
 
 #article-container ul > li:not(.tab)::before {
     top: 0.78em;
-    width: 0.42em;
-    height: 0.42em;
-    border: 0.21em solid rgb(48, 122, 246);
+    left: 0.24rem;
+    width: 0.2em;
+    height: 0.2em;
+    border: 0.1em solid rgb(48, 122, 246);
     border-radius: 0.42em;
     background: 0px 0px;
     content: "";
@@ -8849,6 +8850,12 @@ li {
     flex-wrap: wrap;
 }
 
+.ai-btn-tips {
+    margin-top: 12px;
+    font-size: 12px;
+    opacity: 0.6;
+}
+
 .ai-btn-item {
     padding: 5px 10px;
     margin: 10px 16px 0px 5px;
@@ -8975,7 +8982,6 @@ canvas#universe {
 }
 
 .post-ai {
-    background: var(--heo-secondbg);
     border-radius: 12px;
     padding: 12px;
     line-height: 1.3;
@@ -8995,23 +9001,17 @@ canvas#universe {
     color: var(--font-color);
     border-radius: 8px;
     align-items: center;
-    padding: 0 12px;
     cursor: default;
     user-select: none;
 }
 
 .ai-title-text {
     font-weight: bold;
-    margin-left: 8px;
     line-height: 1;
 }
 
 .ai-explanation {
     margin-top: 12px;
-    padding: 8px 12px;
-    background: var(--heo-card-bg);
-    border-radius: 8px;
-    border: var(--style-border-always);
     font-size: 15.8px;
     line-height: 1.4;
     display: none;
@@ -11275,10 +11275,10 @@ details[open]:not(.tk-admin-config-group):not(.card-friend-class-name) > summary
 /* 文章中的超链接 */
 #article-container a {
     text-decoration: none;
-    border-bottom: 2px dotted var(--heo-main);
-    color: var(--heo-fontcolor);
+    border-bottom: 1px solid var(--heo-main);
+    color: var(--heo-main);
     font-weight: 700;
-    padding: 0 4px;
+    padding: 0 2px;
     border-radius: 4px 4px 0 0
 }
 
@@ -11310,7 +11310,6 @@ details[open]:not(.tk-admin-config-group):not(.card-friend-class-name) > summary
 #article-container p {
     margin: 1rem 0;
     text-align: left;
-    letter-spacing: 0.6px;
 }
 
 
@@ -11337,7 +11336,6 @@ strong {
 
 /* 文章字号 */
 #article-container p {
-    font-size: 0.9rem;
     line-height: 1.7;
     font-weight: 400;
 }
@@ -11355,18 +11353,19 @@ strong {
 #article-container.post-content h1 {
     font-size: 1.5rem;
     line-height: 1.3;
+    padding-top: 1.5rem;
 }
 
 #article-container.post-content h2 {
     font-size: 1.3rem;
     line-height: 1.3;
-    border-top: 1px dashed var(--heo-theme-op);
-    padding-top: 1.5rem;
+    padding-top: 1.3rem;
 }
 
 #article-container.post-content h3 {
     font-size: 1.1rem;
     line-height: 1.3;
+    padding-top: 0.3rem;
 }
 
 #article-container.post-content h4 {
@@ -11544,7 +11543,6 @@ blockquote p {
 
 /* 文章图片 */
 #article-container img {
-    border-radius: 12px;
     margin-bottom: 0.5rem;
     object-fit: cover;
 }
@@ -17669,14 +17667,11 @@ a#toPageButton.haveValue:hover {
 
 /*   code样式 */
 code:not([class]) {
-    color: var(--heo-white);
-    padding: 0.25rem 0.4rem;
+    padding: 1px 6px;
     border-radius: 4px;
     margin: 0px 4px;
-    background: var(--heo-pink);
-    line-height: 2;
-    box-shadow: var(--heo-shadow-border);
-    font-size: 17.5px;
+    background: var(--heo-card-border);
+    font-size: 14px;
     font-family: consolas, Menlo, "PingFang SC", "Microsoft YaHei", sans-serif !important;
 }
 
