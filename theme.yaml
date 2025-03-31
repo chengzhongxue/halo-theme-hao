@@ -46,5 +46,5 @@ spec:
   repo: https://github.com/chengzhongxue/halo-theme-hao
   settingName: "theme-hao-setting"
   configMapName: "theme-hao-configMap"
-  version: "1.6.2"
+  version: "1.6.3"
   require: ">=2.20.0"

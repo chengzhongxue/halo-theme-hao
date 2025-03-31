@@ -1,20 +1,28 @@
 <!-- 版权样式一 -->
-<th:block  th:if="${#strings.equals(theme.config.post.copyrightsStyle, 'one')}">
+<th:block th:if="${#strings.equals(theme.config.post.copyrightsStyle, 'one')}">
     <!-- 版权声明 -->
     <div class="post-copyright">
-        <div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about"
-                                                     data-pjax-state="">
-            <img class="post-copyright__author_img_back entered loading"
-                 th:src="@{${#strings.isEmpty(site.logo) ?  assets_link + '/images/hao-logo.jpg' : site.logo}}"></a>
+        <div class="post-copyright__author_group">
+            <div th:with="contributor=${contributorFinder.getContributor(post.owner.metadata.name)}">
+                <a class="post-copyright__author_img" th:href="'/authors/'+${contributor.name}" data-pjax-state="">
+                    <!--                <img class="post-copyright__author_img_back entered loading"-->
+                    <!--                 th:src="@{${#strings.isEmpty(site.logo) ?  assets_link + '/images/hao-logo.jpg' : site.logo}}">-->
+                    <!-- 获取当前文章对象（假设变量为 $post） -->
+                    <img class="post-copyright__author_img_back entered loading"
+                         th:src="${contributor.avatar ?: assets_link + '/images/hao-logo.jpg'}"/>
+                </a>
+            </div>
             <div class="post-copyright__author_name">[[${site.title}]]</div>
             <div class="post-copyright__author_desc">[[${theme.config.post.desc}]]</div>
         </div>
         <div class="post-tools" id="post-tools">
             <div class="post-tools-left">
-                <div class="rewardLeftButton" th:if="${theme.config.aboutReward.reward.enable_reward_wz || theme.config.post.post_edit.enable_post_edit}">
+                <div class="rewardLeftButton"
+                     th:if="${theme.config.aboutReward.reward.enable_reward_wz || theme.config.post.post_edit.enable_post_edit}">
                     <div th:if="${theme.config.aboutReward.reward.enable_reward_wz}" class="post-reward"
                          onclick="AddRewardMask()">
-                        <div class="reward-button button--animated" title="打赏作者"><i class="haofont hao-icon-hand-heart-fill"></i> 打赏作者
+                        <div class="reward-button button--animated" title="打赏作者"><i
+                                class="haofont hao-icon-hand-heart-fill"></i> 打赏作者
                         </div>
                         <div class="reward-main">
                             <ul class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span>
@@ -26,7 +34,8 @@
                                         <div class="post-qr-code-desc">微信</div>
                                     </li>
                                     <li class="reward-item"><a th:href="@{${theme.config.aboutReward.reward.alipay}}"
-                                                               target="_blank"><img alt="支付宝" class="post-qr-code-img"
+                                                               target="_blank"><img alt="支付宝"
+                                                                                    class="post-qr-code-img"
                                                                                     th:src="${theme.config.aboutReward.reward.alipay}"></a>
                                         <div class="post-qr-code-desc">支付宝</div>
                                     </li>
@@ -47,7 +56,8 @@
                      th:if="${theme.config.post.share_right.mobile_edit  || theme.config.post.share_right.weibo_edit || theme.config.post.share_right.copyurl_edit}">
                     <div class="share-link mobile" th:if="${theme.config.post.share_right.mobile_edit}">
                         <div class="share-qrcode">
-                            <div class="share-button" title="使用手机访问这篇文章"><i class="haofont hao-icon-qrcode"></i>
+                            <div class="share-button" title="使用手机访问这篇文章"><i
+                                    class="haofont hao-icon-qrcode"></i>
                             </div>
                             <div class="share-main">
                                 <div class="share-main-all">
