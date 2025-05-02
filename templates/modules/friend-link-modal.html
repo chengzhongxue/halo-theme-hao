@@ -1,0 +1,37 @@
+<!-- 友链申请模板弹窗 -->
+<div id="friend-link-apply-modal" class="modal-container" style="display: none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>友链申请</h3>
+      <span class="close-modal">&times;</span>
+    </div>
+    <div class="modal-body">
+      <form id="friend-link-form">
+        <div class="form-group">
+          <label for="link-name">博客名称</label>
+          <input type="text" id="link-name" placeholder="请输入博客名称" required>
+        </div>
+        <div class="form-group">
+          <label for="link-nickname">评论昵称</label>
+          <input type="text" id="link-nickname" placeholder="请输入您希望显示的昵称" required>
+        </div>
+        <div class="form-group">
+          <label for="link-url">博客地址</label>
+          <input type="url" id="link-url" placeholder="请输入博客地址（要求博客地址，请勿提交个人主页）" required>
+        </div>
+        <div class="form-group">
+          <label for="link-avatar">头像地址</label>
+          <input type="url" id="link-avatar" placeholder="请提供尽可能清晰的头像图片URL" required>
+        </div>
+        <div class="form-group">
+          <label for="link-desc">博客描述</label>
+          <textarea id="link-desc" placeholder="简单描述一下你的博客" required></textarea>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button id="submit-friend-link" class="btn-primary">提交申请</button>
+      <button id="cancel-friend-link" class="btn-secondary">取消</button>
+    </div>
+  </div>
+</div> 
