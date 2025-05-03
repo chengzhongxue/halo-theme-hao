@@ -94,8 +94,9 @@
 
                 </div>
 
+                <!-- 使用默认样式展示友链，如果displayStyle是default或displayStyle为空 -->  
                 <div class="flink-list"
-                     th:if="${#strings.equals(#annotations.get(group, 'displayStyle'),'default') && not #lists.isEmpty(group.links)}">
+                     th:if="${(#strings.equals(#annotations.get(group, 'displayStyle'),'default') || #strings.isEmpty(#annotations.get(group, 'displayStyle'))) && not #lists.isEmpty(group.links)}">
                     <div class="flink-list-item" th:each="link : ${group.links}">
                         <span th:if="${not #strings.isEmpty(#annotations.get(link, 'label'))}"
                               th:style="'background-color:' + ${#annotations.get(link,'labelColor')}"
@@ -118,6 +119,7 @@
                     </div>
                 </div>
 
+                <!-- 使用迷你样式展示友链，如果displayStyle是deprecated -->
                 <div class="flink-list mini"
                      th:if="${#strings.equals(#annotations.get(group, 'displayStyle'),'deprecated') && not #lists.isEmpty(group.links)}">
                     <div class="flink-list-item" th:each="link : ${group.links}">

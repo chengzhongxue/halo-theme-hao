@@ -6,7 +6,7 @@
          th:if="${pluginFinder.available('PluginLinks')}"
          th:with="groups = ${linkFinder.groupBy()}">
         <th:block th:each="group,iterStat : ${groups}">
-            <details th:if="${#annotations.get(group, 'displayStyle') != 'deprecated' &&  not #strings.isEmpty(#annotations.get(group, 'displayStyle'))  && not #lists.isEmpty(group.links)}"
+            <details th:if="${(#annotations.get(group, 'displayStyle') != 'deprecated' &&  not #strings.isEmpty(#annotations.get(group, 'displayStyle'))) || #strings.isEmpty(#annotations.get(group, 'displayStyle'))  && not #lists.isEmpty(group.links)}"
                      class="card-friend-class-name">
                 <summary class="card-friend-class-desc" th:title="${#annotations.get(group, 'description')}">
                     <sapn>[[${group.spec.displayName}]]</sapn>
