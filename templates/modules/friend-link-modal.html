@@ -1,12 +1,12 @@
 <!-- 友链申请模板弹窗 -->
-<div id="friend-link-apply-modal" class="modal-container" style="display: none;">
-  <div class="modal-content">
+<div id="friend-link-apply-modal" class="modal-container friend-link-modal" style="display: none;">
+  <div class="modal-content friend-link-content">
     <div class="modal-header">
       <h3>友链申请</h3>
       <span class="close-modal">&times;</span>
     </div>
     <div class="modal-body">
-      <form id="friend-link-form">
+      <form id="friend-link-form" class="friend-link-form">
         <div class="form-group">
           <label for="link-name">博客名称</label>
           <input type="text" id="link-name" placeholder="请输入博客名称" required>
@@ -34,4 +34,125 @@
       <button id="cancel-friend-link" class="btn-secondary">取消</button>
     </div>
   </div>
-</div> 
+</div>
+
+<style>
+  /* 友链申请模态框样式 */
+  .friend-link-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .friend-link-content {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    overflow: hidden;
+    animation: modal-in 0.3s ease-out;
+    position: relative;
+    /* 添加调试边框 */
+    /* border: 3px solid red; */
+  }
+  
+  .modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-header h3 {
+    margin: 0;
+  }
+  
+  .close-modal {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 5px;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: right;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    background-color: var(--background);
+    color: var(--text-color);
+  }
+  
+  .form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .btn-primary {
+    background-color: var(--heo-main);
+    color: white;
+  }
+  
+  .btn-secondary {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+  }
+
+  @keyframes modal-in {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* 确保模态框在移动设备上也能良好显示 */
+  @media (max-width: 768px) {
+    .friend-link-content {
+      width: 95%;
+    }
+  }
+</style> 

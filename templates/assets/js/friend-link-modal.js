@@ -16,6 +16,7 @@ const friendLinkModal = {
   submitBtn: null,
   cancelBtn: null,
   closeBtn: null,
+  modalContent: null,
 
   // 初始化
   init: function() {
@@ -32,6 +33,7 @@ const friendLinkModal = {
     this.submitBtn = document.getElementById('submit-friend-link');
     this.cancelBtn = document.getElementById('cancel-friend-link');
     this.closeBtn = document.querySelector('.close-modal');
+    this.modalContent = this.modal.querySelector('.modal-content');
 
     // 获取评论配置信息
     this.getCommentConfig();
@@ -48,15 +50,19 @@ const friendLinkModal = {
     }
 
     // 绑定事件
-    this.closeBtn.addEventListener('click', () => this.hide());
-    this.cancelBtn.addEventListener('click', () => this.hide());
-    this.submitBtn.addEventListener('click', () => this.submit());
-
-    // 点击模态框外部关闭
-    this.modal.addEventListener('click', (e) => {
-      if (e.target === this.modal) {
-        this.hide();
-      }
+    this.closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // 阻止事件冒泡
+      this.hide();
+    });
+    
+    this.cancelBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // 阻止事件冒泡
+      this.hide();
+    });
+    
+    this.submitBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // 阻止事件冒泡
+      this.submit();
     });
 
     // ESC键关闭模态框
@@ -87,13 +93,17 @@ const friendLinkModal = {
   show: function() {
     this.modal.style.display = 'flex';
     document.body.style.overflow = 'hidden'; // 防止背景滚动
-    this.nameInput.focus();
+    
+    // 延迟聚焦到第一个输入框
+    setTimeout(() => {
+      this.nameInput.focus();
+    }, 50);
   },
 
   // 隐藏模态框
   hide: function() {
     this.modal.style.display = 'none';
-    document.body.style.overflow = ''; // 恢复背景滚动
+    document.body.style.overflow = '';
     this.resetForm();
   },
 
@@ -170,8 +180,6 @@ const friendLinkModal = {
   submit: function() {
     if (!this.validate()) return;
     
-    console.log("开始处理友链提交...");
-    
     // 准备表单数据
     const formData = {
       name: this.nameInput.value.trim(),
@@ -181,11 +189,8 @@ const friendLinkModal = {
       desc: this.descTextarea.value.trim()
     };
     
-    console.log("使用用户表单数据:", formData);
-    
     // 格式化评论内容
     const commentContent = `博客名称：${formData.name}\n评论昵称：${formData.nickname}\n网站地址：${formData.url}\n头像图片url：${formData.avatar}\n描述：${formData.desc}`;
-    console.log("准备提交的评论内容:", commentContent);
     
     // 提交到评论系统，并传递表单数据以便直接使用
     this.submitToCommentSystem(commentContent, formData);
@@ -203,16 +208,10 @@ const friendLinkModal = {
   // 直接调用Halo评论API
   submitToHaloAPI: function(content, formData) {
     try {
-      console.log("正在准备提交评论到API...");
-      
       // 从页面中获取评论相关数据
       const commentData = this.buildCommentData(content, formData);
       
-      // 记录请求数据
-      console.log("正在提交评论到API，请求数据:", JSON.stringify(commentData, null, 2));
-      
       // 发送API请求
-      console.log("开始发送API请求...");
       fetch('/apis/api.halo.run/v1alpha1/comments', {
         method: 'POST',
         headers: {
@@ -223,24 +222,14 @@ const friendLinkModal = {
         credentials: 'include'
       })
       .then(response => {
-        console.log("API响应状态:", response.status, response.statusText);
-        
         if (!response.ok) {
-          console.error('评论API请求失败，状态码:', response.status);
-          
-          // 尝试读取错误响应内容
           response.text().then(text => {
             try {
               const errorJson = JSON.parse(text);
-              console.error('API错误详情:', errorJson);
             } catch (e) {
-              console.error('API错误响应:', text);
             }
           }).catch(err => {
-            console.error('无法读取错误响应:', err);
           });
-          
-          // 尝试备用方法
           this.tryFallbackMethod(content);
           return null;
         }
@@ -248,21 +237,16 @@ const friendLinkModal = {
       })
       .then(data => {
         if (data) {
-          console.log('评论提交成功，响应数据:', data);
           btf.snackbarShow('友链申请已提交成功！', false, 3000);
           this.hide();
         }
       })
       .catch(error => {
-        console.error('评论API错误:', error);
-        // 尝试备用方法
         this.tryFallbackMethod(content);
       });
-      
       return true;
     } catch (error) {
-      console.error('调用评论API出错:', error);
-      return false; // 失败，继续使用备用方法
+      return false;
     }
   },
   
@@ -289,8 +273,6 @@ const friendLinkModal = {
         name = commentWidget.getAttribute('data-name') || name;
       }
     }
-    
-    console.log("准备提交评论，评论对象:", { group, kind, name });
     
     // 构建符合Halo评论API的数据结构
     return {
@@ -331,7 +313,6 @@ const friendLinkModal = {
           this.fallbackToManualComment(content);
         }
       } catch (error) {
-        console.error('提交评论出错:', error);
         btf.snackbarShow('评论提交出错，请手动填写申请信息', false, 3000);
         // 转为手动填写模式
         this.fallbackToManualComment(content);
@@ -352,8 +333,6 @@ const friendLinkModal = {
         break;
       }
     }
-    
-    console.log("XSRF令牌:", token || "未找到");
     return token;
   },
 
