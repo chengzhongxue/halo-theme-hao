@@ -33,13 +33,17 @@
                 <div class="aside-list-group"
                      th:with='topGroupPosts = ${postFinder.list(1,6)},
                 postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"&" : theme.config.layout.postRandomImg+"?"}'>
-                    <div th:each="post : ${topGroupPosts}" class="aside-list-item">
-                        <a class="thumbnail div_border"
-                           th:href="@{${post.status.permalink}}"
-                           th:title="${post.spec.title}"><img
-                                loading="lazy"
-                                th:src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : thumbnail.gen(post.spec.cover, "m")}'
-                                th:alt="${post.spec.title}"></a>
+                    <div th:each="post : ${topGroupPosts}" class="aside-list-item"
+                         th:classappend="!${theme.config.layout.showPostCover} ? 'recent-posts-item--no-cover' : ''">
+                        <th:block th:if="${theme.config.layout.showPostCover}">
+                            <a class="thumbnail div_border"
+                               th:href="@{${post.status.permalink}}"
+                               th:title="${post.spec.title}">
+                                <img class="post_cover_img"
+                                     th:src='${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : thumbnail.gen(post.spec.cover, "m")}'
+                                     th:alt="${post.spec.title}">
+                            </a>
+                        </th:block>
                         <div class="content">
                             <a class="title" th:href="@{${post.status.permalink}}"
                                th:title="${post.spec.title}"

@@ -632,6 +632,15 @@ spec:
               value: true
             - label: 隐藏
               value: false
+        - $formkit: radio
+          name: showPostCover
+          label: 是否展示文章封面图
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
 
     - group: sidebar
       label: 侧栏
