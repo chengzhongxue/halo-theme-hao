@@ -24,12 +24,16 @@
                     <div class="article-sort" th:each="month : ${archive.months}">
                         <!-- 月份没有样式所以不显示 -->
                         <!-- <div class="article-sort-item" th:text="${month.month}"></div> -->
-                        <div class="article-sort-item" th:each="post : ${month.posts}">
-                            <a class="article-sort-item-img" th:href="@{${post.status.permalink}}"
-                               th:title="${post.spec.title}">
-                                <img th:alt="${post.spec.title}"
-                                     th:src="${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : thumbnail.gen(post.spec.cover, 's')}">
-                            </a>
+                        <div class="article-sort-item" th:each="post : ${month.posts}"
+                             th:classappend="!${theme.config.layout.showPostCover} ? 'article-sort-item--no-cover' : ''">
+                            <th:block th:if="${theme.config.layout.showPostCover}">
+                                <a class="article-sort-item-img" th:href="@{${post.status.permalink}}"
+                                   th:title="${post.spec.title}">
+                                    <img class="post_cover_img"
+                                         th:src="${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : thumbnail.gen(post.spec.cover, 's')}"
+                                         th:alt="${post.spec.title}">
+                                </a>
+                            </th:block>
                             <div class="article-sort-item-info">
                                 <div class="article-sort-item-time"><i class="far fa-calendar-alt"></i>
                                     <time class="post-meta-date-created"

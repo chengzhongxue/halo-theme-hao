@@ -14,8 +14,10 @@
         <header class="post-bg" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = ${post.spec.title})}"></nav>
             <div class="coverdiv loaded" id="coverdiv">
-                <img alt="cover" class="nolazyload" id="post-cover"
-                     th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}">
+                <img class="post_cover_img"
+                     th:if="${theme.config.layout.showPostCover}"
+                     th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}"
+                     th:alt="${post.spec.title}">
             </div>
 
             <div id="post-info">
@@ -200,11 +202,12 @@
                      postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,'?') ? theme.config.layout.postRandomImg+'&' : theme.config.layout.postRandomImg+'?'}">
                     <div th:if="${postCursor.hasPrevious()}" th:class="${postCursor.hasNext()==false} ? 'prev-post pull-full ' : 'prev-post pull-left'">
                         <a th:if="${postCursor.hasPrevious()}" th:href="@{${postCursor.previous.status.permalink}}">
-                            <img alt="cover" id="preimg" class="nolazyload"
-                                 th:with="img = ${#strings.isEmpty(postCursor.previous.spec.cover) ? postRandomImg+postCursor.previous.spec.title : thumbnail.gen(postCursor.previous.spec.cover, 'm')}"
-                                 th:src="${isLazyload ? loadingImg : img}"
-
-                                 th:data-lazy-src="${ isLazyload ? img : ''}">
+                            <th:block th:if="${theme.config.layout.showPostCover}">
+                                <img alt="cover" id="prevPostImg" class="nolazyload"
+                                     th:with="img = ${#strings.isEmpty(postCursor.previous.spec.cover) ? postRandomImg+postCursor.previous.spec.title : thumbnail.gen(postCursor.previous.spec.cover, 'm')}"
+                                     th:src="${isLazyload ? loadingImg : img}"
+                                     th:data-lazy-src="${ isLazyload ? img : ''}">
+                            </th:block>
                             <div class="pagination-info">
                                 <div class="label">上一篇</div>
                                 <div class="prev_info" th:text="${postCursor.previous.spec.title}"></div>
@@ -213,10 +216,12 @@
                     </div>
                     <div th:if="${postCursor.hasNext()}" th:class="${postCursor.hasPrevious()==false} ? 'next-post pull-full ':'next-post pull-right'">
                         <a th:if="${postCursor.hasNext()}" th:href="@{${postCursor.next.status.permalink}}">
-                            <img alt="cover" id="preimg" class="nolazyload"
-                                 th:with="img = ${#strings.isEmpty(postCursor.next.spec.cover) ? postRandomImg+postCursor.next.spec.title : thumbnail.gen(postCursor.next.spec.cover, 'm')}"
-                                 th:src="${isLazyload ? loadingImg : img}"
-                                 th:data-lazy-src="${ isLazyload ? img : ''}">
+                            <th:block th:if="${theme.config.layout.showPostCover}">
+                                <img alt="cover" id="nextPostImg" class="nolazyload"
+                                     th:with="img = ${#strings.isEmpty(postCursor.next.spec.cover) ? postRandomImg+postCursor.next.spec.title : thumbnail.gen(postCursor.next.spec.cover, 'm')}"
+                                     th:src="${isLazyload ? loadingImg : img}"
+                                     th:data-lazy-src="${ isLazyload ? img : ''}">
+                            </th:block>
                             <div class="pagination-info">
                                 <div class="label">下一篇</div>
                                 <div class="next_info" th:text="${postCursor.next.spec.title}"></div>

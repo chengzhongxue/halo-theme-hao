@@ -1,0 +1,14 @@
+<div class="aside-list-item"
+     th:each="post : ${postFinder.list({page: 1, size: theme.config.sidebar.recentPost, sort: {'stats.createTime,desc'}})}"
+     th:classappend="!${theme.config.layout.showPostCover} ? 'recent-posts-item--no-cover' : ''">
+    <th:block th:if="${theme.config.layout.showPostCover}">
+        <a class="thumbnail" th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
+            <img class="post_cover_img"
+                 th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg + post.spec.title : thumbnail.gen(post.spec.cover, 's')}"
+                 th:alt="${post.spec.title}">
+        </a>
+    </th:block>
+    <div class="content">
+        <a class="title" th:href="@{${post.status.permalink}}" th:text="${post.spec.title}" th:title="${post.spec.title}"></a>
+    </div>
+</div> 
