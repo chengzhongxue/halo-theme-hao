@@ -70,9 +70,12 @@
 ## 💬 讨论
 
 如果你对主题有什么建议或者意见，欢迎提 PR & issue。
-进群，添加企业微信 （备注进群）
 
-[//]: # (<img width="360" src="https://api.minio.yyds.pink/kunkunyu/files/2025/02/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250212142105-pbceif.jpg" />)
+* 添加企业微信 （备注进群）
+<img width="360" src="https://api.minio.yyds.pink/kunkunyu/files/2025/02/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250212142105-pbceif.jpg" />
+
+* QQ群
+<img width="360" src="https://api.minio.yyds.pink/kunkunyu/files/2025/05/qq-708998089-iqowsh.webp" />
 
 ![github-discus](WX20241126-135909@2x.png)
 
