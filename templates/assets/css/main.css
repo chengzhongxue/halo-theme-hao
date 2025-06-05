@@ -1,0 +1,93 @@
+.recent-post-item--no-cover .recent-post-info {
+  margin-top: 0 !important;
+  padding-top: 2rem !important;
+}
+.recent-post-item--no-cover {
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.recent-posts-item--no-cover .content {
+  margin-left: 0 !important;
+  padding: 0.5rem 0 !important;
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+}
+.recent-posts-item--no-cover .thumbnail {
+  display: none !important;
+}
+
+/* 归档页无封面项样式 */
+.article-sort-item--no-cover .article-sort-item-img {
+  display: none !important;
+}
+
+.article-sort-item--no-cover .article-sort-item-info {
+  margin-left: 0 !important;
+  padding-left: 0.5rem !important;
+}
+
+/* 上一篇/下一篇导航无封面样式 */
+.prev-post a:not(:has(img)), .next-post a:not(:has(img)) {
+  padding-left: 10px !important;
+}
+
+.prev-post a:not(:has(img)) .pagination-info, .next-post a:not(:has(img)) .pagination-info {
+  margin-left: 0 !important;
+}
+
+/* 统一无封面样式 */
+/* 阅读建议无封面样式 */
+.relatedPosts a:not(:has(img)) .content {
+  background-color: var(--heo-card-bg);
+  border-radius: 0.5rem;
+  padding: 0.8rem !important;
+}
+
+/* 阅读建议六篇模式无封面样式 */
+.relatedPosts-list div:not(:has(img)) .content {
+  height: auto;
+  min-height: 80px;
+}
+
+/* 全局文章卡片统一样式 */
+[class*='--no-cover'] {
+  transition: all 0.3s;
+}
+
+/* 文章导航完善 */
+.pagination-post a:not(:has(img)) {
+  padding: 1rem;
+  align-items: center;
+  min-height: 80px;
+}
+
+/* 改进阅读建议在无封面时的样式 */
+.relatedPosts-list div:not(:has(img)) {
+  margin-bottom: 1rem;
+}
+
+/* 确保内容对齐 */
+.recent-posts-item--no-cover .content, .article-sort-item--no-cover .article-sort-item-info {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* 阅读建议项目无封面样式 */
+.related-post-item--no-cover .content {
+  padding: 1rem !important;
+  background-color: var(--heo-card-bg) !important;
+  border-radius: 0.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.related-post-item--no-cover .content .title {
+  color: var(--heo-fontcolor) !important;
+  font-weight: 600 !important; 
+}
+
+.related-post-item--no-cover .content .date {
+  color: var(--heo-secondtextcolor) !important;
+} 

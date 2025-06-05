@@ -78,11 +78,11 @@
 </th:block>
 
 <script th:inline="javascript">
-    
+    /*<![CDATA[*/
     function toRandomPost() {
         // 随机跳转首页的一篇文章
         // 后续改成跳转全站的文章，可以从 sitemap 中获取所有文章
-        let posts = [[${posts}]];
+        let posts = /*[[${posts}]]*/ {};
         
         let datum = posts.total < posts.size ? posts.total : posts.size;
         
@@ -95,7 +95,7 @@
         pjax.loadUrl(post.status.permalink)
         // window.open(post.status.permalink);
     }
-
+    /*]]>*/
 </script>
 
 <!-- 网站背景 -->
@@ -127,6 +127,16 @@
     <script th:src="${assets_link + '/js/main.js' + theme_version}"></script>
     <script charset="utf-8" data-pjax th:src="${assets_link + '/zhheo/blogex.js' + theme_version}"></script>
     <script th:src="${assets_link + '/js/tw_cn.js' + theme_version}"></script>
+    <script>
+        /*<![CDATA[*/
+        // 图片懒加载
+        const isLazyload = /*[[${theme.config.post.lazyload}]]*/ false; //配置是否开启图片懒加载
+        var loadingImg = '/assets/images/loading.gif';
+        if (!loadingImg.startsWith('http') && !loadingImg.startsWith('/')) {
+            loadingImg = '//' + loadingImg;
+        }
+        /*]]>*/
+    </script>
     <!-- https://instant.page/ 网站预加载， 放在 </body> 之前 -->
     <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js"
             type="module"></script>
@@ -303,6 +313,7 @@
     }
 
 </script>
+
 </body>
 
 </html>

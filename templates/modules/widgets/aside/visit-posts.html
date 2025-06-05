@@ -1,16 +1,17 @@
-<div class="card-widget card-recent-post" th:with='
-    postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"&" : theme.config.layout.postRandomImg+"?"}'>
+<div class="card-widget card-recent-post">
     <div class="item-headline"><i class="haofont hao-icon-eicon_map-2-line1"></i><span>热门文章</span></div>
     <div class="aside-list">
         <!-- 热门文章，用户可以自定义展示数量 -->
-        <div class="aside-list-item" th:each="post : ${postFinder.list({page: 1, size: theme.config.sidebar.recentPost, sort: {'stats.visit,desc'}})}">
-            <a class="thumbnail" th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
-                <img th:alt="${post.spec.title}"
-                     th:with="img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : thumbnail.gen(post.spec.cover, 's')}"
-
-                     th:src="${isLazyload ? loadingImg : img}"
-                     th:data-lazy-src="${ isLazyload ? img : ''}">
-            </a>
+        <div class="aside-list-item" th:each="post : ${postFinder.list({page: 1, size: theme.config.sidebar.recentPost, sort: {'stats.visit,desc'}})}"
+             th:classappend="!${theme.config.layout.showPostCover} ? 'recent-posts-item--no-cover' : ''">
+            <th:block th:if="${theme.config.layout.showPostCover}">
+                <a class="thumbnail" th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
+                    <img th:alt="${post.spec.title}"
+                         th:with="img = ${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg+post.spec.title : thumbnail.gen(post.spec.cover, 's')}"
+                         th:src="${isLazyload ? loadingImg : img}"
+                         th:data-lazy-src="${ isLazyload ? img : ''}">
+                </a>
+            </th:block>
             <div class="content">
                 <a class="title" th:href="@{${post.status.permalink}}" th:text="${post.spec.title}" th:title="${post.spec.title}"></a>
                 <time th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm:ss')}"

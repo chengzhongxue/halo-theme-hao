@@ -14,12 +14,14 @@ postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,'?') ? theme
             <!-- 建议阅读，这里可以自定义文章数量，然后遍历展示 -->
             <th:block th:each="recommandPost,iterStat :${recommandPosts}"
                       th:if="${not #strings.equals(post.spec.title, recommandPost.spec.title)}">
-                <div th:if="${!containsTitle ? iterStat.index <6 : true}">
+                <div th:if="${!containsTitle ? iterStat.index <6 : true}" th:classappend="!${theme.config.layout.showPostCover} ? 'related-post-item--no-cover' : ''">
                     <a th:href="@{${recommandPost.status.permalink}}" th:title="${recommandPost.spec.title}">
-                        <img alt="cover" class="cover" id="preimg"
-                             th:with="img = ${#strings.isEmpty(recommandPost.spec.cover) ? postRandomImg+recommandPost.spec.title : thumbnail.gen(recommandPost.spec.cover, 'm')}"
-                             th:src="${isLazyload ? loadingImg : img}"
-                             th:data-lazy-src="${ isLazyload ? img : ''}">
+                        <th:block th:if="${theme.config.layout.showPostCover}">
+                            <img alt="cover" class="cover preimg"
+                                 th:with="img = ${#strings.isEmpty(recommandPost.spec.cover) ? postRandomImg+recommandPost.spec.title : thumbnail.gen(recommandPost.spec.cover, 'm')}"
+                                 th:src="${isLazyload ? loadingImg : img}"
+                                 th:data-lazy-src="${ isLazyload ? img : ''}">
+                        </th:block>
                         <div class="content is-center">
                             <div class="date" style="color: white"><i class="far fa-calendar-alt fa-fw"></i>
                                 [[${#dates.format(recommandPost.spec.publishTime,'yyyy-MM-dd')}]]
@@ -34,13 +36,14 @@ postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,'?') ? theme
         <div th:if="${#strings.equals(recommendQuantity, 'two')}" class="relatedPosts-list">
             <th:block th:each="recommandPost,iterStat :${recommandPosts}"
                       th:if="${not #strings.equals(post.spec.title, recommandPost.spec.title)}">
-                <div th:if="${!containsTitle ? iterStat.index <2 : true}">
+                <div th:if="${!containsTitle ? iterStat.index <2 : true}" th:classappend="!${theme.config.layout.showPostCover} ? 'related-post-item--no-cover' : ''">
                     <a th:href="@{${recommandPost.status.permalink}}" th:title="${recommandPost.spec.title}">
-                        <img class="cover" alt="cover"
-                             th:with="img = ${#strings.isEmpty(recommandPost.spec.cover) ? postRandomImg+recommandPost.spec.title : thumbnail.gen(recommandPost.spec.cover, 'm')}"
-
-                             th:src="${isLazyload ? loadingImg : img}"
-                             th:data-lazy-src="${ isLazyload ? img : ''}">
+                        <th:block th:if="${theme.config.layout.showPostCover}">
+                            <img class="cover" alt="cover"
+                                 th:with="img = ${#strings.isEmpty(recommandPost.spec.cover) ? postRandomImg+recommandPost.spec.title : thumbnail.gen(recommandPost.spec.cover, 'm')}"
+                                 th:src="${isLazyload ? loadingImg : img}"
+                                 th:data-lazy-src="${ isLazyload ? img : ''}">
+                        </th:block>
                         <div class="content is-center">
                             <div class="date"><i class="far fa-calendar-alt fa-fw"></i>
                                 [[${#dates.format(recommandPost.spec.publishTime,'yyyy-MM-dd')}]]</div>

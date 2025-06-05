@@ -393,14 +393,100 @@ function removeLoading() {
 }
 
 function addFriendLink() {
-    var input = document.getElementsByClassName(GLOBAL_CONFIG.source.comments.textarea)[0];
-    let evt = document.createEvent('HTMLEvents');
-    evt.initEvent('input', true, true);
-    input.value = '昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n';
-    input.dispatchEvent(evt);
-    heo.scrollTo("#post-comment");
-    input.focus();
-    input.setSelectionRange(-1, -1);
+    // 获取评论区域
+    var commentArea = document.getElementById("post-comment");
+    if (!commentArea) {
+        btf.snackbarShow('未找到评论区域，请确保评论功能已启用', false, 3000);
+        return;
+    }
+    
+    // 尝试获取不同评论系统的文本输入框
+    var commentTextarea;
+    
+    // 检查评论系统类型
+    if (GLOBAL_CONFIG.source.comments.use === 'Twikoo') {
+        commentTextarea = document.querySelector('.el-textarea__inner');
+    } else if (GLOBAL_CONFIG.source.comments.use === 'Artalk') {
+        commentTextarea = document.querySelector('.atk-textarea');
+    } else if (GLOBAL_CONFIG.source.comments.use === 'Waline') {
+        commentTextarea = document.querySelector('.wl-editor');
+    } else if (GLOBAL_CONFIG.source.comments.use === 'commentWidget') {
+        // 对于Halo官方评论组件
+        // 1. 先尝试通过组件标签查找
+        const commentWidget = commentArea.querySelector('comment-widget');
+        if (commentWidget) {
+            // 等待Shadow DOM加载完成
+            setTimeout(() => {
+                // 尝试在Shadow DOM中查找文本区域
+                const shadowRoot = commentWidget.shadowRoot;
+                if (shadowRoot) {
+                    const textarea = shadowRoot.querySelector('textarea');
+                    if (textarea) {
+                        fillCommentTemplate(textarea);
+                        return;
+                    }
+                }
+                // 如果找不到Shadow DOM或textarea，尝试其他通用查找方法
+                fallbackSearch();
+            }, 500);
+            return;
+        }
+        
+        // 2. 如果没有找到组件标签，尝试常规选择器
+        commentTextarea = document.querySelector('textarea.appearance-none') || 
+                          document.querySelector('comment-widget textarea');
+    }
+    
+    // 如果找不到具体的评论框，尝试通用查找
+    if (!commentTextarea) {
+        fallbackSearch();
+        return;
+    }
+    
+    // 填充友链模板
+    fillCommentTemplate(commentTextarea);
+    
+    // 通用查找方法
+    function fallbackSearch() {
+        // 尝试各种可能的选择器
+        commentTextarea = document.querySelector("#post-comment textarea") || 
+                         document.querySelector('textarea[placeholder*="评论"]') ||
+                         document.querySelector('textarea[placeholder*="留言"]') ||
+                         document.querySelector('.comment-textarea textarea');
+        
+        if (commentTextarea) {
+            fillCommentTemplate(commentTextarea);
+        } else {
+            btf.snackbarShow('无法找到评论输入框，可能是评论组件尚未加载完成,你可以刷新页面后再次尝试', false, 3000);
+            // 滚动到评论区，以促使评论组件加载
+            heo.scrollTo("#post-comment");
+            
+            // 延迟再次尝试查找
+            setTimeout(() => {
+                commentTextarea = document.querySelector("#post-comment textarea");
+                if (commentTextarea) {
+                    fillCommentTemplate(commentTextarea);
+                }
+            }, 1000);
+        }
+    }
+    
+    // 填充友链申请模板
+    function fillCommentTemplate(textarea) {
+        const inputEvent = new Event('input', {
+            bubbles: true,
+            cancelable: true
+        });
+        textarea.value = '昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n';
+        textarea.dispatchEvent(inputEvent);
+        heo.scrollTo("#post-comment");
+        textarea.focus();
+        try {
+            textarea.setSelectionRange(-1, -1);
+        } catch (e) {
+            // 有些浏览器可能不支持setSelectionRange，忽略错误
+        }
+    }
 }
 
 //从一个给定的数组arr中,随机返回num个不重复项

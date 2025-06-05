@@ -7,12 +7,14 @@
          th:classappend="${theme.config.layout.post.cols} + ' ' +
          ${theme.config.layout.post.postLocation} + ' ' +
          (${iStat.even} ? 'even' : 'odd') + ' ' +
-         (${post.spec.pinned} ? 'pinned-post-item' : '')"
+         (${post.spec.pinned} ? 'pinned-post-item' : '') + ' ' +
+         (!${theme.config.layout.showPostCover} ? 'recent-post-item--no-cover' : '')"
          th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'"
          th:each="post,iStat : ${postItems}">
-        <div class="post_cover left_radius">
+        <div class="post_cover left_radius" th:if="${theme.config.layout.showPostCover}">
             <a th:attr="title=${post.spec.title}" th:href="@{${post.status.permalink}}">
                 <img class="post_bg"
+                     th:if="${theme.config.layout.showPostCover}"
                      th:with='img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : thumbnail.gen(post.spec.cover, "m")}'
                      th:alt="${post.spec.title}"
                      th:data-lazy-src="${ isLazyload ? img : ''}"

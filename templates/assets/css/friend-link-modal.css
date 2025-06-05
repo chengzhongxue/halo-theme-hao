@@ -1,0 +1,182 @@
+/* 友链申请模态框样式 */
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--card-bg, #fff);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: var(--heo-main, #3b70fc);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.close-modal {
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #666;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.close-modal:hover {
+  color: var(--heo-main, #3b70fc);
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--font-color, #4c4948);
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  background-color: var(--input-bg, #f5f5f5);
+  color: var(--font-color, #4c4948);
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--heo-main, #3b70fc);
+  box-shadow: 0 0 0 2px rgba(59, 112, 252, 0.2);
+  outline: none;
+}
+
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.modal-footer {
+  padding: 15px 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-primary, 
+.btn-secondary {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--heo-main, #3b70fc);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--heo-main-op-deep, #2854d8);
+}
+
+.btn-secondary {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.btn-secondary:hover {
+  background-color: #e0e0e0;
+}
+
+/* 适配暗黑模式 */
+[data-theme='dark'] .modal-content {
+  background-color: var(--card-bg, #282c34);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .form-group input,
+[data-theme='dark'] .form-group textarea {
+  background-color: var(--input-bg, #1c1e26);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--font-color, #e5e9f0);
+}
+
+[data-theme='dark'] .btn-secondary {
+  background-color: #3a3a3a;
+  color: #e0e0e0;
+}
+
+[data-theme='dark'] .btn-secondary:hover {
+  background-color: #4a4a4a;
+}
+
+/* 适配移动端 */
+@media screen and (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+  }
+  
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding: 12px 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 12px;
+  }
+} 

@@ -4,18 +4,23 @@
     postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"&" : theme.config.layout.postRandomImg+"?"}'>
     <div class="recent-post-group">
         <div class="recent-post-item" th:each="post,iter : ${topGroupPosts}"
-             th:if="${#strings.equals(theme.config.top.BannerRight.recommendPost, 'latest')}">
+             th:if="${#strings.equals(theme.config.top.BannerRight.recommendPost, 'latest')}"
+             th:classappend="!${theme.config.layout.showPostCover} ? 'recent-post-item--no-cover' : ''">
 
-            <div class="post_cover" th:classappend="${iter.index % 2 == 0 ? 'left_radius' : 'right_radius'}">
-                <a th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
-                    <span class="recent-post-top-text"
-                          th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'">荐</span>
-                    <img class="post_bg"
-                         th:with=' img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : thumbnail.gen(post.spec.cover, "s")}'
-                         th:alt="${post.spec.title}" th:src="${isLazyload ? loadingImg : img}"
-                         th:data-lazy-src="${ isLazyload ? img : ''}" />
-                </a>
-            </div>
+            <th:block th:if="${theme.config.layout.showPostCover}">
+                <div class="post_cover" th:classappend="${iter.index % 2 == 0 ? 'left_radius' : 'right_radius'}">
+                    <a th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
+                        <span class="recent-post-top-text"
+                              th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'">荐</span>
+                        <img class="post_bg"
+                             th:with=' img = ${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg+post.spec.title : thumbnail.gen(post.spec.cover, "s")}'
+                             th:alt="${post.spec.title}" th:src="${isLazyload ? loadingImg : img}"
+                             th:data-lazy-src="${ isLazyload ? img : ''}"
+                             th:onclick="logCoverRequest('topGroup-recent', [[${post.spec.title}]], [[${theme.config.layout.postRandomImg+post.spec.title}]])"
+                             >
+                    </a>
+                </div>
+            </th:block>
             <div class="recent-post-info">
                 <a class="article-title" th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"
                    th:title="${post.spec.title}">
@@ -33,7 +38,9 @@
                         <img class="post_bg"
                              th:with='img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : thumbnail.gen(post.spec.cover, "s")}'
                              th:alt="${post.spec.title}" th:src="${isLazyload ? loadingImg : img}"
-                             th:data-lazy-src="${ isLazyload ? img : ''}" />
+                             th:data-lazy-src="${ isLazyload ? img : ''}"
+                             th:onclick="logCoverRequest('topGroup-custom', [[${post.spec.title}]], [[${postRandomImg+post.spec.title}]])"
+                             th:if="${theme.config.layout.showPostCover}" />
                     </a>
                 </div>
                 <div class="recent-post-info">

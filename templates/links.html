@@ -7,6 +7,8 @@
                 _cover = ${theme.config.other.opengraph.image},
                 _excerpt = ${site.seo.description},
                 _type = 'website')}"></th:block>
+    <!-- 友链申请弹窗样式 -->
+    <link rel="stylesheet" th:href="${assets_link + '/css/friend-link-modal.css' + theme_version}">
 </th:block>
 <th:block th:fragment="content">
     <div class="page" id="body-wrap">
@@ -25,18 +27,29 @@
                   kind = 'Plugin',
                   name = ${pluginName},
                   allowComment = ${theme.config.link.enable_comment == true})}"/>
+                <!-- 为友链申请JS提供评论组件信息 -->
+                <div id="comment-metadata" 
+                     style="display:none;" 
+                     data-group="plugin.halo.run" 
+                     data-kind="Plugin" 
+                     th:data-name="${pluginName}"></div>
                 <style>
                     /*修复友链页面表情选择器无法显示完全的bug*/
                     .tk-submit {
                         overflow: inherit !important;
                     }
                 </style>
+                
+                <!-- 引入友链申请弹窗组件 -->
+                <th:block th:replace="~{modules/friend-link-modal}"></th:block>
             </div>
         </main>
         <!-- 底部 -->
         <footer th:replace="~{modules/footer}"/>
     </div>
-
+    
+    <!-- 友链申请弹窗脚本 -->
+    <script th:src="${assets_link + '/js/friend-link-modal.js' + theme_version}"></script>
 </th:block>
 
 </html>
