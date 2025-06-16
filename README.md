@@ -49,16 +49,16 @@
 > 部分插件可能已经预设在 Halo 内。
 > 部分插件主题尚未适配。
 
-- 评论功能 [plugin-comment-widget](https://github.com/halo-sigs/plugin-comment-widget/releases)
-- 搜索功能 [plugin-search-widget](https://github.com/halo-sigs/plugin-search-widget/releases)
-- 友链页面 [plugin-links](https://github.com/halo-sigs/plugin-links)
-- 瞬间页面 [plugin-moments](https://github.com/halo-sigs/plugin-moments)
-- 追番插件 [plugin-bilibili-bangumi](https://github.com/Roozenlz/plugin-bilibili-bangumi)
-- 图库插件 [plugin-photos](https://github.com/halo-sigs/plugin-photos)
-- katex插件 [plugin-katex](https://github.com/chengzhongxue/plugin-katex/releases/)
-- 我的装备 [plugin-equipments](https://github.com/chengzhongxue/plugin-equipments)
+- 评论功能 [plugin-comment-widget](https://www.halo.run/store/apps/app-YXyaD)
+- 搜索功能 [plugin-search-widget](https://www.halo.run/store/apps/app-DlacW)
+- 友链页面 [plugin-links](https://www.halo.run/store/apps/app-hfbQg)
+- 瞬间页面 [plugin-moments](https://www.halo.run/store/apps/app-SnwWD)
+- 追番插件 [plugin-bilibili-bangumi](https://www.halo.run/store/apps/app-OTFPN)
+- 图库插件 [plugin-photos](https://www.halo.run/store/apps/app-BmQJW)
+- katex插件 [plugin-katex](https://www.halo.run/store/apps/app-ISCsX)
+- 我的装备 [plugin-equipment](https://www.halo.run/store/apps/app-ytygyqml)
 - Markdown / HTML 内容块插件 [plugin-hybrid-edit-block](https://www.halo.run/store/apps/app-NgHnY)
-- 爱发电 [plugin-afdian](https://github.com/carolcoral/plugin-afdian)
+- 爱发电 [plugin-afdian](https://www.halo.run/store/apps/app-oXvZp)
 
 > 更多插件请参见：https://github.com/halo-sigs/awesome-halo
 
