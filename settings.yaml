@@ -547,24 +547,6 @@ spec:
               clearable: true
               searchable: true
               sortable: true
-            - $formkit: checkbox
-              if: $get(nav).value === 'custom-category'
-              name: show_deprecated_items_category
-              key: show_deprecated_items_category
-              id: show_deprecated_items_category
-              label: 显示已过时选项
-              value: false
-              help: 这些选项将在未来的版本移除，请尽快使用替代方案
-            - $formkit: repeater
-              if: "$get(show_deprecated_items_category).value && $get(nav).value === 'custom-category'"
-              name: navCustomCategory
-              key: navCustomCategory
-              label: 自定义分类
-              value: [ ]
-              children:
-                - $formkit: categorySelect
-                  name: category
-                  label: 分类
             - $formkit: tagSelect
               if: $get(nav).value === 'custom-tag'
               name: navTag
@@ -574,24 +556,6 @@ spec:
               clearable: true
               searchable: true
               sortable: true
-            - $formkit: checkbox
-              if: $get(nav).value === 'custom-tag'
-              name: show_deprecated_items_tag
-              key: show_deprecated_items_tag
-              id: show_deprecated_items_tag
-              label: 显示已过时选项
-              value: false
-              help: 这些选项将在未来的版本移除，请尽快使用替代方案
-            - $formkit: repeater
-              if: $get(show_deprecated_items_tag).value && $get(nav).value === 'custom-tag'
-              name: navCustomTag
-              key: navCustomTag
-              label: 自定义标签
-              value: [ ]
-              children:
-                - $formkit: tagSelect
-                  name: tag
-                  label: 标签
             - $formkit: repeater
               if: $get(nav).value === 'custom-url'
               name: navCustomUrl
@@ -2200,28 +2164,6 @@ spec:
             - $formkit: text
               index: "$index"
               validation: required
-        - $formkit: checkbox
-          name: show_deprecated_items_message
-          key: show_deprecated_items_message
-          id: show_deprecated_items_message
-          label: 显示已过时选项
-          value: false
-          help: 这些选项将在未来的版本移除，请尽快使用替代方案
-        - $formkit: repeater
-          name: messageList
-          if: $get(enable_envelope_comment).value && $get(show_deprecated_items_message).value
-          label: 正文
-          value:
-            - content: "有什么想问的？"
-            - content: "有什么想说的？"
-            - content: "有什么想吐槽的？"
-            - content: "哪怕是有什么想吃的，都可以告诉我哦~"
-          children:
-            - $formkit: text
-              name: content
-              label: 内容
-              placeholder: 请输入内容
-              value: "有什么想问的？"
         - $formkit: text
           name: bottom
           if: $get(enable_envelope_comment).value
@@ -2272,49 +2214,6 @@ spec:
               label: 关注偏好&音乐偏好
             - value: statistics-map
               label: 数据统计&作者相关信息
-        - $formkit: checkbox
-          name: show_deprecated_items_widget
-          key: show_deprecated_items_widget
-          id: show_deprecated_items_widget
-          label: 显示已过时选项
-          value: false
-          help: 这些选项将在未来的版本移除，请尽快使用替代方案
-        - $formkit: repeater
-          name: widgetList
-          if: $get(show_deprecated_items_widget).value
-          label: 小部件
-          help: 我的介绍&我的想法, 我的问候, 技能&职业生涯, 性格&图片, 座右铭, 爱好, 关注偏好&音乐偏好, 数据统计&作者相关信息。
-          value:
-            - widgetId: content-idea
-            - widgetId: hello-about
-            - widgetId: authorCareers
-            - widgetId: personalities-photo
-            - widgetId: textarea
-            - widgetId: game
-            - widgetId: like-music
-            - widgetId: statistics-map
-          children:
-            - $formkit: select
-              name: widgetId
-              id: widgetId
-              label: 模块
-              options:
-                - value: content-idea
-                  label: 我的介绍&我的想法
-                - value: hello-about
-                  label: 我的问候
-                - value: authorCareers
-                  label: 技能&职业生涯
-                - value: personalities-photo
-                  label: 性格&图片
-                - value: textarea
-                  label: 座右铭
-                - value: game
-                  label: 爱好
-                - value: like-music
-                  label: 关注偏好&音乐偏好
-                - value: statistics-map
-                  label: 数据统计&作者相关信息
 
         - $formkit: list
           name: author_info_left_tags
@@ -2326,24 +2225,6 @@ spec:
             - $formkit: text
               index: "$index"
               validation: required
-        - $formkit: checkbox
-          name: show_deprecated_items_authorInfoLeftTags
-          key: show_deprecated_items_authorInfoLeftTags
-          id: show_deprecated_items_authorInfoLeftTags
-          label: 显示已过时选项
-          value: false
-          help: 这些选项将在未来的版本移除，请尽快使用替代方案
-        - $formkit: repeater
-          if: $get(show_deprecated_items_authorInfoLeftTags).value
-          name: authorInfoLeftTags
-          label: 个人标签-左
-          help: 头像左侧个人标签
-          value: [ ]
-          children:
-            - $formkit: text
-              name: tag
-              label: 标签
-              placeholder: 请输入内容
         - $formkit: list
           name: author_info_right_tags
           label: 个人标签-右
@@ -2354,24 +2235,6 @@ spec:
             - $formkit: text
               index: "$index"
               validation: required
-        - $formkit: checkbox
-          name: show_deprecated_items_authorInfoRightTags
-          key: show_deprecated_items_authorInfoRightTags
-          id: show_deprecated_items_authorInfoRightTags
-          label: 显示已过时选项
-          value: false
-          help: 这些选项将在未来的版本移除，请尽快使用替代方案
-        - $formkit: repeater
-          if: $get(show_deprecated_items_authorInfoRightTags).value
-          name: authorInfoRightTags
-          label: 个人标签-右
-          help: 头像右侧个人标签
-          value: [ ]
-          children:
-            - $formkit: text
-              name: tag
-              label: 标签
-              placeholder: 请输入内容
         - $formkit: code
           name: content
           label: 我的介绍

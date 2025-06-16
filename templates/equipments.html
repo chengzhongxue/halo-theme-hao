@@ -27,33 +27,27 @@
                     <th:block th:each="group : ${groups}">
                         <div class="equipment-item">
                             <h2 class="equipment-item-title">[[${group.spec.displayName}]]</h2>
-                            <div class="equipment-item-description">[[${#annotations.get(group, 'description')}]]</div>
+                            <div class="equipment-item-description">[[${group.spec.description}]]</div>
                             <div class="equipment-item-content" th:with="equipmentList = ${group.equipments}">
                                 <div class="equipment-item-content-item" th:each="equipment : ${equipmentList}">
                                     <div class="equipment-item-content-item-cover">
                                         <img class="equipment-item-content-item-image"
                                              th:alt="${equipment.spec.displayName}"
-                                             th:src="${isLazyload ? loadingImg : equipment.spec.url}"
-                                             th:data-lazy-src="${ isLazyload ? equipment.spec.url : ''}">
+                                             th:src="${isLazyload ? loadingImg : equipment.spec.cover}"
+                                             th:data-lazy-src="${ isLazyload ? equipment.spec.cover : ''}">
                                     </div>
                                     <div class="equipment-item-content-item-info">
                                         <div class="equipment-item-content-item-name"
                                              th:onclick="rm.rightmenuCopyText([[${equipment.spec.displayName}]]);btf.snackbarShow('已复制装备名称');">
                                             [[${equipment.spec.displayName}]]
                                         </div>
-                                        <div class="equipment-item-content-item-specification">[[${#annotations.get(equipment, 'model')}]]
+                                        <div class="equipment-item-content-item-specification">[[${equipment.spec.specification}]]
                                         </div>
                                         <div class="equipment-item-content-item-description">
                                             [[${equipment.spec.description}]]
                                         </div>
                                         <div class="equipment-item-content-item-toolbar">
-                                            <a class="equipment-item-content-item-link" th:href="${#annotations.get(equipment, 'link')}"
-                                               target="_blank">[[${#annotations.get(equipment, 'button')}]]</a>
-                                            <a class="bber-reply" th:if="${theme.config.comments.use != 'commentWidget'}"
-                                               th:onclick="rightMenuCommentText([['&quot;'+${equipment.spec.displayName}+' '+${#annotations.get(equipment, 'model')}+' '+${equipment.spec.description}+'&quot;']]);"
-                                               data-pjax-state="">
-                                                <i class="haofont hao-icon-chat--fill" style="font-size: 22px;"></i>
-                                            </a>
+                                            <a class="equipment-item-content-item-link" th:href="${equipment.spec.url}" target="_blank">详情</a>
                                         </div>
                                     </div>
                                 </div>
@@ -61,12 +55,6 @@
                         </div>
                     </th:block>
                 </div>
-                <!--/* 评论组件 */-->
-                <th:block
-                        th:replace="~{modules/comment :: comment(group = 'content.halo.run',
-                  kind = 'SinglePage',
-                  name = 'equipment',
-                  allowComment = ${theme.config.comments.use != 'commentWidget'})}"/>
             </div>
         </main>
         <!-- 底部 -->
