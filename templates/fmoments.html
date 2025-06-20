@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'page',title = '朋友圈 | ' + ${site.title}, head = ~{::head})}">
+
+<th:block th:fragment="head">
+    <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = '朋友圈',
+                _permalink = '/moments',
+                _cover = '',
+                _excerpt = '友链朋友圈 - 发现更多精彩内容',
+                _type = 'website')}"></th:block>
+    <!-- 分离CSS文件 -->
+    <link rel="stylesheet" th:href="@{/assets/css/fmoments.css}" data-pjax>
+</th:block>
+
+<th:block th:fragment="content">
+    <div class="page" id="body-wrap">
+        <!-- 头部导航栏 -->
+        <header class="not-top-img" id="page-header">
+            <nav th:replace="~{modules/nav :: nav(title = '朋友圈')}"></nav>
+        </header>
+
+        <main class="layout hide-aside" id="content-inner">
+            <div id="page">
+                <!-- 朋友圈统计信息面板 -->
+                <div id="fMomentsMessageBoard">
+                    <div class="fMomentsUpdatedTime">
+                        <i class="fas fa-sync-alt"></i>
+                        最近更新：<span id="lastUpdateTime">加载中...</span>
+                    </div>
+
+                    <div class="fMomentsStatsGrid">
+                        <div class="fMomentsStatCard">
+                            <div class="fMomentsStatIcon">📚</div>
+                            <div class="fMomentsStatNumber" id="totalArticles">0</div>
+                            <div class="fMomentsStatLabel">总文章数</div>
+                        </div>
+
+                        <div class="fMomentsStatCard">
+                            <div class="fMomentsStatIcon">👥</div>
+                            <div class="fMomentsStatNumber" id="totalAuthors">0</div>
+                            <div class="fMomentsStatLabel">活跃作者</div>
+                        </div>
+
+                        <div class="fMomentsStatCard">
+                            <div class="fMomentsStatIcon">🔥</div>
+                            <div class="fMomentsStatNumber" id="todayCount">0</div>
+                            <div class="fMomentsStatLabel">今日更新</div>
+                        </div>
+
+                        <div class="fMomentsStatCard">
+                            <div class="fMomentsStatIcon">⚡</div>
+                            <div class="fMomentsStatNumber" id="weekCount">0</div>
+                            <div class="fMomentsStatLabel">本周更新</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 控制面板 -->
+                <div class="fMomentsControlPanel">
+                    <div class="fMomentsSearchBox">
+                        <i class="fas fa-search fMomentsSearchIcon"></i>
+                        <input type="text" class="fMomentsSearchInput" placeholder="搜索文章标题或作者..." id="searchInput">
+                    </div>
+
+                    <div class="fMomentsFilterGroup">
+                        <select class="fMomentsSelect" id="authorFilter">
+                            <option value="">全部作者</option>
+                        </select>
+
+                        <select class="fMomentsSelect" id="sortSelect">
+                            <option value="pubDate">按发布时间</option>
+                            <option value="creationTime">按创建时间</option>
+                            <option value="author">按作者名称</option>
+                            <option value="title">按标题</option>
+                        </select>
+
+                        <div class="fMomentsToggle">
+                            <span>升序</span>
+                            <div class="fMomentsSwitch active" id="sortOrderSwitch"></div>
+                            <span>降序</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 显示数量状态 -->
+                <div class="fMomentsDisplayStatus">
+                    <div class="fMomentsDisplayInfo">
+                        <i class="fas fa-filter"></i>
+                        <span>显示</span>
+                        <span class="fMomentsDisplayCount" id="displayedCount">0</span>
+                        <span>/</span>
+                        <span class="fMomentsDisplayCount" id="totalCount">0</span>
+                        <span>篇文章</span>
+                    </div>
+                    <div class="fMomentsDisplayInfo" id="filterStatus" style="display: none;">
+                        <i class="fas fa-info-circle"></i>
+                        <span id="filterText">已应用筛选条件</span>
+                    </div>
+                </div>
+
+                <!-- 加载状态 -->
+                <div id="loadingIndicator" class="fMomentsLoading">
+                    <div class="fMomentsLoadingSpinner"></div>
+                    <div class="fMomentsLoadingText">正在加载动态内容...</div>
+                </div>
+
+                <!-- 朋友圈文章容器 -->
+                <div id="fmomentsContainer"></div>
+
+                <!-- 加载更多按钮 -->
+                <div id="loadingStatus" style="display: none;">
+                    <button id="fmomentsMoreBtn" type="button">
+                        <i class="fas fa-angle-double-down"></i>
+                        <span>加载更多</span>
+                    </button>
+                    <div class="fMomentsNoMore" id="noMoreTip" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <div>🎉 已显示全部内容</div>
+                        <small>共找到 <span id="finalCount">0</span> 篇文章</small>
+                    </div>
+                </div>
+
+                <!-- 错误状态 -->
+                <div class="fMomentsErrorState" id="errorState" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>加载失败</h3>
+                    <div id="errorMessage">请检查网络连接后重试</div>
+                    <button class="fMomentsRetryBtn" id="retryBtn">重新加载</button>
+                </div>
+
+                <!-- 空状态 -->
+                <div class="fMomentsEmptyState" id="emptyState" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>没有找到匹配的文章</h3>
+                    <p>尝试更换搜索词或调整筛选条件</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- 底部 -->
+        <footer th:replace="~{modules/footer}" />
+
+        <!-- 资源检查和动态加载脚本 -->
+        <script data-pjax th:inline="javascript">
+            // 资源动态加载器
+            window.MomentsResourceLoader = {
+                // 检查CSS是否已加载
+                isCSSLoaded: function (href) {
+                    const links = document.getElementsByTagName('link');
+                    for (let i = 0; i < links.length; i++) {
+                        if (links[i].href && links[i].href.includes(href)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                },
+
+                // 检查JS是否已加载
+                isJSLoaded: function (src) {
+                    const scripts = document.getElementsByTagName('script');
+                    for (let i = 0; i < scripts.length; i++) {
+                        if (scripts[i].src && scripts[i].src.includes(src)) {
+                            return true;
+                        }
+                    }
+                    // 也检查是否已经定义了相关的全局变量/函数
+                    return typeof FriendMomentsApp !== 'undefined';
+                },
+
+                // 动态加载CSS
+                loadCSS: function (href) {
+                    return new Promise((resolve, reject) => {
+                        if (this.isCSSLoaded(href)) {
+                            console.log('CSS already loaded:', href);
+                            resolve();
+                            return;
+                        }
+
+                        const link = document.createElement('link');
+                        link.rel = 'stylesheet';
+                        link.href = href;
+                        link.setAttribute('data-pjax', '');
+
+                        link.onload = () => {
+                            console.log('CSS loaded successfully:', href);
+                            resolve();
+                        };
+
+                        link.onerror = () => {
+                            console.error('Failed to load CSS:', href);
+                            reject(new Error(`Failed to load CSS: ${href}`));
+                        };
+
+                        document.head.appendChild(link);
+                    });
+                },
+
+                // 动态加载JS
+                loadJS: function (src) {
+                    return new Promise((resolve, reject) => {
+                        if (this.isJSLoaded(src)) {
+                            console.log('JS already loaded:', src);
+                            resolve();
+                            return;
+                        }
+
+                        const script = document.createElement('script');
+                        script.src = src;
+                        script.setAttribute('data-pjax', '');
+
+                        script.onload = () => {
+                            console.log('JS loaded successfully:', src);
+                            resolve();
+                        };
+
+                        script.onerror = () => {
+                            console.error('Failed to load JS:', src);
+                            reject(new Error(`Failed to load JS: ${src}`));
+                        };
+
+                        document.head.appendChild(script);
+                    });
+                },
+
+                // 加载所有必需的资源
+                loadRequiredResources: async function () {
+                    const cssPath = /*[[@{/assets/css/fmoments.css}]]*/ '/assets/css/fmoments.css';
+                    const jsPath = /*[[@{/assets/js/fmoments.js}]]*/ '/assets/js/fmoments.js';
+
+                    try {
+                        console.log('Checking and loading required resources...');
+
+                        // 并行加载CSS和JS
+                        await Promise.all([
+                            this.loadCSS(cssPath),
+                            this.loadJS(jsPath)
+                        ]);
+
+                        console.log('All resources loaded successfully');
+                        return true;
+                    } catch (error) {
+                        console.error('Error loading resources:', error);
+                        return false;
+                    }
+                }
+            };
+        </script>
+        <!-- 初始化脚本 -->
+        <script data-pjax th:inline="javascript">
+            // 朋友圈配置
+            // 从主题设置获取
+            window.fmomentsConfig = {
+                apiUrl: /*[[${theme.config.link.fmomentsApiUrl}]]*/ '/apis/api.friend.moony.la/v1alpha1/friendposts',
+                pageSize: /*[[${theme.config.link.fmomentsPageSize}]]*/ 12,
+                errorImg: /*[[${theme.config.other.error_404.background}]]*/ '/assets/images/404.gif'
+            };
+
+            // 全局初始化状态追踪
+            window._momentsInitializing = false;
+
+            // 初始化朋友圈应用
+            async function initMomentsApp() {
+                // 防止并发初始化
+                if (window._momentsInitializing) {
+                    console.log('Moments initialization already in progress');
+                    return;
+                }
+
+                console.log('Starting Moments initialization');
+                window._momentsInitializing = true;
+
+                try {
+                    // 首先检查并加载必需的资源
+                    const resourcesLoaded = await window.MomentsResourceLoader.loadRequiredResources();
+
+                    if (!resourcesLoaded) {
+                        console.error('Failed to load required resources');
+                        return;
+                    }
+
+                    // 等待一小段时间确保资源完全加载
+                    await new Promise(resolve => setTimeout(resolve, 100));
+
+                    // 检查FriendMomentsApp是否可用
+                    if (typeof FriendMomentsApp !== 'undefined') {
+                        // 创建新实例（构造函数会处理旧实例的清理）
+                        window.fMomentsApp = new FriendMomentsApp();
+                        // 显式调用初始化
+                        await window.fMomentsApp.init();
+                        console.log('FriendMomentsApp initialized successfully');
+                    } else {
+                        console.error('FriendMomentsApp is not available after loading resources');
+                    }
+                } catch (error) {
+                    console.error('Error initializing FriendMomentsApp:', error);
+                } finally {
+                    window._momentsInitializing = false;
+                }
+            }
+
+            // PJAX开始时立即清理
+            document.addEventListener('pjax:start', function () {
+                console.log('PJAX start - cleaning up Moments');
+                if (window._momentsInstance) {
+                    window._momentsInstance.destroy();
+                }
+                window._momentsInitializing = false;
+            });
+
+            // DOM加载完成后初始化
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMomentsApp);
+            } else {
+                // DOM已经加载完成
+                initMomentsApp();
+            }
+
+            // PJAX完成后重新初始化
+            document.addEventListener('pjax:complete', function () {
+                if (document.getElementById('fmomentsContainer')) {
+                    // 延迟一点时间确保DOM稳定
+                    setTimeout(initMomentsApp, 150);
+                }
+            });
+        </script>
+
+    </div>
+</th:block>
+
+</html>

@@ -1989,6 +1989,16 @@ spec:
           height: 300px
           label: 底部显示内容
           language: html
+        - $formkit: text
+          name: fmomentsPageSize
+          label: 友链每页数量
+          help: "填写每页（滚动加载）展示的友链数量,"
+          value: 12
+        - $formkit: url
+          name: fmomentsApiUrl
+          label: 朋友圈 API 地址
+          help: "填写朋友圈 API 地址, 不需要填写前缀, 例如: /apis/api.friend.moony.la/v1alpha1/friendposts"
+          value: /apis/api.friend.moony.la/v1alpha1/friendposts
 
 
     - group: photos
