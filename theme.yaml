@@ -39,6 +39,7 @@ spec:
         description: 最近评论页面
         screenshot:
         file: new_comment.html
+
   description: Halo 2.x Theme base on Thymeleaf, Referring to Butterfly and Heo
   logo: /themes/theme-hao/assets/images/hao-logo.jpg
   homepage: https://www.halo.run/store/apps/app-MgZJX
