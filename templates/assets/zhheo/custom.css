@@ -2514,3 +2514,9 @@ p.p.gray,span.p.gray {
     --at-color-green: #4caf50;
     --at-color-gradient: linear-gradient(180deg, transparent, rgba(30, 34, 36, 1))
 }
+/* 修复 mermaid 文字显示不全 */
+.language-mermaid span p {
+    font-size: unset !important;
+    letter-spacing: unset !important;
+}
+
