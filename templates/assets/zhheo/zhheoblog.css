@@ -12707,7 +12707,29 @@ img.tk-avatar-img {
 }
 
 .el-button.tk-preview {
-    display: none !important;
+    border-color: var(--heo-fontcolor) !important;
+    color: var(--heo-card-bg) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--heo-shadow-black);
+    transition: .3s;
+    width: 5rem;
+    position: absolute;
+    top: -43px;
+    right: 0;
+    margin-right: 5.5rem !important;
+    height: 32px
+}
+
+.tk-preview-container {
+    background: var(--heo-card-bg);
+    border-radius: 12px !important;
+    box-shadow: var(--heo-shadow-border);
+    margin-left: 0px !important;
+}
+
+.tk-preview-container::before {
+    content: '🔍预览';
+    color: gray;
 }
 
 #twikoo > div.tk-comments > div.tk-submit > div.tk-row.actions > a {
@@ -12818,7 +12840,7 @@ button.el-button.tk-cancel.el-button--default.el-button--small {
 .tk-meta-input {
     position: relative !important;
     margin-top: 8px;
-    width: calc(100% - 5.5rem);
+    width: calc(100% - 11rem);
 }
 
 /* 内容 */
