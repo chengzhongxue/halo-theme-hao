@@ -456,15 +456,24 @@ function owoBig() {
                                 t.addEventListener("mouseover", (e => {
                                         "LI" === e.target.tagName && n && (n = !1,
                                             o = setTimeout((() => {
-                                                    let t = 3 * e.target.clientWidth
+                                                let originSrc = e.target.querySelector("img")?.getAttribute("origin") || e.target.querySelector("img")?.src;
+
+                                                if (!originSrc || originSrc === "null" || originSrc === "undefined") {
+                                                    originSrc = e.target.querySelector("img").src;
+                                                }
+                                                if (!originSrc || originSrc === "null" || originSrc === "undefined") {
+                                                    retrurn;
+                                                }
+                                
+                                                let t = 2 * e.target.clientWidth
                                                         , o = e.x - e.offsetX - (t - e.target.clientWidth) / 2
                                                         , n = e.y - e.offsetY;
-                                                    a.style.height = 3 * e.target.clientHeight + "px",
+                                                a.style.height = 2 * e.target.clientHeight + "px",
                                                         a.style.width = t + "px",
                                                         a.style.left = o + "px",
                                                         a.style.top = n + "px",
                                                         a.style.display = "flex",
-                                                        a.innerHTML = `<img src="${e.target.querySelector("img").src}">`
+                                                        a.innerHTML = `<img src="${originSrc}">`
                                                 }
                                             ), 300))
                                     }
