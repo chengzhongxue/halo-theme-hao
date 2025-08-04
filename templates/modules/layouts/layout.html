@@ -77,23 +77,19 @@
     </style>
 </th:block>
 
-<script th:inline="javascript">
-    
+<script th:inline="javascript"
+    th:with="allPostList=${postFinder.listAll()},
+    randomIndex=${T(java.lang.Math).floor(T(java.lang.Math).random()*#lists.size(allPostList))},
+    postPermalink=${allPostList[randomIndex].status.permalink}"
+>
     function toRandomPost() {
-        // 随机跳转首页的一篇文章
-        // 后续改成跳转全站的文章，可以从 sitemap 中获取所有文章
-        let posts = [[${posts}]];
-        
-        let datum = posts.total < posts.size ? posts.total : posts.size;
-        
-        let number = Math.floor(Math.random() * datum);
-        
-        let post = posts.items[number];
+        // 随机跳转全站的一篇文章
+        let permalink = /*[[${postPermalink}]]*/ "/";
         
         // 当前窗口打开
-        //window.location.href = post.status.permalink;
-        pjax.loadUrl(post.status.permalink)
-        // window.open(post.status.permalink);
+        //window.location.href = permalink;
+        pjax.loadUrl(permalink);
+        // window.open(permalink);
     }
 
 </script>
