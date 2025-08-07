@@ -11,7 +11,13 @@
                     <i class="haofont hao-icon-paper-plane1"></i>
                     <span class="banner-button-text">随机访问</span>
                 </a>
-                <a class="banner-button" href="#post-comment" rel="external nofollow">
+                <a th:unless="${pluginFinder.available('link-submit')}"
+                        class="banner-button" href="#post-comment" rel="external nofollow">
+                    <i class="haofont hao-icon-link"></i>
+                    <span class="banner-button-text">申请友链</span>
+                </a>
+                <a th:if="${pluginFinder.available('link-submit')}"
+                   class="banner-button" href="javascript:LinkSubmitWidget.open()" rel="external nofollow">
                     <i class="haofont hao-icon-link"></i>
                     <span class="banner-button-text">申请友链</span>
                 </a>

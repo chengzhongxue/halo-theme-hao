@@ -11,8 +11,10 @@
 </p>
 </div>
 
+
 该版本 Fork 至 [halo-theme-hao](https://github.com/chengzhongxue/halo-theme-hao) ，感谢原作者的付出。
 本仓库只做部分样式的修改和自定义。
+
 
 ## 改动 todo
 优化主页的显示

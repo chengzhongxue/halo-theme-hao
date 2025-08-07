@@ -77,23 +77,19 @@
     </style>
 </th:block>
 
-<script th:inline="javascript">
-    
+<script th:inline="javascript"
+    th:with="allPostList=${postFinder.listAll()},
+    randomIndex=${T(java.lang.Math).floor(T(java.lang.Math).random()*#lists.size(allPostList))},
+    postPermalink=${allPostList[randomIndex].status.permalink}"
+>
     function toRandomPost() {
-        // 随机跳转首页的一篇文章
-        // 后续改成跳转全站的文章，可以从 sitemap 中获取所有文章
-        let posts = [[${posts}]];
-        
-        let datum = posts.total < posts.size ? posts.total : posts.size;
-        
-        let number = Math.floor(Math.random() * datum);
-        
-        let post = posts.items[number];
+        // 随机跳转全站的一篇文章
+        let permalink = /*[[${postPermalink}]]*/ "/";
         
         // 当前窗口打开
-        //window.location.href = post.status.permalink;
-        pjax.loadUrl(post.status.permalink)
-        // window.open(post.status.permalink);
+        //window.location.href = permalink;
+        pjax.loadUrl(permalink);
+        // window.open(permalink);
     }
 
 </script>
@@ -128,14 +124,14 @@
     <script charset="utf-8" data-pjax th:src="${assets_link + '/zhheo/blogex.js' + theme_version}"></script>
     <script th:src="${assets_link + '/js/tw_cn.js' + theme_version}"></script>
     <!-- https://instant.page/ 网站预加载， 放在 </body> 之前 -->
-    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js"
+    <script th:src="${assets_link + '/libs/instantpage/instantpage.min.js'}"
             type="module"></script>
     
-    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script>
+    <script th:src="${assets_link + '/libs/vanilla-lazyload/lazyload.iife.min.js'}"></script>
     
     <!-- 右下角通知 https://www.polonel.com/snackbar/ -->
     <!-- todo head 中有它的 css，应该可以写一块，并改成后台可配置的功能，代码中应该还有他的 js -->
-    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script>
+    <script th:src="${assets_link + '/libs/node-snackbar/snackbar.min.js'}"></script>
     
     <div class="js-pjax">
         <!-- 动态标题 -->
@@ -158,7 +154,7 @@
     
     <!-- https://davidshimjs.github.io/qrcodejs/ 生成二维码 -->
     <!-- 应该是文章页分享使用 -->
-    <script data-pjax src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script data-pjax th:src="${assets_link + '/libs/qrcode/qrcode.min.js'}" ></script>
     
     <!--  https://raphamorim.io/waterfall.js/  应该是这个 还有相关的 js 代码 是否可以调整-->
     <script th:src="${assets_link + '/libs/waterfall/waterfall.min.js'}"></script>
@@ -168,8 +164,8 @@
     <script th:src="${assets_link + '/libs/fast-average-color/index.browser.min.js'}"></script>
     
     <script th:src="${assets_link + '/libs/view-image/view-image.min.js'}"></script>
-    
-    <link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css"
+
+    <link rel="stylesheet" th:href="${assets_link + '/libs/aplayer/APlayer.min.css'}"
           media="all" onload="this.media='all'">
     
     <script th:src="${assets_link + '/libs/aplayer/APlayer.min.js'}"></script>
@@ -180,7 +176,7 @@
     
     <!-- swiper 在瞬间滚动时会使用 -->
     <script th:if="${theme.config.top.moment}" data-pjax
-            src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/6.6.2/swiper-bundle.min.js"></script>
+            th:src="${assets_link + '/libs/swiper/swiper-bundle.min.js'}"></script>
     
     <!-- 右键菜单 -->
     <script th:if="${theme.config.tool.rightMenu.rightMenuEnable}"
