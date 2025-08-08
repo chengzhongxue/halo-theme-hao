@@ -30,8 +30,14 @@
                                   th:text="${authorTag}"></span>
                         </div>
                         <div class="author-img">
-                            <img
-                                    th:src="@{${#strings.isEmpty(site.logo) ?  assets_link + '/images/hao-logo.jpg' : site.logo}}">
+                            <th:block th:with="
+                                    defaultImg = ${assets_link + '/images/hao-logo.jpg'},
+                                    finalImg = ${#strings.isEmpty(theme.config.about?.aboutAuthorImage)
+                                               ? defaultImg
+                                               : theme.config.about.aboutAuthorImage}
+                                ">
+                                <img th:src="${finalImg}">
+                            </th:block>
                         </div>
                         <div class="author-tag-right"
                              th:if="${not #lists.isEmpty(theme.config.about.author_info_right_tags)}"

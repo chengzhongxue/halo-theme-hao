@@ -47,7 +47,7 @@
             setTimeout(runFn, 0)
             return
         }
-        getScript(GLOBAL_CONFIG.source.twikoo.min.js).then(runFn)
+        getScript(GLOBAL_CONFIG.source.twikoo.js).then(runFn)
     }
 
     if ('Twikoo' === 'Twikoo' || !GLOBAL_CONFIG.source.comments.lazyload) {

@@ -2,7 +2,7 @@
 <th:block  th:if="${#strings.equals(theme.config.comments.use, 'Twikoo') &&
 not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
     <div class="js-pjax">
-        <script th:src="${assets_link + '/js/comment/twikoo.min.js'}"></script>
+        <script th:src="${assets_link + '/js/comment/twikoo.js'}"></script>
     </div>
     <!-- 最近评论 -->
     <script>
@@ -42,7 +42,7 @@ not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
                 if (typeof twikoo === 'object') {
                     runTwikoo()
                 } else {
-                    getScript(GLOBAL_CONFIG.source.twikoo.min.js).then(runTwikoo)
+                    getScript(GLOBAL_CONFIG.source.twikoo.js).then(runTwikoo)
                 }
             }
 

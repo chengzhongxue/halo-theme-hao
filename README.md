@@ -12,7 +12,7 @@
 </div>
 
 <!-- 主题预览图 -->
-[![demo-hao](https://redirect.cnkj.site:8099/bKlEJK.webp?type=blog)](https://blog.xindu.site)
+[![demo-hao](https://pic.xindu.site/bKlEJK.webp?type=blog)](https://blog.xindu.site)
 
 ## 🔥 预览
 
@@ -20,7 +20,6 @@
 |:------:|:-----------------------|
 | 新 · 都在 | https://blog.xindu.site/?preview-theme=theme-hao |
 |楠笙|https://blog.nanshengwx.cn|
-|登逆|https://denlee.cc|
 |阿锦在线|https://www.ajinol.com|
 
 ## ℹ️ 简介

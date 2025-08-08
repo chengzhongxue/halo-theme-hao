@@ -6,7 +6,7 @@
         <div class="author-content-item-description">
             [[${theme.config.aboutReward.content}]]
         </div>
-        
+
         <div th:if="${theme.config.aboutReward.reward.enable_reward}" class="about-reward">
             <div id="con"></div>
             <div id="TA-con" onclick="heo.rewardShowConsole()">
@@ -53,12 +53,20 @@
                         <circle r="14" transform="matrix(1 0 0 -1 790 308)" fill="white"></circle>
                     </svg>
                 </div>
-                <p id="people">共<b>[[${theme.config.aboutReward.reward_list.size()}]]</b>人</p>
+
+                <th:block th:if="not ${pluginFinder.available('plugin-afdian')}">
+                    <p id="people">共<b>[[${theme.config.aboutReward.reward_list.size()}]]</b>人</p>
+                </th:block>
+                <th:block th:if="${pluginFinder.available('plugin-afdian')}">
+                    <p id="people">共<b>[[${theme.config.aboutReward.reward_list.size()}+${afdianFinder
+                        .listAllSponsor().data.list.size()}]]</b>人</p>
+                </th:block>
+
             </div>
         </div>
         <div class="reward-list-all" th:if="${not #lists.isEmpty(theme.config.aboutReward.reward_list)}"
              th:with="authorRewardList = ${theme.config.aboutReward.reward_list}">
-            
+
             <div class="reward-list-item" th:each="authorReward : ${authorRewardList}">
                 <div th:if="${not #strings.isEmpty(authorReward.avatar)}">
                     <div>
@@ -70,10 +78,12 @@
                         </div>
                     </div>
                     <div class="reward-list-bottom-group">
-                        <div th:if="${#conversions.convert(authorReward.amount, 'java.math.BigDecimal') < #conversions.convert(theme.config.aboutReward.rewardNumber, 'java.math.BigDecimal')}" class="reward-list-item-money">¥
+                        <div th:if="${#conversions.convert(authorReward.amount, 'java.math.BigDecimal') < #conversions.convert(theme.config.aboutReward.rewardNumber, 'java.math.BigDecimal')}"
+                             class="reward-list-item-money">¥
                             [[${authorReward.amount}]]
                         </div>
-                        <div th:if="${#conversions.convert(authorReward.amount, 'java.math.BigDecimal') >= #conversions.convert(theme.config.aboutReward.rewardNumber, 'java.math.BigDecimal')}" class="reward-list-item-money"
+                        <div th:if="${#conversions.convert(authorReward.amount, 'java.math.BigDecimal') >= #conversions.convert(theme.config.aboutReward.rewardNumber, 'java.math.BigDecimal')}"
+                             class="reward-list-item-money"
                              style="background: var(--heo-vip);">¥ [[${authorReward.amount}]]
                         </div>
                         <time class="datatime reward-list-item-time">[[${authorReward.datatime}]]</time>
@@ -82,18 +92,59 @@
                 <div th:if="${#strings.isEmpty(authorReward.avatar)}">
                     <div class="reward-list-item-name">[[${authorReward.name}]]</div>
                     <div class="reward-list-bottom-group">
-                        <div th:if="${#conversions.convert(authorReward.amount, 'java.math.BigDecimal') < #conversions.convert(theme.config.aboutReward.rewardNumber, 'java.math.BigDecimal')}" class="reward-list-item-money">¥
+                        <div th:if="${#conversions.convert(authorReward.amount, 'java.math.BigDecimal') < #conversions.convert(theme.config.aboutReward.rewardNumber, 'java.math.BigDecimal')}"
+                             class="reward-list-item-money">¥
                             [[${authorReward.amount}]]
                         </div>
-                        <div th:if="${#conversions.convert(authorReward.amount, 'java.math.BigDecimal') >= #conversions.convert(theme.config.aboutReward.rewardNumber, 'java.math.BigDecimal')}" class="reward-list-item-money"
+                        <div th:if="${#conversions.convert(authorReward.amount, 'java.math.BigDecimal') >= #conversions.convert(theme.config.aboutReward.rewardNumber, 'java.math.BigDecimal')}"
+                             class="reward-list-item-money"
                              style="background: var(--heo-vip);">¥ [[${authorReward.amount}]]
                         </div>
                         <time class="datatime reward-list-item-time">[[${authorReward.datatime}]]</time>
                     </div>
                 </div>
-                
+
             </div>
-        
+
         </div>
+
+        <th:block th:if="${pluginFinder.available('plugin-afdian')}">
+            <a href="https://afdian.com/a/carolcoral" target="_blank"><span class="sponar_afdian">爱发电</span></a>
+            <div class="reward-list-all" th:if="${not #lists.isEmpty(afdianFinder.listAllSponsor())}"
+                 th:with="authorRewardList = ${afdianFinder.listAllSponsor().data.list}">
+                <div class="reward-list-item" th:each="authorReward : ${authorRewardList}">
+                    <div th:if="${not #strings.isEmpty(authorReward.user.avatar)}">
+                        <div>
+                            <div class="reward-list-item-avatar">
+                                <img th:src="${authorReward.user.avatar}" th:alt="${authorReward.user.name}">
+                            </div>
+                            <div style="z-index:20;float: left;" class="reward-list-item-avatar-group">
+                                <div class="reward-list-item-name">[[${authorReward.user.name}]]</div>
+                            </div>
+                        </div>
+                        <div class="reward-list-bottom-group">
+                            <div th:if="${#conversions.convert(authorReward.all_sum_amount, 'java.math.BigDecimal') < #conversions.convert(afdianFinder.getRewardNumber(), 'java.math.BigDecimal')}"
+                                 class="reward-list-item-money">¥
+                                [[${authorReward.all_sum_amount}]]
+                            </div>
+                            <div th:if="${#conversions.convert(authorReward.all_sum_amount, 'java.math.BigDecimal') >= #conversions.convert(afdianFinder.getRewardNumber(), 'java.math.BigDecimal')}"
+                                 class="reward-list-item-money"
+                                 style="background: var(--heo-vip);">¥ [[${authorReward.all_sum_amount}]]
+                            </div>
+                            <time class="datatime reward-list-item-time">
+                                [[${afdianFinder.parseTime(authorReward.last_pay_time)}]]
+                            </time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+
     </div>
 </div>
+<style>
+    span.sponar_afdian {
+        font-size: 2em;
+        color: antiquewhite;
+    }
+</style>
