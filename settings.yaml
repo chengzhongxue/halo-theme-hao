@@ -46,6 +46,7 @@ spec:
             pc_leftMenu: true
             phone_leftMenu: true
             phone_menu: true
+            enable_ali_iconfont_symbol_header: false
           children:
             - $formkit: radio
               name: pc_leftMenu
@@ -75,7 +76,6 @@ spec:
             - $formkit: select
               name: enable_ali_iconfont_symbol_header
               label: 阿里巴巴IconFont Symbol
-              value: false
               help: '开启后，可以使用阿里IconFont的Symbol彩色图标。语法为 #icon-xxx，例如 #icon-shouye'
               options:
                 - value: true
