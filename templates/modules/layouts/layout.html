@@ -77,7 +77,8 @@
     </style>
 </th:block>
 
-<script th:inline="javascript"
+<script th:if="${not #lists.isEmpty(postFinder.listAll())}"
+        th:inline="javascript"
     th:with="allPostList=${postFinder.listAll()},
     randomIndex=${T(java.lang.Math).floor(T(java.lang.Math).random()*#lists.size(allPostList))},
     postPermalink=${allPostList[randomIndex].status.permalink}"
