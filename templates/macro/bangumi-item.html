@@ -2,7 +2,7 @@
     <div class="bangumi-item">
         <div class="bangumi-picture no-lightbox">
             <img
-                    th:src="${isLazyload ? loadingImg : spec.cover}"
+                    th:src="${isLazyload ? '' : spec.cover}"
                     th:data-lazy-src="${ isLazyload ? spec.cover : ''}"
                     referrerpolicy="no-referrer" width="110"
                     style="width:110px;margin:20px auto;">

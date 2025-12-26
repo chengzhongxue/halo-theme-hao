@@ -8,7 +8,7 @@
                 <img th:alt="${post.spec.title}"
                      th:with="img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : thumbnail.gen(post.spec.cover, 's')}"
 
-                     th:src="${isLazyload ? loadingImg : img}"
+                     th:src="${isLazyload ? '' : img}"
                      th:data-lazy-src="${ isLazyload ? img : ''}">
             </a>
             <div class="content">

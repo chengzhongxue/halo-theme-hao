@@ -18,7 +18,7 @@ postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,'?') ? theme
                     <a th:href="@{${recommandPost.status.permalink}}" th:title="${recommandPost.spec.title}">
                         <img alt="cover" class="cover" id="preimg"
                              th:with="img = ${#strings.isEmpty(recommandPost.spec.cover) ? postRandomImg+recommandPost.spec.title : thumbnail.gen(recommandPost.spec.cover, 'm')}"
-                             th:src="${isLazyload ? loadingImg : img}"
+                             th:src="${isLazyload ? '' : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}">
                         <div class="content is-center">
                             <div class="date" style="color: white"><i class="far fa-calendar-alt fa-fw"></i>
@@ -39,7 +39,7 @@ postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,'?') ? theme
                         <img class="cover" alt="cover"
                              th:with="img = ${#strings.isEmpty(recommandPost.spec.cover) ? postRandomImg+recommandPost.spec.title : thumbnail.gen(recommandPost.spec.cover, 'm')}"
 
-                             th:src="${isLazyload ? loadingImg : img}"
+                             th:src="${isLazyload ? '' : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}">
                         <div class="content is-center">
                             <div class="date"><i class="far fa-calendar-alt fa-fw"></i>

@@ -38,7 +38,7 @@
                                              th:if="${#strings.contains(content.medium,'PHOTO')}">
                                             <img th:each="momentItem : ${content.medium}"
                                                  th:if="${momentItem.type.name == 'PHOTO'}"
-                                                 th:src="${isLazyload ? loadingImg : momentItem.url}"
+                                                 th:src="${isLazyload ? '' : momentItem.url}"
                                                  th:data-lazy-src="${ isLazyload ? momentItem.url : ''}" title="瞬间配图">
                                             <div class="bber-content-noimg"></div>
                                             <div class="bber-content-noimg"></div>

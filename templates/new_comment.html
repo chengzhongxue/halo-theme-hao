@@ -34,7 +34,7 @@
                              th:onclick="pjax.loadUrl([[${url}]])">
                             <div class="comment-info">
                                 <img th:with=" img =${#strings.isEmpty(comment.owner.avatar)? theme.config.sidebar.newcomment.providerMirror+'/avatar/'+comment.spec.owner.annotations['email-hash'] :comment.owner.avatar}"
-                                     th:alt="${comment.owner.displayName}" th:src="${isLazyload ? loadingImg : img}"
+                                     th:alt="${comment.owner.displayName}" th:src="${isLazyload ? '' : img}"
                                      th:data-lazy-src="${ isLazyload ? img : ''}" class="no-lightbox nolazyload avatar">
                                 <div class="comment-information">
                                     <span class="comment-user">[[${comment.owner.displayName}]]</span>

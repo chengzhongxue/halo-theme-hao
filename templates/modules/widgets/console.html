@@ -21,7 +21,7 @@
                  th:if="${iterStat.index  < 6}" >
               <a th:href="${url}" class="thumbnail"  data-pjax-state="">
                 <img th:with="img = ${#strings.isEmpty(comment.owner.avatar)?'https://cravatar.cn/avatar/?d=mp':comment.owner.avatar}"
-                     th:src="${isLazyload ? loadingImg : img}"
+                     th:src="${isLazyload ? '' : img}"
                      th:data-lazy-src="${ isLazyload ? img : ''}"
                      th:alt="${comment.owner.displayName}">
                 <div class="name"><span>stonewu</span></div>

@@ -30,7 +30,7 @@
                         <th:block th:each="group : ${photoFinder.groupBy()}">
                             <div class="card" th:onclick="pjax.loadUrl([['/photos?group='+${group.metadata.name}]])">
                                 <img class="card_cover"
-                                     th:src="${isLazyload ? loadingImg : #annotations.get(group, 'cover')}"
+                                     th:src="${isLazyload ? '' : #annotations.get(group, 'cover')}"
                                      th:data-lazy-src="${ isLazyload ? #annotations.get(group, 'cover') : ''}"
                                 >
                                 <div class="card__content">
@@ -50,7 +50,7 @@
                         <th:block th:each="group : ${photoFinder.groupBy()}">
                             <figure class="gallery-group no-lightbox">
                                 <img class="gallery-group-img no-lightbox"
-                                     th:src="${isLazyload ? loadingImg : #annotations.get(group, 'cover')}"
+                                     th:src="${isLazyload ? '' : #annotations.get(group, 'cover')}"
                                      th:data-lazy-src="${ isLazyload ? #annotations.get(group, 'cover') : ''}"
                                      alt="Group Image Gallery">
                                 <figcaption>

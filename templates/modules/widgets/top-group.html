@@ -12,7 +12,7 @@
                           th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'">荐</span>
                     <img class="post_bg"
                          th:with=' img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : thumbnail.gen(post.spec.cover, "s")}'
-                         th:alt="${post.spec.title}" th:src="${isLazyload ? loadingImg : img}"
+                         th:alt="${post.spec.title}" th:src="${isLazyload ? '' : img}"
                          th:data-lazy-src="${ isLazyload ? img : ''}" />
                 </a>
             </div>
@@ -32,7 +32,7 @@
                               th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'">荐</span>
                         <img class="post_bg"
                              th:with='img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : thumbnail.gen(post.spec.cover, "s")}'
-                             th:alt="${post.spec.title}" th:src="${isLazyload ? loadingImg : img}"
+                             th:alt="${post.spec.title}" th:src="${isLazyload ? '' : img}"
                              th:data-lazy-src="${ isLazyload ? img : ''}" />
                     </a>
                 </div>

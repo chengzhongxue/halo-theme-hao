@@ -31,7 +31,7 @@
         <i class="bber-gotobb haofont hao-icon-circle-arrow-right" onclick="location.href='/moments'" title="查看全文"></i>
     </th:block>
     <img th:if="${theme.config.top.climb.climbEnable && theme.config.top.recentTop} " class="climb"  id="climb"
-         th:src="${isLazyload ? loadingImg : theme.config.top.climb.climbImg}"
+         th:src="${isLazyload ? '' : theme.config.top.climb.climbImg}"
          onclick="halo.changeMarginLeft(this)"
          th:data-lazy-src="${ isLazyload ? theme.config.top.climb.climbImg : ''}">
 

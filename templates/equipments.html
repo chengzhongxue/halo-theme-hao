@@ -33,7 +33,7 @@
                                     <div class="equipment-item-content-item-cover">
                                         <img class="equipment-item-content-item-image"
                                              th:alt="${equipment.spec.displayName}"
-                                             th:src="${isLazyload ? loadingImg : equipment.spec.cover}"
+                                             th:src="${isLazyload ? '' : equipment.spec.cover}"
                                              th:data-lazy-src="${ isLazyload ? equipment.spec.cover : ''}">
                                     </div>
                                     <div class="equipment-item-content-item-info">
