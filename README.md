@@ -65,8 +65,6 @@
 * QQ群
 <img width="360" src="https://api.minio.yyds.pink/kunkunyu/files/2025/05/qq-708998089-iqowsh.webp" />
 
-![github-discus](WX20241126-135909@2x.png)
-
 > 卖服务器的广告人，就不要加了。
 
 ## 🔐 许可
