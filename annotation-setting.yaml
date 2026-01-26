@@ -1,7 +1,7 @@
 apiVersion: v1alpha1
 kind: AnnotationSetting
 metadata:
-  generateName: annotation-setting-
+  name: annotation-setting-hao-post
 spec:
   targetRef:
     group: content.halo.run
@@ -49,7 +49,7 @@ spec:
 apiVersion: v1alpha1
 kind: AnnotationSetting
 metadata:
-  generateName: annotation-setting-
+  name: annotation-setting-hao-menu
 spec:
   targetRef:
     group: ""
@@ -72,7 +72,7 @@ spec:
 apiVersion: v1alpha1
 kind: AnnotationSetting
 metadata:
-  generateName: annotation-setting-
+  name: annotation-setting-hao-link-group
 spec:
   targetRef:
     group: core.halo.run
@@ -98,7 +98,7 @@ spec:
 apiVersion: v1alpha1
 kind: AnnotationSetting
 metadata:
-  generateName: annotation-setting-
+  name: annotation-setting-hao-link
 spec:
   targetRef:
     group: core.halo.run
@@ -120,7 +120,7 @@ spec:
 apiVersion: v1alpha1
 kind: AnnotationSetting
 metadata:
-  generateName: annotation-setting-
+  name: annotation-setting-hao-photo-group
 spec:
   targetRef:
     group: core.halo.run
@@ -132,21 +132,6 @@ spec:
     - $formkit: "attachment"
       name: "background"
       label: "分组顶部 banner 图片"
-    - $formkit: "textarea"
-      name: "description"
-      label: "分组描述"
-
----
-
-apiVersion: v1alpha1
-kind: AnnotationSetting
-metadata:
-  generateName: annotation-setting-
-spec:
-  targetRef:
-    group: core.halo.run
-    kind: EquipmentGroup
-  formSchema:
     - $formkit: "textarea"
       name: "description"
       label: "分组描述"
