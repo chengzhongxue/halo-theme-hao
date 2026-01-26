@@ -11,17 +11,6 @@
 </p>
 </div>
 
-<!-- 主题预览图 -->
-[![demo-hao](https://pic.xindu.site/bKlEJK.webp?type=blog)](https://blog.xindu.site)
-
-## 🔥 预览
-
-|  站点名称  |          站点地址           |
-|:------:|:-----------------------|
-| 新 · 都在 | https://blog.xindu.site/?preview-theme=theme-hao |
-|楠笙|https://blog.nanshengwx.cn|
-|阿锦在线|https://www.ajinol.com|
-
 ## ℹ️ 简介
 
 [Halo-Theme-Hao](https://github.com/chengzhongxue/halo-theme-hao)
@@ -76,17 +65,7 @@
 * QQ群
 <img width="360" src="https://api.minio.yyds.pink/kunkunyu/files/2025/05/qq-708998089-iqowsh.webp" />
 
-![github-discus](WX20241126-135909@2x.png)
-
 > 卖服务器的广告人，就不要加了。
-
-## 💰赞助
-
-**如果 Halo-theme-hao 主题对你有帮助，欢迎赞助相关开发者**
-* 困困鱼: [爱发电赞助](https://afdian.com/a/moony_la)
-* Carol: [爱发电赞助](https://afdian.com/a/carolcoral) 或 [微信赞赏码](https://redirect.cnkj.site:8099/vZWztN.webp?type=blog)
-
-### 感谢以下赞助者对 Halo-theme-hao 主题的支持：
 
 ## 🔐 许可
 
