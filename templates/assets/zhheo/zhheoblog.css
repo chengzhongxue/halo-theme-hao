@@ -11542,6 +11542,12 @@ blockquote p {
     background: var(--heo-maskbg);
 }
 
+/* Halo 编辑器媒体 */
+#article-container figure[data-content-type] {
+    max-width: 100%;
+    margin: 1rem 0;
+}
+
 /* 文章图片 */
 #article-container img {
     border-radius: 12px;
